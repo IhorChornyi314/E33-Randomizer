@@ -1,0 +1,245 @@
+﻿<Window x:Class="E33Randomizer.CustomEnemyPlacementWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Custom Enemy Placement" Height="820" Width="900"
+        MinHeight="820" MinWidth="900"
+        WindowStartupLocation="CenterOwner"
+        Closing="Window_Closing">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <GroupBox Grid.Row="0" Header="Enemy Selection" Margin="10, 0, 5, 0">
+            <Grid Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+            
+                <!-- Not Randomized Enemy Selection -->
+                <StackPanel Grid.Column="0" Margin="0,0,5,0">
+                    <Label Content="Not Randomized Enemies:" FontWeight="Bold"/>
+                    <ComboBox Name="NotRandomizedEnemiesSelectionComboBox" 
+                              Margin="0,0,0,0"
+                              SelectionChanged="NotRandomizedEnemiesComboBox_SelectionChanged"/>
+                    <ListBox Name="NotRandomizedEnemiesListBox" 
+                             Grid.Row="0"
+                             SelectionMode="Single"
+                             Height="75" 
+                             SelectionChanged="NotRandomizedEnemiesListBox_SelectionChanged"/>
+                    
+                    <Button Name="RemoveNotRandomizedEnemyButton" 
+                            Grid.Row="1"
+                            Content="Remove" 
+                            Width="100" 
+                            Height="25" 
+                            HorizontalAlignment="Center"
+                            Margin="0,5,0,0"
+                            Click="RemoveNotRandomizedEnemyButton_Click"
+                            IsEnabled="False"/>
+                </StackPanel>
+            
+                <!-- Excluded Enemy Selection -->
+                <StackPanel Grid.Column="1" Margin="5,0,0,0">
+                    <Label Content="Excluded Enemies:" FontWeight="Bold"/>
+                    <ComboBox Name="ExcludedEnemiesComboBox" 
+                              Margin="0,0,0,0"
+                              SelectionChanged="ExcludedEnemiesComboBox_SelectionChanged"/>
+                    <ListBox Name="ExcludedEnemiesListBox" 
+                             Grid.Row="0"
+                             SelectionMode="Single"
+                             Height="75" 
+                             SelectionChanged="ExcludedEnemiesListBox_SelectionChanged"/>
+                    
+                    <Button Name="RemoveExcludedEnemyButton" 
+                            Grid.Row="1"
+                            Content="Remove" 
+                            Width="100" 
+                            Height="25" 
+                            HorizontalAlignment="Center"
+                            Margin="0,5,0,0"
+                            Click="RemoveExcludedEnemyButton_Click"
+                            IsEnabled="False"/>
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Row="1" Header="Boss Settings" Margin="10, 0, 5, 0">
+            <StackPanel Margin="5">
+                <CheckBox Name="BossNumberCapCheckBox" 
+                          Content="Cap the number of bosses in regular encounters to 1" 
+                          IsChecked="True" 
+                          Margin="0,0,0,0"
+                          FontSize="14"/>
+                <CheckBox Name="EnsureBossesInBossEncountersCheckBox" 
+                          Content="Ensure that boss encounters have at least one boss" 
+                          IsChecked="True" 
+                          Margin="0,5,0,0"
+                          FontSize="14"/>
+                <CheckBox Name="ReduceBossRepetitionCheckBox" 
+                          Content="Reduce boss repetition" 
+                          IsChecked="True" 
+                          Margin="0,5,0,0"
+                          FontSize="14"/>
+            </StackPanel>
+        </GroupBox>
+        
+        <!-- Quick Presets Section -->
+<GroupBox Grid.Row="0" Grid.Column="1" Header="Quick Presets" Margin="5, 0, 10, 0">
+    <StackPanel Margin="10">
+        <!-- Oops All Row -->
+        <Grid Margin="0,0,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Name="OopsAllButton" Content="Oops All" Width="80" Height="30" 
+                    Click="OopsAllButton_Click" Margin="0,0,10,0"/>
+            <ComboBox Grid.Column="1" Name="OopsAllEnemyComboBox" Height="30"/>
+        </Grid>
+        
+        <!-- Preset Buttons Grid (3x2) -->
+        <Grid Margin="0,0,0,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <Button Grid.Row="0" Grid.Column="0" Name="PresetButton1" Content="Split categories (default)" Height="35" 
+                    Margin="0,0,5,5" Click="PresetButton_Click" Tag="Data/presets/default.json"/>
+            <Button Grid.Row="0" Grid.Column="1" Name="PresetButton2" Content="Total randomness" Height="35" 
+                    Margin="5,0,0,5" Click="PresetButton_Click" Tag="Data/presets/total_random.json"/>
+            <Button Grid.Row="1" Grid.Column="0" Name="PresetButton3" Content="10% of regular enemies are bosses" Height="35"
+                    Margin="0,0,5,5" Click="PresetButton_Click" Tag="Data/presets/10_percent.json"/>
+            <Button Grid.Row="1" Grid.Column="1" Name="PresetButton4" Content="Make every enemy a boss" Height="35" 
+                    Margin="5,0,0,5" Click="PresetButton_Click" Tag="Data/presets/everyone_is_a_boss.json"/>
+            <Button Grid.Row="2" Grid.Column="0" Name="PresetButton5" Content="Custom Preset 1" Height="35" 
+                    Margin="0,0,5,5" Click="PresetButton_Click" Tag="Data/presets/custom_1.json"/>
+            <Button Grid.Row="2" Grid.Column="1" Name="PresetButton6" Content="Custom Preset 2" Height="35" 
+                    Margin="5,0,0,5" Click="PresetButton_Click" Tag="Data/presets/custom_2.json"/>
+        </Grid>
+        
+    </StackPanel>
+</GroupBox>
+        
+        <!-- Frequency Adjustment Section -->
+        <GroupBox Grid.Row="1" Grid.Column="1" Header="Frequency Adjustment" Margin="5, 0, 10, 0" MaxHeight="180">
+            <Grid Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+        
+                <!-- Scrollable Container for Frequency Rows -->
+                <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto" MaxHeight="150">
+                    <StackPanel Name="FrequencyRowsContainer"/>
+                </ScrollViewer>
+        
+                <!-- Add Row Button -->
+                <Button Grid.Row="1" Name="AddFrequencyRowButton" Content="+ Add Frequency Row" 
+                        Height="35" Margin="0,10,0,0" Click="AddFrequencyRowButton_Click"
+                        Background="#4CAF50" Foreground="White" FontWeight="Bold"/>
+            </Grid>
+        </GroupBox>
+        
+        <!-- Custom Placement Section -->
+<GroupBox Grid.Row="2" Grid.ColumnSpan="2" Header="Custom Placement" Margin="10" MinHeight="300" MaxHeight="300">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <!-- Left Column - Enemy Selection -->
+        <GroupBox Grid.Column="0" Header="Selected Enemy" Margin="0,0,5,0">
+                <ListBox Name="CustomPlacementEnemyListBox" 
+                         SelectionMode="Single">
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <EventSetter Event="PreviewMouseLeftButtonDown" Handler="CustomPlacementEnemyListBox_SelectionChanged"/>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                    </ListBox>
+        </GroupBox>
+        
+        <!-- Right Column - Frequency Adjustment for Selected Enemy -->
+        <GroupBox Grid.Column="1" Header="Is Replaced By" Margin="5,0,0,0">
+            <Grid Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                
+                <!-- Selected Enemy Display -->
+                <TextBlock Grid.Row="0" Name="SelectedEnemyDisplay" 
+                           Text="No enemy selected" 
+                           FontWeight="Bold" 
+                           Margin="0,0,0,10"
+                           HorizontalAlignment="Center"/>
+                
+                <!-- Scrollable Container for Custom Placement Rows -->
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                    <StackPanel Name="CustomPlacementRowsContainer"/>
+                </ScrollViewer>
+                
+                <!-- Add Row Button -->
+                <Button Grid.Row="2" Name="AddCustomPlacementRowButton" 
+                        Content="+ Add Placement Row" 
+                        Height="35" Margin="0,10,0,0" 
+                        Click="AddCustomPlacementRowButton_Click"
+                        Background="#4CAF50" Foreground="White" FontWeight="Bold"
+                        IsEnabled="False"/>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</GroupBox>
+        <GroupBox Grid.Row="4" Grid.ColumnSpan="2" BorderBrush="White">
+        <!-- Close Button -->
+        <Grid Margin="5" Grid.Row="4" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0"
+                    Name="LoadPresetButton" 
+                    Content="Load Preset" 
+                    Width="100" 
+                    Height="35" 
+                    HorizontalAlignment="Center"
+                    Margin="0,10,20,10"
+                    Click="LoadPresetButton_Click"/>
+        
+        <Button Grid.Column="1"
+                Name="SavePresetButton" 
+                Content="Save Preset" 
+                Width="100" 
+                Height="35" 
+                HorizontalAlignment="Center"
+                Margin="0,10,20,10"
+                Click="SavePresetButton_Click"/>
+        <Button Grid.Column="2"
+                Name="CloseButton" 
+                Content="Close" 
+                Width="100" 
+                Height="35" 
+                HorizontalAlignment="Center"
+                Margin="0,10,20,10"
+                Click="CloseButton_Click"/>
+        </Grid>
+    </GroupBox>
+        </Grid>
+</Window>
