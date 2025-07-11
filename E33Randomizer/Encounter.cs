@@ -22,7 +22,7 @@ public class Encounter
         this.encounterData = encounterData;
         this.asset = asset;
         
-        Name = encounterData.Name.Value.Value;
+        Name = encounterData.Name.ToString();
         Enemies = new List<EnemyData>();
         var enemyArchetypes = new List<String>();
         var enemiesData = encounterData.Value[0] as MapPropertyData;
@@ -39,6 +39,12 @@ public class Encounter
         }
 
         Archetypes = new ArchetypeGroup(enemyArchetypes);
+    }
+
+    public Encounter(String encounterName, List<String> encounterEnemies)
+    {
+        Name = encounterName;
+        Enemies = RandomizerLogic.GetEnemyDataList(encounterEnemies);
     }
     
     public void SetEnemy(int index, EnemyData newEnemy)
@@ -88,11 +94,6 @@ public class Encounter
 
     public void AddEnemy(EnemyData enemy)
     {
-        if (Enemies.Count == 3)
-        {
-            return;
-        }
-        
         var enemiesData = encounterData.Value[0] as MapPropertyData;
         var dummyEnemyKey = enemiesData.Value.Keys.ElementAt(0).Clone() as IntPropertyData;
         dummyEnemyKey.Value = Enemies.Count;
@@ -105,13 +106,38 @@ public class Encounter
         Archetypes.PossibleArchetypes.Add(enemy.Archetype);
     }
 
+    public void SetEnemies(List<EnemyData> enemies)
+    {
+        if (enemies == null)
+        {
+            return;
+        }
+        if (enemies.Count < Size)
+        {
+            RemoveEnemies(Size - enemies.Count);
+        }
+        
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            if (i < Size)
+            {
+                SetEnemy(i, enemies[i]);
+            }
+            else
+            {
+                AddEnemy(enemies[i]);
+            }
+        }
+    }
+
     public override string ToString()
     {
-        var rep = Name;
+        var rep = Name + "|";
         foreach (var enemy in Enemies)
         {
-            rep += $", {enemy.CodeName}";
+            rep += $",{enemy.CodeName}";
         }
-        return rep;
+        // This is a hack but I'm too tired to write something better
+        return rep.Replace("|,", "|");
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Diagnostics;
+using System.Text;
 using Newtonsoft.Json;
 using UAssetAPI;
 using UAssetAPI.ExportTypes;
@@ -10,12 +11,12 @@ namespace E33Randomizer;
 public class GenerationReport
 {
     public int Seed;
-    public List<Encounter> DT_jRPG_Encounters;
-    public List<Encounter> DT_jRPG_Encounters_CleaTower;
-    public List<Encounter> DT_Encounters_Composite;
-    public List<Encounter> DT_WorldMap_Encounters;
+    public List<Encounter> DT_jRPG_Encounters = new List<Encounter>();
+    public List<Encounter> DT_jRPG_Encounters_CleaTower = new List<Encounter>();
+    public List<Encounter> DT_Encounters_Composite = new List<Encounter>();
+    public List<Encounter> DT_WorldMap_Encounters = new List<Encounter>();
 
-    public override string ToString()
+    public string GenerateString()
     {
         var result = Seed + "\nDT_jRPG_Encounters\n";
         foreach (var encounter in DT_jRPG_Encounters)
@@ -109,7 +110,7 @@ public static class RandomizerLogic
     public static void PackAndConvertData()
     {
         var presetName = PresetName.Length == 0 ? usedSeed.ToString() : PresetName;
-        var exportPath = $"rand_{presetName}/"; //"D:\\SteamLibrary\\steamapps\\common\\Expedition 33\\Sandfall\\Content\\Paks\\~mods\\";
+        var exportPath = $"rand_{presetName}/";
         Directory.CreateDirectory(exportPath);
         WriteReport(exportPath);
         var repack_args = $"pack randomizer \"{exportPath}randomizer_P.pak\"";
@@ -160,6 +161,12 @@ public static class RandomizerLogic
         var newEncounterSize = !Settings.RandomizeEncounterSizes || Settings.PossibleEncounterSizes.Count == 0 ? encounter.Enemies.Count :
                 Utils.Pick(Settings.PossibleEncounterSizes);
 
+        if (Settings.EnableEnemyOnslaught)
+        {
+            newEncounterSize += Settings.EnemyOnslaughtAdditionalEnemies;
+            newEncounterSize = int.Min(newEncounterSize, Settings.EnemyOnslaughtEnemyCap);
+        }
+
         if (newEncounterSize < encounter.Size)
         {
             encounter.RemoveEnemies(encounter.Size - newEncounterSize);
@@ -175,7 +182,7 @@ public static class RandomizerLogic
             }
             else
             {
-                encounter.AddEnemy(GetRandomEnemy());
+                encounter.AddEnemy(CustomEnemyPlacement.Replace(GetRandomEnemy()));
             }
         }
         
@@ -186,11 +193,11 @@ public static class RandomizerLogic
     {
         using (StreamWriter reportFile = new StreamWriter(exportPath + "enemies_report.txt"))
         {
-            reportFile.Write(Report.ToString());
+            reportFile.Write(Report.GenerateString());
         }
     }
     
-    public static void ProcessEncounters(String assetPath)
+    public static void ProcessEncounters(String assetPath, List<Encounter> fromList=null)
     {
         var asset = new UAsset(assetPath, EngineVersion.VER_UE5_4, mappings);
 
@@ -200,7 +207,14 @@ public static class RandomizerLogic
         foreach (var encounterStruct in encounters)
         {
             var encounter = new Encounter(encounterStruct, asset);
-            ModifyEncounter(encounter);
+            if (fromList != null)
+            {
+                encounter.SetEnemies(fromList.Find(e => e.Name == encounter.Name)?.Enemies);
+            }
+            else
+            {
+                ModifyEncounter(encounter);
+            }
             ProcessedEncounters.Add(encounter);
         }
 
@@ -224,7 +238,6 @@ public static class RandomizerLogic
         ProcessEncounters("Data/Originals/DT_jRPG_Encounters_CleaTower.uasset");
         Report.DT_jRPG_Encounters_CleaTower = new List<Encounter>(ProcessedEncounters);
         ProcessedEncounters.Clear();
-        //CheckBrokenEnemies();
         
         ProcessEncounters("Data/Originals/Encounters_Datatables/DT_Encounters_Composite.uasset");
         Report.DT_Encounters_Composite = new List<Encounter>(ProcessedEncounters);
@@ -236,16 +249,68 @@ public static class RandomizerLogic
         
         PackAndConvertData();
     }
-
-    //public static void ModifyEncounterAsset(Dictionary<String, List<String>> )
     
+    public static GenerationReport ReadReport(String pathToFile)
+    {
+        var currentAssetName = "";
+        var report = new GenerationReport();
+        foreach (var line in File.ReadLines(pathToFile, Encoding.UTF8))
+        {
+            if (report.Seed == 0)
+            {
+                report.Seed = int.Parse(line);
+                continue;
+            }
+            if (!line.Contains("|"))
+            {
+                currentAssetName = line;
+                continue;
+            }
+
+            var newEncounter = new Encounter(line.Split('|')[0], line.Split('|')[1].Split(',').ToList());
+            switch (currentAssetName)
+            {
+                case "DT_jRPG_Encounters":
+                    report.DT_jRPG_Encounters.Add(newEncounter);
+                    break;
+                case "DT_jRPG_Encounters_CleaTower":
+                    report.DT_jRPG_Encounters_CleaTower.Add(newEncounter);
+                    break;
+                case "DT_Encounters_Composite":
+                    report.DT_Encounters_Composite.Add(newEncounter);
+                    break;
+                case "DT_WorldMap_Encounters":
+                    report.DT_WorldMap_Encounters.Add(newEncounter);
+                    break;
+            }
+        }
+
+        return report;
+    }
+
     public static void GenerateFromReport(String pathToFile)
     {
-        using (StreamReader reportFile = new StreamReader(pathToFile))
-        {
-            usedSeed = int.Parse(reportFile.ReadLine());
-            reportFile.ReadLine();
-        }
+        Report = new GenerationReport();
+        var report = ReadReport(pathToFile);
+        usedSeed = report.Seed;
+        Report.Seed = usedSeed;
+        ProcessEncounters("Data/Originals/DT_jRPG_Encounters.uasset", report.DT_jRPG_Encounters);
+        Report.DT_jRPG_Encounters = new List<Encounter>(ProcessedEncounters);
+        ProcessedEncounters.Clear();
+        
+        ProcessEncounters("Data/Originals/DT_jRPG_Encounters_CleaTower.uasset", report.DT_jRPG_Encounters_CleaTower);
+        Report.DT_jRPG_Encounters_CleaTower = new List<Encounter>(ProcessedEncounters);
+        ProcessedEncounters.Clear();
+        
+        ProcessEncounters("Data/Originals/Encounters_Datatables/DT_Encounters_Composite.uasset", report.DT_Encounters_Composite);
+        Report.DT_Encounters_Composite = new List<Encounter>(ProcessedEncounters);
+        ProcessedEncounters.Clear();
+        
+        ProcessEncounters("Data/Originals/Encounters_Datatables/DT_WorldMap_Encounters.uasset", report.DT_WorldMap_Encounters);
+        Report.DT_WorldMap_Encounters = new List<Encounter>(ProcessedEncounters);
+        ProcessedEncounters.Clear();
+
+        PackAndConvertData();
     }
 
     public static void CheckBrokenEnemies()

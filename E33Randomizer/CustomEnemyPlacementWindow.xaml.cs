@@ -58,6 +58,10 @@ namespace E33Randomizer
         
         private void SubscribeToChangeEvents()
         {
+            BossNumberCapCheckBox.IsChecked = Settings.BossNumberCapped;
+            EnsureBossesInBossEncountersCheckBox.IsChecked = Settings.EnsureBossesInBossEncounters;
+            ReduceBossRepetitionCheckBox.IsChecked = Settings.ReduceBossRepetition;
+            
             OopsAllEnemyComboBox.SelectionChanged += (s, e) => hasUnsavedChanges = true;
 
             BossNumberCapCheckBox.Checked += (sender, args) => Settings.BossNumberCapped = true;
@@ -373,6 +377,7 @@ namespace E33Randomizer
             };
             
             frequencyTextBox.TextChanged += (s, e) => {
+                frequencyTextBox.Text = frequencyTextBox.Text.Replace(" ", "");
                 if (double.TryParse(frequencyTextBox.Text, out double value) && value >= 0)
                 {
                     frequencySlider.Value = value;
@@ -517,6 +522,8 @@ namespace E33Randomizer
             };
 
             frequencyTextBox.TextChanged += (s, e) => {
+                frequencyTextBox.Text = frequencyTextBox.Text.Replace(" ", "");
+
                 if (double.TryParse(frequencyTextBox.Text, out double value) && value >= 0)
                 {
                     frequencySlider.Value = value;
