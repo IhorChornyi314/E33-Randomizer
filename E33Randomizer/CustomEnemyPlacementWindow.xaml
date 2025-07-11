@@ -30,14 +30,12 @@
                     <ComboBox Name="NotRandomizedEnemiesSelectionComboBox" 
                               Margin="0,0,0,0"
                               SelectionChanged="NotRandomizedEnemiesComboBox_SelectionChanged"/>
-                    <ListBox Name="NotRandomizedEnemiesListBox" 
-                             Grid.Row="0"
+                    <ListBox Name="NotRandomizedEnemiesListBox"
                              SelectionMode="Single"
                              Height="75" 
                              SelectionChanged="NotRandomizedEnemiesListBox_SelectionChanged"/>
                     
-                    <Button Name="RemoveNotRandomizedEnemyButton" 
-                            Grid.Row="1"
+                    <Button Name="RemoveNotRandomizedEnemyButton"
                             Content="Remove" 
                             Width="100" 
                             Height="25" 
@@ -53,14 +51,12 @@
                     <ComboBox Name="ExcludedEnemiesComboBox" 
                               Margin="0,0,0,0"
                               SelectionChanged="ExcludedEnemiesComboBox_SelectionChanged"/>
-                    <ListBox Name="ExcludedEnemiesListBox" 
-                             Grid.Row="0"
+                    <ListBox Name="ExcludedEnemiesListBox"
                              SelectionMode="Single"
                              Height="75" 
                              SelectionChanged="ExcludedEnemiesListBox_SelectionChanged"/>
                     
-                    <Button Name="RemoveExcludedEnemyButton" 
-                            Grid.Row="1"
+                    <Button Name="RemoveExcludedEnemyButton"
                             Content="Remove" 
                             Width="100" 
                             Height="25" 
@@ -116,7 +112,7 @@
     </StackPanel>
 </GroupBox>
         
-<GroupBox Grid.Row="1" Grid.ColumnSpan="2" Header="Custom Placement" Margin="10" MinHeight="300" MaxHeight="300">
+<GroupBox Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Header="Custom Placement" Margin="10" MinHeight="300" MaxHeight="300">
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -187,7 +183,7 @@
         </GroupBox>
         <GroupBox Grid.Row="2" Grid.Column="1" Header="Preset JSON" Margin="5, 0, 10, 0" MaxHeight="180" MinHeight="180">
             <TextBox
-                Name="PresetJSONTextBox"
+                Name="PresetJsonTextBox"
                 Text=""
                 IsReadOnly="True"
                 VerticalScrollBarVisibility="Auto"
@@ -197,9 +193,9 @@
                 Height="150" 
                 Margin="5"/>
         </GroupBox>
-        <GroupBox Grid.Row="4" Grid.ColumnSpan="2" BorderBrush="White">
+        <GroupBox Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" BorderBrush="White">
         <!-- Close Button -->
-        <Grid Margin="5" Grid.Row="4" Grid.ColumnSpan="2">
+        <Grid Margin="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>

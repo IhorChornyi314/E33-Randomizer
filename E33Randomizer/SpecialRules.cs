@@ -2,15 +2,16 @@
 
 public static class SpecialRules
 {
-    public static List<String> NoSimonP2Encounters = new List<string>() {
+    public static List<string> NoSimonP2Encounters =
+    [
         "SM_Lancelier*1",
         "SM_FirstLancelierNoTuto*1",
         "SM_FirstPortier*1",
         "SM_FirstPortier_NoTuto*1"
-    };
+    ];
 
-    public static List<String> MandatoryEncounters = new List<string>()
-    {
+    public static readonly List<string> MandatoryEncounters =
+    [
         "SM_Lancelier*1",
         "SM_FirstLancelierNoTuto*1",
         "SM_FirstPortier*1",
@@ -43,10 +44,10 @@ public static class SpecialRules
         "ML_PaintressIntro",
         "L_Boss_Paintress_P1",
         "L_Boss_Curator_P1"
-    };
+    ];
 
-    public static List<String> MerchantEncounters = new List<string>()
-    {
+    public static readonly List<string> MerchantEncounters =
+    [
         "Merchant_GoblusLair",
         "Merchant_GestralVillage1",
         "Merchant_GestralVillage2",
@@ -69,16 +70,13 @@ public static class SpecialRules
         "Merchant_Optional3",
         "Merchant_TwilightSanctuary",
         "YF_Limonsol",
-        "SC_Gestral_Sonnyso*1",
-    };
+        "SC_Gestral_Sonnyso*1"
+    ];
 
-    public static List<String> DuelEncounters = new List<string>()
-    {
+    public static List<string> DuelEncounters = [];
 
-    };
-
-    public static List<String> CutContentEnemies = new List<string>()
-    {
+    public static readonly List<string> CutContentEnemies =
+    [
         "AS_Gestral_Dragoon",
         "AS_GestralBully_A",
         "AS_GestralBully_B",
@@ -124,10 +122,10 @@ public static class SpecialRules
         "CZ_ChromaVerso",
         "CZ_ChromaLune",
         "CZ_ChromaSciel",
-        "CZ_ChromaMonoco",
-    };
+        "CZ_ChromaMonoco"
+    ];
 
-    public static Queue<EnemyData> RemainingBossPool = new Queue<EnemyData>();
+    public static Queue<EnemyData> RemainingBossPool = new();
 
     public static void Reset()
     {

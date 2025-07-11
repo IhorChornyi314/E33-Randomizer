@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -9,16 +8,14 @@ using Newtonsoft.Json;
 
 namespace E33Randomizer
 {
-    public partial class CustomEnemyPlacementWindow : Window
+    public partial class CustomEnemyPlacementWindow
     {
-        private bool hasUnsavedChanges;
-        private string selectedEnemyForCustomPlacement = null;
+        private string _selectedEnemyForCustomPlacement = null;
 
         public CustomEnemyPlacementWindow()
         {
             InitializeComponent();
             PopulateEnemyDropdowns();
-            SubscribeToChangeEvents();
             Update();
         }
 
@@ -27,14 +24,14 @@ namespace E33Randomizer
             UpdateExcludedListBox();
             UpdateNotRandomizedListBox();
             UpdateFrequencies();
-            UpdateJSONTextBox();
+            UpdateJsonTextBox();
         }
 
-        private void UpdateJSONTextBox()
+        private void UpdateJsonTextBox()
         {
             var presetData = new CustomEnemyPlacementPreset(CustomEnemyPlacement.NotRandomized, CustomEnemyPlacement.Excluded, CustomEnemyPlacement.CustomPlacement, CustomEnemyPlacement.FrequencyAdjustments);
-            String json = JsonConvert.SerializeObject(presetData, Formatting.Indented);
-            PresetJSONTextBox.Text = json;
+            string json = JsonConvert.SerializeObject(presetData, Formatting.Indented);
+            PresetJsonTextBox.Text = json;
         }
         
         private void UpdateExcludedListBox()
@@ -63,11 +60,6 @@ namespace E33Randomizer
                 var newRow = CreateFrequencyRow(frequencyAdjustment.Key);
                 FrequencyRowsContainer.Children.Add(newRow);
             }
-        }
-        
-        private void SubscribeToChangeEvents()
-        {
-            OopsAllEnemyComboBox.SelectionChanged += (s, e) => hasUnsavedChanges = true;
         }
         
         private void PopulateEnemyComboBox(ComboBox comboBox)
@@ -111,8 +103,7 @@ namespace E33Randomizer
                 if (!CustomEnemyPlacement.NotRandomized.Contains(enemyName))
                 {
                     CustomEnemyPlacement.NotRandomized.Add(enemyName);
-                    UpdateJSONTextBox();
-                    hasUnsavedChanges = true;
+                    UpdateJsonTextBox();
                 }
                 
                 // Reset selection
@@ -133,10 +124,9 @@ namespace E33Randomizer
                 string selectedEnemy = NotRandomizedEnemiesListBox.SelectedItem.ToString();
 
                 CustomEnemyPlacement.NotRandomized.Remove(selectedEnemy);
-                hasUnsavedChanges = true;
                 
                 UpdateNotRandomizedListBox();
-                UpdateJSONTextBox();
+                UpdateJsonTextBox();
                 RemoveNotRandomizedEnemyButton.IsEnabled = false;
             }
         }
@@ -159,9 +149,8 @@ namespace E33Randomizer
                 if (!CustomEnemyPlacement.Excluded.Contains(enemyName))
                 {
                     CustomEnemyPlacement.Excluded.Add(enemyName);
-                    hasUnsavedChanges = true;
                     UpdateExcludedListBox();
-                    UpdateJSONTextBox();
+                    UpdateJsonTextBox();
                 }
                 else
                 {
@@ -185,9 +174,8 @@ namespace E33Randomizer
             {
                 string selectedEnemy = ExcludedEnemiesListBox.SelectedItem.ToString();
                 CustomEnemyPlacement.NotRandomized.Remove(selectedEnemy);
-                hasUnsavedChanges = true;
                 UpdateExcludedListBox();
-                UpdateJSONTextBox();
+                UpdateJsonTextBox();
                 RemoveExcludedEnemyButton.IsEnabled = false;
             }
         }
@@ -201,8 +189,7 @@ namespace E33Randomizer
                 {
                     {"Anyone", new Dictionary<string, float>() {{enemyName, 1}}}
                 };
-                hasUnsavedChanges = true;
-                LoadCustomPlacementRows(selectedEnemyForCustomPlacement);
+                LoadCustomPlacementRows(_selectedEnemyForCustomPlacement);
                 CustomEnemyPlacement.UpdateFinalEnemyReplacementFrequencies();
                 Update();
             }
@@ -215,13 +202,12 @@ namespace E33Randomizer
 
         private void PresetButton_Click(object sender, RoutedEventArgs e)
         {
-            if (sender is Button button && button.Tag is string presetFile)
+            if (sender is Button { Tag: string presetFile })
             {
                 try
                 {
                     CustomEnemyPlacement.LoadFromJson(presetFile);
-                    LoadCustomPlacementRows(selectedEnemyForCustomPlacement);
-                    hasUnsavedChanges = true;
+                    LoadCustomPlacementRows(_selectedEnemyForCustomPlacement);
                     Update();
                 }
                 catch (Exception ex)
@@ -229,8 +215,7 @@ namespace E33Randomizer
                     MessageBox.Show($"Error loading preset: {ex.Message}; Reverting to Default.", 
                         "Load Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     CustomEnemyPlacement.LoadDefaultPreset();
-                    UpdateJSONTextBox();
-                    hasUnsavedChanges = true;
+                    UpdateJsonTextBox();
                 }
             }
         }
@@ -249,8 +234,7 @@ namespace E33Randomizer
                 try
                 {
                     CustomEnemyPlacement.LoadFromJson(openFileDialog.FileName);
-                    LoadCustomPlacementRows(selectedEnemyForCustomPlacement);
-                    hasUnsavedChanges = true;
+                    LoadCustomPlacementRows(_selectedEnemyForCustomPlacement);
                     Update();
                 }
                 catch (Exception ex)
@@ -291,10 +275,9 @@ namespace E33Randomizer
         {
             var newRow = CreateFrequencyRow("");
             FrequencyRowsContainer.Children.Add(newRow);
-            hasUnsavedChanges = true;
         }
 
-        private StackPanel CreateFrequencyRow(String enemyName)
+        private StackPanel CreateFrequencyRow(string enemyName)
         {
             StackPanel row = new StackPanel
             {
@@ -313,7 +296,7 @@ namespace E33Randomizer
                 Foreground = System.Windows.Media.Brushes.White,
                 FontWeight = FontWeights.Bold
             };
-            removeButton.Click += (s, e) => RemoveFrequencyRow(row);
+            removeButton.Click += (_, _) => RemoveFrequencyRow(row);
 
             // Enemy dropdown
             ComboBox enemyCombo = new ComboBox
@@ -358,28 +341,27 @@ namespace E33Randomizer
             };
 
             // Bind slider and textbox
-            frequencySlider.ValueChanged += (s, e) => {
+            frequencySlider.ValueChanged += (_, e) => {
                 if (!frequencyTextBox.IsFocused)
                 {
                     frequencyTextBox.Text = e.NewValue.ToString("F1");
-                    hasUnsavedChanges = true;
                     if (enemyCombo.SelectedItem != null)
                     {
                         CustomEnemyPlacement.FrequencyAdjustments[
-                            (String)(enemyCombo.SelectedItem as ComboBoxItem).Content] = (float)e.NewValue / 100;
-                        UpdateJSONTextBox();
+                            (string)(enemyCombo.SelectedItem as ComboBoxItem).Content] = (float)e.NewValue / 100;
+                        UpdateJsonTextBox();
                     }
                 }
             };
 
-            frequencyTextBox.PreviewTextInput += (s, e) =>
+            frequencyTextBox.PreviewTextInput += (_, e) =>
             {
                 Regex regex = new Regex("[^0-9]+");
                 e.Handled = regex.IsMatch(e.Text);
-                UpdateJSONTextBox();
+                UpdateJsonTextBox();
             };
             
-            frequencyTextBox.TextChanged += (s, e) => {
+            frequencyTextBox.TextChanged += (_, _) => {
                 frequencyTextBox.Text = frequencyTextBox.Text.Replace(" ", "");
                 if (double.TryParse(frequencyTextBox.Text, out double value) && value >= 0)
                 {
@@ -387,26 +369,26 @@ namespace E33Randomizer
                     if (enemyCombo.SelectedItem != null)
                     {
                         CustomEnemyPlacement.FrequencyAdjustments[
-                            (String)(enemyCombo.SelectedItem as ComboBoxItem).Content] = (float)value / 100;
-                        UpdateJSONTextBox();
+                            (string)(enemyCombo.SelectedItem as ComboBoxItem).Content] = (float)value / 100;
+                        UpdateJsonTextBox();
                     }
                 }
             };
             
-            enemyCombo.SelectionChanged += (sender, args) =>
+            enemyCombo.SelectionChanged += (_, _) =>
             {
                 CustomEnemyPlacement.FrequencyAdjustments.Clear();
-                foreach (UIElement frequecyRow in FrequencyRowsContainer.Children)
+                foreach (UIElement frequencyRow in FrequencyRowsContainer.Children)
                 {
-                    var comboBox = (frequecyRow as StackPanel).Children[1] as ComboBox;
-                    var frequencySlider = (frequecyRow as StackPanel).Children[2] as Slider;
-                    if ((String)(comboBox.SelectedItem as ComboBoxItem).Content == "")
+                    var comboBox = (frequencyRow as StackPanel).Children[1] as ComboBox;
+                    var frequencyRowSlider = (frequencyRow as StackPanel).Children[2] as Slider;
+                    if ((string)(comboBox.SelectedItem as ComboBoxItem).Content == "")
                     {
                         continue;
                     }
-                    CustomEnemyPlacement.FrequencyAdjustments[(String)(comboBox.SelectedItem as ComboBoxItem).Content] = (float)frequencySlider.Value / 100;
+                    CustomEnemyPlacement.FrequencyAdjustments[(string)(comboBox.SelectedItem as ComboBoxItem).Content] = (float)frequencyRowSlider.Value / 100;
                 }
-                UpdateJSONTextBox();
+                UpdateJsonTextBox();
             };
 
             row.Children.Add(removeButton);
@@ -422,7 +404,6 @@ namespace E33Randomizer
         private void RemoveFrequencyRow(StackPanel row)
         {
             FrequencyRowsContainer.Children.Remove(row);
-            hasUnsavedChanges = true;
         }
 
         private void CustomPlacementEnemyListBox_SelectionChanged(object sender, MouseButtonEventArgs e)
@@ -430,7 +411,7 @@ namespace E33Randomizer
             var item = (ListBoxItem)sender;
             if (item.Content is string selectedEnemy)
             {
-                selectedEnemyForCustomPlacement = selectedEnemy;
+                _selectedEnemyForCustomPlacement = selectedEnemy;
                 SelectedEnemyDisplay.Text = $"Selected: {selectedEnemy}";
                 AddCustomPlacementRowButton.IsEnabled = true;
                 
@@ -438,7 +419,7 @@ namespace E33Randomizer
             }
             else
             {
-                selectedEnemyForCustomPlacement = null;
+                _selectedEnemyForCustomPlacement = null;
                 SelectedEnemyDisplay.Text = "No enemy selected";
                 AddCustomPlacementRowButton.IsEnabled = false;
                 CustomPlacementRowsContainer.Children.Clear();
@@ -447,11 +428,10 @@ namespace E33Randomizer
 
         private void AddCustomPlacementRowButton_Click(object sender, RoutedEventArgs e)
         {
-            if (selectedEnemyForCustomPlacement != null)
+            if (_selectedEnemyForCustomPlacement != null)
             {
                 var row = CreateCustomPlacementRow("");
                 CustomPlacementRowsContainer.Children.Add(row);
-                hasUnsavedChanges = true;
             }
         }
 
@@ -487,14 +467,14 @@ namespace E33Randomizer
                 Foreground = System.Windows.Media.Brushes.White,
                 FontWeight = FontWeights.Bold
             };
-            removeButton.Click += (s, e) => RemoveCustomPlacementRow((String)(enemyNameCombo.SelectedItem as ComboBoxItem)?.Content, row);
+            removeButton.Click += (_, _) => RemoveCustomPlacementRow((string)(enemyNameCombo.SelectedItem as ComboBoxItem)?.Content, row);
 
             float frequency = 1;
 
-            if (selectedEnemyForCustomPlacement != "" && CustomEnemyPlacement.CustomPlacement.ContainsKey(selectedEnemyForCustomPlacement) &&
-                CustomEnemyPlacement.CustomPlacement[selectedEnemyForCustomPlacement].ContainsKey(enemyName))
+            if (_selectedEnemyForCustomPlacement != "" && CustomEnemyPlacement.CustomPlacement.ContainsKey(_selectedEnemyForCustomPlacement) &&
+                CustomEnemyPlacement.CustomPlacement[_selectedEnemyForCustomPlacement].ContainsKey(enemyName))
             {
-                frequency = CustomEnemyPlacement.CustomPlacement[selectedEnemyForCustomPlacement][enemyName];
+                frequency = CustomEnemyPlacement.CustomPlacement[_selectedEnemyForCustomPlacement][enemyName];
             }
             
             Slider frequencySlider = new Slider
@@ -516,34 +496,33 @@ namespace E33Randomizer
             };
     
             
-            enemyNameCombo.SelectionChanged += (sender, args) =>
+            enemyNameCombo.SelectionChanged += (_, _) =>
             {
-                CustomEnemyPlacement.SetCustomPlacement(selectedEnemyForCustomPlacement,
-                    (String)(enemyNameCombo.SelectedItem as ComboBoxItem).Content, (float)frequencySlider.Value / 100); 
-                UpdateJSONTextBox();
+                CustomEnemyPlacement.SetCustomPlacement(_selectedEnemyForCustomPlacement,
+                    (string)(enemyNameCombo.SelectedItem as ComboBoxItem).Content, (float)frequencySlider.Value / 100); 
+                UpdateJsonTextBox();
             };
             
             // Bind slider and textbox
-            frequencySlider.ValueChanged += (s, e) => {
+            frequencySlider.ValueChanged += (_, e) => {
                 if (!frequencyTextBox.IsFocused)
                 {
                     frequencyTextBox.Text = e.NewValue.ToString("F1");
                 }
-                hasUnsavedChanges = true;
                 if (enemyNameCombo.SelectedItem != null)
                 {
-                    CustomEnemyPlacement.SetCustomPlacement(selectedEnemyForCustomPlacement, (String)(enemyNameCombo.SelectedItem as ComboBoxItem).Content, (float)e.NewValue / 100);
-                    UpdateJSONTextBox();
+                    CustomEnemyPlacement.SetCustomPlacement(_selectedEnemyForCustomPlacement, (string)(enemyNameCombo.SelectedItem as ComboBoxItem).Content, (float)e.NewValue / 100);
+                    UpdateJsonTextBox();
                 }
             };
 
-            frequencyTextBox.PreviewTextInput += (s, e) =>
+            frequencyTextBox.PreviewTextInput += (_, e) =>
             {
                 Regex regex = new Regex("[^0-9]+");
                 e.Handled = regex.IsMatch(e.Text);
             };
 
-            frequencyTextBox.TextChanged += (s, e) => {
+            frequencyTextBox.TextChanged += (_, _) => {
                 frequencyTextBox.Text = frequencyTextBox.Text.Replace(" ", "");
 
                 if (double.TryParse(frequencyTextBox.Text, out double value) && value >= 0)
@@ -551,9 +530,9 @@ namespace E33Randomizer
                     frequencySlider.Value = value;
                     if (enemyNameCombo.SelectedItem != null)
                     {
-                        CustomEnemyPlacement.SetCustomPlacement(selectedEnemyForCustomPlacement,
-                            (String)(enemyNameCombo.SelectedItem as ComboBoxItem).Content, (float)value / 100);
-                        UpdateJSONTextBox();
+                        CustomEnemyPlacement.SetCustomPlacement(_selectedEnemyForCustomPlacement,
+                            (string)(enemyNameCombo.SelectedItem as ComboBoxItem).Content, (float)value / 100);
+                        UpdateJsonTextBox();
                     }
                 }
             };
@@ -577,10 +556,9 @@ namespace E33Randomizer
             CustomPlacementRowsContainer.Children.Remove(row);
             if (enemyName != null)
             {
-                CustomEnemyPlacement.RemoveCustomEnemyPlacement(selectedEnemyForCustomPlacement, enemyName);
-                UpdateJSONTextBox();
+                CustomEnemyPlacement.RemoveCustomEnemyPlacement(_selectedEnemyForCustomPlacement, enemyName);
+                UpdateJsonTextBox();
             }
-            hasUnsavedChanges = true;
         }
 
         private void LoadCustomPlacementRows(string enemyName)
@@ -590,11 +568,11 @@ namespace E33Randomizer
                 return;
             }
             CustomPlacementRowsContainer.Children.Clear();
-            if (!CustomEnemyPlacement.CustomPlacement.ContainsKey(enemyName))
+            if (!CustomEnemyPlacement.CustomPlacement.TryGetValue(enemyName, out var customPlacements))
             {
                 return;
             }
-            foreach (var pair in CustomEnemyPlacement.CustomPlacement[enemyName])
+            foreach (var pair in customPlacements)
             {
                 var row = CreateCustomPlacementRow(pair.Key);
                 CustomPlacementRowsContainer.Children.Add(row);

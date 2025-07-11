@@ -17,32 +17,27 @@ namespace E33Randomizer;
  */
 
 
-class CustomEnemyPlacementPreset
+class CustomEnemyPlacementPreset(
+    List<string> n,
+    List<string> e,
+    Dictionary<string, Dictionary<string, float>> c,
+    Dictionary<string, float> f)
 {
-    public List<String> NotRandomized = new List<String>();
-    public List<String> Excluded = new List<String>();
-    public Dictionary<String, Dictionary<String, float>> CustomPlacement = new Dictionary<string, Dictionary<string, float>>();
-    public Dictionary<String, float> FrequencyAdjustments = new Dictionary<string, float>();
-
-    public CustomEnemyPlacementPreset(List<String> n, List<String> e, Dictionary<String, Dictionary<String, float>> c,
-        Dictionary<String, float> f)
-    {
-        NotRandomized = n;
-        Excluded = e;
-        CustomPlacement = c;
-        FrequencyAdjustments = f;
-    }
+    public readonly List<string> NotRandomized = n;
+    public readonly List<string> Excluded = e;
+    public readonly Dictionary<string, Dictionary<string, float>> CustomPlacement = c;
+    public readonly Dictionary<string, float> FrequencyAdjustments = f;
 }
 
 public static class CustomEnemyPlacement
 {
-    public static List<String> NotRandomized = new List<String>();
-    public static List<String> Excluded = new List<String>();
+    public static List<string> NotRandomized = [];
+    public static List<string> Excluded = [];
     public static List<EnemyData> NotRandomizedTranslated => TranslatePlacementOptions(NotRandomized);
     public static List<EnemyData> ExcludedTranslated => TranslatePlacementOptions(Excluded);
-    public static List<String> PlacementOptionsList = new List<string>();
-    public static List<String> CustomCategories = new List<string>()
-    {
+    public static List<string> PlacementOptionsList = [];
+    public static readonly List<string> CustomCategories =
+    [
         "Anyone",
         "All Bosses and Minibosses",
         "All Bosses",
@@ -54,8 +49,8 @@ public static class CustomEnemyPlacement
         "Mimes",
         "Cut Content Enemies",
         "Gimmick/Tutorial Enemies"
-    };
-    public static Dictionary<String, String> ArchetypeNames = new Dictionary<string, string>()
+    ];
+    public static readonly Dictionary<string, string> ArchetypeNames = new()
     {
         { "Regular", "Regular" },
         { "Weak Regular", "Weak"},
@@ -66,14 +61,13 @@ public static class CustomEnemyPlacement
         { "Chromatic Bosses", "Alpha" },
         { "Petanks", "Petank" },
     };
-    public static Dictionary<String, Dictionary<String, float>> CustomPlacement = new Dictionary<string, Dictionary<string, float>>();
-    public static Dictionary<String, float> FrequencyAdjustments = new Dictionary<string, float>();
-    public static Dictionary<String, Dictionary<String, float>> FinalEnemyReplacementFrequencies =
-        new Dictionary<string, Dictionary<string, float>>();
+    public static Dictionary<string, Dictionary<string, float>> CustomPlacement = new();
+    public static Dictionary<string, float> FrequencyAdjustments = new();
+    public static Dictionary<string, Dictionary<string, float>> FinalEnemyReplacementFrequencies = new();
     
     public static void InitPlacementOptions()
     {
-        PlacementOptionsList = new List<string>();
+        PlacementOptionsList = [];
         PlacementOptionsList.AddRange(CustomCategories);
         PlacementOptionsList.InsertRange(PlacementOptionsList.IndexOf("All Regular Enemies"), ArchetypeNames.Keys);
         foreach (var enemyData in RandomizerLogic.allEnemies)
@@ -85,8 +79,8 @@ public static class CustomEnemyPlacement
 
     public static void LoadDefaultPreset()
     {
-        NotRandomized = new List<string>();
-        Excluded = new List<string> {"Gimmick/Tutorial Enemies"};
+        NotRandomized = [];
+        Excluded = ["Gimmick/Tutorial Enemies"];
         CustomPlacement = new Dictionary<string, Dictionary<string, float>>
         {
             { "Regular", new Dictionary<string, float> { { "Regular", 1 } } },
@@ -106,7 +100,7 @@ public static class CustomEnemyPlacement
         UpdateFinalEnemyReplacementFrequencies();
     }
 
-    public static void LoadFromJson(String pathToJson)
+    public static void LoadFromJson(string pathToJson)
     {
         using (StreamReader r = new StreamReader(pathToJson))
         {
@@ -120,7 +114,7 @@ public static class CustomEnemyPlacement
         UpdateFinalEnemyReplacementFrequencies();
     }
 
-    public static void SetCustomPlacement(String from, String to, float frequency)
+    public static void SetCustomPlacement(string from, string to, float frequency)
     {
         if (!CustomPlacement.ContainsKey(from))
         {
@@ -131,7 +125,7 @@ public static class CustomEnemyPlacement
         UpdateFinalEnemyReplacementFrequencies();
     }
 
-    public static void RemoveCustomEnemyPlacement(String from, String to)
+    public static void RemoveCustomEnemyPlacement(string from, string to)
     {
         if (!CustomPlacement.ContainsKey(from) || !CustomPlacement[from].ContainsKey(to))
         {
@@ -142,17 +136,15 @@ public static class CustomEnemyPlacement
         UpdateFinalEnemyReplacementFrequencies();
     }
     
-    public static void SaveToJson(String pathToJson)
+    public static void SaveToJson(string pathToJson)
     {
-        using (StreamWriter r = new StreamWriter(pathToJson)) 
-        {
-            var presetData = new CustomEnemyPlacementPreset(NotRandomized, Excluded, CustomPlacement, FrequencyAdjustments);
-            String json = JsonConvert.SerializeObject(presetData);
-            r.Write(json);
-        }
+        using StreamWriter r = new StreamWriter(pathToJson);
+        var presetData = new CustomEnemyPlacementPreset(NotRandomized, Excluded, CustomPlacement, FrequencyAdjustments);
+        string json = JsonConvert.SerializeObject(presetData);
+        r.Write(json);
     }
     
-    public static List<EnemyData> TranslatePlacementOption(String option)
+    public static List<EnemyData> TranslatePlacementOption(string option)
     {
         if (option == "Anyone")
         {
@@ -165,19 +157,18 @@ public static class CustomEnemyPlacement
             switch (option)
             {
                 case "All Bosses":
-                    result = new List<EnemyData>();
+                    result = [];
                     result.AddRange(RandomizerLogic.GetAllByArchetype("Boss"));
                     result.AddRange(RandomizerLogic.GetAllByArchetype("Alpha"));
                     return result;
                 case "All Bosses and Minibosses":
-                    result = new List<EnemyData>();
+                    result = [];
                     result.AddRange(RandomizerLogic.GetAllByArchetype("Boss"));
                     result.AddRange(RandomizerLogic.GetAllByArchetype("Alpha"));
                     result.AddRange(RandomizerLogic.GetAllByArchetype("Elite"));
                     return result;
                 case "Giant Enemies/Bosses":
-                    return RandomizerLogic.GetEnemyDataList(new List<string>()
-                    {
+                    return RandomizerLogic.GetEnemyDataList([
                         "MM_Gargant",
                         "ML_Gargant_Gold",
                         "CFH_Gargant",
@@ -187,11 +178,10 @@ public static class CustomEnemyPlacement
                         "SI_Axon_Sirene",
                         "MF_Axon_Visages",
                         "SL_Sapling_CrushingWall",
-                        "WM_Serpenphare",
-                    });
+                        "WM_Serpenphare"
+                    ]);
                 case "Main Plot Bosses":
-                    return RandomizerLogic.GetEnemyDataList(new List<string>()
-                    {
+                    return RandomizerLogic.GetEnemyDataList([
                         "SM_Boss_Eveque",
                         "ML_Eveque_Gold",
                         "SM_Boss_EvequeLuneScript",
@@ -225,11 +215,10 @@ public static class CustomEnemyPlacement
                         "CT_MaskKeeper_NoMask_CleaTwoer",
                         "ML_PotatoBag_Boss_Gold",
                         "SM_Boss_Eveque_ShieldTutorial",
-                        "AS_PotatoBag_Boss_Quest",
-                    });
+                        "AS_PotatoBag_Boss_Quest"
+                    ]);
                 case "Side Bosses":
-                    return RandomizerLogic.GetEnemyDataList(new List<string>()
-                    {
+                    return RandomizerLogic.GetEnemyDataList([
                         "YF_Boss_Scavenger",
                         "MM_Gargant",
                         "SI_Tisseur",
@@ -246,10 +235,10 @@ public static class CustomEnemyPlacement
                         "Boss_Simon_Phase2",
                         "CT_Boss_Curator_CleaTower",
                         "CT_Boss_Paintress_CleaTower",
-                        "CFH_Gargant",
-                    });
+                        "CFH_Gargant"
+                    ]);
                 case "All Regular Enemies":
-                    result = new List<EnemyData>();
+                    result = [];
                     result.AddRange(RandomizerLogic.GetAllByArchetype("Weak"));
                     result.AddRange(RandomizerLogic.GetAllByArchetype("Elusive"));
                     result.AddRange(RandomizerLogic.GetAllByArchetype("Regular"));
@@ -260,8 +249,7 @@ public static class CustomEnemyPlacement
                 case "Mimes":
                     return RandomizerLogic.allEnemies.FindAll(e => e.CodeName.Contains("Mime"));
                 case "Cut Content Enemies":
-                    result = RandomizerLogic.GetEnemyDataList(new List<String>()
-                    {
+                    result = RandomizerLogic.GetEnemyDataList([
                         "YF_GaultA",
                         "AS_Gestral_Dragoon",
                         "AS_GestralBully_A",
@@ -271,16 +259,15 @@ public static class CustomEnemyPlacement
                         "SC_SapNevronBoss",
                         "SC_Gestral_Sonnyso",
                         "FB_DuallisteR",
-                        "FB_DuallisteL", 
+                        "FB_DuallisteL",
                         "Test_PlaceHolderBattleDude",
-                        "NevronWall",
-                    });
+                        "NevronWall"
+                    ]);
                     result.AddRange(RandomizerLogic.allEnemies.FindAll(e => e.CodeName.Contains("Alternati")));
                     result.AddRange(RandomizerLogic.allEnemies.FindAll(e => e.CodeName.Contains("CZ_Chroma")));
                     return result;
                 case "Gimmick/Tutorial Enemies":
-                    return RandomizerLogic.GetEnemyDataList(new List<string>()
-                    {
+                    return RandomizerLogic.GetEnemyDataList([
                         "LU_Act1_Sophie",
                         "CAMP_PunchingBall",
                         "Quest_GestralSumo9999",
@@ -298,8 +285,8 @@ public static class CustomEnemyPlacement
                         "QUEST_Danseuse_DanceClass_Clone",
                         "SL_Sapling_CrushingWall",
                         "GO_Curator_JumpTutorial",
-                        "GO_Curator_JumpTutorial_NoTuto",
-                    });
+                        "GO_Curator_JumpTutorial_NoTuto"
+                    ]);
             }
         }
         
@@ -313,10 +300,10 @@ public static class CustomEnemyPlacement
             return RandomizerLogic.allEnemies.FindAll(e => e.Name == option);
         }
 
-        return new List<EnemyData>();
+        return [];
     }
 
-    public static List<EnemyData> TranslatePlacementOptions(List<String> options)
+    public static List<EnemyData> TranslatePlacementOptions(List<string> options)
     {
         var result = new List<EnemyData>();
         foreach (var option in options)
@@ -327,9 +314,9 @@ public static class CustomEnemyPlacement
         return result;
     }
     
-    public static Dictionary<String, T> CustomCategoryDictionaryToCodeNames<T>(Dictionary<String, T> from)
+    public static Dictionary<string, T> CustomCategoryDictionaryToCodeNames<T>(Dictionary<string, T> from)
     {
-        Dictionary<String, T> result = new Dictionary<string, T>();
+        Dictionary<string, T> result = new Dictionary<string, T>();
         foreach (var pair in from)
         {
             var translatedKey = TranslatePlacementOption(pair.Key);
@@ -370,8 +357,10 @@ public static class CustomEnemyPlacement
             kvp.Key == "All Bosses and Minibosses");
         var anyone = CustomPlacement.Where(kvp =>
             kvp.Key == "Anyone");
+
+        var translatedFrequencyAdjustments = CustomCategoryDictionaryToCodeNames(FrequencyAdjustments);
         //This is a monstrosity the likes of which the world has never yet seen
-        foreach (var enemyGroup in new List<IEnumerable<KeyValuePair<String, Dictionary<String, float>>>>()
+        foreach (var enemyGroup in new List<IEnumerable<KeyValuePair<string, Dictionary<string, float>>>>()
                  {
                      individualEnemyPlacements, merchantsMimesCutGimmickPetanks, giantEnemies, archetypeEnemies,
                      allRegularEnemies, mainSideBosses, allBosses, allBossesMinibosses, anyone
@@ -391,9 +380,9 @@ public static class CustomEnemyPlacement
                     //Account for frequency adjustments
                     foreach (var replacementWeight in FinalEnemyReplacementFrequencies[translatedEnemy.CodeName])
                     {
-                        if (FrequencyAdjustments.ContainsKey(replacementWeight.Key))
+                        if (translatedFrequencyAdjustments.ContainsKey(replacementWeight.Key))
                         {
-                            FinalEnemyReplacementFrequencies[translatedEnemy.CodeName][replacementWeight.Key] *= FrequencyAdjustments[replacementWeight.Key];
+                            FinalEnemyReplacementFrequencies[translatedEnemy.CodeName][replacementWeight.Key] *= translatedFrequencyAdjustments[replacementWeight.Key];
                         }
                     }
                 }
@@ -407,12 +396,11 @@ public static class CustomEnemyPlacement
         {
             return original;
         }
-
+        var bannedEnemies = TranslatePlacementOptions(Excluded);
+        var bannedEnemyNames = bannedEnemies.Select(e => e.CodeName);
+        
         if (FinalEnemyReplacementFrequencies.ContainsKey(original.CodeName))
         {
-            var bannedEnemies = TranslatePlacementOptions(Excluded);
-            var bannedEnemyNames = bannedEnemies.Select(e => e.CodeName);
-            
             return RandomizerLogic.GetEnemyData(
                 Utils.GetRandomWeighted(
                     FinalEnemyReplacementFrequencies[original.CodeName], 

@@ -11,10 +11,10 @@ namespace E33Randomizer;
 public class GenerationReport
 {
     public int Seed;
-    public List<Encounter> DT_jRPG_Encounters = new List<Encounter>();
-    public List<Encounter> DT_jRPG_Encounters_CleaTower = new List<Encounter>();
-    public List<Encounter> DT_Encounters_Composite = new List<Encounter>();
-    public List<Encounter> DT_WorldMap_Encounters = new List<Encounter>();
+    public List<Encounter> DT_jRPG_Encounters = [];
+    public List<Encounter> DT_jRPG_Encounters_CleaTower = [];
+    public List<Encounter> DT_Encounters_Composite = [];
+    public List<Encounter> DT_WorldMap_Encounters = [];
 
     public string GenerateString()
     {
@@ -48,23 +48,24 @@ public class GenerationReport
 
 public static class RandomizerLogic
 {
-    public static List<String> BrokenEnemies = new List<string>()
-    {
+    public static readonly List<string> BrokenEnemies =
+    [
         "QUEST_WeaponlessChalier",
         "Boss_Simon_ALPHA",
         "FB_Dualliste_Phase1"
-    };
+    ];
     public static Usmap mappings;
     public static List<EnemyData> allEnemies;
     public static Random rand;
     public static int usedSeed;
-    public static List<Encounter> ProcessedEncounters = new List<Encounter>();
+    public static readonly List<Encounter> ProcessedEncounters = [];
     public static GenerationReport Report;
-    public static Dictionary<String, Dictionary<String, float>> EnemyFrequenciesWithinArchetype = new Dictionary<string, Dictionary<string, float>>();
-    public static Dictionary<String, float> TotalEnemyFrequencies;
-    public static String PresetName = "";
+    public static Dictionary<string, Dictionary<string, float>> EnemyFrequenciesWithinArchetype = new();
+    public static Dictionary<string, float> TotalEnemyFrequencies;
+    public static readonly string PresetName = "";
 
-    public static List<String> Archetypes = new List<string>() { "Regular", "Weak", "Strong", "Elite", "Boss", "Alpha", "Elusive", "Petank"};
+    public static readonly List<string> Archetypes =
+        ["Regular", "Weak", "Strong", "Elite", "Boss", "Alpha", "Elusive", "Petank"];
 
     public static void Init()
     {
@@ -107,48 +108,51 @@ public static class RandomizerLogic
         }
     }
 
-    public static void PackAndConvertData()
+    private static void PackAndConvertData()
     {
         var presetName = PresetName.Length == 0 ? usedSeed.ToString() : PresetName;
         var exportPath = $"rand_{presetName}/";
         Directory.CreateDirectory(exportPath);
         WriteReport(exportPath);
-        var repack_args = $"pack randomizer \"{exportPath}randomizer_P.pak\"";
-        var retoc_args = $"to-zen --version UE5_4 \"{exportPath}randomizer_P.pak\" \"{exportPath}randomizer_P.utoc\"";
+        var repackArgs = $"pack randomizer \"{exportPath}randomizer_P.pak\"";
+        var retocArgs = $"to-zen --version UE5_4 \"{exportPath}randomizer_P.pak\" \"{exportPath}randomizer_P.utoc\"";
 
-        Process.Start("repak.exe", repack_args).WaitForExit();
-        Process.Start("retoc.exe", retoc_args);
+        Process.Start("repak.exe", repackArgs).WaitForExit();
+        Process.Start("retoc.exe", retocArgs);
     }
 
-    public static EnemyData GetEnemyData(String enemyCodeName)
+    public static EnemyData GetEnemyData(string enemyCodeName)
     {
         return allEnemies.Find(e => e.CodeName == enemyCodeName) ?? new EnemyData();
     }
 
-    public static EnemyData GetEnemyDataByName(String enemyName)
+    public static EnemyData GetEnemyDataByName(string enemyName)
     {
         return allEnemies.Find(e => e.Name == enemyName) ?? new EnemyData();
     }
     
-    public static List<EnemyData> GetEnemyDataList(List<String> enemyCodeNames)
+    public static List<EnemyData> GetEnemyDataList(List<string> enemyCodeNames)
     {
         return allEnemies.FindAll(e => enemyCodeNames.Contains(e.CodeName));
     }
     
 
-    public static List<EnemyData> GetAllByArchetype(String archetype)
+    public static List<EnemyData> GetAllByArchetype(string archetype)
     {
         return allEnemies.Where(enemy => enemy.Archetype == archetype).ToList();
     }
 
-    public static EnemyData GetRandomByArchetype(String archetype)
+    public static EnemyData GetRandomByArchetype(string archetype)
     {
         return GetEnemyData(Utils.GetRandomWeighted(EnemyFrequenciesWithinArchetype[archetype]));
     }
 
     public static EnemyData GetRandomEnemy()
     {
-        return GetEnemyData(Utils.GetRandomWeighted(TotalEnemyFrequencies));
+        var bannedEnemies = CustomEnemyPlacement.TranslatePlacementOptions(CustomEnemyPlacement.Excluded);
+        var bannedEnemyNames = bannedEnemies.Select(e => e.CodeName);
+
+        return GetEnemyData(Utils.GetRandomWeighted(TotalEnemyFrequencies, bannedEnemyNames.ToList()));
     }
 
     public static void ModifyEncounter(Encounter encounter)
@@ -176,8 +180,7 @@ public static class RandomizerLogic
         {
             if (i < encounter.Size)
             {
-                EnemyData newEnemy;
-                newEnemy = CustomEnemyPlacement.Replace(encounter.Enemies[i]);
+                EnemyData newEnemy = CustomEnemyPlacement.Replace(encounter.Enemies[i]);
                 encounter.SetEnemy(i, newEnemy);
             }
             else
@@ -189,15 +192,13 @@ public static class RandomizerLogic
         SpecialRules.ApplySpecialRules(encounter);
     }
 
-    public static void WriteReport(String exportPath)
+    public static void WriteReport(string exportPath)
     {
-        using (StreamWriter reportFile = new StreamWriter(exportPath + "enemies_report.txt"))
-        {
-            reportFile.Write(Report.GenerateString());
-        }
+        using StreamWriter reportFile = new StreamWriter(exportPath + "enemies_report.txt");
+        reportFile.Write(Report.GenerateString());
     }
     
-    public static void ProcessEncounters(String assetPath, List<Encounter> fromList=null)
+    public static void ProcessEncounters(string assetPath, List<Encounter> fromList=null)
     {
         var asset = new UAsset(assetPath, EngineVersion.VER_UE5_4, mappings);
 
@@ -229,8 +230,12 @@ public static class RandomizerLogic
         usedSeed = Settings.Seed != -1 ? Settings.Seed : Environment.TickCount; 
         rand = new Random(usedSeed);
         
-        Report = new GenerationReport();
-        Report.Seed = usedSeed;
+        Report = new GenerationReport
+        {
+            Seed = usedSeed
+        };
+
+        CustomEnemyPlacement.UpdateFinalEnemyReplacementFrequencies();
         ProcessEncounters("Data/Originals/DT_jRPG_Encounters.uasset");
         Report.DT_jRPG_Encounters = new List<Encounter>(ProcessedEncounters);
         ProcessedEncounters.Clear();
@@ -250,7 +255,7 @@ public static class RandomizerLogic
         PackAndConvertData();
     }
     
-    public static GenerationReport ReadReport(String pathToFile)
+    public static GenerationReport ReadReport(string pathToFile)
     {
         var currentAssetName = "";
         var report = new GenerationReport();
@@ -288,7 +293,7 @@ public static class RandomizerLogic
         return report;
     }
 
-    public static void GenerateFromReport(String pathToFile)
+    public static void GenerateFromReport(string pathToFile)
     {
         Report = new GenerationReport();
         var report = ReadReport(pathToFile);
@@ -315,7 +320,7 @@ public static class RandomizerLogic
 
     public static void CheckBrokenEnemies()
     {
-        var enemiesToTest = new List<String>()
+        var enemiesToTest = new List<string>()
         {
             "MM_Gargant_ALPHA",
             "SL_Sapling_CrushingWall",
@@ -417,21 +422,5 @@ public static class RandomizerLogic
         }
 
         asset.Write("randomizer\\Sandfall\\Content\\jRPGTemplate\\DataTables\\DT_jRPG_Encounters_CleaTower.uasset");
-    }
-    
-    public static void Test()
-    {
-        var mappings = new Usmap("Mappings.usmap");
-        var assetPath = "Data/Originals/DA_GA_SQT_TheGommage.uasset";
-        
-        var asset1 = new UAsset(assetPath, EngineVersion.VER_UE5_4, mappings);
-        var asset2 = new UAsset("Data/Originals/DA_GA_JumpTutorialPersistentFlag.uasset", EngineVersion.VER_UE5_4, mappings);
-        
-        //asset1.Exports.Add(asset1.Exports[14]);
-        //(asset1.Exports[15] as RawExport).Data[6] = 251;
-        
-        //asset1.Write("randomizer\\Sandfall\\Content\\Levels\\Lumiere\\GameActions\\Act01\\DA_GA_SQT_TheGommage.uasset");
-        
-        Console.WriteLine("");
     }
 }

@@ -10,9 +10,9 @@ namespace E33Randomizer;
 /// <summary>
 /// Interaction logic for MainWindow.xaml
 /// </summary>
-public partial class MainWindow : Window
+public partial class MainWindow
 {
-    private CustomEnemyPlacementWindow customEnemyWindow;
+    private CustomEnemyPlacementWindow _customEnemyWindow;
 
         public MainWindow()
         {
@@ -29,28 +29,28 @@ public partial class MainWindow : Window
             RandomizeMerchantFightsCheckBox.IsChecked = Settings.RandomizeMerchantFights;
             IncludeCutContentCheckBox.IsChecked = Settings.IncludeCutContent;
 
-            RandomizeEncounterSizesCheckBox.Checked += (s, e) => Settings.RandomizeEncounterSizes = true;
-            RandomizeEncounterSizesCheckBox.Unchecked += (s, e) => Settings.RandomizeEncounterSizes = false;
+            RandomizeEncounterSizesCheckBox.Checked += (_, _) => Settings.RandomizeEncounterSizes = true;
+            RandomizeEncounterSizesCheckBox.Unchecked += (_, _) => Settings.RandomizeEncounterSizes = false;
     
-            RandomizeMerchantFightsCheckBox.Checked += (s, e) => Settings.RandomizeMerchantFights = true;
-            RandomizeMerchantFightsCheckBox.Unchecked += (s, e) => Settings.RandomizeMerchantFights = false;
+            RandomizeMerchantFightsCheckBox.Checked += (_, _) => Settings.RandomizeMerchantFights = true;
+            RandomizeMerchantFightsCheckBox.Unchecked += (_, _) => Settings.RandomizeMerchantFights = false;
     
-            IncludeCutContentCheckBox.Checked += (s, e) => Settings.IncludeCutContent = true;
-            IncludeCutContentCheckBox.Unchecked += (s, e) => Settings.IncludeCutContent = false;
+            IncludeCutContentCheckBox.Checked += (_, _) => Settings.IncludeCutContent = true;
+            IncludeCutContentCheckBox.Unchecked += (_, _) => Settings.IncludeCutContent = false;
             
-            EnableEnemyOnslaughtCheckBox.Checked += (s, e) => Settings.EnableEnemyOnslaught = true;
-            EnableEnemyOnslaughtCheckBox.Unchecked += (s, e) => Settings.EnableEnemyOnslaught = false;
+            EnableEnemyOnslaughtCheckBox.Checked += (_, _) => Settings.EnableEnemyOnslaught = true;
+            EnableEnemyOnslaughtCheckBox.Unchecked += (_, _) => Settings.EnableEnemyOnslaught = false;
             
-            EncounterSize1CheckBox.Checked += (s, e) => Settings.PossibleEncounterSizes.Add(1);
-            EncounterSize1CheckBox.Unchecked += (s, e) => Settings.PossibleEncounterSizes.Remove(1);
-            EncounterSize2CheckBox.Checked += (s, e) => Settings.PossibleEncounterSizes.Add(2);
-            EncounterSize2CheckBox.Unchecked += (s, e) => Settings.PossibleEncounterSizes.Remove(2);
-            EncounterSize3CheckBox.Checked += (s, e) => Settings.PossibleEncounterSizes.Add(3);
-            EncounterSize3CheckBox.Unchecked += (s, e) => Settings.PossibleEncounterSizes.Remove(3);
+            EncounterSize1CheckBox.Checked += (_, _) => Settings.PossibleEncounterSizes.Add(1);
+            EncounterSize1CheckBox.Unchecked += (_, _) => Settings.PossibleEncounterSizes.Remove(1);
+            EncounterSize2CheckBox.Checked += (_, _) => Settings.PossibleEncounterSizes.Add(2);
+            EncounterSize2CheckBox.Unchecked += (_, _) => Settings.PossibleEncounterSizes.Remove(2);
+            EncounterSize3CheckBox.Checked += (_, _) => Settings.PossibleEncounterSizes.Add(3);
+            EncounterSize3CheckBox.Unchecked += (_, _) => Settings.PossibleEncounterSizes.Remove(3);
 
-            Phase2SimonComboBox.SelectionChanged += (s, e) =>
+            Phase2SimonComboBox.SelectionChanged += (_, _) =>
                 Settings.EarliestSimonP2Encounter = (Phase2SimonComboBox.SelectedItem as ComboBoxItem).Tag.ToString();
-            SeedTextBox.TextChanged += (sender, args) =>
+            SeedTextBox.TextChanged += (_, _) =>
             {
                 SeedTextBox.Text = SeedTextBox.Text.Replace(" ", "");
                 if (int.TryParse(SeedTextBox.Text, out int value))
@@ -64,28 +64,30 @@ public partial class MainWindow : Window
             EnsureBossesInBossEncountersCheckBox.IsChecked = Settings.EnsureBossesInBossEncounters;
             ReduceBossRepetitionCheckBox.IsChecked = Settings.ReduceBossRepetition;
 
-            BossNumberCapCheckBox.Checked += (sender, args) => Settings.BossNumberCapped = true;
-            BossNumberCapCheckBox.Unchecked += (sender, args) => Settings.BossNumberCapped = false;
+            BossNumberCapCheckBox.Checked += (_, _) => Settings.BossNumberCapped = true;
+            BossNumberCapCheckBox.Unchecked += (_, _) => Settings.BossNumberCapped = false;
             
-            EnsureBossesInBossEncountersCheckBox.Checked += (sender, args) => Settings.EnsureBossesInBossEncounters = true;
-            EnsureBossesInBossEncountersCheckBox.Unchecked += (sender, args) => Settings.EnsureBossesInBossEncounters = false;
+            EnsureBossesInBossEncountersCheckBox.Checked += (_, _) => Settings.EnsureBossesInBossEncounters = true;
+            EnsureBossesInBossEncountersCheckBox.Unchecked += (_, _) => Settings.EnsureBossesInBossEncounters = false;
             
-            ReduceBossRepetitionCheckBox.Checked += (sender, args) => Settings.ReduceBossRepetition = true;
-            ReduceBossRepetitionCheckBox.Unchecked += (sender, args) => Settings.ReduceBossRepetition = false;
+            ReduceBossRepetitionCheckBox.Checked += (_, _) => Settings.ReduceBossRepetition = true;
+            ReduceBossRepetitionCheckBox.Unchecked += (_, _) => Settings.ReduceBossRepetition = false;
 
         }
     
 
         private void CustomEnemyPlacementButton_Click(object sender, RoutedEventArgs e)
         {
-            if (customEnemyWindow == null)
+            if (_customEnemyWindow == null)
             {
-                customEnemyWindow = new CustomEnemyPlacementWindow();
-                customEnemyWindow.Owner = this;
-                customEnemyWindow.Closed += (s, args) => customEnemyWindow = null;
+                _customEnemyWindow = new CustomEnemyPlacementWindow
+                {
+                    Owner = this
+                };
+                _customEnemyWindow.Closed += (_, _) => _customEnemyWindow = null;
             }
             
-            customEnemyWindow.Show();
+            _customEnemyWindow.Show();
             //customEnemyWindow.Focus();
         }
 
@@ -196,15 +198,15 @@ public partial class MainWindow : Window
                 Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
                 "Sandfall\\Saved\\SaveGames\\"
             );
-            string[] subdirs = Directory.GetDirectories(saveGamesBase);
+            string[] subdirectories = Directory.GetDirectories(saveGamesBase);
 
-            if (subdirs.Length == 0 ||  subdirs.Length > 1)
+            if (subdirectories.Length == 0 ||  subdirectories.Length > 1)
             {
                 targetFolder = saveGamesBase;
             }
             else
             {
-                targetFolder = $"{subdirs[0]}";
+                targetFolder = $"{subdirectories[0]}";
             }
             
             OpenFileDialog openFileDialog = new OpenFileDialog

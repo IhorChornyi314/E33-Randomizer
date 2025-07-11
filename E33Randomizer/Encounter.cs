@@ -7,24 +7,24 @@ namespace E33Randomizer;
 
 public class Encounter
 {
-    private StructPropertyData encounterData;
-    private UAsset asset;
-    public String Name;
-    public List<EnemyData> Enemies;
-    public ArchetypeGroup Archetypes;
+    private readonly StructPropertyData _encounterData;
+    private readonly UAsset _asset;
+    public readonly string Name;
+    public readonly List<EnemyData> Enemies;
+    public readonly ArchetypeGroup Archetypes;
     public int LevelOverride;
-    public bool IsBossEncounter;
+    public readonly bool IsBossEncounter;
 
     public int Size => Enemies.Count;
 
     public Encounter(StructPropertyData encounterData, UAsset asset)
     {
-        this.encounterData = encounterData;
-        this.asset = asset;
+        _encounterData = encounterData;
+        _asset = asset;
         
         Name = encounterData.Name.ToString();
-        Enemies = new List<EnemyData>();
-        var enemyArchetypes = new List<String>();
+        Enemies = [];
+        var enemyArchetypes = new List<string>();
         var enemiesData = encounterData.Value[0] as MapPropertyData;
         foreach (StructPropertyData enemy in enemiesData.Value.Values)
         {
@@ -41,7 +41,7 @@ public class Encounter
         Archetypes = new ArchetypeGroup(enemyArchetypes);
     }
 
-    public Encounter(String encounterName, List<String> encounterEnemies)
+    public Encounter(string encounterName, List<string> encounterEnemies)
     {
         Name = encounterName;
         Enemies = RandomizerLogic.GetEnemyDataList(encounterEnemies);
@@ -53,10 +53,10 @@ public class Encounter
         {
             return;
         }
-        var enemiesData = encounterData.Value[0] as MapPropertyData;
+        var enemiesData = _encounterData.Value[0] as MapPropertyData;
         var enemies = enemiesData.Value.Values.ToList();
         var enemyName = (enemies[index] as StructPropertyData).Value[1] as NamePropertyData;
-        enemyName.Value = FName.FromString(asset, newEnemy.CodeName);
+        enemyName.Value = FName.FromString(_asset, newEnemy.CodeName);
         Enemies[index] = newEnemy;
         Archetypes.PossibleArchetypes[index] = newEnemy.Archetype;
     }
@@ -64,14 +64,14 @@ public class Encounter
     public void SetOverrideLevel(int newLevel)
     {
         LevelOverride = newLevel;
-        var levelData = encounterData.Value[2];
+        var levelData = _encounterData.Value[2];
     }
 
     public void RemoveRandomEnemy()
     {
         int enemyIndex = RandomizerLogic.rand.Next(Size);
         
-        var enemiesData = encounterData.Value[0] as MapPropertyData;
+        var enemiesData = _encounterData.Value[0] as MapPropertyData;
         enemiesData.Value.RemoveAt(enemyIndex);
         Enemies.RemoveAt(enemyIndex);
         Archetypes.PossibleArchetypes.RemoveAt(enemyIndex);
@@ -94,13 +94,13 @@ public class Encounter
 
     public void AddEnemy(EnemyData enemy)
     {
-        var enemiesData = encounterData.Value[0] as MapPropertyData;
+        var enemiesData = _encounterData.Value[0] as MapPropertyData;
         var dummyEnemyKey = enemiesData.Value.Keys.ElementAt(0).Clone() as IntPropertyData;
         dummyEnemyKey.Value = Enemies.Count;
         
         var dummyEnemy = enemiesData.Value.Values.ElementAt(0).Clone() as StructPropertyData;
         var enemyName = dummyEnemy.Value[1] as NamePropertyData;
-        enemyName.Value = FName.FromString(asset, enemy.CodeName);
+        enemyName.Value = FName.FromString(_asset, enemy.CodeName);
         enemiesData.Value.Add(dummyEnemyKey, dummyEnemy);
         Enemies.Add(enemy);
         Archetypes.PossibleArchetypes.Add(enemy.Archetype);

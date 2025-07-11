@@ -2,9 +2,9 @@
 
 public static class Utils
 {
-    public static String GetRandomWeighted(Dictionary<String, float> weights, List<String> banned = null)
+    public static string GetRandomWeighted(Dictionary<string, float> weights, List<string> banned = null)
     {
-        banned ??= new List<string>();
+        banned ??= [];
         float total = 0;
         foreach (var weight in weights)
         {
@@ -28,16 +28,5 @@ public static class Utils
     public static T Pick<T>(List<T> from)
     {
         return from[RandomizerLogic.rand.Next(from.Count)];
-    }
-
-    public static List<String> EnemyDataToCodeNames(List<EnemyData> list)
-    {
-        var result = new List<String>();
-        foreach (var enemyData in list)
-        {
-            result.Add(enemyData.CodeName);
-        }
-
-        return result;
     }
 }

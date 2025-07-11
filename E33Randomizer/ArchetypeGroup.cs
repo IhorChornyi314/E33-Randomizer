@@ -1,11 +1,6 @@
 ﻿namespace E33Randomizer;
 
-public class ArchetypeGroup
+public class ArchetypeGroup(List<string> archetypes)
 {
-    public List<String> PossibleArchetypes;
-
-    public ArchetypeGroup(List<String> archetypes)
-    {
-        PossibleArchetypes = archetypes;
-    }
+    public readonly List<string> PossibleArchetypes = archetypes;
 }

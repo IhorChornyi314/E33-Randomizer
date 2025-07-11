@@ -3,13 +3,13 @@
 
 public class EnemyData
 {
-    public String Name = "Place holder battle";
-    public String CodeName = "Test_PlaceHolderBattleDude";
-    public String Level = "1";
-    public String Archetype = "Regular";
+    public readonly string Name = "Place holder battle";
+    public readonly string CodeName = "Test_PlaceHolderBattleDude";
+    public readonly string Level = "1";
+    public readonly string Archetype = "Regular";
     public bool IsBoss => Archetype == "Boss" || Archetype == "Alpha";
 
-    public EnemyData(String name)
+    public EnemyData(string name)
     {
         var existingData = RandomizerLogic.allEnemies.Find(enemy => enemy.CodeName == name);
         if (existingData != null)
