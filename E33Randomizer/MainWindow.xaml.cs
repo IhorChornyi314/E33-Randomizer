@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.IO;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Text.RegularExpressions;
@@ -17,7 +18,7 @@ public partial class MainWindow : Window
         {
             InitializeComponent();
             RandomizerLogic.Init();
-
+            
             // Setup data bindings
             SetupDataBindings();
         }
@@ -57,7 +58,23 @@ public partial class MainWindow : Window
                     Settings.Seed = value;
                 }
             };
+            
+            
+            BossNumberCapCheckBox.IsChecked = Settings.BossNumberCapped;
+            EnsureBossesInBossEncountersCheckBox.IsChecked = Settings.EnsureBossesInBossEncounters;
+            ReduceBossRepetitionCheckBox.IsChecked = Settings.ReduceBossRepetition;
+
+            BossNumberCapCheckBox.Checked += (sender, args) => Settings.BossNumberCapped = true;
+            BossNumberCapCheckBox.Unchecked += (sender, args) => Settings.BossNumberCapped = false;
+            
+            EnsureBossesInBossEncountersCheckBox.Checked += (sender, args) => Settings.EnsureBossesInBossEncounters = true;
+            EnsureBossesInBossEncountersCheckBox.Unchecked += (sender, args) => Settings.EnsureBossesInBossEncounters = false;
+            
+            ReduceBossRepetitionCheckBox.Checked += (sender, args) => Settings.ReduceBossRepetition = true;
+            ReduceBossRepetitionCheckBox.Unchecked += (sender, args) => Settings.ReduceBossRepetition = false;
+
         }
+    
 
         private void CustomEnemyPlacementButton_Click(object sender, RoutedEventArgs e)
         {
@@ -147,7 +164,7 @@ public partial class MainWindow : Window
         private void GenerateButton_Click(object sender, RoutedEventArgs e)
         {
             RandomizerLogic.Randomize();
-            MessageBox.Show("Generation done!\n\n" +
+            MessageBox.Show($"Generation done! You can find the mod in the rand_{RandomizerLogic.usedSeed} folder.\n\n" +
                           $"Randomize Encounter Sizes: {Settings.RandomizeEncounterSizes}\n" +
                           $"Randomize Merchant Fights: {Settings.RandomizeMerchantFights}\n" +
                           $"Include Cut Content: {Settings.IncludeCutContent}\n" +
@@ -169,6 +186,49 @@ public partial class MainWindow : Window
             if (EnemyNumberCapTextBox.Text == "")
             {
                 EnemyNumberCapTextBox.Text = Settings.EnemyOnslaughtEnemyCap.ToString();
+            }
+        }
+
+        private void PatchSaveButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            string targetFolder;
+            string saveGamesBase = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                "Sandfall\\Saved\\SaveGames\\"
+            );
+            string[] subdirs = Directory.GetDirectories(saveGamesBase);
+
+            if (subdirs.Length == 0 ||  subdirs.Length > 1)
+            {
+                targetFolder = saveGamesBase;
+            }
+            else
+            {
+                targetFolder = $"{subdirs[0]}";
+            }
+            
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                InitialDirectory = targetFolder,
+                Title = "Select save file",
+                Filter = "SAV files (*.sav)|*.sav|All files (*.*)|*.*",
+                FilterIndex = 1
+            };
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                try
+                {
+                    SaveFilePatcher.Patch(openFileDialog.FileName);
+                    
+                    MessageBox.Show($"Save File Patched!",
+                        "Patched", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error patching: {ex.Message}", 
+                        "Patching Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
 }

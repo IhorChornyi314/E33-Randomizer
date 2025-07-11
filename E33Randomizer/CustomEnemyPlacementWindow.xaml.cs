@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Microsoft.Win32;
+using Newtonsoft.Json;
 
 namespace E33Randomizer
 {
@@ -26,8 +27,16 @@ namespace E33Randomizer
             UpdateExcludedListBox();
             UpdateNotRandomizedListBox();
             UpdateFrequencies();
+            UpdateJSONTextBox();
         }
 
+        private void UpdateJSONTextBox()
+        {
+            var presetData = new CustomEnemyPlacementPreset(CustomEnemyPlacement.NotRandomized, CustomEnemyPlacement.Excluded, CustomEnemyPlacement.CustomPlacement, CustomEnemyPlacement.FrequencyAdjustments);
+            String json = JsonConvert.SerializeObject(presetData, Formatting.Indented);
+            PresetJSONTextBox.Text = json;
+        }
+        
         private void UpdateExcludedListBox()
         {
             ExcludedEnemiesListBox.Items.Clear();
@@ -58,20 +67,7 @@ namespace E33Randomizer
         
         private void SubscribeToChangeEvents()
         {
-            BossNumberCapCheckBox.IsChecked = Settings.BossNumberCapped;
-            EnsureBossesInBossEncountersCheckBox.IsChecked = Settings.EnsureBossesInBossEncounters;
-            ReduceBossRepetitionCheckBox.IsChecked = Settings.ReduceBossRepetition;
-            
             OopsAllEnemyComboBox.SelectionChanged += (s, e) => hasUnsavedChanges = true;
-
-            BossNumberCapCheckBox.Checked += (sender, args) => Settings.BossNumberCapped = true;
-            BossNumberCapCheckBox.Unchecked += (sender, args) => Settings.BossNumberCapped = false;
-            
-            EnsureBossesInBossEncountersCheckBox.Checked += (sender, args) => Settings.EnsureBossesInBossEncounters = true;
-            EnsureBossesInBossEncountersCheckBox.Unchecked += (sender, args) => Settings.EnsureBossesInBossEncounters = false;
-            
-            ReduceBossRepetitionCheckBox.Checked += (sender, args) => Settings.ReduceBossRepetition = true;
-            ReduceBossRepetitionCheckBox.Unchecked += (sender, args) => Settings.ReduceBossRepetition = false;
         }
         
         private void PopulateEnemyComboBox(ComboBox comboBox)
@@ -115,6 +111,7 @@ namespace E33Randomizer
                 if (!CustomEnemyPlacement.NotRandomized.Contains(enemyName))
                 {
                     CustomEnemyPlacement.NotRandomized.Add(enemyName);
+                    UpdateJSONTextBox();
                     hasUnsavedChanges = true;
                 }
                 
@@ -139,6 +136,7 @@ namespace E33Randomizer
                 hasUnsavedChanges = true;
                 
                 UpdateNotRandomizedListBox();
+                UpdateJSONTextBox();
                 RemoveNotRandomizedEnemyButton.IsEnabled = false;
             }
         }
@@ -163,6 +161,7 @@ namespace E33Randomizer
                     CustomEnemyPlacement.Excluded.Add(enemyName);
                     hasUnsavedChanges = true;
                     UpdateExcludedListBox();
+                    UpdateJSONTextBox();
                 }
                 else
                 {
@@ -188,6 +187,7 @@ namespace E33Randomizer
                 CustomEnemyPlacement.NotRandomized.Remove(selectedEnemy);
                 hasUnsavedChanges = true;
                 UpdateExcludedListBox();
+                UpdateJSONTextBox();
                 RemoveExcludedEnemyButton.IsEnabled = false;
             }
         }
@@ -204,6 +204,7 @@ namespace E33Randomizer
                 hasUnsavedChanges = true;
                 LoadCustomPlacementRows(selectedEnemyForCustomPlacement);
                 CustomEnemyPlacement.UpdateFinalEnemyReplacementFrequencies();
+                Update();
             }
             else
             {
@@ -216,7 +217,6 @@ namespace E33Randomizer
         {
             if (sender is Button button && button.Tag is string presetFile)
             {
-                
                 try
                 {
                     CustomEnemyPlacement.LoadFromJson(presetFile);
@@ -229,6 +229,7 @@ namespace E33Randomizer
                     MessageBox.Show($"Error loading preset: {ex.Message}; Reverting to Default.", 
                         "Load Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     CustomEnemyPlacement.LoadDefaultPreset();
+                    UpdateJSONTextBox();
                     hasUnsavedChanges = true;
                 }
             }
@@ -366,6 +367,7 @@ namespace E33Randomizer
                     {
                         CustomEnemyPlacement.FrequencyAdjustments[
                             (String)(enemyCombo.SelectedItem as ComboBoxItem).Content] = (float)e.NewValue / 100;
+                        UpdateJSONTextBox();
                     }
                 }
             };
@@ -374,6 +376,7 @@ namespace E33Randomizer
             {
                 Regex regex = new Regex("[^0-9]+");
                 e.Handled = regex.IsMatch(e.Text);
+                UpdateJSONTextBox();
             };
             
             frequencyTextBox.TextChanged += (s, e) => {
@@ -385,8 +388,25 @@ namespace E33Randomizer
                     {
                         CustomEnemyPlacement.FrequencyAdjustments[
                             (String)(enemyCombo.SelectedItem as ComboBoxItem).Content] = (float)value / 100;
+                        UpdateJSONTextBox();
                     }
                 }
+            };
+            
+            enemyCombo.SelectionChanged += (sender, args) =>
+            {
+                CustomEnemyPlacement.FrequencyAdjustments.Clear();
+                foreach (UIElement frequecyRow in FrequencyRowsContainer.Children)
+                {
+                    var comboBox = (frequecyRow as StackPanel).Children[1] as ComboBox;
+                    var frequencySlider = (frequecyRow as StackPanel).Children[2] as Slider;
+                    if ((String)(comboBox.SelectedItem as ComboBoxItem).Content == "")
+                    {
+                        continue;
+                    }
+                    CustomEnemyPlacement.FrequencyAdjustments[(String)(comboBox.SelectedItem as ComboBoxItem).Content] = (float)frequencySlider.Value / 100;
+                }
+                UpdateJSONTextBox();
             };
 
             row.Children.Add(removeButton);
@@ -499,7 +519,8 @@ namespace E33Randomizer
             enemyNameCombo.SelectionChanged += (sender, args) =>
             {
                 CustomEnemyPlacement.SetCustomPlacement(selectedEnemyForCustomPlacement,
-                    (String)(enemyNameCombo.SelectedItem as ComboBoxItem).Content, (float)frequencySlider.Value); 
+                    (String)(enemyNameCombo.SelectedItem as ComboBoxItem).Content, (float)frequencySlider.Value / 100); 
+                UpdateJSONTextBox();
             };
             
             // Bind slider and textbox
@@ -512,6 +533,7 @@ namespace E33Randomizer
                 if (enemyNameCombo.SelectedItem != null)
                 {
                     CustomEnemyPlacement.SetCustomPlacement(selectedEnemyForCustomPlacement, (String)(enemyNameCombo.SelectedItem as ComboBoxItem).Content, (float)e.NewValue / 100);
+                    UpdateJSONTextBox();
                 }
             };
 
@@ -531,6 +553,7 @@ namespace E33Randomizer
                     {
                         CustomEnemyPlacement.SetCustomPlacement(selectedEnemyForCustomPlacement,
                             (String)(enemyNameCombo.SelectedItem as ComboBoxItem).Content, (float)value / 100);
+                        UpdateJSONTextBox();
                     }
                 }
             };
@@ -555,6 +578,7 @@ namespace E33Randomizer
             if (enemyName != null)
             {
                 CustomEnemyPlacement.RemoveCustomEnemyPlacement(selectedEnemyForCustomPlacement, enemyName);
+                UpdateJSONTextBox();
             }
             hasUnsavedChanges = true;
         }
@@ -574,7 +598,6 @@ namespace E33Randomizer
             {
                 var row = CreateCustomPlacementRow(pair.Key);
                 CustomPlacementRowsContainer.Children.Add(row);
-
             }
         }
 

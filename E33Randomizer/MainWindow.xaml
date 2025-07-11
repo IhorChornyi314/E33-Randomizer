@@ -14,12 +14,15 @@
         </Grid.RowDefinitions>
         
         <!-- Main Tab Control -->
-        <TabControl Grid.Row="0" Margin="10">
+        <TabControl Grid.Row="0" Margin="0">
             
             <!-- Enemy Randomizer Tab -->
             <TabItem Header="Enemy Randomizer">
                 <Grid Margin="20">
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
@@ -42,27 +45,27 @@
                             <CheckBox Grid.Column="0" Name="RandomizeEncounterSizesCheckBox" 
                                       Content="Randomize Encounter Sizes" 
                                       IsChecked="False" 
-                                      Margin="0,10,10,10"
+                                      Margin="0,0,0,0"
                                       FontSize="14"/>
                             <CheckBox Grid.Column="1" Name="EncounterSize1CheckBox" 
                                       Tag="1"
                                       Content="1" 
                                       IsChecked="True" 
-                                      Margin="0,10,0,10"
+                                      Margin="0,0,0,0"
                                       FontSize="14"
                                       Visibility="{Binding IsChecked, ElementName=RandomizeEncounterSizesCheckBox, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                             <CheckBox Grid.Column="2" Name="EncounterSize2CheckBox" 
                                       Tag="2"
                                       Content="2" 
                                       IsChecked="True" 
-                                      Margin="0,10,0,10"
+                                      Margin="0,0,0,0"
                                       FontSize="14"
                                       Visibility="{Binding IsChecked, ElementName=RandomizeEncounterSizesCheckBox, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                             <CheckBox Grid.Column="3" Name="EncounterSize3CheckBox" 
                                       Tag="3"
                                       Content="3" 
                                       IsChecked="True" 
-                                      Margin="0,10,0,10"
+                                      Margin="0,0,0,0"
                                       FontSize="14"
                                       Visibility="{Binding IsChecked, ElementName=RandomizeEncounterSizesCheckBox, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                             </Grid>
@@ -72,11 +75,11 @@
                                   Grid.Row="1"
                                   Content="Randomize Merchant Fights" 
                                   IsChecked="True" 
-                                  Margin="0,10,0,10"
+                                  Margin="0"
                                   FontSize="14"/>
                         
                         <!-- Include Cut Content -->
-                        <StackPanel Orientation="Horizontal" Margin="0,10,0,10"
+                        <StackPanel Orientation="Horizontal" Margin="0"
                                     Grid.Row="2">
                             <CheckBox Name="IncludeCutContentCheckBox" 
                                       Content="Include Cut Content" 
@@ -94,9 +97,9 @@
                                   Grid.Row="3"
                                   Content="Enable Enemy Onslaught" 
                                   IsChecked="False" 
-                                  Margin="0,10,0,10"
+                                  Margin="0"
                                   FontSize="14"/>
-                        <StackPanel Orientation="Vertical" Margin="0,0,0,10"
+                        <StackPanel Orientation="Vertical" Margin="0,0,0,0"
                                                             Grid.Row="4"
                                                             Visibility="{Binding IsChecked, ElementName=EnableEnemyOnslaughtCheckBox, Converter={StaticResource BooleanToVisibilityConverter}}">
                             <TextBlock Text="⚠️ Warning: The game has full support for 4 enemies, but the 5th and beyond gets lumped into a single spot outside the fighting arena. They will still function properly except that you won't be able to see their attacks or shoot them." 
@@ -140,10 +143,28 @@
                                 />
                             </StackPanel>
                         </StackPanel>
-                        
+                        <CheckBox Name="BossNumberCapCheckBox" 
+                                  Content="Cap the number of bosses in regular encounters to 1" 
+                                  IsChecked="True" 
+                                  Margin="0,0,0,0"
+                                  FontSize="14"
+                                  Grid.Row="5"/>
+                        <CheckBox Name="EnsureBossesInBossEncountersCheckBox" 
+                                  Content="Ensure that boss encounters have at least one boss" 
+                                  IsChecked="True" 
+                                  Margin="0,5,0,0"
+                                  FontSize="14"
+                                  Grid.Row="6"/>
+                        <CheckBox Name="ReduceBossRepetitionCheckBox" 
+                                  Content="Reduce boss repetition" 
+                                  IsChecked="True" 
+                                  Margin="0,5,0,0"
+                                  FontSize="14"
+                                  Grid.Row="7"/>
                         
                         <!-- Phase 2 Simon Dropdown -->
-                        <StackPanel Orientation="Horizontal" Margin="0,40,0,20" Grid.Row="5">
+                        <StackPanel Orientation="Horizontal" Margin="0,40,0,20" 
+                                    Grid.Row="8">
                         <Label Content="Replace Phase 2 Simon with Phase 1 in mandatory fights until after:" FontSize="15"
                                />
                         <ComboBox Name="Phase2SimonComboBox" 
@@ -171,10 +192,41 @@
                                 Margin="0,10,0,20"
                                 Background="Aqua"
                                 Click="CustomEnemyPlacementButton_Click"
-                                Grid.Row="7"/>
+                                Grid.Row="9"/>
                     </Grid>
             </TabItem>
             
+            <!--Misc Tab-->
+            <TabItem Header="Misc">
+                <Grid>
+                    <GroupBox Grid.Row="0" Header="Save File Patching" Margin="10, 10, 5, 0" MaxHeight="200" VerticalAlignment="Top">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                        <TextBlock 
+                                   Margin="10,10,0,0"
+                                   VerticalAlignment="Top"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Left"
+                                   MaxWidth="800">
+                            It is recommended that you patch your save file to gain access to Jump and Gradient Counters if you don't have those already. <LineBreak/><LineBreak/>
+                            They are located in %USERPROFILE%/AppData/Local/Sandfall/Saved/SavedGames/[numbers]/ and are named "EXPEDITION_[save slot id]". <LineBreak/>
+                            There's also a Backup folder that contains all of your "Load Previous Saves" saves.
+                            Simply press the button and choose the save file that you want to patch.
+                        </TextBlock>
+                        <Button Grid.Row="1" Name="PatchSaveButton" 
+                                Content="Patch save file" 
+                                Width="180" 
+                                Height="35" 
+                                HorizontalAlignment="Right"
+                                Margin="0,10,20,10"
+                                Click="PatchSaveButton_OnClick"/>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
             <!-- Item Randomizer Tab -->
             <TabItem Header="Item Randomizer" Visibility="Hidden">
                 <StackPanel Margin="20">
@@ -186,16 +238,6 @@
                 </StackPanel>
             </TabItem>
             
-            <!--~1~ Misc Tab @1@
-            <TabItem Header="Misc">
-                <StackPanel Margin="20">
-                    <TextBlock Text="Miscellaneous settings coming soon..." 
-                               FontSize="16" 
-                               Foreground="Gray" 
-                               HorizontalAlignment="Center" 
-                               VerticalAlignment="Center"/>
-                </StackPanel>
-            </TabItem>-->
             
         </TabControl>
         
