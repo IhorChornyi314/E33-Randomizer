@@ -71,15 +71,22 @@
                             </Grid>
                         
                         <!-- Randomize Merchant Fights -->
+                        <StackPanel Orientation="Vertical" Margin="0"
+                                    Grid.Row="1">
                         <CheckBox Name="RandomizeMerchantFightsCheckBox" 
-                                  Grid.Row="1"
                                   Content="Randomize Merchant Fights" 
-                                  IsChecked="True" 
+                                  IsChecked="False" 
                                   Margin="0"
                                   FontSize="14"/>
-                        
+                        <TextBlock Text="Merchants' special wares are unlocked upon killing them in any battle, NOT when winning the &quot;Fight Merchant&quot; encounter." 
+                                   Foreground="Orange" 
+                                   FontWeight="Bold" 
+                                   Margin="10,5,0,5"
+                                   VerticalAlignment="Center"
+                                   Visibility="{Binding IsChecked, ElementName=RandomizeMerchantFightsCheckBox, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                        </StackPanel>
                         <!-- Include Cut Content -->
-                        <StackPanel Orientation="Horizontal" Margin="0"
+                        <StackPanel Orientation="Vertical" Margin="0"
                                     Grid.Row="2">
                             <CheckBox Name="IncludeCutContentCheckBox" 
                                       Content="Include Cut Content" 
@@ -88,7 +95,7 @@
                             <TextBlock Text="⚠️ Warning: Do NOT parry Gestral Bullies or Gestral Dragoons, as it will soft-lock the game." 
                                        Foreground="Orange" 
                                        FontWeight="Bold" 
-                                       Margin="10,0,0,0"
+                                       Margin="10,5,0,5"
                                        VerticalAlignment="Center"
                                        Visibility="{Binding IsChecked, ElementName=IncludeCutContentCheckBox, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                         </StackPanel>

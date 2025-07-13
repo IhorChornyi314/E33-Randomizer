@@ -285,7 +285,8 @@ public static class CustomEnemyPlacement
                         "QUEST_Danseuse_DanceClass_Clone",
                         "SL_Sapling_CrushingWall",
                         "GO_Curator_JumpTutorial",
-                        "GO_Curator_JumpTutorial_NoTuto"
+                        "GO_Curator_JumpTutorial_NoTuto",
+                        "QUEST_Danseuse_DanceClass"
                     ]);
             }
         }

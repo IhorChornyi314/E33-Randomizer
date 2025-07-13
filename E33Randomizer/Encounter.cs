@@ -22,10 +22,10 @@ public class Encounter
         _encounterData = encounterData;
         _asset = asset;
         
-        Name = encounterData.Name.ToString();
+        Name = _encounterData.Name.ToString();
         Enemies = [];
         var enemyArchetypes = new List<string>();
-        var enemiesData = encounterData.Value[0] as MapPropertyData;
+        var enemiesData = _encounterData.Value[0] as MapPropertyData;
         foreach (StructPropertyData enemy in enemiesData.Value.Values)
         {
             var enemyName = enemy.Value[1] as NamePropertyData;

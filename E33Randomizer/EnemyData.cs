@@ -3,10 +3,10 @@
 
 public class EnemyData
 {
-    public readonly string Name = "Place holder battle";
-    public readonly string CodeName = "Test_PlaceHolderBattleDude";
-    public readonly string Level = "1";
-    public readonly string Archetype = "Regular";
+    public string Name = "Place holder battle";
+    public string CodeName = "Test_PlaceHolderBattleDude";
+    public string Level = "1";
+    public string Archetype = "Regular";
     public bool IsBoss => Archetype == "Boss" || Archetype == "Alpha";
 
     public EnemyData(string name)

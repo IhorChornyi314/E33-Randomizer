@@ -56,13 +56,13 @@ public static class SaveFilePatcher
         }
 
         string output = JsonConvert.SerializeObject(saveObj, Formatting.Indented);
-        File.WriteAllText("save1.json", output);
+        File.WriteAllText("save.json", output);
     }
     
     public static void Patch(string saveFilePath)
     {
         var to_json_args = $"to-json -i \"{saveFilePath}\" -o save.json";
-        var from_json_args = $"from-json -i save1.json -o \"{saveFilePath}\"";
+        var from_json_args = $"from-json -i save.json -o \"{saveFilePath}\"";
 
         Process.Start("uesave.exe", to_json_args).WaitForExit();
         
