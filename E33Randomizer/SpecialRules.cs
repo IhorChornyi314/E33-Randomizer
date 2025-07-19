@@ -10,7 +10,7 @@ public static class SpecialRules
         "SM_FirstPortier_NoTuto*1"
     ];
 
-    public static readonly List<string> MandatoryEncounters =
+    public static List<string> MandatoryEncounters =
     [
         "SM_Lancelier*1",
         "SM_FirstLancelierNoTuto*1",
@@ -46,7 +46,7 @@ public static class SpecialRules
         "L_Boss_Curator_P1"
     ];
 
-    public static readonly List<string> MerchantEncounters =
+    public static List<string> MerchantEncounters =
     [
         "Merchant_GoblusLair",
         "Merchant_GestralVillage1",
@@ -75,7 +75,7 @@ public static class SpecialRules
 
     public static List<string> DuelEncounters = [];
 
-    public static readonly List<string> CutContentEnemies =
+    public static List<string> CutContentEnemies =
     [
         "AS_Gestral_Dragoon",
         "AS_GestralBully_A",

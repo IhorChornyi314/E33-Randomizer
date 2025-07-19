@@ -18,7 +18,7 @@ public partial class MainWindow
         {
             InitializeComponent();
             RandomizerLogic.Init();
-            
+            RandomizerLogic.ProcessKeyItems();
             // Setup data bindings
             SetupDataBindings();
         }
@@ -59,7 +59,6 @@ public partial class MainWindow
                 }
             };
             
-            
             BossNumberCapCheckBox.IsChecked = Settings.BossNumberCapped;
             EnsureBossesInBossEncountersCheckBox.IsChecked = Settings.EnsureBossesInBossEncounters;
             ReduceBossRepetitionCheckBox.IsChecked = Settings.ReduceBossRepetition;
@@ -73,6 +72,8 @@ public partial class MainWindow
             ReduceBossRepetitionCheckBox.Checked += (_, _) => Settings.ReduceBossRepetition = true;
             ReduceBossRepetitionCheckBox.Unchecked += (_, _) => Settings.ReduceBossRepetition = false;
 
+            JujubreeKeyItemsAddButton.Checked += (_, _) => Settings.EnableJujubreeToSellKeyItems = true;
+            JujubreeKeyItemsAddButton.Unchecked += (_, _) => Settings.EnableJujubreeToSellKeyItems = false;
         }
     
 

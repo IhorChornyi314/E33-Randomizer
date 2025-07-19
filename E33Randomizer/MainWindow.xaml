@@ -33,6 +33,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                         <!-- Randomize Encounter Sizes -->
                         <Grid>
@@ -85,9 +86,14 @@
                                    VerticalAlignment="Center"
                                    Visibility="{Binding IsChecked, ElementName=RandomizeMerchantFightsCheckBox, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                         </StackPanel>
+                        <CheckBox Grid.Row="2" Name="JujubreeKeyItemsAddButton" 
+                                  Content="Add Painted Power and Maelle's Paintress skills to Jujubree's shop (only accessible in Act 3)" 
+                                  IsChecked="True" 
+                                  Margin="0"
+                                  FontSize="14"/>
                         <!-- Include Cut Content -->
                         <StackPanel Orientation="Vertical" Margin="0"
-                                    Grid.Row="2">
+                                    Grid.Row="3">
                             <CheckBox Name="IncludeCutContentCheckBox" 
                                       Content="Include Cut Content" 
                                       IsChecked="True" 
@@ -101,13 +107,13 @@
                         </StackPanel>
                         
                         <CheckBox Name="EnableEnemyOnslaughtCheckBox" 
-                                  Grid.Row="3"
+                                  Grid.Row="4"
                                   Content="Enable Enemy Onslaught" 
                                   IsChecked="False" 
                                   Margin="0"
                                   FontSize="14"/>
                         <StackPanel Orientation="Vertical" Margin="0,0,0,0"
-                                                            Grid.Row="4"
+                                                            Grid.Row="5"
                                                             Visibility="{Binding IsChecked, ElementName=EnableEnemyOnslaughtCheckBox, Converter={StaticResource BooleanToVisibilityConverter}}">
                             <TextBlock Text="⚠️ Warning: The game has full support for 4 enemies, but the 5th and beyond gets lumped into a single spot outside the fighting arena. They will still function properly except that you won't be able to see their attacks or shoot them." 
                                        Foreground="Orange" 
@@ -155,23 +161,23 @@
                                   IsChecked="True" 
                                   Margin="0,0,0,0"
                                   FontSize="14"
-                                  Grid.Row="5"/>
+                                  Grid.Row="6"/>
                         <CheckBox Name="EnsureBossesInBossEncountersCheckBox" 
                                   Content="Ensure that boss encounters have at least one boss" 
                                   IsChecked="True" 
                                   Margin="0,5,0,0"
                                   FontSize="14"
-                                  Grid.Row="6"/>
+                                  Grid.Row="7"/>
                         <CheckBox Name="ReduceBossRepetitionCheckBox" 
                                   Content="Reduce boss repetition" 
                                   IsChecked="True" 
                                   Margin="0,5,0,0"
                                   FontSize="14"
-                                  Grid.Row="7"/>
+                                  Grid.Row="8"/>
                         
                         <!-- Phase 2 Simon Dropdown -->
                         <StackPanel Orientation="Horizontal" Margin="0,40,0,20" 
-                                    Grid.Row="8">
+                                    Grid.Row="9">
                         <Label Content="Replace Phase 2 Simon with Phase 1 in mandatory fights until after:" FontSize="15"
                                />
                         <ComboBox Name="Phase2SimonComboBox" 
@@ -199,7 +205,7 @@
                                 Margin="0,10,0,20"
                                 Background="Aqua"
                                 Click="CustomEnemyPlacementButton_Click"
-                                Grid.Row="9"/>
+                                Grid.Row="10"/>
                     </Grid>
             </TabItem>
             

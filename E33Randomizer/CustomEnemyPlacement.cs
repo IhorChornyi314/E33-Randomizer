@@ -23,10 +23,10 @@ class CustomEnemyPlacementPreset(
     Dictionary<string, Dictionary<string, float>> c,
     Dictionary<string, float> f)
 {
-    public readonly List<string> NotRandomized = n;
-    public readonly List<string> Excluded = e;
-    public readonly Dictionary<string, Dictionary<string, float>> CustomPlacement = c;
-    public readonly Dictionary<string, float> FrequencyAdjustments = f;
+    public List<string> NotRandomized = n;
+    public List<string> Excluded = e;
+    public Dictionary<string, Dictionary<string, float>> CustomPlacement = c;
+    public Dictionary<string, float> FrequencyAdjustments = f;
 }
 
 public static class CustomEnemyPlacement
@@ -36,7 +36,7 @@ public static class CustomEnemyPlacement
     public static List<EnemyData> NotRandomizedTranslated => TranslatePlacementOptions(NotRandomized);
     public static List<EnemyData> ExcludedTranslated => TranslatePlacementOptions(Excluded);
     public static List<string> PlacementOptionsList = [];
-    public static readonly List<string> CustomCategories =
+    public static List<string> CustomCategories =
     [
         "Anyone",
         "All Bosses and Minibosses",
@@ -50,7 +50,7 @@ public static class CustomEnemyPlacement
         "Cut Content Enemies",
         "Gimmick/Tutorial Enemies"
     ];
-    public static readonly Dictionary<string, string> ArchetypeNames = new()
+    public static Dictionary<string, string> ArchetypeNames = new()
     {
         { "Regular", "Regular" },
         { "Weak Regular", "Weak"},
@@ -286,7 +286,10 @@ public static class CustomEnemyPlacement
                         "SL_Sapling_CrushingWall",
                         "GO_Curator_JumpTutorial",
                         "GO_Curator_JumpTutorial_NoTuto",
-                        "QUEST_Danseuse_DanceClass"
+                        "QUEST_Danseuse_DanceClass",
+                        "MF_MaskSadness",
+                        "MF_MaskAnger",
+                        "MF_MaskJoy"
                     ]);
             }
         }

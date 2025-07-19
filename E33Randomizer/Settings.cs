@@ -4,7 +4,7 @@ public static class Settings
 {
     public static int Seed = -1;
     public static bool RandomizeEncounterSizes = false;
-    public static readonly List<int> PossibleEncounterSizes = [1, 2, 3];
+    public static List<int> PossibleEncounterSizes = [1, 2, 3];
     public static string EarliestSimonP2Encounter = "SM_Eveque_ShieldTutorial*1";
     public static bool RandomizeMerchantFights = true;
     public static bool IncludeCutContent = true;
@@ -15,4 +15,5 @@ public static class Settings
     public static bool BossNumberCapped = true;
     public static bool EnsureBossesInBossEncounters = true;
     public static bool ReduceBossRepetition = true;
+    public static bool EnableJujubreeToSellKeyItems = true;
 }

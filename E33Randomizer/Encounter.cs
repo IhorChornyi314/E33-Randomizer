@@ -7,13 +7,13 @@ namespace E33Randomizer;
 
 public class Encounter
 {
-    private readonly StructPropertyData _encounterData;
-    private readonly UAsset _asset;
-    public readonly string Name;
-    public readonly List<EnemyData> Enemies;
-    public readonly ArchetypeGroup Archetypes;
+    private StructPropertyData _encounterData;
+    private UAsset _asset;
+    public string Name;
+    public List<EnemyData> Enemies;
+    public ArchetypeGroup Archetypes;
     public int LevelOverride;
-    public readonly bool IsBossEncounter;
+    public bool IsBossEncounter;
 
     public int Size => Enemies.Count;
 
