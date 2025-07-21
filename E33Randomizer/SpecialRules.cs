@@ -140,7 +140,7 @@ public static class SpecialRules
         {
             if (encounter.Enemies[i].CodeName == "Boss_Simon_Phase2")
             {
-                encounter.SetEnemy(i, RandomizerLogic.GetEnemyData("Boss_Simon"));
+                encounter.Enemies[i] = RandomizerLogic.GetEnemyData("Boss_Simon");
             }
         }
     }
@@ -152,7 +152,7 @@ public static class SpecialRules
             if (CutContentEnemies.Contains(encounter.Enemies[i].CodeName))
             {
                 var archetype = encounter.Enemies[i].Archetype;
-                encounter.SetEnemy(i, RandomizerLogic.GetAllByArchetype(archetype).Find(e => !CutContentEnemies.Contains(e.CodeName)));
+                encounter.Enemies[i] = RandomizerLogic.GetAllByArchetype(archetype).Find(e => !CutContentEnemies.Contains(e.CodeName));
             }
         }
     }
@@ -170,7 +170,7 @@ public static class SpecialRules
             if (encounter.Enemies[i].IsBoss)
             {
                 var newEnemy = RandomizerLogic.GetRandomByArchetype("Strong");
-                encounter.SetEnemy(i, newEnemy);
+                encounter.Enemies[i] = newEnemy;
                 numberOfBosses -= 1;
                 if (numberOfBosses == 1)
                 {
@@ -198,7 +198,7 @@ public static class SpecialRules
             var numberOfBosses = encounter.Enemies.Count(e => e.IsBoss);
             if (numberOfBosses == 0)
             {
-                encounter.SetEnemy(0, RandomizerLogic.GetRandomByArchetype("Boss"));
+                encounter.Enemies[0] = RandomizerLogic.GetRandomByArchetype("Boss");
             }
         }
 
@@ -208,7 +208,7 @@ public static class SpecialRules
             {
                 if (encounter.Enemies[i].IsBoss && RemainingBossPool.Count > 0 && CustomEnemyPlacement.NotRandomizedTranslated.Contains(encounter.Enemies[i]))
                 {
-                    encounter.SetEnemy(i, RemainingBossPool.Dequeue());
+                    encounter.Enemies[i] = RemainingBossPool.Dequeue();
                 }
             }
         }

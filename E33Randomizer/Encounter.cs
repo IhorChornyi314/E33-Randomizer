@@ -12,9 +12,14 @@ public class Encounter
     public string Name;
     public List<EnemyData> Enemies;
     public ArchetypeGroup Archetypes;
-    public int LevelOverride;
     public bool IsBossEncounter;
-
+    
+    private bool fleeImpossible;
+    private int levelOverride;
+    private bool disableCameraEndMovement;
+    private bool disableReactionBattleLines;
+    private bool isNarrativeBattle;
+    
     public int Size => Enemies.Count;
 
     public Encounter(StructPropertyData encounterData, UAsset asset)
@@ -39,6 +44,11 @@ public class Encounter
         }
 
         Archetypes = new ArchetypeGroup(enemyArchetypes);
+        fleeImpossible = (_encounterData.Value[1] as BoolPropertyData).Value;
+        levelOverride = (_encounterData.Value[2] as IntPropertyData).Value;
+        disableCameraEndMovement = (_encounterData.Value[3] as BoolPropertyData).Value;
+        disableReactionBattleLines = (_encounterData.Value[4] as BoolPropertyData).Value;
+        isNarrativeBattle = (_encounterData.Value[5] as BoolPropertyData).Value;
     }
 
     public Encounter(string encounterName, List<string> encounterEnemies)
@@ -46,88 +56,35 @@ public class Encounter
         Name = encounterName;
         Enemies = RandomizerLogic.GetEnemyDataList(encounterEnemies);
     }
-    
-    public void SetEnemy(int index, EnemyData newEnemy)
-    {
-        if (index >= Enemies.Count())
-        {
-            return;
-        }
-        var enemiesData = _encounterData.Value[0] as MapPropertyData;
-        var enemies = enemiesData.Value.Values.ToList();
-        var enemyName = (enemies[index] as StructPropertyData).Value[1] as NamePropertyData;
-        enemyName.Value = FName.FromString(_asset, newEnemy.CodeName);
-        Enemies[index] = newEnemy;
-        Archetypes.PossibleArchetypes[index] = newEnemy.Archetype;
-    }
 
-    public void SetOverrideLevel(int newLevel)
+    public void SaveToStruct(StructPropertyData encounterStruct)
     {
-        LevelOverride = newLevel;
-        var levelData = _encounterData.Value[2];
-    }
-
-    public void RemoveRandomEnemy()
-    {
-        int enemyIndex = RandomizerLogic.rand.Next(Size);
+        var enemiesField = encounterStruct.Value[0] as MapPropertyData;
+        var fleeImpossibleField  = encounterStruct.Value[1] as BoolPropertyData;
+        var levelOverrideField = encounterStruct.Value[2] as IntPropertyData;
+        var disableCameraEndMovementField  = encounterStruct.Value[3] as BoolPropertyData;
+        var disableReactionBattleLinesField  = encounterStruct.Value[4] as BoolPropertyData;
+        var isNarrativeBattleField  = encounterStruct.Value[5] as BoolPropertyData;
         
-        var enemiesData = _encounterData.Value[0] as MapPropertyData;
-        enemiesData.Value.RemoveAt(enemyIndex);
-        Enemies.RemoveAt(enemyIndex);
-        Archetypes.PossibleArchetypes.RemoveAt(enemyIndex);
-
+        var dummyEnemyStruct = (enemiesField.Clone() as MapPropertyData).Value.First();
+        
+        enemiesField.Value.Clear();
         for (int i = 0; i < Size; i++)
         {
-            var dummyEnemyKey = enemiesData.Value.Keys.ElementAt(i) as IntPropertyData;
+            var dummyEnemyKey = dummyEnemyStruct.Key.Clone() as IntPropertyData;
             dummyEnemyKey.Value = i;
-        }
-    }
-    
-    public void RemoveEnemies(int number)
-    {
-        while (Enemies.Count > 1 && number > 0)
-        {
-            RemoveRandomEnemy();
-            number -= 1;
-        }
-    }
-
-    public void AddEnemy(EnemyData enemy)
-    {
-        var enemiesData = _encounterData.Value[0] as MapPropertyData;
-        var dummyEnemyKey = enemiesData.Value.Keys.ElementAt(0).Clone() as IntPropertyData;
-        dummyEnemyKey.Value = Enemies.Count;
         
-        var dummyEnemy = enemiesData.Value.Values.ElementAt(0).Clone() as StructPropertyData;
-        var enemyName = dummyEnemy.Value[1] as NamePropertyData;
-        enemyName.Value = FName.FromString(_asset, enemy.CodeName);
-        enemiesData.Value.Add(dummyEnemyKey, dummyEnemy);
-        Enemies.Add(enemy);
-        Archetypes.PossibleArchetypes.Add(enemy.Archetype);
-    }
+            var dummyEnemy = dummyEnemyStruct.Value.Clone() as StructPropertyData;
+            var enemyName = dummyEnemy.Value[1] as NamePropertyData;
+            enemyName.Value.Value = FString.FromString(Enemies[i].CodeName);
+            enemiesField.Value.Add(dummyEnemyKey, dummyEnemy);
+        }
 
-    public void SetEnemies(List<EnemyData> enemies)
-    {
-        if (enemies == null)
-        {
-            return;
-        }
-        if (enemies.Count < Size)
-        {
-            RemoveEnemies(Size - enemies.Count);
-        }
-        
-        for (int i = 0; i < enemies.Count; i++)
-        {
-            if (i < Size)
-            {
-                SetEnemy(i, enemies[i]);
-            }
-            else
-            {
-                AddEnemy(enemies[i]);
-            }
-        }
+        fleeImpossibleField.Value = fleeImpossible;
+        levelOverrideField.Value = levelOverride;
+        disableCameraEndMovementField.Value = disableCameraEndMovement;
+        disableReactionBattleLinesField.Value = disableReactionBattleLines;
+        isNarrativeBattleField.Value = isNarrativeBattle;
     }
 
     public override string ToString()

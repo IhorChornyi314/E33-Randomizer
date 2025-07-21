@@ -206,6 +206,17 @@
                                 Background="Aqua"
                                 Click="CustomEnemyPlacementButton_Click"
                                 Grid.Row="10"/>
+                        <!-- Custom Enemy Placement Button -->
+                        <Button Name="EditEncountersButton" 
+                                Content="Edit Individual Encounters" 
+                                Width="500" 
+                                Height="50" 
+                                FontSize="20"
+                                HorizontalAlignment="Center" 
+                                Margin="0,10,0,20"
+                                Background="Aqua"
+                                Click="EditEncountersButton_Click"
+                                Grid.Row="11"/>
                     </Grid>
             </TabItem>
             

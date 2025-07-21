@@ -13,6 +13,7 @@ namespace E33Randomizer;
 public partial class MainWindow
 {
     private CustomEnemyPlacementWindow _customEnemyWindow;
+    private EditEncountersWindow _editEncountersWindow;
 
         public MainWindow()
         {
@@ -91,6 +92,21 @@ public partial class MainWindow
             _customEnemyWindow.Show();
             //customEnemyWindow.Focus();
         }
+        
+        private void EditEncountersButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (_editEncountersWindow == null)
+            {
+                _editEncountersWindow = new EditEncountersWindow
+                {
+                    Owner = this
+                };
+                _editEncountersWindow.Closed += (_, _) => _editEncountersWindow = null;
+            }
+            
+            _editEncountersWindow.Show();
+            //customEnemyWindow.Focus();
+        }
 
         private void NumberOfAdditionalEnemiesTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -140,28 +156,28 @@ public partial class MainWindow
 
         private void GenerateFromReportButton_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog
-            {
-                Title = "Load Generation Report",
-                Filter = "TXT files (*.txt)|*.txt|All files (*.*)|*.*",
-                FilterIndex = 1
-            };
-
-            if (openFileDialog.ShowDialog() == true)
-            {
-                try
-                {
-                    RandomizerLogic.GenerateFromReport(openFileDialog.FileName);
-                    
-                    MessageBox.Show($"Files restored! You can find them in the rand_{RandomizerLogic.usedSeed} folder.",
-                        "Restored", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error loading report: {ex.Message}", 
-                        "Load Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
+            // OpenFileDialog openFileDialog = new OpenFileDialog
+            // {
+            //     Title = "Load Generation Report",
+            //     Filter = "TXT files (*.txt)|*.txt|All files (*.*)|*.*",
+            //     FilterIndex = 1
+            // };
+            //
+            // if (openFileDialog.ShowDialog() == true)
+            // {
+            //     try
+            //     {
+            //         RandomizerLogic.GenerateFromReport(openFileDialog.FileName);
+            //         
+            //         MessageBox.Show($"Files restored! You can find them in the rand_{RandomizerLogic.usedSeed} folder.",
+            //             "Restored", MessageBoxButton.OK, MessageBoxImage.Information);
+            //     }
+            //     catch (Exception ex)
+            //     {
+            //         MessageBox.Show($"Error loading report: {ex.Message}", 
+            //             "Load Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            //     }
+            // }
         }    
         
         private void GenerateButton_Click(object sender, RoutedEventArgs e)

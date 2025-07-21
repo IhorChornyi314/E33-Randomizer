@@ -64,6 +64,8 @@ public static class CustomEnemyPlacement
     public static Dictionary<string, Dictionary<string, float>> CustomPlacement = new();
     public static Dictionary<string, float> FrequencyAdjustments = new();
     public static Dictionary<string, Dictionary<string, float>> FinalEnemyReplacementFrequencies = new();
+    public static Dictionary<string, float> TranslatedFrequencyAdjustments => CustomCategoryDictionaryToCodeNames(FrequencyAdjustments);
+    public static List<string> BannedEnemyNames => TranslatePlacementOptions(Excluded).Select(e => e.CodeName).ToList();
     
     public static void InitPlacementOptions()
     {
