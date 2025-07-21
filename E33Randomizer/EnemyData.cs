@@ -23,6 +23,11 @@ public class EnemyData
     
     public EnemyData(){}
 
+    public override bool Equals(object? obj)
+    {
+        return obj != null && (obj as EnemyData).CodeName == CodeName;
+    }
+
     public override string ToString()
     {
         return CodeName;

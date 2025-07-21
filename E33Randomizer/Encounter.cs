@@ -87,6 +87,11 @@ public class Encounter
         isNarrativeBattleField.Value = isNarrativeBattle;
     }
 
+    public override bool Equals(object? obj)
+    {
+        return obj != null && (obj as Encounter).Name == Name;
+    }
+
     public override string ToString()
     {
         var rep = Name + "|";

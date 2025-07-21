@@ -5,131 +5,188 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using Microsoft.Win32;
 
 namespace E33Randomizer
 {
     public partial class EditEncountersWindow : Window
     {
         public EditEncounterWindowViewModel ViewModel { get; set; }
+        private EncounterViewModel _selectedEncounterViewModel;
 
         public EditEncountersWindow()
         {
             InitializeComponent();
             ViewModel = new EditEncounterWindowViewModel();
             DataContext = ViewModel;
-            
-            LoadSampleData();
         }
-
+        
         private void LocationTreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
             if (e.NewValue is EncounterViewModel selectedEncounter)
             {
+                _selectedEncounterViewModel = selectedEncounter;
                 ViewModel.OnEncounterSelected(selectedEncounter);
             }
         }
 
         private void AddEnemyComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (AddEnemyComboBox.SelectedItem is EnemyViewModel selectedEnemy)
+            if (_selectedEncounterViewModel != null && AddEnemyComboBox.SelectedItem is EnemyViewModel selectedEnemy)
             {
-                ViewModel.AddSelectedEnemy(selectedEnemy);
+                EncountersController.AddEnemyToEncounter(selectedEnemy.CodeName, _selectedEncounterViewModel.CodeName);
                 
-                AddEnemyComboBox.SelectedIndex = -1;
+                ViewModel.UpdateEncounterEnemies(_selectedEncounterViewModel);
             }
+            AddEnemyComboBox.SelectedIndex = -1;
         }
 
         private void RemoveEnemy_Click(object sender, RoutedEventArgs e)
         {
-            if (sender is Button button && button.Tag is EnemyViewModel enemyToRemove)
+            if (_selectedEncounterViewModel != null && sender is Button button && button.Tag is EnemyViewModel enemyToRemove)
             {
-                ViewModel.RemoveSelectedEnemy(enemyToRemove);
+                EncountersController.RemoveEnemyFromEncounter(enemyToRemove.CodeName, _selectedEncounterViewModel.CodeName);
+                
+                ViewModel.UpdateEncounterEnemies(_selectedEncounterViewModel);
             }
         }
 
-        private void LoadSampleData()
+        public void RegenerateEncounters(object sender, RoutedEventArgs e)
         {
-            ViewModel.Locations.Add(new EncounterLocationViewModel
-            {
-                Name = "Spring Meadows",
-                Encounters = new ObservableCollection<EncounterViewModel>
-                {
-                    new EncounterViewModel { CodeName = "SM_Portier", Name = "Portier (Spring Meadows)" }
-                }
-            });
-
-            ViewModel.Locations.Add(new EncounterLocationViewModel
-            {
-                Name = "Flying Waters",
-                Encounters = new ObservableCollection<EncounterViewModel>
-                {
-                    new EncounterViewModel { CodeName = "GO_Bruler", Name = "Bruler (Flying Waters)" }
-                }
-            });
-
-            ViewModel.Locations.Add(new EncounterLocationViewModel
-            {
-                Name = "Ancient Sanctuary",
-                Encounters = new ObservableCollection<EncounterViewModel>
-                {
-                    new EncounterViewModel { CodeName = "AS_PotatoBag_Mage", Name = "Catapult Sakapatate (Ancient Sanctuary)" }
-                }
-            });
+            EncountersController.GenerateNewEncounters();
+            ViewModel.UpdateEncounterEnemies(_selectedEncounterViewModel);
         }
+        
+        public void PackCurrentEncounters(object sender, RoutedEventArgs e)
+        {
+            EncountersController.WriteEncounterAssets();
+            RandomizerLogic.PackAndConvertData();
+        }
+
+        public void ReadEncountersFromTxt(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Title = "Load Custom Preset",
+                Filter = "TXT files (*.txt)|*.txt|All files (*.*)|*.*",
+                FilterIndex = 1
+            };
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                try
+                {
+                    EncountersController.ReadEncountersTxt(openFileDialog.FileName);
+                    ViewModel.UpdateEncounterEnemies(_selectedEncounterViewModel);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error loading preset: {ex.Message}", 
+                        "Load Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+        public void SaveEncountersAsTxt(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                Title = "Save Custom Preset",
+                Filter = "TXT files (*.txt)|*.txt|All files (*.*)|*.*",
+                FilterIndex = 1,
+                DefaultExt = "txt"
+            };
+
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                try
+                {
+                    EncountersController.WriteEncountersTxt(saveFileDialog.FileName);
+                    MessageBox.Show("Encounters saved successfully!", 
+                        "Save Complete", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error saving encounters: {ex.Message}", 
+                        "Save Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
     }
 
     public class EditEncounterWindowViewModel : INotifyPropertyChanged
     {
         public ObservableCollection<EncounterLocationViewModel> Locations { get; set; }
-        public ObservableCollection<EnemyViewModel> SelectedEnemies { get; set; }
-        public ObservableCollection<EnemyViewModel> AvailableEnemies { get; set; }
+        public ObservableCollection<EnemyViewModel> EnemiesInTheEncounter { get; set; }
+        public ObservableCollection<EnemyViewModel> AllEnemies { get; set; }
 
         public EditEncounterWindowViewModel()
         {
+            EnemiesInTheEncounter = new ObservableCollection<EnemyViewModel>();
+            
             Locations = new ObservableCollection<EncounterLocationViewModel>();
-            SelectedEnemies = new ObservableCollection<EnemyViewModel>();
-            AvailableEnemies = new ObservableCollection<EnemyViewModel>();
+            var encountersByLocation = EncountersController.GetEncountersByLocation();
+            foreach (var locationEncounterPair in encountersByLocation)
+            {
+                var newLocationViewModel = new EncounterLocationViewModel();
+                newLocationViewModel.LocationName = locationEncounterPair.Key;
+                newLocationViewModel.Encounters = new ObservableCollection<EncounterViewModel>();
+                foreach (var encounterData in locationEncounterPair.Value)
+                {
+                    newLocationViewModel.Encounters.Add(new EncounterViewModel(encounterData));
+                }
+                Locations.Add(newLocationViewModel);
+            }
+            
+            Locations = new ObservableCollection<EncounterLocationViewModel>(Locations.OrderBy(l => l.LocationName));
+            AllEnemies = new ObservableCollection<EnemyViewModel>();
+
+            foreach (var enemyData in RandomizerLogic.allEnemies)
+            {
+                AllEnemies.Add(new EnemyViewModel(enemyData));
+            }
         }
 
-        public void OnEncounterSelected(EncounterViewModel encounter)
+        public void UpdateEncounterEnemies(EncounterViewModel encounter)
         {
-            AvailableEnemies.Clear();
+            if (encounter == null)
+            {
+                return;
+            }
+            
+            EnemiesInTheEncounter.Clear();
             
             var enemies = GetEnemiesInEncounter(encounter);
             foreach (var enemy in enemies)
             {
-                AvailableEnemies.Add(enemy);
+                EnemiesInTheEncounter.Add(enemy);
             }
         }
 
-        public void AddSelectedEnemy(EnemyViewModel enemy)
+        public void OnEncounterSelected(EncounterViewModel encounter)
         {
-            if (!SelectedEnemies.Any(si => si.CodeName == enemy.CodeName))
-            {
-                SelectedEnemies.Add(new EnemyViewModel { CodeName = enemy.CodeName, Name = enemy.Name });
-            }
-        }
-
-        public void RemoveSelectedEnemy(EnemyViewModel enemy)
-        {
-            var enemyToRemove = SelectedEnemies.FirstOrDefault(e => e.CodeName == enemy.CodeName);
-            if (enemyToRemove != null)
-            {
-                SelectedEnemies.Remove(enemyToRemove);
-            }
+            UpdateEncounterEnemies(encounter);
         }
 
         private List<EnemyViewModel> GetEnemiesInEncounter(EncounterViewModel encounter)
         {
-            return new List<EnemyViewModel>
+            var result = new List<EnemyViewModel>();
+            var encounterData = EncountersController.Encounters.Find(e => e.Name == encounter.CodeName);
+            if (encounterData == null)
             {
-                new EnemyViewModel { CodeName = "Test_PlaceHolderBattleDude", Name = "Place holder battle" },
-                new EnemyViewModel { CodeName = "Test_PlaceHolderBattleDude", Name = "Place holder battle" },
-                new EnemyViewModel { CodeName = "Test_PlaceHolderBattleDude", Name = "Place holder battle" },
-                new EnemyViewModel { CodeName = "Test_PlaceHolderBattleDude", Name = "Place holder battle" }
-            };
-        }
+                return result;
+            }
 
+            foreach (var enemyData in encounterData.Enemies)
+            {
+                var enemyViewModel = new EnemyViewModel(enemyData);
+                result.Add(enemyViewModel);
+            }
+
+            return result;
+        }
+        
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName)
         {
@@ -139,18 +196,28 @@ namespace E33Randomizer
 
     public class EncounterLocationViewModel
     {
-        public string Name { get; set; }
+        public string LocationName { get; set; }
         public ObservableCollection<EncounterViewModel> Encounters { get; set; }
     }
 
     public class EncounterViewModel
     {
+        public EncounterViewModel(Encounter encounterData)
+        {
+            CodeName = encounterData.Name;
+            Name = encounterData.Name;
+        }
         public string CodeName { get; set; }
         public string Name { get; set; }
     }
 
     public class EnemyViewModel
     {
+        public EnemyViewModel(EnemyData enemyData)
+        {
+            CodeName = enemyData.CodeName;
+            Name = enemyData.Name;
+        }
         public string CodeName { get; set; }
         public string Name { get; set; }
     }

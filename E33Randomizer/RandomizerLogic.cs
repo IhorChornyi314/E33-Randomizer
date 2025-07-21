@@ -73,7 +73,7 @@ public static class RandomizerLogic
         }
     }
 
-    private static void PackAndConvertData(bool writeTxt=true)
+    public static void PackAndConvertData(bool writeTxt=true)
     {
         var presetName = PresetName.Length == 0 ? usedSeed.ToString() : PresetName;
         var exportPath = $"rand_{presetName}/";

@@ -10,7 +10,7 @@ namespace E33Randomizer
 {
     public partial class CustomEnemyPlacementWindow
     {
-        private string _selectedEnemyForCustomPlacement = null;
+        public string SelectedEnemyForCustomPlacement = null;
 
         public CustomEnemyPlacementWindow()
         {
@@ -173,7 +173,7 @@ namespace E33Randomizer
             if (ExcludedEnemiesListBox.SelectedItem != null)
             {
                 string selectedEnemy = ExcludedEnemiesListBox.SelectedItem.ToString();
-                CustomEnemyPlacement.NotRandomized.Remove(selectedEnemy);
+                CustomEnemyPlacement.Excluded.Remove(selectedEnemy);
                 UpdateExcludedListBox();
                 UpdateJsonTextBox();
                 RemoveExcludedEnemyButton.IsEnabled = false;
@@ -189,7 +189,7 @@ namespace E33Randomizer
                 {
                     {"Anyone", new Dictionary<string, float>() {{enemyName, 1}}}
                 };
-                LoadCustomPlacementRows(_selectedEnemyForCustomPlacement);
+                LoadCustomPlacementRows(SelectedEnemyForCustomPlacement);
                 CustomEnemyPlacement.UpdateFinalEnemyReplacementFrequencies();
                 Update();
             }
@@ -207,7 +207,7 @@ namespace E33Randomizer
                 try
                 {
                     CustomEnemyPlacement.LoadFromJson(presetFile);
-                    LoadCustomPlacementRows(_selectedEnemyForCustomPlacement);
+                    LoadCustomPlacementRows(SelectedEnemyForCustomPlacement);
                     Update();
                 }
                 catch (Exception ex)
@@ -234,7 +234,7 @@ namespace E33Randomizer
                 try
                 {
                     CustomEnemyPlacement.LoadFromJson(openFileDialog.FileName);
-                    LoadCustomPlacementRows(_selectedEnemyForCustomPlacement);
+                    LoadCustomPlacementRows(SelectedEnemyForCustomPlacement);
                     Update();
                 }
                 catch (Exception ex)
@@ -411,7 +411,7 @@ namespace E33Randomizer
             var item = (ListBoxItem)sender;
             if (item.Content is string selectedEnemy)
             {
-                _selectedEnemyForCustomPlacement = selectedEnemy;
+                SelectedEnemyForCustomPlacement = selectedEnemy;
                 SelectedEnemyDisplay.Text = $"Selected: {selectedEnemy}";
                 AddCustomPlacementRowButton.IsEnabled = true;
                 
@@ -419,7 +419,7 @@ namespace E33Randomizer
             }
             else
             {
-                _selectedEnemyForCustomPlacement = null;
+                SelectedEnemyForCustomPlacement = null;
                 SelectedEnemyDisplay.Text = "No enemy selected";
                 AddCustomPlacementRowButton.IsEnabled = false;
                 CustomPlacementRowsContainer.Children.Clear();
@@ -428,7 +428,7 @@ namespace E33Randomizer
 
         private void AddCustomPlacementRowButton_Click(object sender, RoutedEventArgs e)
         {
-            if (_selectedEnemyForCustomPlacement != null)
+            if (SelectedEnemyForCustomPlacement != null)
             {
                 var row = CreateCustomPlacementRow("");
                 CustomPlacementRowsContainer.Children.Add(row);
@@ -471,10 +471,10 @@ namespace E33Randomizer
 
             float frequency = 1;
 
-            if (_selectedEnemyForCustomPlacement != "" && CustomEnemyPlacement.CustomPlacement.ContainsKey(_selectedEnemyForCustomPlacement) &&
-                CustomEnemyPlacement.CustomPlacement[_selectedEnemyForCustomPlacement].ContainsKey(enemyName))
+            if (SelectedEnemyForCustomPlacement != "" && CustomEnemyPlacement.CustomPlacement.ContainsKey(SelectedEnemyForCustomPlacement) &&
+                CustomEnemyPlacement.CustomPlacement[SelectedEnemyForCustomPlacement].ContainsKey(enemyName))
             {
-                frequency = CustomEnemyPlacement.CustomPlacement[_selectedEnemyForCustomPlacement][enemyName];
+                frequency = CustomEnemyPlacement.CustomPlacement[SelectedEnemyForCustomPlacement][enemyName];
             }
             
             Slider frequencySlider = new Slider
@@ -498,7 +498,7 @@ namespace E33Randomizer
             
             enemyNameCombo.SelectionChanged += (_, _) =>
             {
-                CustomEnemyPlacement.SetCustomPlacement(_selectedEnemyForCustomPlacement,
+                CustomEnemyPlacement.SetCustomPlacement(SelectedEnemyForCustomPlacement,
                     (string)(enemyNameCombo.SelectedItem as ComboBoxItem).Content, (float)frequencySlider.Value / 100); 
                 UpdateJsonTextBox();
             };
@@ -511,7 +511,7 @@ namespace E33Randomizer
                 }
                 if (enemyNameCombo.SelectedItem != null)
                 {
-                    CustomEnemyPlacement.SetCustomPlacement(_selectedEnemyForCustomPlacement, (string)(enemyNameCombo.SelectedItem as ComboBoxItem).Content, (float)e.NewValue / 100);
+                    CustomEnemyPlacement.SetCustomPlacement(SelectedEnemyForCustomPlacement, (string)(enemyNameCombo.SelectedItem as ComboBoxItem).Content, (float)e.NewValue / 100);
                     UpdateJsonTextBox();
                 }
             };
@@ -530,7 +530,7 @@ namespace E33Randomizer
                     frequencySlider.Value = value;
                     if (enemyNameCombo.SelectedItem != null)
                     {
-                        CustomEnemyPlacement.SetCustomPlacement(_selectedEnemyForCustomPlacement,
+                        CustomEnemyPlacement.SetCustomPlacement(SelectedEnemyForCustomPlacement,
                             (string)(enemyNameCombo.SelectedItem as ComboBoxItem).Content, (float)value / 100);
                         UpdateJsonTextBox();
                     }
@@ -556,7 +556,7 @@ namespace E33Randomizer
             CustomPlacementRowsContainer.Children.Remove(row);
             if (enemyName != null)
             {
-                CustomEnemyPlacement.RemoveCustomEnemyPlacement(_selectedEnemyForCustomPlacement, enemyName);
+                CustomEnemyPlacement.RemoveCustomEnemyPlacement(SelectedEnemyForCustomPlacement, enemyName);
                 UpdateJsonTextBox();
             }
         }

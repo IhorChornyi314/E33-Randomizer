@@ -36,20 +36,7 @@ public static class CustomEnemyPlacement
     public static List<EnemyData> NotRandomizedTranslated => TranslatePlacementOptions(NotRandomized);
     public static List<EnemyData> ExcludedTranslated => TranslatePlacementOptions(Excluded);
     public static List<string> PlacementOptionsList = [];
-    public static List<string> CustomCategories =
-    [
-        "Anyone",
-        "All Bosses and Minibosses",
-        "All Bosses",
-        "Main Plot Bosses",
-        "Side Bosses",
-        "All Regular Enemies",
-        "Giant Enemies/Bosses",
-        "Merchants",
-        "Mimes",
-        "Cut Content Enemies",
-        "Gimmick/Tutorial Enemies"
-    ];
+    public static List<string> CustomCategories = new(); 
     public static Dictionary<string, string> ArchetypeNames = new()
     {
         { "Regular", "Regular" },
@@ -61,6 +48,8 @@ public static class CustomEnemyPlacement
         { "Chromatic Bosses", "Alpha" },
         { "Petanks", "Petank" },
     };
+
+    public static Dictionary<string, List<EnemyData>> CustomCategoryTranslations = new();
     public static Dictionary<string, Dictionary<string, float>> CustomPlacement = new();
     public static Dictionary<string, float> FrequencyAdjustments = new();
     public static Dictionary<string, Dictionary<string, float>> FinalEnemyReplacementFrequencies = new();
@@ -69,6 +58,17 @@ public static class CustomEnemyPlacement
     
     public static void InitPlacementOptions()
     {
+        using (StreamReader r = new StreamReader("Data/enemy_categories.json"))
+        {
+            string json = r.ReadToEnd();
+            var customCategoryTranslationsString = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(json);
+            CustomCategoryTranslations =  customCategoryTranslationsString.ToDictionary(
+                pair => pair.Key,
+                pair => pair.Value.Select(name => new EnemyData(name)).ToList()
+            );
+            CustomCategories = CustomCategoryTranslations.Keys.ToList();
+        }
+        
         PlacementOptionsList = [];
         PlacementOptionsList.AddRange(CustomCategories);
         PlacementOptionsList.InsertRange(PlacementOptionsList.IndexOf("All Regular Enemies"), ArchetypeNames.Keys);
@@ -76,6 +76,7 @@ public static class CustomEnemyPlacement
         {
             PlacementOptionsList.Add(enemyData.Name);
         }
+        
         LoadDefaultPreset();
     }
 
@@ -120,7 +121,7 @@ public static class CustomEnemyPlacement
     {
         if (!CustomPlacement.ContainsKey(from))
         {
-            return;
+            CustomPlacement[from] = new Dictionary<string, float>();
         }
 
         CustomPlacement[from][to] = frequency;
@@ -155,145 +156,7 @@ public static class CustomEnemyPlacement
         
         if (CustomCategories.Contains(option))
         {
-            var result = new List<EnemyData>();
-            switch (option)
-            {
-                case "All Bosses":
-                    result = [];
-                    result.AddRange(RandomizerLogic.GetAllByArchetype("Boss"));
-                    result.AddRange(RandomizerLogic.GetAllByArchetype("Alpha"));
-                    return result;
-                case "All Bosses and Minibosses":
-                    result = [];
-                    result.AddRange(RandomizerLogic.GetAllByArchetype("Boss"));
-                    result.AddRange(RandomizerLogic.GetAllByArchetype("Alpha"));
-                    result.AddRange(RandomizerLogic.GetAllByArchetype("Elite"));
-                    return result;
-                case "Giant Enemies/Bosses":
-                    return RandomizerLogic.GetEnemyDataList([
-                        "MM_Gargant",
-                        "ML_Gargant_Gold",
-                        "CFH_Gargant",
-                        "SI_Glissando",
-                        "SI_Glissando_Alpha",
-                        "MO_Boss_Paintress",
-                        "SI_Axon_Sirene",
-                        "MF_Axon_Visages",
-                        "SL_Sapling_CrushingWall",
-                        "WM_Serpenphare"
-                    ]);
-                case "Main Plot Bosses":
-                    return RandomizerLogic.GetEnemyDataList([
-                        "SM_Boss_Eveque",
-                        "ML_Eveque_Gold",
-                        "SM_Boss_EvequeLuneScript",
-                        "AS_PotatoBag_Boss",
-                        "FB_DuallisteLR",
-                        "GDC_Dualliste",
-                        "MM_MirrorRenoir",
-                        "MO_Boss_Paintress",
-                        "SI_Axon_Sirene",
-                        "MF_Axon_Visages",
-                        "GO_Goblu_CleaTower",
-                        "GO_Goblu",
-                        "CFH_Goblu",
-                        "MS_Monoco",
-                        "L_Boss_Curator",
-                        "FB_Dualliste_Phase2",
-                        "FinalBoss_Verso",
-                        "FinalBoss_Maelle",
-                        "ML_PaintressIntro",
-                        "MF_Axon_MaskKeeper_VisagesPhase2",
-                        "OL_MirrorRenoir_FirstFight",
-                        "SC_LampMaster",
-                        "TS_PotatoBag_Boss_Twilight",
-                        "CFH_Dualliste",
-                        "CFH_LampMaster",
-                        "CT_MaskKeeper_NoMask",
-                        "QUEST_MonocoDuel",
-                        "CW_LampMasterAlpha",
-                        "SC_LampMaster_CleasTower",
-                        "FB_Dualliste_CleasTower",
-                        "CT_MaskKeeper_NoMask_CleaTwoer",
-                        "ML_PotatoBag_Boss_Gold",
-                        "SM_Boss_Eveque_ShieldTutorial",
-                        "AS_PotatoBag_Boss_Quest"
-                    ]);
-                case "Side Bosses":
-                    return RandomizerLogic.GetEnemyDataList([
-                        "YF_Boss_Scavenger",
-                        "MM_Gargant",
-                        "SI_Tisseur",
-                        "RC_Alicia",
-                        "WM_Serpenphare",
-                        "WM_Sprong",
-                        "QUEST_Golgra_DarkArena",
-                        "QUEST_Golgra_SacredRiver",
-                        "YF_Glaise_Boss",
-                        "Boss_Simon",
-                        "CFH_Boss_Clea",
-                        "ML_Gargant_Gold",
-                        "GV_Golgra",
-                        "Boss_Simon_Phase2",
-                        "CT_Boss_Curator_CleaTower",
-                        "CT_Boss_Paintress_CleaTower",
-                        "CFH_Gargant"
-                    ]);
-                case "All Regular Enemies":
-                    result = [];
-                    result.AddRange(RandomizerLogic.GetAllByArchetype("Weak"));
-                    result.AddRange(RandomizerLogic.GetAllByArchetype("Elusive"));
-                    result.AddRange(RandomizerLogic.GetAllByArchetype("Regular"));
-                    result.AddRange(RandomizerLogic.GetAllByArchetype("Strong"));
-                    return result;
-                case "Merchants":
-                    return RandomizerLogic.allEnemies.FindAll(e => e.CodeName.Contains("Merchant_"));
-                case "Mimes":
-                    return RandomizerLogic.allEnemies.FindAll(e => e.CodeName.Contains("Mime"));
-                case "Cut Content Enemies":
-                    result = RandomizerLogic.GetEnemyDataList([
-                        "YF_GaultA",
-                        "AS_Gestral_Dragoon",
-                        "AS_GestralBully_A",
-                        "AS_GestralBully_B",
-                        "AS_GestralBully_C",
-                        "SC_FearLight",
-                        "SC_SapNevronBoss",
-                        "SC_Gestral_Sonnyso",
-                        "FB_DuallisteR",
-                        "FB_DuallisteL",
-                        "Test_PlaceHolderBattleDude",
-                        "NevronWall"
-                    ]);
-                    result.AddRange(RandomizerLogic.allEnemies.FindAll(e => e.CodeName.Contains("Alternati")));
-                    result.AddRange(RandomizerLogic.allEnemies.FindAll(e => e.CodeName.Contains("CZ_Chroma")));
-                    return result;
-                case "Gimmick/Tutorial Enemies":
-                    return RandomizerLogic.GetEnemyDataList([
-                        "LU_Act1_Sophie",
-                        "CAMP_PunchingBall",
-                        "Quest_GestralSumo9999",
-                        "LU_Act1_PunchingBall",
-                        "L_MaelleTutorial_NoTutorial_Civilian",
-                        "L_MaelleTutorial_Civilian",
-                        "L_MaelleTutorial",
-                        "L_MaelleTutorial_NoTutorial",
-                        "SC_MirrorRenoir_GustaveEnd",
-                        "ML_PaintressIntro",
-                        "FinalBoss_Verso",
-                        "FinalBoss_Maelle",
-                        "QUEST_TroubadourCantPlay",
-                        "QUEST_Danseuse_DanceClass_Kill",
-                        "QUEST_Danseuse_DanceClass_Clone",
-                        "SL_Sapling_CrushingWall",
-                        "GO_Curator_JumpTutorial",
-                        "GO_Curator_JumpTutorial_NoTuto",
-                        "QUEST_Danseuse_DanceClass",
-                        "MF_MaskSadness",
-                        "MF_MaskAnger",
-                        "MF_MaskJoy"
-                    ]);
-            }
+            return CustomCategoryTranslations[option];
         }
         
         if (ArchetypeNames.ContainsKey(option))
