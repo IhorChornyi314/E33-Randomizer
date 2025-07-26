@@ -19,7 +19,6 @@ public partial class MainWindow
         {
             InitializeComponent();
             RandomizerLogic.Init();
-            RandomizerLogic.ProcessKeyItems();
             // Setup data bindings
             SetupDataBindings();
         }
@@ -60,12 +59,13 @@ public partial class MainWindow
                 }
             };
             
-            BossNumberCapCheckBox.IsChecked = Settings.BossNumberCapped;
+            RandomizeAdditionalEnemiesCheckBox.IsChecked = Settings.RandomizeAddedEnemies;
             EnsureBossesInBossEncountersCheckBox.IsChecked = Settings.EnsureBossesInBossEncounters;
             ReduceBossRepetitionCheckBox.IsChecked = Settings.ReduceBossRepetition;
+            TieLootToEncountersButton.IsChecked = Settings.TieDropsToEncounters;
 
-            BossNumberCapCheckBox.Checked += (_, _) => Settings.BossNumberCapped = true;
-            BossNumberCapCheckBox.Unchecked += (_, _) => Settings.BossNumberCapped = false;
+            RandomizeAdditionalEnemiesCheckBox.Checked += (_, _) => Settings.RandomizeAddedEnemies = true;
+            RandomizeAdditionalEnemiesCheckBox.Unchecked += (_, _) => Settings.RandomizeAddedEnemies = false;
             
             EnsureBossesInBossEncountersCheckBox.Checked += (_, _) => Settings.EnsureBossesInBossEncounters = true;
             EnsureBossesInBossEncountersCheckBox.Unchecked += (_, _) => Settings.EnsureBossesInBossEncounters = false;
@@ -73,8 +73,8 @@ public partial class MainWindow
             ReduceBossRepetitionCheckBox.Checked += (_, _) => Settings.ReduceBossRepetition = true;
             ReduceBossRepetitionCheckBox.Unchecked += (_, _) => Settings.ReduceBossRepetition = false;
 
-            JujubreeKeyItemsAddButton.Checked += (_, _) => Settings.EnableJujubreeToSellKeyItems = true;
-            JujubreeKeyItemsAddButton.Unchecked += (_, _) => Settings.EnableJujubreeToSellKeyItems = false;
+            TieLootToEncountersButton.Checked += (_, _) => Settings.TieDropsToEncounters = true;
+            TieLootToEncountersButton.Unchecked += (_, _) => Settings.TieDropsToEncounters = false;
         }
     
 
@@ -153,43 +153,13 @@ public partial class MainWindow
             Regex regex = new Regex("[^a-zA-Z0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
-
-        private void GenerateFromReportButton_Click(object sender, RoutedEventArgs e)
-        {
-            // OpenFileDialog openFileDialog = new OpenFileDialog
-            // {
-            //     Title = "Load Generation Report",
-            //     Filter = "TXT files (*.txt)|*.txt|All files (*.*)|*.*",
-            //     FilterIndex = 1
-            // };
-            //
-            // if (openFileDialog.ShowDialog() == true)
-            // {
-            //     try
-            //     {
-            //         RandomizerLogic.GenerateFromReport(openFileDialog.FileName);
-            //         
-            //         MessageBox.Show($"Files restored! You can find them in the rand_{RandomizerLogic.usedSeed} folder.",
-            //             "Restored", MessageBoxButton.OK, MessageBoxImage.Information);
-            //     }
-            //     catch (Exception ex)
-            //     {
-            //         MessageBox.Show($"Error loading report: {ex.Message}", 
-            //             "Load Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            //     }
-            // }
-        }    
         
         private void GenerateButton_Click(object sender, RoutedEventArgs e)
         {
             RandomizerLogic.Randomize();
             MessageBox.Show($"Generation done! You can find the mod in the rand_{RandomizerLogic.usedSeed} folder.\n\n" +
-                          $"Randomize Encounter Sizes: {Settings.RandomizeEncounterSizes}\n" +
-                          $"Randomize Merchant Fights: {Settings.RandomizeMerchantFights}\n" +
-                          $"Include Cut Content: {Settings.IncludeCutContent}\n" +
-                          $"Enemy Onslaught Enabled: {Settings.EnableEnemyOnslaught}\n" +
-                          $"Seed: {RandomizerLogic.usedSeed}\n",
-                          "Settings Summary", MessageBoxButton.OK, MessageBoxImage.Information);
+                          $"Used Seed: {RandomizerLogic.usedSeed}\n",
+                          "Generation Summary", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void NumberOfAdditionalEnemiesTextBox_OnLostFocus(object sender, RoutedEventArgs e)

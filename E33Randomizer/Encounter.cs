@@ -12,7 +12,10 @@ public class Encounter
     public string Name;
     public List<EnemyData> Enemies;
     public ArchetypeGroup Archetypes;
+    public List<EnemyLootDrop> PossibleLootDrops = new();
     public bool IsBossEncounter;
+    public bool IsBroken;
+    public EnemyData LootEnemy;
     
     private bool fleeImpossible;
     private int levelOverride;
@@ -34,8 +37,18 @@ public class Encounter
         foreach (StructPropertyData enemy in enemiesData.Value.Values)
         {
             var enemyName = enemy.Value[1] as NamePropertyData;
-            var enemyData = RandomizerLogic.GetEnemyData(enemyName.Value.Value.Value);
+            var enemyCodeName = enemyName.Value.Value.Value;
+            if (EnemiesController.mismatchedEnemyCodeNames.ContainsKey(enemyCodeName))
+            {
+                enemyCodeName = EnemiesController.mismatchedEnemyCodeNames[enemyCodeName];
+            }
+            var enemyData = EnemiesController.GetEnemyData(enemyCodeName);
+            if (enemyData.IsBroken)
+            {
+                IsBroken = true;
+            }
             Enemies.Add(enemyData);
+            PossibleLootDrops.AddRange(enemyData.PossibleLoot);
             if (enemyData.Archetype == "Boss" || enemyData.Archetype == "Alpha")
             {
                 IsBossEncounter = true;
@@ -49,12 +62,18 @@ public class Encounter
         disableCameraEndMovement = (_encounterData.Value[3] as BoolPropertyData).Value;
         disableReactionBattleLines = (_encounterData.Value[4] as BoolPropertyData).Value;
         isNarrativeBattle = (_encounterData.Value[5] as BoolPropertyData).Value;
+        PossibleLootDrops =  PossibleLootDrops.Distinct().ToList();
     }
 
     public Encounter(string encounterName, List<string> encounterEnemies)
     {
         Name = encounterName;
-        Enemies = RandomizerLogic.GetEnemyDataList(encounterEnemies);
+        Enemies = EnemiesController.GetEnemyDataList(encounterEnemies);
+        foreach (var enemyData in Enemies)
+        {
+            PossibleLootDrops.AddRange(enemyData.PossibleLoot);
+        }
+        PossibleLootDrops =  PossibleLootDrops.Distinct().ToList();
     }
 
     public void SaveToStruct(StructPropertyData encounterStruct)
@@ -76,7 +95,12 @@ public class Encounter
         
             var dummyEnemy = dummyEnemyStruct.Value.Clone() as StructPropertyData;
             var enemyName = dummyEnemy.Value[1] as NamePropertyData;
-            enemyName.Value.Value = FString.FromString(Enemies[i].CodeName);
+            var enemyCodeName = Enemies[i].CodeName;
+            if (i == 0 && LootEnemy != null)
+            {
+                enemyCodeName = LootEnemy.CodeName;
+            }
+            enemyName.Value.Value = FString.FromString(enemyCodeName);
             enemiesField.Value.Add(dummyEnemyKey, dummyEnemy);
         }
 
@@ -87,6 +111,20 @@ public class Encounter
         isNarrativeBattleField.Value = isNarrativeBattle;
     }
 
+    public void HandleEncounterLoot()
+    {
+        if (Size == 0 || PossibleLootDrops.Count == 0)
+        {
+            return;
+        }
+
+        var result = EnemiesController.AddEnemyClone(Enemies[0], $"{Name}_{Enemies[0].CodeName}");
+        
+        result.AddDrops(PossibleLootDrops);
+        LootEnemy = result;
+        return;
+    }
+    
     public override bool Equals(object? obj)
     {
         return obj != null && (obj as Encounter).Name == Name;

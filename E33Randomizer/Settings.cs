@@ -12,8 +12,10 @@ public static class Settings
     public static int EnemyOnslaughtAdditionalEnemies = 1;
     public static int EnemyOnslaughtEnemyCap = 4;
 
-    public static bool BossNumberCapped = true;
+    //public static bool BossNumberCapped = true;
+    public static bool RandomizeAddedEnemies = false;
     public static bool EnsureBossesInBossEncounters = true;
     public static bool ReduceBossRepetition = true;
+    public static bool TieDropsToEncounters = true; 
     public static bool EnableJujubreeToSellKeyItems = true;
 }

@@ -285,6 +285,17 @@ namespace E33Randomizer
                 Margin = new Thickness(0, 0, 0, 5)
             };
 
+
+            // Enemy dropdown
+            ComboBox enemyCombo = new ComboBox
+            {
+                Width = 150,
+                Height = 30,
+                Margin = new Thickness(0, 0, 10, 0),
+                VerticalAlignment = VerticalAlignment.Center
+            };
+            PopulateEnemyComboBox(enemyCombo);
+            
             // Remove button
             Button removeButton = new Button
             {
@@ -296,17 +307,13 @@ namespace E33Randomizer
                 Foreground = System.Windows.Media.Brushes.White,
                 FontWeight = FontWeights.Bold
             };
-            removeButton.Click += (_, _) => RemoveFrequencyRow(row);
-
-            // Enemy dropdown
-            ComboBox enemyCombo = new ComboBox
+            removeButton.Click += (_, _) =>
             {
-                Width = 150,
-                Height = 30,
-                Margin = new Thickness(0, 0, 10, 0),
-                VerticalAlignment = VerticalAlignment.Center
+                var enemyName = (string)(enemyCombo.SelectedItem as ComboBoxItem).Content;
+                CustomEnemyPlacement.FrequencyAdjustments.Remove(enemyName);
+                RemoveFrequencyRow(row);
+                UpdateJsonTextBox();
             };
-            PopulateEnemyComboBox(enemyCombo);
 
             if (enemyName != "")
             {

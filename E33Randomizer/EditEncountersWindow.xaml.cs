@@ -59,8 +59,12 @@ namespace E33Randomizer
         
         public void PackCurrentEncounters(object sender, RoutedEventArgs e)
         {
-            EncountersController.WriteEncounterAssets();
+            RandomizerLogic.usedSeed = Settings.Seed != -1 ? Settings.Seed : Environment.TickCount; 
+            
             RandomizerLogic.PackAndConvertData();
+            MessageBox.Show($"Generation done! You can find the mod in the rand_{RandomizerLogic.usedSeed} folder.\n\n" +
+                            $"Used Seed: {RandomizerLogic.usedSeed}\n",
+                "Generation Summary", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         public void ReadEncountersFromTxt(object sender, RoutedEventArgs e)
@@ -142,7 +146,7 @@ namespace E33Randomizer
             Locations = new ObservableCollection<EncounterLocationViewModel>(Locations.OrderBy(l => l.LocationName));
             AllEnemies = new ObservableCollection<EnemyViewModel>();
 
-            foreach (var enemyData in RandomizerLogic.allEnemies)
+            foreach (var enemyData in EnemiesController.enemies)
             {
                 AllEnemies.Add(new EnemyViewModel(enemyData));
             }
@@ -216,7 +220,7 @@ namespace E33Randomizer
         public EnemyViewModel(EnemyData enemyData)
         {
             CodeName = enemyData.CodeName;
-            Name = enemyData.Name;
+            Name = enemyData.CustomName;
         }
         public string CodeName { get; set; }
         public string Name { get; set; }

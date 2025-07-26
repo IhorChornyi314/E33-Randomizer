@@ -79,18 +79,20 @@
                                   IsChecked="False" 
                                   Margin="0"
                                   FontSize="14"/>
-                        <TextBlock Text="Merchants' special wares are unlocked upon killing them in any battle, NOT when winning the &quot;Fight Merchant&quot; encounter." 
-                                   Foreground="Orange" 
-                                   FontWeight="Bold" 
-                                   Margin="10,5,0,5"
-                                   VerticalAlignment="Center"
-                                   Visibility="{Binding IsChecked, ElementName=RandomizeMerchantFightsCheckBox, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                         </StackPanel>
-                        <CheckBox Grid.Row="2" Name="JujubreeKeyItemsAddButton" 
-                                  Content="Add Painted Power and Maelle's Paintress skills to Jujubree's shop (only accessible in Act 3)" 
+                        <StackPanel Orientation="Vertical" Margin="0"
+                                    Grid.Row="2">
+                        <CheckBox Name="TieLootToEncountersButton" 
+                                  Content="Tie loot drops to encounters instead of enemies" 
                                   IsChecked="True" 
                                   Margin="0"
                                   FontSize="14"/>
+                        <TextBlock Text="⚠️ Warning: Merchants' special wares unlocks and Maelle's paintress skills are considered loot drops" 
+                                   Foreground="Orange" 
+                                   FontWeight="Bold" 
+                                   Margin="10,5,0,5"
+                                   VerticalAlignment="Center"/>
+                        </StackPanel>
                         <!-- Include Cut Content -->
                         <StackPanel Orientation="Vertical" Margin="0"
                                     Grid.Row="3">
@@ -123,7 +125,13 @@
                                        TextWrapping="Wrap"
                                        MaxWidth="800"
                                        />
-                            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                            <CheckBox Name="RandomizeAdditionalEnemiesCheckBox" 
+                                      Content="Randomize added enemies" 
+                                      IsChecked="False" 
+                                      Margin="20,10,0,0"
+                                      FontSize="14"
+                                      Grid.Row="6"/>
+                            <StackPanel Orientation="Horizontal" Margin="15,0,0,0">
                                 <Label Content="Number of additional enemies:"
                                        FontSize="14"/>
                                 <TextBox Name="NumberOfAdditionalEnemiesTextBox" 
@@ -139,7 +147,7 @@
                                          LostFocus="NumberOfAdditionalEnemiesTextBox_OnLostFocus"
                                          />
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
+                            <StackPanel Orientation="Horizontal" Margin="15,0,0,0">
                                 <Label Content="Cap encounter size at:"
                                        FontSize="14"/>
                                 <TextBox Name="EnemyNumberCapTextBox" 
@@ -155,28 +163,23 @@
                                          LostFocus="EnemyNumberCapTextBox_OnLostFocus"
                                 />
                             </StackPanel>
+                            
                         </StackPanel>
-                        <CheckBox Name="BossNumberCapCheckBox" 
-                                  Content="Cap the number of bosses in regular encounters to 1" 
-                                  IsChecked="True" 
-                                  Margin="0,0,0,0"
-                                  FontSize="14"
-                                  Grid.Row="6"/>
                         <CheckBox Name="EnsureBossesInBossEncountersCheckBox" 
                                   Content="Ensure that boss encounters have at least one boss" 
                                   IsChecked="True" 
-                                  Margin="0,5,0,0"
+                                  Margin="0,0,0,0"
                                   FontSize="14"
                                   Grid.Row="7"/>
                         <CheckBox Name="ReduceBossRepetitionCheckBox" 
                                   Content="Reduce boss repetition" 
                                   IsChecked="True" 
-                                  Margin="0,5,0,0"
+                                  Margin="0,0,0,0"
                                   FontSize="14"
                                   Grid.Row="8"/>
                         
                         <!-- Phase 2 Simon Dropdown -->
-                        <StackPanel Orientation="Horizontal" Margin="0,40,0,20" 
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,20" 
                                     Grid.Row="9">
                         <Label Content="Replace Phase 2 Simon with Phase 1 in mandatory fights until after:" FontSize="15"
                                />
@@ -190,7 +193,7 @@
                             <ComboBoxItem Content="Goblu" Tag="AS_PotatoBag_Boss"/>
                             <ComboBoxItem Content="Ultimate Sakapatate" Tag="QUEST_MatthieuTheColossus*1"/>
                             <ComboBoxItem Content="Gestral Tournament" Tag="EN_Francois"/>
-                            <ComboBoxItem Content="Never (I don't think it's possible but you do you)" Tag="SM_Lancelier*1"/>
+                            <ComboBoxItem Content="Never" Tag="SM_Lancelier*1"/>
                             
                         </ComboBox>
                         </StackPanel>
@@ -284,32 +287,12 @@
                          VerticalAlignment="Center" 
                          Height="25"
                          PreviewTextInput="SeedTextBox_PreviewTextInput"/>
-                <!-- Generate Button -->
-                <Button Name="GenerateFromFileButton" 
-                        VerticalAlignment="Bottom"
-                        Content="Restore from file" 
-                        Width="150" 
-                        Height="35" 
-                        Click="GenerateFromReportButton_Click"
-                        Background="Gray"
-                        Foreground="White"
-                        FontWeight="Bold"
-                        Grid.Column="2"/>
-                <!-- Preset Name Input -->
-                <Label Grid.Column="2" Content="Preset Name:" VerticalAlignment="Center" FontWeight="Bold" Visibility="Hidden"/>
-                <TextBox Name="PresetNameTextBox" 
-                         Grid.Column="3" 
-                         Margin="10,0,20,0" 
-                         VerticalAlignment="Center" 
-                         Height="25"
-                         Visibility="Hidden"
-                         PreviewTextInput="PresetNameTextBox_PreviewTextInput"/>
                 
                 <!-- Generate Button -->
                 <Button Name="GenerateButton" 
                         Grid.Column="4" 
-                        Content="Generate" 
-                        Width="100" 
+                        Content="Generate and pack mod" 
+                        Width="150" 
                         Height="35" 
                         Click="GenerateButton_Click"
                         Background="#4CAF50"

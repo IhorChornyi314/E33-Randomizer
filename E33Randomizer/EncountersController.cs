@@ -150,6 +150,10 @@ public static class EncountersController
         var result = new Dictionary<String, List<Encounter>>();
         foreach (var encounter in Encounters)
         {
+            if (encounter.IsBroken)
+            {
+                continue;
+            }
             var encounterLocationCodeName = encounter.Name.Split('_')[0];
             var encounterLocation = LocationCodeNames.ContainsKey(encounterLocationCodeName)
                 ? LocationCodeNames[encounterLocationCodeName]
@@ -199,6 +203,8 @@ public static class EncountersController
 
     public static void WriteEncounterAssets()
     {
+        Directory.CreateDirectory("randomizer/Sandfall/Content/jRPGTemplate/Datatables");
+        Directory.CreateDirectory("randomizer/Sandfall/Content/jRPGTemplate/Datatables/Encounters_Datatables");
         WriteEncounterAsset("Data/Originals/DT_jRPG_Encounters.uasset");
         WriteEncounterAsset("Data/Originals/DT_jRPG_Encounters_CleaTower.uasset");
         WriteEncounterAsset("Data/Originals/Encounters_Datatables/DT_Encounters_Composite.uasset");
@@ -227,7 +233,24 @@ public static class EncountersController
 
     public static void GenerateNewEncounters()
     {
+        ReadEncounterAssets();
         Encounters.ForEach(e => ModifyEncounter(e));
+    }
+
+    public static void Reset()
+    {
+        foreach (var encounter in Encounters)
+        {
+            encounter.LootEnemy = null;
+        }
+    }
+
+    public static void HandleLoot()
+    {
+        foreach (var encounter in Encounters)
+        {
+            encounter.HandleEncounterLoot();
+        }
     }
 
     public static Encounter ModifyEncounter(Encounter encounter)
@@ -251,6 +274,8 @@ public static class EncountersController
             encounter.Enemies.RemoveRange(0, encounter.Size - newEncounterSize);
         }
 
+        var oldEncounterSize = encounter.Size;
+        
         for (int i = 0; i < newEncounterSize; i++)
         {
             if (i < encounter.Size)
@@ -260,7 +285,14 @@ public static class EncountersController
             }
             else
             {
-                encounter.Enemies.Add(CustomEnemyPlacement.Replace(RandomizerLogic.GetRandomEnemy()));
+                if (i == 0 || Settings.RandomizeAddedEnemies)
+                {
+                    encounter.Enemies.Add(CustomEnemyPlacement.Replace(RandomizerLogic.GetRandomEnemy()));
+                }
+                else
+                {
+                    encounter.Enemies.Add(encounter.Enemies[i - int.Max(oldEncounterSize, 1)]);
+                }
             }
         }
         
@@ -286,13 +318,13 @@ public static class EncountersController
 
     public static void AddEnemyToEncounter(string enemyCodeName, string encounterCodeName)
     {
-        var enemyData = RandomizerLogic.GetEnemyData(enemyCodeName);
+        var enemyData = EnemiesController.GetEnemyData(enemyCodeName);
         Encounters.FindAll(e => e.Name == encounterCodeName).ForEach(e => e.Enemies.Add(enemyData));
     }
     
     public static void RemoveEnemyFromEncounter(string enemyCodeName, string encounterCodeName)
     {
-        var enemyData = RandomizerLogic.GetEnemyData(enemyCodeName);
+        var enemyData = EnemiesController.GetEnemyData(enemyCodeName);
         Encounters.FindAll(e => e.Name == encounterCodeName).ForEach(e => e.Enemies.Remove(enemyData));
     }
 }

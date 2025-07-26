@@ -80,15 +80,15 @@
                 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
                     <Button x:Name="LoadTextButton" Content="Load encounters from .txt file" Width="180" Height="30" 
-                           Margin="0,0,10,0" Click="ReadEncountersFromTxt" IsDefault="True"/>
+                           Margin="0,0,10,0" Click="ReadEncountersFromTxt"/>
                     <Button x:Name="SaveTextButton" Content="Save encounters to .txt file" Width="180" Height="30" 
-                           Click="SaveEncountersAsTxt" IsCancel="True"/>
+                           Click="SaveEncountersAsTxt"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
                     <Button x:Name="RegenerateEncountersButton" Content="Reroll with current settings" Width="180" Height="30" 
-                            Margin="0,0,10,0" Click="RegenerateEncounters" IsDefault="True"/>
+                            Margin="0,0,10,0" Click="RegenerateEncounters"/>
                     <Button x:Name="PackCurrentEncountersButton" Content="Generate mod files from current" Width="180" Height="30" 
-                            Click="PackCurrentEncounters" IsCancel="True"/>
+                            Click="PackCurrentEncounters"/>
                 </StackPanel>
             </StackPanel>
         </DockPanel>

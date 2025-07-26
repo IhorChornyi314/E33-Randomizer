@@ -46,90 +46,13 @@ public static class SpecialRules
         "L_Boss_Curator_P1"
     ];
 
-    public static List<string> MerchantEncounters =
-    [
-        "Merchant_GoblusLair",
-        "Merchant_GestralVillage1",
-        "Merchant_GestralVillage2",
-        "Merchant_GestralVillage3",
-        "Merchant_SeaCliff",
-        "Merchant_ForgottenBattlefield",
-        "Merchant_GrandisStation",
-        "Merchant_OldLumiere",
-        "Merchant_Visages",
-        "Merchant_Sirene",
-        "Merchant_Monolith",
-        "Merchant_Lumiere",
-        "Merchant_YellowForest",
-        "Merchant_OrangeForest",
-        "Merchant_MonocosMountain",
-        "Merchant_Reacher",
-        "Merchant_CleaIsland",
-        "Merchant_Optional1",
-        "Merchant_Optional2",
-        "Merchant_Optional3",
-        "Merchant_TwilightSanctuary",
-        "YF_Limonsol",
-        "SC_Gestral_Sonnyso*1"
-    ];
-
     public static List<string> DuelEncounters = [];
-
-    public static List<string> CutContentEnemies =
-    [
-        "AS_Gestral_Dragoon",
-        "AS_GestralBully_A",
-        "AS_GestralBully_B",
-        "AS_GestralBully_C",
-        "SC_FearLight",
-        "SC_SapNevronBoss",
-        "SC_Gestral_Sonnyso",
-        "FB_DuallisteR",
-        "FB_DuallisteL",
-        "Test_PlaceHolderBattleDude",
-        "SM_Lancelier_AlternatifA",
-        "SM_Lancelier_AlternatifB",
-        "SM_Lancelier_AlternatifC",
-        "SM_Lancelier_AlternatifD",
-        "TestMichel_Lancelier",
-        "YF_Gault_AlternativA",
-        "YF_Gault_AlternativB",
-        "YF_Gault_AlternativC",
-        "YF_Gault_AlternativD",
-        "YF_Gault_AlternativE",
-        "SM_Portier_AlternativA",
-        "SM_Portier_AlternativB",
-        "SM_Portier_AlternativC",
-        "SM_Portier_AlternativD",
-        "SM_Portier_AlternativE",
-        "SM_Volester_AlternativA",
-        "SM_Volester_AlternativB",
-        "SM_Volester_AlternativC",
-        "SM_Volester_AlternativD",
-        "SM_Volester_AlternativE",
-        "YF_Potier_AlternativeA",
-        "YF_Potier_AlternativeB",
-        "YF_Potier_AlternativeC",
-        "YF_Potier_AlternativeD",
-        "YF_Potier_AlternativeE",
-        "YF_Sapling_AlternativeA",
-        "YF_Sapling_AlternativeB",
-        "YF_Sapling_AlternativeC",
-        "YF_Jar_AlternativeA",
-        "YF_Jar_AlternativeB",
-        "YF_Jar_AlternativeC",
-        "CZ_ChromaMaelle",
-        "CZ_ChromaVerso",
-        "CZ_ChromaLune",
-        "CZ_ChromaSciel",
-        "CZ_ChromaMonoco"
-    ];
 
     public static Queue<EnemyData> RemainingBossPool = new();
 
     public static void Reset()
     {
-        EnemyData[] bossPoolArray = RandomizerLogic.GetAllByArchetype("Boss").Concat(RandomizerLogic.GetAllByArchetype("Alpha")).ToArray();
+        EnemyData[] bossPoolArray = EnemiesController.GetAllByArchetype("Boss").Concat(EnemiesController.GetAllByArchetype("Alpha")).ToArray();
         RandomizerLogic.rand.Shuffle(bossPoolArray);
         RemainingBossPool = new Queue<EnemyData>(bossPoolArray);
     }
@@ -140,7 +63,7 @@ public static class SpecialRules
         {
             if (encounter.Enemies[i].CodeName == "Boss_Simon_Phase2")
             {
-                encounter.Enemies[i] = RandomizerLogic.GetEnemyData("Boss_Simon");
+                encounter.Enemies[i] = EnemiesController.GetEnemyData("Boss_Simon");
             }
         }
     }
@@ -149,10 +72,10 @@ public static class SpecialRules
     {
         for (int i = 0; i < encounter.Size; i++)
         {
-            if (CutContentEnemies.Contains(encounter.Enemies[i].CodeName))
+            if (CustomEnemyPlacement.CustomCategoryTranslations["Cut Content Enemies"].Contains(encounter.Enemies[i]))
             {
                 var archetype = encounter.Enemies[i].Archetype;
-                encounter.Enemies[i] = RandomizerLogic.GetAllByArchetype(archetype).Find(e => !CutContentEnemies.Contains(e.CodeName));
+                encounter.Enemies[i] = EnemiesController.GetAllByArchetype(archetype).Find(e => !CustomEnemyPlacement.CustomCategoryTranslations["Cut Content Enemies"].Contains(e));
             }
         }
     }
@@ -188,10 +111,10 @@ public static class SpecialRules
             ApplySimonSpecialRule(encounter);
         }
 
-        if (Settings.BossNumberCapped && !encounter.IsBossEncounter)
-        {
-            CapNumberOfBosses(encounter);
-        }
+        // if (Settings.BossNumberCapped && !encounter.IsBossEncounter)
+        // {
+        //     CapNumberOfBosses(encounter);
+        // }
 
         if (Settings.EnsureBossesInBossEncounters && encounter.IsBossEncounter)
         {
@@ -221,7 +144,7 @@ public static class SpecialRules
 
     public static bool Randomizable(Encounter encounter)
     {
-        if (!Settings.RandomizeMerchantFights && MerchantEncounters.Contains(encounter.Name))
+        if (!Settings.RandomizeMerchantFights && encounter.Name.Contains("Merchant"))
         {
             return false;
         }

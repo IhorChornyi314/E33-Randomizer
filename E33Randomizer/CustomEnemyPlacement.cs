@@ -64,17 +64,17 @@ public static class CustomEnemyPlacement
             var customCategoryTranslationsString = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(json);
             CustomCategoryTranslations =  customCategoryTranslationsString.ToDictionary(
                 pair => pair.Key,
-                pair => pair.Value.Select(name => new EnemyData(name)).ToList()
+                pair => pair.Value.Select(name => EnemiesController.GetEnemyData(name)).ToList()
             );
             CustomCategories = CustomCategoryTranslations.Keys.ToList();
         }
         
-        PlacementOptionsList = [];
+        PlacementOptionsList = ["Anyone"];
         PlacementOptionsList.AddRange(CustomCategories);
         PlacementOptionsList.InsertRange(PlacementOptionsList.IndexOf("All Regular Enemies"), ArchetypeNames.Keys);
-        foreach (var enemyData in RandomizerLogic.allEnemies)
+        foreach (var enemyData in EnemiesController.enemies)
         {
-            PlacementOptionsList.Add(enemyData.Name);
+            PlacementOptionsList.Add(enemyData.CustomName);
         }
         
         LoadDefaultPreset();
@@ -151,7 +151,7 @@ public static class CustomEnemyPlacement
     {
         if (option == "Anyone")
         {
-            return RandomizerLogic.allEnemies;
+            return EnemiesController.enemies;
         }
         
         if (CustomCategories.Contains(option))
@@ -161,12 +161,12 @@ public static class CustomEnemyPlacement
         
         if (ArchetypeNames.ContainsKey(option))
         {
-            return RandomizerLogic.GetAllByArchetype(ArchetypeNames[option]);
+            return EnemiesController.GetAllByArchetype(ArchetypeNames[option]);
         }
 
-        if (RandomizerLogic.allEnemies.Exists(e => e.Name == option))
+        if (EnemiesController.enemies.Exists(e => e.CustomName == option))
         {
-            return RandomizerLogic.allEnemies.FindAll(e => e.Name == option);
+            return EnemiesController.enemies.FindAll(e => e.CustomName == option);
         }
 
         return [];
@@ -203,7 +203,7 @@ public static class CustomEnemyPlacement
         FinalEnemyReplacementFrequencies.Clear();
         //CustomPlacement keys are plain text - NOT codenames
         var individualEnemyPlacements = CustomPlacement.Where(kvp =>
-            RandomizerLogic.allEnemies.Contains(RandomizerLogic.GetEnemyDataByName(kvp.Key)));
+            EnemiesController.enemies.Contains(EnemiesController.GetEnemyDataByName(kvp.Key)));
         var merchantsMimesCutGimmickPetanks = CustomPlacement.Where(kvp =>
             kvp.Key == "Merchants" ||
             kvp.Key == "Mimes" ||
@@ -244,6 +244,7 @@ public static class CustomEnemyPlacement
                     {
                         continue;
                     }
+                    
                     FinalEnemyReplacementFrequencies[translatedEnemy.CodeName] = CustomCategoryDictionaryToCodeNames(enemy.Value);
                     
                     //Account for frequency adjustments
@@ -270,7 +271,7 @@ public static class CustomEnemyPlacement
         
         if (FinalEnemyReplacementFrequencies.ContainsKey(original.CodeName))
         {
-            return RandomizerLogic.GetEnemyData(
+            return EnemiesController.GetEnemyData(
                 Utils.GetRandomWeighted(
                     FinalEnemyReplacementFrequencies[original.CodeName], 
                     bannedEnemyNames.ToList()
