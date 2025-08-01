@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using Microsoft.Win32;
 
 namespace E33Randomizer
@@ -37,6 +38,7 @@ namespace E33Randomizer
                 EncountersController.AddEnemyToEncounter(selectedEnemy.CodeName, _selectedEncounterViewModel.CodeName);
                 
                 ViewModel.UpdateEncounterEnemies(_selectedEncounterViewModel);
+                ViewModel.UpdateFromEncountersController(SearchTextBox.Text);
             }
             AddEnemyComboBox.SelectedIndex = -1;
         }
@@ -48,6 +50,7 @@ namespace E33Randomizer
                 EncountersController.RemoveEnemyFromEncounter(enemyToRemove.CodeName, _selectedEncounterViewModel.CodeName);
                 
                 ViewModel.UpdateEncounterEnemies(_selectedEncounterViewModel);
+                ViewModel.UpdateFromEncountersController(SearchTextBox.Text);
             }
         }
 
@@ -55,6 +58,7 @@ namespace E33Randomizer
         {
             EncountersController.GenerateNewEncounters();
             ViewModel.UpdateEncounterEnemies(_selectedEncounterViewModel);
+            ViewModel.UpdateFromEncountersController(SearchTextBox.Text);
         }
         
         public void PackCurrentEncounters(object sender, RoutedEventArgs e)
@@ -82,6 +86,7 @@ namespace E33Randomizer
                 {
                     EncountersController.ReadEncountersTxt(openFileDialog.FileName);
                     ViewModel.UpdateEncounterEnemies(_selectedEncounterViewModel);
+                    ViewModel.UpdateFromEncountersController(SearchTextBox.Text);
                 }
                 catch (Exception ex)
                 {
@@ -117,6 +122,10 @@ namespace E33Randomizer
             }
         }
 
+        private void SearchTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            ViewModel.UpdateFromEncountersController(SearchTextBox.Text);
+        }
     }
 
     public class EditEncounterWindowViewModel : INotifyPropertyChanged
@@ -130,26 +139,45 @@ namespace E33Randomizer
             EnemiesInTheEncounter = new ObservableCollection<EnemyViewModel>();
             
             Locations = new ObservableCollection<EncounterLocationViewModel>();
-            var encountersByLocation = EncountersController.GetEncountersByLocation();
-            foreach (var locationEncounterPair in encountersByLocation)
-            {
-                var newLocationViewModel = new EncounterLocationViewModel();
-                newLocationViewModel.LocationName = locationEncounterPair.Key;
-                newLocationViewModel.Encounters = new ObservableCollection<EncounterViewModel>();
-                foreach (var encounterData in locationEncounterPair.Value)
-                {
-                    newLocationViewModel.Encounters.Add(new EncounterViewModel(encounterData));
-                }
-                Locations.Add(newLocationViewModel);
-            }
             
-            Locations = new ObservableCollection<EncounterLocationViewModel>(Locations.OrderBy(l => l.LocationName));
+            UpdateFromEncountersController();
+            
             AllEnemies = new ObservableCollection<EnemyViewModel>();
 
             foreach (var enemyData in EnemiesController.enemies)
             {
                 AllEnemies.Add(new EnemyViewModel(enemyData));
             }
+        }
+
+        public void UpdateFromEncountersController(string searchFilter = "")
+        {
+            Locations.Clear();
+            var encountersByLocation = EncountersController.EncounterIndexesByLocation;
+            foreach (var locationEncounterPair in encountersByLocation)
+            {
+                var newLocationViewModel = new EncounterLocationViewModel();
+                newLocationViewModel.LocationName = locationEncounterPair.Key;
+                newLocationViewModel.Encounters = new ObservableCollection<EncounterViewModel>();
+                foreach (var encounterIndex in locationEncounterPair.Value)
+                {
+                    var encounterData = EncountersController.Encounters[encounterIndex];
+                    if (
+                        encounterData.Name.ToLower().Contains(searchFilter.ToLower()) ||
+                        encounterData.Enemies.Exists(e => e.CustomName.ToLower().Contains(searchFilter.ToLower())) ||
+                        encounterData.Enemies.Exists(e => e.CodeName.ToLower().Contains(searchFilter.ToLower()))
+                        )
+                    {
+                        newLocationViewModel.Encounters.Add(new EncounterViewModel(encounterData));
+                    }
+                }
+
+                if (newLocationViewModel.Encounters.Count > 0)
+                {
+                    Locations.Add(newLocationViewModel);
+                }
+            }
+            
         }
 
         public void UpdateEncounterEnemies(EncounterViewModel encounter)

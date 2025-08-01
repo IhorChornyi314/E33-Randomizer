@@ -19,7 +19,8 @@ public static class RandomizerLogic
         "Boss_Simon_ALPHA",
         "FB_Dualliste_Phase1",
         "YF_Jar_AlternativeB",
-        "SM_Volester_AlternativB"
+        "SM_Volester_AlternativB",
+        "Petank_Parent"
     ];
     public static Usmap mappings;
     public static Dictionary<string, string> EnemyCustomNames = new ();
@@ -49,12 +50,12 @@ public static class RandomizerLogic
             }
         }
         EnemiesController.ReadAsset("Data/Originals/DT_jRPG_Enemies.uasset");
-
         ConstructTotalEnemyFrequencies();
         ConstructEnemyFrequenciesWithinArchetype();
         CustomEnemyPlacement.InitPlacementOptions();
         SpecialRules.Reset();
         EncountersController.ReadEncounterAssets();
+        EncountersController.ConstructEncountersByLocation();
     }
 
     public static void ConstructTotalEnemyFrequencies()
