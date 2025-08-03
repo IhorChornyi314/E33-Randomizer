@@ -62,7 +62,7 @@ public partial class MainWindow
             RandomizeAdditionalEnemiesCheckBox.IsChecked = Settings.RandomizeAddedEnemies;
             EnsureBossesInBossEncountersCheckBox.IsChecked = Settings.EnsureBossesInBossEncounters;
             ReduceBossRepetitionCheckBox.IsChecked = Settings.ReduceBossRepetition;
-            TieLootToEncountersButton.IsChecked = Settings.TieDropsToEncounters;
+            // TieLootToEncountersButton.IsChecked = Settings.TieDropsToEncounters;
 
             RandomizeAdditionalEnemiesCheckBox.Checked += (_, _) => Settings.RandomizeAddedEnemies = true;
             RandomizeAdditionalEnemiesCheckBox.Unchecked += (_, _) => Settings.RandomizeAddedEnemies = false;
@@ -73,8 +73,8 @@ public partial class MainWindow
             ReduceBossRepetitionCheckBox.Checked += (_, _) => Settings.ReduceBossRepetition = true;
             ReduceBossRepetitionCheckBox.Unchecked += (_, _) => Settings.ReduceBossRepetition = false;
 
-            TieLootToEncountersButton.Checked += (_, _) => Settings.TieDropsToEncounters = true;
-            TieLootToEncountersButton.Unchecked += (_, _) => Settings.TieDropsToEncounters = false;
+            // TieLootToEncountersButton.Checked += (_, _) => Settings.TieDropsToEncounters = true;
+            // TieLootToEncountersButton.Unchecked += (_, _) => Settings.TieDropsToEncounters = false;
         }
     
 

@@ -17,5 +17,5 @@ public static class Settings
     public static bool EnsureBossesInBossEncounters = true;
     public static bool ReduceBossRepetition = true;
     public static bool TieDropsToEncounters = true; 
-    public static bool EnableJujubreeToSellKeyItems = true;
+    // public static bool EnableJujubreeToSellKeyItems = true;
 }

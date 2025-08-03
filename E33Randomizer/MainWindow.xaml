@@ -80,19 +80,19 @@
                                   Margin="0"
                                   FontSize="14"/>
                         </StackPanel>
-                        <StackPanel Orientation="Vertical" Margin="0"
-                                    Grid.Row="2">
-                        <CheckBox Name="TieLootToEncountersButton" 
-                                  Content="Tie loot drops to encounters instead of enemies" 
-                                  IsChecked="True" 
-                                  Margin="0"
-                                  FontSize="14"/>
-                        <TextBlock Text="⚠️ Warning: Merchants' special wares unlocks and Maelle's paintress skills are considered loot drops" 
-                                   Foreground="Orange" 
-                                   FontWeight="Bold" 
-                                   Margin="10,5,0,5"
-                                   VerticalAlignment="Center"/>
-                        </StackPanel>
+                        <!-- <StackPanel Orientation="Vertical" Margin="0" -->
+                        <!--             Grid.Row="2"> -->
+                        <!-- <CheckBox Name="TieLootToEncountersButton"  -->
+                        <!--           Content="Tie loot drops to encounters instead of enemies"  -->
+                        <!--           IsChecked="True"  -->
+                        <!--           Margin="0" -->
+                        <!--           FontSize="14"/> -->
+                        <!-- <TextBlock Text="Merchants' special wares unlocks and Maelle's paintress skills are considered loot drops."  -->
+                        <!--            Foreground="Orange"  -->
+                        <!--            FontWeight="Bold"  -->
+                        <!--            Margin="10,5,0,5" -->
+                        <!--            VerticalAlignment="Center"/> -->
+                        <!-- </StackPanel> -->
                         <!-- Include Cut Content -->
                         <StackPanel Orientation="Vertical" Margin="0"
                                     Grid.Row="3">
@@ -100,7 +100,7 @@
                                       Content="Include Cut Content" 
                                       IsChecked="True" 
                                       FontSize="14"/>
-                            <TextBlock Text="⚠️ Warning: Do NOT parry Gestral Bullies or Gestral Dragoons, as it will soft-lock the game." 
+                            <TextBlock Text="Be careful when parrying cut content enemies, as it can break their AI. You can replace broken enemies in Edit Encounters window." 
                                        Foreground="Orange" 
                                        FontWeight="Bold" 
                                        Margin="10,5,0,5"
@@ -117,7 +117,7 @@
                         <StackPanel Orientation="Vertical" Margin="0,0,0,0"
                                                             Grid.Row="5"
                                                             Visibility="{Binding IsChecked, ElementName=EnableEnemyOnslaughtCheckBox, Converter={StaticResource BooleanToVisibilityConverter}}">
-                            <TextBlock Text="⚠️ Warning: The game has full support for 4 enemies, but the 5th and beyond gets lumped into a single spot outside the fighting arena. They will still function properly except that you won't be able to see their attacks or shoot them." 
+                            <TextBlock Text="The game has full support for 4 enemies, but the 5th and beyond gets lumped into a single spot outside the fighting arena. They will still function properly except that you won't be able to see their attacks or shoot them." 
                                        Foreground="Orange" 
                                        FontWeight="Bold" 
                                        Margin="10,0,0,0"

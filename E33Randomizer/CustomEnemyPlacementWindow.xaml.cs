@@ -189,6 +189,9 @@ namespace E33Randomizer
                 {
                     {"Anyone", new Dictionary<string, float>() {{enemyName, 1}}}
                 };
+                CustomEnemyPlacement.FrequencyAdjustments.Clear();
+                CustomEnemyPlacement.Excluded.Clear();
+                CustomEnemyPlacement.NotRandomized.Clear();
                 LoadCustomPlacementRows(SelectedEnemyForCustomPlacement);
                 CustomEnemyPlacement.UpdateFinalEnemyReplacementFrequencies();
                 Update();

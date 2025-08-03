@@ -18,8 +18,11 @@ public static class RandomizerLogic
         "QUEST_WeaponlessChalier",
         "Boss_Simon_ALPHA",
         "FB_Dualliste_Phase1",
+        "YF_Jar_AlternativeA",
         "YF_Jar_AlternativeB",
+        "SM_Volester_AlternativA",
         "SM_Volester_AlternativB",
+        "SM_Volester_AlternativC",
         "Petank_Parent"
     ];
     public static Usmap mappings;
@@ -206,10 +209,10 @@ public static class RandomizerLogic
     public static void ProcessKeyItems()
     {
         var asset = new UAsset("Data/Originals/DT_Merchant_GestralVillage1.uasset", EngineVersion.VER_UE5_4, mappings);
-        if (Settings.EnableJujubreeToSellKeyItems)
-        {
-            AddJujubreeWares(asset);
-        }
+        // if (Settings.EnableJujubreeToSellKeyItems)
+        // {
+        //     AddJujubreeWares(asset);
+        // }
         Directory.CreateDirectory("randomizer/Sandfall/Content/Gameplay/Inventory/Merchant/Merchants_ConditionsChecker");
         Directory.CreateDirectory("randomizer/Sandfall/Content/Gameplay/Inventory/Merchant/Merchants_Content_DT");
         asset.Write("randomizer/Sandfall/Content/Gameplay/Inventory/Merchant/Merchants_Content_DT/DT_Merchant_GestralVillage1.uasset");

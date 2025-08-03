@@ -48,13 +48,36 @@ public static class SpecialRules
 
     public static List<string> DuelEncounters = [];
 
-    public static Queue<EnemyData> RemainingBossPool = new();
+    public static List<EnemyData> RemainingBossPool = new();
 
     public static void Reset()
     {
-        EnemyData[] bossPoolArray = EnemiesController.GetAllByArchetype("Boss").Concat(EnemiesController.GetAllByArchetype("Alpha")).ToArray();
+        ResetBossPool();
+    }
+
+    private static void ResetBossPool()
+    {
+        EnemyData[] bossPoolArray = CustomEnemyPlacement.TranslatePlacementOption("All Bosses").ToArray();
         RandomizerLogic.rand.Shuffle(bossPoolArray);
-        RemainingBossPool = new Queue<EnemyData>(bossPoolArray);
+        RemainingBossPool = new List<EnemyData>(bossPoolArray);
+    }
+
+    private static EnemyData GetBossReplacement()
+    {
+        if (RemainingBossPool.Count == 0 || RemainingBossPool.All(e => CustomEnemyPlacement.ExcludedTranslated.Contains(e)))
+        {
+            ResetBossPool();
+        }
+
+        var nonBannedBosses = RemainingBossPool.Where(e => !CustomEnemyPlacement.ExcludedTranslated.Contains(e)).ToList();
+        if (nonBannedBosses.Any())
+        {
+            var result = nonBannedBosses.First();
+            nonBannedBosses.RemoveAt(0);
+            RemainingBossPool.Remove(result);
+            return result;
+        }
+        return null;
     }
     
     public static void ApplySimonSpecialRule(Encounter encounter)
@@ -125,13 +148,17 @@ public static class SpecialRules
             }
         }
 
-        if (Settings.ReduceBossRepetition && RemainingBossPool.Count > 0)
+        if (Settings.ReduceBossRepetition)
         {
             for (int i = 0; i < encounter.Size; i++)
             {
-                if (encounter.Enemies[i].IsBoss && RemainingBossPool.Count > 0 && CustomEnemyPlacement.NotRandomizedTranslated.Contains(encounter.Enemies[i]))
+                if (encounter.Enemies[i].IsBoss && !CustomEnemyPlacement.NotRandomizedTranslated.Contains(encounter.Enemies[i]))
                 {
-                    encounter.Enemies[i] = RemainingBossPool.Dequeue();
+                    var newBoss = GetBossReplacement();
+                    if (newBoss != null)
+                    {
+                        encounter.Enemies[i] = newBoss;
+                    }
                 }
             }
         }

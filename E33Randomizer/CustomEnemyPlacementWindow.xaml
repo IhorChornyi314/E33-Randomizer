@@ -203,7 +203,7 @@
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0"
                     Name="LoadPresetButton" 
-                    Content="Load Preset" 
+                    Content="Load Preset JSON" 
                     Width="100" 
                     Height="35" 
                     HorizontalAlignment="Center"
@@ -212,7 +212,7 @@
         
         <Button Grid.Column="1"
                 Name="SavePresetButton" 
-                Content="Save Preset" 
+                Content="Save Preset JSON" 
                 Width="100" 
                 Height="35" 
                 HorizontalAlignment="Center"

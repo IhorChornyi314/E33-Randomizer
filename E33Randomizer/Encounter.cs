@@ -119,10 +119,13 @@ public class Encounter
         }
 
         var result = EnemiesController.AddEnemyClone(Enemies[0], $"{Name}_{Enemies[0].CodeName}");
+        if (result == null)
+        {
+            return;
+        }
         
         result.AddDrops(PossibleLootDrops);
         LootEnemy = result;
-        return;
     }
     
     public override bool Equals(object? obj)
