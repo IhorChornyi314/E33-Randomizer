@@ -95,6 +95,7 @@ public static class EncountersController
     public static void GenerateNewEncounters()
     {
         ReadEncounterAssets();
+        CustomEnemyPlacement.Update();
         Encounters.ForEach(e => ModifyEncounter(e));
     }
 
@@ -148,7 +149,8 @@ public static class EncountersController
             {
                 if (i == 0 || Settings.RandomizeAddedEnemies)
                 {
-                    encounter.Enemies.Add(CustomEnemyPlacement.Replace(RandomizerLogic.GetRandomEnemy()));
+                    var newBaseEnemy = oldEncounterSize == 0 ? RandomizerLogic.GetRandomEnemy() : encounter.Enemies[i - int.Max(oldEncounterSize, 1)];
+                    encounter.Enemies.Add(CustomEnemyPlacement.Replace(newBaseEnemy));
                 }
                 else
                 {

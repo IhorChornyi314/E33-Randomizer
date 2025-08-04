@@ -76,23 +76,25 @@
                                     Grid.Row="1">
                         <CheckBox Name="RandomizeMerchantFightsCheckBox" 
                                   Content="Randomize Merchant Fights" 
-                                  IsChecked="False" 
+                                  IsChecked="True" 
                                   Margin="0"
                                   FontSize="14"/>
                         </StackPanel>
-                        <!-- <StackPanel Orientation="Vertical" Margin="0" -->
-                        <!--             Grid.Row="2"> -->
-                        <!-- <CheckBox Name="TieLootToEncountersButton"  -->
-                        <!--           Content="Tie loot drops to encounters instead of enemies"  -->
-                        <!--           IsChecked="True"  -->
-                        <!--           Margin="0" -->
-                        <!--           FontSize="14"/> -->
-                        <!-- <TextBlock Text="Merchants' special wares unlocks and Maelle's paintress skills are considered loot drops."  -->
-                        <!--            Foreground="Orange"  -->
-                        <!--            FontWeight="Bold"  -->
-                        <!--            Margin="10,5,0,5" -->
-                        <!--            VerticalAlignment="Center"/> -->
-                        <!-- </StackPanel> -->
+                        <StackPanel Orientation="Vertical" Margin="0"
+                                    Grid.Row="2">
+                        <CheckBox Name="TieLootToEncountersButton"
+                                  Content="Tie loot drops to encounters instead of enemies"
+                                  IsChecked="True"
+                                  Margin="0"
+                                  FontSize="14"/>
+                        <TextBlock Text="Merchants' special wares unlocks and Maelle's paintress skills are considered loot drops. It is recommended that you only disable this if you are also running an item randomizer."
+                                   Foreground="Orange"
+                                   FontWeight="Bold"
+                                   Margin="10,5,0,5"
+                                   VerticalAlignment="Center"
+                                   MaxWidth="800"
+                                   TextWrapping="Wrap"/>
+                        </StackPanel>
                         <!-- Include Cut Content -->
                         <StackPanel Orientation="Vertical" Margin="0"
                                     Grid.Row="3">
@@ -167,13 +169,13 @@
                         </StackPanel>
                         <CheckBox Name="EnsureBossesInBossEncountersCheckBox" 
                                   Content="Ensure that boss encounters have at least one boss" 
-                                  IsChecked="True" 
+                                  IsChecked="False" 
                                   Margin="0,0,0,0"
                                   FontSize="14"
                                   Grid.Row="7"/>
                         <CheckBox Name="ReduceBossRepetitionCheckBox" 
-                                  Content="Reduce boss repetition" 
-                                  IsChecked="True" 
+                                  Content="Reduce boss repetition (ignores frequency adjustments)" 
+                                  IsChecked="False" 
                                   Margin="0,0,0,0"
                                   FontSize="14"
                                   Grid.Row="8"/>
@@ -285,7 +287,10 @@
                          Grid.Column="1" 
                          Margin="10,0,20,0" 
                          VerticalAlignment="Center" 
+                         HorizontalAlignment="Left"
                          Height="25"
+                         Width="100"
+                         MaxLength="9"
                          PreviewTextInput="SeedTextBox_PreviewTextInput"/>
                 
                 <!-- Generate Button -->

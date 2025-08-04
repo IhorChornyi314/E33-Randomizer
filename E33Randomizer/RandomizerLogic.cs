@@ -89,6 +89,10 @@ public static class RandomizerLogic
         
         var presetName = PresetName.Length == 0 ? usedSeed.ToString() : PresetName;
         var exportPath = $"rand_{presetName}/";
+        if (Directory.Exists("randomizer"))
+        {
+            Directory.Delete("randomizer", true);
+        }
         Directory.CreateDirectory(exportPath);
         
         if (writeTxt)
@@ -102,7 +106,10 @@ public static class RandomizerLogic
             EncountersController.HandleLoot();
         }
         EncountersController.WriteEncounterAssets();
-        EnemiesController.WriteAsset();
+        if (Settings.TieDropsToEncounters)
+        {
+            EnemiesController.WriteAsset();
+        }
         
         var repackArgs = $"pack randomizer \"{exportPath}randomizer_P.pak\"";
         var retocArgs = $"to-zen --version UE5_4 \"{exportPath}randomizer_P.pak\" \"{exportPath}randomizer_P.utoc\"";
@@ -134,7 +141,7 @@ public static class RandomizerLogic
 
     public static EnemyData GetRandomEnemy()
     {
-        return EnemiesController.GetEnemyData(Utils.GetRandomWeighted(TotalEnemyFrequencies, CustomEnemyPlacement.BannedEnemyNames));
+        return EnemiesController.GetEnemyData(Utils.GetRandomWeighted(CustomEnemyPlacement.DefaultFrequencies, CustomEnemyPlacement.BannedEnemyNames));
     }
 
     public static void Randomize()

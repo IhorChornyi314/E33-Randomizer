@@ -16,13 +16,12 @@ public static class Utils
         foreach (var weight in weights)
         {
             running += weight.Value;
-            if (running >= chance && !banned.Contains(weight.Key))
+            if (running >= chance && !banned.Contains(weight.Key) && weight.Value > 0.0001)
             {
                 return weight.Key;
             }
         }
-
-        return weights.Keys.FirstOrDefault(k => !banned.Contains(k));
+        return weights.Keys.LastOrDefault(k => !banned.Contains(k));
     }
     
     public static T Pick<T>(List<T> from)

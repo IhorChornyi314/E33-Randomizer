@@ -12,6 +12,7 @@ public static class EnemiesController
     private static UAsset asset;
 
     public static List<EnemyData> enemies;
+    public static Dictionary<string, EnemyData> EnemiesByName;
 
     public static Dictionary<int, string> enemyArchetypes = new()
     {
@@ -60,6 +61,7 @@ public static class EnemiesController
         enemies = enemiesTable.Data.Select(e => new EnemyData(e)).ToList();
         enemies = enemies.Where(e => !e.IsBroken).ToList();
         enemies = enemies.OrderBy(e => e.CustomName).ToList();
+        EnemiesByName = enemies.Select(e => new KeyValuePair<string, EnemyData>(e.CodeName, e)).ToDictionary();
     }
 
     public static void WriteAsset()
@@ -68,15 +70,10 @@ public static class EnemiesController
         Directory.CreateDirectory(assetFolder);
         asset.Write($"{assetFolder}/DT_jRPG_Enemies.uasset");
     }
-    
+
     public static EnemyData GetEnemyData(string enemyCodeName)
     {
-        return enemies.Find(e => e.CodeName == enemyCodeName) ?? new EnemyData();
-    }
-
-    public static EnemyData GetEnemyDataByName(string enemyName)
-    {
-        return enemies.Find(e => e.CustomName == enemyName) ?? new EnemyData();
+        return EnemiesByName.TryGetValue(enemyCodeName, out EnemyData value) ?  value : new EnemyData();
     }
     
     public static List<EnemyData> GetEnemyDataList(List<string> enemyCodeNames)

@@ -193,7 +193,6 @@ namespace E33Randomizer
                 CustomEnemyPlacement.Excluded.Clear();
                 CustomEnemyPlacement.NotRandomized.Clear();
                 LoadCustomPlacementRows(SelectedEnemyForCustomPlacement);
-                CustomEnemyPlacement.UpdateFinalEnemyReplacementFrequencies();
                 Update();
             }
             else
@@ -312,8 +311,11 @@ namespace E33Randomizer
             };
             removeButton.Click += (_, _) =>
             {
-                var enemyName = (string)(enemyCombo.SelectedItem as ComboBoxItem).Content;
-                CustomEnemyPlacement.FrequencyAdjustments.Remove(enemyName);
+                var enemyName = (string)(enemyCombo.SelectedItem as ComboBoxItem)?.Content;
+                if (enemyName != null)
+                {
+                    CustomEnemyPlacement.FrequencyAdjustments.Remove(enemyName);
+                }
                 RemoveFrequencyRow(row);
                 UpdateJsonTextBox();
             };

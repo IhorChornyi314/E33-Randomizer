@@ -14,8 +14,8 @@ public static class Settings
 
     //public static bool BossNumberCapped = true;
     public static bool RandomizeAddedEnemies = false;
-    public static bool EnsureBossesInBossEncounters = true;
-    public static bool ReduceBossRepetition = true;
+    public static bool EnsureBossesInBossEncounters = false;
+    public static bool ReduceBossRepetition = false;
     public static bool TieDropsToEncounters = true; 
     // public static bool EnableJujubreeToSellKeyItems = true;
 }

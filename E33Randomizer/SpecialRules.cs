@@ -49,6 +49,7 @@ public static class SpecialRules
     public static List<string> DuelEncounters = [];
 
     public static List<EnemyData> RemainingBossPool = new();
+    private static bool _bossPoolEmpty;
 
     public static void Reset()
     {
@@ -60,24 +61,29 @@ public static class SpecialRules
         EnemyData[] bossPoolArray = CustomEnemyPlacement.TranslatePlacementOption("All Bosses").ToArray();
         RandomizerLogic.rand.Shuffle(bossPoolArray);
         RemainingBossPool = new List<EnemyData>(bossPoolArray);
+        var translatedExcluded = CustomEnemyPlacement.ExcludedTranslated;
+        RemainingBossPool = RemainingBossPool.Where(e => !translatedExcluded.Contains(e)).ToList();
+        if (RemainingBossPool.Count == 0)
+        {
+            _bossPoolEmpty = true;
+        }
     }
 
     private static EnemyData GetBossReplacement()
     {
-        if (RemainingBossPool.Count == 0 || RemainingBossPool.All(e => CustomEnemyPlacement.ExcludedTranslated.Contains(e)))
+        if (RemainingBossPool.Count == 0)
         {
             ResetBossPool();
         }
 
-        var nonBannedBosses = RemainingBossPool.Where(e => !CustomEnemyPlacement.ExcludedTranslated.Contains(e)).ToList();
-        if (nonBannedBosses.Any())
+        if (_bossPoolEmpty)
         {
-            var result = nonBannedBosses.First();
-            nonBannedBosses.RemoveAt(0);
-            RemainingBossPool.Remove(result);
-            return result;
+            return null;
         }
-        return null;
+
+        var result = RemainingBossPool.First();
+        RemainingBossPool.Remove(result);
+        return result;
     }
     
     public static void ApplySimonSpecialRule(Encounter encounter)

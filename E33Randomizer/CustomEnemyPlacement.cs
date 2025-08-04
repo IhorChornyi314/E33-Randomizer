@@ -52,6 +52,7 @@ public static class CustomEnemyPlacement
     public static Dictionary<string, List<EnemyData>> CustomCategoryTranslations = new();
     public static Dictionary<string, Dictionary<string, float>> CustomPlacement = new();
     public static Dictionary<string, float> FrequencyAdjustments = new();
+    public static Dictionary<string, float> DefaultFrequencies = new();
     public static Dictionary<string, Dictionary<string, float>> FinalEnemyReplacementFrequencies = new();
     public static Dictionary<string, float> TranslatedFrequencyAdjustments => CustomCategoryDictionaryToCodeNames(FrequencyAdjustments);
     public static List<string> BannedEnemyNames => TranslatePlacementOptions(Excluded).Select(e => e.CodeName).ToList();
@@ -64,7 +65,7 @@ public static class CustomEnemyPlacement
             var customCategoryTranslationsString = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(json);
             CustomCategoryTranslations =  customCategoryTranslationsString.ToDictionary(
                 pair => pair.Key,
-                pair => pair.Value.Select(name => EnemiesController.GetEnemyData(name)).ToList()
+                pair => pair.Value.Select(EnemiesController.GetEnemyData).ToList()
             );
             CustomCategories = CustomCategoryTranslations.Keys.ToList();
         }
@@ -100,7 +101,6 @@ public static class CustomEnemyPlacement
             { "Cut Content Enemies", 0.2f }
         };
         FinalEnemyReplacementFrequencies = new Dictionary<string, Dictionary<string, float>>();
-        UpdateFinalEnemyReplacementFrequencies();
     }
 
     public static void LoadFromJson(string pathToJson)
@@ -114,7 +114,6 @@ public static class CustomEnemyPlacement
             CustomPlacement = presetData.CustomPlacement;
             FrequencyAdjustments = presetData.FrequencyAdjustments;
         }
-        UpdateFinalEnemyReplacementFrequencies();
     }
 
     public static void SetCustomPlacement(string from, string to, float frequency)
@@ -125,7 +124,6 @@ public static class CustomEnemyPlacement
         }
 
         CustomPlacement[from][to] = frequency;
-        UpdateFinalEnemyReplacementFrequencies();
     }
 
     public static void RemoveCustomEnemyPlacement(string from, string to)
@@ -136,7 +134,6 @@ public static class CustomEnemyPlacement
         }
 
         CustomPlacement[from].Remove(to);
-        UpdateFinalEnemyReplacementFrequencies();
     }
     
     public static void SaveToJson(string pathToJson)
@@ -198,66 +195,49 @@ public static class CustomEnemyPlacement
         return result;
     }
 
-    public static void UpdateFinalEnemyReplacementFrequencies()
+    public static void Update()
     {
         FinalEnemyReplacementFrequencies.Clear();
-        //CustomPlacement keys are plain text - NOT codenames
-        var individualEnemyPlacements = CustomPlacement.Where(kvp =>
-            EnemiesController.enemies.Contains(EnemiesController.GetEnemyDataByName(kvp.Key)));
-        var merchantsMimesCutGimmickPetanks = CustomPlacement.Where(kvp =>
-            kvp.Key == "Merchants" ||
-            kvp.Key == "Mimes" ||
-            kvp.Key == "Cut Content Enemies" ||
-            kvp.Key == "Gimmick/Tutorial Enemies" ||
-            kvp.Key == "Petanks"
-            );
-        var giantEnemies = CustomPlacement.Where(kvp =>
-            kvp.Key == "Giant Enemies/Bosses");
-        var archetypeEnemies = CustomPlacement.Where(kvp => ArchetypeNames.Keys.Contains(kvp.Key));
-        var allRegularEnemies = CustomPlacement.Where(kvp =>
-            kvp.Key == "All Regular Enemies");
-        var mainSideBosses = CustomPlacement.Where(kvp =>
-            kvp.Key == "Main Plot Bosses" ||
-            kvp.Key == "Side Bosses"
-        );
-        var allBosses = CustomPlacement.Where(kvp =>
-            kvp.Key == "All Bosses");
-        var allBossesMinibosses = CustomPlacement.Where(kvp =>
-            kvp.Key == "All Bosses and Minibosses");
-        var anyone = CustomPlacement.Where(kvp =>
-            kvp.Key == "Anyone");
-
-        var translatedFrequencyAdjustments = CustomCategoryDictionaryToCodeNames(FrequencyAdjustments);
-        //This is a monstrosity the likes of which the world has never yet seen
-        foreach (var enemyGroup in new List<IEnumerable<KeyValuePair<string, Dictionary<string, float>>>>()
-                 {
-                     individualEnemyPlacements, merchantsMimesCutGimmickPetanks, giantEnemies, archetypeEnemies,
-                     allRegularEnemies, mainSideBosses, allBosses, allBossesMinibosses, anyone
-                 })
+        var categoryOrder = new List<string>
         {
-            foreach (var enemy in enemyGroup)
+            "Merchants", "Mimes", "Cut Content Enemies", "Gimmick/Tutorial Enemies",
+            "Petanks", "Giant Enemies/Bosses", "Regular", "Weak Regular", "Elusive Regular", "Strong Regular", 
+            "Minibosses", "Non-Chromatic Bosses", "Chromatic Bosses", "All Regular Enemies",
+            "Main Plot Bosses", "Side Bosses", "All Bosses", "All Bosses and Minibosses", "Anyone"
+        };
+        var orderedCustomPlacementKeys = CustomPlacement.Keys.OrderBy(k => categoryOrder.IndexOf(k));
+        var translatedFrequencyAdjustments = TranslatedFrequencyAdjustments;
+        foreach (var customPlacementKey in orderedCustomPlacementKeys)
+        {
+            var translatedKey = TranslatePlacementOption(customPlacementKey).Select(e => e.CodeName);
+            foreach (var enemyCodeName in translatedKey)
             {
-                var translatedEnemies = TranslatePlacementOption(enemy.Key);
-                foreach (var translatedEnemy in translatedEnemies)
+                if (FinalEnemyReplacementFrequencies.ContainsKey(enemyCodeName))
                 {
-                    if (FinalEnemyReplacementFrequencies.ContainsKey(translatedEnemy.CodeName))
+                    continue;
+                }
+                var unadjustedFrequencies = CustomCategoryDictionaryToCodeNames(CustomPlacement[customPlacementKey]);
+                foreach (var frequency in unadjustedFrequencies)
+                {
+                    if (translatedFrequencyAdjustments.ContainsKey(frequency.Key))
                     {
-                        continue;
+                        unadjustedFrequencies[frequency.Key] *= translatedFrequencyAdjustments[frequency.Key];
                     }
-                    
-                    FinalEnemyReplacementFrequencies[translatedEnemy.CodeName] = CustomCategoryDictionaryToCodeNames(enemy.Value);
-                    
-                    //Account for frequency adjustments
-                    foreach (var replacementWeight in FinalEnemyReplacementFrequencies[translatedEnemy.CodeName])
+
+                    if (unadjustedFrequencies[frequency.Key] < 0.0001)
                     {
-                        if (translatedFrequencyAdjustments.ContainsKey(replacementWeight.Key))
-                        {
-                            FinalEnemyReplacementFrequencies[translatedEnemy.CodeName][replacementWeight.Key] *= translatedFrequencyAdjustments[replacementWeight.Key];
-                        }
+                        unadjustedFrequencies.Remove(frequency.Key);
                     }
+                }
+
+                if (unadjustedFrequencies.Any())
+                {
+                    FinalEnemyReplacementFrequencies[enemyCodeName] = unadjustedFrequencies;
                 }
             }
         }
+        DefaultFrequencies = EnemiesController.enemies.Select(e => new KeyValuePair<string,float>(e.CodeName, translatedFrequencyAdjustments.ContainsKey(e.CodeName) ?  translatedFrequencyAdjustments[e.CodeName] : 1)).ToDictionary(kv => kv.Key, kv => kv.Value);
+        DefaultFrequencies = DefaultFrequencies.Where(kv => kv.Value > 0.0001).ToDictionary();
     }
     
     public static EnemyData Replace(EnemyData original)
@@ -271,12 +251,12 @@ public static class CustomEnemyPlacement
         
         if (FinalEnemyReplacementFrequencies.ContainsKey(original.CodeName))
         {
-            return EnemiesController.GetEnemyData(
-                Utils.GetRandomWeighted(
-                    FinalEnemyReplacementFrequencies[original.CodeName], 
-                    bannedEnemyNames.ToList()
-                    )
-                );
+            var newEnemy = Utils.GetRandomWeighted(
+                FinalEnemyReplacementFrequencies[original.CodeName],
+                bannedEnemyNames.ToList()
+            );
+
+            return newEnemy != null ? EnemiesController.GetEnemyData(newEnemy) : original;
         }
         
         return RandomizerLogic.GetRandomEnemy();
