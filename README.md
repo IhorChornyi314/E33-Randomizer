@@ -7,6 +7,20 @@ Installation:
 - Unpack the zip file in a non-admin folder
 - Run E33Randomizer.exe
 <br>
+
+Running the randomizer:
+- Start the E33Randomizer.exe
+- Configure the mod as you see fit
+- Click "Generate and pack mod" button in the main window or "Generate mod files from current"
+- Put the generated .pak, .utoc, and .ucas files into **Expedition 33\Sandfall\Content\Paks\\~mods** folder, creating ~mods directory if necessary
+- Start the game and enjoy the chaos
+
+
+<br>
+For other modders - this mod overrides DT_jRPG_Encounters, DT_jRPG_Encounters_CleaTower, DT_Encounters_Composite, and DT_WorldMap_Encounters files, as well as DT_jRPG_Enemies if the option "Tie loot drops to encounters instead of enemies" is on.
+<br>
+<br>
+<br>
 This project uses external tools (namely repak, retoc, and uesave). If built from source code, please include the .exes in the project root folder. The release already contains them for ease of use. By using E33 Randomizer, users must also adhere to the licenses of repak, retoc, and uesave, as well as UAssetAPI, in addition to E33 Randomizers' own.
 <br>
 <br>
