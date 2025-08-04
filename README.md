@@ -7,6 +7,8 @@ Installation:
 - Unpack the zip file in a non-admin folder
 - Run E33Randomizer.exe
 <br>
+This project uses external tools (namely repak, retoc, and uesave). If built from source code, please include the .exes in the project root folder. The release already contains them for ease of use. By using E33 Randomizer, users must also adhere to the licenses of repak, retoc, and uesave, as well as UAssetAPI, in addition to E33 Randomizers' own.
+<br>
 <br>
 <br>
 
