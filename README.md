@@ -1,6 +1,14 @@
 # E33-Randomizer
-A randomizer mod for Clair Obscur: Expedition 33
+A randomizer mod for Clair Obscur: Expedition 33 that gives users complete control over every enemy placement in the game, as well as a lot of different tools to customize them to their heart's desire.
 
+Installation:
+- Download the latest release
+- If you don't have it, install [.NET 9.0 Desktop Runtime](https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/9.0.7/windowsdesktop-runtime-9.0.7-win-x64.exe)
+- Unpack the zip file in a non-admin folder
+- Run E33Randomizer.exe
+<br>
+<br>
+<br>
 
 Credits & Special Thanks:
 
@@ -8,3 +16,4 @@ Credits & Special Thanks:
 - atenfyr: For writing UAssetAPI
 - TheNaeem: For hosting the Expedition 33 .usmap file
 - Thefifthmatt: For the inspiration behind the UX of the mod
+- Sandfall Interactive and Kepler Interactive: For creating one of my favourite games of all time and making it easy to mod
