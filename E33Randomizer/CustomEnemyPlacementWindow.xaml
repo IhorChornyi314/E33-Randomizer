@@ -103,9 +103,9 @@
                     Margin="0,0,5,5" Click="PresetButton_Click" Tag="Data/presets/10_percent.json"/>
             <Button Grid.Row="1" Grid.Column="1" Name="PresetButton4" Content="Make every enemy a boss" Height="35" 
                     Margin="5,0,0,5" Click="PresetButton_Click" Tag="Data/presets/everyone_is_a_boss.json"/>
-            <Button Grid.Row="2" Grid.Column="0" Name="PresetButton5" Content="Custom Preset 1" Height="35" 
+            <Button Grid.Row="2" Grid.Column="0" Name="PresetButton5" Content="Custom preset 1" Height="35" 
                     Margin="0,0,5,5" Click="PresetButton_Click" Tag="Data/presets/custom_1.json"/>
-            <Button Grid.Row="2" Grid.Column="1" Name="PresetButton6" Content="Custom Preset 2" Height="35" 
+            <Button Grid.Row="2" Grid.Column="1" Name="PresetButton6" Content="Custom preset 2" Height="35" 
                     Margin="5,0,0,5" Click="PresetButton_Click" Tag="Data/presets/custom_2.json"/>
         </Grid>
         

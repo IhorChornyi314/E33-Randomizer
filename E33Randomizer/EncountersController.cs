@@ -115,11 +115,11 @@ public static class EncountersController
         }
     }
 
-    public static Encounter ModifyEncounter(Encounter encounter)
+    public static void ModifyEncounter(Encounter encounter)
     {
         if (!SpecialRules.Randomizable(encounter))
         {
-            return encounter;
+            return;
         }
         
         var newEncounterSize = !Settings.RandomizeEncounterSizes || Settings.PossibleEncounterSizes.Count == 0 ? encounter.Enemies.Count :
@@ -160,7 +160,6 @@ public static class EncountersController
         }
         
         SpecialRules.ApplySpecialRules(encounter);
-        return encounter;
     }
 
     public static void PackEncounters(UAsset asset, List<Encounter> encounters)

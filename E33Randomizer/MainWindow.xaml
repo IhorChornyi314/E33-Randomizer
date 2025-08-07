@@ -44,7 +44,7 @@
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
                             <CheckBox Grid.Column="0" Name="RandomizeEncounterSizesCheckBox" 
-                                      Content="Randomize Encounter Sizes" 
+                                      Content="Randomize encounter sizes" 
                                       IsChecked="False" 
                                       Margin="0,0,0,0"
                                       FontSize="14"/>
@@ -75,7 +75,7 @@
                         <StackPanel Orientation="Vertical" Margin="0"
                                     Grid.Row="1">
                         <CheckBox Name="RandomizeMerchantFightsCheckBox" 
-                                  Content="Randomize Merchant Fights" 
+                                  Content="Randomize merchant fights" 
                                   IsChecked="True" 
                                   Margin="0"
                                   FontSize="14"/>
@@ -99,7 +99,7 @@
                         <StackPanel Orientation="Vertical" Margin="0"
                                     Grid.Row="3">
                             <CheckBox Name="IncludeCutContentCheckBox" 
-                                      Content="Include Cut Content" 
+                                      Content="Include cut content" 
                                       IsChecked="True" 
                                       FontSize="14"/>
                             <TextBlock Text="Be careful when parrying cut content enemies, as it can break their AI. You can replace broken enemies in Edit Encounters window." 
@@ -112,7 +112,7 @@
                         
                         <CheckBox Name="EnableEnemyOnslaughtCheckBox" 
                                   Grid.Row="4"
-                                  Content="Enable Enemy Onslaught" 
+                                  Content="Enable enemy onslaught" 
                                   IsChecked="False" 
                                   Margin="0"
                                   FontSize="14"/>
@@ -290,7 +290,7 @@
                          HorizontalAlignment="Left"
                          Height="25"
                          Width="100"
-                         MaxLength="9"
+                         MaxLength="10"
                          PreviewTextInput="SeedTextBox_PreviewTextInput"/>
                 
                 <!-- Generate Button -->
