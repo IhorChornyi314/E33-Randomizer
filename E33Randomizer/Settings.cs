@@ -4,6 +4,7 @@ public static class Settings
 {
     public static int Seed = -1;
     public static bool RandomizeEncounterSizes = false;
+    public static bool ChangeSizeOfNonRandomizedEncounters = false;
     public static List<int> PossibleEncounterSizes = [1, 2, 3];
     public static string EarliestSimonP2Encounter = "SM_Eveque_ShieldTutorial*1";
     public static bool RandomizeMerchantFights = true;

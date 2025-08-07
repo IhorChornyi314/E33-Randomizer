@@ -122,9 +122,18 @@ public static class EncountersController
             return;
         }
         
-        var newEncounterSize = !Settings.RandomizeEncounterSizes || Settings.PossibleEncounterSizes.Count == 0 ? encounter.Enemies.Count :
+        var oldEncounterSize = encounter.Size;
+        
+        var newEncounterSize = !Settings.RandomizeEncounterSizes || Settings.PossibleEncounterSizes.Count == 0 ? oldEncounterSize :
                 Utils.Pick(Settings.PossibleEncounterSizes);
 
+        if (!Settings.ChangeSizeOfNonRandomizedEncounters)
+        {
+            var nonRandomizedEnemies = CustomEnemyPlacement.NotRandomizedTranslated;
+            var encounterRandomized = encounter.Enemies.Any(e => !nonRandomizedEnemies.Contains(e));
+            newEncounterSize = encounterRandomized ? newEncounterSize : oldEncounterSize;
+        }
+        
         if (Settings.EnableEnemyOnslaught)
         {
             newEncounterSize += Settings.EnemyOnslaughtAdditionalEnemies;
@@ -136,7 +145,6 @@ public static class EncountersController
             encounter.Enemies.RemoveRange(0, encounter.Size - newEncounterSize);
         }
 
-        var oldEncounterSize = encounter.Size;
         
         for (int i = 0; i < newEncounterSize; i++)
         {
@@ -147,7 +155,7 @@ public static class EncountersController
             }
             else
             {
-                if (i == 0 || Settings.RandomizeAddedEnemies)
+                if (i == 0 || Settings.RandomizeAddedEnemies || !Settings.EnableEnemyOnslaught)
                 {
                     var newBaseEnemy = oldEncounterSize == 0 ? RandomizerLogic.GetRandomEnemy() : encounter.Enemies[i - int.Max(oldEncounterSize, 1)];
                     encounter.Enemies.Add(CustomEnemyPlacement.Replace(newBaseEnemy));

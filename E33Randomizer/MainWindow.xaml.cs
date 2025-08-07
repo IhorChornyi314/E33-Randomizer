@@ -25,12 +25,18 @@ public partial class MainWindow
 
         private void SetupDataBindings()
         {
+            // This is really bad, I'll clean it up soon I promise
+            
             RandomizeEncounterSizesCheckBox.IsChecked = Settings.RandomizeEncounterSizes;
+            ChangeSizeOfNonRandomEncountersCheckBox.IsChecked = Settings.ChangeSizeOfNonRandomizedEncounters;
             RandomizeMerchantFightsCheckBox.IsChecked = Settings.RandomizeMerchantFights;
             IncludeCutContentCheckBox.IsChecked = Settings.IncludeCutContent;
 
             RandomizeEncounterSizesCheckBox.Checked += (_, _) => Settings.RandomizeEncounterSizes = true;
             RandomizeEncounterSizesCheckBox.Unchecked += (_, _) => Settings.RandomizeEncounterSizes = false;
+            
+            ChangeSizeOfNonRandomEncountersCheckBox.Checked += (_, _) => Settings.ChangeSizeOfNonRandomizedEncounters = true;
+            ChangeSizeOfNonRandomEncountersCheckBox.Unchecked += (_, _) => Settings.ChangeSizeOfNonRandomizedEncounters = false;
     
             RandomizeMerchantFightsCheckBox.Checked += (_, _) => Settings.RandomizeMerchantFights = true;
             RandomizeMerchantFightsCheckBox.Unchecked += (_, _) => Settings.RandomizeMerchantFights = false;
