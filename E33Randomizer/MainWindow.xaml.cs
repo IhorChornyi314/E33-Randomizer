@@ -193,20 +193,26 @@ public partial class MainWindow
 
         private void PatchSaveButton_OnClick(object sender, RoutedEventArgs e)
         {
-            string targetFolder;
-            string saveGamesBase = Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-                "Sandfall\\Saved\\SaveGames\\"
-            );
-            string[] subdirectories = Directory.GetDirectories(saveGamesBase);
+            string targetFolder = "";
+            try
+            {
+                string saveGamesBase = Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                    "Sandfall\\Saved\\SaveGames\\"
+                );
+                string[] subdirectories = Directory.GetDirectories(saveGamesBase);
 
-            if (subdirectories.Length == 0 ||  subdirectories.Length > 1)
-            {
-                targetFolder = saveGamesBase;
+                if (subdirectories.Length == 0 || subdirectories.Length > 1)
+                {
+                    targetFolder = saveGamesBase;
+                }
+                else
+                {
+                    targetFolder = $"{subdirectories[0]}";
+                }
             }
-            else
+            catch (DirectoryNotFoundException exception)
             {
-                targetFolder = $"{subdirectories[0]}";
             }
             
             OpenFileDialog openFileDialog = new OpenFileDialog

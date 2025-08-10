@@ -94,6 +94,7 @@ public static class EncountersController
 
     public static void GenerateNewEncounters()
     {
+        SpecialRules.Reset();
         ReadEncounterAssets();
         RandomizerLogic.CustomEnemyPlacement.Update();
         Encounters.ForEach(e => ModifyEncounter(e));
