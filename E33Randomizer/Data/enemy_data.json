@@ -30,7 +30,7 @@
         "Archetype": "Regular"
     },
     {
-        "Name": "Aberration (Lumiere)",
+        "Name": "Aberration (Lumiere - Act 3)",
         "CodeName": "L_Aberration",
         "Level": "28",
         "Archetype": "Strong"
@@ -48,7 +48,7 @@
         "Archetype": "Boss"
     },
     {
-        "Name": "Anthonypo (Merchant)",
+        "Name": "Anthonypo (Endless Night Sanctuary)",
         "CodeName": "Merchant_TwilightSanctuary",
         "Level": "60",
         "Archetype": "Strong"
@@ -72,7 +72,7 @@
         "Archetype": "Elusive"
     },
     {
-        "Name": "Benisseur (Forgotten Battlefield)",
+        "Name": "Benisseur (Sirene)",
         "CodeName": "FB_Benisseur",
         "Level": "23",
         "Archetype": "Strong"
@@ -96,19 +96,19 @@
         "Archetype": "Strong"
     },
     {
-        "Name": "Bertrand Big Hands",
+        "Name": "Bertrand Big Hands (Gestral Village)",
         "CodeName": "QUEST_BertrandBigHands",
         "Level": "60",
         "Archetype": "Strong"
     },
     {
-        "Name": "Blanche",
+        "Name": "Blanche (The Fountain)",
         "CodeName": "QUEST_JudgeOfMercy",
         "Level": "50",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Blooraga (Merchant)",
+        "Name": "Blooraga (Visages)",
         "CodeName": "Merchant_Visages",
         "Level": "60",
         "Archetype": "Strong"
@@ -138,7 +138,7 @@
         "Archetype": "Elite"
     },
     {
-        "Name": "Bourgeon (The Monolith)",
+        "Name": "Bourgeon (Cut Content)",
         "CodeName": "ML_Bourgeon_Gold",
         "Level": "8",
         "Archetype": "Elite"
@@ -150,7 +150,7 @@
         "Archetype": "Strong"
     },
     {
-        "Name": "Braseleur_NoFreeAim (Frozen Hearts)",
+        "Name": "Braseleur_NoFreeAim (Cut Content)",
         "CodeName": "MM_Braseleur_NoFreeAim",
         "Level": "35",
         "Archetype": "Strong"
@@ -180,7 +180,7 @@
         "Archetype": "Strong"
     },
     {
-        "Name": "Casmer (Merchant)",
+        "Name": "Casmer (Cut Content)",
         "CodeName": "Merchant_Optional2",
         "Level": "60",
         "Archetype": "Strong"
@@ -204,55 +204,55 @@
         "Archetype": "Regular"
     },
     {
-        "Name": "Ceramic Chevaliere (Falling Leaves)",
+        "Name": "Ceramic Chevaliere (Old Lumiere)",
         "CodeName": "YF_Chevaliere_A",
         "Level": "13",
         "Archetype": "Regular"
     },
     {
-        "Name": "Ceramic Chevaliere (GDC)",
+        "Name": "Ceramic Chevaliere (Cut Content)",
         "CodeName": "GDC_Chevaliere_A",
         "Level": "1",
         "Archetype": "Regular"
     },
     {
-        "Name": "Ceramic Chevaliere A (The Monolith)",
+        "Name": "Ceramic Chevaliere (The Monolith)",
         "CodeName": "ML_ChevaliereA_Gold",
         "Level": "13",
         "Archetype": "Regular"
     },
     {
-        "Name": "Ceramic Chevaliere B (The Monolith)",
+        "Name": "Steel Chevaliere (The Monolith)",
         "CodeName": "ML_ChevaliereB_Gold",
         "Level": "13",
         "Archetype": "Regular"
     },
     {
-        "Name": "Ceramic Chevaliere C (The Monolith)",
+        "Name": "Gold Chevaliere (The Monolith)",
         "CodeName": "ML_ChevaliereC_Gold",
         "Level": "13",
         "Archetype": "Strong"
     },
     {
-        "Name": "Chalier (GDC)",
+        "Name": "Chalier (Cut Content)",
         "CodeName": "GDC_Chalier",
         "Level": "1",
         "Archetype": "Strong"
     },
     {
-        "Name": "Chalier (Hammer) (Forgotten Battlefield)",
+        "Name": "Chalier - Hammer (Forgotten Battlefield)",
         "CodeName": "FB_ChalierHammer",
         "Level": "23",
         "Archetype": "Strong"
     },
     {
-        "Name": "Chalier (Spear) (Forgotten Battlefield)",
+        "Name": "Chalier - Spear (Forgotten Battlefield)",
         "CodeName": "FB_ChalierSpear",
         "Level": "23",
         "Archetype": "Strong"
     },
     {
-        "Name": "Chalier (Sword) (Forgotten Battlefield)",
+        "Name": "Chalier - Sword (Forgotten Battlefield)",
         "CodeName": "FB_ChalierSword",
         "Level": "23",
         "Archetype": "Strong"
@@ -276,7 +276,7 @@
         "Archetype": "Strong"
     },
     {
-        "Name": "Chalier - Gradient Counter Tutorial 2 (Forgotten Battlefield)",
+        "Name": "Chalier - Gradient Counter Tutorial 2 (Cut Content)",
         "CodeName": "FB_Chalier_GradientCounterTutorial_Notuto",
         "Level": "23",
         "Archetype": "Strong"
@@ -336,103 +336,103 @@
         "Archetype": "Strong"
     },
     {
-        "Name": "Chromatic Abbest (Spring Meadows)",
+        "Name": "Chromatic Abbest (Abbest Cave)",
         "CodeName": "SM_Abbest_Alpha",
         "Level": "5",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Aberration (Lumiere)",
+        "Name": "Chromatic Aberration (Endless Tower)",
         "CodeName": "L_Aberration_Alpha",
         "Level": "28",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Ballet (Sirene)",
+        "Name": "Chromatic Ballet (Cut Content)",
         "CodeName": "SI_Ballet_ALPHA",
         "Level": "28",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Ballet - Charm (Sirene)",
+        "Name": "Chromatic Ballet - Charm (Falling Leaves)",
         "CodeName": "SI_Ballet_ALPHA_Charm",
         "Level": "28",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Ballet - Melee (Sirene)",
+        "Name": "Chromatic Ballet - Melee (Falling Leaves)",
         "CodeName": "SI_Ballet_ALPHA_Melee",
         "Level": "28",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Ballet - Range (Sirene)",
+        "Name": "Chromatic Ballet - Range (Falling Leaves)",
         "CodeName": "SI_Ballet_ALPHA_Range",
         "Level": "28",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Benisseur (Forgotten Battlefield)",
+        "Name": "Chromatic Benisseur (World Map)",
         "CodeName": "FB_Benisseur_Alpha",
         "Level": "23",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Boucheclier (Visages)",
+        "Name": "Chromatic Boucheclier (Isle of the Eyes)",
         "CodeName": "MF_Boucheclier_ALPHA",
         "Level": "28",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Bourgeon (Flying Waters)",
+        "Name": "Chromatic Bourgeon (The Monolith)",
         "CodeName": "GO_Bourgeon_ALPHA",
         "Level": "8",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Braseleur (Frozen Hearts)",
+        "Name": "Chromatic Braseleur (The Reacher)",
         "CodeName": "MM_Braseleur_ALPHA",
         "Level": "35",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Bruler (Flying Waters)",
+        "Name": "Chromatic Bruler (World Map)",
         "CodeName": "GO_Bruler_ALPHA",
         "Level": "8",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Catapult Sakapatate (Ancient Sanctuary)",
+        "Name": "Chromatic Catapult Sakapatate (Dark Gestral Arena)",
         "CodeName": "AS_PotatoBag_Mage_ALPHA",
         "Level": "13",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Ceramic Chevaliere (Falling Leaves)",
+        "Name": "Chromatic Ceramic Chevaliere (Endless Tower)",
         "CodeName": "YF_Chevaliere_A_Alpha",
         "Level": "13",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Chalier (Forgotten Battlefield)",
+        "Name": "Chromatic Chalier (Sinister Cave)",
         "CodeName": "FB_ChalierSword_Alpha",
         "Level": "23",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Chalier (Endless Tower)",
+        "Name": "Chromatic Chalier (Cut Content)",
         "CodeName": "FB_ChalierSword_Alpha__CleaTower",
         "Level": "23",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Chapelier (Visages)",
+        "Name": "Chromatic Chapelier (The Crows)",
         "CodeName": "MF_Chapelier_ALPHA",
         "Level": "28",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Clair Obscur (Frozen Hearts)",
+        "Name": "Chromatic Clair Obscur (The Monolith)",
         "CodeName": "MM_ClairObscurAlpha",
         "Level": "23",
         "Archetype": "Alpha"
@@ -444,97 +444,97 @@
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Cruler (Flying Waters)",
+        "Name": "Chromatic Cruler (Endless Night Sanctuary)",
         "CodeName": "GO_Cruler_ALPHA",
         "Level": "8",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Danseuse - Clone (Frozen Hearts)",
+        "Name": "Chromatic Danseuse - Clone (Old Lumiere)",
         "CodeName": "MM_Danseuse_CloneAlpha",
         "Level": "35",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Danseuse (Frozen Hearts)",
+        "Name": "Chromatic Danseuse (Old Lumiere)",
         "CodeName": "MM_Danseuse_Alpha",
         "Level": "35",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Demineur (Flying Waters)",
+        "Name": "Chromatic Demineur (Endless Tower)",
         "CodeName": "GO_Demineur_ALPHA",
         "Level": "8",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Dualliste (Forgotten Battlefield)",
+        "Name": "Chromatic Dualliste (Cut Content)",
         "CodeName": "FB_DuallisteLR_ALPHA",
         "Level": "23",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Echassier (Lumiere)",
+        "Name": "Chromatic Echassier (Lumiere - Act 3)",
         "CodeName": "LU_EchassierAlpha",
         "Level": "0",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Eveque - Earth (Spring Meadows)",
+        "Name": "Chromatic Eveque - Earth (Endless Tower)",
         "CodeName": "SM_Boss_Eveque_Earth_ALPHA",
         "Level": "5",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Gargant (Frozen Hearts)",
+        "Name": "Chromatic Gargant (Cut Content)",
         "CodeName": "MM_Gargant_ALPHA",
         "Level": "35",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Gault (Falling Leaves)",
+        "Name": "Chromatic Gault (Stone Wave Cliffs)",
         "CodeName": "YF_GaultB_Alpha",
         "Level": "13",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Glaise (Falling Leaves)",
+        "Name": "Chromatic Glaise (Sky Island)",
         "CodeName": "YF_Glaise_ALPHA",
         "Level": "13",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Glissando (Sirene)",
+        "Name": "Chromatic Glissando (Sirene's Dress)",
         "CodeName": "SI_Glissando_Alpha",
         "Level": "57",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Goblu (Flying Waters)",
+        "Name": "Chromatic Goblu (World Map)",
         "CodeName": "GO_Goblu_ALPHA",
         "Level": "8",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Gold Chevaliere (Falling Leaves)",
+        "Name": "Chromatic Gold Chevaliere (Crimson Forest)",
         "CodeName": "YF_Chevaliere_C_Alpha",
         "Level": "13",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Greatsword Cultist (Stone Wave Cliffs)",
+        "Name": "Chromatic Greatsword Cultist (Sirene)",
         "CodeName": "SC_CultistHeavy_Alpha",
         "Level": "18",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Hexga (Stone Wave Cliffs)",
+        "Name": "Chromatic Hexga (Stone Wave Cliffs Cave)",
         "CodeName": "SC_Hexga_Alpha",
         "Level": "19",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Jar (Falling Leaves)",
+        "Name": "Chromatic Jar (Endless Tower)",
         "CodeName": "YF_Jar_ALPHA",
         "Level": "13",
         "Archetype": "Alpha"
@@ -552,43 +552,43 @@
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Luster (Flying Waters)",
+        "Name": "Chromatic Luster (Forgotten Battlefield)",
         "CodeName": "GO_Luster_Alpha",
         "Level": "8",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Mage Cultist (Stone Wave Cliffs)",
+        "Name": "Chromatic Mage Cultist (Cut Content)",
         "CodeName": "SC_CultistMage_ALPHA",
         "Level": "18",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Moissonneuse (Visages)",
+        "Name": "Chromatic Moissonneuse (Endless Tower)",
         "CodeName": "MF_Moissonneuse_ALPHA",
         "Level": "28",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Orphelin - Hammer (The Reacher)",
+        "Name": "Chromatic Orphelin - Hammer (Yellow Harvest)",
         "CodeName": "RE_OrphelinHammer_Alpha",
         "Level": "40",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Orphelin - Nail (The Reacher)",
+        "Name": "Chromatic Orphelin - Nail (Yellow Harvest)",
         "CodeName": "RE_OrphelinNail_Alpha",
         "Level": "40",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Orphelin - Spoon (The Reacher)",
+        "Name": "Chromatic Orphelin - Spoon (Yellow Harvest)",
         "CodeName": "RE_OrphelinSpoon_Alpha",
         "Level": "40",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Pelerin (Frozen Hearts)",
+        "Name": "Chromatic Pelerin (Cut Content)",
         "CodeName": "MM_Pelerin_ALPHA",
         "Level": "35",
         "Archetype": "Alpha"
@@ -600,43 +600,43 @@
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Portier (Spring Meadows)",
+        "Name": "Chromatic Portier (Endless Tower)",
         "CodeName": "SM_Portier_ALPHA",
         "Level": "3",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Potier (Falling Leaves)",
+        "Name": "Chromatic Potier (Cut Content)",
         "CodeName": "YF_Potier_ALPHA",
         "Level": "13",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Ramasseur (Forgotten Battlefield)",
+        "Name": "Chromatic Ramasseur (Visages)",
         "CodeName": "FB_Ramasseur_Alpha",
         "Level": "23",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Ranger Sakapatate (Ancient Sanctuary)",
+        "Name": "Chromatic Ranger Sakapatate (Dark Gestral Arena)",
         "CodeName": "AS_PotatoBag_Ranger_ALPHA",
         "Level": "13",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Reaper Cultist (Stone Wave Cliffs)",
+        "Name": "Chromatic Reaper Cultist (World Map)",
         "CodeName": "SC_CultistFlying_ALPHA",
         "Level": "18",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Robust Sakapatate (Ancient Sanctuary)",
+        "Name": "Chromatic Robust Sakapatate (Dark Gestral Arena)",
         "CodeName": "AS_PotatoBag_Tank_ALPHA",
         "Level": "13",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Sapling (Falling Leaves)",
+        "Name": "Chromatic Sapling (Cut Content)",
         "CodeName": "YF_Sapling_ALPHA",
         "Level": "13",
         "Archetype": "Alpha"
@@ -648,37 +648,37 @@
         "Archetype": "Boss"
     },
     {
-        "Name": "Chromatic Stalact (Frozen Hearts)",
+        "Name": "Chromatic Stalact (Cut Content)",
         "CodeName": "MM_Stalact_ALPHA",
         "Level": "35",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Steel Chevaliere (Falling Leaves)",
+        "Name": "Chromatic Steel Chevaliere (Endless Tower)",
         "CodeName": "YF_Chevaliere_B_Alpha",
         "Level": "13",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Troubadour (Forgotten Battlefield)",
+        "Name": "Chromatic Troubadour (Flying Waters)",
         "CodeName": "FB_Troubadour_Alpha",
         "Level": "23",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Ultimate Sakapatate (Ancient Sanctuary)",
+        "Name": "Chromatic Ultimate Sakapatate (Cut Content)",
         "CodeName": "AS_PotatoBag_Boss_ALPHA",
         "Level": "13",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Veilleur (The Reacher)",
+        "Name": "Chromatic Veilleur (Frozen Hearts)",
         "CodeName": "RE_Veilleur_Alpha",
         "Level": "0",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Chromatic Volester (Spring Meadows)",
+        "Name": "Chromatic Volester (Cut Content)",
         "CodeName": "SM_Volester_ALPHA",
         "Level": "5",
         "Archetype": "Alpha"
@@ -690,7 +690,7 @@
         "Archetype": "Strong"
     },
     {
-        "Name": "Clair Clone",
+        "Name": "Clair Clone (Cut Content)",
         "CodeName": "MirrorRenoirCloneClaire",
         "Level": "60",
         "Archetype": "Boss"
@@ -726,13 +726,13 @@
         "Archetype": "Elite"
     },
     {
-        "Name": "Chromatic Contorsionniste (Visages)",
+        "Name": "Chromatic Contorsionniste (Cut Content)",
         "CodeName": "MF_Contorsionniste_Alpha",
         "Level": "28",
         "Archetype": "Alpha"
     },
     {
-        "Name": "Creation (Lumiere)",
+        "Name": "Creation (Lumiere - Act 3)",
         "CodeName": "L_Creation",
         "Level": "28",
         "Archetype": "Elite"
@@ -744,7 +744,7 @@
         "Archetype": "Elite"
     },
     {
-        "Name": "Cribappa (Merchant)",
+        "Name": "Cribappa (Lumiere - Act 3)",
         "CodeName": "Merchant_Lumiere",
         "Level": "60",
         "Archetype": "Strong"
@@ -768,13 +768,13 @@
         "Archetype": "Strong"
     },
     {
-        "Name": "Cruler - Jump Tutorial (Flying Waters)",
+        "Name": "Cruler - Jump Tutorial (Cut Content)",
         "CodeName": "GO_Cruler_JumpTutorial",
         "Level": "60",
         "Archetype": "Strong"
     },
     {
-        "Name": "Dancing Petals (Old Lumiere)",
+        "Name": "Dancing Petals (Cut Content)",
         "CodeName": "OL_MirrorRenoir_HealingSource",
         "Level": "60",
         "Archetype": "Regular"
@@ -792,43 +792,43 @@
         "Archetype": "Regular"
     },
     {
-        "Name": "Danseuse Clone (Student)",
+        "Name": "Danseuse (Cut Content)",
         "CodeName": "QUEST_Danseuse_DanceClass_Clone",
         "Level": "35",
         "Archetype": "Elite"
     },
     {
-        "Name": "Danseuse Clone (Frozen Hearts)",
+        "Name": "Danseuse Clone (Cut Content)",
         "CodeName": "MM_Danseuse_Clone",
         "Level": "35",
         "Archetype": "Weak"
     },
     {
-        "Name": "Danseuse Clone (The Monolith)",
+        "Name": "Danseuse Clone (Cut Content)",
         "CodeName": "ML_Danseuse_Clone_Gold",
         "Level": "35",
         "Archetype": "Weak"
     },
     {
-        "Name": "Danseuse Teacher (Quest)",
+        "Name": "Danseuse Teacher Parry Trial (Frozen Hearts)",
         "CodeName": "QUEST_Danseuse_DanceClass",
         "Level": "60",
         "Archetype": "Regular"
     },
     {
-        "Name": "Danseuse Teacher 2 (Quest)",
+        "Name": "Danseuse Teacher Fight (Frozen Hearts)",
         "CodeName": "QUEST_Danseuse_DanceClass_Kill",
         "Level": "60",
         "Archetype": "Elite"
     },
     {
-        "Name": "Dark Ballet (Sirene)",
+        "Name": "Dark Ballet (Cut Content)",
         "CodeName": "SI_DarkBallet",
         "Level": "28",
         "Archetype": "Elusive"
     },
     {
-        "Name": "Delsitra (Merchant)",
+        "Name": "Delsitra (Sacred River)",
         "CodeName": "Merchant_GestralVillage3",
         "Level": "60",
         "Archetype": "Strong"
@@ -846,13 +846,13 @@
         "Archetype": "Elusive"
     },
     {
-        "Name": "Dominique Giant Feet",
+        "Name": "Dominique Giant Feet (Gestral Village)",
         "CodeName": "QUEST_DominiqueGiantFeet",
         "Level": "60",
         "Archetype": "Strong"
     },
     {
-        "Name": "Dominique Giant Feet (Gestral Village)",
+        "Name": "Dominique Giant Feet - Sciel's Tutorial (Gestral Village)",
         "CodeName": "GV_GestralScielTuto",
         "Level": "60",
         "Archetype": "Strong"
@@ -876,7 +876,7 @@
         "Archetype": "Boss"
     },
     {
-        "Name": "Dualliste (GDC)",
+        "Name": "Dualliste (Cut Content)",
         "CodeName": "GDC_Dualliste",
         "Level": "1",
         "Archetype": "Boss"
@@ -906,13 +906,13 @@
         "Archetype": "Boss"
     },
     {
-        "Name": "Dualsword Cultist (Stone Wave Cliffs)",
+        "Name": "Dualsword Cultist (Cut Content)",
         "CodeName": "SC_CultistDualSword",
         "Level": "18",
         "Archetype": "Regular"
     },
     {
-        "Name": "Dualsword Cultist Alpha (Stone Wave Cliffs)",
+        "Name": "Dualsword Cultist Alpha (Cut Content)",
         "CodeName": "SC_CultistDualSword_ALPHA",
         "Level": "18",
         "Archetype": "Alpha"
@@ -930,19 +930,19 @@
         "Archetype": "Regular"
     },
     {
-        "Name": "Eesda (Merchant)",
+        "Name": "Eesda (Gestral Village)",
         "CodeName": "Merchant_GestralVillage2",
         "Level": "60",
         "Archetype": "Strong"
     },
     {
-        "Name": "Eragol (Merchant)",
+        "Name": "Eragol (The Reacher)",
         "CodeName": "Merchant_Reacher",
         "Level": "60",
         "Archetype": "Strong"
     },
     {
-        "Name": "EvequeLuneScript (Spring Meadows)",
+        "Name": "EvequeLuneScript (Cut Content)",
         "CodeName": "SM_Boss_EvequeLuneScript",
         "Level": "5",
         "Archetype": "Boss"
@@ -972,7 +972,7 @@
         "Archetype": "Alpha"
     },
     {
-        "Name": "Flame Eveque (Spring Meadows)",
+        "Name": "Flame Eveque (Cut Content)",
         "CodeName": "SM_Boss_Eveque_Fire_ALPHA",
         "Level": "5",
         "Archetype": "Alpha"
@@ -984,7 +984,7 @@
         "Archetype": "Alpha"
     },
     {
-        "Name": "Francois (Esquie's Quest)",
+        "Name": "Francois - Esquie's Quest (Esquie's Nest)",
         "CodeName": "QUEST_FrancoisDuel",
         "Level": "45",
         "Archetype": "Strong"
@@ -1002,7 +1002,7 @@
         "Archetype": "Alpha"
     },
     {
-        "Name": "Frost Eveque (Spring Meadows)",
+        "Name": "Frost Eveque (World Map)",
         "CodeName": "SM_Boss_Eveque_Ice_ALPHA",
         "Level": "5",
         "Archetype": "Alpha"
@@ -1014,7 +1014,7 @@
         "Archetype": "Alpha"
     },
     {
-        "Name": "Fusoka (Merchant)",
+        "Name": "Fusoka (Flying Manor)",
         "CodeName": "Merchant_CleaIsland",
         "Level": "60",
         "Archetype": "Strong"
@@ -1038,13 +1038,13 @@
         "Archetype": "Boss"
     },
     {
-        "Name": "Gault (Petank Summon)",
+        "Name": "Gault (Summon)",
         "CodeName": "PETANK_GaultA_Summon",
         "Level": "13",
         "Archetype": "Regular"
     },
     {
-        "Name": "Gault A (Cut Content)",
+        "Name": "Gault A (Yellow Harvest)",
         "CodeName": "YF_GaultA",
         "Level": "13",
         "Archetype": "Weak"
@@ -1080,13 +1080,13 @@
         "Archetype": "Regular"
     },
     {
-        "Name": "Gault B (Cut Content)",
+        "Name": "Gault B (Yellow Harvest)",
         "CodeName": "YF_GaultB",
         "Level": "13",
         "Archetype": "Regular"
     },
     {
-        "Name": "Gestral Minion (Merchant)",
+        "Name": "Gestral Minion (Sacred River)",
         "CodeName": "Merchant_GestralVillage3_Minions",
         "Level": "60",
         "Archetype": "Regular"
@@ -1098,43 +1098,43 @@
         "Archetype": "Elite"
     },
     {
-        "Name": "Gestral Warrior - Baby (Gestral Arena)",
+        "Name": "Gestral Warrior - Baby (Dark Gestral Arena)",
         "CodeName": "GA_GestralBaby",
         "Level": "35",
         "Archetype": "Strong"
     },
     {
-        "Name": "Gestral Warrior - Buff (Gestral Arena)",
+        "Name": "Gestral Warrior - Buff (Dark Gestral Arena)",
         "CodeName": "GA_GestralBuff",
         "Level": "35",
         "Archetype": "Strong"
     },
     {
-        "Name": "Gestral Warrior - Chad (Gestral Arena)",
+        "Name": "Gestral Warrior - Chad (Gestral Village)",
         "CodeName": "GA_GestralChad",
         "Level": "35",
         "Archetype": "Strong"
     },
     {
-        "Name": "Gestral Warrior - Skinny (Gestral Arena)",
+        "Name": "Gestral Warrior - Skinny (Dark Gestral Arena)",
         "CodeName": "GA_GestralSkinny",
         "Level": "35",
         "Archetype": "Strong"
     },
     {
-        "Name": "Gestral Warrior - Sumo (Gestral Arena)",
+        "Name": "Gestral Warrior - Sumo (Dark Gestral Arena)",
         "CodeName": "GA_GestralSumo",
         "Level": "35",
         "Archetype": "Strong"
     },
     {
-        "Name": "Gestral Warrior - Tall (Gestral Arena)",
+        "Name": "Gestral Warrior - Tall (Dark Gestral Arena)",
         "CodeName": "GA_GestralTall",
         "Level": "35",
         "Archetype": "Strong"
     },
     {
-        "Name": "Giant Sapling",
+        "Name": "Giant Sapling (Crushing Cavern)",
         "CodeName": "SL_Sapling_CrushingWall",
         "Level": "60",
         "Archetype": "Elite"
@@ -1146,7 +1146,7 @@
         "Archetype": "Strong"
     },
     {
-        "Name": "Glaise - Boss (Falling Leaves)",
+        "Name": "Glaise - Boss (Yellow Harvest)",
         "CodeName": "YF_Glaise_Boss",
         "Level": "13",
         "Archetype": "Boss"
@@ -1182,13 +1182,13 @@
         "Archetype": "Boss"
     },
     {
-        "Name": "Gold Chevaliere (Falling Leaves)",
+        "Name": "Gold Chevaliere (Crimson Forest)",
         "CodeName": "YF_Chevaliere_C",
         "Level": "13",
         "Archetype": "Strong"
     },
     {
-        "Name": "Golgra (Dark Arena)",
+        "Name": "Golgra (Dark Gestral Arena)",
         "CodeName": "QUEST_Golgra_DarkArena",
         "Level": "48",
         "Archetype": "Boss"
@@ -1224,13 +1224,13 @@
         "Archetype": "Elite"
     },
     {
-        "Name": "Grosse Tete (Visages)",
+        "Name": "Grosse Tete (World Map)",
         "CodeName": "MF_GrossTete",
         "Level": "0",
         "Archetype": "Elite"
     },
     {
-        "Name": "Grour (Merchant)",
+        "Name": "Grour (Renoir's Drafts)",
         "CodeName": "Merchant_Optional3",
         "Level": "60",
         "Archetype": "Strong"
@@ -1248,7 +1248,7 @@
         "Archetype": "Elite"
     },
     {
-        "Name": "Jar (Falling Leaves)",
+        "Name": "Jar (Yellow Harvest)",
         "CodeName": "YF_Jar",
         "Level": "13",
         "Archetype": "Strong"
@@ -1278,7 +1278,7 @@
         "Archetype": "Strong"
     },
     {
-        "Name": "Jerijeri (Merchant)",
+        "Name": "Jerijeri (Stone Wave Cliffs)",
         "CodeName": "Merchant_SeaCliff",
         "Level": "60",
         "Archetype": "Strong"
@@ -1290,25 +1290,25 @@
         "Archetype": "Elite"
     },
     {
-        "Name": "Jujubree (Merchant)",
+        "Name": "Jujubree (Gestral Village)",
         "CodeName": "Merchant_GestralVillage1",
         "Level": "60",
         "Archetype": "Strong"
     },
     {
-        "Name": "Julien Tiny Head",
+        "Name": "Julien Tiny Head (Gestral Village)",
         "CodeName": "QUEST_JulienTinyHead",
         "Level": "60",
         "Archetype": "Strong"
     },
     {
-        "Name": "Kasumi (Merchant)",
+        "Name": "Kasumi (Forgotten Battlefield)",
         "CodeName": "Merchant_ForgottenBattlefield",
         "Level": "60",
         "Archetype": "Strong"
     },
     {
-        "Name": "Klaudiso (Merchant)",
+        "Name": "Klaudiso (Sirene)",
         "CodeName": "Merchant_Sirene",
         "Level": "60",
         "Archetype": "Strong"
@@ -1338,7 +1338,7 @@
         "Archetype": "Boss"
     },
     {
-        "Name": "Lancelier (Petank Summon)",
+        "Name": "Lancelier (Summon)",
         "CodeName": "PETANK_Lancelier_Summon",
         "Level": "3",
         "Archetype": "Regular"
@@ -1404,43 +1404,43 @@
         "Archetype": "Elite"
     },
     {
-        "Name": "Lumiere Citizen - Fleuret_Female (Lumiere)",
+        "Name": "Lumiere Citizen - Fleuret_Female (Lumiere - Act 3)",
         "CodeName": "L_LumiereCitizen_Fleuret_Female",
         "Level": "45",
         "Archetype": "Regular"
     },
     {
-        "Name": "Lumiere Citizen - Fleuret_Male (Lumiere)",
+        "Name": "Lumiere Citizen - Fleuret_Male (Lumiere - Act 3)",
         "CodeName": "L_LumiereCitizen_Fleuret_Male",
         "Level": "60",
         "Archetype": "Regular"
     },
     {
-        "Name": "Lumiere Citizen - GunSword_Female (Lumiere)",
+        "Name": "Lumiere Citizen - GunSword_Female (Lumiere - Act 3)",
         "CodeName": "L_LumiereCitizen_GunSword_Female",
         "Level": "45",
         "Archetype": "Regular"
     },
     {
-        "Name": "Lumiere Citizen - GunSword_Male (Lumiere)",
+        "Name": "Lumiere Citizen - GunSword_Male (Lumiere - Act 3)",
         "CodeName": "L_LumiereCitizen_GunSword_Male",
         "Level": "60",
         "Archetype": "Regular"
     },
     {
-        "Name": "Lumiere Citizen (Lumiere)",
+        "Name": "Cut Content Citizen (Cut Content)",
         "CodeName": "L_LumiereCitizen",
         "Level": "45",
         "Archetype": "Regular"
     },
     {
-        "Name": "Lumiere Citizen - Mage_Female (Lumiere)",
+        "Name": "Lumiere Citizen - Mage_Female (Lumiere - Act 3)",
         "CodeName": "L_LumiereCitizen_Mage_Female",
         "Level": "45",
         "Archetype": "Regular"
     },
     {
-        "Name": "Lumiere Citizen - Mage_Male (Lumiere)",
+        "Name": "Cut Content Citizen - Mage_Male (Cut Content)",
         "CodeName": "L_LumiereCitizen_Mage_Male",
         "Level": "60",
         "Archetype": "Regular"
@@ -1452,7 +1452,7 @@
         "Archetype": "Regular"
     },
     {
-        "Name": "Luster (Petank Summon)",
+        "Name": "Luster (Summon)",
         "CodeName": "PETANK_Luster_Summon",
         "Level": "8",
         "Archetype": "Regular"
@@ -1464,55 +1464,55 @@
         "Archetype": "Regular"
     },
     {
-        "Name": "Maelle (Final Boss)",
+        "Name": "Maelle (The Heart of the Canvas)",
         "CodeName": "FinalBoss_Maelle",
         "Level": "45",
         "Archetype": "Strong"
     },
     {
-        "Name": "Maelle - Prologue 1 (Lumiere)",
+        "Name": "Maelle - Prologue 1 (Lumiere - Act 1)",
         "CodeName": "L_MaelleTutorial_NoTutorial_Civilian",
         "Level": "1",
         "Archetype": "Regular"
     },
     {
-        "Name": "Maelle - Prologue 2 (Lumiere)",
+        "Name": "Maelle - Prologue 2 (Lumiere - Act 1)",
         "CodeName": "L_MaelleTutorial_Civilian",
         "Level": "1",
         "Archetype": "Regular"
     },
     {
-        "Name": "Maelle - Prologue 3 (Lumiere)",
+        "Name": "Maelle - Prologue 3 (Lumiere - Act 1)",
         "CodeName": "L_MaelleTutorial_NoTutorial",
         "Level": "1",
         "Archetype": "Regular"
     },
     {
-        "Name": "Maelle - Prologue 4 (Lumiere)",
+        "Name": "Maelle - Prologue 4 (Lumiere - Act 1)",
         "CodeName": "L_MaelleTutorial",
         "Level": "1",
         "Archetype": "Regular"
     },
     {
-        "Name": "Mage Cultist (Stone Wave Cliffs)",
+        "Name": "Mage Cultist (Cut Content)",
         "CodeName": "SC_CultistMage",
         "Level": "18",
         "Archetype": "Strong"
     },
     {
-        "Name": "Mage Cultist (The Monolith)",
+        "Name": "Mage Cultist (Cut Content)",
         "CodeName": "ML_CultistMage_Gold",
         "Level": "18",
         "Archetype": "Strong"
     },
     {
-        "Name": "Mandelgo (Merchant)",
+        "Name": "Mandelgo (Old Lumiere)",
         "CodeName": "Merchant_OldLumiere",
         "Level": "60",
         "Archetype": "Strong"
     },
     {
-        "Name": "Mask Keeper 1 (Endless Tower)",
+        "Name": "Mask Keeper 1 (Cut Content)",
         "CodeName": "CT_MaskKeeper_NoMask",
         "Level": "60",
         "Archetype": "Boss"
@@ -1524,43 +1524,43 @@
         "Archetype": "Boss"
     },
     {
-        "Name": "Mask Keeper (Visages)",
+        "Name": "Mask Keeper (Cut Content)",
         "CodeName": "MF_Axon_MaskKeeper_VisagesPhase2",
         "Level": "60",
         "Archetype": "Boss"
     },
     {
-        "Name": "Mask of Anger (Visages)",
+        "Name": "Mask of Anger (Cut Content)",
         "CodeName": "MF_MaskAnger",
         "Level": "28",
         "Archetype": "Elite"
     },
     {
-        "Name": "Mask of Joy (Visages)",
+        "Name": "Mask of Joy (Cut Content)",
         "CodeName": "MF_MaskJoy",
         "Level": "28",
         "Archetype": "Elite"
     },
     {
-        "Name": "Mask of Sadness (Visages)",
+        "Name": "Mask of Sadness (Cut Content)",
         "CodeName": "MF_MaskSadness",
         "Level": "28",
         "Archetype": "Elite"
     },
     {
-        "Name": "Matthieu the Colossus",
+        "Name": "Matthieu the Colossus (Gestral Village)",
         "CodeName": "QUEST_MatthieuTheColossus",
         "Level": "60",
         "Archetype": "Strong"
     },
     {
-        "Name": "Melosh (Merchant)",
+        "Name": "Melosh (Frozen Hearts)",
         "CodeName": "Merchant_MonocosMountain",
         "Level": "60",
         "Archetype": "Strong"
     },
     {
-        "Name": "Mime",
+        "Name": "Mime (Cut Content)",
         "CodeName": "Mime",
         "Level": "0",
         "Archetype": "Regular"
@@ -1578,7 +1578,7 @@
         "Archetype": "Strong"
     },
     {
-        "Name": "Mime (Falling Leaves)",
+        "Name": "Mime (Yellow Harvest)",
         "CodeName": "YF_Mime",
         "Level": "13",
         "Archetype": "Strong"
@@ -1602,7 +1602,7 @@
         "Archetype": "Strong"
     },
     {
-        "Name": "Mime (Lumiere)",
+        "Name": "Mime (Lumiere - Act 1)",
         "CodeName": "LU_Act1_Mime",
         "Level": "1",
         "Archetype": "Regular"
@@ -1644,7 +1644,7 @@
         "Archetype": "Strong"
     },
     {
-        "Name": "Mime_Bald (World Map)",
+        "Name": "Mime_Bald (Sunless Cliffs)",
         "CodeName": "WM_Mime_Bald",
         "Level": "0",
         "Archetype": "Alpha"
@@ -1662,7 +1662,7 @@
         "Archetype": "Strong"
     },
     {
-        "Name": "Mistra (Merchant)",
+        "Name": "Mistra (The Monolith)",
         "CodeName": "Merchant_Monolith",
         "Level": "60",
         "Archetype": "Strong"
@@ -1686,7 +1686,7 @@
         "Archetype": "Regular"
     },
     {
-        "Name": "Monoco (Monoco's Quest)",
+        "Name": "Monoco (Camp)",
         "CodeName": "QUEST_MonocoDuel",
         "Level": "35",
         "Archetype": "Boss"
@@ -1698,7 +1698,7 @@
         "Archetype": "Boss"
     },
     {
-        "Name": "Noco (Merchant)",
+        "Name": "Noco (Flying Waters)",
         "CodeName": "Merchant_GoblusLair",
         "Level": "60",
         "Archetype": "Strong"
@@ -1716,7 +1716,7 @@
         "Archetype": "Strong"
     },
     {
-        "Name": "Obscure Clone",
+        "Name": "Obscure Clone (Cut Content)",
         "CodeName": "MirrorRenoirCloneObscure",
         "Level": "60",
         "Archetype": "Boss"
@@ -1788,7 +1788,7 @@
         "Archetype": "Boss"
     },
     {
-        "Name": "Painted Renoir (Frozen Hearts)",
+        "Name": "Painted Renoir (The Monolith)",
         "CodeName": "MM_MirrorRenoir",
         "Level": "28",
         "Archetype": "Boss"
@@ -1806,7 +1806,7 @@
         "Archetype": "Regular"
     },
     {
-        "Name": "Pelerin - Monoco's Tutorial (Frozen Hearts)",
+        "Name": "Pelerin - Monoco's Tutorial (Monoco's Station)",
         "CodeName": "MM_Pelerin_MonocoTuto",
         "Level": "35",
         "Archetype": "Regular"
@@ -1818,7 +1818,7 @@
         "Archetype": "Regular"
     },
     {
-        "Name": "Persik (Merchant)",
+        "Name": "Persik (Falling Leaves)",
         "CodeName": "Merchant_OrangeForest",
         "Level": "60",
         "Archetype": "Strong"
@@ -1842,7 +1842,7 @@
         "Archetype": "Petank"
     },
     {
-        "Name": "Petank (Parent)",
+        "Name": "Petank Parent (Cut Content)",
         "CodeName": "Petank_Parent",
         "Level": "0",
         "Archetype": "Petank"
@@ -1860,31 +1860,31 @@
         "Archetype": "Petank"
     },
     {
-        "Name": "Petank - Chromatic Summon (Blue)",
+        "Name": "Petank - Chromatic Summon (Summon)",
         "CodeName": "WM_PetankAlphaSummon_Blue",
         "Level": "0",
         "Archetype": "Regular"
     },
     {
-        "Name": "Petank - Chromatic Summon (Green)",
+        "Name": "Petank - Chromatic Summon (Summon)",
         "CodeName": "WM_PetankAlphaSummon_Green",
         "Level": "0",
         "Archetype": "Regular"
     },
     {
-        "Name": "Petank - Chromatic Summon (Red)",
+        "Name": "Petank - Chromatic Summon (Summon)",
         "CodeName": "WM_PetankAlphaSummon_Red",
         "Level": "0",
         "Archetype": "Regular"
     },
     {
-        "Name": "Petank - Chromatic Summon (Violet)",
+        "Name": "Petank - Chromatic Summon (Summon)",
         "CodeName": "WM_PetankAlphaSummon_Violet",
         "Level": "0",
         "Archetype": "Regular"
     },
     {
-        "Name": "Petank - Chromatic Summon (Yellow)",
+        "Name": "Petank - Chromatic Summon (Summon)",
         "CodeName": "WM_PetankAlphaSummon_Yellow",
         "Level": "0",
         "Archetype": "Regular"
@@ -1896,13 +1896,13 @@
         "Archetype": "Petank"
     },
     {
-        "Name": "Pinabby (Merchant)",
+        "Name": "Pinabby (Yellow Harvest)",
         "CodeName": "Merchant_YellowForest",
         "Level": "60",
         "Archetype": "Strong"
     },
     {
-        "Name": "Place holder battle",
+        "Name": "Place holder battle (Cut Content)",
         "CodeName": "Test_PlaceHolderBattleDude",
         "Level": "1",
         "Archetype": "Regular"
@@ -1962,7 +1962,7 @@
         "Archetype": "Strong"
     },
     {
-        "Name": "Potier (Falling Leaves)",
+        "Name": "Potier (Yellow Harvest)",
         "CodeName": "YF_Potier",
         "Level": "13",
         "Archetype": "Elusive"
@@ -1998,7 +1998,7 @@
         "Archetype": "Elusive"
     },
     {
-        "Name": "Practice Balloon - Prologue (Lumiere)",
+        "Name": "Practice Balloon - Prologue (Lumiere - Act 1)",
         "CodeName": "LU_Act1_PunchingBall",
         "Level": "1",
         "Archetype": "Weak"
@@ -2022,7 +2022,7 @@
         "Archetype": "Weak"
     },
     {
-        "Name": "Ramodo (Merchant)",
+        "Name": "Ramodo (Cut Content)",
         "CodeName": "Merchant_Optional1",
         "Level": "60",
         "Archetype": "Strong"
@@ -2046,7 +2046,7 @@
         "Archetype": "Weak"
     },
     {
-        "Name": "Rasablas (Merchant)",
+        "Name": "Rasablas (Cut Content)",
         "CodeName": "Merchant_GrandisStation",
         "Level": "60",
         "Archetype": "Strong"
@@ -2064,7 +2064,7 @@
         "Archetype": "Elusive"
     },
     {
-        "Name": "Renoir (Lumiere)",
+        "Name": "Renoir (Lumiere - Act 3)",
         "CodeName": "L_Boss_Curator",
         "Level": "46",
         "Archetype": "Boss"
@@ -2160,13 +2160,13 @@
         "Archetype": "Boss"
     },
     {
-        "Name": "Simon (Phase 1)",
+        "Name": "Simon - Phase 1 (The Abyss)",
         "CodeName": "Boss_Simon",
         "Level": "99",
         "Archetype": "Boss"
     },
     {
-        "Name": "Simon (Phase 2)",
+        "Name": "Simon - Phase 2 (The Abyss)",
         "CodeName": "Boss_Simon_Phase2",
         "Level": "99",
         "Archetype": "Boss"
@@ -2178,7 +2178,7 @@
         "Archetype": "Boss"
     },
     {
-        "Name": "Sophie (Lumiere)",
+        "Name": "Sophie (Lumiere - Act 1)",
         "CodeName": "LU_Act1_Sophie",
         "Level": "1",
         "Archetype": "Weak"
@@ -2214,31 +2214,31 @@
         "Archetype": "Elite"
     },
     {
-        "Name": "Stalact - Gradient Attack Tutorial (Frozen Hearts)",
+        "Name": "Stalact - Gradient Attack Tutorial (Monoco's Station)",
         "CodeName": "MM_Stalact_GradientAttackTutorial",
         "Level": "60",
         "Archetype": "Elite"
     },
     {
-        "Name": "Steel Chevaliere (Falling Leaves)",
+        "Name": "Steel Chevaliere (Old Lumiere)",
         "CodeName": "YF_Chevaliere_B",
         "Level": "13",
         "Archetype": "Regular"
     },
     {
-        "Name": "Sunniso (Stone Wave Cliffs)",
+        "Name": "Sunniso (Cut Content)",
         "CodeName": "SC_Gestral_Sonnyso",
         "Level": "18",
         "Archetype": "Elite"
     },
     {
-        "Name": "The Curator - Jump Tutorial (Flying Waters)",
+        "Name": "The Curator - Jump Tutorial (The Manor)",
         "CodeName": "GO_Curator_JumpTutorial",
         "Level": "8",
         "Archetype": "Elite"
     },
     {
-        "Name": "The Curator - Jump Tutorial 2 (Flying Waters)",
+        "Name": "The Curator - Jump Tutorial 2 (The Manor)",
         "CodeName": "GO_Curator_JumpTutorial_NoTuto",
         "Level": "8",
         "Archetype": "Elite"
@@ -2256,7 +2256,7 @@
         "Archetype": "Boss"
     },
     {
-        "Name": "The Weaponless Chalier",
+        "Name": "The Weaponless Chalier (Cut Content)",
         "CodeName": "QUEST_WeaponlessChalier",
         "Level": "50",
         "Archetype": "Elite"
@@ -2268,7 +2268,7 @@
         "Archetype": "Alpha"
     },
     {
-        "Name": "Thunder Eveque (Spring Meadows)",
+        "Name": "Thunder Eveque (Endless Tower)",
         "CodeName": "SM_Boss_Eveque_Lightning_ALPHA",
         "Level": "5",
         "Archetype": "Alpha"
@@ -2286,7 +2286,7 @@
         "Archetype": "Regular"
     },
     {
-        "Name": "Troubadour (GDC)",
+        "Name": "Troubadour (Cut Content)",
         "CodeName": "GDC_Troubadour",
         "Level": "1",
         "Archetype": "Regular"
@@ -2316,7 +2316,7 @@
         "Archetype": "Elite"
     },
     {
-        "Name": "Ultimate Sakapatate - Karatom Quest (Ancient Sanctuary)",
+        "Name": "Ultimate Sakapatate - Karatom Quest (Gestral Village)",
         "CodeName": "AS_PotatoBag_Boss_Quest",
         "Level": "13",
         "Archetype": "Boss"
@@ -2334,7 +2334,7 @@
         "Archetype": "Elite"
     },
     {
-        "Name": "Verso (Final Boss)",
+        "Name": "Verso (The Heart of the Canvas)",
         "CodeName": "FinalBoss_Verso",
         "Level": "45",
         "Archetype": "Strong"
@@ -2400,13 +2400,13 @@
         "Archetype": "Regular"
     },
     {
-        "Name": "While Rocher",
+        "Name": "While Rocher (Stone Wave Cliffs)",
         "CodeName": "QUEST_Rocher_HexgaQuest",
         "Level": "19",
         "Archetype": "Regular"
     },
     {
-        "Name": "White Benisseur",
+        "Name": "White Benisseur (Red Woods)",
         "CodeName": "QUEST_SleepingBenisseur",
         "Level": "45",
         "Archetype": "Elite"
@@ -2442,7 +2442,7 @@
         "Archetype": "Elite"
     },
     {
-        "Name": "White Grown Bourgeon (Flying Waters)",
+        "Name": "White Grown Bourgeon (The Small Bourgeon)",
         "CodeName": "GO_Bourgeon_Quest",
         "Level": "8",
         "Archetype": "Elite"
@@ -2460,19 +2460,19 @@
         "Archetype": "Elite"
     },
     {
-        "Name": "White Portier",
+        "Name": "White Portier (Esoteric Ruins)",
         "CodeName": "Portier_DoorSoul",
         "Level": "30",
         "Archetype": "Elite"
     },
     {
-        "Name": "White Troubadour",
+        "Name": "White Troubadour Dodge Trial (Stone Quarry)",
         "CodeName": "QUEST_TroubadourCantPlay",
         "Level": "25",
         "Archetype": "Regular"
     },
     {
-        "Name": "White Troubadour 1",
+        "Name": "White Troubadour Fight (Stone Quarry)",
         "CodeName": "QUEST_TroubadourCantPlay_Kill",
         "Level": "25",
         "Archetype": "Elite"

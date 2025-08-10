@@ -58,10 +58,11 @@ public static class SpecialRules
 
     private static void ResetBossPool()
     {
-        EnemyData[] bossPoolArray = CustomEnemyPlacement.TranslatePlacementOption("All Bosses").ToArray();
+        var bossPoolCodeNames = RandomizerLogic.CustomEnemyPlacement.PlainNameToCodeNames["All Bosses"];
+        EnemyData[] bossPoolArray = EnemiesController.GetEnemyDataList(bossPoolCodeNames).ToArray();
         RandomizerLogic.rand.Shuffle(bossPoolArray);
         RemainingBossPool = new List<EnemyData>(bossPoolArray);
-        var translatedExcluded = CustomEnemyPlacement.ExcludedTranslated;
+        var translatedExcluded = EnemiesController.GetEnemyDataList(RandomizerLogic.CustomEnemyPlacement.ExcludedCodeNames);
         RemainingBossPool = RemainingBossPool.Where(e => !translatedExcluded.Contains(e)).ToList();
         if (RemainingBossPool.Count == 0)
         {
@@ -93,18 +94,6 @@ public static class SpecialRules
             if (encounter.Enemies[i].CodeName == "Boss_Simon_Phase2")
             {
                 encounter.Enemies[i] = EnemiesController.GetEnemyData("Boss_Simon");
-            }
-        }
-    }
-
-    public static void ReplaceCutContentEnemies(Encounter encounter)
-    {
-        for (int i = 0; i < encounter.Size; i++)
-        {
-            if (CustomEnemyPlacement.CustomCategoryTranslations["Cut Content Enemies"].Contains(encounter.Enemies[i]))
-            {
-                var archetype = encounter.Enemies[i].Archetype;
-                encounter.Enemies[i] = EnemiesController.GetAllByArchetype(archetype).Find(e => !CustomEnemyPlacement.CustomCategoryTranslations["Cut Content Enemies"].Contains(e));
             }
         }
     }
@@ -158,7 +147,7 @@ public static class SpecialRules
         {
             for (int i = 0; i < encounter.Size; i++)
             {
-                if (encounter.Enemies[i].IsBoss && !CustomEnemyPlacement.NotRandomizedTranslated.Contains(encounter.Enemies[i]))
+                if (encounter.Enemies[i].IsBoss && !RandomizerLogic.CustomEnemyPlacement.NotRandomizedCodeNames.Contains(encounter.Enemies[i].CodeName))
                 {
                     var newBoss = GetBossReplacement();
                     if (newBoss != null)
@@ -167,11 +156,6 @@ public static class SpecialRules
                     }
                 }
             }
-        }
-
-        if (!Settings.IncludeCutContent)
-        {
-            ReplaceCutContentEnemies(encounter);
         }
     }
 

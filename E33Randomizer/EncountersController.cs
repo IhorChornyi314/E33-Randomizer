@@ -95,7 +95,7 @@ public static class EncountersController
     public static void GenerateNewEncounters()
     {
         ReadEncounterAssets();
-        CustomEnemyPlacement.Update();
+        RandomizerLogic.CustomEnemyPlacement.Update();
         Encounters.ForEach(e => ModifyEncounter(e));
     }
 
@@ -129,8 +129,7 @@ public static class EncountersController
 
         if (!Settings.ChangeSizeOfNonRandomizedEncounters)
         {
-            var nonRandomizedEnemies = CustomEnemyPlacement.NotRandomizedTranslated;
-            var encounterRandomized = encounter.Enemies.Any(e => !nonRandomizedEnemies.Contains(e));
+            var encounterRandomized = encounter.Enemies.Any(e => !RandomizerLogic.CustomEnemyPlacement.NotRandomizedCodeNames.Contains(e.CodeName));
             newEncounterSize = encounterRandomized ? newEncounterSize : oldEncounterSize;
         }
         
@@ -150,15 +149,16 @@ public static class EncountersController
         {
             if (i < encounter.Size)
             {
-                EnemyData newEnemy = CustomEnemyPlacement.Replace(encounter.Enemies[i]);
-                encounter.Enemies[i] = newEnemy;
+                var newEnemyCodeName = RandomizerLogic.CustomEnemyPlacement.Replace(encounter.Enemies[i].CodeName);
+                encounter.Enemies[i] = EnemiesController.GetEnemyData(newEnemyCodeName);
             }
             else
             {
                 if (i == 0 || Settings.RandomizeAddedEnemies || !Settings.EnableEnemyOnslaught)
                 {
                     var newBaseEnemy = oldEncounterSize == 0 ? RandomizerLogic.GetRandomEnemy() : encounter.Enemies[i - int.Max(oldEncounterSize, 1)];
-                    encounter.Enemies.Add(CustomEnemyPlacement.Replace(newBaseEnemy));
+                    var newEnemyCodeName = RandomizerLogic.CustomEnemyPlacement.Replace(newBaseEnemy.CodeName);
+                    encounter.Enemies.Add(EnemiesController.GetEnemyData(newEnemyCodeName));
                 }
                 else
                 {

@@ -8,12 +8,14 @@ using Newtonsoft.Json;
 
 namespace E33Randomizer
 {
-    public partial class CustomEnemyPlacementWindow
+    public partial class CustomPlacementWindow
     {
-        public string SelectedEnemyForCustomPlacement = null;
+        public string SelectedObjectForCustomPlacement = null;
+        private CustomPlacement CustomPlacement;
 
-        public CustomEnemyPlacementWindow()
+        public CustomPlacementWindow(CustomPlacement customPlacement)
         {
+            CustomPlacement = customPlacement;
             InitializeComponent();
             PopulateEnemyDropdowns();
             Update();
@@ -29,7 +31,7 @@ namespace E33Randomizer
 
         private void UpdateJsonTextBox()
         {
-            var presetData = new CustomEnemyPlacementPreset(CustomEnemyPlacement.NotRandomized, CustomEnemyPlacement.Excluded, CustomEnemyPlacement.CustomPlacement, CustomEnemyPlacement.FrequencyAdjustments);
+            var presetData = new CustomPlacementPreset(CustomPlacement.NotRandomized, CustomPlacement.Excluded, CustomPlacement.CustomPlacementRules, CustomPlacement.FrequencyAdjustments);
             string json = JsonConvert.SerializeObject(presetData, Formatting.Indented);
             PresetJsonTextBox.Text = json;
         }
@@ -37,7 +39,7 @@ namespace E33Randomizer
         private void UpdateExcludedListBox()
         {
             ExcludedEnemiesListBox.Items.Clear();
-            foreach (var excludedOption in CustomEnemyPlacement.Excluded)
+            foreach (var excludedOption in CustomPlacement.Excluded)
             {
                 ExcludedEnemiesListBox.Items.Add(excludedOption);
             }
@@ -46,7 +48,7 @@ namespace E33Randomizer
         private void UpdateNotRandomizedListBox()
         {
             NotRandomizedEnemiesListBox.Items.Clear();
-            foreach (var notRandomizedOption in CustomEnemyPlacement.NotRandomized)
+            foreach (var notRandomizedOption in CustomPlacement.NotRandomized)
             {
                 NotRandomizedEnemiesListBox.Items.Add(notRandomizedOption);
             }
@@ -55,7 +57,7 @@ namespace E33Randomizer
         private void UpdateFrequencies()
         {
             FrequencyRowsContainer.Children.Clear();
-            foreach (var frequencyAdjustment in CustomEnemyPlacement.FrequencyAdjustments)
+            foreach (var frequencyAdjustment in CustomPlacement.FrequencyAdjustments)
             {
                 var newRow = CreateFrequencyRow(frequencyAdjustment.Key);
                 FrequencyRowsContainer.Children.Add(newRow);
@@ -64,9 +66,7 @@ namespace E33Randomizer
         
         private void PopulateEnemyComboBox(ComboBox comboBox)
         {
-            string[] enemies = CustomEnemyPlacement.PlacementOptionsList.ToArray();
-            
-            foreach (string enemy in enemies)
+            foreach (string enemy in CustomPlacement.PlainNamesList)
             {
                 comboBox.Items.Add(new ComboBoxItem { Content = enemy });
             }
@@ -78,8 +78,7 @@ namespace E33Randomizer
             PopulateEnemyComboBox(ExcludedEnemiesComboBox);
             PopulateEnemyComboBox(OopsAllEnemyComboBox);
             
-            string[] enemies = CustomEnemyPlacement.PlacementOptionsList.ToArray();
-            foreach (string enemy in enemies)
+            foreach (string enemy in CustomPlacement.PlainNamesList)
             {
                 CustomPlacementEnemyListBox.Items.Add(new ComboBoxItem { Content = enemy });
             }
@@ -100,9 +99,9 @@ namespace E33Randomizer
                 string enemyName = selectedItem.Content.ToString();
                 
                 // Check if enemy is already in the list
-                if (!CustomEnemyPlacement.NotRandomized.Contains(enemyName))
+                if (!CustomPlacement.NotRandomized.Contains(enemyName))
                 {
-                    CustomEnemyPlacement.NotRandomized.Add(enemyName);
+                    CustomPlacement.AddNotRandomized(enemyName);
                     UpdateJsonTextBox();
                 }
                 
@@ -123,7 +122,7 @@ namespace E33Randomizer
             {
                 string selectedEnemy = NotRandomizedEnemiesListBox.SelectedItem.ToString();
 
-                CustomEnemyPlacement.NotRandomized.Remove(selectedEnemy);
+                CustomPlacement.RemoveNotRandomized(selectedEnemy);
                 
                 UpdateNotRandomizedListBox();
                 UpdateJsonTextBox();
@@ -146,9 +145,9 @@ namespace E33Randomizer
                 string enemyName = selectedItem.Content.ToString();
                 
                 // Check if enemy is already in the list
-                if (!CustomEnemyPlacement.Excluded.Contains(enemyName))
+                if (!CustomPlacement.Excluded.Contains(enemyName))
                 {
-                    CustomEnemyPlacement.Excluded.Add(enemyName);
+                    CustomPlacement.AddExcluded(enemyName);
                     UpdateExcludedListBox();
                     UpdateJsonTextBox();
                 }
@@ -173,7 +172,7 @@ namespace E33Randomizer
             if (ExcludedEnemiesListBox.SelectedItem != null)
             {
                 string selectedEnemy = ExcludedEnemiesListBox.SelectedItem.ToString();
-                CustomEnemyPlacement.Excluded.Remove(selectedEnemy);
+                CustomPlacement.RemoveExcluded(selectedEnemy);
                 UpdateExcludedListBox();
                 UpdateJsonTextBox();
                 RemoveExcludedEnemyButton.IsEnabled = false;
@@ -185,14 +184,18 @@ namespace E33Randomizer
             if (OopsAllEnemyComboBox.SelectedItem is ComboBoxItem selectedItem)
             {
                 string enemyName = selectedItem.Content.ToString();
-                CustomEnemyPlacement.CustomPlacement = new Dictionary<string, Dictionary<string, float>>()
+                CustomPlacement.CustomPlacementRules = new Dictionary<string, Dictionary<string, float>>()
                 {
                     {"Anyone", new Dictionary<string, float>() {{enemyName, 1}}}
                 };
-                CustomEnemyPlacement.FrequencyAdjustments.Clear();
-                CustomEnemyPlacement.Excluded.Clear();
-                CustomEnemyPlacement.NotRandomized.Clear();
-                LoadCustomPlacementRows(SelectedEnemyForCustomPlacement);
+                CustomPlacement.FrequencyAdjustments.Clear();
+                CustomPlacement.Excluded.Clear();
+                CustomPlacement.ExcludedCodeNames.Clear();
+                
+                CustomPlacement.NotRandomized.Clear();
+                CustomPlacement.NotRandomizedCodeNames.Clear();
+                
+                LoadCustomPlacementRows(SelectedObjectForCustomPlacement);
                 Update();
             }
             else
@@ -208,15 +211,15 @@ namespace E33Randomizer
             {
                 try
                 {
-                    CustomEnemyPlacement.LoadFromJson(presetFile);
-                    LoadCustomPlacementRows(SelectedEnemyForCustomPlacement);
+                    CustomPlacement.LoadFromJson(presetFile);
+                    LoadCustomPlacementRows(SelectedObjectForCustomPlacement);
                     Update();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show($"Error loading preset: {ex.Message}; Reverting to Default.", 
                         "Load Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    CustomEnemyPlacement.LoadDefaultPreset();
+                    CustomPlacement.LoadDefaultPreset();
                     UpdateJsonTextBox();
                 }
             }
@@ -235,8 +238,8 @@ namespace E33Randomizer
             {
                 try
                 {
-                    CustomEnemyPlacement.LoadFromJson(openFileDialog.FileName);
-                    LoadCustomPlacementRows(SelectedEnemyForCustomPlacement);
+                    CustomPlacement.LoadFromJson(openFileDialog.FileName);
+                    LoadCustomPlacementRows(SelectedObjectForCustomPlacement);
                     Update();
                 }
                 catch (Exception ex)
@@ -261,7 +264,7 @@ namespace E33Randomizer
             {
                 try
                 {
-                    CustomEnemyPlacement.SaveToJson(saveFileDialog.FileName);
+                    CustomPlacement.SaveToJson(saveFileDialog.FileName);
                     MessageBox.Show("Preset saved successfully!", 
                                    "Save Complete", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
@@ -314,7 +317,7 @@ namespace E33Randomizer
                 var enemyName = (string)(enemyCombo.SelectedItem as ComboBoxItem)?.Content;
                 if (enemyName != null)
                 {
-                    CustomEnemyPlacement.FrequencyAdjustments.Remove(enemyName);
+                    CustomPlacement.FrequencyAdjustments.Remove(enemyName);
                 }
                 RemoveFrequencyRow(row);
                 UpdateJsonTextBox();
@@ -322,7 +325,7 @@ namespace E33Randomizer
 
             if (enemyName != "")
             {
-                enemyCombo.SelectedIndex = CustomEnemyPlacement.PlacementOptionsList.IndexOf(enemyName);
+                enemyCombo.SelectedIndex = CustomPlacement.PlainNamesList.IndexOf(enemyName);
             }
 
             Slider frequencySlider = new Slider
@@ -331,7 +334,7 @@ namespace E33Randomizer
                 Height = 30,
                 Minimum = 0,
                 Maximum = 100,
-                Value = enemyName == "" ? 100 : CustomEnemyPlacement.FrequencyAdjustments[enemyName] * 100,
+                Value = enemyName == "" ? 100 : CustomPlacement.FrequencyAdjustments[enemyName] * 100,
                 Margin = new Thickness(0, 0, 10, 0),
                 VerticalAlignment = VerticalAlignment.Center
             };
@@ -341,7 +344,7 @@ namespace E33Randomizer
             {
                 Width = 60,
                 Height = 30,
-                Text = enemyName == "" ? "100" : (CustomEnemyPlacement.FrequencyAdjustments[enemyName] * 100).ToString("F1"),
+                Text = enemyName == "" ? "100" : (CustomPlacement.FrequencyAdjustments[enemyName] * 100).ToString("F1"),
                 VerticalContentAlignment = VerticalAlignment.Center,
                 VerticalAlignment = VerticalAlignment.Center
             };
@@ -359,7 +362,7 @@ namespace E33Randomizer
                     frequencyTextBox.Text = e.NewValue.ToString("F1");
                     if (enemyCombo.SelectedItem != null)
                     {
-                        CustomEnemyPlacement.FrequencyAdjustments[
+                        CustomPlacement.FrequencyAdjustments[
                             (string)(enemyCombo.SelectedItem as ComboBoxItem).Content] = (float)e.NewValue / 100;
                         UpdateJsonTextBox();
                     }
@@ -380,7 +383,7 @@ namespace E33Randomizer
                     frequencySlider.Value = value;
                     if (enemyCombo.SelectedItem != null)
                     {
-                        CustomEnemyPlacement.FrequencyAdjustments[
+                        CustomPlacement.FrequencyAdjustments[
                             (string)(enemyCombo.SelectedItem as ComboBoxItem).Content] = (float)value / 100;
                         UpdateJsonTextBox();
                     }
@@ -389,7 +392,7 @@ namespace E33Randomizer
             
             enemyCombo.SelectionChanged += (_, _) =>
             {
-                CustomEnemyPlacement.FrequencyAdjustments.Clear();
+                CustomPlacement.FrequencyAdjustments.Clear();
                 foreach (UIElement frequencyRow in FrequencyRowsContainer.Children)
                 {
                     var comboBox = (frequencyRow as StackPanel).Children[1] as ComboBox;
@@ -398,7 +401,7 @@ namespace E33Randomizer
                     {
                         continue;
                     }
-                    CustomEnemyPlacement.FrequencyAdjustments[(string)(comboBox.SelectedItem as ComboBoxItem).Content] = (float)frequencyRowSlider.Value / 100;
+                    CustomPlacement.FrequencyAdjustments[(string)(comboBox.SelectedItem as ComboBoxItem).Content] = (float)frequencyRowSlider.Value / 100;
                 }
                 UpdateJsonTextBox();
             };
@@ -423,7 +426,7 @@ namespace E33Randomizer
             var item = (ListBoxItem)sender;
             if (item.Content is string selectedEnemy)
             {
-                SelectedEnemyForCustomPlacement = selectedEnemy;
+                SelectedObjectForCustomPlacement = selectedEnemy;
                 SelectedEnemyDisplay.Text = $"Selected: {selectedEnemy}";
                 AddCustomPlacementRowButton.IsEnabled = true;
                 
@@ -431,7 +434,7 @@ namespace E33Randomizer
             }
             else
             {
-                SelectedEnemyForCustomPlacement = null;
+                SelectedObjectForCustomPlacement = null;
                 SelectedEnemyDisplay.Text = "No enemy selected";
                 AddCustomPlacementRowButton.IsEnabled = false;
                 CustomPlacementRowsContainer.Children.Clear();
@@ -440,7 +443,7 @@ namespace E33Randomizer
 
         private void AddCustomPlacementRowButton_Click(object sender, RoutedEventArgs e)
         {
-            if (SelectedEnemyForCustomPlacement != null)
+            if (SelectedObjectForCustomPlacement != null)
             {
                 var row = CreateCustomPlacementRow("");
                 CustomPlacementRowsContainer.Children.Add(row);
@@ -465,7 +468,7 @@ namespace E33Randomizer
             PopulateEnemyComboBox(enemyNameCombo);
             if (enemyName != "")
             {
-                enemyNameCombo.SelectedIndex = CustomEnemyPlacement.PlacementOptionsList.IndexOf(enemyName);
+                enemyNameCombo.SelectedIndex = CustomPlacement.PlainNamesList.IndexOf(enemyName);
             }
             
             // Remove button
@@ -483,10 +486,10 @@ namespace E33Randomizer
 
             float frequency = 1;
 
-            if (SelectedEnemyForCustomPlacement != "" && CustomEnemyPlacement.CustomPlacement.ContainsKey(SelectedEnemyForCustomPlacement) &&
-                CustomEnemyPlacement.CustomPlacement[SelectedEnemyForCustomPlacement].ContainsKey(enemyName))
+            if (SelectedObjectForCustomPlacement != "" && CustomPlacement.CustomPlacementRules.ContainsKey(SelectedObjectForCustomPlacement) &&
+                CustomPlacement.CustomPlacementRules[SelectedObjectForCustomPlacement].ContainsKey(enemyName))
             {
-                frequency = CustomEnemyPlacement.CustomPlacement[SelectedEnemyForCustomPlacement][enemyName];
+                frequency = CustomPlacement.CustomPlacementRules[SelectedObjectForCustomPlacement][enemyName];
             }
             
             Slider frequencySlider = new Slider
@@ -510,7 +513,7 @@ namespace E33Randomizer
             
             enemyNameCombo.SelectionChanged += (_, _) =>
             {
-                CustomEnemyPlacement.SetCustomPlacement(SelectedEnemyForCustomPlacement,
+                CustomPlacement.SetCustomPlacement(SelectedObjectForCustomPlacement,
                     (string)(enemyNameCombo.SelectedItem as ComboBoxItem).Content, (float)frequencySlider.Value / 100); 
                 UpdateJsonTextBox();
             };
@@ -523,7 +526,7 @@ namespace E33Randomizer
                 }
                 if (enemyNameCombo.SelectedItem != null)
                 {
-                    CustomEnemyPlacement.SetCustomPlacement(SelectedEnemyForCustomPlacement, (string)(enemyNameCombo.SelectedItem as ComboBoxItem).Content, (float)e.NewValue / 100);
+                    CustomPlacement.SetCustomPlacement(SelectedObjectForCustomPlacement, (string)(enemyNameCombo.SelectedItem as ComboBoxItem).Content, (float)e.NewValue / 100);
                     UpdateJsonTextBox();
                 }
             };
@@ -542,7 +545,7 @@ namespace E33Randomizer
                     frequencySlider.Value = value;
                     if (enemyNameCombo.SelectedItem != null)
                     {
-                        CustomEnemyPlacement.SetCustomPlacement(SelectedEnemyForCustomPlacement,
+                        CustomPlacement.SetCustomPlacement(SelectedObjectForCustomPlacement,
                             (string)(enemyNameCombo.SelectedItem as ComboBoxItem).Content, (float)value / 100);
                         UpdateJsonTextBox();
                     }
@@ -568,7 +571,7 @@ namespace E33Randomizer
             CustomPlacementRowsContainer.Children.Remove(row);
             if (enemyName != null)
             {
-                CustomEnemyPlacement.RemoveCustomEnemyPlacement(SelectedEnemyForCustomPlacement, enemyName);
+                CustomPlacement.RemoveCustomPlacement(SelectedObjectForCustomPlacement, enemyName);
                 UpdateJsonTextBox();
             }
         }
@@ -580,7 +583,7 @@ namespace E33Randomizer
                 return;
             }
             CustomPlacementRowsContainer.Children.Clear();
-            if (!CustomEnemyPlacement.CustomPlacement.TryGetValue(enemyName, out var customPlacements))
+            if (!CustomPlacement.CustomPlacementRules.TryGetValue(enemyName, out var customPlacements))
             {
                 return;
             }

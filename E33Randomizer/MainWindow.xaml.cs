@@ -12,7 +12,7 @@ namespace E33Randomizer;
 /// </summary>
 public partial class MainWindow
 {
-    private CustomEnemyPlacementWindow _customEnemyWindow;
+    private CustomPlacementWindow _customWindow;
     private EditEncountersWindow _editEncountersWindow;
 
         public MainWindow()
@@ -30,7 +30,6 @@ public partial class MainWindow
             RandomizeEncounterSizesCheckBox.IsChecked = Settings.RandomizeEncounterSizes;
             ChangeSizeOfNonRandomEncountersCheckBox.IsChecked = Settings.ChangeSizeOfNonRandomizedEncounters;
             RandomizeMerchantFightsCheckBox.IsChecked = Settings.RandomizeMerchantFights;
-            IncludeCutContentCheckBox.IsChecked = Settings.IncludeCutContent;
 
             RandomizeEncounterSizesCheckBox.Checked += (_, _) => Settings.RandomizeEncounterSizes = true;
             RandomizeEncounterSizesCheckBox.Unchecked += (_, _) => Settings.RandomizeEncounterSizes = false;
@@ -41,8 +40,16 @@ public partial class MainWindow
             RandomizeMerchantFightsCheckBox.Checked += (_, _) => Settings.RandomizeMerchantFights = true;
             RandomizeMerchantFightsCheckBox.Unchecked += (_, _) => Settings.RandomizeMerchantFights = false;
     
-            IncludeCutContentCheckBox.Checked += (_, _) => Settings.IncludeCutContent = true;
-            IncludeCutContentCheckBox.Unchecked += (_, _) => Settings.IncludeCutContent = false;
+            IncludeCutContentCheckBox.Checked += (_, _) =>
+            {
+                if (!RandomizerLogic.CustomEnemyPlacement.Excluded.Contains("Cut Content Enemies"))
+                    RandomizerLogic.CustomEnemyPlacement.Excluded.Add("Cut Content Enemies");
+            };
+            IncludeCutContentCheckBox.Unchecked += (_, _) =>
+            {
+                if (RandomizerLogic.CustomEnemyPlacement.Excluded.Contains("Cut Content Enemies"))
+                    RandomizerLogic.CustomEnemyPlacement.Excluded.Remove("Cut Content Enemies");
+            };
             
             EnableEnemyOnslaughtCheckBox.Checked += (_, _) => Settings.EnableEnemyOnslaught = true;
             EnableEnemyOnslaughtCheckBox.Unchecked += (_, _) => Settings.EnableEnemyOnslaught = false;
@@ -86,16 +93,16 @@ public partial class MainWindow
 
         private void CustomEnemyPlacementButton_Click(object sender, RoutedEventArgs e)
         {
-            if (_customEnemyWindow == null)
+            if (_customWindow == null)
             {
-                _customEnemyWindow = new CustomEnemyPlacementWindow
+                _customWindow = new CustomPlacementWindow(RandomizerLogic.CustomEnemyPlacement)
                 {
-                    Owner = this
+                    Owner = this,
                 };
-                _customEnemyWindow.Closed += (_, _) => _customEnemyWindow = null;
+                _customWindow.Closed += (_, _) => _customWindow = null;
             }
             
-            _customEnemyWindow.Show();
+            _customWindow.Show();
             //customEnemyWindow.Focus();
         }
         

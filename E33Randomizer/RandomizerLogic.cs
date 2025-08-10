@@ -27,6 +27,8 @@ public static class RandomizerLogic
     ];
     public static Usmap mappings;
     public static Dictionary<string, string> EnemyCustomNames = new ();
+    public static CustomEnemyPlacement CustomEnemyPlacement = new ();
+    
     public static Random rand;
     public static int usedSeed;
     public static Dictionary<string, Dictionary<string, float>> EnemyFrequenciesWithinArchetype = new();
@@ -38,7 +40,7 @@ public static class RandomizerLogic
 
     public static void Init()
     {
-        usedSeed = Settings.Seed != -1 ? Settings.Seed : Environment.TickCount; 
+        usedSeed = Settings.Seed != -1 ? Settings.Seed : Environment.TickCount & Int32.MaxValue; 
         rand = new Random(usedSeed);
     
         mappings = new Usmap("Data/Mappings.usmap");
@@ -55,7 +57,7 @@ public static class RandomizerLogic
         EnemiesController.ReadAsset("Data/Originals/DT_jRPG_Enemies.uasset");
         ConstructTotalEnemyFrequencies();
         ConstructEnemyFrequenciesWithinArchetype();
-        CustomEnemyPlacement.InitPlacementOptions();
+        CustomEnemyPlacement.InitPlainNames();
         SpecialRules.Reset();
         EncountersController.ReadEncounterAssets();
         EncountersController.ConstructEncountersByLocation();
@@ -125,23 +127,9 @@ public static class RandomizerLogic
         return EnemiesController.GetEnemyData(Utils.GetRandomWeighted(EnemyFrequenciesWithinArchetype[archetype]));
     }
 
-    public static EnemyData GetRandomByPlainName(string plainName)
-    {
-        var translatedEnemies = CustomEnemyPlacement.TranslatePlacementOption(plainName);
-        var weights = new Dictionary<string, float>();
-        var translatedFrequencies = CustomEnemyPlacement.TranslatedFrequencyAdjustments;
-        foreach (var enemy in translatedEnemies)
-        {
-            weights[enemy.CodeName] = translatedFrequencies.ContainsKey(enemy.CodeName)
-                ? translatedFrequencies[enemy.CodeName]
-                : 1;
-        }
-        return EnemiesController.GetEnemyData(Utils.GetRandomWeighted(weights, CustomEnemyPlacement.BannedEnemyNames));
-    }
-
     public static EnemyData GetRandomEnemy()
     {
-        return EnemiesController.GetEnemyData(Utils.GetRandomWeighted(CustomEnemyPlacement.DefaultFrequencies, CustomEnemyPlacement.BannedEnemyNames));
+        return EnemiesController.GetEnemyData(Utils.GetRandomWeighted(CustomEnemyPlacement.DefaultFrequencies, CustomEnemyPlacement.ExcludedCodeNames));
     }
 
     public static void Randomize()

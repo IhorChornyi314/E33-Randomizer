@@ -8,7 +8,6 @@ public static class Settings
     public static List<int> PossibleEncounterSizes = [1, 2, 3];
     public static string EarliestSimonP2Encounter = "SM_Eveque_ShieldTutorial*1";
     public static bool RandomizeMerchantFights = true;
-    public static bool IncludeCutContent = true;
     public static bool EnableEnemyOnslaught = false;
     public static int EnemyOnslaughtAdditionalEnemies = 1;
     public static int EnemyOnslaughtEnemyCap = 4;

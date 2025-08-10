@@ -46,7 +46,7 @@
                             </Grid.ColumnDefinitions>
                             <CheckBox Grid.Column="0" Name="RandomizeEncounterSizesCheckBox" 
                                       Content="Randomize encounter sizes" 
-                                      IsChecked="True" 
+                                      IsChecked="False" 
                                       Margin="0,0,0,0"
                                       FontSize="14"/>
                             <CheckBox Grid.Column="1" Name="EncounterSize1CheckBox" 
@@ -106,7 +106,7 @@
                         <StackPanel Orientation="Vertical" Margin="0"
                                     Grid.Row="3">
                             <CheckBox Name="IncludeCutContentCheckBox" 
-                                      Content="Include cut content" 
+                                      Content="Include cut content (gets overriden by custom placement)" 
                                       IsChecked="True" 
                                       FontSize="14"/>
                             <TextBlock Text="Be careful when parrying cut content enemies, as it can break their AI. You can replace broken enemies in Edit Encounters window." 
