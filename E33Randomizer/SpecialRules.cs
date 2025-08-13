@@ -129,6 +129,11 @@ public static class SpecialRules
             ApplySimonSpecialRule(encounter);
         }
 
+        if (encounter.Name == "MM_DanseuseAlphaSummon")
+        {
+            encounter.Enemies = [EnemiesController.GetEnemyData("MM_Danseuse_CloneAlpha"), EnemiesController.GetEnemyData("MM_Danseuse_CloneAlpha")];
+        }
+
         // if (Settings.BossNumberCapped && !encounter.IsBossEncounter)
         // {
         //     CapNumberOfBosses(encounter);
