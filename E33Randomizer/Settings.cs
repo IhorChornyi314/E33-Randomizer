@@ -16,6 +16,8 @@ public static class Settings
     public static bool RandomizeAddedEnemies = false;
     public static bool EnsureBossesInBossEncounters = false;
     public static bool ReduceBossRepetition = false;
-    public static bool TieDropsToEncounters = true; 
+    public static bool TieDropsToEncounters = false; 
     // public static bool EnableJujubreeToSellKeyItems = true;
+
+    public static bool RandomizeItems = true;
 }

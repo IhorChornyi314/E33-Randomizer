@@ -133,7 +133,12 @@ public static class SpecialRules
         {
             encounter.Enemies = [EnemiesController.GetEnemyData("MM_Danseuse_CloneAlpha"), EnemiesController.GetEnemyData("MM_Danseuse_CloneAlpha")];
         }
-
+        
+        if (encounter.Name == "MM_DanseuseClone*1")
+        {
+            encounter.Enemies = [EnemiesController.GetEnemyData("MM_Danseuse_Clone")];
+        }
+        
         // if (Settings.BossNumberCapped && !encounter.IsBossEncounter)
         // {
         //     CapNumberOfBosses(encounter);

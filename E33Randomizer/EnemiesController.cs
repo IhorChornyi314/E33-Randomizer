@@ -73,7 +73,7 @@ public static class EnemiesController
 
     public static EnemyData GetEnemyData(string enemyCodeName)
     {
-        return EnemiesByName.TryGetValue(enemyCodeName, out EnemyData value) ?  value : new EnemyData();
+        return EnemiesByName.TryGetValue(enemyCodeName, out EnemyData value) ? value : new EnemyData();
     }
     
     public static List<EnemyData> GetEnemyDataList(List<string> enemyCodeNames)

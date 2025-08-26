@@ -25,8 +25,13 @@ public static class RandomizerLogic
         "SM_Volester_AlternativC",
         "Petank_Parent"
     ];
+    public static List<string> BrokenItems =
+    [
+        
+    ];
     public static Usmap mappings;
     public static Dictionary<string, string> EnemyCustomNames = new ();
+    public static Dictionary<string, string> ItemCustomNames = new ();
     public static CustomEnemyPlacement CustomEnemyPlacement = new ();
     
     public static Random rand;
@@ -55,6 +60,18 @@ public static class RandomizerLogic
             }
         }
         EnemiesController.ReadAsset("Data/Originals/DT_jRPG_Enemies.uasset");
+        
+        using (StreamReader r = new StreamReader("Data/item_data.json"))
+        {
+            string json = r.ReadToEnd();
+            var itemList = JsonConvert.DeserializeObject<List<Dictionary<string, string>>>(json);
+            foreach (var itemCustomData in itemList)
+            {
+                ItemCustomNames[itemCustomData["CodeName"]] = itemCustomData["CustomName"];
+            }
+        }
+        ItemController.Init();
+        
         ConstructTotalEnemyFrequencies();
         ConstructEnemyFrequenciesWithinArchetype();
         CustomEnemyPlacement.InitPlainNames();
@@ -87,8 +104,6 @@ public static class RandomizerLogic
 
     public static void PackAndConvertData(bool writeTxt=true)
     {
-        //ProcessKeyItems();
-        
         var presetName = PresetName.Length == 0 ? usedSeed.ToString() : PresetName;
         var exportPath = $"rand_{presetName}/";
         if (Directory.Exists("randomizer"))
@@ -108,9 +123,15 @@ public static class RandomizerLogic
             EncountersController.HandleLoot();
         }
         EncountersController.WriteEncounterAssets();
-        if (Settings.TieDropsToEncounters)
+        if (Settings.TieDropsToEncounters && !Settings.RandomizeItems)
         {
             EnemiesController.WriteAsset();
+        }
+
+        if (Settings.RandomizeItems)
+        {
+            ItemController.WriteItemAssets();
+            ItemController.WriteTableAsset();
         }
         
         var repackArgs = $"pack randomizer \"{exportPath}randomizer_P.pak\"";
@@ -137,6 +158,7 @@ public static class RandomizerLogic
         usedSeed = Settings.Seed != -1 ? Settings.Seed : Environment.TickCount; 
         rand = new Random(usedSeed);
         EncountersController.GenerateNewEncounters();
+        ItemController.GenerateNewItemChecks();
         PackAndConvertData();
     }
 

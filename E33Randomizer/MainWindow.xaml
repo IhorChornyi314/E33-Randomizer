@@ -89,11 +89,11 @@
                                   FontSize="14"/>
                         <StackPanel Orientation="Vertical" Margin="0"
                                     Grid.Row="2">
-                        <CheckBox Name="TieLootToEncountersButton"
-                                  Content="Tie loot drops to encounters instead of enemies"
-                                  IsChecked="True"
-                                  Margin="0"
-                                  FontSize="14"/>
+                        <!-- <CheckBox Name="TieLootToEncountersButton" -->
+                        <!--           Content="Tie loot drops to encounters instead of enemies" -->
+                        <!--           IsChecked="True" -->
+                        <!--           Margin="0" -->
+                        <!--           FontSize="14"/> -->
                         <TextBlock Text="Merchants' special wares unlocks and Maelle's paintress skills are considered loot drops. It is recommended that you only disable this if you are also running an item randomizer."
                                    Foreground="Orange"
                                    FontWeight="Bold"
@@ -232,7 +232,32 @@
                                 Grid.Row="11"/>
                     </Grid>
             </TabItem>
-            
+            <!-- Item Randomizer Tab -->
+            <TabItem Header="Item Randomizer (WIP)">
+                <Grid Margin="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <CheckBox Name="RandomizeItemsCheckBox"
+                              Content="Randomize items"
+                              IsChecked="True"
+                              Margin="0"
+                              FontSize="14"/>
+                </Grid>
+            </TabItem>
             <!--Misc Tab-->
             <TabItem Header="Misc">
                 <Grid>
@@ -264,18 +289,6 @@
                     </GroupBox>
                 </Grid>
             </TabItem>
-            <!-- Item Randomizer Tab -->
-            <TabItem Header="Item Randomizer" Visibility="Hidden">
-                <StackPanel Margin="20">
-                    <TextBlock Text="Item randomizer settings coming soon..." 
-                               FontSize="16" 
-                               Foreground="Gray" 
-                               HorizontalAlignment="Center" 
-                               VerticalAlignment="Center"/>
-                </StackPanel>
-            </TabItem>
-            
-            
         </TabControl>
         
         <!-- Bottom Section -->

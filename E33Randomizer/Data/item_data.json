@@ -1,0 +1,4207 @@
+﻿[
+  {
+    "CustomName": "Energy Master (Pictos)",
+    "CodeName": "DoubleAP",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Energising Turn (Pictos)",
+    "CodeName": "AP+1TurnStart",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Energising Attack I (Pictos)",
+    "CodeName": "AP+1Attack",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Energising Parry (Pictos)",
+    "CodeName": "AP+1Parry",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Augmented First Strike (Pictos)",
+    "CodeName": "Augmented1stStrike",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "RiskSeeker (Pictos)",
+    "CodeName": "RiskSeeker",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Survivor (Pictos)",
+    "CodeName": "Survivor",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Aegis Revival (Pictos)",
+    "CodeName": "AegisRevival",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Recovery (Pictos)",
+    "CodeName": "Recovery",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Lucky Aim (Pictos)",
+    "CodeName": "LuckyAim",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Augmented Counter I (Pictos)",
+    "CodeName": "CounterUpdragdeA",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Second Chance (Pictos)",
+    "CodeName": "SecondChance",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "First Strike (Pictos)",
+    "CodeName": "FirstStrike",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Solo Fighter (Pictos)",
+    "CodeName": "SoloFighter",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Teamwork (Pictos)",
+    "CodeName": "Teamwork",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Sweet Kill (Pictos)",
+    "CodeName": "SweetKill",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Augmented Attack (Pictos)",
+    "CodeName": "AugmentedAttack",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Attack Lifesteal (Pictos)",
+    "CodeName": "AttackLifesteal",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Augmented Aim (Pictos)",
+    "CodeName": "AugmentedAim",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Combo Attack I (Pictos)",
+    "CodeName": "ComboAttack1",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Healing Parry (Pictos)",
+    "CodeName": "HealingParry",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "MitigatedPerfection (Invalid)",
+    "CodeName": "MitigatedPerfection",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "LimonsolPictos (Pictos)",
+    "CodeName": "LimonsolPictos",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Beselbum (Maelle Weapon)",
+    "CodeName": "Beselbum",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Gelerim (Lune Weapon)",
+    "CodeName": "Gelerim",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Nibalum (Maelle Weapon)",
+    "CodeName": "Nibalum",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Velokan (Gustave Weapon)",
+    "CodeName": "Velokan",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Telarim (Lune Weapon)",
+    "CodeName": "Telarim",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Milerim (Maelle Weapon)",
+    "CodeName": "Milerim",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "02_ArmPicto_Placeholder (Pictos)",
+    "CodeName": "02_ArmPicto_Placeholder",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "03_Weapon_Placeholder (Gustave Weapon)",
+    "CodeName": "03_Weapon_Placeholder",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Auto Powerful (Pictos)",
+    "CodeName": "AutoPowerful",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Auto Shell (Pictos)",
+    "CodeName": "AutoShell",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Auto Rush (Pictos)",
+    "CodeName": "AutoRush",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Auto 1 HP (Pictos)",
+    "CodeName": "Auto1Hp",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Auto Regen (Pictos)",
+    "CodeName": "AutoRegen",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Anti-Burn (Pictos)",
+    "CodeName": "AntiBurn",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Anti-Freeze (Pictos)",
+    "CodeName": "AntiFrozen",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "AntiSilence (Pictos)",
+    "CodeName": "AntiSilence",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Anti-Stun (Pictos)",
+    "CodeName": "AntiStun",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Anti Inverted (Pictos)",
+    "CodeName": "AntiInverted",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Anti Curse (Pictos)",
+    "CodeName": "AntiCurse",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Anti Bound (Pictos)",
+    "CodeName": "AntiBound",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "AntiShock (Pictos)",
+    "CodeName": "AntiShock",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Anti Dizzy (Pictos)",
+    "CodeName": "AntiDizzy",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Physical Coat (Pictos)",
+    "CodeName": "PhysicalCoat",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Fire Coat (Pictos)",
+    "CodeName": "FireCoat",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Ice Coat (Pictos)",
+    "CodeName": "IceCoat",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Thunder Coat (Pictos)",
+    "CodeName": "ThunderCoat",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Earth Coat (Pictos)",
+    "CodeName": "EarthCoat",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Light Coat (Pictos)",
+    "CodeName": "LightCoat",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Dark Coat (Pictos)",
+    "CodeName": "DarkCoat",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "NullPhysical (Pictos)",
+    "CodeName": "NullPhysical",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "NullFire (Pictos)",
+    "CodeName": "NullFire",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "NullIce (Pictos)",
+    "CodeName": "NullIce",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "NullEarth (Pictos)",
+    "CodeName": "NullEarth",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "NullThunder (Pictos)",
+    "CodeName": "NullThunder",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "NullDark (Pictos)",
+    "CodeName": "NullDark",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "NullLight (Pictos)",
+    "CodeName": "NullLight",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "AbsorbPhysical (Pictos)",
+    "CodeName": "AbsorbPhysical",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "AbsorbFire (Pictos)",
+    "CodeName": "AbsorbFire",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "AbsorbIce (Pictos)",
+    "CodeName": "AbsorbIce",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "AbsorbEarth (Pictos)",
+    "CodeName": "AbsorbEarth",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "AbsorbLight (Pictos)",
+    "CodeName": "AbsorbLight",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "AbsorbThunder (Pictos)",
+    "CodeName": "AbsorbThunder",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "AbsorbDark (Pictos)",
+    "CodeName": "AbsorbDark",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Speedster (Pictos)",
+    "CodeName": "Speedster",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Blitz (Pictos)",
+    "CodeName": "Blitz",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "AngelGrace (Pictos)",
+    "CodeName": "AngelGrace",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "AngelPresent (Pictos)",
+    "CodeName": "AngelPresent",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "AngelicChance (Pictos)",
+    "CodeName": "AngelicChance",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Back At You (Pictos)",
+    "CodeName": "BackAtYou",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Dodger (Pictos)",
+    "CodeName": "Dodger",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "RiskTaker (Pictos)",
+    "CodeName": "RiskTaker",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Energising Start I (Pictos)",
+    "CodeName": "InitialAp+1A",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Energising Start II (Pictos)",
+    "CodeName": "InitialAp+1B",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Energising Start III (Pictos)",
+    "CodeName": "InitialAp+1C",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Energising Start IV (Pictos)",
+    "CodeName": "InitialAp+1D",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Perilous Parry (Pictos)",
+    "CodeName": "ManOfParry",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Baguette (Sciel Weapon)",
+    "CodeName": "DebugSciel",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Baguette (Lune Weapon)",
+    "CodeName": "DebugLune",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Baguette (Gustave Weapon)",
+    "CodeName": "DebugVerso",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Baguette (Maelle Weapon)",
+    "CodeName": "DebugMaelle",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Baguette (Monoco Weapon)",
+    "CodeName": "DebugMonoco",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Confident (Pictos)",
+    "CodeName": "Confident",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "HighOnPerfect (Pictos)",
+    "CodeName": "HighOnPerfect",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "FasterThanHisShadow (Pictos)",
+    "CodeName": "FasterThanHisShadow",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Bramble Skin (Pictos)",
+    "CodeName": "BrambleSkin",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "SpreadingBrambleSkin (Pictos)",
+    "CodeName": "SpreadingBrambleSkin",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "BrambleParry (Pictos)",
+    "CodeName": "BrambleParry",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Bloody Bullet (Pictos)",
+    "CodeName": "BloodyBullet",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "FastAttacker (Pictos)",
+    "CodeName": "FastAttacker",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "ReviveBombFire (Pictos)",
+    "CodeName": "ReviveBombFire",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "ReviveBombIce (Pictos)",
+    "CodeName": "ReviveBombIce",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "ReviveBombThunder (Pictos)",
+    "CodeName": "ReviveBombThunder",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "ReviveBombEarth (Pictos)",
+    "CodeName": "ReviveBombEarth",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Energising Revive (Pictos)",
+    "CodeName": "ReviveCheer",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Rejuvenating Revive (Pictos)",
+    "CodeName": "ReviveWithRegen",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Revive With Shell (Pictos)",
+    "CodeName": "ReviveWithShell",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "ReviveWithPrecision (Pictos)",
+    "CodeName": "ReviveWithPrecision",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Powerful Revive (Pictos)",
+    "CodeName": "ReviveWithPower",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Revive With Rush (Pictos)",
+    "CodeName": "ReviveWithRush",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "FireSkin (Pictos)",
+    "CodeName": "FireSkin",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "FrozenSkin (Pictos)",
+    "CodeName": "FrozenSkin",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "InvertedSkin (Pictos)",
+    "CodeName": "InvertedSkin",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "OverConfident (Pictos)",
+    "CodeName": "OverConfident",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Fugitive (Pictos)",
+    "CodeName": "Fugitive",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Solidifying (Pictos)",
+    "CodeName": "Solidifying",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "The One (Pictos)",
+    "CodeName": "TheOne",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Dead Energy II (Pictos)",
+    "CodeName": "BootyHunter",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "TurboKiller (Pictos)",
+    "CodeName": "TurboKiller",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "SniperWolf (Pictos)",
+    "CodeName": "SniperWolf",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "BurningShot (Pictos)",
+    "CodeName": "BurningShot",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Frozen Shot (Pictos)",
+    "CodeName": "FrozenShot",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "StunningShot (Pictos)",
+    "CodeName": "StunningShot",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "InvertedShot (Pictos)",
+    "CodeName": "InvertedShot",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Piercing Shot (Pictos)",
+    "CodeName": "PiercingShot",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Burning Dodge (Pictos)",
+    "CodeName": "BurningDodge",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Defense Breaker Dodge (Pictos)",
+    "CodeName": "DefenseBreakerDodge",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Defense Riser Dodge (Pictos)",
+    "CodeName": "DefenseRiserDodge",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Power Breaker Dodge (Pictos)",
+    "CodeName": "PowerBreakerDodge",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Power Riser Dodge (Pictos)",
+    "CodeName": "PowerRiserDodge",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Speedster Dodge (Pictos)",
+    "CodeName": "SpeedsterDodge",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "FlashDodge (Pictos)",
+    "CodeName": "FlashDodge",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Hazardous Choice (Pictos)",
+    "CodeName": "HazardousChoice",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Healing Death (Pictos)",
+    "CodeName": "HealingDeath",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Death Bomb (Pictos)",
+    "CodeName": "DeathBombPhysical",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "DeathBombFire (Pictos)",
+    "CodeName": "DeathBombFire",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "DeathBombFrozen (Pictos)",
+    "CodeName": "DeathBombFrozen",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "DeathBombThunder (Pictos)",
+    "CodeName": "DeathBombThunder",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "DeathBombEarth (Pictos)",
+    "CodeName": "DeathBombEarth",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "DeathBombLight (Pictos)",
+    "CodeName": "DeathBombLight",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "DeathBombDark (Pictos)",
+    "CodeName": "DeathBombDark",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "DeathBombVoid (Pictos)",
+    "CodeName": "DeathBombVoid",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Energising Death (Pictos)",
+    "CodeName": "EnergyDeath",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Shielding Death (Pictos)",
+    "CodeName": "ShieldingDeath",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Protecting Death (Pictos)",
+    "CodeName": "ProtectingDeath",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Empowering Death (Pictos)",
+    "CodeName": "EmpoweringDeath",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Burn Affinity (Pictos)",
+    "CodeName": "BurnAffinity",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Frozen Affinity (Pictos)",
+    "CodeName": "FrozenAffinity",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Inverted Affinity (Pictos)",
+    "CodeName": "InvertedAffinity",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Exhausting Power (Pictos)",
+    "CodeName": "ExhaustAffinity",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "PhysicalModifier (Pictos)",
+    "CodeName": "PhysicalModifier",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Auto Death (Pictos)",
+    "CodeName": "AutoDeath",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Auto Burn (Pictos)",
+    "CodeName": "AutoBurn",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Auto Curse (Pictos)",
+    "CodeName": "AutoCurse",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "At Death's Door (Pictos)",
+    "CodeName": "LastStand",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Full Strength (Pictos)",
+    "CodeName": "Stand",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "MakeItQuick (Pictos)",
+    "CodeName": "MakeItQuick",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Lanceram (Gustave Weapon)",
+    "CodeName": "Lanceram",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Noahram (Gustave Weapon)",
+    "CodeName": "Noahram",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Gesam (Gustave Weapon)",
+    "CodeName": "Gesam",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Sakaram (Gustave Weapon)",
+    "CodeName": "Sakaram",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Abysseram (Gustave Weapon)",
+    "CodeName": "Abysseram",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Cruleram (Gustave Weapon)",
+    "CodeName": "Cruleram",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Seeram (Gustave Weapon)",
+    "CodeName": "Seeram",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Blodam (Gustave Weapon)",
+    "CodeName": "Blodam",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Cultam (Gustave Weapon)",
+    "CodeName": "Cultam",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Demonam (Gustave Weapon)",
+    "CodeName": "Demonam",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Nosaram (Gustave Weapon)",
+    "CodeName": "Nosaram",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Chevalam (Gustave Weapon)",
+    "CodeName": "Chevalam",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Delaram (Gustave Weapon)",
+    "CodeName": "Delaram",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Gaulteram (Gustave Weapon)",
+    "CodeName": "Gaulteram",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Redalim (Lune Weapon)",
+    "CodeName": "Redalim",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Trebuchim (Lune Weapon)",
+    "CodeName": "Trebuchim",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Coralim (Lune Weapon)",
+    "CodeName": "Coralim",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Deminerim (Lune Weapon)",
+    "CodeName": "Deminerim",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Betelim (Lune Weapon)",
+    "CodeName": "Betelim",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Lighterim (Lune Weapon)",
+    "CodeName": "Lighterim",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Painerim (Lune Weapon)",
+    "CodeName": "Painerim",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Elerim (Lune Weapon)",
+    "CodeName": "Elerim",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Lunerim (Lune Weapon)",
+    "CodeName": "Lunerim",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Potierim (Lune Weapon)",
+    "CodeName": "Potierim",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Saperim (Lune Weapon)",
+    "CodeName": "Saperim",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Scaverim (Lune Weapon)",
+    "CodeName": "Scaverim",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Sekarum (Maelle Weapon)",
+    "CodeName": "Sekarum",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Brulerum (Maelle Weapon)",
+    "CodeName": "Brulerum",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Seashelum (Maelle Weapon)",
+    "CodeName": "Seashelum",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Veremum (Maelle Weapon)",
+    "CodeName": "Veremum",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Yeverum (Maelle Weapon)",
+    "CodeName": "Yeverum",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Barrier Breaker (Maelle Weapon)",
+    "CodeName": "Chainebum",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Duenum (Maelle Weapon)",
+    "CodeName": "Duenum",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Melarum (Maelle Weapon)",
+    "CodeName": "Melarum",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Maellum (Maelle Weapon)",
+    "CodeName": "Maellum",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Medalum (Maelle Weapon)",
+    "CodeName": "Medalum",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Volesterum (Maelle Weapon)",
+    "CodeName": "Volesterum",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Glaisum (Maelle Weapon)",
+    "CodeName": "Glaisum",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Jarum (Maelle Weapon)",
+    "CodeName": "Jarum",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Corderon (Sciel Weapon)",
+    "CodeName": "Corderon",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Rangeson (Sciel Weapon)",
+    "CodeName": "Rangeson",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Algueron (Sciel Weapon)",
+    "CodeName": "Algueron",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Bourgelon (Sciel Weapon)",
+    "CodeName": "Bourgelon",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Gobluson (Sciel Weapon)",
+    "CodeName": "Gobluson",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Lusteson (Sciel Weapon)",
+    "CodeName": "Lusteson",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Hevason (Sciel Weapon)",
+    "CodeName": "Hevason",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Chation (Sciel Weapon)",
+    "CodeName": "Chation",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Direton (Sciel Weapon)",
+    "CodeName": "Direton",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Minason (Sciel Weapon)",
+    "CodeName": "Minason",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Scieleson (Sciel Weapon)",
+    "CodeName": "Scieleson",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Painted Power (Pictos)",
+    "CodeName": "OverPowered",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "SOS Shell (Pictos)",
+    "CodeName": "SosShell",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "SOS Power (Pictos)",
+    "CodeName": "SosPower",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Augmented Counter II (Pictos)",
+    "CodeName": "CounterUpdragdeB",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Augmented Counter III (Pictos)",
+    "CodeName": "CounterUpdragdeC",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "AutoPrecision (Pictos)",
+    "CodeName": "AutoPrecision",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Anti Exhaust (Pictos)",
+    "CodeName": "AntiExhaust",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Gatherer A (Pictos)",
+    "CodeName": "GathererA",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "SOS Rush (Pictos)",
+    "CodeName": "SosRush",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "GestralFlute (Pictos)",
+    "CodeName": "GestralFlute",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Sos Precision (Pictos)",
+    "CodeName": "SosPrecision",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Chroma (Invalid)",
+    "CodeName": "Chroma",
+    "ItemType": "Gold"
+  },
+  {
+    "CustomName": "Learner A (Pictos)",
+    "CodeName": "LearnerA",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "BramblePerformer (Pictos)",
+    "CodeName": "BramblePerformer",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Solidifying Meditation (Pictos)",
+    "CodeName": "SolidifyingMeditation",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "PlaceHolderItem (Pictos)",
+    "CodeName": "PlaceHolderItem",
+    "ItemType": "Gold"
+  },
+  {
+    "CustomName": "Power Breaker Shot (Pictos)",
+    "CodeName": "PowerBreakerShot",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "BlankPictos (Pictos)",
+    "CodeName": "BlankPictos",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Verleso (Verso Weapon)",
+    "CodeName": "Verleso",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "GDC_Weapon_Sciel (Sciel Weapon)",
+    "CodeName": "GDC_Weapon_Sciel",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "GDC_Weapon_Maelle (Maelle Weapon)",
+    "CodeName": "GDC_Weapon_Maelle",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "GDC_Weapon_Lune (Lune Weapon)",
+    "CodeName": "GDC_Weapon_Lune",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "GDC_Weapon_Verso (Gustave Weapon)",
+    "CodeName": "GDC_Weapon_Verso",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "04_Key_Placeholder (Invalid)",
+    "CodeName": "04_Key_Placeholder",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Dualiso (Verso Weapon)",
+    "CodeName": "Chaliso",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Corpeso (Verso Weapon)",
+    "CodeName": "Corpeso",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Danseso (Verso Weapon)",
+    "CodeName": "Danseso",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Glaceso (Verso Weapon)",
+    "CodeName": "Glaceso",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Contorso (Verso Weapon)",
+    "CodeName": "Moissoso",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Confuso (Verso Weapon)",
+    "CodeName": "Confuso",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Sireso (Verso Weapon)",
+    "CodeName": "Sireso_1",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Dreameso (Verso Weapon)",
+    "CodeName": "Sireso_2",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Tireso (Verso Weapon)",
+    "CodeName": "Reacheso_1",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Liteso (Verso Weapon)",
+    "CodeName": "Reacheso_2",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Chalium (Maelle Weapon)",
+    "CodeName": "Troubadum",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Battlum (Maelle Weapon)",
+    "CodeName": "Battlum",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Stalum (Maelle Weapon)",
+    "CodeName": "Stalum",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Coldum (Maelle Weapon)",
+    "CodeName": "Coldum",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Clierum (Maelle Weapon)",
+    "CodeName": "Clierum",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Facesum (Maelle Weapon)",
+    "CodeName": "Facesum",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Tissenum (Maelle Weapon)",
+    "CodeName": "Sirenum_1",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Chantenum (Maelle Weapon)",
+    "CodeName": "Sirenum_2",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Lithum (Maelle Weapon)",
+    "CodeName": "Reachum_1",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Plenum (Maelle Weapon)",
+    "CodeName": "Reachum_2",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Benisim (Lune Weapon)",
+    "CodeName": "Benisim",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Troubadim (Lune Weapon)",
+    "CodeName": "Dualim",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Braselim (Lune Weapon)",
+    "CodeName": "Braselim",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Snowim (Lune Weapon)",
+    "CodeName": "Snowim",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Angerim (Lune Weapon)",
+    "CodeName": "Angerim",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Chapelim (Lune Weapon)",
+    "CodeName": "Chapelim",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Choralim (Lune Weapon)",
+    "CodeName": "Sirenim_1",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Colim (Lune Weapon)",
+    "CodeName": "Sirenim_2",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Kralim (Lune Weapon)",
+    "CodeName": "Reacherim_1",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Lithelim (Lune Weapon)",
+    "CodeName": "Reacherim_2",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Ramasson (Sciel Weapon)",
+    "CodeName": "Ramasson",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Charnon (Sciel Weapon)",
+    "CodeName": "Charnon",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Moisson (Sciel Weapon)",
+    "CodeName": "Contorson",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Sadon (Sciel Weapon)",
+    "CodeName": "Sadon",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Garganon (Sciel Weapon)",
+    "CodeName": "Garganon",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Blizzon (Sciel Weapon)",
+    "CodeName": "Blizzon",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Tisseron (Sciel Weapon)",
+    "CodeName": "Sirenon_1",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Martenon (Sciel Weapon)",
+    "CodeName": "Sirenon_2",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Guleson (Sciel Weapon)",
+    "CodeName": "Reacheron_1",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Litheson (Sciel Weapon)",
+    "CodeName": "Reacheron_2",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Gold_Small (Inventory)",
+    "CodeName": "Gold_Small",
+    "ItemType": "Gold"
+  },
+  {
+    "CustomName": "Gold_Medium (Inventory)",
+    "CodeName": "Gold_Medium",
+    "ItemType": "Gold"
+  },
+  {
+    "CustomName": "Gold_Big (Inventory)",
+    "CodeName": "Gold_Big",
+    "ItemType": "Gold"
+  },
+  {
+    "CustomName": "TEST_FullStatsPicto (Pictos)",
+    "CodeName": "TEST_FullStatsPicto",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "TEST_FullStatsPicto_1 (Pictos)",
+    "CodeName": "TEST_FullStatsPicto_1",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "TEST_FullStatsPicto_2 (Pictos)",
+    "CodeName": "TEST_FullStatsPicto_2",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "TEST_FullStatsPicto_3 (Pictos)",
+    "CodeName": "TEST_FullStatsPicto_3",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "GDC_Weapon_Monoco (Monoco Weapon)",
+    "CodeName": "GDC_Weapon_Monoco",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Double Burn (Pictos)",
+    "CodeName": "DoubleBurn",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Protecting Fire (Pictos)",
+    "CodeName": "ProtectingFire",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Healing Fire (Pictos)",
+    "CodeName": "HealingFire",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Rewarding Mark (Pictos)",
+    "CodeName": "RewardingMark",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Double Mark (Pictos)",
+    "CodeName": "DoubleMark",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Stun Boost (Pictos)",
+    "CodeName": "StunBoost",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Sniper (Pictos)",
+    "CodeName": "Sniper",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Pierce Defense (Pictos)",
+    "CodeName": "PierceDefense",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Energising Attack II (Pictos)",
+    "CodeName": "Energy",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Cheater (Pictos)",
+    "CodeName": "Cheater",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "From Behind (Pictos)",
+    "CodeName": "FromBehind",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Pro Blocker (Pictos)",
+    "CodeName": "ProBlocker",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Healing Counter (Pictos)",
+    "CodeName": "HealingCounter",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Powerful Shield (Pictos)",
+    "CodeName": "PowerfulShield",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Base Shield (Pictos)",
+    "CodeName": "BaseShield",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "In Medias Res (Pictos)",
+    "CodeName": "InMediasRes",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Shield Breaker (Pictos)",
+    "CodeName": "ShieldBreaker",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Shield Affinity (Pictos)",
+    "CodeName": "ShieldAffinity",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Critical Moment (Pictos)",
+    "CodeName": "CriticalMoment",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Critical Havoc (Pictos)",
+    "CodeName": "CriticalHavoc",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Faster Than Strong (Pictos)",
+    "CodeName": "FasterThanStrong",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Warming Up (Pictos)",
+    "CodeName": "Warming",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Shortcut (Pictos)",
+    "CodeName": "Shortcut",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Random Defense (Pictos)",
+    "CodeName": "RandomDefense",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Glass Canon (Pictos)",
+    "CodeName": "GlassCanon",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Protection Spirit (Pictos)",
+    "CodeName": "ProtectionSpirit",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Defensive Mode (Pictos)",
+    "CodeName": "DefensiveMode",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Greater Powerful (Pictos)",
+    "CodeName": "GreaterPowerful",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Greater Rush (Pictos)",
+    "CodeName": "GreaterSpeed",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Greater Precision (Pictos)",
+    "CodeName": "GreaterPrecision",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Greater Shell (Pictos)",
+    "CodeName": "GreaterShell",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Last Stand Critical (Pictos)",
+    "CodeName": "LastStandCritical",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Revive Paradox (Pictos)",
+    "CodeName": "ReviveParadox",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Effective Heal (Pictos)",
+    "CodeName": "EffectiveHeal",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Shared Care (Pictos)",
+    "CodeName": "SharedCare",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Energising Heal (Pictos)",
+    "CodeName": "EnergizingHeal",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Powerful Heal (Pictos)",
+    "CodeName": "PowerfulHeal",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Protecting Heal (Pictos)",
+    "CodeName": "ProtectingHeal",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Accelerating Heal (Pictos)",
+    "CodeName": "AcceleratorHeal",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Confident Fighter (Pictos)",
+    "CodeName": "ConfidentFighter",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Perfect Heal (Pictos)",
+    "CodeName": "PerfectHeal",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Healing Share (Pictos)",
+    "CodeName": "HealingShare",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Weakness Gain (Pictos)",
+    "CodeName": "WeaknessGain",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Dead Energy I (Pictos)",
+    "CodeName": "DeadEnergy",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Patient Fighter (Pictos)",
+    "CodeName": "PatientFighter",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Effective Support (Pictos)",
+    "CodeName": "EffectivSupport",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Energetic Healer (Pictos)",
+    "CodeName": "VersatileHealer",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Beneficial Contamination (Pictos)",
+    "CodeName": "BeneficialContamination",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Perfect Reward (Pictos)",
+    "CodeName": "PerfectReward",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Physical Fighter (Pictos)",
+    "CodeName": "PhysicalFighter",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Roulette (Pictos)",
+    "CodeName": "Roulette",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Soul Eater (Pictos)",
+    "CodeName": "SoulEater",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Painter (Pictos)",
+    "CodeName": "Painter",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Immaculate (Pictos)",
+    "CodeName": "Immaculate",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Tainted (Pictos)",
+    "CodeName": "Tainted",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "First Offensive (Pictos)",
+    "CodeName": "FirstOffensive",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Cursed Power (Pictos)",
+    "CodeName": "CursedPower",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Critical Cursed Power (Pictos)",
+    "CodeName": "CriticalCursedPower",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Pro Retreat (Pictos)",
+    "CodeName": "ProRetreat",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Parry Helper (Pictos)",
+    "CodeName": "ParryHelper",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Enfeebling Mark (Pictos)",
+    "CodeName": "WeakeningMark",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Burning Mark (Pictos)",
+    "CodeName": "BurningMark",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Powerful Mark (Pictos)",
+    "CodeName": "PowerfulMark",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Healing Mark (Pictos)",
+    "CodeName": "HealingMark",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Stay Marked (Pictos)",
+    "CodeName": "StayMarked",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Charybde To Scylla (Pictos)",
+    "CodeName": "CharybdeToScylla",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Burning Shots (Pictos)",
+    "CodeName": "FreeAimBurnShot",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Free Aim Inverted Shot (Pictos)",
+    "CodeName": "FreeAimInvertedShot",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Marking Shots (Pictos)",
+    "CodeName": "FreeAimMarkingShot",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Powerful Shots (Pictos)",
+    "CodeName": "FreeAimPowerful",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Protecting Shots (Pictos)",
+    "CodeName": "FreeAimShell",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Accelerating Shots (Pictos)",
+    "CodeName": "FreeAimSpeed",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Free Aim Precision (Pictos)",
+    "CodeName": "FreeAimPrecision",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Energising Shots (Pictos)",
+    "CodeName": "FreeAimEnergy",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Versatile (Pictos)",
+    "CodeName": "Versatile",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Empowering Attack (Pictos)",
+    "CodeName": "PowerfulStrike",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Protecting Attack (Pictos)",
+    "CodeName": "ShellStrike",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Enfeebling Attack (Pictos)",
+    "CodeName": "PowerlessStrike",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Exposing Attack (Pictos)",
+    "CodeName": "DefenslessStrike",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Empowering Parry (Pictos)",
+    "CodeName": "ReinforcementParade",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Accelerating Last Stand (Pictos)",
+    "CodeName": "LastStandSpeed",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Empowering Last Stand (Pictos)",
+    "CodeName": "LastStandPowerful",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Protecting Last Stand (Pictos)",
+    "CodeName": "LastStandShell",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Energising Pain (Pictos)",
+    "CodeName": "PowerOfPain",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Energising Jump (Pictos)",
+    "CodeName": "JumpRecovery",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Powered Attack (Pictos)",
+    "CodeName": "FullEnergyAttack",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Grandaro (Monoco Weapon)",
+    "CodeName": "Grandaro",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Chromaro (Monoco Weapon)",
+    "CodeName": "Chromaro",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Boucharo (Monoco Weapon)",
+    "CodeName": "Boucharo",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Joyaro (Monoco Weapon)",
+    "CodeName": "Joyaro",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Ballaro (Monoco Weapon)",
+    "CodeName": "Sirenaro_1",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Urnaro (Monoco Weapon)",
+    "CodeName": "Sirenaro_2",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Nusaro (Monoco Weapon)",
+    "CodeName": "Reacharo_1",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Fragaro (Monoco Weapon)",
+    "CodeName": "Reacharo_2",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Brumaro (Monoco Weapon)",
+    "CodeName": "Brumaro",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Sidaro (Monoco Weapon)",
+    "CodeName": "Sidaro",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Monocaro (Monoco Weapon)",
+    "CodeName": "Monocaro",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Combo Attack II (Pictos)",
+    "CodeName": "ComboAttack2",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Combo Attack III (Pictos)",
+    "CodeName": "ComboAttack3",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Breaker (Pictos)",
+    "CodeName": "Breaker",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Staggering Attack (Pictos)",
+    "CodeName": "SimpleBreaker",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Energising Break (Pictos)",
+    "CodeName": "EnergyBreak",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Quick Break (Pictos)",
+    "CodeName": "BreakMomentum",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Empowering Break (Pictos)",
+    "CodeName": "BreakingStrong",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Energising Stun (Pictos)",
+    "CodeName": "StunEnergy",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Healing Stun (Pictos)",
+    "CodeName": "HealingStun",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Burning Break (Pictos)",
+    "CodeName": "BurningBreak",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Critical Stun (Pictos)",
+    "CodeName": "CriticalBreak",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Breaking Counter (Pictos)",
+    "CodeName": "BreakingCounter",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Gradient Break (Pictos)",
+    "CodeName": "GradientBreak",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Breaking Shots (Pictos)",
+    "CodeName": "BreakShot",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Fueling Break (Pictos)",
+    "CodeName": "GreatFireBreak",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Gradient Fighter (Pictos)",
+    "CodeName": "GradientFighter",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Gradient Recovery (Pictos)",
+    "CodeName": "GradientHeal",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Energising Gradient (Pictos)",
+    "CodeName": "GradientEnergy",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Charging Attack (Pictos)",
+    "CodeName": "GradientStacker",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Gradient Breaker (Pictos)",
+    "CodeName": "GradientBreaker",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Post Gradient (Pictos)",
+    "CodeName": "PostGradient",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Charging Recovery (Pictos)",
+    "CodeName": "GradientCure",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Charging Counter (Pictos)",
+    "CodeName": "GradientCounterCharge",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Charging Weakness (Pictos)",
+    "CodeName": "GradientWeakness",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Charging Mark (Pictos)",
+    "CodeName": "GradientMark",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Revive Tint Energy (Pictos)",
+    "CodeName": "ReviveTintEnergy",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Healing Tint Energy (Pictos)",
+    "CodeName": "HealingTintEnergy",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Empowering Tint (Pictos)",
+    "CodeName": "PowerfulTint",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Protecting Tint (Pictos)",
+    "CodeName": "ShellTint",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Shielding Tint (Pictos)",
+    "CodeName": "ShieldingTint",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Accelerating Tint (Pictos)",
+    "CodeName": "SpeedTint",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Better Healing Tint (Pictos)",
+    "CodeName": "GreatHealingTint",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Cleansing Tint (Pictos)",
+    "CodeName": "CleansingTint",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Great Healing Tint (Pictos)",
+    "CodeName": "BigHealingTint",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Great Energy Tint (Pictos)",
+    "CodeName": "BigEnergyTint",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Charging Tint (Pictos)",
+    "CodeName": "GradientTint",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Time Tint (Pictos)",
+    "CodeName": "TimeTint",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Energising Burn (Pictos)",
+    "CodeName": "APOnBurn",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Breaking Burn (Pictos)",
+    "CodeName": "BreakDamageOnBurn",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Critical Burn (Pictos)",
+    "CodeName": "CritChanceBurn",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Burning Death (Pictos)",
+    "CodeName": "BurningDeath",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Longer Burn (Pictos)",
+    "CodeName": "BurnDurationIncrease",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Critical Break (Pictos)",
+    "CodeName": "BreakDamageOnCrit",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Critical Weakness (Pictos)",
+    "CodeName": "CritChanceOnWeak",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Critical Stun (Pictos)",
+    "CodeName": "CritChanceOnStunned",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Critical Vulnerability (Pictos)",
+    "CodeName": "CritChanceOnDefenseless",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Empowering Dodge (Pictos)",
+    "CodeName": "PowerDodgeCombo",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Marking Break (Pictos)",
+    "CodeName": "MarkOnBreak",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Slowing Break (Pictos)",
+    "CodeName": "SlowOnBreak",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Exposing Break (Pictos)",
+    "CodeName": "DefenselessOnBreak",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Break Specialist (Pictos)",
+    "CodeName": "BreakSpecialist",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Breaking Death (Pictos)",
+    "CodeName": "BreakingDeath",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Breaking Slow (Pictos)",
+    "CodeName": "BreakDamageOnSlow",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Longer Powerful (Pictos)",
+    "CodeName": "LongerPowerful",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Longer Shell (Pictos)",
+    "CodeName": "LongerShell",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Longer Rush (Pictos)",
+    "CodeName": "LongerRush",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Powerful On Shell (Pictos)",
+    "CodeName": "PowerfulOnShell",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Rush On Powerful (Pictos)",
+    "CodeName": "RushOnPowerful",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Shell On Rush (Pictos)",
+    "CodeName": "ShellOnRush",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Evasive Healer (Pictos)",
+    "CodeName": "EvasiveHealer",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Energising Powerful (Pictos)",
+    "CodeName": "APOnPowerful",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Energising Shell (Pictos)",
+    "CodeName": "APOnShell",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Energising Rush (Pictos)",
+    "CodeName": "APOnRush",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Healing Boon (Pictos)",
+    "CodeName": "HealOnBuff",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Greater Powerless (Pictos)",
+    "CodeName": "GreaterPowerless",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Greater Defenceless (Pictos)",
+    "CodeName": "GreaterDefenseless",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Greater Slow (Pictos)",
+    "CodeName": "GreaterSlow",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Energising Cleanse (Pictos)",
+    "CodeName": "AutoDispelEnergy",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Draining Cleanse (Pictos)",
+    "CodeName": "DispelOnAPConsume",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Anti-Blight (Pictos)",
+    "CodeName": "AntiBlight",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Charging Critical (Pictos)",
+    "CodeName": "GradientOnCrit",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Charging Burn (Pictos)",
+    "CodeName": "GradientOnBurn",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Charging Stun (Pictos)",
+    "CodeName": "GradientOnStun",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Charging Alteration (Pictos)",
+    "CodeName": "GradientOnBuff",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Dodge Helper (Pictos)",
+    "CodeName": "LongerDodge",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Parry Specialist (Pictos)",
+    "CodeName": "ParrySpecialist",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Dodge Specialist (Pictos)",
+    "CodeName": "DodgeSpecialist",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "The Best Defense (Pictos)",
+    "CodeName": "BestDefense",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Passive Defense (Pictos)",
+    "CodeName": "BonusHealthNoDefense",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Successive Parry (Pictos)",
+    "CodeName": "ParryDamageNoDodge",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Breaking Attack (Pictos)",
+    "CodeName": "BreakingAttack",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Anti-Charm (Pictos)",
+    "CodeName": "AntiCharm",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Simoso (Verso Weapon)",
+    "CodeName": "Simoso",
+    "ItemType": "Weapon"
+  },
+  {
+    "CustomName": "Clea's Life (Pictos)",
+    "CodeName": "CleasLife",
+    "ItemType": "Pictos"
+  },
+  {
+    "CustomName": "Lost Gestral (Key)",
+    "CodeName": "LostGestral",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Festival Token (Key)",
+    "CodeName": "FestivalToken",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Molten Heart (Key)",
+    "CodeName": "Quest_MoltenHeart",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Chromatic Ink (Key)",
+    "CodeName": "Quest_ChromaticInk",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Intact Mine (Key)",
+    "CodeName": "Quest_Mine",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Wooden Stick (Key)",
+    "CodeName": "Quest_WoodenStick",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Wood Boards (Key)",
+    "CodeName": "Quest_WoodBoards",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Resin (Key)",
+    "CodeName": "Quest_Resin",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Mushroom (Key)",
+    "CodeName": "Quest_Mushroom",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Old Key (Key)",
+    "CodeName": "Quest_OldKey",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Bourgeon Skin (Key)",
+    "CodeName": "Quest_BourgeonSkin",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Rock Crystal (Key)",
+    "CodeName": "Quest_HexgaRock",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Eternal Ice (Key)",
+    "CodeName": "Quest_EternalIce",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Underground Key (Key)",
+    "CodeName": "Quest_StationKey",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Manor Family Canvas (Key)",
+    "CodeName": "Quest_ManorFamilyCanvas",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Colour of the Beast (Key)",
+    "CodeName": "Quest_CleaWorkshop_Part1",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Shape of the Beast (Key)",
+    "CodeName": "Quest_CleaWorkshop_Part2",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Light of the Beast (Key)",
+    "CodeName": "Quest_CleaWorkshop_Part3",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Quest_MaelleGustaveUnlock (Skill Unlock)",
+    "CodeName": "Quest_MaelleGustaveUnlock",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "A flower for Sophie (Key)",
+    "CodeName": "Quest_FlowerforSophie",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "A uniform for Richard's son (Key)",
+    "CodeName": "Quest_UniformForSon",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "A journal from Gustave's apprentices (Key)",
+    "CodeName": "Quest_ApprenticesJournal",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Weird Pictos (Key)",
+    "CodeName": "Quest_WeirdPictos",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Expedition (Gustave Outfit)",
+    "CodeName": "SkinGustave_Default",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Expedition (Lune Outfit)",
+    "CodeName": "SkinLune_Default",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Expedition (Maelle Outfit)",
+    "CodeName": "SkinMaelle_Default",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Expedition (Monoco Outfit)",
+    "CodeName": "SkinMonoco_Default",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Expedition (Sciel Outfit)",
+    "CodeName": "SkinSciel_Default",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Expedition (Verso Outfit)",
+    "CodeName": "SkinVerso_Default",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Gustave (Gustave Haircut)",
+    "CodeName": "FaceGustave_Default",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Lune (Lune Haircut)",
+    "CodeName": "FaceLune_Default",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Maelle (Maelle Haircut)",
+    "CodeName": "FaceMaelle_Default",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Sciel (Sciel Haircut)",
+    "CodeName": "FaceSciel_Default",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Verso (Verso Haircut)",
+    "CodeName": "FaceVerso_Default",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Braid (Lune Haircut)",
+    "CodeName": "FaceLune_Braid",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Double Braid (Maelle Haircut)",
+    "CodeName": "FaceMaelle_DoubleBraid",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Monoco (Monoco Haircut)",
+    "CodeName": "FaceMonoco_Default",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Viking (Monoco Haircut)",
+    "CodeName": "FaceMonoco_Viking",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Curly (Gustave Haircut)",
+    "CodeName": "FaceGustave_Curly",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Short (Gustave Haircut)",
+    "CodeName": "FaceGustave_Noah",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Short Curly (Sciel Haircut)",
+    "CodeName": "FaceSciel_CurlyShort",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Plunging Bob (Sciel Haircut)",
+    "CodeName": "FaceSciel_OldConcept",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Samurai (Verso Haircut)",
+    "CodeName": "FaceVerso_Samourai",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Painted Me (Maelle Outfit)",
+    "CodeName": "SkinMaelle_Alicia",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Renoir's Suit (Gustave Outfit)",
+    "CodeName": "SkinGustave_MirrorRenoir",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Pure (Gustave Outfit)",
+    "CodeName": "SkinGustave_Pure",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Pure (Lune Outfit)",
+    "CodeName": "SkinLune_Pure",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Pure (Verso Outfit)",
+    "CodeName": "SkinVerso_Pure",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Pure (Monoco Outfit)",
+    "CodeName": "SkinMonoco_Pure",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Pure (Sciel Outfit)",
+    "CodeName": "SkinSciel_Pure",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Pure (Maelle Outfit)",
+    "CodeName": "SkinMaelle_Pure",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Lumiere Suit (Gustave Outfit)",
+    "CodeName": "SkinGustave_LumiereSuit",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Sakapatate (Verso Outfit)",
+    "CodeName": "SkinVerso_Potatoe_Bag",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Pelerin (Verso Outfit)",
+    "CodeName": "SkinVerso_Pelerin",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Renoir's Suit (Verso Outfit)",
+    "CodeName": "SkinVerso_Mirror",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Sirene (Lune Outfit)",
+    "CodeName": "SkinLune_Sirene",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Sirene (Sciel Outfit)",
+    "CodeName": "SkinSciel_Sirene",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Sakapatate (Gustave Outfit)",
+    "CodeName": "SkinGustave_Potatoe_Bag",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Sakapatate (Lune Outfit)",
+    "CodeName": "SkinLune_Potatoe_Bag",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Danseuse (Lune Outfit)",
+    "CodeName": "SkinLune_Danseuse",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Sakapatate (Sciel Outfit)",
+    "CodeName": "SkinSciel_Potatoe_Bag",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Danseuse (Sciel Outfit)",
+    "CodeName": "SkinSciel_Danseuse",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Real Maelle (Maelle Outfit)",
+    "CodeName": "SkinMaelle_ActeIII",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Swimsuit (Maelle Outfit)",
+    "CodeName": "SkinMaelle_Bikini",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Swimsuit I (Sciel Outfit)",
+    "CodeName": "SkinSciel_BikiniA",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Swimsuit II (Sciel Outfit)",
+    "CodeName": "SkinSciel_BikiniB",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Swimsuit I (Lune Outfit)",
+    "CodeName": "SkinLune_BikiniA",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Swimsuit II (Lune Outfit)",
+    "CodeName": "SkinLune_BikiniB",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Swimsuit (Gustave Outfit)",
+    "CodeName": "SkinGustave_Bikini",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Swimsuit I (Verso Outfit)",
+    "CodeName": "SkinVerso_BikiniA",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Swimsuit II (Verso Outfit)",
+    "CodeName": "SkinVerso_BikiniB",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Real Maelle (Maelle Haircut)",
+    "CodeName": "FaceMaelle_ActeIII",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Voluminous (Maelle Haircut)",
+    "CodeName": "FaceMaelle_Voluminous",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "French Bob (Maelle Haircut)",
+    "CodeName": "FaceMaelle_FrenchBob",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Rebellious (Maelle Haircut)",
+    "CodeName": "FaceMaelle_Rebellious",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Messy Bun (Maelle Haircut)",
+    "CodeName": "FaceMaelle_MessyBun",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Short (Maelle Haircut)",
+    "CodeName": "FaceMaelle_Short",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Gestral (Maelle Haircut)",
+    "CodeName": "FaceMaelle_Gestral",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Rebellious (Sciel Haircut)",
+    "CodeName": "FaceSciel_Rebellious",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Voluminous (Sciel Haircut)",
+    "CodeName": "FaceSciel_Voluminous",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Short (Sciel Haircut)",
+    "CodeName": "FaceSciel_Short",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Ponytail (Sciel Haircut)",
+    "CodeName": "FaceSciel_Ponytail",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Gestral (Sciel Haircut)",
+    "CodeName": "FaceSciel_Gestral",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Double Braid (Sciel Haircut)",
+    "CodeName": "FaceSciel_DoubleBraid",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "French Bob (Lune Haircut)",
+    "CodeName": "FaceLune_Frenchbob",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Gestral (Lune Haircut)",
+    "CodeName": "FaceLune_Gestral",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Messy Bun (Lune Haircut)",
+    "CodeName": "FaceLune_MessyBun",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Ponytail (Lune Haircut)",
+    "CodeName": "FaceLune_Ponytail",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Sirene (Lune Haircut)",
+    "CodeName": "FaceLune_Sirene",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Voluminous (Lune Haircut)",
+    "CodeName": "FaceLune_Voluminous",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Bun (Verso Haircut)",
+    "CodeName": "FaceVerso_bun",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Gestral (Verso Haircut)",
+    "CodeName": "FaceVerso_Gestral",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Gustave's Haircut (Verso Haircut)",
+    "CodeName": "FaceVerso_Handsome",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Gestral (Gustave Haircut)",
+    "CodeName": "FaceGustave_Gestral",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Bun (Gustave Haircut)",
+    "CodeName": "FaceGustave_Bun",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Sakapatate (Maelle Outfit)",
+    "CodeName": "SkinMaelle_Potatoe_Bag",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Lumiere (Monoco Outfit)",
+    "CodeName": "SkinMonoco_Lumiere",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Swimsuit (Monoco Outfit)",
+    "CodeName": "SkinMonoco_Bikini",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Verso (Verso Outfit)",
+    "CodeName": "SkinVerso_NoArmBand",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Vintage (Sciel Haircut)",
+    "CodeName": "FaceSciel_Vintage",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "French Bob (Sciel Haircut)",
+    "CodeName": "FaceSciel_FrenchBob",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Braid (Sciel Haircut)",
+    "CodeName": "FaceSciel_Braid",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Artist (Sciel Haircut)",
+    "CodeName": "FaceSciel_Artist_s_One",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Curly (Verso Haircut)",
+    "CodeName": "FaceVerso_Curly",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Artist (Maelle Haircut)",
+    "CodeName": "FaceMaelle_Artist_s_One",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Braid (Maelle Haircut)",
+    "CodeName": "FaceMaelle_Braid",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Vintage (Maelle Haircut)",
+    "CodeName": "FaceMaelle_Vintage",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Artist (Lune Haircut)",
+    "CodeName": "FaceLune_Artist_s_One",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Double Braid (Lune Haircut)",
+    "CodeName": "FaceLune_DoubleBraid",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Half Ponytail (Lune Haircut)",
+    "CodeName": "FaceLune_HalfPonytail",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Short (Lune Haircut)",
+    "CodeName": "FaceLune_Short",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Wavy (Lune Haircut)",
+    "CodeName": "FaceLune_Wavy",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Charming (Gustave Haircut)",
+    "CodeName": "FaceGustave_Charming",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Clea (Lune Outfit)",
+    "CodeName": "SkinLune_Clea",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Clea (Maelle Outfit)",
+    "CodeName": "SkinMaelle_Clea",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Clea (Sciel Outfit)",
+    "CodeName": "SkinSciel_Clea",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Rebellious White (Lune Haircut)",
+    "CodeName": "FaceLune_Default_WhiteVer",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Expedition White (Gustave Haircut)",
+    "CodeName": "FaceGustave_Default_WhiteVersion",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Messy Bun White (Sciel Haircut)",
+    "CodeName": "FaceSciel_Default_WhiteVersion",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Expedition White (Verso Haircut)",
+    "CodeName": "FaceVerso_Default_WhiteVersion",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Ponytail White (Maelle Haircut)",
+    "CodeName": "FaceMaelle_Default_WhiteVersion",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Double Braid White (Maelle Haircut)",
+    "CodeName": "FaceMaelle_DoubleBraid_WhiteVersion",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Gestral White (Maelle Haircut)",
+    "CodeName": "FaceMaelle_Gestral_WhiteVersion",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Short White (Maelle Haircut)",
+    "CodeName": "FaceMaelle_Short_WhiteVersion",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Bald (Maelle Haircut)",
+    "CodeName": "FaceMaelle_Bald",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Bald (Gustave Haircut)",
+    "CodeName": "FaceGustave_Bald",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Bald (Lune Haircut)",
+    "CodeName": "FaceLune_Bald",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Bald (Sciel Haircut)",
+    "CodeName": "FaceSciel_Bald",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Bald (Verso Haircut)",
+    "CodeName": "FaceVerso_Bald",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Clea (Sciel Haircut)",
+    "CodeName": "FaceSciel_Clea",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Clea (Lune Haircut)",
+    "CodeName": "FaceLune_Clea",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Clea (Maelle Haircut)",
+    "CodeName": "FaceMaelle_Clea",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Painted Me (Maelle Haircut)",
+    "CodeName": "FaceMaelle_Alicia",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Skirt (Maelle Outfit)",
+    "CodeName": "SkinMaelle_CivilianSkirt",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Skirt (Lune Outfit)",
+    "CodeName": "SkinLune_CivilianSkirt",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Skirt (Sciel Outfit)",
+    "CodeName": "SkinSciel_CivilianSkirt",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Bald (Monoco Haircut)",
+    "CodeName": "FaceMonoco_Bald",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Renoir (Gustave Outfit)",
+    "CodeName": "SkinGustave_RealRenoir",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Renoir (Verso Outfit)",
+    "CodeName": "SkinVerso_RealRenoir",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Simple (Verso Outfit)",
+    "CodeName": "SkinVerso_Simple",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Sophie (Sophie Outfit)",
+    "CodeName": "SkinSophie_Default",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Sophie (Sophie Haircut)",
+    "CodeName": "FaceSophie_Default",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Crimson Uniform (Gustave Outfit)",
+    "CodeName": "SkinGustave_Default_Red",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Civilian (Maelle Outfit)",
+    "CodeName": "SkinMaelle_CivilianLumiere",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Civilian (Gustave Outfit)",
+    "CodeName": "SkinGustave_Civil",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Civilian (Verso Outfit)",
+    "CodeName": "SkinVerso_Civil",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Civilian (Sciel Outfit)",
+    "CodeName": "SkinSciel_Civil",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Civilian (Lune Outfit)",
+    "CodeName": "SkinLune_Civil",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Alicia (Alicia Epilogue Outfit)",
+    "CodeName": "SkinAliciaEpilogue_Default",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Alicia (Alicia Epilogue Haircut)",
+    "CodeName": "FaceAliciaEpilogue_Default",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Flower Suit (Gustave Outfit)",
+    "CodeName": "SkinGustave_FlowerSuit",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Flower Suit (Verso Outfit)",
+    "CodeName": "SkinVerso_FlowerSuit",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Flower Suit (Lune Outfit)",
+    "CodeName": "SkinLune_FlowerSuit",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Flower Suit (Sciel Outfit)",
+    "CodeName": "SkinSciel_FlowerSuit",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Flower Suit (Maelle Outfit)",
+    "CodeName": "SkinMaelle_FlowerSuit",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Flower Suit (Monoco Outfit)",
+    "CodeName": "SkinMonoco_FlowerSuit",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Obscur (Gustave Outfit)",
+    "CodeName": "SkinGustave_Obscur",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Obscur (Verso Outfit)",
+    "CodeName": "SkinVerso_Obscur",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Clair (Maelle Outfit)",
+    "CodeName": "SkinMaelle_Clair",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Flowers (Gustave Haircut)",
+    "CodeName": "FaceGustave_Flowers",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Flowers (Verso Haircut)",
+    "CodeName": "FaceVerso_Flowers",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Flowers (Lune Haircut)",
+    "CodeName": "FaceLune_Flowers",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Flowers (Sciel Haircut)",
+    "CodeName": "FaceSciel_Flowers",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Flowers (Maelle Haircut)",
+    "CodeName": "FaceMaelle_Flowers",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Flowers (Monoco Haircut)",
+    "CodeName": "FaceMonoco_Flowers",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Alicia (Alicia Haircut)",
+    "CodeName": "FaceAlicia_Default",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Alicia (Alicia Outfit)",
+    "CodeName": "SkinAlicia_Default",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Baguette (Gustave Outfit)",
+    "CodeName": "SkinGustave_Baguette",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Baguette (Verso Outfit)",
+    "CodeName": "SkinVerso_Baguette",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Baguette (Gustave Haircut)",
+    "CodeName": "FaceGustave_Baguette",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Baguette (Verso Haircut)",
+    "CodeName": "FaceVerso_Baguette",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Baguette (Lune Haircut)",
+    "CodeName": "FaceLune_Baguette",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Baguette (Sciel Haircut)",
+    "CodeName": "FaceSciel_Baguette",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Baguette (Maelle Haircut)",
+    "CodeName": "FaceMaelle_Baguette",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Baguette (Lune Outfit)",
+    "CodeName": "SkinLune_Baguette",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Baguette (Sciel Outfit)",
+    "CodeName": "SkinSciel_Baguette",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Baguette (Maelle Outfit)",
+    "CodeName": "SkinMaelle_Baguette",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Obscur (Maelle Outfit)",
+    "CodeName": "SkinMaelle_Obscur",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Clair (Verso Outfit)",
+    "CodeName": "SkinVerso_Clair",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Clair (Gustave Outfit)",
+    "CodeName": "SkinGustave_Clair",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Civilian (Monoco Outfit)",
+    "CodeName": "SkinMonoco_Civilian",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Renoir (Gustave Haircut)",
+    "CodeName": "FaceGustave_Renoir",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Renoir (Verso Haircut)",
+    "CodeName": "FaceVerso_Renoir",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Pure (Monoco Haircut)",
+    "CodeName": "FaceMonoco_Pure",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Gommage (Gustave Outfit)",
+    "CodeName": "SkinGustave_Gommage",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Gommage (Verso Outfit)",
+    "CodeName": "SkinVerso_Gommage",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Gommage (Lune Outfit)",
+    "CodeName": "SkinLune_Gommage",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Gommage (Sciel Outfit)",
+    "CodeName": "SkinSciel_Gommage",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Gommage (Maelle Outfit)",
+    "CodeName": "SkinMaelle_Gommage",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Gommage (Monoco Outfit)",
+    "CodeName": "SkinMonoco_Gommage",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Lumiere (Maelle Outfit)",
+    "CodeName": "SkinMaelle_Lumiere",
+    "ItemType": "CharacterCustomization"
+  },
+  {
+    "CustomName": "Chroma Catalyst (Upgrade Material)",
+    "CodeName": "UpgradeMaterial_Level1",
+    "ItemType": "Inventory"
+  },
+  {
+    "CustomName": "Polished Chroma Catalyst (Upgrade Material)",
+    "CodeName": "UpgradeMaterial_Level2",
+    "ItemType": "Inventory"
+  },
+  {
+    "CustomName": "Resplendent Chroma Catalyst (Upgrade Material)",
+    "CodeName": "UpgradeMaterial_Level3",
+    "ItemType": "Inventory"
+  },
+  {
+    "CustomName": "Grandiose Chroma Catalyst (Upgrade Material)",
+    "CodeName": "UpgradeMaterial_Level4",
+    "ItemType": "Inventory"
+  },
+  {
+    "CustomName": "Perfect Chroma Catalyst (Upgrade Material)",
+    "CodeName": "UpgradeMaterial_Level5",
+    "ItemType": "Inventory"
+  },
+  {
+    "CustomName": "Shape of Health (Upgrade Material)",
+    "CodeName": "ConsumableUpgradeMaterial_Health",
+    "ItemType": "Inventory"
+  },
+  {
+    "CustomName": "Shape of Energy (Upgrade Material)",
+    "CodeName": "ConsumableUpgradeMaterial_AP",
+    "ItemType": "Inventory"
+  },
+  {
+    "CustomName": "Shape of Life (Upgrade Material)",
+    "CodeName": "ConsumableUpgradeMaterial_Revive",
+    "ItemType": "Inventory"
+  },
+  {
+    "CustomName": "Small Healing Tint (Consumable)",
+    "CodeName": "Consumable_Health_Level0",
+    "ItemType": "Consumable"
+  },
+  {
+    "CustomName": "Healing Tint (Consumable)",
+    "CodeName": "Consumable_Health_Level1",
+    "ItemType": "Consumable"
+  },
+  {
+    "CustomName": "Strong Healing Tint (Consumable)",
+    "CodeName": "Consumable_Health_Level2",
+    "ItemType": "Consumable"
+  },
+  {
+    "CustomName": "Small Energy Tint (Consumable)",
+    "CodeName": "Consumable_Energy_Level0",
+    "ItemType": "Consumable"
+  },
+  {
+    "CustomName": "Energy Tint (Consumable)",
+    "CodeName": "Consumable_Energy_Level1",
+    "ItemType": "Consumable"
+  },
+  {
+    "CustomName": "Strong Energy Tint (Consumable)",
+    "CodeName": "Consumable_Energy_Level2",
+    "ItemType": "Consumable"
+  },
+  {
+    "CustomName": "Small Revive Tint (Consumable)",
+    "CodeName": "Consumable_Revive_Level0",
+    "ItemType": "Consumable"
+  },
+  {
+    "CustomName": "Revive Tint (Consumable)",
+    "CodeName": "Consumable_Revive_Level1",
+    "ItemType": "Consumable"
+  },
+  {
+    "CustomName": "Strong Revive Tint (Consumable)",
+    "CodeName": "Consumable_Revive_Level2",
+    "ItemType": "Consumable"
+  },
+  {
+    "CustomName": "Healing Tint Shard (Consumable)",
+    "CodeName": "HealingTint_Shard",
+    "ItemType": "Shard"
+  },
+  {
+    "CustomName": "Energy Tint Shard (Consumable)",
+    "CodeName": "EnergyTint_Shard",
+    "ItemType": "Shard"
+  },
+  {
+    "CustomName": "Revive Tint Shard (Consumable)",
+    "CodeName": "ReviveTint_Shard",
+    "ItemType": "Shard"
+  },
+  {
+    "CustomName": "Colour of Lumina (Consumable)",
+    "CodeName": "Consumable_LuminaPoint",
+    "ItemType": "Inventory"
+  },
+  {
+    "CustomName": "Recoat (Consumable)",
+    "CodeName": "Consumable_Respec",
+    "ItemType": "Inventory"
+  },
+  {
+    "CustomName": "Colour of Skill (Consumable)",
+    "CodeName": "Consumable_SkillPoint",
+    "ItemType": "Inventory"
+  },
+  {
+    "CustomName": "Chroma Elixir Shard (Inventory)",
+    "CodeName": "PartyHealShard",
+    "ItemType": "Shard"
+  },
+  {
+    "CustomName": "Chroma Elixir (Inventory)",
+    "CodeName": "PartyHealConsumable",
+    "ItemType": "Consumable"
+  },
+  {
+    "CustomName": "GradientUnlock_Maelle1 (Skill Unlock)",
+    "CodeName": "GradientUnlock_Maelle1",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "GradientUnlock_Maelle2 (Skill Unlock)",
+    "CodeName": "GradientUnlock_Maelle2",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "GradientUnlock_Maelle3 (Skill Unlock)",
+    "CodeName": "GradientUnlock_Maelle3",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "GradientUnlock_Verso1 (Skill Unlock)",
+    "CodeName": "GradientUnlock_Verso1",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "GradientUnlock_Verso2 (Skill Unlock)",
+    "CodeName": "GradientUnlock_Verso2",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "GradientUnlock_Verso3 (Skill Unlock)",
+    "CodeName": "GradientUnlock_Verso3",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "GradientUnlock_Lune1 (Skill Unlock)",
+    "CodeName": "GradientUnlock_Lune1",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "GradientUnlock_Lune2 (Skill Unlock)",
+    "CodeName": "GradientUnlock_Lune2",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "GradientUnlock_Lune3 (Skill Unlock)",
+    "CodeName": "GradientUnlock_Lune3",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "GradientUnlock_Sciel1 (Skill Unlock)",
+    "CodeName": "GradientUnlock_Sciel1",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "GradientUnlock_Sciel2 (Skill Unlock)",
+    "CodeName": "GradientUnlock_Sciel2",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "GradientUnlock_Sciel3 (Skill Unlock)",
+    "CodeName": "GradientUnlock_Sciel3",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "GradientUnlock_Monoco1 (Skill Unlock)",
+    "CodeName": "GradientUnlock_Monoco1",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "GradientUnlock_Monoco2 (Skill Unlock)",
+    "CodeName": "GradientUnlock_Monoco2",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "GradientUnlock_Monoco3 (Skill Unlock)",
+    "CodeName": "GradientUnlock_Monoco3",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Gustave_SkillTreeUnlock (Skill Unlock)",
+    "CodeName": "Gustave_SkillTreeUnlock",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Quest_MaellePainterSkillsUnlock (Skill Unlock)",
+    "CodeName": "Quest_MaellePainterSkillsUnlock",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Chroma (Consumable)",
+    "CodeName": "ChromaPack_Regular",
+    "ItemType": "Gold"
+  },
+  {
+    "CustomName": "Chroma (Consumable)",
+    "CodeName": "ChromaPack_Large",
+    "ItemType": "Gold"
+  },
+  {
+    "CustomName": "Chroma (Consumable)",
+    "CodeName": "ChromaPack_ExtraLarge",
+    "ItemType": "Gold"
+  },
+  {
+    "CustomName": "Abbest's Foot (Lovely Foot)",
+    "CodeName": "AbbestFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Benisseur's Foot (Lovely Foot)",
+    "CodeName": "BenisseurFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Bourgeon's Foot (Lovely Foot)",
+    "CodeName": "BourgeonFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Bruler's Foot (Lovely Foot)",
+    "CodeName": "BrulerFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Braseleur's Foot (Lovely Foot)",
+    "CodeName": "BraseleurFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Chalier's Foot (Lovely Foot)",
+    "CodeName": "ChalierFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Cruler's Foot (Lovely Foot)",
+    "CodeName": "CrulerFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Greatsword Cultist's Foot (Lovely Foot)",
+    "CodeName": "HeavyCultistFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Danseuse's Foot (Lovely Foot)",
+    "CodeName": "DanseuseFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Demineur's Foot (Lovely Foot)",
+    "CodeName": "DemineurFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Glaise's Foot (Lovely Foot)",
+    "CodeName": "GlaiseFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Reaper Cultist's Foot (Lovely Foot)",
+    "CodeName": "FlyingCultistFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Gault's Foot (Lovely Foot)",
+    "CodeName": "GaultFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Jar's Foot (Lovely Foot)",
+    "CodeName": "JarFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Lancelier's Foot (Lovely Foot)",
+    "CodeName": "LancelierFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Luster's Foot (Lovely Foot)",
+    "CodeName": "LusterFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Pelerin's Foot (Lovely Foot)",
+    "CodeName": "PelerinFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Portier's Foot (Lovely Foot)",
+    "CodeName": "PortierFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Catapult Sakapatate's Foot (Lovely Foot)",
+    "CodeName": "CatapultSakapatateFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Ranger Sakapatate's Foot (Lovely Foot)",
+    "CodeName": "RangerSakapatateFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Robust Sakapatate's Foot (Lovely Foot)",
+    "CodeName": "RobustSakapatateFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Potier's Foot (Lovely Foot)",
+    "CodeName": "PotierFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Ramasseur's Foot (Lovely Foot)",
+    "CodeName": "RamasseurFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Sapling's Foot (Lovely Foot)",
+    "CodeName": "SaplingFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Stalact's Foot (Lovely Foot)",
+    "CodeName": "StalactFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Troubadour's Foot (Lovely Foot)",
+    "CodeName": "TroubadourFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Moissonneuse's Foot (Lovely Foot)",
+    "CodeName": "MoissonneuseFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Boucheclier's Foot (Lovely Foot)",
+    "CodeName": "BoucheclierFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Chapelier's Foot (Lovely Foot)",
+    "CodeName": "ChapelierFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Contorsionniste's Foot (Lovely Foot)",
+    "CodeName": "ContorsionnisteFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Ballet's Foot (Lovely Foot)",
+    "CodeName": "BalletFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Duallist's Foot (Lovely Foot)",
+    "CodeName": "DuallistFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Ultimate Sakapatate's Foot (Lovely Foot)",
+    "CodeName": "BossSakapatateFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Orphelin's Foot (Lovely Foot)",
+    "CodeName": "OrphelinFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Hexga's Foot (Lovely Foot)",
+    "CodeName": "HexgaFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Ceramic Chevaliere's Foot (Lovely Foot)",
+    "CodeName": "CeramicChevaliereFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Steel Chevaliere's Foot (Lovely Foot)",
+    "CodeName": "SteelChevaliereFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Gold Chevaliere's Foot (Lovely Foot)",
+    "CodeName": "GoldChevaliereFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Echassier's Foot (Lovely Foot)",
+    "CodeName": "EchassierFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Grosse Tete's Foot (Lovely Foot)",
+    "CodeName": "GrosseTeteFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Obscur's Foot (Lovely Foot)",
+    "CodeName": "ObscurFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Clair's Foot (Lovely Foot)",
+    "CodeName": "ClairFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Lampmaster's Foot (Lovely Foot)",
+    "CodeName": "LampmasterFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Rocher's Foot (Lovely Foot)",
+    "CodeName": "RocherFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Creation's Foot (Lovely Foot)",
+    "CodeName": "CreationFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Aberration's Foot (Lovely Foot)",
+    "CodeName": "AberrationFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Veilleur's Foot (Lovely Foot)",
+    "CodeName": "VeilleurFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Petank's Foot (Lovely Foot)",
+    "CodeName": "PetankFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Noire's Foot (Lovely Foot)",
+    "CodeName": "NoireFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Eveque's Foot (Lovely Foot)",
+    "CodeName": "EvequeFoot",
+    "ItemType": "SkillUnlocker"
+  },
+  {
+    "CustomName": "Merchant_GoblusLair (Merchant Unlock)",
+    "CodeName": "Merchant_GoblusLair",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Merchant_GestralVillage1 (Merchant Unlock)",
+    "CodeName": "Merchant_GestralVillage1",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Merchant_GestralVillage2 (Merchant Unlock)",
+    "CodeName": "Merchant_GestralVillage2",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Merchant_GestralVillage3 (Merchant Unlock)",
+    "CodeName": "Merchant_GestralVillage3",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Merchant_SeaCliff (Merchant Unlock)",
+    "CodeName": "Merchant_SeaCliff",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Merchant_ForgottenBattlefield (Merchant Unlock)",
+    "CodeName": "Merchant_ForgottenBattlefield",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Merchant_GrandisStation (Merchant Unlock)",
+    "CodeName": "Merchant_GrandisStation",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Merchant_OldLumiere (Merchant Unlock)",
+    "CodeName": "Merchant_OldLumiere",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Merchant_Visages (Merchant Unlock)",
+    "CodeName": "Merchant_Visages",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Merchant_Sirene (Merchant Unlock)",
+    "CodeName": "Merchant_Sirene",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Merchant_Monolith (Merchant Unlock)",
+    "CodeName": "Merchant_Monolith",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Merchant_Lumiere (Merchant Unlock)",
+    "CodeName": "Merchant_Lumiere",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Merchant_YellowForest (Merchant Unlock)",
+    "CodeName": "Merchant_YellowForest",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Merchant_OrangeForest (Merchant Unlock)",
+    "CodeName": "Merchant_OrangeForest",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Merchant_MonocosMountain (Merchant Unlock)",
+    "CodeName": "Merchant_MonocosMountain",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Merchant_Reacher (Merchant Unlock)",
+    "CodeName": "Merchant_Reacher",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Merchant_CleaIsland (Merchant Unlock)",
+    "CodeName": "Merchant_CleaIsland",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Merchant_Optional1 (Merchant Unlock)",
+    "CodeName": "Merchant_Optional1",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Merchant_Optional2 (Merchant Unlock)",
+    "CodeName": "Merchant_Optional2",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Merchant_Optional3 (Merchant Unlock)",
+    "CodeName": "Merchant_Optional3",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Merchant_TwilightSanctuary (Merchant Unlock)",
+    "CodeName": "Merchant_TwilightSanctuary",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Simon (Journal)",
+    "CodeName": "Journal_Exp100A",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Julie Search and Rescue (Journal)",
+    "CodeName": "Journal_Exp100B",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Expedition 84 (Journal)",
+    "CodeName": "Journal_Exp84",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Expedition 81 (Journal)",
+    "CodeName": "Journal_Exp81",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Expedition 78 (Journal)",
+    "CodeName": "Journal_Exp78",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Expedition 70 (Journal)",
+    "CodeName": "Journal_Exp70",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Expedition 69 (Journal)",
+    "CodeName": "Journal_Exp69",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Expedition 68 (Journal)",
+    "CodeName": "Journal_Exp68",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Expedition 67 (Journal)",
+    "CodeName": "Journal_Exp67",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Expedition 66 (Journal)",
+    "CodeName": "Journal_Exp66",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Expedition 65 (Journal)",
+    "CodeName": "Journal_Exp65",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Expedition 64 (Journal)",
+    "CodeName": "Journal_Exp64",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Expedition 63 (Journal)",
+    "CodeName": "Journal_Exp63",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Expedition 62 (Journal)",
+    "CodeName": "Journal_Exp62",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Expedition 61 (Journal)",
+    "CodeName": "Journal_Exp61",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Expedition 60 (Journal)",
+    "CodeName": "Journal_Exp60",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Expedition 59 (Journal)",
+    "CodeName": "Journal_Exp59",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Expedition 58 (Journal)",
+    "CodeName": "Journal_Exp58",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Expedition 57 (Journal)",
+    "CodeName": "Journal_Exp57",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Expedition 56 (Journal)",
+    "CodeName": "Journal_Exp56",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Expedition 55 (Journal)",
+    "CodeName": "Journal_Exp55",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Expedition 54 (Journal)",
+    "CodeName": "Journal_Exp54",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Expedition 53 (Journal)",
+    "CodeName": "Journal_Exp53",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Expedition 52 (Journal)",
+    "CodeName": "Journal_Exp52",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Expedition 51 (Journal)",
+    "CodeName": "Journal_Exp51",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Expedition 50 (Journal)",
+    "CodeName": "Journal_Exp50",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Expedition 49 (Journal)",
+    "CodeName": "Journal_Exp49",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Expedition 48 (Journal)",
+    "CodeName": "Journal_Exp48",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Expedition 47 (Journal)",
+    "CodeName": "Journal_Exp47",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Expedition 46 (Journal)",
+    "CodeName": "Journal_Exp46",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Expedition 45 (Journal)",
+    "CodeName": "Journal_Exp45",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Expedition 44 (Journal)",
+    "CodeName": "Journal_Exp44",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Expedition 43 (Journal)",
+    "CodeName": "Journal_Exp43",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Expedition 42 (Journal)",
+    "CodeName": "Journal_Exp42",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Expedition 41 (Journal)",
+    "CodeName": "Journal_Exp41",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Expedition 40 (Journal)",
+    "CodeName": "Journal_Exp40",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Expedition 39 (Journal)",
+    "CodeName": "Journal_Exp39",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Expedition 38 (Journal)",
+    "CodeName": "Journal_Exp38",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Expedition 37 (Journal)",
+    "CodeName": "Journal_Exp37",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Expedition 36 (Journal)",
+    "CodeName": "Journal_Exp36",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Expedition 35 (Journal)",
+    "CodeName": "Journal_Exp35",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Expedition 34 (Journal)",
+    "CodeName": "Journal_Exp34",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Fracture Survivor (Journal)",
+    "CodeName": "Journal_OldLumiere",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Unknown (Journal)",
+    "CodeName": "Journal_RenoirSirene",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Unknown (Journal)",
+    "CodeName": "Journal_RenoirVisages",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Unknown (Journal)",
+    "CodeName": "Journal_RenoirReacher",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Renoir (Journal)",
+    "CodeName": "Journal_RenoirManor",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Aline (Journal)",
+    "CodeName": "Journal_Aline",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Verso (Journal)",
+    "CodeName": "Journal_Verso",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Alicia (Music Record)",
+    "CodeName": "MusicRecord_1",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Lumiere (Music Record)",
+    "CodeName": "MusicRecord_2",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Gustave (Music Record)",
+    "CodeName": "MusicRecord_3",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Lettre a Maelle (Music Record)",
+    "CodeName": "MusicRecord_4",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Lune (Music Record)",
+    "CodeName": "MusicRecord_5",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Sciel (Music Record)",
+    "CodeName": "MusicRecord_6",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Monoco (Music Record)",
+    "CodeName": "MusicRecord_7",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Verso (Music Record)",
+    "CodeName": "MusicRecord_8",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Until Next Life (Music Record)",
+    "CodeName": "MusicRecord_9",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Reveries dans Paris (Music Record)",
+    "CodeName": "MusicRecord_10",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Un 33 Decembre a Lumiere (Music Record)",
+    "CodeName": "MusicRecord_11",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Le Grand Cafe de Lumiere (Music Record)",
+    "CodeName": "MusicRecord_12",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Nocturne pour Lumiere (Music Record)",
+    "CodeName": "MusicRecord_13",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Linen and Cotton (Music Record)",
+    "CodeName": "MusicRecord_14",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Goblu (Music Record)",
+    "CodeName": "MusicRecord_15",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Lights of the Past (Music Record)",
+    "CodeName": "MusicRecord_16",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Lost Voice (Music Record)",
+    "CodeName": "MusicRecord_17",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Robe de Jour (Music Record)",
+    "CodeName": "MusicRecord_18",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Nocturne pour un masque de tristesse (Music Record)",
+    "CodeName": "MusicRecord_19",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Our Painted Family (Music Record)",
+    "CodeName": "MusicRecord_20",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Honeymoon in Lumiere (Music Record)",
+    "CodeName": "MusicRecord_21",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Clea! Don't Pull Your Sister's Hair! (Music Record)",
+    "CodeName": "MusicRecord_22",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Aline's Glasshouse (Music Record)",
+    "CodeName": "MusicRecord_23",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Alicia's Birthday Party (Music Record)",
+    "CodeName": "MusicRecord_24",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Reverence (Music Record)",
+    "CodeName": "MusicRecord_25",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Forlorn (Music Record)",
+    "CodeName": "MusicRecord_26",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Children of Lumiere (Music Record)",
+    "CodeName": "MusicRecord_27",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Aline (Music Record)",
+    "CodeName": "MusicRecord_28",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Renoir (Music Record)",
+    "CodeName": "MusicRecord_29",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Clea (Music Record)",
+    "CodeName": "MusicRecord_30",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "L'Amour d'une Mere (Music Record)",
+    "CodeName": "MusicRecord_31",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Endless Light (Music Record)",
+    "CodeName": "MusicRecord_32",
+    "ItemType": "Key"
+  },
+  {
+    "CustomName": "Our Drafts Collide (Music Record)",
+    "CodeName": "MusicRecord_33",
+    "ItemType": "Key"
+  }
+]
