@@ -51,7 +51,7 @@ public static class EnemiesController
 
     public static void Reset()
     {
-        ReadAsset("Data/Originals/DT_jRPG_Enemies.uasset");
+        ReadAsset($"{RandomizerLogic.DataDirectory}/Originals/DT_jRPG_Enemies.uasset");
     }
     
     public static void ReadAsset(string assetPath)

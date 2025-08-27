@@ -1,4 +1,4 @@
-﻿<Window x:Class="E33Randomizer.EditEncountersWindow"
+﻿<Window x:Class="E33Randomizer.EditIndividualContainersWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:E33Randomizer"
@@ -28,17 +28,17 @@
             <TextBlock Text="Encounters" FontWeight="Bold" FontSize="14" DockPanel.Dock="Top" Margin="0,0,0,10"/>
             
             <TreeView x:Name="LocationTreeView" 
-                      SelectedItemChanged="LocationTreeView_SelectedItemChanged"
-                      ItemsSource="{Binding Locations}">
+                      SelectedItemChanged="CategoryTreeView_SelectedItemChanged"
+                      ItemsSource="{Binding FilteredCategories}">
                 <TreeView.Resources>
                         
-                    <HierarchicalDataTemplate DataType="{x:Type local:EncounterLocationViewModel}" 
-                                              ItemsSource="{Binding Encounters}">
-                        <TextBlock Text="{Binding LocationName}" FontWeight="Bold" FontSize="13" 
+                    <HierarchicalDataTemplate DataType="{x:Type local:CategoryViewModel}" 
+                                              ItemsSource="{Binding Containers}">
+                        <TextBlock Text="{Binding CategoryName}" FontWeight="Bold" FontSize="13" 
                                    Foreground="#333" Margin="2"/>
                     </HierarchicalDataTemplate>
                         
-                    <DataTemplate DataType="{x:Type local:EncounterViewModel}">
+                    <DataTemplate DataType="{x:Type local:ContainerViewModel}">
                         <TextBlock Text="{Binding Name}" Margin="5,2" 
                                    Foreground="#555" FontSize="12"/>
                     </DataTemplate>
@@ -53,11 +53,11 @@
                       DockPanel.Dock="Top" Margin="0,0,0,10"/>
             
             <ListBox DockPanel.Dock="Top" Height="350" x:Name="SelectedEnemiesListBox" 
-                         ItemsSource="{Binding EnemiesInTheEncounter}"
+                         ItemsSource="{Binding DisplayedObjects}"
                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                          Margin="0,0,0,10">
                     <ListBox.ItemTemplate>
-                        <DataTemplate>
+                        <DataTemplate DataType="{x:Type local:ObjectViewModel}">
                             <Grid Margin="2">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
@@ -81,23 +81,23 @@
             
             <StackPanel DockPanel.Dock="Bottom">
                 <TextBlock Text="Add Enemy:" Margin="0,0,0,5" FontWeight="SemiBold"/>
-                <ComboBox x:Name="AddEnemyComboBox" 
-                          ItemsSource="{Binding AllEnemies}"
+                <ComboBox x:Name="AddObjectComboBox" 
+                          ItemsSource="{Binding AllObjects}"
                           DisplayMemberPath="Name"
                           SelectedValuePath="Id"
                           Margin="0,0,0,10"
-                          SelectionChanged="AddEnemyComboBox_SelectionChanged"/>
+                          SelectionChanged="AddObjectComboBox_SelectionChanged"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
                     <Button x:Name="LoadTextButton" Content="Load encounters from .txt file" Width="180" Height="30" 
-                           Margin="0,0,10,0" Click="ReadEncountersFromTxt"/>
+                           Margin="0,0,10,0" Click="ReadDataFromTxt"/>
                     <Button x:Name="SaveTextButton" Content="Save encounters to .txt file" Width="180" Height="30" 
-                           Click="SaveEncountersAsTxt"/>
+                           Click="SaveDataAsTxt"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
                     <Button x:Name="RegenerateEncountersButton" Content="Reroll with current settings" Width="180" Height="30" 
-                            Margin="0,0,10,0" Click="RegenerateEncounters"/>
+                            Margin="0,0,10,0" Click="RegenerateData"/>
                     <Button x:Name="PackCurrentEncountersButton" Content="Generate mod files from current" Width="180" Height="30" 
-                            Click="PackCurrentEncounters"/>
+                            Click="PackCurrentData"/>
                 </StackPanel>
                 <TextBlock Text="Removing all the enemies from an encounter will make the drops from that encounter unavailable. Additionally, if the encounter ends without the battle summary screen, that will also prevent the loot from appearing." 
                            Foreground="Orange" 

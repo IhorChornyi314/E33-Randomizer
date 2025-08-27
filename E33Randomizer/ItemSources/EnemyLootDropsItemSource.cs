@@ -20,7 +20,10 @@ public class EnemyLootDropsItemSource: ItemSource
     public override void LoadFromAsset(UAsset asset)
     {
         _asset = asset;
-        FileName = asset.FolderName.ToString();
+        FolderName = asset.FolderName.ToString();
+        _dropsData.Clear();
+        Items.Clear();
+        Checks.Clear();
         var tableData = (asset.Exports[0] as DataTableExport).Table.Data;
         foreach (var enemyData in tableData)
         {
@@ -29,7 +32,7 @@ public class EnemyLootDropsItemSource: ItemSource
             List<EnemyDrop> drops = new();
             foreach (StructPropertyData itemStruct in (enemyData.Value[10] as ArrayPropertyData).Value)
             {
-                var itemData = ItemController.GetItemData(((itemStruct.Value[0] as StructPropertyData).Value[1] as NamePropertyData).ToString());
+                var itemData = ItemsController.GetItemData(((itemStruct.Value[0] as StructPropertyData).Value[1] as NamePropertyData).ToString());
                 var quantity = (itemStruct.Value[1] as IntPropertyData).Value;
                 var dropChance = (itemStruct.Value[2] as DoublePropertyData).Value;
                 
@@ -38,6 +41,17 @@ public class EnemyLootDropsItemSource: ItemSource
                 _enemyLevelOffsets[enemyName] = (itemStruct.Value[3] as IntPropertyData).Value;
             }
             _dropsData[enemyName] = drops;
+            
+            var check = new CheckData
+            {
+                CodeName = enemyName,
+                CustomName = $"{EnemiesController.GetEnemyData(enemyName)}",
+                IsBroken = false,
+                IsPartialCheck = true,
+                ItemSource = this,
+                Key = enemyName
+            };
+            Checks.Add(check);
         }
     }
 
@@ -88,13 +102,31 @@ public class EnemyLootDropsItemSource: ItemSource
     
     public override void Randomize()
     {
+        Items.Clear();
         foreach (var dropsData in _dropsData)
         {
             foreach (var item in dropsData.Value)
             {
-                item.Item = ItemController.GetRandomItem();
+                var newItemName = RandomizerLogic.CustomItemPlacement.Replace(item.Item.CodeName);
+                item.Item = ItemsController.GetItemData(newItemName);
                 item.Quantity = RandomizerLogic.rand.Next(3);
+                Items.Add(item.Item);
             }
         }
+    }
+    
+    public override List<ItemData> GetCheckItems(string key)
+    {
+        return _dropsData[key].Select(e => e.Item).ToList();
+    }
+    
+    public override void AddItem(string key, ItemData item)
+    {
+        _dropsData[key].Add(new EnemyDrop(item));
+    }
+
+    public override void RemoveItem(string key, ItemData item)
+    {
+        _dropsData[key].RemoveAll(tr => tr.Item.CodeName == item.CodeName);
     }
 }

@@ -20,19 +20,28 @@ public class MerchantInventoryItemSource: ItemSource
     public override void LoadFromAsset(UAsset asset)
     {
         _asset = asset;
-        FileName = asset.FolderName.ToString();
+        FolderName = asset.FolderName.ToString();
         var tableData = (asset.Exports[0] as DataTableExport).Table.Data;
         _inventory = new();
         foreach (var soldItemData in tableData)
         {
             var itemName = soldItemData.Name.ToString();
-            var itemData = ItemController.GetItemData(itemName);
+            var itemData = ItemsController.GetItemData(itemName);
             var itemQuantity = (soldItemData.Value[3] as IntPropertyData).Value;
             var itemLocked = (soldItemData.Value[4] as ObjectPropertyData).Value.Index != 0;
             
             _inventory.Add(new MerchantInventoryItem(itemData, itemQuantity, itemLocked));
             Items.Add(itemData);
         }
+        var check = new CheckData
+        {
+            CodeName = FileName,
+            CustomName = FileName,
+            IsBroken = false,
+            IsPartialCheck = false,
+            ItemSource = this
+        };
+        Checks.Add(check);
     }
 
     public override UAsset SaveToAsset()
@@ -86,11 +95,29 @@ public class MerchantInventoryItemSource: ItemSource
     
     public override void Randomize()
     {
+        Items.Clear();
         foreach (var item in _inventory)
         {
-            item.Item = ItemController.GetRandomItem();
+            var newItemName = RandomizerLogic.CustomItemPlacement.Replace(item.Item.CodeName);
+            item.Item = ItemsController.GetItemData(newItemName);
             item.Quantity = RandomizerLogic.rand.Next(10);
             item.Locked = RandomizerLogic.rand.Next(7) == 0;
+            Items.Add(item.Item);
         }
+    }
+    
+    public override List<ItemData> GetCheckItems(string key)
+    {
+        return Items;
+    }
+    
+    public override void AddItem(string key, ItemData item)
+    {
+        _inventory.Add(new MerchantInventoryItem(item, 1, false));
+    }
+
+    public override void RemoveItem(string key, ItemData item)
+    {
+        _inventory.RemoveAll(tr => tr.Item.CodeName == item.CodeName);
     }
 }

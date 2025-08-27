@@ -3300,27 +3300,27 @@
     "ItemType": "Consumable"
   },
   {
-    "CustomName": "Healing Tint Shard (Consumable)",
+    "CustomName": "Healing Tint Shard (Upgrade Material)",
     "CodeName": "HealingTint_Shard",
     "ItemType": "Shard"
   },
   {
-    "CustomName": "Energy Tint Shard (Consumable)",
+    "CustomName": "Energy Tint Shard (Upgrade Material)",
     "CodeName": "EnergyTint_Shard",
     "ItemType": "Shard"
   },
   {
-    "CustomName": "Revive Tint Shard (Consumable)",
+    "CustomName": "Revive Tint Shard (Upgrade Material)",
     "CodeName": "ReviveTint_Shard",
     "ItemType": "Shard"
   },
   {
-    "CustomName": "Colour of Lumina (Consumable)",
+    "CustomName": "Colour of Lumina (Upgrade Material)",
     "CodeName": "Consumable_LuminaPoint",
     "ItemType": "Inventory"
   },
   {
-    "CustomName": "Recoat (Consumable)",
+    "CustomName": "Recoat (Upgrade Material)",
     "CodeName": "Consumable_Respec",
     "ItemType": "Inventory"
   },
@@ -3330,7 +3330,7 @@
     "ItemType": "Inventory"
   },
   {
-    "CustomName": "Chroma Elixir Shard (Inventory)",
+    "CustomName": "Chroma Elixir Shard (Upgrade Material)",
     "CodeName": "PartyHealShard",
     "ItemType": "Shard"
   },

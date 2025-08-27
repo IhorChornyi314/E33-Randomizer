@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System.Collections.ObjectModel;
+using System.IO;
+using System.Text;
 using E33Randomizer.ItemSources;
 using UAssetAPI;
 using UAssetAPI.ExportTypes;
@@ -9,13 +11,17 @@ using UAssetAPI.UnrealTypes;
 namespace E33Randomizer;
 
 
-public static class ItemController
+public static class ItemsController
 {
     public static List<ItemData> ItemsData = new();
     public static List<ItemData> AccountedItemsData = new();
     public static Dictionary<string, ItemData> ItemsByName = new();
     public static List<ItemSource> ItemsSources = new();
     public static List<string> ItemCodeNames = new();
+    public static EditIndividualObjectsWindowViewModel ViewModel = new();
+
+    public static Dictionary<string, List<CheckData>> CheckTypes = new();
+    
     private static UAsset asset;
     private static UDataTable itemsCompositeTable;
 
@@ -30,6 +36,11 @@ public static class ItemController
         return ItemsByName.TryGetValue(itemCodeName, out var itemData) ? itemData : new ItemData();
     }
 
+    public static string GetItemCategory(string itemCodeName)
+    {
+        return RandomizerLogic.CustomItemPlacement.ItemCategories.GetValueOrDefault(itemCodeName, "Invalid");
+    }
+
     public static bool IsItem(string itemCodeName)
     {
         return ItemCodeNames.Contains(itemCodeName);
@@ -42,48 +53,49 @@ public static class ItemController
             return;
         }
         var asset = new UAsset(fileName, EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+        
+        ItemSource newSource;
+        string checkType;
         if (fileName.Contains("DT_Merchant"))
         {
-            var merchantInventory = new MerchantInventoryItemSource();
-            merchantInventory.LoadFromAsset(asset);
-            ItemsSources.Add(merchantInventory);
-            AccountedItemsData.AddRange(merchantInventory.Items);
+            newSource = new MerchantInventoryItemSource();
+            checkType = "Merchant inventories";
         }
         else if (fileName.Contains("GA_"))
         {
-            var gameAction = new GameActionItemSource();
-            gameAction.LoadFromAsset(asset);
-            ItemsSources.Add(gameAction);
-            AccountedItemsData.AddRange(gameAction.Items);
+            newSource = new GameActionItemSource();
+            checkType = "Cutscene rewards";
         }
         else if (fileName.Contains("DT_ChestsContent"))
         {
-            var chestsContent = new ChestsContentItemSource();
-            chestsContent.LoadFromAsset(asset);
-            ItemsSources.Add(chestsContent);
-            AccountedItemsData.AddRange(chestsContent.Items);
+            newSource = new ChestsContentItemSource();
+            checkType = "Map pickups";
         }
         else if (fileName.Contains("DT_jRPG_Enemies"))
         {
-            var enemyLootDrops = new EnemyLootDropsItemSource();
-            enemyLootDrops.LoadFromAsset(asset);
-            ItemsSources.Add(enemyLootDrops);
-            AccountedItemsData.AddRange(enemyLootDrops.Items);
+            newSource = new EnemyLootDropsItemSource();
+            checkType = "Enemy drops";
         }
         else if (fileName.Contains("DT_BattleTowerStages"))
         {
-            var battleTowerRewards = new BattleTowerItemSource();
-            battleTowerRewards.LoadFromAsset(asset);
-            ItemsSources.Add(battleTowerRewards);
-            AccountedItemsData.AddRange(battleTowerRewards.Items);
+            newSource = new BattleTowerItemSource();
+            checkType = "Endless tower rewards";
         }
         else
         {
-            var genericItemSource = new GenericItemSource();
-            genericItemSource.LoadFromAsset(asset);
-            ItemsSources.Add(genericItemSource);
-            AccountedItemsData.AddRange(genericItemSource.Items);
+            newSource = new GenericItemSource();
+            checkType = "Dialogue rewards";
         }
+        newSource.LoadFromAsset(asset);
+        ItemsSources.Add(newSource);
+        AccountedItemsData.AddRange(newSource.Items);
+
+        if (!CheckTypes.ContainsKey(checkType))
+        {
+            CheckTypes[checkType] = [];
+        }
+        
+        CheckTypes[checkType].AddRange(newSource.Checks);
     }
     
     public static void BuildItemSources(string filesDirectory)
@@ -93,6 +105,7 @@ public static class ItemController
             throw new DirectoryNotFoundException($"Items data directory {filesDirectory} not found");
         }
         ItemsSources.Clear();
+        CheckTypes.Clear();
         var fileEntries = new List<string> (Directory.GetFiles(filesDirectory));
         fileEntries.AddRange(Directory.GetFiles(filesDirectory + "/DialoguesData"));
         fileEntries.AddRange(Directory.GetFiles(filesDirectory + "/GameActionsData"));
@@ -100,10 +113,10 @@ public static class ItemController
         fileEntries = fileEntries.Where(x => Path.GetExtension(x) == ".uasset").ToList();
         foreach(string fileName in fileEntries)
             ProcessFile(fileName);
-
+        UpdateViewModel();
         // foreach (var itemData in ItemsData)
         // {
-        //     if (itemData.Category != "Lovely Foot" && itemData.Category != "Journal" && itemData.Category != "Pictos" && !AccountedItemsData.Contains(itemData))
+        //     if (itemData.Type != "Lovely Foot" && itemData.Type != "Journal" && itemData.Type != "Pictos" && !AccountedItemsData.Contains(itemData))
         //     {
         //         Console.WriteLine(itemData);
         //     }
@@ -158,13 +171,77 @@ public static class ItemController
 
     public static void GenerateNewItemChecks()
     {
+        SpecialRules.Reset();
+        BuildItemSources($"{RandomizerLogic.DataDirectory}/ItemData");
+        RandomizerLogic.CustomItemPlacement.Update();
         ItemsSources.ForEach(i => i.Randomize());
+        UpdateViewModel();
     }
 
     public static void Init()
     {
-        ReadTableAsset("Data/Originals/DT_jRPG_Items_Composite.uasset");
-        BuildItemSources("Data/ItemData");
+        ReadTableAsset($"{RandomizerLogic.DataDirectory}/Originals/DT_jRPG_Items_Composite.uasset");
+        BuildItemSources($"{RandomizerLogic.DataDirectory}/ItemData");
+    }
+    
+    public static void AddItemToCheck(string itemCodeName, string checkCodeName)
+    {
+        var itemData = GetItemData(itemCodeName);
+        var itemSource = ItemsSources.FirstOrDefault(i => i.Checks.Any(c => c.CodeName == checkCodeName));
+        if (itemSource == null)
+            return;
+        var check = itemSource.Checks.FirstOrDefault(c => c.CodeName == checkCodeName);
+        itemSource.AddItem(check.Key, itemData);
+        UpdateViewModel();
+    }
+    
+    public static void RemoveItemFromCheck(string itemCodeName, string checkCodeName)
+    {
+        var itemData = GetItemData(itemCodeName);
+        var itemSource = ItemsSources.FirstOrDefault(i => i.Checks.Any(c => c.CodeName == checkCodeName));
+        if (itemSource == null)
+            return;
+        var check = itemSource.Checks.FirstOrDefault(c => c.CodeName == checkCodeName);
+        itemSource.RemoveItem(check.Key, itemData);
+        UpdateViewModel();
+    }
+    
+    public static void UpdateViewModel()
+    {
+        ViewModel.FilteredCategories.Clear();
+        ViewModel.Categories.Clear();
+        
+        if (ViewModel.AllObjects.Count == 0)
+        {
+            ViewModel.AllObjects = new ObservableCollection<ObjectViewModel>(ItemsData.Select(i => new ObjectViewModel(i)));
+        }
+
+        foreach (var checkCategory in CheckTypes)
+        {
+            var newTypeViewModel = new CategoryViewModel();
+            newTypeViewModel.CategoryName = checkCategory.Key;
+            newTypeViewModel.Containers = new ObservableCollection<ContainerViewModel>();
+
+            foreach (var check in checkCategory.Value)
+            {
+                var newContainer = new ContainerViewModel(check.CodeName, check.CustomName);
+                var items = check.IsPartialCheck ? check.ItemSource.GetCheckItems(check.CodeName) : check.ItemSource.Items;
+                newContainer.Objects = new ObservableCollection<ObjectViewModel>(items.Select(i => new ObjectViewModel(i)));
+                newTypeViewModel.Containers.Add(newContainer);
+                if (ViewModel.CurrentContainer != null && check.CodeName == ViewModel.CurrentContainer.CodeName)
+                {
+                    ViewModel.CurrentContainer = newContainer;
+                    ViewModel.UpdateDisplayedObjects();
+                }
+            }
+            
+            if (newTypeViewModel.Containers.Count > 0)
+            {
+                ViewModel.Categories.Add(newTypeViewModel);
+            }
+        }
+
+        ViewModel.UpdateFilteredCategories();
     }
 }
 

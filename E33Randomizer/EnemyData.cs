@@ -4,17 +4,14 @@ using UAssetAPI.PropertyTypes.Structs;
 namespace E33Randomizer;
 
 
-public class EnemyData
+public class EnemyData: ObjectData
 {
     public StructPropertyData enemyDataStruct;
-    public string CustomName = "Place holder battle";
-    public string CodeName = "Test_PlaceHolderBattleDude";
     public int Level = 1;
     public double LootChanceMultiplier = 1;
     public List<EnemyLootDrop> PossibleLoot = new ();
     public string Archetype = "Regular";
     public bool IsBoss => Archetype == "Boss" || Archetype == "Alpha";
-    public bool IsBroken = true;
 
     public EnemyData(StructPropertyData enemyData)
     {
@@ -33,8 +30,13 @@ public class EnemyData
             Archetype = EnemiesController.enemyArchetypes[(enemyDataStruct.Value[6] as ObjectPropertyData).Value.Index];
         }
     }
-    
-    public EnemyData(){}
+
+    public EnemyData()
+    {
+        CustomName = "Place holder battle";
+        CodeName = "Test_PlaceHolderBattleDude";
+        IsBroken = true;
+    }
 
     public void ClearDrops()
     {
@@ -48,15 +50,5 @@ public class EnemyData
         var lootDataArray = enemyDataStruct.Value[10] as ArrayPropertyData;
         var dropStructs = drops.Select(d => d.dataStruct).ToArray();
         lootDataArray.Value = dropStructs;
-    }
-
-    public override bool Equals(object? obj)
-    {
-        return obj != null && (obj as EnemyData).CodeName == CodeName;
-    }
-
-    public override string ToString()
-    {
-        return CodeName;
     }
 }

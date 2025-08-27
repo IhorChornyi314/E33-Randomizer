@@ -4,329 +4,334 @@
         Title="Expedition 33 Randomizer" Height="800" Width="800"
         MinHeight="800" MinWidth="800">
     <Window.Resources>
-        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </Window.Resources>
-    
+
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        
+
         <!-- Main Tab Control -->
         <TabControl Grid.Row="0" Margin="0">
-            
+
             <!-- Enemy Randomizer Tab -->
             <TabItem Header="Enemy Randomizer">
                 <Grid Margin="20">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                        <!-- Randomize Encounter Sizes -->
-                        <StackPanel Orientation="Vertical" Margin="0">
+                    <!-- Randomize Encounter Sizes -->
+                    <StackPanel Orientation="Vertical" Margin="0">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
-                            <CheckBox Grid.Column="0" Name="RandomizeEncounterSizesCheckBox" 
-                                      Content="Randomize encounter sizes" 
-                                      IsChecked="False" 
+                            <CheckBox Grid.Column="0" Name="RandomizeEncounterSizesCheckBox"
+                                      Content="Randomize encounter sizes"
+                                      IsChecked="False"
                                       Margin="0,0,0,0"
-                                      FontSize="14"/>
-                            <CheckBox Grid.Column="1" Name="EncounterSize1CheckBox" 
+                                      FontSize="14" />
+                            <CheckBox Grid.Column="1" Name="EncounterSize1CheckBox"
                                       Tag="1"
-                                      Content="1" 
-                                      IsChecked="True" 
+                                      Content="1"
+                                      IsChecked="True"
                                       Margin="10,0,0,0"
                                       FontSize="14"
-                                      Visibility="{Binding IsChecked, ElementName=RandomizeEncounterSizesCheckBox, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-                            <CheckBox Grid.Column="2" Name="EncounterSize2CheckBox" 
+                                      Visibility="{Binding IsChecked, ElementName=RandomizeEncounterSizesCheckBox, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                            <CheckBox Grid.Column="2" Name="EncounterSize2CheckBox"
                                       Tag="2"
-                                      Content="2" 
-                                      IsChecked="True" 
+                                      Content="2"
+                                      IsChecked="True"
                                       Margin="0,0,0,0"
                                       FontSize="14"
-                                      Visibility="{Binding IsChecked, ElementName=RandomizeEncounterSizesCheckBox, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-                            <CheckBox Grid.Column="3" Name="EncounterSize3CheckBox" 
+                                      Visibility="{Binding IsChecked, ElementName=RandomizeEncounterSizesCheckBox, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                            <CheckBox Grid.Column="3" Name="EncounterSize3CheckBox"
                                       Tag="3"
-                                      Content="3" 
-                                      IsChecked="True" 
+                                      Content="3"
+                                      IsChecked="True"
                                       Margin="0,0,0,0"
                                       FontSize="14"
-                                      Visibility="{Binding IsChecked, ElementName=RandomizeEncounterSizesCheckBox, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-                            </Grid>
-                        
+                                      Visibility="{Binding IsChecked, ElementName=RandomizeEncounterSizesCheckBox, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                        </Grid>
+
                         <!-- Randomize Merchant Fights -->
                         <StackPanel Orientation="Vertical" Margin="0">
-                        <CheckBox Name="ChangeSizeOfNonRandomEncountersCheckBox" 
-                                  Content="Change size of encounters that don't contain randomized enemies" 
-                                  IsChecked="False" 
-                                  Margin="20, 0, 0, 0"
-                                  FontSize="14"
-                                  Visibility="{Binding IsChecked, ElementName=RandomizeEncounterSizesCheckBox, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                            <CheckBox Name="ChangeSizeOfNonRandomEncountersCheckBox"
+                                      Content="Change size of encounters that don't contain randomized enemies"
+                                      IsChecked="False"
+                                      Margin="20, 0, 0, 0"
+                                      FontSize="14"
+                                      Visibility="{Binding IsChecked, ElementName=RandomizeEncounterSizesCheckBox, Converter={StaticResource BooleanToVisibilityConverter}}" />
                         </StackPanel>
-                        
-                        <CheckBox Name="RandomizeMerchantFightsCheckBox" 
-                                  Content="Randomize merchant fights" 
-                                  IsChecked="True" 
+
+                        <CheckBox Name="RandomizeMerchantFightsCheckBox"
+                                  Content="Randomize merchant fights"
+                                  IsChecked="True"
                                   Margin="0"
-                                  FontSize="14"/>
+                                  FontSize="14" />
                         <StackPanel Orientation="Vertical" Margin="0"
                                     Grid.Row="2">
-                        <!-- <CheckBox Name="TieLootToEncountersButton" -->
-                        <!--           Content="Tie loot drops to encounters instead of enemies" -->
-                        <!--           IsChecked="True" -->
-                        <!--           Margin="0" -->
-                        <!--           FontSize="14"/> -->
-                        <TextBlock Text="Merchants' special wares unlocks and Maelle's paintress skills are considered loot drops. It is recommended that you only disable this if you are also running an item randomizer."
-                                   Foreground="Orange"
-                                   FontWeight="Bold"
-                                   Margin="10,5,0,5"
-                                   VerticalAlignment="Center"
-                                   MaxWidth="800"
-                                   TextWrapping="Wrap"/>
+                            <!-- <CheckBox Name="TieLootToEncountersButton" -->
+                            <!--           Content="Tie loot drops to encounters instead of enemies" -->
+                            <!--           IsChecked="True" -->
+                            <!--           Margin="0" -->
+                            <!--           FontSize="14"/> -->
+                            <TextBlock
+                                Text="Merchants' special wares unlocks and Maelle's paintress skills are considered loot drops. It is recommended that you only disable this if you are also running an item randomizer."
+                                Foreground="Orange"
+                                FontWeight="Bold"
+                                Margin="10,5,0,5"
+                                VerticalAlignment="Center"
+                                MaxWidth="800"
+                                TextWrapping="Wrap" />
                         </StackPanel>
                         <!-- Include Cut Content -->
                         <StackPanel Orientation="Vertical" Margin="0"
                                     Grid.Row="3">
-                            <CheckBox Name="IncludeCutContentCheckBox" 
-                                      Content="Include cut content (gets overriden by custom placement)" 
-                                      IsChecked="True" 
-                                      FontSize="14"/>
-                            <TextBlock Text="Be careful when parrying cut content enemies, as it can break their AI. You can replace broken enemies in Edit Encounters window." 
-                                       Foreground="Orange" 
-                                       FontWeight="Bold" 
-                                       Margin="10,5,0,5"
-                                       VerticalAlignment="Center"
-                                       Visibility="{Binding IsChecked, ElementName=IncludeCutContentCheckBox, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                            <CheckBox Name="IncludeCutContentCheckBox"
+                                      Content="Include cut content (gets overriden by custom placement)"
+                                      IsChecked="True"
+                                      FontSize="14" />
+                            <TextBlock
+                                Text="Be careful when parrying cut content enemies, as it can break their AI. You can replace broken enemies in Edit Encounters window."
+                                Foreground="Orange"
+                                FontWeight="Bold"
+                                Margin="10,5,0,5"
+                                VerticalAlignment="Center"
+                                Visibility="{Binding IsChecked, ElementName=IncludeCutContentCheckBox, Converter={StaticResource BooleanToVisibilityConverter}}" />
                         </StackPanel>
-                        
-                        <CheckBox Name="EnableEnemyOnslaughtCheckBox" 
+
+                        <CheckBox Name="EnableEnemyOnslaughtCheckBox"
                                   Grid.Row="4"
-                                  Content="Enable enemy onslaught" 
-                                  IsChecked="False" 
+                                  Content="Enable enemy onslaught"
+                                  IsChecked="False"
                                   Margin="0"
-                                  FontSize="14"/>
+                                  FontSize="14" />
                         <StackPanel Orientation="Vertical" Margin="0,0,0,0"
-                                                            Grid.Row="5"
-                                                            Visibility="{Binding IsChecked, ElementName=EnableEnemyOnslaughtCheckBox, Converter={StaticResource BooleanToVisibilityConverter}}">
-                            <TextBlock Text="The game has full support for 4 enemies, but the 5th and beyond gets lumped into a single spot outside the fighting arena. They will still function properly except that you won't be able to see their attacks or shoot them." 
-                                       Foreground="Orange" 
-                                       FontWeight="Bold" 
-                                       Margin="10,0,0,0"
-                                       VerticalAlignment="Center"
-                                       TextWrapping="Wrap"
-                                       MaxWidth="800"
-                                       />
-                            <CheckBox Name="RandomizeAdditionalEnemiesCheckBox" 
-                                      Content="Randomize added enemies" 
-                                      IsChecked="False" 
+                                    Grid.Row="5"
+                                    Visibility="{Binding IsChecked, ElementName=EnableEnemyOnslaughtCheckBox, Converter={StaticResource BooleanToVisibilityConverter}}">
+                            <TextBlock
+                                Text="The game has full support for 4 enemies, but the 5th and beyond gets lumped into a single spot outside the fighting arena. They will still function properly except that you won't be able to see their attacks or shoot them."
+                                Foreground="Orange"
+                                FontWeight="Bold"
+                                Margin="10,0,0,0"
+                                VerticalAlignment="Center"
+                                TextWrapping="Wrap"
+                                MaxWidth="800" />
+                            <CheckBox Name="RandomizeAdditionalEnemiesCheckBox"
+                                      Content="Randomize added enemies"
+                                      IsChecked="False"
                                       Margin="20,10,0,0"
                                       FontSize="14"
-                                      Grid.Row="6"/>
+                                      Grid.Row="6" />
                             <StackPanel Orientation="Horizontal" Margin="15,0,0,0">
                                 <Label Content="Number of additional enemies:"
-                                       FontSize="14"/>
-                                <TextBox Name="NumberOfAdditionalEnemiesTextBox" 
+                                       FontSize="14" />
+                                <TextBox Name="NumberOfAdditionalEnemiesTextBox"
                                          Text="1"
-                                         Margin="5,0,0,0" 
-                                         VerticalAlignment="Center" 
+                                         Margin="5,0,0,0"
+                                         VerticalAlignment="Center"
                                          Height="25"
                                          Width="25"
                                          FontSize="16"
                                          MaxLength="2"
                                          PreviewTextInput="AdditionalEnemyAmount_PreviewTextInput"
                                          TextChanged="NumberOfAdditionalEnemiesTextBox_TextChanged"
-                                         LostFocus="NumberOfAdditionalEnemiesTextBox_OnLostFocus"
-                                         />
+                                         LostFocus="NumberOfAdditionalEnemiesTextBox_OnLostFocus" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="15,0,0,0">
                                 <Label Content="Cap encounter size at:"
-                                       FontSize="14"/>
-                                <TextBox Name="EnemyNumberCapTextBox" 
+                                       FontSize="14" />
+                                <TextBox Name="EnemyNumberCapTextBox"
                                          Text="4"
-                                         Margin="5,0,0,0" 
-                                         VerticalAlignment="Center" 
+                                         Margin="5,0,0,0"
+                                         VerticalAlignment="Center"
                                          Height="25"
                                          Width="25"
                                          FontSize="16"
                                          MaxLength="2"
                                          PreviewTextInput="EnemyAmountCap_PreviewTextInput"
                                          TextChanged="EnemyNumberCapTextBox_TextChanged"
-                                         LostFocus="EnemyNumberCapTextBox_OnLostFocus"
-                                />
+                                         LostFocus="EnemyNumberCapTextBox_OnLostFocus" />
                             </StackPanel>
-                            
+
                         </StackPanel>
-                        <CheckBox Name="EnsureBossesInBossEncountersCheckBox" 
-                                  Content="Ensure that boss encounters have at least one boss" 
-                                  IsChecked="False" 
+                        <CheckBox Name="EnsureBossesInBossEncountersCheckBox"
+                                  Content="Ensure that boss encounters have at least one boss"
+                                  IsChecked="False"
                                   Margin="0,0,0,0"
                                   FontSize="14"
-                                  Grid.Row="7"/>
-                        <CheckBox Name="ReduceBossRepetitionCheckBox" 
-                                  Content="Reduce boss repetition (ignores frequency adjustments)" 
-                                  IsChecked="False" 
+                                  Grid.Row="7" />
+                        <CheckBox Name="ReduceBossRepetitionCheckBox"
+                                  Content="Reduce boss repetition (ignores frequency adjustments)"
+                                  IsChecked="False"
                                   Margin="0,0,0,0"
                                   FontSize="14"
-                                  Grid.Row="8"/>
-                        
+                                  Grid.Row="8" />
+
                         <!-- Phase 2 Simon Dropdown -->
-                        <StackPanel Orientation="Horizontal" Margin="0,10,0,20" 
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,20"
                                     Grid.Row="9">
-                        <Label Content="Replace Phase 2 Simon with Phase 1 in mandatory fights until after:" FontSize="15"
-                               />
-                        <ComboBox Name="Phase2SimonComboBox" 
-                                  Width="150" 
-                                  HorizontalAlignment="Left" 
-                                  Margin="0,0,0,0"
-                                  FontSize="16">
-                            <ComboBoxItem Content="Lune Tutorial" IsSelected="True" Tag="SM_Eveque_ShieldTutorial*1"/>
-                            <ComboBoxItem Content="Eveque" Tag="GO_Curator_JumpTutorial*1"/>
-                            <ComboBoxItem Content="Goblu" Tag="AS_PotatoBag_Boss"/>
-                            <ComboBoxItem Content="Ultimate Sakapatate" Tag="QUEST_MatthieuTheColossus*1"/>
-                            <ComboBoxItem Content="Gestral Tournament" Tag="EN_Francois"/>
-                            <ComboBoxItem Content="Never" Tag="SM_Lancelier*1"/>
-                            
-                        </ComboBox>
+                            <Label Content="Replace Phase 2 Simon with Phase 1 in mandatory fights until after:"
+                                   FontSize="15" />
+                            <ComboBox Name="Phase2SimonComboBox"
+                                      Width="150"
+                                      HorizontalAlignment="Left"
+                                      Margin="0,0,0,0"
+                                      FontSize="16">
+                                <ComboBoxItem Content="Lune Tutorial" IsSelected="True"
+                                              Tag="SM_Eveque_ShieldTutorial*1" />
+                                <ComboBoxItem Content="Eveque" Tag="GO_Curator_JumpTutorial*1" />
+                                <ComboBoxItem Content="Goblu" Tag="AS_PotatoBag_Boss" />
+                                <ComboBoxItem Content="Ultimate Sakapatate" Tag="QUEST_MatthieuTheColossus*1" />
+                                <ComboBoxItem Content="Gestral Tournament" Tag="EN_Francois" />
+                                <ComboBoxItem Content="Never" Tag="SM_Lancelier*1" />
+
+                            </ComboBox>
                         </StackPanel>
-                        </StackPanel>
-                        
+                    </StackPanel>
+                    <StackPanel Grid.Row="2">
                         <!-- Custom Enemy Placement Button -->
-                        <Button Name="CustomEnemyPlacementButton" 
-                                Content="Customize Enemy Placements" 
-                                Width="500" 
-                                Height="50" 
+                        <Button Name="CustomEnemyPlacementButton"
+                                Content="Customize Enemy Placements"
+                                Width="500"
+                                Height="50"
                                 FontSize="20"
-                                HorizontalAlignment="Center" 
+                                HorizontalAlignment="Center"
                                 Margin="0,10,0,20"
                                 Background="Aqua"
                                 Click="CustomEnemyPlacementButton_Click"
-                                Grid.Row="10"/>
+                                Grid.Row="10" />
                         <!-- Custom Enemy Placement Button -->
-                        <Button Name="EditEncountersButton" 
-                                Content="Edit Individual Encounters" 
-                                Width="500" 
-                                Height="50" 
+                        <Button Name="EditEncountersButton"
+                                Content="Edit Individual Encounters"
+                                Width="500"
+                                Height="50"
                                 FontSize="20"
-                                HorizontalAlignment="Center" 
+                                HorizontalAlignment="Center"
                                 Margin="0,10,0,20"
                                 Background="Aqua"
                                 Click="EditEncountersButton_Click"
-                                Grid.Row="11"/>
-                    </Grid>
+                                Grid.Row="11" />
+                    </StackPanel>
+                </Grid>
             </TabItem>
             <!-- Item Randomizer Tab -->
             <TabItem Header="Item Randomizer (WIP)">
                 <Grid Margin="20">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <CheckBox Name="RandomizeItemsCheckBox"
-                              Content="Randomize items"
-                              IsChecked="True"
-                              Margin="0"
-                              FontSize="14"/>
+                    <StackPanel>
+                        <CheckBox Name="RandomizeItemsCheckBox"
+                                  Content="Randomize items"
+                                  IsChecked="True"
+                                  Margin="0"
+                                  FontSize="14" />
+                    </StackPanel>
+                    <StackPanel Grid.Row="2">
+                        <Button Name="CustomItemPlacementButton"
+                                Content="Customize Item Placements"
+                                Width="500"
+                                Height="50"
+                                FontSize="20"
+                                HorizontalAlignment="Center"
+                                Margin="0,10,0,20"
+                                Background="Aqua"
+                                Click="CustomItemPlacementButton_Click" />
+                        <Button Name="EditChecksButton"
+                                Content="Edit Individual Checks"
+                                Width="500"
+                                Height="50"
+                                FontSize="20"
+                                HorizontalAlignment="Center"
+                                Margin="0,10,0,20"
+                                Background="Aqua"
+                                Click="EditChecksButton_Click" />
+                    </StackPanel>
                 </Grid>
             </TabItem>
             <!--Misc Tab-->
             <TabItem Header="Misc">
                 <Grid>
-                    <GroupBox Grid.Row="0" Header="Save File Patching" Margin="10, 10, 5, 0" MaxHeight="200" VerticalAlignment="Top">
+                    <GroupBox Grid.Row="0" Header="Save File Patching" Margin="10, 10, 5, 0" MaxHeight="200"
+                              VerticalAlignment="Top">
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                        <TextBlock 
-                                   Margin="10,10,0,0"
-                                   VerticalAlignment="Top"
-                                   TextWrapping="Wrap"
-                                   TextAlignment="Left"
-                                   MaxWidth="800">
-                            It is recommended that you patch your save file to gain access to Jump and Gradient Counters if you don't have those already. <LineBreak/><LineBreak/>
-                            They are located in %USERPROFILE%/AppData/Local/Sandfall/Saved/SavedGames/[numbers]/ and are named "EXPEDITION_[save slot id]". <LineBreak/>
-                            There's also a Backup folder that contains all of your "Load Previous Saves" saves.
-                            Simply press the button and choose the save file that you want to patch.
-                        </TextBlock>
-                        <Button Grid.Row="1" Name="PatchSaveButton" 
-                                Content="Patch save file" 
-                                Width="180" 
-                                Height="35" 
-                                HorizontalAlignment="Right"
-                                Margin="0,10,20,10"
-                                Click="PatchSaveButton_OnClick"/>
+                            <TextBlock
+                                Margin="10,10,0,0"
+                                VerticalAlignment="Top"
+                                TextWrapping="Wrap"
+                                TextAlignment="Left"
+                                MaxWidth="800">
+                                It is recommended that you patch your save file to gain access to Jump and Gradient Counters if you don't have those already.
+                                <LineBreak /><LineBreak />
+                                They are located in %USERPROFILE%/AppData/Local/Sandfall/Saved/SavedGames/[numbers]/ and are named "EXPEDITION_[save slot id]".
+                                <LineBreak />
+                                There's also a Backup folder that contains all of your "Load Previous Saves" saves.
+                                Simply press the button and choose the save file that you want to patch.
+                            </TextBlock>
+                            <Button Grid.Row="1" Name="PatchSaveButton"
+                                    Content="Patch save file"
+                                    Width="180"
+                                    Height="35"
+                                    HorizontalAlignment="Right"
+                                    Margin="0,10,20,10"
+                                    Click="PatchSaveButton_OnClick" />
                         </Grid>
                     </GroupBox>
                 </Grid>
             </TabItem>
         </TabControl>
-        
+
         <!-- Bottom Section -->
         <Border Grid.Row="1" Background="#F0F0F0" Padding="20">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                
+
                 <!-- Seed Input -->
-                <Label Grid.Column="0" Content="Seed:" VerticalAlignment="Center" FontWeight="Bold"/>
-                <TextBox Name="SeedTextBox" 
-                         Grid.Column="1" 
-                         Margin="10,0,20,0" 
-                         VerticalAlignment="Center" 
+                <Label Grid.Column="0" Content="Seed:" VerticalAlignment="Center" FontWeight="Bold" />
+                <TextBox Name="SeedTextBox"
+                         Grid.Column="1"
+                         Margin="10,0,20,0"
+                         VerticalAlignment="Center"
                          HorizontalAlignment="Left"
                          Height="25"
                          Width="100"
                          MaxLength="10"
-                         PreviewTextInput="SeedTextBox_PreviewTextInput"/>
-                
+                         PreviewTextInput="SeedTextBox_PreviewTextInput" />
+
                 <!-- Generate Button -->
-                <Button Name="GenerateButton" 
-                        Grid.Column="4" 
-                        Content="Generate and pack mod" 
-                        Width="150" 
-                        Height="35" 
+                <Button Name="GenerateButton"
+                        Grid.Column="4"
+                        Content="Generate and pack mod"
+                        Width="150"
+                        Height="35"
                         Click="GenerateButton_Click"
                         Background="#4CAF50"
                         Foreground="White"
-                        FontWeight="Bold"/>
-                
+                        FontWeight="Bold" />
+
             </Grid>
         </Border>
-        
+
     </Grid>
 </Window>

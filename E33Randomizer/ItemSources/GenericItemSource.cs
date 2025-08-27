@@ -12,19 +12,29 @@ public class GenericItemSource: ItemSource
     public override void LoadFromAsset(UAsset asset)
     {
         _asset = asset;
-        FileName = asset.FolderName.ToString();
+        FolderName = asset.FolderName.ToString();
         foreach (var name in asset.GetNameMapIndexList())
         {
             if (_questRequirementItems.Contains(name.ToString()))
             {
                 continue;
             }
-            if (ItemController.IsItem(name.ToString()))
+            if (ItemsController.IsItem(name.ToString()))
             {
-                Items.Add(ItemController.GetItemData(name.ToString()));
+                Items.Add(ItemsController.GetItemData(name.ToString()));
                 _originalItems.Add(name.ToString());
             }
         }
+        var check = new CheckData
+        {
+            CodeName = FileName,
+            CustomName = FileName,
+            IsBroken = false,
+            IsPartialCheck = false,
+            IsFixedSize = true,
+            ItemSource = this
+        };
+        Checks.Add(check);
     }
 
     public override UAsset SaveToAsset()
@@ -51,11 +61,29 @@ public class GenericItemSource: ItemSource
     
     public override void Randomize()
     {
-        var numberOfItems = Items.Count;
-        Items.Clear();
-        for (int i = 0; i < numberOfItems; i++)
+        var newItems = new List<ItemData>();
+        foreach (var item in Items)
         {
-            Items.Add(ItemController.GetRandomItem());
+            var newItemName = RandomizerLogic.CustomItemPlacement.Replace(item.CodeName);
+            var newItem = ItemsController.GetItemData(newItemName);
+            newItems.Add(newItem);
         }
+
+        Items = newItems;
+    }
+    
+    public override List<ItemData> GetCheckItems(string key)
+    {
+        return Items;
+    }
+    
+    public override void AddItem(string key, ItemData item)
+    {
+        Items.Add(item);
+    }
+
+    public override void RemoveItem(string key, ItemData item)
+    {
+        Items.Remove(item);
     }
 }

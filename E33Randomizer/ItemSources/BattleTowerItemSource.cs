@@ -19,7 +19,7 @@ public class BattleTowerItemSource: ItemSource
     public override void LoadFromAsset(UAsset asset)
     {
         _asset = asset;
-        FileName = asset.FolderName.ToString();
+        FolderName = asset.FolderName.ToString();
         var tableData = (asset.Exports[0] as DataTableExport).Table.Data;
         foreach (var stageData in tableData)
         {
@@ -28,12 +28,23 @@ public class BattleTowerItemSource: ItemSource
             List<TowerReward> items = new();
             foreach (StructPropertyData itemStruct in (stageData.Value[4] as ArrayPropertyData).Value)
             {
-                var itemData = ItemController.GetItemData(((itemStruct.Value[0] as StructPropertyData).Value[1] as NamePropertyData).ToString());
+                var itemData = ItemsController.GetItemData(((itemStruct.Value[0] as StructPropertyData).Value[1] as NamePropertyData).ToString());
                 var quantity = (itemStruct.Value[1] as IntPropertyData).Value;
                 
                 items.Add(new TowerReward(itemData, quantity));
                 Items.Add(itemData);
             }
+
+            var check = new CheckData
+            {
+                CodeName = stageName,
+                CustomName = $"Stage {stageName.Split('_')[0]} Trial {stageName.Split('_')[1]}",
+                IsBroken = false,
+                IsPartialCheck = true,
+                ItemSource = this,
+                Key = stageName
+            };
+            Checks.Add(check);
             _rewardsData[stageName] = items;
         }
     }
@@ -84,13 +95,31 @@ public class BattleTowerItemSource: ItemSource
 
     public override void Randomize()
     {
+        Items.Clear();
         foreach (var rewardData in _rewardsData)
         {
             foreach (var item in rewardData.Value)
             {
-                item.Item = ItemController.GetRandomItem();
+                var newItemName = RandomizerLogic.CustomItemPlacement.Replace(item.Item.CodeName);
+                item.Item = ItemsController.GetItemData(newItemName);
                 item.Quantity = RandomizerLogic.rand.Next(3);
+                Items.Add(item.Item);
             }
         }
+    }
+
+    public override List<ItemData> GetCheckItems(string key)
+    {
+        return _rewardsData[key].Select(tr => tr.Item).ToList();
+    }
+
+    public override void AddItem(string key, ItemData item)
+    {
+        _rewardsData[key].Add(new TowerReward(item));
+    }
+
+    public override void RemoveItem(string key, ItemData item)
+    {
+        _rewardsData[key].RemoveAll(tr => tr.Item.CodeName == item.CodeName);
     }
 }

@@ -1,7 +1,7 @@
-﻿<Window x:Class="E33Randomizer.CustomPlacementWindow"
+<Window x:Class="E33Randomizer.CustomPlacementWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Custom Enemy Placement" Height="820" Width="900"
+        Title="Custom Placement" Height="820" Width="900"
         MinHeight="820" MinWidth="900"
         WindowStartupLocation="CenterOwner"
         Closing="Window_Closing">
@@ -17,52 +17,52 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <GroupBox Grid.Row="0" Header="Enemy Selection" Margin="10, 0, 5, 0">
+        <GroupBox Grid.Row="0" Header="Special Rules" Margin="10, 0, 5, 0">
             <Grid Margin="10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
             
-                <!-- Not Randomized Enemy Selection -->
+                <!-- Not Randomized Object Selection -->
                 <StackPanel Grid.Column="0" Margin="0,0,5,0">
-                    <Label Content="Not Randomized Enemies:" FontWeight="Bold"/>
-                    <ComboBox Name="NotRandomizedEnemiesSelectionComboBox" 
+                    <Label Content="Not Randomized:" FontWeight="Bold"/>
+                    <ComboBox Name="NotRandomizedObjectsSelectionComboBox" 
                               Margin="0,0,0,0"
-                              SelectionChanged="NotRandomizedEnemiesComboBox_SelectionChanged"/>
-                    <ListBox Name="NotRandomizedEnemiesListBox"
+                              SelectionChanged="NotRandomizedObjectsComboBox_SelectionChanged"/>
+                    <ListBox Name="NotRandomizedObjectsListBox"
                              SelectionMode="Single"
                              Height="75" 
-                             SelectionChanged="NotRandomizedEnemiesListBox_SelectionChanged"/>
+                             SelectionChanged="NotRandomizedObjectsListBox_SelectionChanged"/>
                     
-                    <Button Name="RemoveNotRandomizedEnemyButton"
+                    <Button Name="RemoveNotRandomizedObjectButton"
                             Content="Remove" 
                             Width="100" 
                             Height="25" 
                             HorizontalAlignment="Center"
                             Margin="0,5,0,0"
-                            Click="RemoveNotRandomizedEnemyButton_Click"
+                            Click="RemoveNotRandomizedObjectButton_Click"
                             IsEnabled="False"/>
                 </StackPanel>
             
-                <!-- Excluded Enemy Selection -->
+                <!-- Excluded Object Selection -->
                 <StackPanel Grid.Column="1" Margin="5,0,0,0">
-                    <Label Content="Excluded Enemies:" FontWeight="Bold"/>
-                    <ComboBox Name="ExcludedEnemiesComboBox" 
+                    <Label Content="Excluded:" FontWeight="Bold"/>
+                    <ComboBox Name="ExcludedObjectsComboBox" 
                               Margin="0,0,0,0"
-                              SelectionChanged="ExcludedEnemiesComboBox_SelectionChanged"/>
-                    <ListBox Name="ExcludedEnemiesListBox"
+                              SelectionChanged="ExcludedObjectsComboBox_SelectionChanged"/>
+                    <ListBox Name="ExcludedObjectsListBox"
                              SelectionMode="Single"
                              Height="75" 
-                             SelectionChanged="ExcludedEnemiesListBox_SelectionChanged"/>
+                             SelectionChanged="ExcludedObjectsListBox_SelectionChanged"/>
                     
-                    <Button Name="RemoveExcludedEnemyButton"
+                    <Button Name="RemoveExcludedObjectButton"
                             Content="Remove" 
                             Width="100" 
                             Height="25" 
                             HorizontalAlignment="Center"
                             Margin="0,5,0,0"
-                            Click="RemoveExcludedEnemyButton_Click"
+                            Click="RemoveExcludedObjectButton_Click"
                             IsEnabled="False"/>
                 </StackPanel>
             </Grid>
@@ -80,7 +80,7 @@
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0" Name="OopsAllButton" Content="Oops All" Width="80" Height="30" 
                     Click="OopsAllButton_Click" Margin="0,0,10,0"/>
-            <ComboBox Grid.Column="1" Name="OopsAllEnemyComboBox" Height="30"/>
+            <ComboBox Grid.Column="1" Name="OopsAllObjectComboBox" Height="30"/>
         </Grid>
         
         <!-- Preset Buttons Grid (3x2) -->
@@ -119,19 +119,19 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         
-        <!-- Left Column - Enemy Selection -->
-        <GroupBox Grid.Column="0" Header="Selected Enemy" Margin="0,0,5,0">
-                <ListBox Name="CustomPlacementEnemyListBox" 
+        <!-- Left Column - Object Selection -->
+        <GroupBox Grid.Column="0" Header="Selected" Margin="0,0,5,0">
+                <ListBox Name="CustomPlacementObjectListBox" 
                          SelectionMode="Single">
                     <ListBox.ItemContainerStyle>
                         <Style TargetType="ListBoxItem">
-                            <EventSetter Event="PreviewMouseLeftButtonDown" Handler="CustomPlacementEnemyListBox_SelectionChanged"/>
+                            <EventSetter Event="PreviewMouseLeftButtonDown" Handler="CustomPlacementObjectListBox_SelectionChanged"/>
                         </Style>
                     </ListBox.ItemContainerStyle>
                     </ListBox>
         </GroupBox>
         
-        <!-- Right Column - Frequency Adjustment for Selected Enemy -->
+        <!-- Right Column - Frequency Adjustment for Selected Object -->
         <GroupBox Grid.Column="1" Header="Is Replaced By" Margin="5,0,0,0">
             <Grid Margin="5">
                 <Grid.RowDefinitions>
@@ -140,9 +140,9 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 
-                <!-- Selected Enemy Display -->
-                <TextBlock Grid.Row="0" Name="SelectedEnemyDisplay" 
-                           Text="No enemy selected" 
+                <!-- Selected Object Display -->
+                <TextBlock Grid.Row="0" Name="SelectedObjectDisplay" 
+                           Text="Nothing selected" 
                            FontWeight="Bold" 
                            Margin="0,0,0,10"
                            HorizontalAlignment="Center"/>

@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E33Randomizer", "E33Randomi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UAssetAPI", "external\UAssetAPI\UAssetAPI\UAssetAPI.csproj", "{178417EC-1177-413E-BE85-C83AECD64279}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{B4EA84BE-05B7-42D5-BF15-B55B736B82DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{178417EC-1177-413E-BE85-C83AECD64279}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{178417EC-1177-413E-BE85-C83AECD64279}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{178417EC-1177-413E-BE85-C83AECD64279}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4EA84BE-05B7-42D5-BF15-B55B736B82DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4EA84BE-05B7-42D5-BF15-B55B736B82DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4EA84BE-05B7-42D5-BF15-B55B736B82DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4EA84BE-05B7-42D5-BF15-B55B736B82DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

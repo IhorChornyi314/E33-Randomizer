@@ -41,7 +41,7 @@ public class CustomEnemyPlacement: CustomPlacement
             "Main Plot Bosses", "Side Bosses", "All Bosses", "All Bosses and Minibosses", "Anyone"
         };
         
-        using (StreamReader r = new StreamReader("Data/enemy_categories.json"))
+        using (StreamReader r = new StreamReader($"{RandomizerLogic.DataDirectory}/enemy_categories.json"))
         {
             string json = r.ReadToEnd();
             var customCategoryTranslationsString = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(json);
@@ -74,7 +74,7 @@ public class CustomEnemyPlacement: CustomPlacement
     public override void LoadDefaultPreset()
     {
         NotRandomized = [];
-        Excluded = ["Gimmick/Tutorial Enemies"];
+        AddExcluded("Gimmick/Tutorial Enemies");
         CustomPlacementRules = new Dictionary<string, Dictionary<string, float>>
         {
             { "Regular", new Dictionary<string, float> { { "Regular", 1 } } },

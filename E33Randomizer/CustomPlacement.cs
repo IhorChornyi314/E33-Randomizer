@@ -36,16 +36,35 @@ public abstract class CustomPlacement
     public abstract void LoadDefaultPreset();
     public abstract void UpdateDefaultFrequencies(Dictionary<string, float> translatedFrequencyAdjustments);
     public abstract string Replace(string originalCodeName);
-    
 
+    public void ApplyOopsAll(string objectCodeName)
+    {
+        CustomPlacementRules = new Dictionary<string, Dictionary<string, float>>()
+        {
+            {"Anyone", new Dictionary<string, float>() {{objectCodeName, 1}}}
+        };
+        FrequencyAdjustments.Clear();
+        Excluded.Clear();
+        ExcludedCodeNames.Clear();
+                
+        NotRandomized.Clear();
+        NotRandomizedCodeNames.Clear();
+    }
+    
     public void LoadFromJson(string pathToJson)
     {
         using (StreamReader r = new StreamReader(pathToJson))
         {
             string json = r.ReadToEnd();
             var presetData = JsonConvert.DeserializeObject<CustomPlacementPreset>(json);
-            NotRandomized = presetData.NotRandomized;
-            Excluded = presetData.Excluded;
+            foreach (var notRandomized in presetData.NotRandomized)
+            {
+                AddNotRandomized(notRandomized);
+            }
+            foreach (var excluded in presetData.Excluded)
+            {
+                AddExcluded(excluded);
+            }
             CustomPlacementRules = presetData.CustomPlacement;
             FrequencyAdjustments = presetData.FrequencyAdjustments;
         }

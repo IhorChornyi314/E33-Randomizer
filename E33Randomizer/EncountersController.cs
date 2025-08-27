@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.ObjectModel;
+using System.IO;
 using System.Text;
 using Newtonsoft.Json;
 using UAssetAPI;
@@ -12,13 +13,13 @@ public static class EncountersController
 {
     public static List<Encounter> Encounters = new();
     public static Dictionary<string, List<int>> EncounterIndexesByLocation = new();
-    
+    public static EditIndividualObjectsWindowViewModel ViewModel = new();
     
     public static void ConstructEncountersByLocation()
     {
         var encounterLocations = new Dictionary<string, List<int>>();
         var uncategorizedEncounters = Enumerable.Range(0, Encounters.Count).ToList();
-        using (StreamReader r = new StreamReader("Data/encounter_locations.json"))
+        using (StreamReader r = new StreamReader($"{RandomizerLogic.DataDirectory}/encounter_locations.json"))
         {
             string json = r.ReadToEnd();
             var locationsEncounters = JsonConvert.DeserializeObject<Dictionary<string, List<string> >>(json);
@@ -31,6 +32,7 @@ public static class EncountersController
         
         encounterLocations["Uncategorized / Cut Content"] = uncategorizedEncounters;
         EncounterIndexesByLocation = encounterLocations;
+        UpdateViewModel();
     }
     
     public static void ReadEncounterAsset(string assetPath)
@@ -48,10 +50,11 @@ public static class EncountersController
     public static void ReadEncounterAssets()
     {
         Encounters.Clear();
-        ReadEncounterAsset("Data/Originals/DT_jRPG_Encounters.uasset");
-        ReadEncounterAsset("Data/Originals/DT_jRPG_Encounters_CleaTower.uasset");
-        ReadEncounterAsset("Data/Originals/Encounters_Datatables/DT_Encounters_Composite.uasset");
-        ReadEncounterAsset("Data/Originals/Encounters_Datatables/DT_WorldMap_Encounters.uasset");
+        ReadEncounterAsset($"{RandomizerLogic.DataDirectory}/Originals/DT_jRPG_Encounters.uasset");
+        ReadEncounterAsset($"{RandomizerLogic.DataDirectory}/Originals/DT_jRPG_Encounters_CleaTower.uasset");
+        ReadEncounterAsset($"{RandomizerLogic.DataDirectory}/Originals/Encounters_Datatables/DT_Encounters_Composite.uasset");
+        ReadEncounterAsset($"{RandomizerLogic.DataDirectory}/Originals/Encounters_Datatables/DT_WorldMap_Encounters.uasset");
+        UpdateViewModel();
     }
 
     public static void WriteEncounterAsset(string assetPath)
@@ -66,10 +69,10 @@ public static class EncountersController
     {
         Directory.CreateDirectory("randomizer/Sandfall/Content/jRPGTemplate/Datatables");
         Directory.CreateDirectory("randomizer/Sandfall/Content/jRPGTemplate/Datatables/Encounters_Datatables");
-        WriteEncounterAsset("Data/Originals/DT_jRPG_Encounters.uasset");
-        WriteEncounterAsset("Data/Originals/DT_jRPG_Encounters_CleaTower.uasset");
-        WriteEncounterAsset("Data/Originals/Encounters_Datatables/DT_Encounters_Composite.uasset");
-        WriteEncounterAsset("Data/Originals/Encounters_Datatables/DT_WorldMap_Encounters.uasset");
+        WriteEncounterAsset($"{RandomizerLogic.DataDirectory}/Originals/DT_jRPG_Encounters.uasset");
+        WriteEncounterAsset($"{RandomizerLogic.DataDirectory}/Originals/DT_jRPG_Encounters_CleaTower.uasset");
+        WriteEncounterAsset($"{RandomizerLogic.DataDirectory}/Originals/Encounters_Datatables/DT_Encounters_Composite.uasset");
+        WriteEncounterAsset($"{RandomizerLogic.DataDirectory}/Originals/Encounters_Datatables/DT_WorldMap_Encounters.uasset");
     }
     
     public static void ReadEncountersTxt(string fileName)
@@ -80,6 +83,7 @@ public static class EncountersController
             var newEncounter = new Encounter(line.Split('|')[0], line.Split('|')[1].Split(',').ToList());
             Encounters.Add(newEncounter);
         }
+        UpdateViewModel();
     }
 
     public static void WriteEncountersTxt(string fileName)
@@ -98,6 +102,7 @@ public static class EncountersController
         ReadEncounterAssets();
         RandomizerLogic.CustomEnemyPlacement.Update();
         Encounters.ForEach(e => ModifyEncounter(e));
+        UpdateViewModel();
     }
 
     public static void Reset()
@@ -191,11 +196,51 @@ public static class EncountersController
     {
         var enemyData = EnemiesController.GetEnemyData(enemyCodeName);
         Encounters.FindAll(e => e.Name == encounterCodeName).ForEach(e => e.Enemies.Add(enemyData));
+        UpdateViewModel();
     }
     
     public static void RemoveEnemyFromEncounter(string enemyCodeName, string encounterCodeName)
     {
         var enemyData = EnemiesController.GetEnemyData(enemyCodeName);
         Encounters.FindAll(e => e.Name == encounterCodeName).ForEach(e => e.Enemies.Remove(enemyData));
+        UpdateViewModel();
+    }
+    
+    public static void UpdateViewModel()
+    {
+        ViewModel.FilteredCategories.Clear();
+        ViewModel.Categories.Clear();
+        
+        if (ViewModel.AllObjects.Count == 0)
+        {
+            ViewModel.AllObjects = new ObservableCollection<ObjectViewModel>(EnemiesController.enemies.Select(e => new ObjectViewModel(e)));
+        }
+        
+        var encountersByLocation = EncounterIndexesByLocation;
+        foreach (var locationEncounterPair in encountersByLocation)
+        {
+            var newLocationViewModel = new CategoryViewModel();
+            newLocationViewModel.CategoryName = locationEncounterPair.Key;
+            newLocationViewModel.Containers = new ObservableCollection<ContainerViewModel>();
+            foreach (var encounterIndex in locationEncounterPair.Value)
+            {
+                var encounterData = Encounters[encounterIndex];
+                var newContainer = new ContainerViewModel(encounterData.Name);
+                newContainer.Objects = new ObservableCollection<ObjectViewModel>(encounterData.Enemies.Select(e => new ObjectViewModel(e)));
+                newLocationViewModel.Containers.Add(newContainer);
+                if (ViewModel.CurrentContainer != null && encounterData.Name == ViewModel.CurrentContainer.Name)
+                {
+                    ViewModel.CurrentContainer = newContainer;
+                    ViewModel.UpdateDisplayedObjects();
+                }
+            }
+
+            if (newLocationViewModel.Containers.Count > 0)
+            {
+                ViewModel.Categories.Add(newLocationViewModel);
+            }
+        }
+
+        ViewModel.UpdateFilteredCategories();
     }
 }

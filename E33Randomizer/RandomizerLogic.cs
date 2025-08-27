@@ -33,24 +33,27 @@ public static class RandomizerLogic
     public static Dictionary<string, string> EnemyCustomNames = new ();
     public static Dictionary<string, string> ItemCustomNames = new ();
     public static CustomEnemyPlacement CustomEnemyPlacement = new ();
+    public static CustomItemPlacement CustomItemPlacement = new ();
     
     public static Random rand;
     public static int usedSeed;
     public static Dictionary<string, Dictionary<string, float>> EnemyFrequenciesWithinArchetype = new();
     public static Dictionary<string, float> TotalEnemyFrequencies;
     public static string PresetName = "";
+    public static string DataDirectory = "Data";
 
     public static List<string> Archetypes =
         ["Regular", "Weak", "Strong", "Elite", "Boss", "Alpha", "Elusive", "Petank"];
 
-    public static void Init()
+    public static void Init(string dataDirectory)
     {
+        DataDirectory = dataDirectory;
         usedSeed = Settings.Seed != -1 ? Settings.Seed : Environment.TickCount & Int32.MaxValue; 
         rand = new Random(usedSeed);
     
-        mappings = new Usmap("Data/Mappings.usmap");
+        mappings = new Usmap($"{DataDirectory}/Mappings.usmap");
         EnemiesController.Init();
-        using (StreamReader r = new StreamReader("Data/enemy_data.json"))
+        using (StreamReader r = new StreamReader($"{DataDirectory}/enemy_data.json"))
         {
             string json = r.ReadToEnd();
             var enemyList = JsonConvert.DeserializeObject<List<Dictionary<string, string>>>(json);
@@ -59,9 +62,9 @@ public static class RandomizerLogic
                 EnemyCustomNames[enemyCustomData["CodeName"]] = enemyCustomData["Name"];
             }
         }
-        EnemiesController.ReadAsset("Data/Originals/DT_jRPG_Enemies.uasset");
+        EnemiesController.ReadAsset($"{DataDirectory}/Originals/DT_jRPG_Enemies.uasset");
         
-        using (StreamReader r = new StreamReader("Data/item_data.json"))
+        using (StreamReader r = new StreamReader($"{DataDirectory}/item_data.json"))
         {
             string json = r.ReadToEnd();
             var itemList = JsonConvert.DeserializeObject<List<Dictionary<string, string>>>(json);
@@ -70,11 +73,12 @@ public static class RandomizerLogic
                 ItemCustomNames[itemCustomData["CodeName"]] = itemCustomData["CustomName"];
             }
         }
-        ItemController.Init();
+        ItemsController.Init();
         
         ConstructTotalEnemyFrequencies();
         ConstructEnemyFrequenciesWithinArchetype();
         CustomEnemyPlacement.InitPlainNames();
+        CustomItemPlacement.InitPlainNames();
         SpecialRules.Reset();
         EncountersController.ReadEncounterAssets();
         EncountersController.ConstructEncountersByLocation();
@@ -130,8 +134,8 @@ public static class RandomizerLogic
 
         if (Settings.RandomizeItems)
         {
-            ItemController.WriteItemAssets();
-            ItemController.WriteTableAsset();
+            ItemsController.WriteItemAssets();
+            ItemsController.WriteTableAsset();
         }
         
         var repackArgs = $"pack randomizer \"{exportPath}randomizer_P.pak\"";
@@ -152,19 +156,25 @@ public static class RandomizerLogic
     {
         return EnemiesController.GetEnemyData(Utils.GetRandomWeighted(CustomEnemyPlacement.DefaultFrequencies, CustomEnemyPlacement.ExcludedCodeNames));
     }
+    
+    public static ItemData GetRandomItem()
+    {
+        return ItemsController.GetItemData(Utils.GetRandomWeighted(CustomItemPlacement.DefaultFrequencies, CustomItemPlacement.ExcludedCodeNames));
+    }
 
-    public static void Randomize()
+    public static void Randomize(bool saveData = true)
     {
         usedSeed = Settings.Seed != -1 ? Settings.Seed : Environment.TickCount; 
         rand = new Random(usedSeed);
         EncountersController.GenerateNewEncounters();
-        ItemController.GenerateNewItemChecks();
-        PackAndConvertData();
+        ItemsController.GenerateNewItemChecks();
+        if (saveData)
+            PackAndConvertData();
     }
 
     public static void GenerateConditionCheckerFile(string questName)
     {
-        var asset = new UAsset("Data/Originals/DA_ConditionChecker_Merchant_GrandisStation.uasset", EngineVersion.VER_UE5_4, mappings);
+        var asset = new UAsset($"{DataDirectory}/Originals/DA_ConditionChecker_Merchant_GrandisStation.uasset", EngineVersion.VER_UE5_4, mappings);
 
         var newConditionalName = $"DA_ConditionChecker_Merchant_{questName}";
         
@@ -225,7 +235,7 @@ public static class RandomizerLogic
 
     public static void ProcessKeyItems()
     {
-        var asset = new UAsset("Data/Originals/DT_Merchant_GestralVillage1.uasset", EngineVersion.VER_UE5_4, mappings);
+        var asset = new UAsset($"{DataDirectory}/Originals/DT_Merchant_GestralVillage1.uasset", EngineVersion.VER_UE5_4, mappings);
         // if (Settings.EnableJujubreeToSellKeyItems)
         // {
         //     AddJujubreeWares(asset);
@@ -237,7 +247,7 @@ public static class RandomizerLogic
 
     public static void Test()
     {
-        string json = File.ReadAllText("Data/Temp/DA_ConditionChecker_Merchant_GrandisStation.json");
+        string json = File.ReadAllText($"{DataDirectory}/Temp/DA_ConditionChecker_Merchant_GrandisStation.json");
         UAsset asset = UAsset.DeserializeJson(json);
         asset.Mappings = mappings;
         asset.Write("test.uasset");
