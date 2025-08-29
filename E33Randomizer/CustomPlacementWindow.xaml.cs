@@ -19,7 +19,20 @@ namespace E33Randomizer
             CustomPlacement = customPlacement;
             InitializeComponent();
             PopulateObjectDropdowns();
+            InitPresetButtons();
             Update();
+        }
+
+        private void InitPresetButtons()
+        {
+            int i = 0;
+            foreach (var presetFile in CustomPlacement.PresetFiles)
+            {
+                var presetButton = FindName($"PresetButton{i + 1}") as Button;
+                presetButton.Content = presetFile.Key;
+                presetButton.Tag = presetFile.Value;
+                i++;
+            }
         }
 
         private void Update()

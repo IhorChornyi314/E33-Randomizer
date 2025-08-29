@@ -50,6 +50,8 @@ public static class EncountersController
     public static void ReadEncounterAssets()
     {
         Encounters.Clear();
+        ViewModel.ContainerName = "Encounter";
+        ViewModel.ObjectName = "Enemy";
         ReadEncounterAsset($"{RandomizerLogic.DataDirectory}/Originals/DT_jRPG_Encounters.uasset");
         ReadEncounterAsset($"{RandomizerLogic.DataDirectory}/Originals/DT_jRPG_Encounters_CleaTower.uasset");
         ReadEncounterAsset($"{RandomizerLogic.DataDirectory}/Originals/Encounters_Datatables/DT_Encounters_Composite.uasset");
@@ -199,10 +201,9 @@ public static class EncountersController
         UpdateViewModel();
     }
     
-    public static void RemoveEnemyFromEncounter(string enemyCodeName, string encounterCodeName)
+    public static void RemoveEnemyFromEncounter(int enemyIndex, string encounterCodeName)
     {
-        var enemyData = EnemiesController.GetEnemyData(enemyCodeName);
-        Encounters.FindAll(e => e.Name == encounterCodeName).ForEach(e => e.Enemies.Remove(enemyData));
+        Encounters.FindAll(e => e.Name == encounterCodeName).ForEach(e => e.Enemies.RemoveAt(enemyIndex));
         UpdateViewModel();
     }
     

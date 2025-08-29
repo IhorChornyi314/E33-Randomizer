@@ -6,32 +6,26 @@ using UAssetAPI.UnrealTypes;
 
 namespace E33Randomizer.ItemSources;
 
-class TowerReward(ItemData itemData, int quantity = 1)
-{
-    public ItemData Item = itemData;
-    public int Quantity = quantity;
-}
+
 
 public class BattleTowerItemSource: ItemSource
 {
-    private Dictionary<string, List<TowerReward>> _rewardsData = new();
-    
     public override void LoadFromAsset(UAsset asset)
     {
-        _asset = asset;
-        FolderName = asset.FolderName.ToString();
+        base.LoadFromAsset(asset);
+        HasItemQuantities = true;
         var tableData = (asset.Exports[0] as DataTableExport).Table.Data;
         foreach (var stageData in tableData)
         {
             var stageName = stageData.Name.ToString();
 
-            List<TowerReward> items = new();
+            List<ItemSourceParticle> items = new();
             foreach (StructPropertyData itemStruct in (stageData.Value[4] as ArrayPropertyData).Value)
             {
                 var itemData = ItemsController.GetItemData(((itemStruct.Value[0] as StructPropertyData).Value[1] as NamePropertyData).ToString());
                 var quantity = (itemStruct.Value[1] as IntPropertyData).Value;
                 
-                items.Add(new TowerReward(itemData, quantity));
+                items.Add(new ItemSourceParticle(itemData, quantity));
                 Items.Add(itemData);
             }
 
@@ -45,7 +39,7 @@ public class BattleTowerItemSource: ItemSource
                 Key = stageName
             };
             Checks.Add(check);
-            _rewardsData[stageName] = items;
+            SourceSections[stageName] = items;
         }
     }
 
@@ -72,7 +66,7 @@ public class BattleTowerItemSource: ItemSource
         foreach (var stageData in tableData)
         {
             var stageName = stageData.Name.ToString();
-            var stageRewards = _rewardsData[stageName];
+            var stageRewards = SourceSections[stageName];
             List<PropertyData> newRewards = [];
 
             foreach (var reward in stageRewards)
@@ -96,30 +90,14 @@ public class BattleTowerItemSource: ItemSource
     public override void Randomize()
     {
         Items.Clear();
-        foreach (var rewardData in _rewardsData)
+        foreach (var rewardData in SourceSections)
         {
             foreach (var item in rewardData.Value)
             {
                 var newItemName = RandomizerLogic.CustomItemPlacement.Replace(item.Item.CodeName);
                 item.Item = ItemsController.GetItemData(newItemName);
-                item.Quantity = RandomizerLogic.rand.Next(3);
                 Items.Add(item.Item);
             }
         }
-    }
-
-    public override List<ItemData> GetCheckItems(string key)
-    {
-        return _rewardsData[key].Select(tr => tr.Item).ToList();
-    }
-
-    public override void AddItem(string key, ItemData item)
-    {
-        _rewardsData[key].Add(new TowerReward(item));
-    }
-
-    public override void RemoveItem(string key, ItemData item)
-    {
-        _rewardsData[key].RemoveAll(tr => tr.Item.CodeName == item.CodeName);
     }
 }

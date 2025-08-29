@@ -327,10 +327,13 @@
     "AntiCharm",
     "CleasLife"
   ],
-  "Invalid": [
+  "Non-functional": [
     "MitigatedPerfection",
     "Chroma",
-    "04_Key_Placeholder"
+    "04_Key_Placeholder",
+    "Gold_Small",
+    "Gold_Medium",
+    "Gold_Big"
   ],
   "Weapon": [
     "Beselbum",
@@ -454,13 +457,7 @@
     "Monocaro",
     "Simoso"
   ],
-  "Inventory": [
-    "Gold_Small",
-    "Gold_Medium",
-    "Gold_Big",
-    "PartyHealConsumable"
-  ],
-  "Key": [
+  "Key Item": [
     "LostGestral",
     "FestivalToken",
     "Quest_MoltenHeart",
@@ -689,9 +686,13 @@
     "ReviveTint_Shard",
     "Consumable_LuminaPoint",
     "Consumable_Respec",
-    "Consumable_SkillPoint"
+    "Consumable_SkillPoint",
+    "ChromaPack_Regular",
+    "ChromaPack_Large",
+    "ChromaPack_ExtraLarge"
   ],
   "Consumable": [
+    "PartyHealConsumable",
     "Consumable_Health_Level0",
     "Consumable_Health_Level1",
     "Consumable_Health_Level2",
@@ -700,12 +701,9 @@
     "Consumable_Energy_Level2",
     "Consumable_Revive_Level0",
     "Consumable_Revive_Level1",
-    "Consumable_Revive_Level2",
-    "ChromaPack_Regular",
-    "ChromaPack_Large",
-    "ChromaPack_ExtraLarge"
+    "Consumable_Revive_Level2"
   ],
-  "Foot": [
+  "Lovely Foot": [
     "AbbestFoot",
     "BenisseurFoot",
     "BourgeonFoot",

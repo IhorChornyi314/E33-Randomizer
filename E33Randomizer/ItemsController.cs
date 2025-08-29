@@ -84,11 +84,11 @@ public static class ItemsController
         else
         {
             newSource = new GenericItemSource();
-            checkType = "Dialogue rewards";
+            checkType = fileName.Contains("DT_LootTable_UpgradeItems") ?  "Enemy drops" : "Dialogue rewards";
+            checkType = fileName.Contains("DT_LootTable_UpgradeItems_Exploration") ? "Map pickups" : checkType;
         }
         newSource.LoadFromAsset(asset);
         ItemsSources.Add(newSource);
-        AccountedItemsData.AddRange(newSource.Items);
 
         if (!CheckTypes.ContainsKey(checkType))
         {
@@ -155,6 +155,7 @@ public static class ItemsController
 
     public static void WriteItemAssets()
     {
+        ApplyViewModel();
         foreach (var itemsSource in ItemsSources)
         {
             var itemsSourceAsset = itemsSource.SaveToAsset();
@@ -178,32 +179,85 @@ public static class ItemsController
         UpdateViewModel();
     }
 
+    public static void ReadChecksTxt(string fileName)
+    {
+        foreach (var line in File.ReadLines(fileName, Encoding.UTF8))
+        {
+            var itemSourceName = line.Split('#')[0];
+            var sectionKey = line.Split('#')[1].Split('|')[0];
+            var particles = line.Contains(":") ? line.Split('|')[1].Split(',').Select(ItemSourceParticle.FromString).ToList() : [];
+            var source = ItemsSources.Find(i => i.FileName == itemSourceName);
+            source.SourceSections[sectionKey] = particles;
+        }
+        UpdateViewModel();
+    }
+    
+    public static void WriteChecksTxt(string fileName)
+    {
+        ApplyViewModel();
+        var result = "";
+        foreach (var itemsSource in ItemsSources)
+        {
+            foreach (var section in itemsSource.SourceSections)
+            {
+                result += $"{itemsSource.FileName}#{section.Key}|" + string.Join(',', section.Value) + "\n";
+            }
+        }
+        File.WriteAllText(fileName, result, Encoding.UTF8);
+    }
+
     public static void Init()
     {
         ReadTableAsset($"{RandomizerLogic.DataDirectory}/Originals/DT_jRPG_Items_Composite.uasset");
         BuildItemSources($"{RandomizerLogic.DataDirectory}/ItemData");
+        ViewModel.ContainerName = "Check";
+        ViewModel.ObjectName = "Item";
     }
     
-    public static void AddItemToCheck(string itemCodeName, string checkCodeName)
+    public static void AddItemToCheck(string itemCodeName, string checkViewModelCodeName)
     {
+        ApplyViewModel();
         var itemData = GetItemData(itemCodeName);
-        var itemSource = ItemsSources.FirstOrDefault(i => i.Checks.Any(c => c.CodeName == checkCodeName));
-        if (itemSource == null)
-            return;
-        var check = itemSource.Checks.FirstOrDefault(c => c.CodeName == checkCodeName);
+        var itemSourceFileName = checkViewModelCodeName.Split("#")[0];
+        var checkKey = checkViewModelCodeName.Split("#")[1];
+        var itemSource = ItemsSources.FirstOrDefault(i => i.FileName == itemSourceFileName);
+        var check = itemSource.Checks.FirstOrDefault(c => c.Key == checkKey);
         itemSource.AddItem(check.Key, itemData);
         UpdateViewModel();
     }
     
-    public static void RemoveItemFromCheck(string itemCodeName, string checkCodeName)
+    public static void RemoveItemFromCheck(int itemIndex, string checkViewModelCodeName)
     {
-        var itemData = GetItemData(itemCodeName);
-        var itemSource = ItemsSources.FirstOrDefault(i => i.Checks.Any(c => c.CodeName == checkCodeName));
-        if (itemSource == null)
-            return;
-        var check = itemSource.Checks.FirstOrDefault(c => c.CodeName == checkCodeName);
-        itemSource.RemoveItem(check.Key, itemData);
+        ApplyViewModel();
+        var itemSourceFileName = checkViewModelCodeName.Split("#")[0];
+        var checkKey = checkViewModelCodeName.Split("#")[1];
+        var itemSource = ItemsSources.FirstOrDefault(i => i.FileName == itemSourceFileName);
+        var check = itemSource.Checks.FirstOrDefault(c => c.Key == checkKey);
+        itemSource.RemoveItem(check.Key, itemIndex);
         UpdateViewModel();
+    }
+
+    public static void ApplyViewModel()
+    {
+        foreach (var categoryViewModel in ViewModel.Categories)
+        {
+            foreach (var checkViewModel in categoryViewModel.Containers)
+            {
+                var checkViewModelCodeName = checkViewModel.CodeName;
+                var itemSourceFileName = checkViewModelCodeName.Split("#")[0];
+                var checkKey = checkViewModelCodeName.Split("#")[1];
+                var itemSource = ItemsSources.FirstOrDefault(i => i.FileName == itemSourceFileName);
+                var check = itemSource.Checks.FirstOrDefault(c => c.Key == checkKey);
+                var checkItemViewModels = checkViewModel.Objects;
+                for (int i = 0; i < checkItemViewModels.Count; i++)
+                {
+                    var itemViewModel = checkItemViewModels[i];
+                    itemSource.SourceSections[check.Key][i].Item = GetItemData(itemViewModel.CodeName);
+                    itemSource.SourceSections[check.Key][i].Quantity = itemViewModel.ItemQuantity;
+                    itemSource.SourceSections[check.Key][i].MerchantInventoryLocked = itemViewModel.MerchantInventoryLocked;
+                }
+            }
+        }
     }
     
     public static void UpdateViewModel()
@@ -224,11 +278,28 @@ public static class ItemsController
 
             foreach (var check in checkCategory.Value)
             {
-                var newContainer = new ContainerViewModel(check.CodeName, check.CustomName);
-                var items = check.IsPartialCheck ? check.ItemSource.GetCheckItems(check.CodeName) : check.ItemSource.Items;
+                var newContainer = new ContainerViewModel($"{check.ItemSource.FileName}#{check.Key}", check.CustomName);
+                var itemSource = check.ItemSource;
+                var items = check.IsPartialCheck ? itemSource.GetCheckItems(check.CodeName) : itemSource.Items;
                 newContainer.Objects = new ObservableCollection<ObjectViewModel>(items.Select(i => new ObjectViewModel(i)));
+
+                for (int i = 0; i < newContainer.Objects.Count; i++)
+                {
+                    newContainer.Objects[i].Index = i;
+                    if (itemSource.HasItemQuantities)
+                    {
+                        newContainer.Objects[i].ItemQuantity = itemSource.GetItemQuantity(check.Key, i);
+                    }
+                    if (checkCategory.Key == "Merchant inventories")
+                    {
+                        newContainer.Objects[i].IsMerchantInventory = true;
+                        newContainer.Objects[i].MerchantInventoryLocked =
+                            itemSource.SourceSections[check.Key][i].MerchantInventoryLocked;
+                    }
+                }
+                
                 newTypeViewModel.Containers.Add(newContainer);
-                if (ViewModel.CurrentContainer != null && check.CodeName == ViewModel.CurrentContainer.CodeName)
+                if (ViewModel.CurrentContainer != null && $"{check.ItemSource.FileName}#{check.Key}" == ViewModel.CurrentContainer.CodeName)
                 {
                     ViewModel.CurrentContainer = newContainer;
                     ViewModel.UpdateDisplayedObjects();

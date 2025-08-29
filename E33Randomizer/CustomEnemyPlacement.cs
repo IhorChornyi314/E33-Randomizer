@@ -33,6 +33,7 @@ public class CustomEnemyPlacement: CustomPlacement
     
     public override void InitPlainNames()
     {
+        CatchAllName = "Anyone";
         CategoryOrder = new List<string>
         {
             "Merchants", "Mimes", "Cut Content Enemies", "Gimmick/Tutorial Enemies",
@@ -67,6 +68,16 @@ public class CustomEnemyPlacement: CustomPlacement
             PlainNamesList.Add(enemyData.CustomName);
             PlainNameToCodeNames[enemyData.CustomName] = [enemyData.CodeName];
         }
+        
+        PresetFiles = new()
+        {
+            {"Split categories (default)", "Data/presets/enemies/default.json"},
+            {"Total randomness", "Data/presets/enemies/total_random.json"},
+            {"10% of regular enemies are bosses", "Data/presets/enemies/10_percent.json"},
+            {"Make every enemy a boss", "Data/presets/enemies/everyone_is_a_boss.json"},
+            {"Custom preset 1", "Data/presets/enemies/custom_1.json"},
+            {"Custom preset 2", "Data/presets/enemies/custom_2.json"},
+        };
         
         LoadDefaultPreset();
     }

@@ -119,6 +119,7 @@ public static class RandomizerLogic
         if (writeTxt)
         {
             EncountersController.WriteEncountersTxt(exportPath + "encounters.txt");
+            ItemsController.WriteChecksTxt(exportPath + "checks.txt");
         }
 
         if (Settings.TieDropsToEncounters)

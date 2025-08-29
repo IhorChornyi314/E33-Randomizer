@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:E33Randomizer"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
     </Application.Resources>
 </Application>

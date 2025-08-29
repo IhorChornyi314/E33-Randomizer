@@ -9,11 +9,9 @@ namespace E33Randomizer.ItemSources;
 
 public class GameActionItemSource: ItemSource
 {
-    private Dictionary<string, List<ItemData>> _actionsData = new();
     public override void LoadFromAsset(UAsset asset)
     {
-        _asset = asset;
-        FolderName = asset.FolderName.ToString();
+        base.LoadFromAsset(asset);
         foreach (var export in asset.Exports)
         {
             if (!export.ObjectName.Value.Value.Contains("AddItemToInventory"))
@@ -22,22 +20,23 @@ public class GameActionItemSource: ItemSource
             }
 
             var actionName = export.ObjectName.ToString();
-            _actionsData[actionName] = new List<ItemData>();
+            SourceSections[actionName] = new List<ItemSourceParticle>();
             foreach (StructPropertyData itemPropertyData in ((export as NormalExport).Data[0] as ArrayPropertyData).Value)
             {
                 var itemName = (((itemPropertyData.Value[0] as StructPropertyData).Value[0] as StructPropertyData).Value[1] as NamePropertyData).ToString();
                 var newItemData = ItemsController.GetItemData(itemName);
-                _actionsData[actionName].Add(newItemData);
+                SourceSections[actionName].Add(new ItemSourceParticle(newItemData));
                 Items.Add(newItemData);
             }
             
             var check = new CheckData
             {
                 CodeName = actionName,
-                CustomName = $"{FileName}: {_actionsData[actionName][0].CustomName}",
+                CustomName = $"{FileName}: {SourceSections[actionName][0].Item.CustomName}",
                 IsBroken = false,
                 IsPartialCheck = true,
-                ItemSource = this
+                ItemSource = this,
+                Key = actionName
             };
             Checks.Add(check);
         }
@@ -62,15 +61,15 @@ public class GameActionItemSource: ItemSource
                 throw new Exception("Game action asset is not using DT_jRPG_Items_Composite!");
             }
             
-            var items = _actionsData[export.ObjectName.ToString()];
+            var items = SourceSections[export.ObjectName.ToString()];
             
             List<PropertyData> newItemStructs = [];
             foreach (var item in items)
             {
-                _asset.AddNameReference(FString.FromString(item.CodeName));
+                _asset.AddNameReference(FString.FromString(item.Item.CodeName));
                 var newItemStruct = dummyItemStruct.Clone() as StructPropertyData;
                 var newItemTableEntryStruct = (newItemStruct.Value[0] as StructPropertyData).Value[0].Clone() as StructPropertyData;
-                (newItemTableEntryStruct.Value[1] as NamePropertyData).Value = new FName(_asset, item.CodeName);
+                (newItemTableEntryStruct.Value[1] as NamePropertyData).Value = new FName(_asset, item.Item.CodeName);
                 newItemStructs.Add(newItemStruct);
             }
             
@@ -82,34 +81,18 @@ public class GameActionItemSource: ItemSource
     public override void Randomize()
     {
         Items.Clear();
-        foreach (var action in _actionsData)
+        foreach (var action in SourceSections)
         {
-            var newItems = new List<ItemData>();
+            var newItems = new List<ItemSourceParticle>();
             foreach (var item in action.Value)
             {
-                var newItemName = RandomizerLogic.CustomItemPlacement.Replace(item.CodeName);
+                var newItemName = RandomizerLogic.CustomItemPlacement.Replace(item.Item.CodeName);
                 var newItem = ItemsController.GetItemData(newItemName);
-                newItems.Add(newItem);
+                newItems.Add(new ItemSourceParticle(newItem));
                 Items.Add(newItem);
             }
 
-            _actionsData[action.Key] = newItems;
+            SourceSections[action.Key] = newItems;
         }
-    }
-    
-    public override List<ItemData> GetCheckItems(string key)
-    {
-        return _actionsData[key];
-    }
-    
-    
-    public override void AddItem(string key, ItemData item)
-    {
-        _actionsData[key].Add(item);
-    }
-
-    public override void RemoveItem(string key, ItemData item)
-    {
-        _actionsData[key].RemoveAll(i => i.CodeName == item.CodeName);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Runtime.InteropServices;
 using Newtonsoft.Json;
 
 namespace E33Randomizer;
@@ -31,6 +32,9 @@ public abstract class CustomPlacement
     public Dictionary<string, float> DefaultFrequencies = new();
     public Dictionary<string, Dictionary<string, float>> FinalReplacementFrequencies = new();
     public List<string> CategoryOrder = new();
+
+    public Dictionary<string, string> PresetFiles = new();
+    protected string CatchAllName = "";
     
     public abstract void InitPlainNames();
     public abstract void LoadDefaultPreset();
@@ -41,7 +45,7 @@ public abstract class CustomPlacement
     {
         CustomPlacementRules = new Dictionary<string, Dictionary<string, float>>()
         {
-            {"Anyone", new Dictionary<string, float>() {{objectCodeName, 1}}}
+            {CatchAllName, new Dictionary<string, float>() {{objectCodeName, 1}}}
         };
         FrequencyAdjustments.Clear();
         Excluded.Clear();
@@ -57,6 +61,11 @@ public abstract class CustomPlacement
         {
             string json = r.ReadToEnd();
             var presetData = JsonConvert.DeserializeObject<CustomPlacementPreset>(json);
+            NotRandomized.Clear();
+            NotRandomizedCodeNames.Clear();
+            Excluded.Clear();
+            ExcludedCodeNames.Clear();
+            
             foreach (var notRandomized in presetData.NotRandomized)
             {
                 AddNotRandomized(notRandomized);

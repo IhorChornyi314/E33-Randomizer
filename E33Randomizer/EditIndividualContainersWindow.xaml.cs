@@ -22,6 +22,18 @@ namespace E33Randomizer
             InitializeComponent();
             ViewModel = objectType == "Enemy" ? EncountersController.ViewModel : ItemsController.ViewModel;
             DataContext = ViewModel;
+            ApplyObjectsType();
+        }
+
+        private void ApplyObjectsType()
+        {
+            (FindName("ContainersTextBlock") as TextBlock).Text = ViewModel.ContainerName + "s";
+            (FindName("AddObjectTextBlock") as TextBlock).Text = $"Add {ViewModel.ObjectName.ToLower()}:";
+            (FindName("ObjectsTextBlock") as TextBlock).Text = $"{ViewModel.ObjectName}s in the {ViewModel.ContainerName.ToLower()}".Replace("ys", "ies");
+            (FindName("LoadTextButton") as Button).Content = $"Load {ViewModel.ContainerName.ToLower()}s from .txt file";
+            (FindName("SaveTextButton") as Button).Content = $"Save {ViewModel.ContainerName.ToLower()}s to .txt file";
+            (FindName("SearchLabel") as Label).Content = $"Search by {ViewModel.ContainerName.ToLower()} or {ViewModel.ObjectName.ToLower()} names:";
+            Title = $"Edit individual {ViewModel.ContainerName.ToLower()}s";
         }
         
         private void CategoryTreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
@@ -49,17 +61,17 @@ namespace E33Randomizer
             AddObjectComboBox.SelectedIndex = -1;
         }
 
-        private void RemoveEnemy_Click(object sender, RoutedEventArgs e)
+        private void RemoveObject_Click(object sender, RoutedEventArgs e)
         {
             if (_selectedContainerViewModel != null && sender is Button button && button.Tag is ObjectViewModel selectedObject)
             {
                 if (_objectType == "Enemy")
                 {
-                    EncountersController.RemoveEnemyFromEncounter(selectedObject.CodeName, _selectedContainerViewModel.CodeName);
+                    EncountersController.RemoveEnemyFromEncounter(selectedObject.Index, _selectedContainerViewModel.CodeName);
                 }
                 else if (_objectType == "Item")
                 {
-                    ItemsController.RemoveItemFromCheck(selectedObject.CodeName, _selectedContainerViewModel.CodeName);
+                    ItemsController.RemoveItemFromCheck(selectedObject.Index, _selectedContainerViewModel.CodeName);
                 }
             }
         }
@@ -100,7 +112,16 @@ namespace E33Randomizer
             {
                 try
                 {
-                    EncountersController.ReadEncountersTxt(openFileDialog.FileName);
+                    switch (_objectType)
+                    {
+                        case "Enemy":
+                            EncountersController.ReadEncountersTxt(openFileDialog.FileName);
+                            break;
+                        case "Item":
+                            ItemsController.ReadChecksTxt(openFileDialog.FileName);
+                            break;
+                    }
+                    
                 }
                 catch (Exception ex)
                 {
@@ -124,7 +145,15 @@ namespace E33Randomizer
             {
                 try
                 {
-                    EncountersController.WriteEncountersTxt(saveFileDialog.FileName);
+                    switch (_objectType)
+                    {
+                        case "Enemy":
+                            EncountersController.WriteEncountersTxt(saveFileDialog.FileName);
+                            break;
+                        case "Item":
+                            ItemsController.WriteChecksTxt(saveFileDialog.FileName);
+                            break;
+                    }
                     MessageBox.Show("TXT saved successfully!", 
                         "Save Complete", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
@@ -145,6 +174,8 @@ namespace E33Randomizer
 
     public class EditIndividualObjectsWindowViewModel : INotifyPropertyChanged
     {
+        public string ContainerName { get; set; }
+        public string ObjectName { get; set; }
         public List<CategoryViewModel> Categories { get; set; }
         public ObservableCollection<CategoryViewModel> FilteredCategories { get; set; }
         public ObservableCollection<ObjectViewModel> DisplayedObjects { get; set; }
@@ -229,7 +260,12 @@ namespace E33Randomizer
             CodeName = objectData.CodeName;
             Name = objectData.CustomName;
         }
+        public int Index { get; set; }
         public string CodeName { get; set; }
         public string Name { get; set; }
+        public bool HasQuantityControl => ItemQuantity != -1;
+        public int ItemQuantity { get; set; } = -1;
+        public bool IsMerchantInventory { get; set; } = false;
+        public bool MerchantInventoryLocked { get; set; } = false;
     }
 }

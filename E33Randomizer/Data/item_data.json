@@ -105,7 +105,7 @@
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "MitigatedPerfection (Invalid)",
+    "CustomName": "MitigatedPerfection (Non-functional)",
     "CodeName": "MitigatedPerfection",
     "ItemType": "Weapon"
   },
@@ -1050,7 +1050,7 @@
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "Chroma (Invalid)",
+    "CustomName": "Chroma (Non-functional)",
     "CodeName": "Chroma",
     "ItemType": "Gold"
   },
@@ -1110,7 +1110,7 @@
     "ItemType": "Weapon"
   },
   {
-    "CustomName": "04_Key_Placeholder (Invalid)",
+    "CustomName": "04_Key_Placeholder (Non-functional)",
     "CodeName": "04_Key_Placeholder",
     "ItemType": "Key"
   },
@@ -1315,17 +1315,17 @@
     "ItemType": "Weapon"
   },
   {
-    "CustomName": "Gold_Small (Inventory)",
+    "CustomName": "Gold_Small (Non-functional)",
     "CodeName": "Gold_Small",
     "ItemType": "Gold"
   },
   {
-    "CustomName": "Gold_Medium (Inventory)",
+    "CustomName": "Gold_Medium (Non-functional)",
     "CodeName": "Gold_Medium",
     "ItemType": "Gold"
   },
   {
-    "CustomName": "Gold_Big (Inventory)",
+    "CustomName": "Gold_Big (Non-functional)",
     "CodeName": "Gold_Big",
     "ItemType": "Gold"
   },
@@ -2260,92 +2260,92 @@
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "Lost Gestral (Key)",
+    "CustomName": "Lost Gestral (Key Item)",
     "CodeName": "LostGestral",
     "ItemType": "Key"
   },
   {
-    "CustomName": "Festival Token (Key)",
+    "CustomName": "Festival Token (Key Item)",
     "CodeName": "FestivalToken",
     "ItemType": "Key"
   },
   {
-    "CustomName": "Molten Heart (Key)",
+    "CustomName": "Molten Heart (Key Item)",
     "CodeName": "Quest_MoltenHeart",
     "ItemType": "Key"
   },
   {
-    "CustomName": "Chromatic Ink (Key)",
+    "CustomName": "Chromatic Ink (Key Item)",
     "CodeName": "Quest_ChromaticInk",
     "ItemType": "Key"
   },
   {
-    "CustomName": "Intact Mine (Key)",
+    "CustomName": "Intact Mine (Key Item)",
     "CodeName": "Quest_Mine",
     "ItemType": "Key"
   },
   {
-    "CustomName": "Wooden Stick (Key)",
+    "CustomName": "Wooden Stick (Key Item)",
     "CodeName": "Quest_WoodenStick",
     "ItemType": "Key"
   },
   {
-    "CustomName": "Wood Boards (Key)",
+    "CustomName": "Wood Boards (Key Item)",
     "CodeName": "Quest_WoodBoards",
     "ItemType": "Key"
   },
   {
-    "CustomName": "Resin (Key)",
+    "CustomName": "Resin (Key Item)",
     "CodeName": "Quest_Resin",
     "ItemType": "Key"
   },
   {
-    "CustomName": "Mushroom (Key)",
+    "CustomName": "Mushroom (Key Item)",
     "CodeName": "Quest_Mushroom",
     "ItemType": "Key"
   },
   {
-    "CustomName": "Old Key (Key)",
+    "CustomName": "Old Key (Key Item)",
     "CodeName": "Quest_OldKey",
     "ItemType": "Key"
   },
   {
-    "CustomName": "Bourgeon Skin (Key)",
+    "CustomName": "Bourgeon Skin (Key Item)",
     "CodeName": "Quest_BourgeonSkin",
     "ItemType": "Key"
   },
   {
-    "CustomName": "Rock Crystal (Key)",
+    "CustomName": "Rock Crystal (Key Item)",
     "CodeName": "Quest_HexgaRock",
     "ItemType": "Key"
   },
   {
-    "CustomName": "Eternal Ice (Key)",
+    "CustomName": "Eternal Ice (Key Item)",
     "CodeName": "Quest_EternalIce",
     "ItemType": "Key"
   },
   {
-    "CustomName": "Underground Key (Key)",
+    "CustomName": "Underground Key (Key Item)",
     "CodeName": "Quest_StationKey",
     "ItemType": "Key"
   },
   {
-    "CustomName": "Manor Family Canvas (Key)",
+    "CustomName": "Manor Family Canvas (Key Item)",
     "CodeName": "Quest_ManorFamilyCanvas",
     "ItemType": "Key"
   },
   {
-    "CustomName": "Colour of the Beast (Key)",
+    "CustomName": "Colour of the Beast (Key Item)",
     "CodeName": "Quest_CleaWorkshop_Part1",
     "ItemType": "Key"
   },
   {
-    "CustomName": "Shape of the Beast (Key)",
+    "CustomName": "Shape of the Beast (Key Item)",
     "CodeName": "Quest_CleaWorkshop_Part2",
     "ItemType": "Key"
   },
   {
-    "CustomName": "Light of the Beast (Key)",
+    "CustomName": "Light of the Beast (Key Item)",
     "CodeName": "Quest_CleaWorkshop_Part3",
     "ItemType": "Key"
   },
@@ -2355,22 +2355,22 @@
     "ItemType": "SkillUnlocker"
   },
   {
-    "CustomName": "A flower for Sophie (Key)",
+    "CustomName": "A flower for Sophie (Key Item)",
     "CodeName": "Quest_FlowerforSophie",
     "ItemType": "Key"
   },
   {
-    "CustomName": "A uniform for Richard's son (Key)",
+    "CustomName": "A uniform for Richard's son (Key Item)",
     "CodeName": "Quest_UniformForSon",
     "ItemType": "Key"
   },
   {
-    "CustomName": "A journal from Gustave's apprentices (Key)",
+    "CustomName": "A journal from Gustave's apprentices (Key Item)",
     "CodeName": "Quest_ApprenticesJournal",
     "ItemType": "Key"
   },
   {
-    "CustomName": "Weird Pictos (Key)",
+    "CustomName": "Weird Pictos (Key Item)",
     "CodeName": "Quest_WeirdPictos",
     "ItemType": "Key"
   },
@@ -3335,7 +3335,7 @@
     "ItemType": "Shard"
   },
   {
-    "CustomName": "Chroma Elixir (Inventory)",
+    "CustomName": "Chroma Elixir (Consumable)",
     "CodeName": "PartyHealConsumable",
     "ItemType": "Consumable"
   },

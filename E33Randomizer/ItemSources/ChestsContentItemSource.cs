@@ -6,21 +6,55 @@ using UAssetAPI.UnrealTypes;
 
 namespace E33Randomizer.ItemSources;
 
-class ChestContent(ItemData item, int quantity = 1, bool isLootTable = false)
-{
-    public ItemData Item = item;
-    public int Quantity = quantity;
-    public bool IsLootTable = isLootTable; // All chests use DT_LootTable_UpgradeItems_Exploration
-}
 
 public class ChestsContentItemSource: ItemSource
 {
-    private Dictionary<string, List<ChestContent>> _chestsData = new();
-    private StructPropertyData _lootTableStruct;
+    private static Dictionary<string, string> LocationNames = new ()
+    {
+        {"SpringMeadows", "Spring Meadows"},
+        {"SeaCliff", "Stone Wave Cliffs"},
+        {"GoblusLair", "Flying Waters"},
+        {"ForgottenBattlefield", "Forgotten Battlefield"},
+        {"GrandisStation", "Monoco's Station"},
+        {"AncientSanctuary", "Ancient Sanctuary"},
+        {"GestralVillage", "Gestral Village"},
+        {"EsquiesNest", "Esquie's Nest"},
+        {"OldLumiere", "Old Lumiere"},
+        {"WorldMap", "World Map"},
+        {"Manor", "The Manor"},
+        {"Monolith", "The Monolith"},
+        {"ACT1", "Act 1 Lumiere"},
+        {"Lumiere", "Act 3 Lumiere"},
+        {"YellowForest", "Yellow Harvest"},
+        {"FallingLeaves", "Falling Leaves"},
+        {"CrimsonForest", "Crimson Forest"},
+        {"FrozenHearts", "Frozen Hearts"},
+        {"Reacher", "The Reacher"},
+        {"RenoirSDraft", "Renoir's Drafts"},
+        {"DarkShores", "Dark Shores"},
+        {"TwilightSanctuary", "Twilight Sanctuary"},
+        {"FlyingManor", "Flying Manor"},
+        {"RedWoods", "Red Woods"},
+        {"02", "Small Burgeon"},
+        {"StonewaveCliffsCave", "Stone Wave Cliffs Cave"},
+        {"ChosenPath", "The Chosen Path"},
+        {"FloatingIsland", "Sky Island"},
+        {"RockTrailing", "RockTrailing"}, // TODO: Find out what this is
+        {"Cemetery", "Flying Cemetery"},
+        {"CoastalCave", "Coastal Cave"},
+        {"DoorMaze", "Esoteric Ruins"},
+        {"SinisterCave", "Sinister Cave"},
+        {"MiniLevels", "Fixed-Camera Level"},
+        {"FlyingCasinoEntrance", "Flying Casino"},
+        {"TheCarrousel", "The Carousel"},
+        {"WhiteSands", "White Sands"},
+        {"SacredRiver", "Sacred River"}
+    };
+    
     public override void LoadFromAsset(UAsset asset)
     {
-        _asset = asset;
-        FolderName = asset.FolderName.ToString();
+        HasItemQuantities = true;
+        base.LoadFromAsset(asset);
         var tableData = (asset.Exports[0] as DataTableExport).Table.Data;
         foreach (var chestData in tableData)
         {
@@ -28,26 +62,27 @@ public class ChestsContentItemSource: ItemSource
             if ((chestData.Value[0] as ArrayPropertyData).Value.Length > 0)
             {
                 var lootTableItemData = ItemsController.GetItemData("UpgradeMaterial_Level1");
-                _chestsData[chestName] = [new ChestContent(lootTableItemData, 1, true)];
+                SourceSections[chestName] = [new ItemSourceParticle(lootTableItemData, 1, 100, true)];
                 Items.Add(lootTableItemData);
                 continue;
             }
 
-            List<ChestContent> items = new();
+            List<ItemSourceParticle> items = new();
             foreach (var itemStruct in (((chestData.Value[1] as ArrayPropertyData).Value[0] as StructPropertyData).Value[3] as ArrayPropertyData).Value)
             {
                 var itemData = ItemsController.GetItemData(((itemStruct as StructPropertyData).Value[0] as NamePropertyData).Value.ToString());
-                items.Add(new ChestContent(itemData, ((itemStruct as StructPropertyData).Value[2] as IntPropertyData).Value));
+                items.Add(new ItemSourceParticle(itemData, ((itemStruct as StructPropertyData).Value[2] as IntPropertyData).Value));
                 Items.Add(itemData);
             }
-            _chestsData[chestName] = items;
+            SourceSections[chestName] = items;
 
             var areaName = chestName.Split('_')[^2];
+            var translatedAreaName = LocationNames.GetValueOrDefault(areaName, areaName);
             
             var check = new CheckData
             {
                 CodeName = chestName,
-                CustomName = $"{areaName}: {items[0].Item.CodeName}",
+                CustomName = $"{translatedAreaName}: {items[0].Item.CustomName}",
                 IsBroken = false,
                 IsPartialCheck = true,
                 ItemSource = this,
@@ -84,14 +119,14 @@ public class ChestsContentItemSource: ItemSource
         {
             var chestName = chestData.Name.ToString();
             
-            var chestContent = _chestsData[chestName];
+            var chestContent = SourceSections[chestName];
 
             List<PropertyData> newLootTableStructs = [];
             List<PropertyData> newLootStructs = [];
             
             foreach (var item in chestContent)
             {
-                if (item.IsLootTable)
+                if (item.IsLootTableChest)
                 {
                     var newLootTableStruct = dummyLootTableStruct.Clone() as StructPropertyData;
                     newLootTableStructs.Add(newLootTableStruct);
@@ -119,31 +154,15 @@ public class ChestsContentItemSource: ItemSource
     public override void Randomize()
     {
         Items.Clear();
-        foreach (var chestData in _chestsData)
+        foreach (var chestData in SourceSections)
         {
             foreach (var item in chestData.Value)
             {
                 var newItemName = RandomizerLogic.CustomItemPlacement.Replace(item.Item.CodeName);
                 item.Item = ItemsController.GetItemData(newItemName);
-                item.Quantity = RandomizerLogic.rand.Next(3);
-                item.IsLootTable = newItemName.StartsWith("UpgradeMaterial_Level") && !newItemName.EndsWith('5');
+                item.IsLootTableChest = newItemName.StartsWith("UpgradeMaterial_Level") && !newItemName.EndsWith('5');
                 Items.Add(item.Item);
             }
         }
-    }
-    
-    public override List<ItemData> GetCheckItems(string key)
-    {
-        return _chestsData[key].Select(c => c.Item).ToList();
-    }
-    
-    public override void AddItem(string key, ItemData item)
-    {
-        _chestsData[key].Add(new ChestContent(item));
-    }
-
-    public override void RemoveItem(string key, ItemData item)
-    {
-        _chestsData[key].RemoveAll(tr => tr.Item.CodeName == item.CodeName);
     }
 }

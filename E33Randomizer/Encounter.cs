@@ -135,12 +135,6 @@ public class Encounter
 
     public override string ToString()
     {
-        var rep = Name + "|";
-        foreach (var enemy in Enemies)
-        {
-            rep += $",{enemy.CodeName}";
-        }
-        // This is a hack but I'm too tired to write something better
-        return rep.Replace("|,", "|");
+        return $"{Name}|" + String.Join(",", Enemies.Select(e => e.CodeName));
     }
 }
