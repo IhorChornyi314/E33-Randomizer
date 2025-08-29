@@ -1,0 +1,34 @@
+{
+    "NotRandomized": [
+        "Skill Unlock",
+        "Merchant Unlock"
+    ],
+    "Excluded": [
+        "Non-functional",
+        "Consumable"
+    ],
+    "CustomPlacement": {
+        "Pictos": {
+            "Pictos": 1.0
+        },
+        "Weapon": {
+            "Weapon": 1.0
+        },
+        "Key Item": {
+            "Key Item": 1.0
+        },
+        "Cosmetic": {
+            "Cosmetic": 0.8,
+            "Pictos": 0.2
+        },
+        "Upgrade Material": {
+            "Upgrade Material": 0.8,
+            "Pictos": 0.2
+        },
+        "Music Record": {
+            "Music Record": 0.8,
+            "Pictos": 0.2
+        }
+    },
+    "FrequencyAdjustments": {}
+}
