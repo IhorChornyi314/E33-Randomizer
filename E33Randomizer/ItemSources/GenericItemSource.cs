@@ -48,6 +48,7 @@ public class GenericItemSource: ItemSource
         { "BP_Dialogue_HiddenArena_Keeper", "Hidden Gestral Arena: Prizes" },
         { "BP_Dialogue_JudgeOfMercy", "The Fountain: Blanche's Reward" },
         { "BP_Dialogue_LUAct1_Mime", "Lumiere Act I: Mime Loot Drop" },
+        { "BP_Dialogue_Gardens_Maelle_FirstDuel", "Lumiere Act I: Maelle Duel Reward" },
         { "BP_Dialogue_LuneCamp_Quest_4", "The Camp: Lune Gradient Unlock 2" },
         { "BP_Dialogue_LuneCamp_Quest_6", "The Camp: Lune's Music Record" },
         { "BP_Dialogue_LuneCamp_Quest_7", "The Camp: Lune Gradient Unlock 3" },
