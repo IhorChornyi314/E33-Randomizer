@@ -91,7 +91,7 @@ namespace E33Randomizer
         
         public void PackCurrentData(object sender, RoutedEventArgs e)
         {
-            RandomizerLogic.usedSeed = Settings.Seed != -1 ? Settings.Seed : Environment.TickCount; 
+            RandomizerLogic.usedSeed = RandomizerLogic.Settings.Seed != -1 ? RandomizerLogic.Settings.Seed : Environment.TickCount; 
             
             RandomizerLogic.PackAndConvertData();
             MessageBox.Show($"Generation done! You can find the mod in the rand_{RandomizerLogic.usedSeed} folder.\n\n" +

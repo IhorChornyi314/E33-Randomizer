@@ -1,4 +1,7 @@
-﻿namespace E33Randomizer;
+﻿using System.IO;
+using UAssetAPI;
+
+namespace E33Randomizer;
 
 public static class Utils
 {
@@ -27,5 +30,17 @@ public static class Utils
     public static T Pick<T>(List<T> from)
     {
         return from[RandomizerLogic.rand.Next(from.Count)];
+    }
+
+    public static void WriteAsset(UAsset asset)
+    {
+        var filePath = asset.FolderName.Value.Replace("/Game/", "randomizer/Sandfall/Content/") + ".uasset";
+        string? directoryPath = Path.GetDirectoryName(filePath);
+
+        if (!string.IsNullOrEmpty(directoryPath))
+        {
+            Directory.CreateDirectory(directoryPath);
+        }
+        asset.Write(filePath);
     }
 }

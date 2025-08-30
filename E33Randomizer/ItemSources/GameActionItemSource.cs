@@ -12,6 +12,7 @@ public class GameActionItemSource: ItemSource
     public override void LoadFromAsset(UAsset asset)
     {
         base.LoadFromAsset(asset);
+        HasItemQuantities = true;
         foreach (var export in asset.Exports)
         {
             if (!export.ObjectName.Value.Value.Contains("AddItemToInventory"))
@@ -25,8 +26,8 @@ public class GameActionItemSource: ItemSource
             {
                 var itemName = (((itemPropertyData.Value[0] as StructPropertyData).Value[0] as StructPropertyData).Value[1] as NamePropertyData).ToString();
                 var newItemData = ItemsController.GetItemData(itemName);
-                SourceSections[actionName].Add(new ItemSourceParticle(newItemData));
-                Items.Add(newItemData);
+                var itemQuantity = (itemPropertyData.Value[1] as IntPropertyData).Value;
+                SourceSections[actionName].Add(new ItemSourceParticle(newItemData, itemQuantity));
             }
             
             var check = new CheckData
@@ -70,6 +71,8 @@ public class GameActionItemSource: ItemSource
                 var newItemStruct = dummyItemStruct.Clone() as StructPropertyData;
                 var newItemTableEntryStruct = (newItemStruct.Value[0] as StructPropertyData).Value[0].Clone() as StructPropertyData;
                 (newItemTableEntryStruct.Value[1] as NamePropertyData).Value = new FName(_asset, item.Item.CodeName);
+                (newItemStruct.Value[1] as IntPropertyData).Value = Math.Max(item.Quantity, 1);
+                (newItemStruct.Value[0] as StructPropertyData).Value[0] = newItemTableEntryStruct;
                 newItemStructs.Add(newItemStruct);
             }
             
@@ -80,19 +83,18 @@ public class GameActionItemSource: ItemSource
     
     public override void Randomize()
     {
-        Items.Clear();
+        if (RandomizerLogic.Settings.ChangeNumberOfActionRewards) RandomizeNumberOfItems(RandomizerLogic.Settings.ActionRewardsNumberMin, RandomizerLogic.Settings.ActionRewardsNumberMax);
         foreach (var action in SourceSections)
         {
-            var newItems = new List<ItemSourceParticle>();
             foreach (var item in action.Value)
             {
                 var newItemName = RandomizerLogic.CustomItemPlacement.Replace(item.Item.CodeName);
-                var newItem = ItemsController.GetItemData(newItemName);
-                newItems.Add(new ItemSourceParticle(newItem));
-                Items.Add(newItem);
+                item.Item = ItemsController.GetItemData(newItemName);
+                if (RandomizerLogic.Settings.ChangeQuantityOfActionRewards)
+                {
+                    item.Quantity = RandomizerLogic.rand.Next(RandomizerLogic.Settings.ActionRewardsQuantityMin, RandomizerLogic.Settings.ActionRewardsQuantityMax + 1);
+                }
             }
-
-            SourceSections[action.Key] = newItems;
         }
     }
 }

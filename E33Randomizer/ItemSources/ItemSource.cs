@@ -11,6 +11,12 @@ public class ItemSourceParticle(ItemData item, int quantity = -1, double chance 
     public bool IsLootTableChest = isLootTable;
     public bool MerchantInventoryLocked = locked;
 
+    public static ItemSourceParticle Clone(ItemSourceParticle other)
+    {
+        var newParticle = new ItemSourceParticle(other.Item, other.Quantity, other.LootDropChance, other.IsLootTableChest, other.MerchantInventoryLocked);
+        return newParticle;
+    }
+    
     public static ItemSourceParticle FromString(string rep)
     {
         var stringParts = rep.Split(':');
@@ -30,7 +36,6 @@ public class ItemSourceParticle(ItemData item, int quantity = -1, double chance 
 
 public abstract class ItemSource
 {
-    public List<ItemData> Items = new();
     public Dictionary<string, List<ItemSourceParticle>> SourceSections = new();
     public string FolderName;
     public string FileName;
@@ -44,7 +49,6 @@ public abstract class ItemSource
         FolderName = asset.FolderName.ToString();
         FileName = FolderName.Split('/').Last();
         SourceSections.Clear();
-        Items.Clear();
         Checks.Clear();
         SourceSections.Clear();
     }
@@ -62,19 +66,41 @@ public abstract class ItemSource
     public void AddItem(string key, ItemData item)
     {
         SourceSections[key].Add(new ItemSourceParticle(item, HasItemQuantities ? 1 : -1));
-        Items.Add(item);
     }
     public void RemoveItem(string key, int index)
     {
-        var item = SourceSections[key][index].Item;
-        Items.Remove(item);
         SourceSections[key].RemoveAt(index);
     }
 
     public void SetItem(string key, int index, ItemData item)
     {
         SourceSections[key][index].Item = item;
-        Items[Items.IndexOf(item)] = item;
+    }
+
+    public void RandomizeNumberOfItems(int min, int max)
+    {
+        foreach (var sourceSection in SourceSections)
+        {
+            var newSize = RandomizerLogic.rand.Next(min, max);
+            var oldSize = sourceSection.Value.Count;
+            if (oldSize == newSize) continue;
+            if (oldSize > newSize)
+            {
+                sourceSection.Value.RemoveRange(newSize, oldSize - newSize);
+                continue;
+            }
+
+            if (oldSize == 0)
+            {
+                sourceSection.Value.Add(new ItemSourceParticle(ItemsController.GetRandomItem(), 1));
+                oldSize = 1;
+            }
+            
+            for (int i = 0; i < newSize - oldSize; i++)
+            {
+                sourceSection.Value.Add(ItemSourceParticle.Clone(sourceSection.Value[i]));
+            }
+        }
     }
     
     public override string ToString()

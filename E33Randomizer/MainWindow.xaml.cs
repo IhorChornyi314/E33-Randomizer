@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.ComponentModel;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -22,82 +23,8 @@ public partial class MainWindow
     {
         InitializeComponent();
         RandomizerLogic.Init("Data");
-        // Setup data bindings
-        SetupDataBindings();
+        DataContext = RandomizerLogic.Settings;
     }
-
-    private void SetupDataBindings()
-    {
-        // This is really bad, I'll clean it up soon I promise
-
-        RandomizeEncounterSizesCheckBox.IsChecked = Settings.RandomizeEncounterSizes;
-        ChangeSizeOfNonRandomEncountersCheckBox.IsChecked = Settings.ChangeSizeOfNonRandomizedEncounters;
-        RandomizeMerchantFightsCheckBox.IsChecked = Settings.RandomizeMerchantFights;
-
-        RandomizeEncounterSizesCheckBox.Checked += (_, _) => Settings.RandomizeEncounterSizes = true;
-        RandomizeEncounterSizesCheckBox.Unchecked += (_, _) => Settings.RandomizeEncounterSizes = false;
-
-        ChangeSizeOfNonRandomEncountersCheckBox.Checked +=
-            (_, _) => Settings.ChangeSizeOfNonRandomizedEncounters = true;
-        ChangeSizeOfNonRandomEncountersCheckBox.Unchecked +=
-            (_, _) => Settings.ChangeSizeOfNonRandomizedEncounters = false;
-
-        RandomizeMerchantFightsCheckBox.Checked += (_, _) => Settings.RandomizeMerchantFights = true;
-        RandomizeMerchantFightsCheckBox.Unchecked += (_, _) => Settings.RandomizeMerchantFights = false;
-
-        IncludeCutContentCheckBox.Checked += (_, _) =>
-        {
-            if (!RandomizerLogic.CustomEnemyPlacement.Excluded.Contains("Cut Content Enemies"))
-                RandomizerLogic.CustomEnemyPlacement.AddExcluded("Cut Content Enemies");
-        };
-        IncludeCutContentCheckBox.Unchecked += (_, _) =>
-        {
-            if (RandomizerLogic.CustomEnemyPlacement.Excluded.Contains("Cut Content Enemies"))
-                RandomizerLogic.CustomEnemyPlacement.RemoveExcluded("Cut Content Enemies");
-        };
-
-        EnableEnemyOnslaughtCheckBox.Checked += (_, _) => Settings.EnableEnemyOnslaught = true;
-        EnableEnemyOnslaughtCheckBox.Unchecked += (_, _) => Settings.EnableEnemyOnslaught = false;
-
-        EncounterSize1CheckBox.Checked += (_, _) => Settings.PossibleEncounterSizes.Add(1);
-        EncounterSize1CheckBox.Unchecked += (_, _) => Settings.PossibleEncounterSizes.Remove(1);
-        EncounterSize2CheckBox.Checked += (_, _) => Settings.PossibleEncounterSizes.Add(2);
-        EncounterSize2CheckBox.Unchecked += (_, _) => Settings.PossibleEncounterSizes.Remove(2);
-        EncounterSize3CheckBox.Checked += (_, _) => Settings.PossibleEncounterSizes.Add(3);
-        EncounterSize3CheckBox.Unchecked += (_, _) => Settings.PossibleEncounterSizes.Remove(3);
-
-        Phase2SimonComboBox.SelectionChanged += (_, _) =>
-            Settings.EarliestSimonP2Encounter = (Phase2SimonComboBox.SelectedItem as ComboBoxItem).Tag.ToString();
-        SeedTextBox.TextChanged += (_, _) =>
-        {
-            SeedTextBox.Text = SeedTextBox.Text.Replace(" ", "");
-            if (int.TryParse(SeedTextBox.Text, out int value))
-            {
-                Settings.Seed = value;
-            }
-        };
-
-        RandomizeAdditionalEnemiesCheckBox.IsChecked = Settings.RandomizeAddedEnemies;
-        EnsureBossesInBossEncountersCheckBox.IsChecked = Settings.EnsureBossesInBossEncounters;
-        ReduceBossRepetitionCheckBox.IsChecked = Settings.ReduceBossRepetition;
-        // TieLootToEncountersButton.IsChecked = Settings.TieDropsToEncounters;
-
-        RandomizeAdditionalEnemiesCheckBox.Checked += (_, _) => Settings.RandomizeAddedEnemies = true;
-        RandomizeAdditionalEnemiesCheckBox.Unchecked += (_, _) => Settings.RandomizeAddedEnemies = false;
-
-        EnsureBossesInBossEncountersCheckBox.Checked += (_, _) => Settings.EnsureBossesInBossEncounters = true;
-        EnsureBossesInBossEncountersCheckBox.Unchecked += (_, _) => Settings.EnsureBossesInBossEncounters = false;
-
-        ReduceBossRepetitionCheckBox.Checked += (_, _) => Settings.ReduceBossRepetition = true;
-        ReduceBossRepetitionCheckBox.Unchecked += (_, _) => Settings.ReduceBossRepetition = false;
-
-        // TieLootToEncountersButton.Checked += (_, _) => Settings.TieDropsToEncounters = true;
-        // TieLootToEncountersButton.Unchecked += (_, _) => Settings.TieDropsToEncounters = false;
-
-        RandomizeItemsCheckBox.Checked += (_, _) => Settings.RandomizeItems = true;
-        RandomizeItemsCheckBox.Unchecked += (_, _) => Settings.RandomizeItems = false;
-    }
-
 
     private void CustomEnemyPlacementButton_Click(object sender, RoutedEventArgs e)
     {
@@ -155,74 +82,12 @@ public partial class MainWindow
         _editIndividualChecksWindow.Show();
     }
 
-    private void NumberOfAdditionalEnemiesTextBox_TextChanged(object sender, TextChangedEventArgs e)
-    {
-        NumberOfAdditionalEnemiesTextBox.Text = NumberOfAdditionalEnemiesTextBox.Text.Replace(" ", "");
-        if (int.TryParse(NumberOfAdditionalEnemiesTextBox.Text, out int value))
-        {
-            Settings.EnemyOnslaughtAdditionalEnemies = value;
-        }
-    }
-
-    private void EnemyNumberCapTextBox_TextChanged(object sender, TextChangedEventArgs e)
-    {
-        EnemyNumberCapTextBox.Text = EnemyNumberCapTextBox.Text.Replace(" ", "");
-        if (int.TryParse(EnemyNumberCapTextBox.Text, out int value))
-        {
-            Settings.EnemyOnslaughtEnemyCap = value;
-        }
-    }
-
-    private void SeedTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
-    {
-        // Only allow numeric input
-        Regex regex = new Regex("[^0-9]+");
-        e.Handled = regex.IsMatch(e.Text);
-    }
-
-    private void AdditionalEnemyAmount_PreviewTextInput(object sender, TextCompositionEventArgs e)
-    {
-        // Only allow numeric input
-        Regex regex = new Regex("[^0-9]+");
-        e.Handled = regex.IsMatch(e.Text) && e.Text.Length < 3;
-    }
-
-    private void EnemyAmountCap_PreviewTextInput(object sender, TextCompositionEventArgs e)
-    {
-        // Only allow numeric input
-        Regex regex = new Regex("[^0-9]+");
-        e.Handled = regex.IsMatch(e.Text);
-    }
-
-    private void PresetNameTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
-    {
-        // Only allow alphanumeric input
-        Regex regex = new Regex("[^a-zA-Z0-9]+");
-        e.Handled = regex.IsMatch(e.Text);
-    }
-
     private void GenerateButton_Click(object sender, RoutedEventArgs e)
     {
         RandomizerLogic.Randomize();
         MessageBox.Show($"Generation done! You can find the mod in the rand_{RandomizerLogic.usedSeed} folder.\n\n" +
                         $"Used Seed: {RandomizerLogic.usedSeed}\n",
             "Generation Summary", MessageBoxButton.OK, MessageBoxImage.Information);
-    }
-
-    private void NumberOfAdditionalEnemiesTextBox_OnLostFocus(object sender, RoutedEventArgs e)
-    {
-        if (NumberOfAdditionalEnemiesTextBox.Text == "")
-        {
-            NumberOfAdditionalEnemiesTextBox.Text = Settings.EnemyOnslaughtAdditionalEnemies.ToString();
-        }
-    }
-
-    private void EnemyNumberCapTextBox_OnLostFocus(object sender, RoutedEventArgs e)
-    {
-        if (EnemyNumberCapTextBox.Text == "")
-        {
-            EnemyNumberCapTextBox.Text = Settings.EnemyOnslaughtEnemyCap.ToString();
-        }
     }
 
     private void PatchSaveButton_OnClick(object sender, RoutedEventArgs e)
@@ -265,5 +130,88 @@ public partial class MainWindow
                     "Patching Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+    }
+}
+
+
+public class SettingsViewModel : INotifyPropertyChanged
+{
+    public int Seed { get; set; } = -1;
+    
+    public bool RandomizeItems { get; set; } = true;
+    public bool RandomizeEnemies { get; set; } = true;
+    
+    public bool RandomizeEncounterSizes { get; set; } = false;
+    public bool ChangeSizeOfNonRandomizedEncounters { get; set; } = false;
+    public bool EncounterSizeOne { get; set; } = false;
+    public bool EncounterSizeTwo { get; set; } = false;
+    public bool EncounterSizeThree { get; set; } = false;
+    public bool NoSimonP2BeforeLune { get; set; } = true;
+    public string EarliestSimonP2Encounter { get; set; } = "SM_Eveque_ShieldTutorial*1";
+    public bool RandomizeMerchantFights { get; set; } = true;
+    public bool EnableEnemyOnslaught { get; set; } = false;
+    public int EnemyOnslaughtAdditionalEnemies { get; set; } = 1;
+    public int EnemyOnslaughtEnemyCap { get; set; } = 4;
+
+    public bool RandomizeAddedEnemies { get; set; } = false;
+    public bool EnsureBossesInBossEncounters { get; set; } = false;
+    public bool ReduceBossRepetition { get; set; } = false;
+    public bool TieDropsToEncounters { get; set; } = false; 
+
+    
+    public bool ChangeMerchantInventorySize { get; set; } = false;
+    public int MerchantInventorySizeMax { get; set; } = 20;
+    public int MerchantInventorySizeMin { get; set; } = 1;
+    
+    public bool ChangeMerchantInventoryQuantity { get; set; } = false;
+    public int MerchantInventoryQuantityMax { get; set; } = 20;
+    public int MerchantInventoryQuantityMin { get; set; } = 1;
+    
+    public bool ChangeMerchantInventoryLocked { get; set; } = false;
+    public int MerchantInventoryLockedChancePercent { get; set; } = 10;
+    
+    public bool ChangeNumberOfLootDrops { get; set; } = false;
+    public int LootDropsNumberMax { get; set; } = 5;
+    public int LootDropsNumberMin { get; set; } = 1;
+    
+    public bool ChangeQuantityOfLootDrops { get; set; } = false;
+    public int LootDropsQuantityMax { get; set; } = 5;
+    public int LootDropsQuantityMin { get; set; } = 1;
+    
+    public bool ChangeNumberOfTowerRewards { get; set; } = false;
+    public int TowerRewardsNumberMax { get; set; } = 5;
+    public int TowerRewardsNumberMin { get; set; } = 1;
+    
+    public bool ChangeQuantityOfTowerRewards { get; set; } = false;
+    public int TowerRewardsQuantityMax { get; set; } = 5;
+    public int TowerRewardsQuantityMin { get; set; } = 1;
+    
+    public bool ChangeNumberOfChestContents { get; set; } = false;
+    public int ChestContentsNumberMax { get; set; } = 5;
+    public int ChestContentsNumberMin { get; set; } = 1;
+    
+    public bool ChangeQuantityOfChestContents { get; set; } = false;
+    public int ChestContentsQuantityMax { get; set; } = 5;
+    public int ChestContentsQuantityMin { get; set; } = 1;
+    
+    public bool ChangeNumberOfActionRewards { get; set; } = false;
+    public int ActionRewardsNumberMax { get; set; } = 5;
+    public int ActionRewardsNumberMin { get; set; } = 1;
+    
+    public bool ChangeQuantityOfActionRewards { get; set; } = false;
+    public int ActionRewardsQuantityMax { get; set; } = 5;
+    public int ActionRewardsQuantityMin { get; set; } = 1;
+    
+    public bool MakeEveryItemVisible { get; set; } = true;
+    
+    public bool EnsurePaintedPowerFromPaintress { get; set; } = true;
+    public bool RandomizeStartingWeapons { get; set; } = false;
+    public bool RandomizeStartingCosmetics { get; set; } = false;
+    public bool RandomizeGestralBeachRewards { get; set; } = true;
+    
+    public event PropertyChangedEventHandler PropertyChanged;
+    protected virtual void OnPropertyChanged(string propertyName)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }

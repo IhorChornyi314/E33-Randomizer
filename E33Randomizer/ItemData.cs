@@ -19,7 +19,7 @@ public class ItemData: ObjectData
         CodeName = compositeTableEntryStruct.Name.ToString();
         CustomName = RandomizerLogic.ItemCustomNames.GetValueOrDefault(CodeName, CodeName);
         Type = CustomName.Split('(')[1].Split(')')[0];
-        IsBroken = Type == "Invalid";
+        IsBroken = RandomizerLogic.BrokenItems.Contains(CodeName);
     }
 
     public override string ToString()

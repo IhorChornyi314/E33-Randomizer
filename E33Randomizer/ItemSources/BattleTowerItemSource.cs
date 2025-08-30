@@ -26,7 +26,6 @@ public class BattleTowerItemSource: ItemSource
                 var quantity = (itemStruct.Value[1] as IntPropertyData).Value;
                 
                 items.Add(new ItemSourceParticle(itemData, quantity));
-                Items.Add(itemData);
             }
 
             var check = new CheckData
@@ -89,14 +88,17 @@ public class BattleTowerItemSource: ItemSource
 
     public override void Randomize()
     {
-        Items.Clear();
+        if (RandomizerLogic.Settings.ChangeNumberOfTowerRewards) RandomizeNumberOfItems(RandomizerLogic.Settings.TowerRewardsNumberMin, RandomizerLogic.Settings.TowerRewardsNumberMax + 1);
         foreach (var rewardData in SourceSections)
         {
             foreach (var item in rewardData.Value)
             {
                 var newItemName = RandomizerLogic.CustomItemPlacement.Replace(item.Item.CodeName);
                 item.Item = ItemsController.GetItemData(newItemName);
-                Items.Add(item.Item);
+                if (RandomizerLogic.Settings.ChangeQuantityOfTowerRewards)
+                {
+                    item.Quantity = RandomizerLogic.rand.Next(RandomizerLogic.Settings.TowerRewardsQuantityMin, RandomizerLogic.Settings.TowerRewardsQuantityMax + 1);
+                }
             }
         }
     }

@@ -27,13 +27,78 @@ public static class RandomizerLogic
     ];
     public static List<string> BrokenItems =
     [
-        
+        "MitigatedPerfection",
+        "Chroma",
+        "04_Key_Placeholder",
+        "Gold_Small",
+        "Gold_Medium",
+        "Gold_Big",
+        "Consumable_SkillPoint",
+        "VeilleurFoot",
+        "PetankFoot",
+        "NoireFoot",
+        "EvequeFoot",
+        "GrosseTeteFoot",
+        "RiskSeeker",
+        "LimonsolPictos",
+        "02_ArmPicto_Placeholder",
+        "AntiShock",
+        "NullPhysical",
+        "NullFire",
+        "NullIce",
+        "NullEarth",
+        "NullThunder",
+        "NullDark",
+        "NullLight",
+        "AbsorbPhysical",
+        "AbsorbFire",
+        "AbsorbIce",
+        "AbsorbEarth",
+        "AbsorbLight",
+        "AbsorbThunder",
+        "AbsorbDark",
+        "Speedster",
+        "Blitz",
+        "AngelGrace",
+        "AngelPresent",
+        "AngelicChance",
+        "RiskTaker",
+        "HighOnPerfect",
+        "FasterThanHisShadow",
+        "BrambleSkin",
+        "SpreadingBrambleSkin",
+        "BrambleParry",
+        "FastAttacker",
+        "ReviveBombFire",
+        "ReviveBombIce",
+        "ReviveBombThunder",
+        "ReviveBombEarth",
+        "ReviveWithPrecision",
+        "FireSkin",
+        "FrozenSkin",
+        "InvertedSkin",
+        "OverConfident",
+        "Fugitive",
+        "TurboKiller",
+        "FlashDodge",
+        "DeathBombFire",
+        "DeathBombFrozen",
+        "DeathBombThunder",
+        "DeathBombEarth",
+        "DeathBombLight",
+        "DeathBombDark",
+        "DeathBombVoid",
+        "PhysicalModifier",
+        "MakeItQuick",
+        "AutoPrecision",
+        "BramblePerformer"
     ];
     public static Usmap mappings;
     public static Dictionary<string, string> EnemyCustomNames = new ();
     public static Dictionary<string, string> ItemCustomNames = new ();
     public static CustomEnemyPlacement CustomEnemyPlacement = new ();
     public static CustomItemPlacement CustomItemPlacement = new ();
+    public static SettingsViewModel Settings = new ();
     
     public static Random rand;
     public static int usedSeed;
@@ -48,7 +113,7 @@ public static class RandomizerLogic
     public static void Init(string dataDirectory)
     {
         DataDirectory = dataDirectory;
-        usedSeed = Settings.Seed != -1 ? Settings.Seed : Environment.TickCount & Int32.MaxValue; 
+        usedSeed = Settings.Seed != -1 ? Settings.Seed : Environment.TickCount % 999999999; 
         rand = new Random(usedSeed);
     
         mappings = new Usmap($"{DataDirectory}/Mappings.usmap");
@@ -122,21 +187,28 @@ public static class RandomizerLogic
             ItemsController.WriteChecksTxt(exportPath + "checks.txt");
         }
 
-        if (Settings.TieDropsToEncounters)
+        // if (Settings.TieDropsToEncounters)
+        // {
+        //     EnemiesController.ClearEnemyDrops();
+        //     EncountersController.HandleLoot();
+        // }
+
+        if (Settings.RandomizeEnemies)
         {
-            EnemiesController.ClearEnemyDrops();
-            EncountersController.HandleLoot();
-        }
-        EncountersController.WriteEncounterAssets();
-        if (Settings.TieDropsToEncounters && !Settings.RandomizeItems)
-        {
-            EnemiesController.WriteAsset();
+            EncountersController.WriteEncounterAssets();
+            if (Settings.TieDropsToEncounters && !Settings.RandomizeItems)
+            {
+                EnemiesController.WriteAsset();
+            }
         }
 
         if (Settings.RandomizeItems)
         {
             ItemsController.WriteItemAssets();
-            ItemsController.WriteTableAsset();
+            if (Settings.MakeEveryItemVisible)
+            {
+                ItemsController.WriteTableAssets();
+            }
         }
         
         var repackArgs = $"pack randomizer \"{exportPath}randomizer_P.pak\"";
@@ -167,8 +239,8 @@ public static class RandomizerLogic
     {
         usedSeed = Settings.Seed != -1 ? Settings.Seed : Environment.TickCount; 
         rand = new Random(usedSeed);
-        EncountersController.GenerateNewEncounters();
-        ItemsController.GenerateNewItemChecks();
+        if (Settings.RandomizeEnemies) EncountersController.GenerateNewEncounters();
+        if (Settings.RandomizeItems) ItemsController.GenerateNewItemChecks();
         if (saveData)
             PackAndConvertData();
     }
@@ -191,59 +263,7 @@ public static class RandomizerLogic
         
         asset.FolderName = FString.FromString($"/Game/Gameplay/Inventory/Merchant/Merchants_ConditionsChecker/{newConditionalName}");
         
-        Directory.CreateDirectory("randomizer/Sandfall/Content/Gameplay/Inventory/Merchant/Merchants_ConditionsChecker");
-        asset.Write($"randomizer/Sandfall/Content/Gameplay/Inventory/Merchant/Merchants_ConditionsChecker/{newConditionalName}.uasset");
-    }
-
-    public static void AddMerchantWaresToAsset(UAsset asset, string newWareName, int newWareQuantity = 1, string conditionChecker = "")
-    {
-        var e = asset.Exports[0] as DataTableExport;
-        
-        var ccPath = $"/Game/Gameplay/Inventory/Merchant/Merchants_ConditionsChecker/{conditionChecker}";
-        
-        var dummyEntry = e.Table.Data[0].Clone() as StructPropertyData;
-        
-        (dummyEntry.Value[0] as NamePropertyData).FromString(new string[]{newWareName}, asset);
-        (dummyEntry.Value[3] as IntPropertyData).Value = newWareQuantity;
-        dummyEntry.Name = FName.FromString(asset, newWareName);
-        
-        if (conditionChecker != "")
-        {
-            var outerImport = new Import("/Script/CoreUObject", "Package", FPackageIndex.FromRawIndex(0), ccPath, false, asset);
-
-            var existingOuterImportIndex = FPackageIndex.FromRawIndex(asset.SearchForImport(outerImport.ObjectName));
-            
-            var index2 = existingOuterImportIndex.Index != 0 ? existingOuterImportIndex : asset.AddImport(outerImport);
-            var innerImport = new Import(asset.Imports[2].ClassPackage, asset.Imports[2].ClassName, index2, FName.FromString(asset, conditionChecker), asset.Imports[2].bImportOptional);
-            
-            var existingInnerImportIndex = FPackageIndex.FromRawIndex(asset.SearchForImport(innerImport.ObjectName));
-
-            var conditionImportIndex = existingInnerImportIndex.Index != 0 ? existingInnerImportIndex : asset.AddImport(innerImport);
-            (dummyEntry.Value[4] as ObjectPropertyData).Value = conditionImportIndex;
-        }
-         
-        e.Table.Data.Add(dummyEntry);
-    }
-
-    public static void AddJujubreeWares(UAsset asset)
-    {
-        // ConsumableUpgradeMaterial_Revive - Lampmaster?
-        var quest = "Main_GoldenPath99914_DefeatthePaintress";
-        GenerateConditionCheckerFile(quest);
-        AddMerchantWaresToAsset(asset, "OverPowered", conditionChecker: $"DA_ConditionChecker_Merchant_{quest}");
-        //AddMerchantWaresToAsset(asset, "Quest_MaellePainterSkillsUnlock", conditionChecker: $"DA_ConditionChecker_Merchant_{quest}");
-    }
-
-    public static void ProcessKeyItems()
-    {
-        var asset = new UAsset($"{DataDirectory}/Originals/DT_Merchant_GestralVillage1.uasset", EngineVersion.VER_UE5_4, mappings);
-        // if (Settings.EnableJujubreeToSellKeyItems)
-        // {
-        //     AddJujubreeWares(asset);
-        // }
-        Directory.CreateDirectory("randomizer/Sandfall/Content/Gameplay/Inventory/Merchant/Merchants_ConditionsChecker");
-        Directory.CreateDirectory("randomizer/Sandfall/Content/Gameplay/Inventory/Merchant/Merchants_Content_DT");
-        asset.Write("randomizer/Sandfall/Content/Gameplay/Inventory/Merchant/Merchants_Content_DT/DT_Merchant_GestralVillage1.uasset");
+        Utils.WriteAsset(asset);
     }
 
     public static void Test()

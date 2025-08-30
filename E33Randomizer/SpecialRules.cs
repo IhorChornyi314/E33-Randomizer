@@ -1,4 +1,6 @@
-﻿namespace E33Randomizer;
+﻿using E33Randomizer.ItemSources;
+
+namespace E33Randomizer;
 
 public static class SpecialRules
 {
@@ -13,6 +15,7 @@ public static class SpecialRules
     public static List<string> MandatoryEncounters =
     [
         "SM_Lancelier*1",
+        "SM_FirstLancelier*1",
         "SM_FirstLancelierNoTuto*1",
         "SM_FirstPortier*1",
         "SM_FirstPortier_NoTuto*1",
@@ -121,10 +124,9 @@ public static class SpecialRules
         }
     }
     
-    public static void ApplySpecialRules(Encounter encounter)
+    public static void ApplySpecialRulesToEncounter(Encounter encounter)
     {
-        if (MandatoryEncounters.Contains(encounter.Name) && MandatoryEncounters.IndexOf(encounter.Name) <
-            MandatoryEncounters.IndexOf(Settings.EarliestSimonP2Encounter))
+        if (RandomizerLogic.Settings.NoSimonP2BeforeLune && MandatoryEncounters.Contains(encounter.Name) && MandatoryEncounters.IndexOf(encounter.Name) < 5)
         {
             ApplySimonSpecialRule(encounter);
         }
@@ -139,12 +141,12 @@ public static class SpecialRules
             encounter.Enemies = [EnemiesController.GetEnemyData("MM_Danseuse_Clone")];
         }
         
-        // if (Settings.BossNumberCapped && !encounter.IsBossEncounter)
+        // if (RandomizerLogic.Settings.BossNumberCapped && !encounter.IsBossEncounter)
         // {
         //     CapNumberOfBosses(encounter);
         // }
 
-        if (Settings.EnsureBossesInBossEncounters && encounter.IsBossEncounter)
+        if (RandomizerLogic.Settings.EnsureBossesInBossEncounters && encounter.IsBossEncounter)
         {
             var numberOfBosses = encounter.Enemies.Count(e => e.IsBoss);
             if (numberOfBosses == 0)
@@ -153,7 +155,7 @@ public static class SpecialRules
             }
         }
 
-        if (Settings.ReduceBossRepetition)
+        if (RandomizerLogic.Settings.ReduceBossRepetition)
         {
             for (int i = 0; i < encounter.Size; i++)
             {
@@ -169,9 +171,30 @@ public static class SpecialRules
         }
     }
 
+    public static void ApplySpecialRulesToCheck(CheckData check)
+    {
+        if (RandomizerLogic.Settings.EnsurePaintedPowerFromPaintress &&
+            check.ItemSource.FileName == "DA_GA_SQT_RedAndWhiteTree")
+        {
+            check.ItemSource.AddItem("BP_GameAction_AddItemToInventory_C_0", ItemsController.GetItemData("OverPowered"));
+        }
+    }
+
+    public static bool Randomizable(ItemSource source)
+    {
+        if (!RandomizerLogic.Settings.RandomizeGestralBeachRewards &&
+            (source.FileName.Contains("GestralBeach") || source.FileName.Contains("GestralRace") ||
+             source.FileName.Contains("ValleyBall")))
+        {
+            return false;
+        }
+
+        return true;
+    }
+
     public static bool Randomizable(Encounter encounter)
     {
-        if (!Settings.RandomizeMerchantFights && encounter.Name.Contains("Merchant"))
+        if (!RandomizerLogic.Settings.RandomizeMerchantFights && encounter.Name.Contains("Merchant"))
         {
             return false;
         }

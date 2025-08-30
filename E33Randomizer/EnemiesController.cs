@@ -66,9 +66,7 @@ public static class EnemiesController
 
     public static void WriteAsset()
     {
-        var assetFolder = asset.FolderName.Value.Replace("/Game", "randomizer/Sandfall/Content").Replace("/DT_jRPG_Enemies", "");
-        Directory.CreateDirectory(assetFolder);
-        asset.Write($"{assetFolder}/DT_jRPG_Enemies.uasset");
+        Utils.WriteAsset(asset);
     }
 
     public static EnemyData GetEnemyData(string enemyCodeName)

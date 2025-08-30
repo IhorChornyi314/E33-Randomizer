@@ -62,9 +62,8 @@ public static class EncountersController
     public static void WriteEncounterAsset(string assetPath)
     {
         var asset = new UAsset(assetPath, EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
-        var assetFolder = asset.FolderName.Value.Replace("/Game", "randomizer/Sandfall/Content");
         PackEncounters(asset, Encounters);
-        asset.Write($"{assetFolder}.uasset");
+        Utils.WriteAsset(asset);
     }
 
     public static void WriteEncounterAssets()
@@ -103,7 +102,7 @@ public static class EncountersController
         SpecialRules.Reset();
         ReadEncounterAssets();
         RandomizerLogic.CustomEnemyPlacement.Update();
-        Encounters.ForEach(e => ModifyEncounter(e));
+        Encounters.ForEach(ModifyEncounter);
         UpdateViewModel();
     }
 
@@ -132,19 +131,24 @@ public static class EncountersController
         
         var oldEncounterSize = encounter.Size;
         
-        var newEncounterSize = !Settings.RandomizeEncounterSizes || Settings.PossibleEncounterSizes.Count == 0 ? oldEncounterSize :
-                Utils.Pick(Settings.PossibleEncounterSizes);
+        var possibleEncounterSizes = new List<int>();
+        if (RandomizerLogic.Settings.EncounterSizeOne) possibleEncounterSizes.Add(1);
+        if (RandomizerLogic.Settings.EncounterSizeTwo) possibleEncounterSizes.Add(2);
+        if (RandomizerLogic.Settings.EncounterSizeThree) possibleEncounterSizes.Add(3);
+        
+        var newEncounterSize = !RandomizerLogic.Settings.RandomizeEncounterSizes || possibleEncounterSizes.Count == 0 ? oldEncounterSize :
+                Utils.Pick(possibleEncounterSizes);
 
-        if (!Settings.ChangeSizeOfNonRandomizedEncounters)
+        if (!RandomizerLogic.Settings.ChangeSizeOfNonRandomizedEncounters)
         {
             var encounterRandomized = encounter.Enemies.Any(e => !RandomizerLogic.CustomEnemyPlacement.NotRandomizedCodeNames.Contains(e.CodeName));
             newEncounterSize = encounterRandomized ? newEncounterSize : oldEncounterSize;
         }
         
-        if (Settings.EnableEnemyOnslaught)
+        if (RandomizerLogic.Settings.EnableEnemyOnslaught)
         {
-            newEncounterSize += Settings.EnemyOnslaughtAdditionalEnemies;
-            newEncounterSize = int.Min(newEncounterSize, Settings.EnemyOnslaughtEnemyCap);
+            newEncounterSize += RandomizerLogic.Settings.EnemyOnslaughtAdditionalEnemies;
+            newEncounterSize = int.Min(newEncounterSize, RandomizerLogic.Settings.EnemyOnslaughtEnemyCap);
         }
 
         if (newEncounterSize < encounter.Size)
@@ -162,7 +166,7 @@ public static class EncountersController
             }
             else
             {
-                if (i == 0 || Settings.RandomizeAddedEnemies || !Settings.EnableEnemyOnslaught)
+                if (i == 0 || RandomizerLogic.Settings.RandomizeAddedEnemies || !RandomizerLogic.Settings.EnableEnemyOnslaught)
                 {
                     var newBaseEnemy = oldEncounterSize == 0 ? RandomizerLogic.GetRandomEnemy() : encounter.Enemies[i - int.Max(oldEncounterSize, 1)];
                     var newEnemyCodeName = RandomizerLogic.CustomEnemyPlacement.Replace(newBaseEnemy.CodeName);
@@ -175,7 +179,7 @@ public static class EncountersController
             }
         }
         
-        SpecialRules.ApplySpecialRules(encounter);
+        SpecialRules.ApplySpecialRulesToEncounter(encounter);
     }
 
     public static void PackEncounters(UAsset asset, List<Encounter> encounters)

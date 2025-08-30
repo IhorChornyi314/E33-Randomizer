@@ -11,7 +11,7 @@ public class CustomItemPlacement: CustomPlacement
         CatchAllName = "Anything";
         CategoryOrder = new List<string>
         {
-            "Pictos", "Non-functional", "Weapon", "Key Item", "Skill Unlock", "Cosmetic", "Upgrade Material", "Consumable", "Merchant Unlock", "Music Record", "Lovely Foot", "Journal", "Cut Content", "Anything"
+            "Pictos", "Weapon", "Key Item", "Skill Unlock", "Cosmetic", "Upgrade Material", "Consumable", "Merchant Unlock", "Music Record", "Lovely Foot", "Journal", "Cut Content", "Anything"
         };
         
         using (StreamReader r = new StreamReader($"{RandomizerLogic.DataDirectory}/item_categories.json"))
@@ -59,7 +59,6 @@ public class CustomItemPlacement: CustomPlacement
     {
         AddNotRandomized("Skill Unlock");
         AddNotRandomized("Merchant Unlock");
-        AddExcluded("Non-functional");
         AddExcluded("Consumable");
         CustomPlacementRules = new Dictionary<string, Dictionary<string, float>>
         {

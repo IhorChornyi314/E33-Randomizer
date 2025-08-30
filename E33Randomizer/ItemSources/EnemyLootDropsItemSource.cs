@@ -10,11 +10,29 @@ namespace E33Randomizer.ItemSources;
 public class EnemyLootDropsItemSource: ItemSource
 {
     private Dictionary<string, int> _enemyLevelOffsets = new();
+    private StructPropertyData _dummyDropStruct = null;
+    private ObjectPropertyData _compositeTableReference = null;
+    
     public override void LoadFromAsset(UAsset asset)
     {
         HasItemQuantities = true;
         base.LoadFromAsset(asset);
         var tableData = (asset.Exports[0] as DataTableExport).Table.Data;
+        
+        foreach (var enemyData in tableData)
+        {
+            if ((enemyData.Value[10] as ArrayPropertyData).Value.Length > 0)
+            {
+                _dummyDropStruct = (enemyData.Value[10] as ArrayPropertyData).Value[0].Clone() as StructPropertyData;
+                _compositeTableReference = (_dummyDropStruct.Value[0] as StructPropertyData).Value[0].Clone() as ObjectPropertyData;
+            }
+
+            if (_dummyDropStruct != null)
+            {
+                break;
+            } 
+        }
+        
         foreach (var enemyData in tableData)
         {
             var enemyName = enemyData.Name.ToString();
@@ -27,7 +45,6 @@ public class EnemyLootDropsItemSource: ItemSource
                 var dropChance = (itemStruct.Value[2] as DoublePropertyData).Value;
                 
                 drops.Add(new ItemSourceParticle(itemData, quantity, dropChance));
-                Items.Add(itemData);
                 _enemyLevelOffsets[enemyName] = (itemStruct.Value[3] as IntPropertyData).Value;
             }
             SourceSections[enemyName] = drops;
@@ -48,21 +65,6 @@ public class EnemyLootDropsItemSource: ItemSource
     public override UAsset SaveToAsset()
     {
         var tableData = (_asset.Exports[0] as DataTableExport).Table.Data;
-        StructPropertyData dummyDropStruct = null;
-        ObjectPropertyData compositeTableReference = null;
-        foreach (var enemyData in tableData)
-        {
-            if ((enemyData.Value[10] as ArrayPropertyData).Value.Length > 0)
-            {
-                dummyDropStruct = (enemyData.Value[10] as ArrayPropertyData).Value[0].Clone() as StructPropertyData;
-                compositeTableReference = (dummyDropStruct.Value[0] as StructPropertyData).Value[0].Clone() as ObjectPropertyData;
-            }
-
-            if (dummyDropStruct != null)
-            {
-                break;
-            } 
-        }
         
         foreach (var enemyData in tableData)
         {
@@ -73,14 +75,14 @@ public class EnemyLootDropsItemSource: ItemSource
             foreach (var drop in enemyDrops)
             {
                 _asset.AddNameReference(FString.FromString(drop.Item.CodeName));
-                var newDropStruct = dummyDropStruct.Clone() as StructPropertyData;
+                var newDropStruct = _dummyDropStruct.Clone() as StructPropertyData;
                 var newItemStruct = newDropStruct.Value[0].Clone() as StructPropertyData;
 
-                newItemStruct.Value[0] = compositeTableReference;
+                newItemStruct.Value[0] = _compositeTableReference;
                 (newItemStruct.Value[1] as NamePropertyData).Value = FName.FromString(_asset, drop.Item.CodeName);
                 
                 newDropStruct.Value[0] = newItemStruct;
-                (newDropStruct.Value[1] as IntPropertyData).Value = drop.Quantity;
+                (newDropStruct.Value[1] as IntPropertyData).Value = Math.Max(drop.Quantity, 1);
                 (newDropStruct.Value[2] as DoublePropertyData).Value = drop.LootDropChance;
                 (newDropStruct.Value[3] as IntPropertyData).Value = _enemyLevelOffsets.GetValueOrDefault(enemyName, 0);
                 newDrops.Add(newDropStruct);
@@ -92,14 +94,17 @@ public class EnemyLootDropsItemSource: ItemSource
     
     public override void Randomize()
     {
-        Items.Clear();
+        if (RandomizerLogic.Settings.ChangeNumberOfLootDrops) RandomizeNumberOfItems(RandomizerLogic.Settings.LootDropsNumberMin, RandomizerLogic.Settings.LootDropsNumberMax + 1);
         foreach (var dropsData in SourceSections)
         {
             foreach (var item in dropsData.Value)
             {
                 var newItemName = RandomizerLogic.CustomItemPlacement.Replace(item.Item.CodeName);
                 item.Item = ItemsController.GetItemData(newItemName);
-                Items.Add(item.Item);
+                if (RandomizerLogic.Settings.ChangeQuantityOfLootDrops)
+                {
+                    item.Quantity = RandomizerLogic.rand.Next(RandomizerLogic.Settings.LootDropsQuantityMin, RandomizerLogic.Settings.LootDropsQuantityMax + 1);
+                }
             }
         }
     }

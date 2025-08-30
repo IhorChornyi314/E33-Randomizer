@@ -9,7 +9,18 @@ namespace E33Randomizer.ItemSources;
 public class GenericItemSource: ItemSource
 {
     private static List<string> _questRequirementItems = ["Quest_Resin", "Quest_WoodBoards", "LostGestral", "Quest_Mine", "FestivalToken", "Quest_UniformForSon", "Quest_HexgaRock"];
+
+    private static Dictionary<string, string> _musicRecords = new()
+    {
+        { "BP_Dialog_FacelessBoy_OrangeForest", "MusicRecord_9" },
+        { "BP_Dialogue_LUAct1_Mime", "MusicRecord_2" },
+        { "BP_Dialogue_LuneCamp_Quest_6", "MusicRecord_5" },
+        { "BP_Dialogue_ScielCamp_Quest_6", "MusicRecord_6" },
+        { "BP_Dialogue_MonocoCamp_Quest_6", "MusicRecord_7" }
+    };
+    
     private List<int> _originalNameReferenceIndexes = [];
+    
     
     public override void LoadFromAsset(UAsset asset)
     {
@@ -19,15 +30,18 @@ public class GenericItemSource: ItemSource
 
         for (int i = 0; i < _asset.GetNameMapIndexList().Count; i++)
         {
-            var name = _asset.GetNameMapIndexList()[i];
-            if (_questRequirementItems.Contains(name.ToString()))
+            var name = _asset.GetNameMapIndexList()[i].ToString();
+            if (name == "MusicRecord")
+            {
+                name = _musicRecords.GetValueOrDefault(FileName, name);
+            }
+            if (_questRequirementItems.Contains(name))
             {
                 continue;
             }
-            if (ItemsController.IsItem(name.ToString()))
+            if (ItemsController.IsItem(name))
             {
-                var newItem = ItemsController.GetItemData(name.ToString());
-                Items.Add(newItem);
+                var newItem = ItemsController.GetItemData(name);
                 _originalNameReferenceIndexes.Add(i);
                 SourceSections[FileName].Add(new ItemSourceParticle(newItem));
             }
@@ -57,13 +71,11 @@ public class GenericItemSource: ItemSource
     
     public override void Randomize()
     {
-        Items.Clear();
         foreach (var itemSourceParticle in SourceSections[FileName])
         {
             var oldItem = itemSourceParticle.Item;
             var newItem = ItemsController.GetItemData(RandomizerLogic.CustomItemPlacement.Replace(oldItem.CodeName));
             itemSourceParticle.Item = newItem;
-            Items.Add(newItem);
         }
     }
 }

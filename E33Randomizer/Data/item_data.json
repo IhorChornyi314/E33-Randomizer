@@ -25,7 +25,7 @@
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "RiskSeeker (Pictos)",
+    "CustomName": "RiskSeeker (Broken Pictos)",
     "CodeName": "RiskSeeker",
     "ItemType": "Pictos"
   },
@@ -105,12 +105,12 @@
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "MitigatedPerfection (Non-functional)",
+    "CustomName": "MitigatedPerfection (Broken Weapon)",
     "CodeName": "MitigatedPerfection",
     "ItemType": "Weapon"
   },
   {
-    "CustomName": "LimonsolPictos (Pictos)",
+    "CustomName": "LimonsolPictos (Broken Pictos)",
     "CodeName": "LimonsolPictos",
     "ItemType": "Pictos"
   },
@@ -145,7 +145,7 @@
     "ItemType": "Weapon"
   },
   {
-    "CustomName": "02_ArmPicto_Placeholder (Pictos)",
+    "CustomName": "02_ArmPicto_Placeholder (Broken Pictos)",
     "CodeName": "02_ArmPicto_Placeholder",
     "ItemType": "Pictos"
   },
@@ -215,7 +215,7 @@
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "AntiShock (Pictos)",
+    "CustomName": "AntiShock (Broken Pictos)",
     "CodeName": "AntiShock",
     "ItemType": "Pictos"
   },
@@ -260,97 +260,97 @@
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "NullPhysical (Pictos)",
+    "CustomName": "NullPhysical (Broken Pictos)",
     "CodeName": "NullPhysical",
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "NullFire (Pictos)",
+    "CustomName": "NullFire (Broken Pictos)",
     "CodeName": "NullFire",
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "NullIce (Pictos)",
+    "CustomName": "NullIce (Broken Pictos)",
     "CodeName": "NullIce",
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "NullEarth (Pictos)",
+    "CustomName": "NullEarth (Broken Pictos)",
     "CodeName": "NullEarth",
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "NullThunder (Pictos)",
+    "CustomName": "NullThunder (Broken Pictos)",
     "CodeName": "NullThunder",
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "NullDark (Pictos)",
+    "CustomName": "NullDark (Broken Pictos)",
     "CodeName": "NullDark",
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "NullLight (Pictos)",
+    "CustomName": "NullLight (Broken Pictos)",
     "CodeName": "NullLight",
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "AbsorbPhysical (Pictos)",
+    "CustomName": "AbsorbPhysical (Broken Pictos)",
     "CodeName": "AbsorbPhysical",
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "AbsorbFire (Pictos)",
+    "CustomName": "AbsorbFire (Broken Pictos)",
     "CodeName": "AbsorbFire",
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "AbsorbIce (Pictos)",
+    "CustomName": "AbsorbIce (Broken Pictos)",
     "CodeName": "AbsorbIce",
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "AbsorbEarth (Pictos)",
+    "CustomName": "AbsorbEarth (Broken Pictos)",
     "CodeName": "AbsorbEarth",
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "AbsorbLight (Pictos)",
+    "CustomName": "AbsorbLight (Broken Pictos)",
     "CodeName": "AbsorbLight",
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "AbsorbThunder (Pictos)",
+    "CustomName": "AbsorbThunder (Broken Pictos)",
     "CodeName": "AbsorbThunder",
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "AbsorbDark (Pictos)",
+    "CustomName": "AbsorbDark (Broken Pictos)",
     "CodeName": "AbsorbDark",
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "Speedster (Pictos)",
+    "CustomName": "Speedster (Broken Pictos)",
     "CodeName": "Speedster",
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "Blitz (Pictos)",
+    "CustomName": "Blitz (Broken Pictos)",
     "CodeName": "Blitz",
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "AngelGrace (Pictos)",
+    "CustomName": "AngelGrace (Broken Pictos)",
     "CodeName": "AngelGrace",
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "AngelPresent (Pictos)",
+    "CustomName": "AngelPresent (Broken Pictos)",
     "CodeName": "AngelPresent",
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "AngelicChance (Pictos)",
+    "CustomName": "AngelicChance (Broken Pictos)",
     "CodeName": "AngelicChance",
     "ItemType": "Pictos"
   },
@@ -365,7 +365,7 @@
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "RiskTaker (Pictos)",
+    "CustomName": "RiskTaker (Broken Pictos)",
     "CodeName": "RiskTaker",
     "ItemType": "Pictos"
   },
@@ -425,27 +425,27 @@
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "HighOnPerfect (Pictos)",
+    "CustomName": "HighOnPerfect (Broken Pictos)",
     "CodeName": "HighOnPerfect",
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "FasterThanHisShadow (Pictos)",
+    "CustomName": "FasterThanHisShadow (Broken Pictos)",
     "CodeName": "FasterThanHisShadow",
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "Bramble Skin (Pictos)",
+    "CustomName": "Bramble Skin (Broken Pictos)",
     "CodeName": "BrambleSkin",
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "SpreadingBrambleSkin (Pictos)",
+    "CustomName": "SpreadingBrambleSkin (Broken Pictos)",
     "CodeName": "SpreadingBrambleSkin",
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "BrambleParry (Pictos)",
+    "CustomName": "BrambleParry (Broken Pictos)",
     "CodeName": "BrambleParry",
     "ItemType": "Pictos"
   },
@@ -455,27 +455,27 @@
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "FastAttacker (Pictos)",
+    "CustomName": "FastAttacker (Broken Pictos)",
     "CodeName": "FastAttacker",
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "ReviveBombFire (Pictos)",
+    "CustomName": "ReviveBombFire (Broken Pictos)",
     "CodeName": "ReviveBombFire",
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "ReviveBombIce (Pictos)",
+    "CustomName": "ReviveBombIce (Broken Pictos)",
     "CodeName": "ReviveBombIce",
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "ReviveBombThunder (Pictos)",
+    "CustomName": "ReviveBombThunder (Broken Pictos)",
     "CodeName": "ReviveBombThunder",
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "ReviveBombEarth (Pictos)",
+    "CustomName": "ReviveBombEarth (Broken Pictos)",
     "CodeName": "ReviveBombEarth",
     "ItemType": "Pictos"
   },
@@ -495,7 +495,7 @@
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "ReviveWithPrecision (Pictos)",
+    "CustomName": "ReviveWithPrecision (Broken Pictos)",
     "CodeName": "ReviveWithPrecision",
     "ItemType": "Pictos"
   },
@@ -510,27 +510,27 @@
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "FireSkin (Pictos)",
+    "CustomName": "FireSkin (Broken Pictos)",
     "CodeName": "FireSkin",
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "FrozenSkin (Pictos)",
+    "CustomName": "FrozenSkin (Broken Pictos)",
     "CodeName": "FrozenSkin",
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "InvertedSkin (Pictos)",
+    "CustomName": "InvertedSkin (Broken Pictos)",
     "CodeName": "InvertedSkin",
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "OverConfident (Pictos)",
+    "CustomName": "OverConfident (Broken Pictos)",
     "CodeName": "OverConfident",
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "Fugitive (Pictos)",
+    "CustomName": "Fugitive (Broken Pictos)",
     "CodeName": "Fugitive",
     "ItemType": "Pictos"
   },
@@ -550,7 +550,7 @@
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "TurboKiller (Pictos)",
+    "CustomName": "TurboKiller (Broken Pictos)",
     "CodeName": "TurboKiller",
     "ItemType": "Pictos"
   },
@@ -615,7 +615,7 @@
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "FlashDodge (Pictos)",
+    "CustomName": "FlashDodge (Broken Pictos)",
     "CodeName": "FlashDodge",
     "ItemType": "Pictos"
   },
@@ -635,37 +635,37 @@
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "DeathBombFire (Pictos)",
+    "CustomName": "DeathBombFire (Broken Pictos)",
     "CodeName": "DeathBombFire",
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "DeathBombFrozen (Pictos)",
+    "CustomName": "DeathBombFrozen (Broken Pictos)",
     "CodeName": "DeathBombFrozen",
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "DeathBombThunder (Pictos)",
+    "CustomName": "DeathBombThunder (Broken Pictos)",
     "CodeName": "DeathBombThunder",
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "DeathBombEarth (Pictos)",
+    "CustomName": "DeathBombEarth (Broken Pictos)",
     "CodeName": "DeathBombEarth",
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "DeathBombLight (Pictos)",
+    "CustomName": "DeathBombLight (Broken Pictos)",
     "CodeName": "DeathBombLight",
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "DeathBombDark (Pictos)",
+    "CustomName": "DeathBombDark (Broken Pictos)",
     "CodeName": "DeathBombDark",
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "DeathBombVoid (Pictos)",
+    "CustomName": "DeathBombVoid (Broken Pictos)",
     "CodeName": "DeathBombVoid",
     "ItemType": "Pictos"
   },
@@ -710,7 +710,7 @@
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "PhysicalModifier (Pictos)",
+    "CustomName": "PhysicalModifier (Broken Pictos)",
     "CodeName": "PhysicalModifier",
     "ItemType": "Pictos"
   },
@@ -740,7 +740,7 @@
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "MakeItQuick (Pictos)",
+    "CustomName": "MakeItQuick (Broken Pictos)",
     "CodeName": "MakeItQuick",
     "ItemType": "Pictos"
   },
@@ -1020,7 +1020,7 @@
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "AutoPrecision (Pictos)",
+    "CustomName": "AutoPrecision (Broken Pictos)",
     "CodeName": "AutoPrecision",
     "ItemType": "Pictos"
   },
@@ -1050,7 +1050,7 @@
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "Chroma (Non-functional)",
+    "CustomName": "Chroma (Broken Item)",
     "CodeName": "Chroma",
     "ItemType": "Gold"
   },
@@ -1060,7 +1060,7 @@
     "ItemType": "Pictos"
   },
   {
-    "CustomName": "BramblePerformer (Pictos)",
+    "CustomName": "BramblePerformer (Broken Pictos)",
     "CodeName": "BramblePerformer",
     "ItemType": "Pictos"
   },
@@ -1110,7 +1110,7 @@
     "ItemType": "Weapon"
   },
   {
-    "CustomName": "04_Key_Placeholder (Non-functional)",
+    "CustomName": "04_Key_Placeholder (Broken Key)",
     "CodeName": "04_Key_Placeholder",
     "ItemType": "Key"
   },
@@ -1315,17 +1315,17 @@
     "ItemType": "Weapon"
   },
   {
-    "CustomName": "Gold_Small (Non-functional)",
+    "CustomName": "Gold_Small (Broken Item)",
     "CodeName": "Gold_Small",
     "ItemType": "Gold"
   },
   {
-    "CustomName": "Gold_Medium (Non-functional)",
+    "CustomName": "Gold_Medium (Broken Item)",
     "CodeName": "Gold_Medium",
     "ItemType": "Gold"
   },
   {
-    "CustomName": "Gold_Big (Non-functional)",
+    "CustomName": "Gold_Big (Broken Item)",
     "CodeName": "Gold_Big",
     "ItemType": "Gold"
   },

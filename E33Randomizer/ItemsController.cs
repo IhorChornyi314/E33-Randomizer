@@ -22,8 +22,9 @@ public static class ItemsController
 
     public static Dictionary<string, List<CheckData>> CheckTypes = new();
     
-    private static UAsset asset;
+    private static UAsset _compositeTableAsset;
     private static UDataTable itemsCompositeTable;
+    private static Dictionary<string, UAsset> _itemsDataTables = new();
 
     public static ItemData GetRandomItem()
     {
@@ -114,19 +115,12 @@ public static class ItemsController
         foreach(string fileName in fileEntries)
             ProcessFile(fileName);
         UpdateViewModel();
-        // foreach (var itemData in ItemsData)
-        // {
-        //     if (itemData.Type != "Lovely Foot" && itemData.Type != "Journal" && itemData.Type != "Pictos" && !AccountedItemsData.Contains(itemData))
-        //     {
-        //         Console.WriteLine(itemData);
-        //     }
-        // }
     }
 
-    public static void ReadTableAsset(string assetPath)
+    public static void ReadCompositeTableAsset(string assetPath)
     {
-        asset = new UAsset(assetPath, EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
-        itemsCompositeTable = (asset.Exports[0] as DataTableExport).Table;
+        _compositeTableAsset = new UAsset(assetPath, EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+        itemsCompositeTable = (_compositeTableAsset.Exports[0] as DataTableExport).Table;
 
         foreach (StructPropertyData itemData in itemsCompositeTable.Data)
         {
@@ -141,32 +135,55 @@ public static class ItemsController
         ItemCodeNames = ItemsData.Select(e => e.CodeName).ToList();
     }
 
-    public static void WriteTableAsset()
+    public static void ReadOtherTableAsset(string assetPath)
     {
-        var filePath = asset.FolderName.Value.Replace("/Game/", "randomizer/Sandfall/Content/") + ".uasset";
-        string? directoryPath = Path.GetDirectoryName(filePath);
+        var tableAsset = new UAsset(assetPath, EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
 
-        if (!string.IsNullOrEmpty(directoryPath))
+        _itemsDataTables[tableAsset.FolderName.ToString().Split('/').Last()] = tableAsset;
+        
+        foreach (StructPropertyData itemData in (tableAsset.Exports[0] as DataTableExport).Table.Data)
         {
-            Directory.CreateDirectory(directoryPath);
+            (itemData.Value[18] as BoolPropertyData).Value = false;
+            (itemData.Value[19] as BoolPropertyData).Value = false;
         }
-        asset.Write(filePath);
+    }
+    
+    public static void ReadTableAssets(string tablesDirectory)
+    {
+        if(!Directory.Exists(tablesDirectory))
+        {
+            throw new DirectoryNotFoundException("ItemTables directory not found");
+        }
+        var fileEntries = new List<string> (Directory.GetFiles(tablesDirectory));
+        fileEntries = fileEntries.Where(x => Path.GetExtension(x) == ".uasset").ToList();
+        foreach (var fileEntry in fileEntries)
+        {
+            if (fileEntry.Contains("DT_jRPG_Items_Composite"))
+            {
+                ReadCompositeTableAsset(fileEntry);
+                continue;
+            }
+            ReadOtherTableAsset(fileEntry);
+        }
+    }
+
+    public static void WriteTableAssets()
+    {
+        foreach (var tableAsset in _itemsDataTables.Values)
+        {
+            Utils.WriteAsset(tableAsset);
+        }
+        Utils.WriteAsset(_compositeTableAsset);
     }
 
     public static void WriteItemAssets()
     {
         ApplyViewModel();
+        RandomizeStartingEquipment();
         foreach (var itemsSource in ItemsSources)
         {
             var itemsSourceAsset = itemsSource.SaveToAsset();
-            var filePath = itemsSourceAsset.FolderName.Value.Replace("/Game/", "randomizer/Sandfall/Content/") + ".uasset";
-            string? directoryPath = Path.GetDirectoryName(filePath);
-
-            if (!string.IsNullOrEmpty(directoryPath))
-            {
-                Directory.CreateDirectory(directoryPath);
-            }
-            itemsSourceAsset.Write(filePath);
+            Utils.WriteAsset(itemsSourceAsset);
         }
     }
 
@@ -175,7 +192,9 @@ public static class ItemsController
         SpecialRules.Reset();
         BuildItemSources($"{RandomizerLogic.DataDirectory}/ItemData");
         RandomizerLogic.CustomItemPlacement.Update();
-        ItemsSources.ForEach(i => i.Randomize());
+        var randomizableSources = ItemsSources.Where(SpecialRules.Randomizable).ToList();
+        randomizableSources.ForEach(i => i.Randomize());
+        ItemsSources.ForEach(i => i.Checks.ForEach(SpecialRules.ApplySpecialRulesToCheck));
         UpdateViewModel();
     }
 
@@ -208,10 +227,55 @@ public static class ItemsController
 
     public static void Init()
     {
-        ReadTableAsset($"{RandomizerLogic.DataDirectory}/Originals/DT_jRPG_Items_Composite.uasset");
+        ReadTableAssets($"{RandomizerLogic.DataDirectory}/Originals/ItemTables");
         BuildItemSources($"{RandomizerLogic.DataDirectory}/ItemData");
         ViewModel.ContainerName = "Check";
         ViewModel.ObjectName = "Item";
+    }
+
+    public static void RandomizeStartingEquipment()
+    {
+        if (RandomizerLogic.Settings.RandomizeStartingWeapons)
+        {
+            Dictionary<string, string> startingWeapons = new()
+            {
+                {"Noahram", "Gustave"},
+                {"Maellum", "Maelle" },
+                {"Lunerim", "Lune" },
+                {"Scieleson", "Sciel" },
+                {"Monocaro", "Monoco" },
+                {"Verleso", "Verso" }
+            };
+            var tableAsset = new UAsset($"{RandomizerLogic.DataDirectory}/Originals/StartingInfoTables/DT_jRPG_CharacterSaveStates.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+            var tableNames = tableAsset.GetNameMapIndexList();
+            for (int i = 0; i < tableNames.Count; i++)
+            {
+                var nameString = tableNames[i].ToString();
+                if (startingWeapons.TryGetValue(nameString, out var characterName))
+                {
+                    var characterWeapons = ItemsData.Where(i => i.CustomName.Contains($"{characterName} Weapon") && !i.CustomName.Contains("Baguette")).ToList();
+                    var randomWeapon = Utils.Pick(characterWeapons);
+                    
+                    tableAsset.SetNameReference(i, FString.FromString(randomWeapon.CodeName));
+                }
+            }
+            Utils.WriteAsset(tableAsset);
+        }
+        if (RandomizerLogic.Settings.RandomizeStartingCosmetics)
+        {
+            var tableAsset = new UAsset($"{RandomizerLogic.DataDirectory}/Originals/StartingInfoTables/DT_jRPG_CharacterDefinitions.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+            var tableNames = tableAsset.GetNameMapIndexList();
+            for (int i = 0; i < tableNames.Count; i++)
+            {
+                var nameString = tableNames[i].ToString();
+                if (!nameString.Contains("Face") && !nameString.Contains("Skin")) continue;
+                var cosmeticCategory = nameString.Split('_')[0];
+                var characterCosmetic = ItemsData.Where(i => i.CodeName.Contains(cosmeticCategory)).ToList();
+                var randomCosmetic = Utils.Pick(characterCosmetic);
+                tableAsset.SetNameReference(i, FString.FromString(randomCosmetic.CodeName));
+            }
+            Utils.WriteAsset(tableAsset);
+        }
     }
     
     public static void AddItemToCheck(string itemCodeName, string checkViewModelCodeName)
@@ -280,7 +344,7 @@ public static class ItemsController
             {
                 var newContainer = new ContainerViewModel($"{check.ItemSource.FileName}#{check.Key}", check.CustomName);
                 var itemSource = check.ItemSource;
-                var items = check.IsPartialCheck ? itemSource.GetCheckItems(check.CodeName) : itemSource.Items;
+                var items = itemSource.GetCheckItems(check.Key);
                 newContainer.Objects = new ObservableCollection<ObjectViewModel>(items.Select(i => new ObjectViewModel(i)));
 
                 for (int i = 0; i < newContainer.Objects.Count; i++)
