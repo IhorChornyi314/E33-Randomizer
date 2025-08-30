@@ -25,6 +25,7 @@ public static class ItemsController
     private static UAsset _compositeTableAsset;
     private static UDataTable itemsCompositeTable;
     private static Dictionary<string, UAsset> _itemsDataTables = new();
+    private static string _cleanSnapshot;
 
     public static ItemData GetRandomItem()
     {
@@ -90,7 +91,6 @@ public static class ItemsController
         }
         newSource.LoadFromAsset(asset);
         ItemsSources.Add(newSource);
-
         if (!CheckTypes.ContainsKey(checkType))
         {
             CheckTypes[checkType] = [];
@@ -143,6 +143,8 @@ public static class ItemsController
         
         foreach (StructPropertyData itemData in (tableAsset.Exports[0] as DataTableExport).Table.Data)
         {
+            var itemName = itemData.Name.ToString();
+            if (itemName.Contains("Consumable_") || itemName == "PartyHealConsumable") continue;
             (itemData.Value[18] as BoolPropertyData).Value = false;
             (itemData.Value[19] as BoolPropertyData).Value = false;
         }
@@ -190,7 +192,7 @@ public static class ItemsController
     public static void GenerateNewItemChecks()
     {
         SpecialRules.Reset();
-        BuildItemSources($"{RandomizerLogic.DataDirectory}/ItemData");
+        Reset();
         RandomizerLogic.CustomItemPlacement.Update();
         var randomizableSources = ItemsSources.Where(SpecialRules.Randomizable).ToList();
         randomizableSources.ForEach(i => i.Randomize());
@@ -198,10 +200,11 @@ public static class ItemsController
         UpdateViewModel();
     }
 
-    public static void ReadChecksTxt(string fileName)
+    public static void InitFromTxt(string text)
     {
-        foreach (var line in File.ReadLines(fileName, Encoding.UTF8))
+        foreach (var line in text.Split('\n'))
         {
+            if (line == "") continue;
             var itemSourceName = line.Split('#')[0];
             var sectionKey = line.Split('#')[1].Split('|')[0];
             var particles = line.Contains(":") ? line.Split('|')[1].Split(',').Select(ItemSourceParticle.FromString).ToList() : [];
@@ -211,7 +214,12 @@ public static class ItemsController
         UpdateViewModel();
     }
     
-    public static void WriteChecksTxt(string fileName)
+    public static void ReadChecksTxt(string fileName)
+    {
+        InitFromTxt(File.ReadAllText(fileName));
+    }
+
+    public static string ConvertToTxt()
     {
         ApplyViewModel();
         var result = "";
@@ -222,6 +230,12 @@ public static class ItemsController
                 result += $"{itemsSource.FileName}#{section.Key}|" + string.Join(',', section.Value) + "\n";
             }
         }
+        return result;
+    }
+    
+    public static void WriteChecksTxt(string fileName)
+    {
+        var result = ConvertToTxt();
         File.WriteAllText(fileName, result, Encoding.UTF8);
     }
 
@@ -231,6 +245,12 @@ public static class ItemsController
         BuildItemSources($"{RandomizerLogic.DataDirectory}/ItemData");
         ViewModel.ContainerName = "Check";
         ViewModel.ObjectName = "Item";
+        _cleanSnapshot = ConvertToTxt();
+    }
+
+    public static void Reset()
+    {
+        InitFromTxt(_cleanSnapshot);
     }
 
     public static void RandomizeStartingEquipment()
@@ -317,7 +337,7 @@ public static class ItemsController
                 {
                     var itemViewModel = checkItemViewModels[i];
                     itemSource.SourceSections[check.Key][i].Item = GetItemData(itemViewModel.CodeName);
-                    itemSource.SourceSections[check.Key][i].Quantity = itemViewModel.ItemQuantity;
+                    itemSource.SourceSections[check.Key][i].Quantity = Math.Abs(itemViewModel.ItemQuantity);
                     itemSource.SourceSections[check.Key][i].MerchantInventoryLocked = itemViewModel.MerchantInventoryLocked;
                 }
             }
@@ -328,6 +348,7 @@ public static class ItemsController
     {
         ViewModel.FilteredCategories.Clear();
         ViewModel.Categories.Clear();
+        var allObjects = ItemsData.Select(i => i as ObjectData).ToList();
         
         if (ViewModel.AllObjects.Count == 0)
         {
@@ -352,13 +373,19 @@ public static class ItemsController
                     newContainer.Objects[i].Index = i;
                     if (itemSource.HasItemQuantities)
                     {
-                        newContainer.Objects[i].ItemQuantity = itemSource.GetItemQuantity(check.Key, i);
+                        var itemParticle = itemSource.SourceSections[check.Key][i];
+                        newContainer.Objects[i].ItemQuantity = itemParticle.Item.Type == "Upgrade Material" ? itemParticle.Quantity : -1;
                     }
                     if (checkCategory.Key == "Merchant inventories")
                     {
                         newContainer.Objects[i].IsMerchantInventory = true;
                         newContainer.Objects[i].MerchantInventoryLocked =
                             itemSource.SourceSections[check.Key][i].MerchantInventoryLocked;
+                    }
+
+                    if (checkCategory.Key == "Dialogue rewards")
+                    {
+                        newContainer.Objects[i].CanDelete = false;
                     }
                 }
                 

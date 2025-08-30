@@ -139,9 +139,9 @@ public class MerchantInventoryItemSource: ItemSource
         {
             var newItemName = RandomizerLogic.CustomItemPlacement.Replace(item.Item.CodeName);
             item.Item = ItemsController.GetItemData(newItemName);
-            if (RandomizerLogic.Settings.ChangeMerchantInventoryQuantity)
+            if (RandomizerLogic.Settings.ChangeItemQuantity && item.Item.Type == "Upgrade Material")
             {
-                item.Quantity = RandomizerLogic.rand.Next(RandomizerLogic.Settings.MerchantInventoryQuantityMin, RandomizerLogic.Settings.MerchantInventoryQuantityMax + 1);
+                item.Quantity = Utils.Between(RandomizerLogic.Settings.ItemQuantityMin, RandomizerLogic.Settings.ItemQuantityMax);
             }
 
             if (RandomizerLogic.Settings.ChangeMerchantInventoryLocked)

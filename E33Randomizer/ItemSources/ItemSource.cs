@@ -81,7 +81,13 @@ public abstract class ItemSource
     {
         foreach (var sourceSection in SourceSections)
         {
-            var newSize = RandomizerLogic.rand.Next(min, max);
+            if (!RandomizerLogic.Settings.ChangeSizesOfNonRandomizedChecks)
+            {
+                var encounterRandomized = sourceSection.Value.Any(e => !RandomizerLogic.CustomItemPlacement.NotRandomizedCodeNames.Contains(e.Item.CodeName));
+                if (!encounterRandomized) continue;
+            }
+            
+            var newSize = Utils.Between(min, max);
             var oldSize = sourceSection.Value.Count;
             if (oldSize == newSize) continue;
             if (oldSize > newSize)

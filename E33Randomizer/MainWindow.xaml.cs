@@ -22,7 +22,15 @@ public partial class MainWindow
     public MainWindow()
     {
         InitializeComponent();
-        RandomizerLogic.Init("Data");
+        try
+        {
+            RandomizerLogic.Init("Data");
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"Error starting: {ex.Message}",
+                "Loading Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
         DataContext = RandomizerLogic.Settings;
     }
 
@@ -158,14 +166,15 @@ public class SettingsViewModel : INotifyPropertyChanged
     public bool ReduceBossRepetition { get; set; } = false;
     public bool TieDropsToEncounters { get; set; } = false; 
 
+    public bool ChangeSizesOfNonRandomizedChecks { get; set; } = false;
     
     public bool ChangeMerchantInventorySize { get; set; } = false;
     public int MerchantInventorySizeMax { get; set; } = 20;
     public int MerchantInventorySizeMin { get; set; } = 1;
     
-    public bool ChangeMerchantInventoryQuantity { get; set; } = false;
-    public int MerchantInventoryQuantityMax { get; set; } = 20;
-    public int MerchantInventoryQuantityMin { get; set; } = 1;
+    public bool ChangeItemQuantity { get; set; } = false;
+    public int ItemQuantityMax { get; set; } = 20;
+    public int ItemQuantityMin { get; set; } = 1;
     
     public bool ChangeMerchantInventoryLocked { get; set; } = false;
     public int MerchantInventoryLockedChancePercent { get; set; } = 10;
@@ -174,33 +183,17 @@ public class SettingsViewModel : INotifyPropertyChanged
     public int LootDropsNumberMax { get; set; } = 5;
     public int LootDropsNumberMin { get; set; } = 1;
     
-    public bool ChangeQuantityOfLootDrops { get; set; } = false;
-    public int LootDropsQuantityMax { get; set; } = 5;
-    public int LootDropsQuantityMin { get; set; } = 1;
-    
     public bool ChangeNumberOfTowerRewards { get; set; } = false;
     public int TowerRewardsNumberMax { get; set; } = 5;
     public int TowerRewardsNumberMin { get; set; } = 1;
-    
-    public bool ChangeQuantityOfTowerRewards { get; set; } = false;
-    public int TowerRewardsQuantityMax { get; set; } = 5;
-    public int TowerRewardsQuantityMin { get; set; } = 1;
     
     public bool ChangeNumberOfChestContents { get; set; } = false;
     public int ChestContentsNumberMax { get; set; } = 5;
     public int ChestContentsNumberMin { get; set; } = 1;
     
-    public bool ChangeQuantityOfChestContents { get; set; } = false;
-    public int ChestContentsQuantityMax { get; set; } = 5;
-    public int ChestContentsQuantityMin { get; set; } = 1;
-    
     public bool ChangeNumberOfActionRewards { get; set; } = false;
     public int ActionRewardsNumberMax { get; set; } = 5;
     public int ActionRewardsNumberMin { get; set; } = 1;
-    
-    public bool ChangeQuantityOfActionRewards { get; set; } = false;
-    public int ActionRewardsQuantityMax { get; set; } = 5;
-    public int ActionRewardsQuantityMin { get; set; } = 1;
     
     public bool MakeEveryItemVisible { get; set; } = true;
     

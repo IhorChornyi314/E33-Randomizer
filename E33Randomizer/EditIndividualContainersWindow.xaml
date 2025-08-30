@@ -10,122 +10,135 @@
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="5"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        
+
         <StackPanel Orientation="Horizontal" Grid.ColumnSpan="3">
-            <Label Name="SearchLabel" VerticalAlignment="Center" Margin="10" FontSize="15" Content="Search by encounter or enemy names:"></Label>
-            <TextBox Name="SearchTextBox" 
-                     Margin="0,5,0,0" 
-                     VerticalAlignment="Center" 
+            <Label Name="SearchLabel" VerticalAlignment="Center" Margin="10" FontSize="15"
+                   Content="Search by encounter or enemy names:">
+            </Label>
+            <TextBox Name="SearchTextBox"
+                     Margin="0,5,0,0"
+                     VerticalAlignment="Center"
                      Height="25"
                      Width="600"
-                     TextChanged="SearchTextBox_OnTextChanged"/>
+                     TextChanged="SearchTextBox_OnTextChanged" />
         </StackPanel>
         <DockPanel Grid.Row="1" Grid.Column="0" Margin="10">
-            <TextBlock Name="ContainersTextBlock" Text="Encounters" FontWeight="Bold" FontSize="14" DockPanel.Dock="Top" Margin="0,0,0,10"/>
-            
-            <TreeView x:Name="LocationTreeView" 
+            <TextBlock Name="ContainersTextBlock" Text="Encounters" FontWeight="Bold" FontSize="14"
+                       DockPanel.Dock="Top" Margin="0,0,0,10" />
+
+            <TreeView x:Name="LocationTreeView"
                       SelectedItemChanged="CategoryTreeView_SelectedItemChanged"
                       ItemsSource="{Binding FilteredCategories}">
                 <TreeView.Resources>
-                        
-                    <HierarchicalDataTemplate DataType="{x:Type local:CategoryViewModel}" 
+
+                    <HierarchicalDataTemplate DataType="{x:Type local:CategoryViewModel}"
                                               ItemsSource="{Binding Containers}">
-                        <TextBlock Text="{Binding CategoryName}" FontWeight="Bold" FontSize="13" 
-                                   Foreground="#333" Margin="2"/>
+                        <TextBlock Text="{Binding CategoryName}" FontWeight="Bold" FontSize="13"
+                                   Foreground="#333" Margin="2" />
                     </HierarchicalDataTemplate>
-                        
+
                     <DataTemplate DataType="{x:Type local:ContainerViewModel}">
-                        <TextBlock Text="{Binding Name}" Margin="5,2" 
-                                   Foreground="#555" FontSize="12"/>
+                        <TextBlock Text="{Binding Name}" Margin="5,2"
+                                   Foreground="#555" FontSize="12" />
                     </DataTemplate>
                 </TreeView.Resources>
             </TreeView>
         </DockPanel>
-        
-        <GridSplitter Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Background="#E0E0E0"/>
-        
+
+        <GridSplitter Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Background="#E0E0E0" />
+
         <DockPanel Grid.Row="1" Grid.Column="2" Margin="10">
-            <TextBlock Name="ObjectsTextBlock" Text="Enemies in the encounter" FontWeight="Bold" FontSize="14" 
-                      DockPanel.Dock="Top" Margin="0,0,0,10"/>
-            
-            <ListBox DockPanel.Dock="Top" Height="350" x:Name="SelectedEnemiesListBox" 
-                         ItemsSource="{Binding DisplayedObjects}"
-                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                         Margin="0,0,0,10">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate DataType="{x:Type local:ObjectViewModel}">
-                            <Grid Margin="2">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-                                
-                                <TextBlock Text="{Binding Name}" Grid.Column="0" 
-                                          VerticalAlignment="Center" Margin="5,2"/>
-                                <xctk:IntegerUpDown Grid.Column="1" Name="NumberOfAdditionalEnemiesTextBox"
-                                         Text="{Binding ItemQuantity}"
-                                         Margin="5,0,0,0"
-                                         VerticalAlignment="Center"
-                                         Height="25"
-                                         Width="50"
-                                         FontSize="16"
-                                         Minimum="1"
-                                         Maximum="99"
-                                         Visibility="{Binding HasQuantityControl, Converter={StaticResource BoolToVisibilityConverter}}"/>
-                                <CheckBox Grid.Column="2"
-                                          VerticalAlignment="Center"
-                                          VerticalContentAlignment="Center"
-                                          Margin="10,0,0,0"
-                                          Height="25"
-                                          Width="25"
-                                          IsChecked="{Binding MerchantInventoryLocked}"
-                                          Visibility="{Binding IsMerchantInventory, Converter={StaticResource BoolToVisibilityConverter}}"
-                                          >
-                                    <CheckBox.LayoutTransform>
-                                        <ScaleTransform ScaleX="1.2" ScaleY="1.2"/>
-                                    </CheckBox.LayoutTransform>
-                                </CheckBox>
-                                <Button Grid.Column="3" Content="✕" Width="20" Height="20" 
-                                        FontSize="10" Margin="0"
-                                        Background="#FFE0E0" BorderBrush="#FFAAAA"
-                                        Click="RemoveObject_Click"
-                                        Tag="{Binding}"
-                                        ToolTip="Remove"/>
-                            </Grid>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-            
-            
+            <TextBlock Name="ObjectsTextBlock" Text="Enemies in the encounter" FontWeight="Bold" FontSize="14"
+                       DockPanel.Dock="Top" Margin="0,0,0,10" />
+
+            <ListBox DockPanel.Dock="Top" Height="350" x:Name="SelectedEnemiesListBox"
+                     ItemsSource="{Binding DisplayedObjects}"
+                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                     Margin="0,0,0,10">
+                <ListBox.ItemTemplate>
+                    <DataTemplate DataType="{x:Type local:ObjectViewModel}">
+                        <Grid Margin="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <ComboBox Grid.Column="0"
+                                      ItemsSource="{Binding AllObjects}"
+                                      SelectedValue="{Binding SelectedComboBoxValue}"
+                                      DisplayMemberPath="Name"
+                                      VerticalAlignment="Center"
+                                      Margin="5,2"
+                                      MinWidth="200"/>
+
+                            <xctk:IntegerUpDown Grid.Column="1" Name="NumberOfAdditionalEnemiesTextBox"
+                                                Text="{Binding ItemQuantity}"
+                                                Margin="5,0,0,0"
+                                                VerticalAlignment="Center"
+                                                Height="25"
+                                                Width="50"
+                                                FontSize="16"
+                                                Minimum="1"
+                                                Maximum="99"
+                                                Visibility="{Binding HasQuantityControl, Converter={StaticResource BoolToVisibilityConverter}}" />
+                            <CheckBox Grid.Column="2"
+                                      VerticalAlignment="Center"
+                                      VerticalContentAlignment="Center"
+                                      Margin="10,0,0,0"
+                                      Height="25"
+                                      Width="25"
+                                      IsChecked="{Binding MerchantInventoryLocked}"
+                                      Visibility="{Binding IsMerchantInventory, Converter={StaticResource BoolToVisibilityConverter}}">
+                                <CheckBox.LayoutTransform>
+                                    <ScaleTransform ScaleX="1.2" ScaleY="1.2" />
+                                </CheckBox.LayoutTransform>
+                            </CheckBox>
+                            <Button Grid.Column="3" Content="✕" Width="20" Height="20"
+                                    FontSize="10" Margin="0"
+                                    Background="#FFE0E0" BorderBrush="#FFAAAA"
+                                    Click="RemoveObject_Click"
+                                    Tag="{Binding}"
+                                    ToolTip="Remove"
+                                    Visibility="{Binding CanDelete, Converter={StaticResource BoolToVisibilityConverter}}"
+                                    />
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+
             <StackPanel DockPanel.Dock="Bottom">
-                <TextBlock Name="AddObjectTextBlock" Text="Add Enemy:" Margin="0,0,0,5" FontWeight="SemiBold"/>
-                <ComboBox x:Name="AddObjectComboBox" 
+                <TextBlock Name="AddObjectTextBlock" Text="Add Enemy:" Margin="0,0,0,5" FontWeight="SemiBold" />
+                <ComboBox x:Name="AddObjectComboBox"
                           ItemsSource="{Binding AllObjects}"
                           DisplayMemberPath="Name"
                           SelectedValuePath="Id"
                           Margin="0,0,0,10"
-                          SelectionChanged="AddObjectComboBox_SelectionChanged"/>
+                          SelectionChanged="AddObjectComboBox_SelectionChanged"
+                          IsEnabled="{Binding CanAddObjects}"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
-                    <Button x:Name="LoadTextButton" Content="Load encounters from .txt file" Width="180" Height="30" 
-                           Margin="0,0,10,0" Click="ReadDataFromTxt"/>
-                    <Button x:Name="SaveTextButton" Content="Save encounters to .txt file" Width="180" Height="30" 
-                           Click="SaveDataAsTxt"/>
+                    <Button x:Name="LoadTextButton" Content="Load encounters from .txt file" Width="180" Height="30"
+                            Margin="0,0,10,0" Click="ReadDataFromTxt" />
+                    <Button x:Name="SaveTextButton" Content="Save encounters to .txt file" Width="180" Height="30"
+                            Click="SaveDataAsTxt" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
-                    <Button x:Name="RegenerateEncountersButton" Content="Reroll with current settings" Width="180" Height="30" 
-                            Margin="0,0,10,0" Click="RegenerateData"/>
-                    <Button x:Name="PackCurrentEncountersButton" Content="Generate mod files from current" Width="180" Height="30" 
-                            Click="PackCurrentData"/>
+                    <Button x:Name="RegenerateEncountersButton" Content="Reroll with current settings" Width="180"
+                            Height="30"
+                            Margin="0,0,10,0" Click="RegenerateData" />
+                    <Button x:Name="PackCurrentEncountersButton" Content="Generate mod files from current" Width="180"
+                            Height="30"
+                            Click="PackCurrentData" />
                 </StackPanel>
             </StackPanel>
         </DockPanel>

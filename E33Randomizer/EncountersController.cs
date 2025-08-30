@@ -215,7 +215,7 @@ public static class EncountersController
     {
         ViewModel.FilteredCategories.Clear();
         ViewModel.Categories.Clear();
-        
+    
         if (ViewModel.AllObjects.Count == 0)
         {
             ViewModel.AllObjects = new ObservableCollection<ObjectViewModel>(EnemiesController.enemies.Select(e => new ObjectViewModel(e)));

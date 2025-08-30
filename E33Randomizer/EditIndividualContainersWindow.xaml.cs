@@ -182,6 +182,8 @@ namespace E33Randomizer
         public ObservableCollection<ObjectViewModel> AllObjects { get; set; }
         public ContainerViewModel CurrentContainer = null;
         public string SearchTerm = "";
+        public bool CanAddObjects { get; set; }  = true;
+        
 
         public EditIndividualObjectsWindowViewModel()
         {
@@ -217,6 +219,7 @@ namespace E33Randomizer
             DisplayedObjects.Clear();
             foreach (var objectViewModel in CurrentContainer.Objects)
             {
+                objectViewModel.InitComboBox(AllObjects);
                 DisplayedObjects.Add(objectViewModel);
             }
         }
@@ -224,6 +227,8 @@ namespace E33Randomizer
         public void OnContainerSelected(ContainerViewModel container)
         {
             CurrentContainer = container;
+            CanAddObjects = !container.CodeName.Contains("BP_Dialog");
+            OnPropertyChanged(nameof(CanAddObjects));
             UpdateDisplayedObjects();
         }
         
@@ -253,19 +258,76 @@ namespace E33Randomizer
         public ObservableCollection<ObjectViewModel> Objects { get; set; }
     }
 
-    public class ObjectViewModel
+    public class ObjectViewModel : INotifyPropertyChanged
     {
+        private ObjectViewModel _selectedComboBoxValue;
+        private int _lastItemQuantity = -1;
+        public string Name { get; set; }
+        public ObservableCollection<ObjectViewModel> AllObjects { get; set; } = [];
+        public bool CanDelete { get; set; } = true;
+
+        public bool HasQuantityControl => ItemQuantity != -1;
+        private int _itemQuantity = -1;
+
+        public int ItemQuantity
+        {
+            get => _itemQuantity;
+            set
+            {
+                _itemQuantity = value;
+                OnPropertyChanged(nameof(HasQuantityControl));
+            }
+        }
+        public bool IsMerchantInventory { get; set; } = false;
+        public bool MerchantInventoryLocked { get; set; } = false;
+    
+        public ObjectViewModel SelectedComboBoxValue
+        {
+            get => _selectedComboBoxValue;
+            set
+            {
+                _selectedComboBoxValue = value;
+                if (Name.Contains("Upgrade Material"))
+                {
+                    _lastItemQuantity = ItemQuantity;
+                }
+                OnPropertyChanged(nameof(SelectedComboBoxValue));
+                Name = _selectedComboBoxValue.Name;
+                CodeName = _selectedComboBoxValue.CodeName;
+                ItemQuantity = !Name.Contains("Upgrade Material") ? -1 : _lastItemQuantity;
+            }
+        }
+        
+        
+        
         public ObjectViewModel(ObjectData objectData)
         {
             CodeName = objectData.CodeName;
             Name = objectData.CustomName;
         }
+
+        public void InitComboBox(ObservableCollection<ObjectViewModel> allObjects)
+        {
+            AllObjects.Clear();
+            foreach (var o in allObjects)
+            {
+                AllObjects.Add(o);
+            }
+            SelectedComboBoxValue = AllObjects.FirstOrDefault(o => o.CodeName == CodeName);
+        }
+        
         public int Index { get; set; }
         public string CodeName { get; set; }
-        public string Name { get; set; }
-        public bool HasQuantityControl => ItemQuantity != -1;
-        public int ItemQuantity { get; set; } = -1;
-        public bool IsMerchantInventory { get; set; } = false;
-        public bool MerchantInventoryLocked { get; set; } = false;
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

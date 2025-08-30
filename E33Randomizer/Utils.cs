@@ -43,4 +43,9 @@ public static class Utils
         }
         asset.Write(filePath);
     }
+
+    public static int Between(int min, int max)
+    {
+        return RandomizerLogic.rand.Next(Math.Min(min, max), Math.Max(min, max) + 1);
+    }
 }

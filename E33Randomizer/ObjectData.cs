@@ -2,13 +2,14 @@
 
 public abstract class ObjectData
 {
-    public string CustomName;
-    public string CodeName;
+    public string CustomName = "";
+    public string CodeName = "";
     public bool IsBroken;
     
     public override bool Equals(object? obj)
     {
-        return obj != null && (obj as ObjectData).CodeName == CodeName;
+        var data = obj as ObjectData;
+        return obj != null && data != null && data.CodeName == CodeName;
     }
 
     public override string ToString()

@@ -94,16 +94,16 @@ public class EnemyLootDropsItemSource: ItemSource
     
     public override void Randomize()
     {
-        if (RandomizerLogic.Settings.ChangeNumberOfLootDrops) RandomizeNumberOfItems(RandomizerLogic.Settings.LootDropsNumberMin, RandomizerLogic.Settings.LootDropsNumberMax + 1);
+        if (RandomizerLogic.Settings.ChangeNumberOfLootDrops) RandomizeNumberOfItems(RandomizerLogic.Settings.LootDropsNumberMin, RandomizerLogic.Settings.LootDropsNumberMax);
         foreach (var dropsData in SourceSections)
         {
             foreach (var item in dropsData.Value)
             {
                 var newItemName = RandomizerLogic.CustomItemPlacement.Replace(item.Item.CodeName);
                 item.Item = ItemsController.GetItemData(newItemName);
-                if (RandomizerLogic.Settings.ChangeQuantityOfLootDrops)
+                if (RandomizerLogic.Settings.ChangeItemQuantity && item.Item.Type == "Upgrade Material")
                 {
-                    item.Quantity = RandomizerLogic.rand.Next(RandomizerLogic.Settings.LootDropsQuantityMin, RandomizerLogic.Settings.LootDropsQuantityMax + 1);
+                    item.Quantity = Utils.Between(RandomizerLogic.Settings.ItemQuantityMin, RandomizerLogic.Settings.ItemQuantityMax);
                 }
             }
         }

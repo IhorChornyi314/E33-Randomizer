@@ -9,6 +9,17 @@ namespace E33Randomizer.ItemSources;
 
 public class GameActionItemSource: ItemSource
 {
+    private static Dictionary<string, string> _customNames = new()
+    { 
+        {"DA_GA_SQT_BossMirrorRenoir", "The Monolith: Gustave's Renoir Outfit"},
+        {"DA_GA_SQT_BossSimon", "The Abyss: Simon's Rewards"},
+        {"DA_GA_SQT_GradientTutorial", "Monoco's Station: First Gradient Unlocks"},
+        {"DA_GA_SQT_RedAndWhiteTree", "Lumiere Act III: Maelle's Real Me Outfits"},
+        {"DA_GA_SQT_TheGommage", "Lumiere Act I: The Gommage Sequence Items"},
+        {"SA_GA_SQT_EpilogueWithMaelle", "Heart of the Canvas: A Life to Paint Outfits"},
+        {"SA_GA_SQT_EpilogueWithVerso", "Heart of the Canvas: A Life to Love Outfits"}
+    };
+    
     public override void LoadFromAsset(UAsset asset)
     {
         base.LoadFromAsset(asset);
@@ -33,7 +44,7 @@ public class GameActionItemSource: ItemSource
             var check = new CheckData
             {
                 CodeName = actionName,
-                CustomName = $"{FileName}: {SourceSections[actionName][0].Item.CustomName}",
+                CustomName = _customNames.GetValueOrDefault(FileName, FileName),
                 IsBroken = false,
                 IsPartialCheck = true,
                 ItemSource = this,
@@ -90,9 +101,9 @@ public class GameActionItemSource: ItemSource
             {
                 var newItemName = RandomizerLogic.CustomItemPlacement.Replace(item.Item.CodeName);
                 item.Item = ItemsController.GetItemData(newItemName);
-                if (RandomizerLogic.Settings.ChangeQuantityOfActionRewards)
+                if (RandomizerLogic.Settings.ChangeItemQuantity && item.Item.Type == "Upgrade Material")
                 {
-                    item.Quantity = RandomizerLogic.rand.Next(RandomizerLogic.Settings.ActionRewardsQuantityMin, RandomizerLogic.Settings.ActionRewardsQuantityMax + 1);
+                    item.Quantity = Utils.Between(RandomizerLogic.Settings.ItemQuantityMin, RandomizerLogic.Settings.ItemQuantityMax);
                 }
             }
         }
