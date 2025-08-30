@@ -81,7 +81,7 @@ public abstract class ItemSource
     {
         foreach (var sourceSection in SourceSections)
         {
-            if (!RandomizerLogic.Settings.ChangeSizesOfNonRandomizedChecks)
+            if (!RandomizerLogic.Settings.ChangeSizesOfNonRandomizedChecks && sourceSection.Value.Count > 0)
             {
                 var encounterRandomized = sourceSection.Value.Any(e => !RandomizerLogic.CustomItemPlacement.NotRandomizedCodeNames.Contains(e.Item.CodeName));
                 if (!encounterRandomized) continue;
@@ -98,8 +98,9 @@ public abstract class ItemSource
 
             if (oldSize == 0)
             {
-                sourceSection.Value.Add(new ItemSourceParticle(ItemsController.GetRandomItem(), 1));
-                oldSize = 1;
+                for (int i = 0; i < newSize; i++)
+                    sourceSection.Value.Add(new ItemSourceParticle(ItemsController.GetRandomItem(), 1));
+                continue;
             }
             
             for (int i = 0; i < newSize - oldSize; i++)
