@@ -55,6 +55,28 @@ public class MerchantInventoryItemSource: ItemSource
         {"DT_Merchant_WM_17", "Citrelo (World Map)"}
     };
     
+    private static Dictionary<string, int> WorldMapMerchantLevels = new ()
+    {
+        {"DT_Merchant_WM_1", 7},
+        {"DT_Merchant_WM_2", 6},
+        {"DT_Merchant_WM_3_GustaveSuit", 5},
+        {"DT_Merchant_WM_4", 8},
+        {"DT_Merchant_WM_5", 8},
+        {"DT_Merchant_WM_6", 8},
+        {"DT_Merchant_WM_7", 10},
+        {"DT_Merchant_WM_8", 10},
+        {"DT_Merchant_WM_9", 17},
+        {"DT_Merchant_WM_9_Sirene", 17},
+        {"DT_Merchant_WM_10", 8},
+        {"DT_Merchant_WM_11", 3},
+        {"DT_Merchant_WM_12", 7},
+        {"DT_Merchant_WM_13", 13},
+        {"DT_Merchant_WM_14", 17},
+        {"DT_Merchant_WM_15", 5},
+        {"DT_Merchant_WM_16", 17},
+        {"DT_Merchant_WM_17", 17}
+    };
+    
     public override void LoadFromAsset(UAsset asset)
     {
         base.LoadFromAsset(asset);
@@ -117,6 +139,8 @@ public class MerchantInventoryItemSource: ItemSource
             newItemStruct.Name = FName.FromString(_asset, inventoryItem.Item.CodeName);
             (newItemStruct.Value[0] as NamePropertyData).Value = FName.FromString(_asset, inventoryItem.Item.CodeName);
             (newItemStruct.Value[3] as IntPropertyData).Value = Math.Max(inventoryItem.Quantity, 1);
+            if (WorldMapMerchantLevels.TryGetValue(FileName, out var level))
+                (newItemStruct.Value[2] as IntPropertyData).Value = level;
             if (dummyConditionStructLocked != null && inventoryItem.MerchantInventoryLocked || dummyConditionStructUnlocked == null)
             {
                 newItemStruct.Value[4] = dummyConditionStructLocked.Clone() as ObjectPropertyData;
