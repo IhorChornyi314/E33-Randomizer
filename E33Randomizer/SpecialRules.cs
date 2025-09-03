@@ -150,6 +150,11 @@ public static class SpecialRules
             encounter.Enemies = [EnemiesController.GetEnemyData("MM_Danseuse_Clone")];
         }
         
+        if (encounter.Name == "QUEST_Danseuse_DanceClass_Clone*1")
+        {
+            encounter.Enemies = [EnemiesController.GetEnemyData("MM_Danseuse_Clone")];
+        }
+        
         // if (RandomizerLogic.Settings.BossNumberCapped && !encounter.IsBossEncounter)
         // {
         //     CapNumberOfBosses(encounter);

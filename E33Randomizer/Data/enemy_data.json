@@ -792,7 +792,7 @@
         "Archetype": "Regular"
     },
     {
-        "Name": "Danseuse (Cut Content)",
+        "Name": "Danseuse - Teacher Clone (Frozen Hearts)",
         "CodeName": "QUEST_Danseuse_DanceClass_Clone",
         "Level": "35",
         "Archetype": "Elite"
@@ -804,7 +804,7 @@
         "Archetype": "Weak"
     },
     {
-        "Name": "Danseuse Clone (Cut Content)",
+        "Name": "Danseuse Clone (The Monolith)",
         "CodeName": "ML_Danseuse_Clone_Gold",
         "Level": "35",
         "Archetype": "Weak"
