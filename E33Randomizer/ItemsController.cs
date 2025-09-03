@@ -15,7 +15,6 @@ namespace E33Randomizer;
 public static class ItemsController
 {
     public static List<ItemData> ItemsData = new();
-    public static List<ItemData> AccountedItemsData = new();
     public static Dictionary<string, ItemData> ItemsByName = new();
     public static List<ItemSource> ItemsSources = new();
     public static List<string> ItemCodeNames = new();
@@ -52,6 +51,15 @@ public static class ItemsController
     public static bool IsGearItem(ItemData item)
     {
         return item.CustomName.Contains("Weapon") || item.CustomName.Contains("Pictos");
+    }
+
+    public static ItemData GetRandomWeapon(string characterName)
+    {
+        var allCharacterWeapons = ItemsData.Where(i => i.CustomName.Contains($"{characterName} Weapon")).ToList();
+        var filteredWeapons = allCharacterWeapons.Where(w => !RandomizerLogic.CustomItemPlacement.Excluded.Contains(w.CodeName)).ToList();
+        if (filteredWeapons.Any()) allCharacterWeapons = filteredWeapons;
+        
+        return Utils.Pick(allCharacterWeapons);
     }
     
     public static void ProcessFile(string fileName)
@@ -218,10 +226,19 @@ public static class ItemsController
     {
         SpecialRules.Reset();
         Reset();
+        var cutContentAlreadyExcluded = RandomizerLogic.CustomItemPlacement.Excluded.Contains("Cut Content Items");
+        if (!RandomizerLogic.Settings.IncludeCutContentItems)
+        {
+            RandomizerLogic.CustomItemPlacement.AddExcluded("Cut Content Items");
+        }
         RandomizerLogic.CustomItemPlacement.Update();
         var randomizableSources = ItemsSources.Where(SpecialRules.Randomizable).ToList();
         randomizableSources.ForEach(i => i.Randomize());
         ItemsSources.ForEach(i => i.Checks.ForEach(SpecialRules.ApplySpecialRulesToCheck));
+        if (!RandomizerLogic.Settings.IncludeCutContentItems && !cutContentAlreadyExcluded)
+        {
+            RandomizerLogic.CustomItemPlacement.RemoveExcluded("Cut Content Items");
+        }
         UpdateViewModel();
     }
 
@@ -282,27 +299,19 @@ public static class ItemsController
     {
         if (RandomizerLogic.Settings.RandomizeStartingWeapons)
         {
-            Dictionary<string, string> startingWeapons = new()
-            {
-                {"Noahram", "Gustave"},
-                {"Maellum", "Maelle" },
-                {"Lunerim", "Lune" },
-                {"Scieleson", "Sciel" },
-                {"Monocaro", "Monoco" },
-                {"Verleso", "Verso" }
-            };
+            List<string> characterNames = ["Lune", "Maelle", "Sciel", "Verso", "Monoco"];
             var tableAsset = new UAsset($"{RandomizerLogic.DataDirectory}/Originals/StartingInfoTables/DT_jRPG_CharacterSaveStates.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
-            var tableNames = tableAsset.GetNameMapIndexList();
-            for (int i = 0; i < tableNames.Count; i++)
+            var tableData = (tableAsset.Exports[0] as DataTableExport).Table.Data;
+
+            foreach (var propertyData in tableData)
             {
-                var nameString = tableNames[i].ToString();
-                if (startingWeapons.TryGetValue(nameString, out var characterName))
-                {
-                    var characterWeapons = ItemsData.Where(i => i.CustomName.Contains($"{characterName} Weapon") && !i.CustomName.Contains("Baguette")).ToList();
-                    var randomWeapon = Utils.Pick(characterWeapons);
-                    
-                    tableAsset.SetNameReference(i, FString.FromString(randomWeapon.CodeName));
-                }
+                var characterName = propertyData.Name.ToString();
+                if (!characterNames.Contains(characterName)) continue;
+                var mapValues = (propertyData.Value[10] as MapPropertyData).Value.Values.ToList();
+                var nameProperty = mapValues[0] as NamePropertyData;
+                var randomWeapon = GetRandomWeapon(characterName);
+                tableAsset.AddNameReference(FString.FromString(randomWeapon.CodeName));
+                nameProperty.Value = FName.FromString(tableAsset, randomWeapon.CodeName);
             }
             Utils.WriteAsset(tableAsset);
         }

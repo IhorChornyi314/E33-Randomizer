@@ -11,7 +11,7 @@ public class CustomItemPlacement: CustomPlacement
         CatchAllName = "Anything";
         CategoryOrder = new List<string>
         {
-            "Pictos", "Weapon", "Key Item", "Skill Unlock", "Cosmetic", "Upgrade Material", "Consumable", "Merchant Unlock", "Music Record", "Lovely Foot", "Journal", "Cut Content", "Anything"
+            "Pictos", "Weapon", "Key Item", "Skill Unlock", "Cosmetic", "Upgrade Material", "Consumable", "Merchant Unlock", "Music Record", "Lovely Foot", "Journal", "Cut Content Items", "Anything"
         };
         
         using (StreamReader r = new StreamReader($"{RandomizerLogic.DataDirectory}/item_categories.json"))

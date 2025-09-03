@@ -60,7 +60,7 @@ public static class SpecialRules
         "BP_Dialogue_LUAct1_Mime", "BP_Dialogue_Lumiere_ExpFestival_Apprentices", "BP_Dialogue_Lumiere_ExpFestival_Token_Artifact_Colette",
         "BP_Dialogue_Lumiere_ExpFestival_Token_Haircut_Amandine", "BP_Dialogue_Lumiere_ExpFestival_Token_Pictos_Claude", 
         "BP_Dialogue_MainPlaza_Furnitures", "BP_Dialogue_MainPlaza_Trashcan", "BP_Dialogue_Nicolas", "BP_Dialogue_Lumiere_ExpFestival_Apprentices", 
-        "BP_Dialogue_Jules",
+        "BP_Dialogue_Jules", "BP_Dialogue_Lumiere_ExpFestival_Maelle", "BP_Dialogue_Richard"
     ];
     
     public static void Reset()
@@ -188,7 +188,11 @@ public static class SpecialRules
             check.ItemSource.AddItem("BP_GameAction_AddItemToInventory_C_0", ItemsController.GetItemData("OverPowered"));
         }
 
-        if (!RandomizerLogic.Settings.IncludeGearInPrologue && _prologueDialogues.Contains(check.ItemSource.FileName))
+        if (!RandomizerLogic.Settings.IncludeGearInPrologue && 
+            (_prologueDialogues.Contains(check.ItemSource.FileName) || 
+             check.Key.Contains("Chest_Lumiere_ACT1") ||
+             check.ItemSource.FileName == "DA_GA_SQT_TheGommage"
+             ))
         {
             foreach (var itemParticle in check.ItemSource.SourceSections[check.Key])
             {
@@ -197,6 +201,13 @@ public static class SpecialRules
                     itemParticle.Item = ItemsController.GetItemData("UpgradeMaterial_Level1");
                 }
             }
+        }
+        
+        if (RandomizerLogic.Settings.RandomizeStartingWeapons && check.Key.Contains("Chest_Generic_Chroma"))
+        {
+            var randomWeapon = ItemsController.GetRandomWeapon("Gustave");
+
+            check.ItemSource.SourceSections["Chest_Generic_Chroma"].Add(new ItemSourceParticle(randomWeapon));
         }
     }
 

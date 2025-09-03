@@ -101,7 +101,7 @@
                                     Grid.Row="3">
                             <CheckBox Name="IncludeCutContentCheckBox"
                                       Content="Include cut content (gets overriden by custom placement)"
-                                      IsChecked="{Binding IncludeCutContent}"
+                                      IsChecked="{Binding IncludeCutContentEnemies}"
                                       FontSize="14" />
                             <TextBlock
                                 Text="Be careful when parrying cut content enemies, as it can break their AI. You can replace broken enemies in Edit Encounters window."
@@ -247,19 +247,35 @@
                                   IsChecked="{Binding MakeEveryItemVisible}"
                                   Margin="0,6,0,0"
                                   FontSize="14" />
+                        <CheckBox Content="Include cut content items"
+                                  IsChecked="{Binding IncludeCutContentItems}"
+                                  Margin="0,6,0,0"
+                                  FontSize="14" />
                         <CheckBox Content="Receive Painted Power at the start of Act III"
                                   IsChecked="{Binding EnsurePaintedPowerFromPaintress}"
                                   Margin="0,6,0,0"
                                   FontSize="14" />
-                        <!-- <CheckBox Content="Randomize starting weapons" -->
-                        <!--           IsChecked="{Binding RandomizeStartingWeapons}" -->
-                        <!--           Margin="0" -->
-                        <!--           FontSize="14" /> -->
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
+                            <CheckBox Name="RandomizeStartingWeaponsCheckBox"
+                                Content="Randomize starting weapons"
+                                      IsChecked="{Binding RandomizeStartingWeapons}"
+                                      Margin="0,6,0,0"
+                                      FontSize="14" />
+                            <TextBlock
+                                Text="Gustave's weapon will be behind him when he wakes up at the start of Act I"
+                                Foreground="Orange"
+                                FontWeight="Bold"
+                                Margin="10,6,0,0"
+                                VerticalAlignment="Center"
+                                TextWrapping="Wrap"
+                                MaxWidth="800" 
+                                Visibility="{Binding IsChecked, ElementName=RandomizeStartingWeaponsCheckBox, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                        </StackPanel>
                         <CheckBox Content="Randomize starting cosmetics"
                                   IsChecked="{Binding RandomizeStartingCosmetics}"
                                   Margin="0,6,0,0"
                                   FontSize="14" />
-                        <CheckBox Content="Enable gear rolls in prologue (it will be level 16 and can drastically alter the difficulty)"
+                        <CheckBox Content="Enable gear rolls in prologue (they will be level 16 and can drastically alter the difficulty)"
                                   IsChecked="{Binding IncludeGearInPrologue}"
                                   Margin="0,6,0,0"
                                   FontSize="14" />
@@ -521,34 +537,50 @@
             <!--Misc Tab-->
             <TabItem Header="Misc">
                 <Grid>
-                    <GroupBox Grid.Row="0" Header="Save File Patching" Margin="10, 10, 5, 0" MaxHeight="200"
+                    <GroupBox Grid.Row="0" Header="Save File Patching" Margin="10, 10, 5, 0"
                               VerticalAlignment="Top">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <TextBlock
-                                Margin="10,10,0,0"
-                                VerticalAlignment="Top"
-                                TextWrapping="Wrap"
-                                TextAlignment="Left"
-                                MaxWidth="800">
-                                It is recommended that you patch your save file to gain access to Jump and Gradient Counters if you don't have those already.
-                                <LineBreak /><LineBreak />
-                                They are located in %USERPROFILE%/AppData/Local/Sandfall/Saved/SavedGames/[numbers]/ and are named "EXPEDITION_[save slot id]".
-                                <LineBreak />
-                                There's also a Backup folder that contains all of your "Load Previous Saves" saves.
-                                Simply press the button and choose the save file that you want to patch.
-                            </TextBlock>
-                            <Button Grid.Row="1" Name="PatchSaveButton"
-                                    Content="Patch save file"
-                                    Width="180"
-                                    Height="35"
-                                    HorizontalAlignment="Right"
-                                    Margin="0,10,20,10"
-                                    Click="PatchSaveButton_OnClick" />
-                        </Grid>
+                        <StackPanel>
+                        <TextBlock
+                            Margin="10,10,0,0"
+                            VerticalAlignment="Top"
+                            TextWrapping="Wrap"
+                            TextAlignment="Left"
+                            MaxWidth="800">
+                            It is recommended that you patch your save file to gain access to Jump and Gradient Counters if you don't have those already.
+                            <LineBreak/><LineBreak/>
+                            They are located in %USERPROFILE%/AppData/Local/Sandfall/Saved/SavedGames/[numbers]/ and are named "EXPEDITION_[save slot id]".
+                            <LineBreak />
+                            There's also a Backup folder that contains all of your "Load Previous Saves" saves.
+                            Simply press the button and choose the save file that you want to patch.
+                        </TextBlock>
+                        <Button Grid.Row="1"
+                                Tag="AddCounters"
+                                Content="Add counters to save file"
+                                Width="180"
+                                Height="35"
+                                HorizontalAlignment="Center"
+                                Margin="0,10,20,10"
+                                Click="EnableCountersInSaveButton_OnClick" />
+                        <Separator></Separator>
+                        <TextBlock
+                            Margin="10,10,0,0"
+                            VerticalAlignment="Top"
+                            TextWrapping="Wrap"
+                            TextAlignment="Left"
+                            MaxWidth="800">
+                            If you have triggered the second phase of Act III Renoir, then the curtain in Lumiere's Opera House will be closed, preventing you from finishing the game. 
+                            <LineBreak/>
+                            Use this button to fix that.
+                        </TextBlock>
+                        <Button Grid.Row="1"
+                                Tag="FixCurtain"
+                                Content="Fix curtains in save file"
+                                Width="180"
+                                Height="35"
+                                HorizontalAlignment="Center"
+                                Margin="0,10,20,10"
+                                Click="EnableCountersInSaveButton_OnClick" />
+                    </StackPanel>
                     </GroupBox>
                 </Grid>
             </TabItem>

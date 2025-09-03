@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -78,25 +80,43 @@ namespace E33Randomizer
 
         public void RegenerateData(object sender, RoutedEventArgs e)
         {
-            if (_objectType == "Enemy")
+            try
             {
-                EncountersController.GenerateNewEncounters();
+                switch (_objectType)
+                {
+                    case "Enemy":
+                        EncountersController.GenerateNewEncounters();
+                        break;
+                    case "Item":
+                        ItemsController.GenerateNewItemChecks();
+                        break;
+                }
             }
-            else if (_objectType == "Item")
+            catch (Exception ex)
             {
-                ItemsController.GenerateNewItemChecks();
+                MessageBox.Show($"Error generating: {ex.Message}", 
+                    "Reroll Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                File.WriteAllText("reroll_error_log.txt", ex.ToString(), Encoding.UTF8);
             }
-            
         }
         
         public void PackCurrentData(object sender, RoutedEventArgs e)
         {
             RandomizerLogic.usedSeed = RandomizerLogic.Settings.Seed != -1 ? RandomizerLogic.Settings.Seed : Environment.TickCount; 
             
-            RandomizerLogic.PackAndConvertData();
-            MessageBox.Show($"Generation done! You can find the mod in the rand_{RandomizerLogic.usedSeed} folder.\n\n" +
-                            $"Used Seed: {RandomizerLogic.usedSeed}\n",
-                "Generation Summary", MessageBoxButton.OK, MessageBoxImage.Information);
+            try
+            {
+                RandomizerLogic.PackAndConvertData();
+                MessageBox.Show($"Generation done! You can find the mod in the rand_{RandomizerLogic.usedSeed} folder.\n\n" +
+                                $"Used Seed: {RandomizerLogic.usedSeed}\n",
+                    "Generation Summary", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error packing: {ex.Message}", 
+                    "Packing Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                File.WriteAllText("data_packing_error_log.txt", ex.ToString(), Encoding.UTF8);
+            }
         }
 
         public void ReadDataFromTxt(object sender, RoutedEventArgs e)
@@ -127,6 +147,7 @@ namespace E33Randomizer
                 {
                     MessageBox.Show($"Error loading TXT: {ex.Message}", 
                         "Load Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    File.WriteAllText("txt_loading_error_log.txt", ex.ToString(), Encoding.UTF8);
                 }
             }
         }
@@ -161,6 +182,7 @@ namespace E33Randomizer
                 {
                     MessageBox.Show($"Error saving TXT: {ex.Message}", 
                         "Save Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    File.WriteAllText("txt_saving_error_log.txt", ex.ToString(), Encoding.UTF8);
                 }
             }
         }

@@ -114,7 +114,7 @@ public abstract class ItemSource
 
     public virtual void Randomize()
     {
-        if (_minNumberOfItems != -1 && _maxNumberOfItems != -1) RandomizeNumberOfItems(_minNumberOfItems, _maxNumberOfItems);
+        if (_changeNumberOfItems) RandomizeNumberOfItems(_minNumberOfItems, _maxNumberOfItems);
         foreach (var rewardData in SourceSections)
         {
             foreach (var item in rewardData.Value)

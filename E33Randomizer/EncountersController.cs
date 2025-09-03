@@ -101,8 +101,17 @@ public static class EncountersController
     {
         SpecialRules.Reset();
         ReadEncounterAssets();
+        var cutContentAlreadyExcluded = RandomizerLogic.CustomEnemyPlacement.Excluded.Contains("Cut Content Enemies");
+        if (!RandomizerLogic.Settings.IncludeCutContentEnemies)
+        {
+            RandomizerLogic.CustomEnemyPlacement.AddExcluded("Cut Content Enemies");
+        }
         RandomizerLogic.CustomEnemyPlacement.Update();
         Encounters.ForEach(ModifyEncounter);
+        if (!RandomizerLogic.Settings.IncludeCutContentEnemies && !cutContentAlreadyExcluded)
+        {
+            RandomizerLogic.CustomEnemyPlacement.RemoveExcluded("Cut Content Enemies");
+        }
         UpdateViewModel();
     }
 

@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.IO;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -30,6 +31,7 @@ public partial class MainWindow
         {
             MessageBox.Show($"Error starting: {ex.Message}",
                 "Loading Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            File.WriteAllText("startup_crash_log.txt", ex.ToString(), Encoding.UTF8);
         }
         DataContext = RandomizerLogic.Settings;
     }
@@ -92,13 +94,23 @@ public partial class MainWindow
 
     private void GenerateButton_Click(object sender, RoutedEventArgs e)
     {
-        RandomizerLogic.Randomize();
-        MessageBox.Show($"Generation done! You can find the mod in the rand_{RandomizerLogic.usedSeed} folder.\n\n" +
-                        $"Used Seed: {RandomizerLogic.usedSeed}\n",
-            "Generation Summary", MessageBoxButton.OK, MessageBoxImage.Information);
+        
+        try
+        {
+            RandomizerLogic.Randomize();
+            MessageBox.Show($"Generation done! You can find the mod in the rand_{RandomizerLogic.usedSeed} folder.\n\n" +
+                            $"Used Seed: {RandomizerLogic.usedSeed}\n",
+                "Generation Summary", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"Error generating: {ex.Message}",
+                "Generating Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            File.WriteAllText("generation_error_log.txt", e.ToString(), Encoding.UTF8);
+        }
     }
 
-    private void PatchSaveButton_OnClick(object sender, RoutedEventArgs e)
+    private void EnableCountersInSaveButton_OnClick(object sender, RoutedEventArgs e)
     {
         string targetFolder = "";
         try
@@ -127,8 +139,16 @@ public partial class MainWindow
         {
             try
             {
-                SaveFilePatcher.Patch(openFileDialog.FileName);
-
+                switch ((sender as Button).Tag as string)
+                {
+                    case "AddCounters":
+                        SaveFilePatcher.AddCounters(openFileDialog.FileName);
+                        break;
+                    case "FixCurtain":
+                        SaveFilePatcher.FixCurtain(openFileDialog.FileName);
+                        break;
+                }
+                
                 MessageBox.Show($"Save File Patched!",
                     "Patched", MessageBoxButton.OK, MessageBoxImage.Information);
             }
@@ -136,6 +156,7 @@ public partial class MainWindow
             {
                 MessageBox.Show($"Error patching: {ex.Message}",
                     "Patching Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                File.WriteAllText("save_patch_error_log.txt", e.ToString(), Encoding.UTF8);
             }
         }
     }
@@ -159,6 +180,7 @@ public class SettingsViewModel : INotifyPropertyChanged
     public bool EnableEnemyOnslaught { get; set; } = false;
     public int EnemyOnslaughtAdditionalEnemies { get; set; } = 1;
     public int EnemyOnslaughtEnemyCap { get; set; } = 4;
+    public bool IncludeCutContentEnemies { get; set; } = true;
 
     public bool RandomizeAddedEnemies { get; set; } = false;
     public bool EnsureBossesInBossEncounters { get; set; } = false;
@@ -201,6 +223,7 @@ public class SettingsViewModel : INotifyPropertyChanged
     public bool RandomizeStartingWeapons { get; set; } = false;
     public bool RandomizeStartingCosmetics { get; set; } = false;
     public bool RandomizeGestralBeachRewards { get; set; } = true;
+    public bool IncludeCutContentItems { get; set; } = true;
     
     public event PropertyChangedEventHandler PropertyChanged;
     protected virtual void OnPropertyChanged(string propertyName)
