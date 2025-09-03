@@ -94,18 +94,9 @@ public class GameActionItemSource: ItemSource
     
     public override void Randomize()
     {
-        if (RandomizerLogic.Settings.ChangeNumberOfActionRewards) RandomizeNumberOfItems(RandomizerLogic.Settings.ActionRewardsNumberMin, RandomizerLogic.Settings.ActionRewardsNumberMax);
-        foreach (var action in SourceSections)
-        {
-            foreach (var item in action.Value)
-            {
-                var newItemName = RandomizerLogic.CustomItemPlacement.Replace(item.Item.CodeName);
-                item.Item = ItemsController.GetItemData(newItemName);
-                if (RandomizerLogic.Settings.ChangeItemQuantity && item.Item.Type == "Upgrade Material")
-                {
-                    item.Quantity = Utils.Between(RandomizerLogic.Settings.ItemQuantityMin, RandomizerLogic.Settings.ItemQuantityMax);
-                }
-            }
-        }
+        _minNumberOfItems = RandomizerLogic.Settings.ActionRewardsNumberMin;
+        _maxNumberOfItems = RandomizerLogic.Settings.ActionRewardsNumberMax;
+        _changeNumberOfItems = RandomizerLogic.Settings.ChangeNumberOfActionRewards;
+        base.Randomize();
     }
 }

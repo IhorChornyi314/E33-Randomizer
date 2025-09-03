@@ -261,7 +261,7 @@ namespace E33Randomizer
     public class ObjectViewModel : INotifyPropertyChanged
     {
         private ObjectViewModel _selectedComboBoxValue;
-        private int _lastItemQuantity = -1;
+        private int _lastItemQuantity = 1;
         public string Name { get; set; }
         public ObservableCollection<ObjectViewModel> AllObjects { get; set; } = [];
         public bool CanDelete { get; set; } = true;
@@ -276,6 +276,7 @@ namespace E33Randomizer
             {
                 _itemQuantity = value;
                 OnPropertyChanged(nameof(HasQuantityControl));
+                OnPropertyChanged(nameof(ItemQuantity));
             }
         }
         public bool IsMerchantInventory { get; set; } = false;

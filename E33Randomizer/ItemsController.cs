@@ -2,6 +2,7 @@
 using System.IO;
 using System.Text;
 using E33Randomizer.ItemSources;
+using Newtonsoft.Json;
 using UAssetAPI;
 using UAssetAPI.ExportTypes;
 using UAssetAPI.PropertyTypes.Objects;
@@ -47,14 +48,27 @@ public static class ItemsController
     {
         return ItemCodeNames.Contains(itemCodeName);
     }
+
+    public static bool IsGearItem(ItemData item)
+    {
+        return item.CustomName.Contains("Weapon") || item.CustomName.Contains("Pictos");
+    }
     
     public static void ProcessFile(string fileName)
     {
-        if (fileName.Contains("BP_GameAction") || fileName.Contains("BP_PDT_GameAction") || fileName.Contains("S_ItemOperationData"))
+        if (fileName.Contains("BP_GameAction") || fileName.Contains("BP_PDT_GameAction") || fileName.Contains("S_ItemOperationData") || fileName.Contains("E_GestralFightClub_Fighters"))
         {
             return;
         }
         var asset = new UAsset(fileName, EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+        
+        using StreamReader DialogueRewardPathsReader = new StreamReader($"{RandomizerLogic.DataDirectory}/dialogue_reward_paths.json");
+        string DialogueRewardPathsJson = DialogueRewardPathsReader.ReadToEnd();
+        DialogueItemSource.DialogueRewardPaths = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, List<int>>>>(DialogueRewardPathsJson);
+        
+        using StreamReader DialogueRewardQuantitiesPathsReader = new StreamReader($"{RandomizerLogic.DataDirectory}/dialogue_quantity_paths.json");
+        string DialogueRewardQuantitiesPathsJson = DialogueRewardQuantitiesPathsReader.ReadToEnd();
+        DialogueItemSource.DialogueRewardQuantitiesPaths = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, List<int>>>>(DialogueRewardQuantitiesPathsJson);
         
         ItemSource newSource;
         string checkType;
@@ -83,14 +97,25 @@ public static class ItemsController
             newSource = new BattleTowerItemSource();
             checkType = "Endless tower rewards";
         }
+        else if (fileName.Contains("DT_LootTable_UpgradeItems"))
+        {
+            newSource = new LootTableItemSource();
+            checkType = fileName.Contains("DT_LootTable_UpgradeItems_Exploration") ? "Map pickups" : "Enemy drops";
+        }
+        else if (DialogueItemSource.DialogueRewardPaths.ContainsKey(asset.FolderName.ToString().Split('/').Last()))
+        {
+            newSource = new DialogueItemSource();
+            checkType = "Dialogue rewards";
+        }
         else
         {
             newSource = new GenericItemSource();
-            checkType = fileName.Contains("DT_LootTable_UpgradeItems") ?  "Enemy drops" : "Dialogue rewards";
-            checkType = fileName.Contains("DT_LootTable_UpgradeItems_Exploration") ? "Map pickups" : checkType;
+            checkType = "Dialogue rewards";
         }
+
         newSource.LoadFromAsset(asset);
         ItemsSources.Add(newSource);
+        
         if (!CheckTypes.ContainsKey(checkType))
         {
             CheckTypes[checkType] = [];

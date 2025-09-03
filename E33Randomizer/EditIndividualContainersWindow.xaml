@@ -88,7 +88,7 @@
                                                 Height="25"
                                                 Width="50"
                                                 FontSize="16"
-                                                Minimum="1"
+                                                Minimum="0"
                                                 Maximum="99"
                                                 Visibility="{Binding HasQuantityControl, Converter={StaticResource BoolToVisibilityConverter}}" />
                             <CheckBox Grid.Column="2"

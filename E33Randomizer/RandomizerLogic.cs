@@ -211,10 +211,8 @@ public static class RandomizerLogic
             }
         }
         
-        var repackArgs = $"pack randomizer \"{exportPath}randomizer_P.pak\"";
-        var retocArgs = $"to-zen --version UE5_4 \"{exportPath}randomizer_P.pak\" \"{exportPath}randomizer_P.utoc\"";
+        var retocArgs = $"to-zen --version UE5_4 randomizer \"{exportPath}randomizer_P.utoc\"";
 
-        Process.Start("repak.exe", repackArgs).WaitForExit();
         Process.Start("retoc.exe", retocArgs);
         EnemiesController.Reset();
         EncountersController.Reset();

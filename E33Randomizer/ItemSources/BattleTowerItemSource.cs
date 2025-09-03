@@ -88,18 +88,9 @@ public class BattleTowerItemSource: ItemSource
 
     public override void Randomize()
     {
-        if (RandomizerLogic.Settings.ChangeNumberOfTowerRewards) RandomizeNumberOfItems(RandomizerLogic.Settings.TowerRewardsNumberMin, RandomizerLogic.Settings.TowerRewardsNumberMax);
-        foreach (var rewardData in SourceSections)
-        {
-            foreach (var item in rewardData.Value)
-            {
-                var newItemName = RandomizerLogic.CustomItemPlacement.Replace(item.Item.CodeName);
-                item.Item = ItemsController.GetItemData(newItemName);
-                if (RandomizerLogic.Settings.ChangeItemQuantity && item.Item.Type == "Upgrade Material")
-                {
-                    item.Quantity = Utils.Between(RandomizerLogic.Settings.ItemQuantityMin, RandomizerLogic.Settings.ItemQuantityMax);
-                }
-            }
-        }
+        _minNumberOfItems = RandomizerLogic.Settings.TowerRewardsNumberMin;
+        _maxNumberOfItems = RandomizerLogic.Settings.TowerRewardsNumberMax;
+        _changeNumberOfItems = RandomizerLogic.Settings.ChangeNumberOfTowerRewards;
+        base.Randomize();
     }
 }

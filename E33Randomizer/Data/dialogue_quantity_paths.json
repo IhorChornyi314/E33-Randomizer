@@ -1,0 +1,76 @@
+﻿{
+  "BP_Dialogue_GV_JournalCollector": {
+        "Consumable_LuminaPoint": [
+            1,
+            5,
+            0
+        ],
+        "Consumable_LuminaPoint_1": [
+            1,
+            5,
+            1
+        ],
+        "Consumable_LuminaPoint_2": [
+            1,
+            5,
+            2
+        ],
+        "Consumable_LuminaPoint_3": [
+            1,
+            5,
+            3
+        ],
+        "Consumable_LuminaPoint_4": [
+            1,
+            5,
+            4
+        ]
+    },
+  "BP_Dialogue_Quest_LostGestralChief": {
+        "ProRetreat": [
+            1,
+            2,
+            8
+        ],
+        "FaceMaelle_Gestral": [
+            1,
+            2,
+            0
+        ],
+        "FaceSciel_Gestral": [
+            1,
+            2,
+            2
+        ],
+        "FaceLune_Gestral": [
+            1,
+            2,
+            1
+        ],
+        "FaceVerso_Gestral": [
+            1,
+            2,
+            4
+        ],
+        "Consumable_LuminaPoint": [
+            1,
+            2,
+            3
+        ],
+        "Consumable_LuminaPoint_6": [
+            1,
+            2,
+            5
+        ],
+        "Consumable_LuminaPoint_7": [
+            1,
+            2,
+            6
+        ],
+        "Consumable_LuminaPoint_8": [
+            1,
+            2,
+            7
+        ]
+    }
+}

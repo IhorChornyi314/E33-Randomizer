@@ -54,6 +54,15 @@ public static class SpecialRules
     public static List<EnemyData> RemainingBossPool = new();
     private static bool _bossPoolEmpty;
 
+    private static List<string> _prologueDialogues =
+    [
+        "BP_Dialogue_Eloise", "BP_Dialogue_Gardens_Maelle_FirstDuel", "BP_Dialogue_Harbour_HotelLove",
+        "BP_Dialogue_LUAct1_Mime", "BP_Dialogue_Lumiere_ExpFestival_Apprentices", "BP_Dialogue_Lumiere_ExpFestival_Token_Artifact_Colette",
+        "BP_Dialogue_Lumiere_ExpFestival_Token_Haircut_Amandine", "BP_Dialogue_Lumiere_ExpFestival_Token_Pictos_Claude", 
+        "BP_Dialogue_MainPlaza_Furnitures", "BP_Dialogue_MainPlaza_Trashcan", "BP_Dialogue_Nicolas", "BP_Dialogue_Lumiere_ExpFestival_Apprentices", 
+        "BP_Dialogue_Jules",
+    ];
+    
     public static void Reset()
     {
         ResetBossPool();
@@ -177,6 +186,17 @@ public static class SpecialRules
             check.ItemSource.FileName == "DA_GA_SQT_RedAndWhiteTree")
         {
             check.ItemSource.AddItem("BP_GameAction_AddItemToInventory_C_0", ItemsController.GetItemData("OverPowered"));
+        }
+
+        if (!RandomizerLogic.Settings.IncludeGearInPrologue && _prologueDialogues.Contains(check.ItemSource.FileName))
+        {
+            foreach (var itemParticle in check.ItemSource.SourceSections[check.Key])
+            {
+                if (ItemsController.IsGearItem(itemParticle.Item))
+                {
+                    itemParticle.Item = ItemsController.GetItemData("UpgradeMaterial_Level1");
+                }
+            }
         }
     }
 

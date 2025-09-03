@@ -158,16 +158,12 @@ public class MerchantInventoryItemSource: ItemSource
     
     public override void Randomize()
     {
-        if (RandomizerLogic.Settings.ChangeMerchantInventorySize) RandomizeNumberOfItems(RandomizerLogic.Settings.MerchantInventorySizeMin, RandomizerLogic.Settings.MerchantInventorySizeMax);
+        _minNumberOfItems = RandomizerLogic.Settings.MerchantInventorySizeMin;
+        _maxNumberOfItems = RandomizerLogic.Settings.MerchantInventorySizeMax;
+        _changeNumberOfItems = RandomizerLogic.Settings.ChangeMerchantInventorySize;
+        base.Randomize();
         foreach (var item in SourceSections[""])
         {
-            var newItemName = RandomizerLogic.CustomItemPlacement.Replace(item.Item.CodeName);
-            item.Item = ItemsController.GetItemData(newItemName);
-            if (RandomizerLogic.Settings.ChangeItemQuantity && item.Item.Type == "Upgrade Material")
-            {
-                item.Quantity = Utils.Between(RandomizerLogic.Settings.ItemQuantityMin, RandomizerLogic.Settings.ItemQuantityMax);
-            }
-
             if (RandomizerLogic.Settings.ChangeMerchantInventoryLocked)
             {
                 var change = RandomizerLogic.rand.Next(0, 100) <

@@ -155,7 +155,6 @@ public class SettingsViewModel : INotifyPropertyChanged
     public bool EncounterSizeTwo { get; set; } = false;
     public bool EncounterSizeThree { get; set; } = false;
     public bool NoSimonP2BeforeLune { get; set; } = true;
-    public string EarliestSimonP2Encounter { get; set; } = "SM_Eveque_ShieldTutorial*1";
     public bool RandomizeMerchantFights { get; set; } = true;
     public bool EnableEnemyOnslaught { get; set; } = false;
     public int EnemyOnslaughtAdditionalEnemies { get; set; } = 1;
@@ -198,6 +197,7 @@ public class SettingsViewModel : INotifyPropertyChanged
     public bool MakeEveryItemVisible { get; set; } = true;
     
     public bool EnsurePaintedPowerFromPaintress { get; set; } = true;
+    public bool IncludeGearInPrologue { get; set; } = false;
     public bool RandomizeStartingWeapons { get; set; } = false;
     public bool RandomizeStartingCosmetics { get; set; } = false;
     public bool RandomizeGestralBeachRewards { get; set; } = true;

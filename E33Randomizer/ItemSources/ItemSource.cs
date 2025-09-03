@@ -42,6 +42,9 @@ public abstract class ItemSource
     public List<CheckData> Checks = new();
     public bool HasItemQuantities;
     protected UAsset _asset;
+    protected int _minNumberOfItems = -1;
+    protected int _maxNumberOfItems = -1;
+    protected bool _changeNumberOfItems;
     
     public virtual void LoadFromAsset(UAsset asset)
     {
@@ -53,7 +56,6 @@ public abstract class ItemSource
         SourceSections.Clear();
     }
     public abstract UAsset SaveToAsset();
-    public abstract void Randomize();
     public List<ItemData> GetCheckItems(string key)
     {
         return SourceSections[key].Select(s => s.Item).ToList();
@@ -106,6 +108,23 @@ public abstract class ItemSource
             for (int i = 0; i < newSize - oldSize; i++)
             {
                 sourceSection.Value.Add(ItemSourceParticle.Clone(sourceSection.Value[i]));
+            }
+        }
+    }
+
+    public virtual void Randomize()
+    {
+        if (_minNumberOfItems != -1 && _maxNumberOfItems != -1) RandomizeNumberOfItems(_minNumberOfItems, _maxNumberOfItems);
+        foreach (var rewardData in SourceSections)
+        {
+            foreach (var item in rewardData.Value)
+            {
+                var newItemName = RandomizerLogic.CustomItemPlacement.Replace(item.Item.CodeName);
+                item.Item = ItemsController.GetItemData(newItemName);
+                if (HasItemQuantities && RandomizerLogic.Settings.ChangeItemQuantity && item.Item.Type == "Upgrade Material" && !item.Item.CustomName.Contains("Shard"))
+                {
+                    item.Quantity = Utils.Between(RandomizerLogic.Settings.ItemQuantityMin, RandomizerLogic.Settings.ItemQuantityMax);
+                }
             }
         }
     }

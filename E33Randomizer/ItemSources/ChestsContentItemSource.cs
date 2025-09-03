@@ -151,18 +151,16 @@ public class ChestsContentItemSource: ItemSource
 
     public override void Randomize()
     {
-        if (RandomizerLogic.Settings.ChangeNumberOfChestContents) RandomizeNumberOfItems(RandomizerLogic.Settings.ChestContentsNumberMin, RandomizerLogic.Settings.ChestContentsNumberMax);
+        _minNumberOfItems = RandomizerLogic.Settings.ChestContentsNumberMin;
+        _maxNumberOfItems = RandomizerLogic.Settings.ChestContentsNumberMax;
+        _changeNumberOfItems = RandomizerLogic.Settings.ChangeNumberOfChestContents;
+        base.Randomize();
         foreach (var chestData in SourceSections)
         {
             foreach (var item in chestData.Value)
             {
-                var newItemName = RandomizerLogic.CustomItemPlacement.Replace(item.Item.CodeName);
-                item.Item = ItemsController.GetItemData(newItemName);
+                var newItemName = item.Item.CodeName;
                 item.IsLootTableChest = newItemName.StartsWith("UpgradeMaterial_Level") && !newItemName.EndsWith('5');
-                if (RandomizerLogic.Settings.ChangeItemQuantity && item.Item.Type == "Upgrade Material")
-                {
-                    item.Quantity = Utils.Between(RandomizerLogic.Settings.ItemQuantityMin, RandomizerLogic.Settings.ItemQuantityMax);
-                }
             }
         }
     }
