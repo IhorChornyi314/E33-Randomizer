@@ -3425,17 +3425,17 @@
     "ItemType": "SkillUnlocker"
   },
   {
-    "CustomName": "Small Chroma Pack (Upgrade Material)",
+    "CustomName": "Chroma Pack - Small (Upgrade Material)",
     "CodeName": "ChromaPack_Regular",
     "ItemType": "Gold"
   },
   {
-    "CustomName": "Normal Chroma Pack (Upgrade Material)",
+    "CustomName": "Chroma Pack - Normal (Upgrade Material)",
     "CodeName": "ChromaPack_Large",
     "ItemType": "Gold"
   },
   {
-    "CustomName": "Large Chroma Pack (Upgrade Material)",
+    "CustomName": "Chroma Pack - Large (Upgrade Material)",
     "CodeName": "ChromaPack_ExtraLarge",
     "ItemType": "Gold"
   },
