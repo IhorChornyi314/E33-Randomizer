@@ -15,6 +15,8 @@ public class GameActionItemSource: ItemSource
         {"DA_GA_SQT_BossSimon", "The Abyss: Simon's Rewards"},
         {"DA_GA_SQT_GradientTutorial", "Monoco's Station: First Gradient Unlocks"},
         {"DA_GA_SQT_RedAndWhiteTree", "Lumiere Act III: Maelle's Real Me Outfits"},
+        {"DA_GA_SQT_CampAfterSecondAxonEntrance", "The Camp: Barrier Breaker"},
+        {"DA_GA_SQT_CampAfterTheFirstAxonP2", "The Camp: Lettre a Maelle"},
         {"DA_GA_SQT_TheGommage", "Lumiere Act I: The Gommage Sequence Items"},
         {"SA_GA_SQT_EpilogueWithMaelle", "Heart of the Canvas: A Life to Paint Outfits"},
         {"SA_GA_SQT_EpilogueWithVerso", "Heart of the Canvas: A Life to Love Outfits"}
