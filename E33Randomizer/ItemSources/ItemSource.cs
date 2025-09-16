@@ -121,7 +121,7 @@ public abstract class ItemSource
             {
                 var newItemName = RandomizerLogic.CustomItemPlacement.Replace(item.Item.CodeName);
                 item.Item = ItemsController.GetItemData(newItemName);
-                if (HasItemQuantities && RandomizerLogic.Settings.ChangeItemQuantity && item.Item.Type == "Upgrade Material" && !item.Item.CustomName.Contains("Shard"))
+                if (HasItemQuantities && RandomizerLogic.Settings.ChangeItemQuantity && item.Item.HasQuantities)
                 {
                     item.Quantity = Utils.Between(RandomizerLogic.Settings.ItemQuantityMin, RandomizerLogic.Settings.ItemQuantityMax);
                 }

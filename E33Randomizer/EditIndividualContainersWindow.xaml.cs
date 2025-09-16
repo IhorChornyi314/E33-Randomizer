@@ -310,14 +310,14 @@ namespace E33Randomizer
             set
             {
                 _selectedComboBoxValue = value;
-                if (Name.Contains("Upgrade Material"))
-                {
-                    _lastItemQuantity = ItemQuantity;
-                }
                 OnPropertyChanged(nameof(SelectedComboBoxValue));
                 Name = _selectedComboBoxValue.Name;
                 CodeName = _selectedComboBoxValue.CodeName;
-                ItemQuantity = !Name.Contains("Upgrade Material") ? -1 : _lastItemQuantity;
+                if (ItemsController.ItemsWithQuantities.Contains(CodeName))
+                {
+                    _lastItemQuantity = ItemQuantity;
+                }
+                ItemQuantity = !ItemsController.ItemsWithQuantities.Contains(CodeName) ? -1 : _lastItemQuantity;
             }
         }
         

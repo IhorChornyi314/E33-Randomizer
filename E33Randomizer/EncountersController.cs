@@ -54,8 +54,8 @@ public static class EncountersController
         ViewModel.ObjectName = "Enemy";
         ReadEncounterAsset($"{RandomizerLogic.DataDirectory}/Originals/DT_jRPG_Encounters.uasset");
         ReadEncounterAsset($"{RandomizerLogic.DataDirectory}/Originals/DT_jRPG_Encounters_CleaTower.uasset");
-        ReadEncounterAsset($"{RandomizerLogic.DataDirectory}/Originals/Encounters_Datatables/DT_Encounters_Composite.uasset");
-        ReadEncounterAsset($"{RandomizerLogic.DataDirectory}/Originals/Encounters_Datatables/DT_WorldMap_Encounters.uasset");
+        ReadEncounterAsset($"{RandomizerLogic.DataDirectory}/Originals/DT_Encounters_Composite.uasset");
+        ReadEncounterAsset($"{RandomizerLogic.DataDirectory}/Originals/DT_WorldMap_Encounters.uasset");
         UpdateViewModel();
     }
 
@@ -68,12 +68,13 @@ public static class EncountersController
 
     public static void WriteEncounterAssets()
     {
+        ApplyViewModel();
         Directory.CreateDirectory("randomizer/Sandfall/Content/jRPGTemplate/Datatables");
         Directory.CreateDirectory("randomizer/Sandfall/Content/jRPGTemplate/Datatables/Encounters_Datatables");
         WriteEncounterAsset($"{RandomizerLogic.DataDirectory}/Originals/DT_jRPG_Encounters.uasset");
         WriteEncounterAsset($"{RandomizerLogic.DataDirectory}/Originals/DT_jRPG_Encounters_CleaTower.uasset");
-        WriteEncounterAsset($"{RandomizerLogic.DataDirectory}/Originals/Encounters_Datatables/DT_Encounters_Composite.uasset");
-        WriteEncounterAsset($"{RandomizerLogic.DataDirectory}/Originals/Encounters_Datatables/DT_WorldMap_Encounters.uasset");
+        WriteEncounterAsset($"{RandomizerLogic.DataDirectory}/Originals/DT_Encounters_Composite.uasset");
+        WriteEncounterAsset($"{RandomizerLogic.DataDirectory}/Originals/DT_WorldMap_Encounters.uasset");
     }
     
     public static void ReadEncountersTxt(string fileName)
@@ -89,6 +90,7 @@ public static class EncountersController
 
     public static void WriteEncountersTxt(string fileName)
     {
+        ApplyViewModel();
         var result = "";
         foreach (var encounter in Encounters)
         {
@@ -209,6 +211,7 @@ public static class EncountersController
 
     public static void AddEnemyToEncounter(string enemyCodeName, string encounterCodeName)
     {
+        ApplyViewModel();
         var enemyData = EnemiesController.GetEnemyData(enemyCodeName);
         Encounters.FindAll(e => e.Name == encounterCodeName).ForEach(e => e.Enemies.Add(enemyData));
         UpdateViewModel();
@@ -216,8 +219,27 @@ public static class EncountersController
     
     public static void RemoveEnemyFromEncounter(int enemyIndex, string encounterCodeName)
     {
+        ApplyViewModel();
         Encounters.FindAll(e => e.Name == encounterCodeName).ForEach(e => e.Enemies.RemoveAt(enemyIndex));
         UpdateViewModel();
+    }
+    
+    public static void ApplyViewModel()
+    {
+        foreach (var categoryViewModel in ViewModel.Categories)
+        {
+            foreach (var encounterViewModel in categoryViewModel.Containers)
+            {
+                var encounterCodeName = encounterViewModel.CodeName;
+                var encounterEnemiesViewModel = encounterViewModel.Objects;
+                var encounter = Encounters.FirstOrDefault(e => e.Name == encounterCodeName);
+                encounter.Enemies.Clear();
+                foreach (var enemyViewModel in encounterEnemiesViewModel)
+                {
+                    encounter.Enemies.Add(EnemiesController.GetEnemyData(enemyViewModel.CodeName));
+                }
+            }
+        }
     }
     
     public static void UpdateViewModel()
