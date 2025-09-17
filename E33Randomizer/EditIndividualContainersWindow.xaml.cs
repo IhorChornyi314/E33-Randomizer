@@ -223,10 +223,11 @@ namespace E33Randomizer
             {
                 var newCategory = new CategoryViewModel();
                 newCategory.CategoryName = category.CategoryName;
-                newCategory.Containers = new ObservableCollection<ContainerViewModel>(category.Containers.Where(c => 
+                newCategory.Containers = new ObservableCollection<ContainerViewModel>(category.Containers.OrderBy(c => c.Name).Where(c => 
                         c.Name.ToLower().Contains(SearchTerm.ToLower()) ||
                         c.CodeName.ToLower().Contains(SearchTerm.ToLower()) ||
-                        c.Objects.Any(o => o.CodeName.ToLower().Contains(SearchTerm.ToLower()) || o.Name.ToLower().Contains(SearchTerm.ToLower()))
+                        c.Objects.Any(o => o.CodeName.ToLower().Contains(SearchTerm.ToLower()) || o.Name.ToLower().Contains(SearchTerm.ToLower())
+                        )
                     )
                 );
                 if (newCategory.Containers.Count > 0)
