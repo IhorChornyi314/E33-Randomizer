@@ -34,6 +34,7 @@ public class DialogueItemSource : ItemSource
         { "BP_Dialogue_GestralRace", "Gestral Beach: Time Race Reward" },
         { "BP_Dialogue_Grandis_Carrousel", "The Carousel: Grandis's Gift" },
         { "BP_Dialogue_GV_ArenaRegistrar", "Gestral Village: Tournament Rewards" },
+        { "BP_Dialog_Merchant_GV_GestralBazar1", "Gestral Village: Weird Pictos Turn-In Reward" },
         { "BP_Dialogue_GV_Father", "Gestral Village: Gestral Father's Reward" },
         { "BP_Dialogue_GV_GestralBazar6", "Gestral Village: Reward for Beating Eesda" },
         { "BP_Dialogue_GV_GestralBazar9", "Gestral Village: Excalibur" },

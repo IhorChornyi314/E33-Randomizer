@@ -135,6 +135,15 @@ public static class SpecialRules
     
     public static void ApplySpecialRulesToEncounter(Encounter encounter)
     {
+        if (RandomizerLogic.Settings.EnsureBossesInBossEncounters && encounter.IsBossEncounter)
+        {
+            var numberOfBosses = encounter.Enemies.Count(e => e.IsBoss);
+            if (numberOfBosses == 0)
+            {
+                encounter.Enemies[0] = RandomizerLogic.GetRandomByArchetype("Boss");
+            }
+        }
+        
         if (RandomizerLogic.Settings.NoSimonP2BeforeLune && MandatoryEncounters.Contains(encounter.Name) && MandatoryEncounters.IndexOf(encounter.Name) < 5)
         {
             ApplySimonSpecialRule(encounter);
@@ -160,14 +169,7 @@ public static class SpecialRules
         //     CapNumberOfBosses(encounter);
         // }
 
-        if (RandomizerLogic.Settings.EnsureBossesInBossEncounters && encounter.IsBossEncounter)
-        {
-            var numberOfBosses = encounter.Enemies.Count(e => e.IsBoss);
-            if (numberOfBosses == 0)
-            {
-                encounter.Enemies[0] = RandomizerLogic.GetRandomByArchetype("Boss");
-            }
-        }
+        
 
         if (RandomizerLogic.Settings.ReduceBossRepetition)
         {
