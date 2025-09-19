@@ -54,6 +54,10 @@ public static class SpecialRules
     public static List<EnemyData> RemainingBossPool = new();
     private static bool _bossPoolEmpty;
 
+    
+    public static List<string> RemainingKeyItemPool = new();
+    private static bool _keyItemPoolEmpty;
+    
     private static List<string> _prologueDialogues =
     [
         "BP_Dialogue_Eloise", "BP_Dialogue_Gardens_Maelle_FirstDuel", "BP_Dialogue_Harbour_HotelLove",
@@ -66,8 +70,9 @@ public static class SpecialRules
     public static void Reset()
     {
         ResetBossPool();
+        ResetKeyItemPool();
     }
-
+    
     private static void ResetBossPool()
     {
         var bossPoolCodeNames = RandomizerLogic.CustomEnemyPlacement.PlainNameToCodeNames["All Bosses"];
@@ -82,6 +87,18 @@ public static class SpecialRules
         }
     }
 
+    private static void ResetKeyItemPool()
+    {
+        var keyItemCodeNames = RandomizerLogic.CustomItemPlacement.PlainNameToCodeNames["Key Item"].ToArray();
+        RandomizerLogic.rand.Shuffle(keyItemCodeNames);
+        RemainingKeyItemPool = new List<string>(keyItemCodeNames);
+        RemainingKeyItemPool = RemainingKeyItemPool.Where(e => !RandomizerLogic.CustomItemPlacement.ExcludedCodeNames.Contains(e)).ToList();
+        if (RemainingKeyItemPool.Count == 0)
+        {
+            _keyItemPoolEmpty = true;
+        }
+    }
+    
     private static EnemyData GetBossReplacement()
     {
         if (RemainingBossPool.Count == 0)
@@ -97,6 +114,23 @@ public static class SpecialRules
         var result = RemainingBossPool.First();
         RemainingBossPool.Remove(result);
         return result;
+    }
+
+    private static ItemData GetKeyItemReplacement()
+    {
+        if (RemainingKeyItemPool.Count == 0)
+        {
+            ResetKeyItemPool();
+        }
+
+        if (_keyItemPoolEmpty)
+        {
+            return null;
+        }
+
+        var result = RemainingKeyItemPool.First();
+        RemainingKeyItemPool.Remove(result);
+        return ItemsController.GetItemData(result);
     }
     
     public static void ApplySimonSpecialRule(Encounter encounter)
@@ -215,6 +249,19 @@ public static class SpecialRules
             var randomWeapon = ItemsController.GetRandomWeapon("Gustave");
 
             check.ItemSource.SourceSections["Chest_Generic_Chroma"].Add(new ItemSourceParticle(randomWeapon));
+        }
+
+        if (RandomizerLogic.Settings.ReduceKeyItemRepetition)
+        {
+            foreach (var itemParticle in check.ItemSource.SourceSections[check.Key])
+            {
+                if (itemParticle.Item.CustomName.Contains("Key Item"))
+                {
+                    var newItem = GetKeyItemReplacement();
+                    if (newItem != null)
+                        itemParticle.Item = newItem;
+                }
+            }
         }
     }
 

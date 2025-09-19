@@ -1,1 +1,14 @@
-{"NotRandomized":[],"Excluded":[],"CustomPlacement":{"Anyone":{"All Bosses":1.0}},"FrequencyAdjustments":{"Cut Content Enemies":0.2}}
+{
+    "NotRandomized": [],
+    "Excluded": [
+      "Map Part Enemies"
+    ],
+    "CustomPlacement": {
+        "Anyone": {
+            "All Bosses": 1.0
+        }
+    },
+    "FrequencyAdjustments": {
+        "Cut Content Enemies": 0.2
+    }
+}
