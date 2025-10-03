@@ -189,6 +189,8 @@ public class SettingsViewModel : INotifyPropertyChanged
 
     public bool ChangeSizesOfNonRandomizedChecks { get; set; } = false;
     
+    public bool ReduceKeyItemRepetition { get; set; } = true;
+    
     public bool ChangeMerchantInventorySize { get; set; } = false;
     public int MerchantInventorySizeMax { get; set; } = 20;
     public int MerchantInventorySizeMin { get; set; } = 1;

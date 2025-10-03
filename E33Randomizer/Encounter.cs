@@ -13,7 +13,7 @@ public class Encounter
     public List<EnemyData> Enemies;
     public ArchetypeGroup Archetypes;
     public List<EnemyLootDrop> PossibleLootDrops = new();
-    public bool IsBossEncounter;
+    public bool IsBossEncounter = false;
     public bool IsBroken;
     public EnemyData LootEnemy;
     

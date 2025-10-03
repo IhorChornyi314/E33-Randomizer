@@ -15,9 +15,21 @@ public class GameActionItemSource: ItemSource
         {"DA_GA_SQT_BossSimon", "The Abyss: Simon's Rewards"},
         {"DA_GA_SQT_GradientTutorial", "Monoco's Station: First Gradient Unlocks"},
         {"DA_GA_SQT_RedAndWhiteTree", "Lumiere Act III: Maelle's Real Me Outfits"},
+        {"DA_GA_SQT_CampAfterSecondAxonEntrance", "The Camp: Barrier Breaker"},
+        {"DA_GA_SQT_CampAfterTheFirstAxonP2", "The Camp: Lettre a Maelle"},
         {"DA_GA_SQT_TheGommage", "Lumiere Act I: The Gommage Sequence Items"},
         {"SA_GA_SQT_EpilogueWithMaelle", "Heart of the Canvas: A Life to Paint Outfits"},
-        {"SA_GA_SQT_EpilogueWithVerso", "Heart of the Canvas: A Life to Love Outfits"}
+        {"SA_GA_SQT_EpilogueWithVerso", "Heart of the Canvas: A Life to Love Outfits"},
+        {"DA_GA_GRADIENT_Lune2", "The Camp: Lune Relationship Level 4 Reward"},
+        {"DA_GA_GRADIENT_Lune3", "The Camp: Lune Relationship Level 7 Reward"},
+        {"DA_GA_GRADIENT_Maelle2", "The Camp: Maelle Relationship Level 4 Reward"},
+        {"DA_GA_GRADIENT_Maelle3", "The Camp: Maelle Relationship Level 7 Reward"},
+        {"DA_GA_GRADIENT_Monoco2", "The Camp: Monoco Relationship Level 4 Reward"},
+        {"DA_GA_GRADIENT_Monoco3", "The Camp: Monoco Relationship Level 7 Reward"},
+        {"DA_GA_GRADIENT_Sciel2", "The Camp: Sciel Relationship Level 4 Reward"},
+        {"DA_GA_GRADIENT_Sciel3", "The Camp: Sciel Relationship Level 7 Reward"},
+        {"DA_GA_GRADIENT_Verso2", "The Camp: Esquie Relationship Level 4 Reward"},
+        {"DA_GA_GRADIENT_Verso3", "The Camp: Esquie Relationship Level 7 Reward"}
     };
     
     public override void LoadFromAsset(UAsset asset)
@@ -70,7 +82,12 @@ public class GameActionItemSource: ItemSource
             if (_asset.Imports[Math.Abs(tableImportObject.Value.Index) - 1].ObjectName.ToString() !=
                 "DT_jRPG_Items_Composite")
             {
-                throw new Exception("Game action asset is not using DT_jRPG_Items_Composite!");
+                var dtNameReferenceIndex =
+                    _asset.SearchNameReference(FString.FromString("DT_Items_GradientAttackUnlocks"));
+                var dtPackageNameReferenceIndex =
+                    _asset.SearchNameReference(FString.FromString("/Game/Gameplay/SkillTree/Content/DT_Items_GradientAttackUnlocks"));
+                _asset.SetNameReference(dtNameReferenceIndex, FString.FromString("DT_jRPG_Items_Composite"));
+                _asset.SetNameReference(dtPackageNameReferenceIndex, FString.FromString("/Game/Gameplay/SkillTree/Content/DT_jRPG_Items_Composite"));
             }
             
             var items = SourceSections[export.ObjectName.ToString()];

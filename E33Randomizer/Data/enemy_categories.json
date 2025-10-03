@@ -590,7 +590,13 @@
         "SI_Axon_Sirene",
         "MF_Axon_Visages",
         "SL_Sapling_CrushingWall",
-        "WM_Serpenphare"
+        "WM_Serpenphare",
+        "SI_Tisseur"
+    ],
+    "Map Part Enemies": [
+        "SI_Axon_Sirene",
+        "MF_Axon_Visages",
+        "SI_Tisseur"
     ],
     "Merchants": [
         "Merchant_TwilightSanctuary",

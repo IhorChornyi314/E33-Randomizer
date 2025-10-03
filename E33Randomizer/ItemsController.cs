@@ -21,6 +21,19 @@ public static class ItemsController
     public static EditIndividualObjectsWindowViewModel ViewModel = new();
 
     public static Dictionary<string, List<CheckData>> CheckTypes = new();
+
+    public static List<string> ItemsWithQuantities = [
+        "ChromaPack_Regular",
+        "ChromaPack_Large",
+        "ChromaPack_ExtraLarge",
+        "UpgradeMaterial_Level1",
+        "UpgradeMaterial_Level2",
+        "UpgradeMaterial_Level3",
+        "UpgradeMaterial_Level4",
+        "UpgradeMaterial_Level5",
+        "Consumable_Respec",
+        "Consumable_LuminaPoint",
+    ];
     
     private static UAsset _compositeTableAsset;
     private static UDataTable itemsCompositeTable;
@@ -417,7 +430,7 @@ public static class ItemsController
                     if (itemSource.HasItemQuantities)
                     {
                         var itemParticle = itemSource.SourceSections[check.Key][i];
-                        newContainer.Objects[i].ItemQuantity = itemParticle.Item.Type == "Upgrade Material" ? itemParticle.Quantity : -1;
+                        newContainer.Objects[i].ItemQuantity = itemParticle.Item.HasQuantities ? itemParticle.Quantity : -1;
                     }
                     if (checkCategory.Key == "Merchant inventories")
                     {

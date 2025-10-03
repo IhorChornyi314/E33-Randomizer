@@ -190,6 +190,14 @@
             1
         ]
     },
+    "BP_Dialog_Merchant_GV_GestralBazar1": {
+        "AugmentedAim": [
+            1,
+            4,
+            0,
+            1
+        ]
+    },
     "BP_Dialogue_GV_GestralBazar6": {
         "Merchant_GestralVillage2": [
             1,

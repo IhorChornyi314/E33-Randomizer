@@ -141,7 +141,7 @@ public abstract class CustomPlacement
         return result;
     }
     
-    public Dictionary<string, float> CustomCategoryDictionaryToCodeNames(Dictionary<string, float> from)
+    public Dictionary<string, float> CustomCategoryDictionaryToCodeNames(Dictionary<string, float> from, bool adjustForCategorySize=false)
     {
         Dictionary<string, float> result = new Dictionary<string, float>();
         foreach (var pair in from)
@@ -150,6 +150,10 @@ public abstract class CustomPlacement
             foreach (var codeName in translatedKey)
             {
                 result[codeName] = pair.Value;
+                if (adjustForCategorySize)
+                {
+                    result[codeName] /= translatedKey.Count;
+                }
             }
         }
 
@@ -170,17 +174,12 @@ public abstract class CustomPlacement
                 {
                     continue;
                 }
-                var unadjustedFrequencies = CustomCategoryDictionaryToCodeNames(CustomPlacementRules[customPlacementKey]);
+                var unadjustedFrequencies = CustomCategoryDictionaryToCodeNames(CustomPlacementRules[customPlacementKey], true);
                 foreach (var frequency in unadjustedFrequencies)
                 {
                     if (translatedFrequencyAdjustments.ContainsKey(frequency.Key))
                     {
                         unadjustedFrequencies[frequency.Key] *= translatedFrequencyAdjustments[frequency.Key];
-                    }
-
-                    if (unadjustedFrequencies[frequency.Key] < 0.0001)
-                    {
-                        unadjustedFrequencies.Remove(frequency.Key);
                     }
                 }
 

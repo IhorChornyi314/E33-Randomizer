@@ -6,6 +6,7 @@ namespace E33Randomizer;
 public class ItemData: ObjectData
 {
     public string Type = "Invalid";
+    public bool HasQuantities = false;
 
     public ItemData()
     {
@@ -20,6 +21,7 @@ public class ItemData: ObjectData
         CustomName = RandomizerLogic.ItemCustomNames.GetValueOrDefault(CodeName, CodeName);
         Type = CustomName.Split('(')[1].Split(')')[0];
         IsBroken = RandomizerLogic.BrokenItems.Contains(CodeName);
+        HasQuantities = ItemsController.ItemsWithQuantities.Contains(CodeName);
     }
 
     public override string ToString()
