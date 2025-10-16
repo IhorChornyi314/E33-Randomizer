@@ -81,6 +81,10 @@ public static class SpecialRules
         RemainingBossPool = new List<EnemyData>(bossPoolArray);
         var translatedExcluded = EnemiesController.GetEnemyDataList(RandomizerLogic.CustomEnemyPlacement.ExcludedCodeNames);
         RemainingBossPool = RemainingBossPool.Where(e => !translatedExcluded.Contains(e)).ToList();
+        if (!RandomizerLogic.Settings.IncludeCutContentEnemies)
+        {
+            RemainingBossPool = RemainingBossPool.Where(e => !e.CustomName.Contains("Cut")).ToList();
+        }
         if (RemainingBossPool.Count == 0)
         {
             _bossPoolEmpty = true;
