@@ -57,10 +57,6 @@ public class SkillGraph
         _asset = asset;
         CharacterName = _asset.FolderName.Value.Split('_')[^1];
         CharacterName = CharacterName == "Noah" ? "Gustave" : CharacterName;
-        foreach (var fString in asset.GetNameMapIndexList())
-        {
-            Console.WriteLine($"\"{fString}\",");
-        }
         var nodesArrayData = (_asset.Exports[0] as NormalExport).Data[0] as ArrayPropertyData;
         foreach (StructPropertyData nodeStruct in nodesArrayData.Value)
         {
