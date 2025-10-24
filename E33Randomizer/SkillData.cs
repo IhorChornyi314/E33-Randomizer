@@ -2,6 +2,7 @@
 
 public class SkillData: ObjectData
 {
-    public string PackageFolder;
+    public string ClassPath;
+    public string ClassName;
     public string CharacterName;
 }

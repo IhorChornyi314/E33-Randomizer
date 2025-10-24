@@ -2,5 +2,9 @@
 
 public static class Controllers
 {
-    
+    public static SkillsController SkillsController = new();
+    public static void InitControllers()
+    {
+        SkillsController.Initialize();
+    }
 }

@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Text.RegularExpressions;
 using Microsoft.Win32;
+using Newtonsoft.Json;
 
 namespace E33Randomizer;
 
@@ -25,7 +26,8 @@ public partial class MainWindow
         InitializeComponent();
         try
         {
-            RandomizerLogic.Init("Data");
+            RandomizerLogic.Init();
+            DataContext = RandomizerLogic.Settings;
         }
         catch (Exception ex)
         {
@@ -33,7 +35,14 @@ public partial class MainWindow
                 "Loading Error", MessageBoxButton.OK, MessageBoxImage.Error);
             File.WriteAllText("startup_crash_log.txt", ex.ToString(), Encoding.UTF8);
         }
-        DataContext = RandomizerLogic.Settings;
+        if (File.Exists("default_settings.json"))
+        {
+            LoadSettings("default_settings.json");
+        }
+        else
+        {
+            SaveSettings("default_settings.json");
+        }
     }
 
     private void CustomEnemyPlacementButton_Click(object sender, RoutedEventArgs e)
@@ -160,6 +169,91 @@ public partial class MainWindow
             }
         }
     }
+    
+    private void LoadPresetButton_Click(object sender, RoutedEventArgs e)
+    {
+        OpenFileDialog openFileDialog = new OpenFileDialog
+        {
+            Title = "Load Preset",
+            Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*",
+            FilterIndex = 1
+        };
+
+        if (openFileDialog.ShowDialog() == true)
+        {
+            try
+            {
+                LoadSettings(openFileDialog.FileName);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading preset: {ex.Message}", 
+                    "Load Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+    }
+
+    private void SavePresetButton_Click(object sender, RoutedEventArgs e)
+    {
+        SaveFileDialog saveFileDialog = new SaveFileDialog
+        {
+            Title = "Save Preset",
+            Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*",
+            FilterIndex = 1,
+            DefaultExt = "json"
+        };
+
+        if (saveFileDialog.ShowDialog() == true)
+        {
+            try
+            {
+                SaveSettings(saveFileDialog.FileName);
+                MessageBox.Show("Preset saved successfully!", 
+                    "Save Complete", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saving preset: {ex.Message}", 
+                    "Save Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+    }
+
+    private void LoadSettings(string pathToJson)
+    {
+        try
+        {
+            using (StreamReader r = new StreamReader(pathToJson))
+            {
+                string json = r.ReadToEnd();
+                var newSettingsData = JsonConvert.DeserializeObject<SettingsViewModel>(json);
+                RandomizerLogic.Settings = newSettingsData;
+                DataContext = RandomizerLogic.Settings;
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"Error loading: {ex.Message}",
+                "Loading Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            File.WriteAllText("preset_crash_log.txt", ex.ToString(), Encoding.UTF8);
+        }
+    }
+
+    private void SaveSettings(string pathToJson)
+    {
+        try
+        {
+            using StreamWriter r = new StreamWriter(pathToJson);
+            string json = JsonConvert.SerializeObject(RandomizerLogic.Settings, Formatting.Indented);
+            r.Write(json);
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"Error saving: {ex.Message}",
+                "Saving Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            File.WriteAllText("preset_crash_log.txt", ex.ToString(), Encoding.UTF8);
+        }
+    }
 }
 
 
@@ -185,7 +279,7 @@ public class SettingsViewModel : INotifyPropertyChanged
     public bool RandomizeAddedEnemies { get; set; } = false;
     public bool EnsureBossesInBossEncounters { get; set; } = false;
     public bool ReduceBossRepetition { get; set; } = false;
-    public bool TieDropsToEncounters { get; set; } = false; 
+    // public bool TieDropsToEncounters { get; set; } = false; 
 
     public bool ChangeSizesOfNonRandomizedChecks { get; set; } = false;
     

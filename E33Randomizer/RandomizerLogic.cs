@@ -104,18 +104,22 @@ public static class RandomizerLogic
     public static Dictionary<string, Dictionary<string, float>> EnemyFrequenciesWithinArchetype = new();
     public static Dictionary<string, float> TotalEnemyFrequencies;
     public static string PresetName = "";
-    public static string DataDirectory = "Data";
+    #if DEBUG
+        public static string DataDirectory = Environment.GetEnvironmentVariable("E33RandoDataPath");
+    #else
+        public static string DataDirectory = "Data";
+    #endif
 
     public static List<string> Archetypes =
         ["Regular", "Weak", "Strong", "Elite", "Boss", "Alpha", "Elusive", "Petank"];
 
-    public static void Init(string dataDirectory)
+    public static void Init()
     {
-        DataDirectory = dataDirectory;
         usedSeed = Settings.Seed != -1 ? Settings.Seed : Environment.TickCount % 999999999; 
         rand = new Random(usedSeed);
     
         mappings = new Usmap($"{DataDirectory}/Mappings.usmap");
+        Controllers.InitControllers();
         EnemiesController.Init();
         using (StreamReader r = new StreamReader($"{DataDirectory}/enemy_data.json"))
         {
@@ -195,10 +199,10 @@ public static class RandomizerLogic
         if (Settings.RandomizeEnemies)
         {
             EncountersController.WriteEncounterAssets();
-            if (Settings.TieDropsToEncounters && !Settings.RandomizeItems)
-            {
-                EnemiesController.WriteAsset();
-            }
+            // if (Settings.TieDropsToEncounters && !Settings.RandomizeItems)
+            // {
+            //     EnemiesController.WriteAsset();
+            // }
         }
 
         if (Settings.RandomizeItems)
@@ -209,6 +213,8 @@ public static class RandomizerLogic
                 ItemsController.WriteTableAssets();
             }
         }
+        
+        Controllers.SkillsController.WriteAssets();
         
         var retocArgs = $"to-zen --version UE5_4 randomizer \"{exportPath}randomizer_P.utoc\"";
 

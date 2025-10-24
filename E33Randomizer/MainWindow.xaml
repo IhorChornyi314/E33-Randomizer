@@ -594,31 +594,53 @@
         <Border Grid.Row="1" Background="#F0F0F0" Padding="20">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
                 <!-- Seed Input -->
-                <Label Grid.Column="0" Content="Seed:" VerticalAlignment="Center" FontWeight="Bold" />
-                <xctk:IntegerUpDown Name="SeedTextBox"
-                                    Grid.Column="1"
-                                    Text="{Binding Seed}"
-                                    ShowButtonSpinner="False"
-                                    Margin="10,0,20,0"
-                                    VerticalAlignment="Center"
-                                    Maximum="999999999"
-                                    Minimum="-1"
-                                    HorizontalAlignment="Left"
-                                    Height="25"
-                                    Width="100"
-                                    MaxLength="10" />
-
+                <StackPanel Grid.Column="0" Orientation="Horizontal">
+                    <Label Content="Seed:" VerticalAlignment="Center" FontWeight="Bold" />
+                    <xctk:IntegerUpDown Name="SeedTextBox"
+                                        Grid.Column="1"
+                                        Text="{Binding Seed}"
+                                        ShowButtonSpinner="False"
+                                        Margin="10,0,20,0"
+                                        VerticalAlignment="Center"
+                                        Maximum="999999999"
+                                        Minimum="-1"
+                                        HorizontalAlignment="Left"
+                                        Height="25"
+                                        Width="100"
+                                        MaxLength="10" />
+                </StackPanel>
+                
+                
+                <Button Name="SavePresetButton"
+                        Grid.Column="1"
+                        Content="Save settings JSON"
+                        Width="150"
+                        Height="35"
+                        Click="SavePresetButton_Click"
+                        Background="Gray"
+                        Foreground="White"
+                        FontWeight="Bold" />
+                
+                <Button Name="LoadPresetButton"
+                        Grid.Column="2"
+                        Content="Load settings JSON"
+                        Width="150"
+                        Height="35"
+                        Click="LoadPresetButton_Click"
+                        Background="Gray"
+                        Foreground="White"
+                        FontWeight="Bold" />
+                
                 <!-- Generate Button -->
                 <Button Name="GenerateButton"
-                        Grid.Column="4"
+                        Grid.Column="3"
                         Content="Generate and pack mod"
                         Width="150"
                         Height="35"

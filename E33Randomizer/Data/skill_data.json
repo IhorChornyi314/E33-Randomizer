@@ -1,0 +1,1220 @@
+[
+  {
+    "CodeName": "DA_Skill_MediumEnergyTint",
+    "CustomName": "Energy Tint (Consumable)",
+    "ClassName": "DA_Skill_MediumEnergyTint",
+    "ClassPath": "/Game/Content/Gameplay/SkillTree/Content/Consumables/DA_Skill_MediumEnergyTint",
+    "CharacterName": "Consumables"
+  },
+  {
+    "CodeName": "DA_Skill_MediumHealingTint",
+    "CustomName": "Healing Tint (Consumable)",
+    "ClassName": "DA_Skill_MediumHealingTint",
+    "ClassPath": "/Game/Content/Gameplay/SkillTree/Content/Consumables/DA_Skill_MediumHealingTint",
+    "CharacterName": "Consumables"
+  },
+  {
+    "CodeName": "DA_Skill_MediumReviveTint",
+    "CustomName": "Revive Tint (Consumable)",
+    "ClassName": "DA_Skill_MediumReviveTint",
+    "ClassPath": "/Game/Content/Gameplay/SkillTree/Content/Consumables/DA_Skill_MediumReviveTint",
+    "CharacterName": "Consumables"
+  },
+  {
+    "CodeName": "DA_Skill_SmallEnergyTint",
+    "CustomName": "Small Energy Tint (Consumable)",
+    "ClassName": "DA_Skill_SmallEnergyTint",
+    "ClassPath": "/Game/Content/Gameplay/SkillTree/Content/Consumables/DA_Skill_SmallEnergyTint",
+    "CharacterName": "Consumables"
+  },
+  {
+    "CodeName": "DA_Skill_SmallHealingTint",
+    "CustomName": "Small Healing Tint (Consumable)",
+    "ClassName": "DA_Skill_SmallHealingTint",
+    "ClassPath": "/Game/Content/Gameplay/SkillTree/Content/Consumables/DA_Skill_SmallHealingTint",
+    "CharacterName": "Consumables"
+  },
+  {
+    "CodeName": "DA_Skill_SmallReviveTint",
+    "CustomName": "Small Revive Tint (Consumable)",
+    "ClassName": "DA_Skill_SmallReviveTint",
+    "ClassPath": "/Game/Content/Gameplay/SkillTree/Content/Consumables/DA_Skill_SmallReviveTint",
+    "CharacterName": "Consumables"
+  },
+  {
+    "CodeName": "DA_Skill_StrongEnergyTint",
+    "CustomName": "Strong Energy Tint (Consumable)",
+    "ClassName": "DA_Skill_StrongEnergyTint",
+    "ClassPath": "/Game/Content/Gameplay/SkillTree/Content/Consumables/DA_Skill_StrongEnergyTint",
+    "CharacterName": "Consumables"
+  },
+  {
+    "CodeName": "DA_Skill_StrongHealingTint",
+    "CustomName": "Strong Healing Tint (Consumable)",
+    "ClassName": "DA_Skill_StrongHealingTint",
+    "ClassPath": "/Game/Content/Gameplay/SkillTree/Content/Consumables/DA_Skill_StrongHealingTint",
+    "CharacterName": "Consumables"
+  },
+  {
+    "CodeName": "DA_Skill_StrongReviveTint",
+    "CustomName": "Strong Revive Tint (Consumable)",
+    "ClassName": "DA_Skill_StrongReviveTint",
+    "ClassPath": "/Game/Content/Gameplay/SkillTree/Content/Consumables/DA_Skill_StrongReviveTint",
+    "CharacterName": "Consumables"
+  },
+  {
+    "CodeName": "DA_Skill_Gustave_Combo1",
+    "CustomName": "Lumi\u00e8re Assault (Gustave Skill)",
+    "ClassName": "DA_Skill_Gustave_Combo1",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Gustave/DA_Skill_Gustave_Combo1",
+    "CharacterName": "Gustave"
+  },
+  {
+    "CodeName": "DA_Skill_Gustave_FromFire",
+    "CustomName": "From Fire (Gustave Skill)",
+    "ClassName": "DA_Skill_Gustave_FromFire",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Gustave/DA_Skill_Gustave_FromFire",
+    "CharacterName": "Gustave"
+  },
+  {
+    "CodeName": "DA_Skill_Gustave_MarkingShot",
+    "CustomName": "Marking Shot (Gustave Skill)",
+    "ClassName": "DA_Skill_Gustave_MarkingShot",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Gustave/DA_Skill_Gustave_MarkingShot",
+    "CharacterName": "Gustave"
+  },
+  {
+    "CodeName": "DA_Skill_Gustave_PerfectBreak",
+    "CustomName": "Shatter (Gustave Skill)",
+    "ClassName": "DA_Skill_Gustave_PerfectBreak",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Gustave/DA_Skill_Gustave_PerfectBreak",
+    "CharacterName": "Gustave"
+  },
+  {
+    "CodeName": "DA_Skill_Gustave_PerfectRecovery",
+    "CustomName": "Recovery (Gustave Skill)",
+    "ClassName": "DA_Skill_Gustave_PerfectRecovery",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Gustave/DA_Skill_Gustave_PerfectRecovery",
+    "CharacterName": "Gustave"
+  },
+  {
+    "CodeName": "DA_Skill_Gustave_Powerful",
+    "CustomName": "Powerful (Gustave Skill)",
+    "ClassName": "DA_Skill_Gustave_Powerful",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Gustave/DA_Skill_Gustave_Powerful",
+    "CharacterName": "Gustave"
+  },
+  {
+    "CodeName": "DA_Skill_Gustave_Strikestorm",
+    "CustomName": "Strike Storm (Gustave Skill)",
+    "ClassName": "DA_Skill_Gustave_Strikestorm",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Gustave/DA_Skill_Gustave_Strikestorm",
+    "CharacterName": "Gustave"
+  },
+  {
+    "CodeName": "DA_Skill_Gustave_UnleashCharge",
+    "CustomName": "Overcharge (Gustave Skill)",
+    "ClassName": "DA_Skill_Gustave_UnleashCharge",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Gustave/DA_Skill_Gustave_UnleashCharge",
+    "CharacterName": "Gustave"
+  },
+  {
+    "CodeName": "DA_Skill_Julie_Combo1",
+    "CustomName": "Dual Attack (Julie Skill)",
+    "ClassName": "DA_Skill_Julie_Combo1",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Julie/DA_Skill_Julie_Combo1",
+    "CharacterName": "Julie"
+  },
+  {
+    "CodeName": "DA_Skill_Lune_CripplingTsunami",
+    "CustomName": "Crippling Tsunami (Lune Skill)",
+    "ClassName": "DA_Skill_Lune_CripplingTsunami",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_CripplingTsunami",
+    "CharacterName": "Lune"
+  },
+  {
+    "CodeName": "DA_Skill_Lune_CrustalCrush",
+    "CustomName": "Crustal Crush (Lune Skill)",
+    "ClassName": "DA_Skill_Lune_CrustalCrush",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_CrustalCrush",
+    "CharacterName": "Lune"
+  },
+  {
+    "CodeName": "DA_Skill_Lune_EarthQuake",
+    "CustomName": "Earth Rising (Lune Skill)",
+    "ClassName": "DA_Skill_Lune_EarthQuake",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_EarthQuake",
+    "CharacterName": "Lune"
+  },
+  {
+    "CodeName": "DA_Skill_Lune_EarthSpike",
+    "CustomName": "Rockslide (Lune Skill)",
+    "ClassName": "DA_Skill_Lune_EarthSpike",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_EarthSpike",
+    "CharacterName": "Lune"
+  },
+  {
+    "CodeName": "DA_Skill_Lune_Electrify",
+    "CustomName": "Electrify (Lune Skill)",
+    "ClassName": "DA_Skill_Lune_Electrify",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_Electrify",
+    "CharacterName": "Lune"
+  },
+  {
+    "CodeName": "DA_Skill_Lune_ElementalGenesis",
+    "CustomName": "Elemental Genesis (Lune Skill)",
+    "ClassName": "DA_Skill_Lune_ElementalGenesis",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_ElementalGenesis",
+    "CharacterName": "Lune"
+  },
+  {
+    "CodeName": "DA_Skill_Lune_ElementalTrick",
+    "CustomName": "Elemental Trick (Lune Skill)",
+    "ClassName": "DA_Skill_Lune_ElementalTrick",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_ElementalTrick",
+    "CharacterName": "Lune"
+  },
+  {
+    "CodeName": "DA_Skill_Lune_FireRage",
+    "CustomName": "Fire Rage (Lune Skill)",
+    "ClassName": "DA_Skill_Lune_FireRage",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_FireRage",
+    "CharacterName": "Lune"
+  },
+  {
+    "CodeName": "DA_Skill_Lune_HealingLight",
+    "CustomName": "Healing Light (Lune Skill)",
+    "ClassName": "DA_Skill_Lune_HealingLight",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_HealingLight",
+    "CharacterName": "Lune"
+  },
+  {
+    "CodeName": "DA_Skill_Lune_Hell",
+    "CustomName": "Hell (Lune Skill)",
+    "ClassName": "DA_Skill_Lune_Hell",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_Hell",
+    "CharacterName": "Lune"
+  },
+  {
+    "CodeName": "DA_Skill_Lune_IceGust",
+    "CustomName": "Ice Lance (Lune Skill)",
+    "ClassName": "DA_Skill_Lune_IceGust",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_IceGust",
+    "CharacterName": "Lune"
+  },
+  {
+    "CodeName": "DA_Skill_Lune_Immolation",
+    "CustomName": "Immolation (Lune Skill)",
+    "ClassName": "DA_Skill_Lune_Immolation",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_Immolation",
+    "CharacterName": "Lune"
+  },
+  {
+    "CodeName": "DA_Skill_Lune_LightningDance",
+    "CustomName": "Lightning Dance (Lune Skill)",
+    "ClassName": "DA_Skill_Lune_LightningDance",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_LightningDance",
+    "CharacterName": "Lune"
+  },
+  {
+    "CodeName": "DA_Skill_Lune_Mayhem",
+    "CustomName": "Mayhem (Lune Skill)",
+    "ClassName": "DA_Skill_Lune_Mayhem",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_Mayhem",
+    "CharacterName": "Lune"
+  },
+  {
+    "CodeName": "DA_Skill_Lune_Rebirth",
+    "CustomName": "Rebirth (Lune Skill)",
+    "ClassName": "DA_Skill_Lune_Rebirth",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_Rebirth",
+    "CharacterName": "Lune"
+  },
+  {
+    "CodeName": "DA_Skill_Lune_Revitalization",
+    "CustomName": "Revitalization (Lune Skill)",
+    "ClassName": "DA_Skill_Lune_Revitalization",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_Revitalization",
+    "CharacterName": "Lune"
+  },
+  {
+    "CodeName": "DA_Skill_Lune_SkyBreak",
+    "CustomName": "Sky Break (Lune Skill)",
+    "ClassName": "DA_Skill_Lune_SkyBreak",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_SkyBreak",
+    "CharacterName": "Lune"
+  },
+  {
+    "CodeName": "DA_Skill_Lune_StormCaller",
+    "CustomName": "Storm Caller (Lune Skill)",
+    "ClassName": "DA_Skill_Lune_StormCaller",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_StormCaller",
+    "CharacterName": "Lune"
+  },
+  {
+    "CodeName": "DA_Skill_Lune_Terraquake",
+    "CustomName": "Terraquake (Lune Skill)",
+    "ClassName": "DA_Skill_Lune_Terraquake",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_Terraquake",
+    "CharacterName": "Lune"
+  },
+  {
+    "CodeName": "DA_Skill_Lune_ThermalTransfer",
+    "CustomName": "Thermal Transfer (Lune Skill)",
+    "ClassName": "DA_Skill_Lune_ThermalTransfer",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_ThermalTransfer",
+    "CharacterName": "Lune"
+  },
+  {
+    "CodeName": "DA_Skill_Lune_Thunderfall",
+    "CustomName": "Thunderfall (Lune Skill)",
+    "ClassName": "DA_Skill_Lune_Thunderfall",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_Thunderfall",
+    "CharacterName": "Lune"
+  },
+  {
+    "CodeName": "DA_Skill_Lune_TreeOfLife",
+    "CustomName": "Tree of Life (Lune Skill)",
+    "ClassName": "DA_Skill_Lune_TreeOfLife",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_TreeOfLife",
+    "CharacterName": "Lune"
+  },
+  {
+    "CodeName": "DA_Skill_Lune_Tremor",
+    "CustomName": "Tremor (Lune Skill)",
+    "ClassName": "DA_Skill_Lune_Tremor",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_Tremor",
+    "CharacterName": "Lune"
+  },
+  {
+    "CodeName": "DA_Skill_Lune_Typhoon",
+    "CustomName": "Typhoon (Lune Skill)",
+    "ClassName": "DA_Skill_Lune_Typhoon",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_Typhoon",
+    "CharacterName": "Lune"
+  },
+  {
+    "CodeName": "DA_Skill_Lune_Wildfire",
+    "CustomName": "Wildfire (Lune Skill)",
+    "ClassName": "DA_Skill_Lune_Wildfire",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_Wildfire",
+    "CharacterName": "Lune"
+  },
+  {
+    "CodeName": "DA_Skill_Maelle_BreakingRules",
+    "CustomName": "Breaking Rules (Maelle Skill)",
+    "ClassName": "DA_Skill_Maelle_BreakingRules",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_BreakingRules",
+    "CharacterName": "Maelle"
+  },
+  {
+    "CodeName": "DA_Skill_Maelle_BurningCanvas",
+    "CustomName": "Burning Canvas (Maelle Skill)",
+    "ClassName": "DA_Skill_Maelle_BurningCanvas",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_BurningCanvas",
+    "CharacterName": "Maelle"
+  },
+  {
+    "CodeName": "DA_Skill_Maelle_Degagement",
+    "CustomName": "Degagement (Maelle Skill)",
+    "ClassName": "DA_Skill_Maelle_Degagement",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_Degagement",
+    "CharacterName": "Maelle"
+  },
+  {
+    "CodeName": "DA_Skill_Maelle_FencersFlurry",
+    "CustomName": "Fencer's Flurry (Maelle Skill)",
+    "ClassName": "DA_Skill_Maelle_FencersFlurry",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_FencersFlurry",
+    "CharacterName": "Maelle"
+  },
+  {
+    "CodeName": "DA_Skill_Maelle_FleuretFury",
+    "CustomName": "Fleuret Fury (Maelle Skill)",
+    "ClassName": "DA_Skill_Maelle_FleuretFury",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_FleuretFury",
+    "CharacterName": "Maelle"
+  },
+  {
+    "CodeName": "DA_Skill_Maelle_Gommage",
+    "CustomName": "Gommage (Maelle Skill)",
+    "ClassName": "DA_Skill_Maelle_Gommage",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_Gommage",
+    "CharacterName": "Maelle"
+  },
+  {
+    "CodeName": "DA_Skill_Maelle_GuardDown",
+    "CustomName": "Guard Down (Maelle Skill)",
+    "ClassName": "DA_Skill_Maelle_GuardDown",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_GuardDown",
+    "CharacterName": "Maelle"
+  },
+  {
+    "CodeName": "DA_Skill_Maelle_GuardUp",
+    "CustomName": "Guard Up (Maelle Skill)",
+    "ClassName": "DA_Skill_Maelle_GuardUp",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_GuardUp",
+    "CharacterName": "Maelle"
+  },
+  {
+    "CodeName": "DA_Skill_Maelle_GustaveSMemoire",
+    "CustomName": "Gustave's Homage (Maelle Skill)",
+    "ClassName": "DA_Skill_Maelle_GustaveSMemoire",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_GustaveSMemoire",
+    "CharacterName": "Maelle"
+  },
+  {
+    "CodeName": "DA_Skill_Maelle_LastChance",
+    "CustomName": "Last Chance (Maelle Skill)",
+    "ClassName": "DA_Skill_Maelle_LastChance",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_LastChance",
+    "CharacterName": "Maelle"
+  },
+  {
+    "CodeName": "DA_Skill_Maelle_MomentumStrike",
+    "CustomName": "Momentum Strike (Maelle Skill)",
+    "ClassName": "DA_Skill_Maelle_MomentumStrike",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_MomentumStrike",
+    "CharacterName": "Maelle"
+  },
+  {
+    "CodeName": "DA_Skill_Maelle_NEW11_MezzoForte",
+    "CustomName": "Mezzo Forte (Maelle Skill)",
+    "ClassName": "DA_Skill_Maelle_NEW11_MezzoForte",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_NEW11_MezzoForte",
+    "CharacterName": "Maelle"
+  },
+  {
+    "CodeName": "DA_Skill_Maelle_NEW13_Payback",
+    "CustomName": "Payback (Maelle Skill)",
+    "ClassName": "DA_Skill_Maelle_NEW13_Payback",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_NEW13_Payback",
+    "CharacterName": "Maelle"
+  },
+  {
+    "CodeName": "DA_Skill_Maelle_NEW14_Percee",
+    "CustomName": "Perc\u00e9e (Maelle Skill)",
+    "ClassName": "DA_Skill_Maelle_NEW14_Percee",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_NEW14_Percee",
+    "CharacterName": "Maelle"
+  },
+  {
+    "CodeName": "DA_Skill_Maelle_NEW18_Spark",
+    "CustomName": "Spark (Maelle Skill)",
+    "ClassName": "DA_Skill_Maelle_NEW18_Spark",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_NEW18_Spark",
+    "CharacterName": "Maelle"
+  },
+  {
+    "CodeName": "DA_Skill_Maelle_NEW19_InvigoratingFire",
+    "CustomName": "Combustion (Maelle Skill)",
+    "ClassName": "DA_Skill_Maelle_NEW19_InvigoratingFire",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_NEW19_InvigoratingFire",
+    "CharacterName": "Maelle"
+  },
+  {
+    "CodeName": "DA_Skill_Maelle_NEW4_FireRise",
+    "CustomName": "Swift Stride (Maelle Skill)",
+    "ClassName": "DA_Skill_Maelle_NEW4_FireRise",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_NEW4_FireRise",
+    "CharacterName": "Maelle"
+  },
+  {
+    "CodeName": "DA_Skill_Maelle_NEW7_Egide",
+    "CustomName": "\u00c9gide (Maelle Skill)",
+    "ClassName": "DA_Skill_Maelle_NEW7_Egide",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_NEW7_Egide",
+    "CharacterName": "Maelle"
+  },
+  {
+    "CodeName": "DA_Skill_Maelle_NEW9_RainOfFire",
+    "CustomName": "Rain of Fire (Maelle Skill)",
+    "ClassName": "DA_Skill_Maelle_NEW9_RainOfFire",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_NEW9_RainOfFire",
+    "CharacterName": "Maelle"
+  },
+  {
+    "CodeName": "DA_Skill_Maelle_OffensiveSwitch",
+    "CustomName": "Offensive Switch (Maelle Skill)",
+    "ClassName": "DA_Skill_Maelle_OffensiveSwitch",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_OffensiveSwitch",
+    "CharacterName": "Maelle"
+  },
+  {
+    "CodeName": "DA_Skill_Maelle_PhantomStrike",
+    "CustomName": "Phantom Strike (Maelle Skill)",
+    "ClassName": "DA_Skill_Maelle_PhantomStrike",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_PhantomStrike",
+    "CharacterName": "Maelle"
+  },
+  {
+    "CodeName": "DA_Skill_Maelle_PhoenixFlame",
+    "CustomName": "Phoenix Flame (Maelle Skill)",
+    "ClassName": "DA_Skill_Maelle_PhoenixFlame",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_PhoenixFlame",
+    "CharacterName": "Maelle"
+  },
+  {
+    "CodeName": "DA_Skill_Maelle_Pyrolyse",
+    "CustomName": "Pyrolyse (Maelle Skill)",
+    "ClassName": "DA_Skill_Maelle_Pyrolyse",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_Pyrolyse",
+    "CharacterName": "Maelle"
+  },
+  {
+    "CodeName": "DA_Skill_Maelle_Revenge",
+    "CustomName": "Revenge (Maelle Skill)",
+    "ClassName": "DA_Skill_Maelle_Revenge",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_Revenge",
+    "CharacterName": "Maelle"
+  },
+  {
+    "CodeName": "DA_Skill_Maelle_Stendhal",
+    "CustomName": "Stendhal (Maelle Skill)",
+    "ClassName": "DA_Skill_Maelle_Stendhal",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_Stendhal",
+    "CharacterName": "Maelle"
+  },
+  {
+    "CodeName": "DA_Skill_Maelle_SwordBallet",
+    "CustomName": "Sword Ballet (Maelle Skill)",
+    "ClassName": "DA_Skill_Maelle_SwordBallet",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_SwordBallet",
+    "CharacterName": "Maelle"
+  },
+  {
+    "CodeName": "DA_Skill_Maelle_VirtuoseStrike",
+    "CustomName": "Virtuose Strike (Maelle Skill)",
+    "ClassName": "DA_Skill_Maelle_VirtuoseStrike",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_VirtuoseStrike",
+    "CharacterName": "Maelle"
+  },
+  {
+    "CodeName": "DA_Skill_BreakPoint",
+    "CustomName": "Break Point (Monoco Skill)",
+    "ClassName": "DA_Skill_BreakPoint",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_BreakPoint",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_MightyStrike",
+    "CustomName": "Mighty Strike (Monoco Skill)",
+    "ClassName": "DA_Skill_MightyStrike",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_MightyStrike",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Sanctuary",
+    "CustomName": "Sanctuary (Monoco Skill)",
+    "ClassName": "DA_Skill_Sanctuary",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Sanctuary",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_AbbestMelee",
+    "CustomName": "Abbest Wind (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_AbbestMelee",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_AbbestMelee",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_AberrationBurningLight",
+    "CustomName": "Aberration Light (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_AberrationBurningLight",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_AberrationBurningLight",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_BalletCharm",
+    "CustomName": "Ballet Charm (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_BalletCharm",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_BalletCharm",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_BenisseurMortar",
+    "CustomName": "B\u00e9nisseur Mortar (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_BenisseurMortar",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_BenisseurMortar",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_BoucheclierShield",
+    "CustomName": "Boucheclier Fortify (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_BoucheclierShield",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_BoucheclierShield",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_BraseleurHammerSmash",
+    "CustomName": "Braseleur Smash (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_BraseleurHammerSmash",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_BraseleurHammerSmash",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_BrulerAnchorsmash",
+    "CustomName": "Bruler Bash (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_BrulerAnchorsmash",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_BrulerAnchorsmash",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_ChalierRelentlessSword",
+    "CustomName": "Chalier Combo (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_ChalierRelentlessSword",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_ChalierRelentlessSword",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_ChapelierAxeSlash",
+    "CustomName": "Chapelier Slash (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_ChapelierAxeSlash",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_ChapelierAxeSlash",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_ChevaliereBAoECombo",
+    "CustomName": "Chevali\u00e8re Thrusts (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_ChevaliereBAoECombo",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_ChevaliereBAoECombo",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_ChevaliereCAC",
+    "CustomName": "Chevali\u00e8re Piercing (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_ChevaliereCAC",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_ChevaliereCAC",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_ChevaliereCAoECombo",
+    "CustomName": "Chevali\u00e8re Ice (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_ChevaliereCAoECombo",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_ChevaliereCAoECombo",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_ClairEnfeeble",
+    "CustomName": "Clair Enfeeble (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_ClairEnfeeble",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_ClairEnfeeble",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_ContorsionnisteAngryBlast",
+    "CustomName": "Contorsionniste Blast (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_ContorsionnisteAngryBlast",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_ContorsionnisteAngryBlast",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_CreationFromTheVoid",
+    "CustomName": "Cr\u00e9ation Void (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_CreationFromTheVoid",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_CreationFromTheVoid",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_CrulerShield",
+    "CustomName": "Cruler Barrier (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_CrulerShield",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_CrulerShield",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_DanseuseWingDance",
+    "CustomName": "Danseuse Waltz (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_DanseuseWingDance",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_DanseuseWingDance",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_DemineurThunderStrike",
+    "CustomName": "D\u00e9mineur Thunder (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_DemineurThunderStrike",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_DemineurThunderStrike",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_DuallistStormBlood",
+    "CustomName": "Duallist Storm (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_DuallistStormBlood",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_DuallistStormBlood",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_EchassierCombo",
+    "CustomName": "\u00c9chassier Stabs (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_EchassierCombo",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_EchassierCombo",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_EvequeSpear",
+    "CustomName": "\u00c9v\u00eaque Spear (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_EvequeSpear",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_EvequeSpear",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_FlyingCultistSlash",
+    "CustomName": "Cultist Slashes (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_FlyingCultistSlash",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_FlyingCultistSlash",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_GaultCombo",
+    "CustomName": "Gault Fury (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_GaultCombo",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_GaultCombo",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_GlaiseEarthquakes",
+    "CustomName": "Glaise Earthquakes (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_GlaiseEarthquakes",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_GlaiseEarthquakes",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_GrosseTeteWrecking",
+    "CustomName": "Grosse T\u00eate Whack (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_GrosseTeteWrecking",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_GrosseTeteWrecking",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_HeavyCultistBloodSword",
+    "CustomName": "Cultist Blood (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_HeavyCultistBloodSword",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_HeavyCultistBloodSword",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_HexgaCombo",
+    "CustomName": "Hexga Crush (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_HexgaCombo",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_HexgaCombo",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_JarCombo",
+    "CustomName": "Jar Lampstorm (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_JarCombo",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_JarCombo",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_LampmasterSwordOfLight",
+    "CustomName": "Lampmaster Light (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_LampmasterSwordOfLight",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_LampmasterSwordOfLight",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_Lancelier",
+    "CustomName": "Lancelier Impale (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_Lancelier",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_Lancelier",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_LusterCombo",
+    "CustomName": "Luster Slices (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_LusterCombo",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_LusterCombo",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_MoissonneuseVendange",
+    "CustomName": "Moissonneuse Vendange (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_MoissonneuseVendange",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_MoissonneuseVendange",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_ObscurCombo",
+    "CustomName": "Obscur Sword (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_ObscurCombo",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_ObscurCombo",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_OrphelinBuff",
+    "CustomName": "Orphelin Cheers (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_OrphelinBuff",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_OrphelinBuff",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_PelerinFreshAir",
+    "CustomName": "P\u00e8lerin Heal (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_PelerinFreshAir",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_PelerinFreshAir",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_PortierCrashingDown",
+    "CustomName": "Portier Crash (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_PortierCrashingDown",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_PortierCrashingDown",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_PotatobagBoss_FireShots",
+    "CustomName": "Sakapatate Fire (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_PotatobagBoss_FireShots",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_PotatobagBoss_FireShots",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_PotatoBagMageThunderThrows",
+    "CustomName": "Sakapatate Explosion (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_PotatoBagMageThunderThrows",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_PotatoBagMageThunderThrows",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_PotatobagRangerThunderEstoc",
+    "CustomName": "Sakapatate Estoc (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_PotatobagRangerThunderEstoc",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_PotatobagRangerThunderEstoc",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_PotatobagTankSlam",
+    "CustomName": "Sakapatate Slam (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_PotatobagTankSlam",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_PotatobagTankSlam",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_PotierBuff",
+    "CustomName": "Potier Energy (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_PotierBuff",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_PotierBuff",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_RamasseurBonk",
+    "CustomName": "Ramasseur Bonk (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_RamasseurBonk",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_RamasseurBonk",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_RocherHammering",
+    "CustomName": "Rocher Hammering (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_RocherHammering",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_RocherHammering",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_SaplingAbsorption",
+    "CustomName": "Sapling Absorption (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_SaplingAbsorption",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_SaplingAbsorption",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_StalactMeleeCombo",
+    "CustomName": "Stalact Punches (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_StalactMeleeCombo",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_StalactMeleeCombo",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Transfo_TroubadourBuff",
+    "CustomName": "Troubadour Trumpet (Monoco Skill)",
+    "ClassName": "DA_Skill_Transfo_TroubadourBuff",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_TroubadourBuff",
+    "CharacterName": "Monoco"
+  },
+  {
+    "CodeName": "DA_Skill_Blitz",
+    "CustomName": "Blitz (Verso Skill)",
+    "ClassName": "DA_Skill_Blitz",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Blitz",
+    "CharacterName": "Verso"
+  },
+  {
+    "CodeName": "DA_Skill_Combo1",
+    "CustomName": "Assault Zero (Verso Skill)",
+    "ClassName": "DA_Skill_Combo1",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Combo1",
+    "CharacterName": "Verso"
+  },
+  {
+    "CodeName": "DA_Skill_LightHolder",
+    "CustomName": "Light Holder (Verso Skill)",
+    "ClassName": "DA_Skill_LightHolder",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_LightHolder",
+    "CharacterName": "Verso"
+  },
+  {
+    "CodeName": "DA_Skill_MarkingShot",
+    "CustomName": "Marking Shot (Verso Skill)",
+    "ClassName": "DA_Skill_MarkingShot",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_MarkingShot",
+    "CharacterName": "Verso"
+  },
+  {
+    "CodeName": "DA_Skill_NEW_4",
+    "CustomName": "Light Holder (Verso Skill)",
+    "ClassName": "DA_Skill_NEW_4",
+    "ClassPath": "/Game/Content/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_NEW_4",
+    "CharacterName": "Verso"
+  },
+  {
+    "CodeName": "DA_Skill_PerfectRecovery",
+    "CustomName": "Perfect Recovery (Verso Skill)",
+    "ClassName": "DA_Skill_PerfectRecovery",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_PerfectRecovery",
+    "CharacterName": "Verso"
+  },
+  {
+    "CodeName": "DA_Skill_Powerful",
+    "CustomName": "Powerful (Verso Skill)",
+    "ClassName": "DA_Skill_Powerful",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Powerful",
+    "CharacterName": "Verso"
+  },
+  {
+    "CodeName": "DA_Skill_Verso_AscendingAssault",
+    "CustomName": "Ascending Assault (Verso Skill)",
+    "ClassName": "DA_Skill_Verso_AscendingAssault",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_AscendingAssault",
+    "CharacterName": "Verso"
+  },
+  {
+    "CodeName": "DA_Skill_Verso_BerserkSlash",
+    "CustomName": "Berserk Slash (Verso Skill)",
+    "ClassName": "DA_Skill_Verso_BerserkSlash",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_BerserkSlash",
+    "CharacterName": "Verso"
+  },
+  {
+    "CodeName": "DA_Skill_Verso_Burden",
+    "CustomName": "Burden (Verso Skill)",
+    "ClassName": "DA_Skill_Verso_Burden",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_Burden",
+    "CharacterName": "Verso"
+  },
+  {
+    "CodeName": "DA_Skill_Verso_DefiantStrike",
+    "CustomName": "Defiant Strike (Verso Skill)",
+    "ClassName": "DA_Skill_Verso_DefiantStrike",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_DefiantStrike",
+    "CharacterName": "Verso"
+  },
+  {
+    "CodeName": "DA_Skill_Verso_Endbringer",
+    "CustomName": "End Bringer (Verso Skill)",
+    "ClassName": "DA_Skill_Verso_Endbringer",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_Endbringer",
+    "CharacterName": "Verso"
+  },
+  {
+    "CodeName": "DA_Skill_Verso_NEW_AngelsEyes",
+    "CustomName": "Angel's Eyes (Verso Skill)",
+    "ClassName": "DA_Skill_Verso_NEW_AngelsEyes",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_NEW_AngelsEyes",
+    "CharacterName": "Verso"
+  },
+  {
+    "CodeName": "DA_Skill_Verso_NEW_Followup",
+    "CustomName": "Follow Up (Verso Skill)",
+    "ClassName": "DA_Skill_Verso_NEW_Followup",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_NEW_Followup",
+    "CharacterName": "Verso"
+  },
+  {
+    "CodeName": "DA_Skill_Verso_NEW_FromFire",
+    "CustomName": "From Fire (Verso Skill)",
+    "ClassName": "DA_Skill_Verso_NEW_FromFire",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_NEW_FromFire",
+    "CharacterName": "Verso"
+  },
+  {
+    "CodeName": "DA_Skill_Verso_NEW_Leadership",
+    "CustomName": "Leadership (Verso Skill)",
+    "ClassName": "DA_Skill_Verso_NEW_Leadership",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_NEW_Leadership",
+    "CharacterName": "Verso"
+  },
+  {
+    "CodeName": "DA_Skill_Verso_NEW_Overcharge",
+    "CustomName": "Overload (Verso Skill)",
+    "ClassName": "DA_Skill_Verso_NEW_Overcharge",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_NEW_Overcharge",
+    "CharacterName": "Verso"
+  },
+  {
+    "CodeName": "DA_Skill_Verso_NEW_ParadigmShift",
+    "CustomName": "Paradigm Shift (Verso Skill)",
+    "ClassName": "DA_Skill_Verso_NEW_ParadigmShift",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_NEW_ParadigmShift",
+    "CharacterName": "Verso"
+  },
+  {
+    "CodeName": "DA_Skill_Verso_NEW_PhantomStars",
+    "CustomName": "Phantom Stars (Verso Skill)",
+    "ClassName": "DA_Skill_Verso_NEW_PhantomStars",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_NEW_PhantomStars",
+    "CharacterName": "Verso"
+  },
+  {
+    "CodeName": "DA_Skill_Verso_NEW_Purification",
+    "CustomName": "Purification (Verso Skill)",
+    "ClassName": "DA_Skill_Verso_NEW_Purification",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_NEW_Purification",
+    "CharacterName": "Verso"
+  },
+  {
+    "CodeName": "DA_Skill_Verso_NEW_QuickStrike",
+    "CustomName": "Quick Strike (Verso Skill)",
+    "ClassName": "DA_Skill_Verso_NEW_QuickStrike",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_NEW_QuickStrike",
+    "CharacterName": "Verso"
+  },
+  {
+    "CodeName": "DA_Skill_Verso_NEW_Sabotage",
+    "CustomName": "Sabotage (Verso Skill)",
+    "ClassName": "DA_Skill_Verso_NEW_Sabotage",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_NEW_Sabotage",
+    "CharacterName": "Verso"
+  },
+  {
+    "CodeName": "DA_Skill_Verso_NEW_Speedburst",
+    "CustomName": "Speed Burst (Verso Skill)",
+    "ClassName": "DA_Skill_Verso_NEW_Speedburst",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_NEW_Speedburst",
+    "CharacterName": "Verso"
+  },
+  {
+    "CodeName": "DA_Skill_Verso_PerfectBreak",
+    "CustomName": "Perfect Break (Verso Skill)",
+    "ClassName": "DA_Skill_Verso_PerfectBreak",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_PerfectBreak",
+    "CharacterName": "Verso"
+  },
+  {
+    "CodeName": "DA_Skill_Verso_RadiantSlash",
+    "CustomName": "Radiant Slash (Verso Skill)",
+    "ClassName": "DA_Skill_Verso_RadiantSlash",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_RadiantSlash",
+    "CharacterName": "Verso"
+  },
+  {
+    "CodeName": "DA_Skill_Verso_RadiantStrike",
+    "CustomName": "Radiant Strike (Verso Skill)",
+    "ClassName": "DA_Skill_Verso_RadiantStrike",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_RadiantStrike",
+    "CharacterName": "Verso"
+  },
+  {
+    "CodeName": "DA_Skill_Verso_SteeledStrike",
+    "CustomName": "Steeled Strike (Verso Skill)",
+    "ClassName": "DA_Skill_Verso_SteeledStrike",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_SteeledStrike",
+    "CharacterName": "Verso"
+  },
+  {
+    "CodeName": "DA_Skill_Verso_Striker",
+    "CustomName": "Striker (Verso Skill)",
+    "ClassName": "DA_Skill_Verso_Striker",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_Striker",
+    "CharacterName": "Verso"
+  },
+  {
+    "CodeName": "DA_Skill_Verso_Strikestorm",
+    "CustomName": "Strike Storm (Verso Skill)",
+    "ClassName": "DA_Skill_Verso_Strikestorm",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_Strikestorm",
+    "CharacterName": "Verso"
+  },
+  {
+    "CodeName": "DA_Skill_Sciel_AllSet",
+    "CustomName": "All Set (Sciel Skill)",
+    "ClassName": "DA_Skill_Sciel_AllSet",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_AllSet",
+    "CharacterName": "Sciel"
+  },
+  {
+    "CodeName": "DA_Skill_Sciel_BadOmen",
+    "CustomName": "Bad Omen (Sciel Skill)",
+    "ClassName": "DA_Skill_Sciel_BadOmen",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_BadOmen",
+    "CharacterName": "Sciel"
+  },
+  {
+    "CodeName": "DA_Skill_Sciel_CardWeaver",
+    "CustomName": "Card Weaver (Sciel Skill)",
+    "ClassName": "DA_Skill_Sciel_CardWeaver",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_CardWeaver",
+    "CharacterName": "Sciel"
+  },
+  {
+    "CodeName": "DA_Skill_Sciel_DarkCleansing",
+    "CustomName": "Dark Cleansing (Sciel Skill)",
+    "ClassName": "DA_Skill_Sciel_DarkCleansing",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_DarkCleansing",
+    "CharacterName": "Sciel"
+  },
+  {
+    "CodeName": "DA_Skill_Sciel_DarkWave",
+    "CustomName": "Dark Wave (Sciel Skill)",
+    "ClassName": "DA_Skill_Sciel_DarkWave",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_DarkWave",
+    "CharacterName": "Sciel"
+  },
+  {
+    "CodeName": "DA_Skill_Sciel_Doom",
+    "CustomName": "Doom (Sciel Skill)",
+    "ClassName": "DA_Skill_Sciel_Doom",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_Doom",
+    "CharacterName": "Sciel"
+  },
+  {
+    "CodeName": "DA_Skill_Sciel_EndSlice",
+    "CustomName": "End Slice (Sciel Skill)",
+    "ClassName": "DA_Skill_Sciel_EndSlice",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_EndSlice",
+    "CharacterName": "Sciel"
+  },
+  {
+    "CodeName": "DA_Skill_Sciel_FinalPath",
+    "CustomName": "Final Path (Sciel Skill)",
+    "ClassName": "DA_Skill_Sciel_FinalPath",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_FinalPath",
+    "CharacterName": "Sciel"
+  },
+  {
+    "CodeName": "DA_Skill_Sciel_FiringShadow",
+    "CustomName": "Firing Shadow (Sciel Skill)",
+    "ClassName": "DA_Skill_Sciel_FiringShadow",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_FiringShadow",
+    "CharacterName": "Sciel"
+  },
+  {
+    "CodeName": "DA_Skill_Sciel_FortunesFury",
+    "CustomName": "Fortune's Fury (Sciel Skill)",
+    "ClassName": "DA_Skill_Sciel_FortunesFury",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_FortunesFury",
+    "CharacterName": "Sciel"
+  },
+  {
+    "CodeName": "DA_Skill_Sciel_Harvest",
+    "CustomName": "Harvest (Sciel Skill)",
+    "ClassName": "DA_Skill_Sciel_Harvest",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_Harvest",
+    "CharacterName": "Sciel"
+  },
+  {
+    "CodeName": "DA_Skill_Sciel_Intervention",
+    "CustomName": "Intervention (Sciel Skill)",
+    "ClassName": "DA_Skill_Sciel_Intervention",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_Intervention",
+    "CharacterName": "Sciel"
+  },
+  {
+    "CodeName": "DA_Skill_Sciel_new14_ShadowTargeting",
+    "CustomName": "Marking Card (Sciel Skill)",
+    "ClassName": "DA_Skill_Sciel_new14_ShadowTargeting",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_new14_ShadowTargeting",
+    "CharacterName": "Sciel"
+  },
+  {
+    "CodeName": "DA_Skill_Sciel_new18_Postponed",
+    "CustomName": "Delaying Slash (Sciel Skill)",
+    "ClassName": "DA_Skill_Sciel_new18_Postponed",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_new18_Postponed",
+    "CharacterName": "Sciel"
+  },
+  {
+    "CodeName": "DA_Skill_Sciel_new2_Foretelling2",
+    "CustomName": "Focused Foretell (Sciel Skill)",
+    "ClassName": "DA_Skill_Sciel_new2_Foretelling2",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_new2_Foretelling2",
+    "CharacterName": "Sciel"
+  },
+  {
+    "CodeName": "DA_Skill_Sciel_new3_GrimPrediction",
+    "CustomName": "Twilight Slash (Sciel Skill)",
+    "ClassName": "DA_Skill_Sciel_new3_GrimPrediction",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_new3_GrimPrediction",
+    "CharacterName": "Sciel"
+  },
+  {
+    "CodeName": "DA_Skill_Sciel_new4_ShadowDrop",
+    "CustomName": "Phantom Blade (Sciel Skill)",
+    "ClassName": "DA_Skill_Sciel_new4_ShadowDrop",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_new4_ShadowDrop",
+    "CharacterName": "Sciel"
+  },
+  {
+    "CodeName": "DA_Skill_Sciel_new7_DarkAbsorption",
+    "CustomName": "Grim Harvest (Sciel Skill)",
+    "ClassName": "DA_Skill_Sciel_new7_DarkAbsorption",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_new7_DarkAbsorption",
+    "CharacterName": "Sciel"
+  },
+  {
+    "CodeName": "DA_Skill_Sciel_OurSacrifice",
+    "CustomName": "Our Sacrifice (Sciel Skill)",
+    "ClassName": "DA_Skill_Sciel_OurSacrifice",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_OurSacrifice",
+    "CharacterName": "Sciel"
+  },
+  {
+    "CodeName": "DA_Skill_Sciel_PlentifulHarvest",
+    "CustomName": "Plentiful Harvest (Sciel Skill)",
+    "ClassName": "DA_Skill_Sciel_PlentifulHarvest",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_PlentifulHarvest",
+    "CharacterName": "Sciel"
+  },
+  {
+    "CodeName": "DA_Skill_Sciel_SealedFate",
+    "CustomName": "Sealed Fate (Sciel Skill)",
+    "ClassName": "DA_Skill_Sciel_SealedFate",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_SealedFate",
+    "CharacterName": "Sciel"
+  },
+  {
+    "CodeName": "DA_Skill_Sciel_SearingBond",
+    "CustomName": "Searing Bond (Sciel Skill)",
+    "ClassName": "DA_Skill_Sciel_SearingBond",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_SearingBond",
+    "CharacterName": "Sciel"
+  },
+  {
+    "CodeName": "DA_Skill_Sciel_ShadowBringer",
+    "CustomName": "Shadow Bringer (Sciel Skill)",
+    "ClassName": "DA_Skill_Sciel_ShadowBringer",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_ShadowBringer",
+    "CharacterName": "Sciel"
+  },
+  {
+    "CodeName": "DA_Skill_Sciel_SpectralSweep",
+    "CustomName": "Spectral Sweep (Sciel Skill)",
+    "ClassName": "DA_Skill_Sciel_SpectralSweep",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_SpectralSweep",
+    "CharacterName": "Sciel"
+  },
+  {
+    "CodeName": "DA_Skill_Sciel_SpeedUp",
+    "CustomName": "Rush (Sciel Skill)",
+    "ClassName": "DA_Skill_Sciel_SpeedUp",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_SpeedUp",
+    "CharacterName": "Sciel"
+  },
+  {
+    "CodeName": "DA_Skill_Sciel_TwilightDance",
+    "CustomName": "Twilight Dance (Sciel Skill)",
+    "ClassName": "DA_Skill_Sciel_TwilightDance",
+    "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_TwilightDance",
+    "CharacterName": "Sciel"
+  }
+]
