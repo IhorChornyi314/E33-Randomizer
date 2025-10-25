@@ -26,6 +26,14 @@ public class SkillsController: Controller<SkillData>
         }
     }
 
+    public void Randomize()
+    {
+        foreach (var skillGraph in SkillGraphs)
+        {
+            skillGraph.Randomize();
+        }
+    }
+
     public void WriteAssets()
     {
         foreach (var skillGraph in SkillGraphs)

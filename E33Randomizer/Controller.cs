@@ -25,4 +25,9 @@ public abstract class Controller<T>
     {
         return ObjectsByName.TryGetValue(objectCodeName, out var obj) ? obj : default;
     }
+
+    public T GetRandomObject()
+    {
+        return Utils.Pick(ObjectsData);
+    }
 }

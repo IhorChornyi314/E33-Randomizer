@@ -321,6 +321,8 @@ public class SettingsViewModel : INotifyPropertyChanged
     public bool RandomizeGestralBeachRewards { get; set; } = true;
     public bool IncludeCutContentItems { get; set; } = true;
     
+    public bool RandomizeSkills { get; set; } = true;
+    
     public event PropertyChangedEventHandler PropertyChanged;
     protected virtual void OnPropertyChanged(string propertyName)
     {

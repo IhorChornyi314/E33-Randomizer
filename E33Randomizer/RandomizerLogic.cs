@@ -213,8 +213,11 @@ public static class RandomizerLogic
                 ItemsController.WriteTableAssets();
             }
         }
-        
-        Controllers.SkillsController.WriteAssets();
+
+        if (Settings.RandomizeSkills)
+        {
+            Controllers.SkillsController.WriteAssets();
+        }
         
         var retocArgs = $"to-zen --version UE5_4 randomizer \"{exportPath}randomizer_P.utoc\"";
 
@@ -244,6 +247,7 @@ public static class RandomizerLogic
         rand = new Random(usedSeed);
         if (Settings.RandomizeEnemies) EncountersController.GenerateNewEncounters();
         if (Settings.RandomizeItems) ItemsController.GenerateNewItemChecks();
+        if (Settings.RandomizeSkills) Controllers.SkillsController.Randomize();
         if (saveData)
             PackAndConvertData();
     }
