@@ -111,22 +111,9 @@ public class CustomEnemyPlacement: CustomPlacement
         DefaultFrequencies = EnemiesController.enemies.Select(e => new KeyValuePair<string,float>(e.CodeName, translatedFrequencyAdjustments.ContainsKey(e.CodeName) ?  translatedFrequencyAdjustments[e.CodeName] : 1)).ToDictionary(kv => kv.Key, kv => kv.Value);
         DefaultFrequencies = DefaultFrequencies.Where(kv => kv.Value > 0.0001).ToDictionary();
     }
-    
-    public override string Replace(string originalCodeName)
-    {
-        if (NotRandomizedCodeNames.Contains(originalCodeName))
-        {
-            return originalCodeName;
-        }
 
-        if (!FinalReplacementFrequencies.TryGetValue(originalCodeName, out var frequency))
-            return RandomizerLogic.GetRandomEnemy().CodeName;
-        
-        var newEnemy = Utils.GetRandomWeighted(
-            frequency,
-            ExcludedCodeNames
-        );
-        
-        return newEnemy != null ? newEnemy : originalCodeName;
+    public override string GetTrulyRandom()
+    {
+        return RandomizerLogic.GetRandomEnemy().CodeName;
     }
 }

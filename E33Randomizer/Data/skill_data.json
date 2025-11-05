@@ -64,7 +64,7 @@
   },
   {
     "CodeName": "DA_Skill_Gustave_Combo1",
-    "CustomName": "Lumi\u00e8re Assault (Gustave Skill)",
+    "CustomName": "Lumiere Assault (Gustave Skill)",
     "ClassName": "DA_Skill_Gustave_Combo1",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Gustave/DA_Skill_Gustave_Combo1",
     "CharacterName": "Gustave"
@@ -575,21 +575,21 @@
   },
   {
     "CodeName": "DA_Skill_Transfo_ChevaliereBAoECombo",
-    "CustomName": "Chevali\u00e8re Thrusts (Monoco Skill)",
+    "CustomName": "Chevaliere Thrusts (Monoco Skill)",
     "ClassName": "DA_Skill_Transfo_ChevaliereBAoECombo",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_ChevaliereBAoECombo",
     "CharacterName": "Monoco"
   },
   {
     "CodeName": "DA_Skill_Transfo_ChevaliereCAC",
-    "CustomName": "Chevali\u00e8re Piercing (Monoco Skill)",
+    "CustomName": "Chevaliere Piercing (Monoco Skill)",
     "ClassName": "DA_Skill_Transfo_ChevaliereCAC",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_ChevaliereCAC",
     "CharacterName": "Monoco"
   },
   {
     "CodeName": "DA_Skill_Transfo_ChevaliereCAoECombo",
-    "CustomName": "Chevali\u00e8re Ice (Monoco Skill)",
+    "CustomName": "Chevaliere Ice (Monoco Skill)",
     "ClassName": "DA_Skill_Transfo_ChevaliereCAoECombo",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_ChevaliereCAoECombo",
     "CharacterName": "Monoco"
@@ -750,7 +750,7 @@
   },
   {
     "CodeName": "DA_Skill_Transfo_PelerinFreshAir",
-    "CustomName": "P\u00e8lerin Heal (Monoco Skill)",
+    "CustomName": "Pelerin Heal (Monoco Skill)",
     "ClassName": "DA_Skill_Transfo_PelerinFreshAir",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_PelerinFreshAir",
     "CharacterName": "Monoco"
@@ -848,7 +848,7 @@
   },
   {
     "CodeName": "DA_Skill_LightHolder",
-    "CustomName": "Light Holder (Verso Skill)",
+    "CustomName": "Light Holder (Cut Verso Skill)",
     "ClassName": "DA_Skill_LightHolder",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_LightHolder",
     "CharacterName": "Verso"

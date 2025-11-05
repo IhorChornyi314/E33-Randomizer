@@ -38,8 +38,8 @@ public abstract class CustomPlacement
     
     public abstract void InitPlainNames();
     public abstract void LoadDefaultPreset();
+    public abstract string GetTrulyRandom();
     public abstract void UpdateDefaultFrequencies(Dictionary<string, float> translatedFrequencyAdjustments);
-    public abstract string Replace(string originalCodeName);
 
     public void ApplyOopsAll(string objectCodeName)
     {
@@ -190,5 +190,23 @@ public abstract class CustomPlacement
             }
         }
         UpdateDefaultFrequencies(translatedFrequencyAdjustments);
+    }
+    
+    public string Replace(string originalCodeName)
+    {
+        if (NotRandomizedCodeNames.Contains(originalCodeName))
+        {
+            return originalCodeName;
+        }
+
+        if (!FinalReplacementFrequencies.TryGetValue(originalCodeName, out var frequency))
+            return GetTrulyRandom();
+        
+        var newItem = Utils.GetRandomWeighted(
+            frequency,
+            ExcludedCodeNames
+        );
+        
+        return newItem != null ? newItem : originalCodeName;
     }
 }

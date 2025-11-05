@@ -79,21 +79,8 @@ public class CustomItemPlacement: CustomPlacement
         DefaultFrequencies = DefaultFrequencies.Where(kv => kv.Value > 0.0001).ToDictionary();
     }
 
-    public override string Replace(string originalCodeName)
+    public override string GetTrulyRandom()
     {
-        if (NotRandomizedCodeNames.Contains(originalCodeName))
-        {
-            return originalCodeName;
-        }
-
-        if (!FinalReplacementFrequencies.TryGetValue(originalCodeName, out var frequency))
-            return RandomizerLogic.GetRandomItem().CodeName;
-        
-        var newItem = Utils.GetRandomWeighted(
-            frequency,
-            ExcludedCodeNames
-        );
-        
-        return newItem != null ? newItem : originalCodeName;
+        return RandomizerLogic.GetRandomEnemy().CodeName;
     }
 }
