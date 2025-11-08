@@ -6,6 +6,36 @@ namespace E33Randomizer;
 
 public class EnemyData: ObjectData
 {
+    public static Dictionary<int, string> EnemyArchetypes = new()
+    {
+        {-3, "Alpha"},
+        {-4, "Boss"},
+        {-5, "Boss"},
+        {-6, "Elite"},
+        {-7, "Elusive"},
+        {-8, "Boss"},
+        {-9, "Petank"},
+        {-10, "Regular"},
+        {-11, "Strong"},
+        {-12, "Weak"},
+        {-15, "Alpha"},
+        {-16, "Alpha"},
+        {-17, "Alpha"},
+        {-18, "Boss"},
+        {-19, "Elite"},
+        {-20, "Elusive"},
+        {-21, "Regular"},
+        {-22, "Strong"},
+        {-23, "Weak"},
+    };
+
+    public static Dictionary<string, string> MismatchedEnemyCodeNames = new()
+    {
+        {"GO_Bruler_Alpha", "GO_Bruler_ALPHA"},
+        {"GO_Goblu_Alpha", "GO_Goblu_ALPHA"},
+        {"GO_Demineur_Alpha", "GO_Demineur_ALPHA"},
+    };
+    
     public StructPropertyData enemyDataStruct;
     public int Level = 1;
     public double LootChanceMultiplier = 1;
@@ -25,9 +55,9 @@ public class EnemyData: ObjectData
         LootChanceMultiplier = (enemyDataStruct.Value[17] as DoublePropertyData).Value;
         var lootDataArray = enemyDataStruct.Value[10] as ArrayPropertyData;
         PossibleLoot = lootDataArray.Value.Select(l => new EnemyLootDrop(l as StructPropertyData)).ToList();
-        if (EnemiesController.enemyArchetypes.ContainsKey((enemyDataStruct.Value[6] as ObjectPropertyData).Value.Index))
+        if (EnemyArchetypes.ContainsKey((enemyDataStruct.Value[6] as ObjectPropertyData).Value.Index))
         {
-            Archetype = EnemiesController.enemyArchetypes[(enemyDataStruct.Value[6] as ObjectPropertyData).Value.Index];
+            Archetype = EnemyArchetypes[(enemyDataStruct.Value[6] as ObjectPropertyData).Value.Index];
         }
     }
 
@@ -35,7 +65,6 @@ public class EnemyData: ObjectData
     {
         CustomName = "Place holder battle";
         CodeName = "Test_PlaceHolderBattleDude";
-        IsBroken = true;
     }
 
     public void ClearDrops()

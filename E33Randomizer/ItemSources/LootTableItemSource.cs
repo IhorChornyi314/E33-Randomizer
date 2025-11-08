@@ -39,7 +39,7 @@ public class LootTableItemSource: ItemSource
             List<ItemSourceParticle> items = new();
             foreach (StructPropertyData itemStruct in (entryData.Value[3] as ArrayPropertyData).Value)
             {
-                var itemData = ItemsController.GetItemData((itemStruct.Value[0] as NamePropertyData).ToString());
+                var itemData = Controllers.ItemsController.GetObject((itemStruct.Value[0] as NamePropertyData).ToString());
                 var quantity = (itemStruct.Value[2] as IntPropertyData).Value;
                 
                 items.Add(new ItemSourceParticle(itemData, quantity));

@@ -61,7 +61,7 @@ public class ChestsContentItemSource: ItemSource
             var chestName = chestData.Name.ToString();
             if ((chestData.Value[0] as ArrayPropertyData).Value.Length > 0)
             {
-                var lootTableItemData = ItemsController.GetItemData("UpgradeMaterial_Level1");
+                var lootTableItemData = Controllers.ItemsController.GetObject("UpgradeMaterial_Level1");
                 SourceSections[chestName] = [new ItemSourceParticle(lootTableItemData, 1, 100, true)];
                 continue;
             }
@@ -69,7 +69,7 @@ public class ChestsContentItemSource: ItemSource
             List<ItemSourceParticle> items = new();
             foreach (var itemStruct in (((chestData.Value[1] as ArrayPropertyData).Value[0] as StructPropertyData).Value[3] as ArrayPropertyData).Value)
             {
-                var itemData = ItemsController.GetItemData(((itemStruct as StructPropertyData).Value[0] as NamePropertyData).Value.ToString());
+                var itemData = Controllers.ItemsController.GetObject(((itemStruct as StructPropertyData).Value[0] as NamePropertyData).Value.ToString());
                 items.Add(new ItemSourceParticle(itemData, ((itemStruct as StructPropertyData).Value[2] as IntPropertyData).Value));
             }
             SourceSections[chestName] = items;

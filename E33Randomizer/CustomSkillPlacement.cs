@@ -5,33 +5,14 @@ namespace E33Randomizer;
 
 public class CustomSkillPlacement: CustomPlacement
 {
-    public override void InitPlainNames()
+    public override void Init()
     {
+        AllObjects = Controllers.SkillsController.ObjectsData;
         CatchAllName = "Anything";
         CategoryOrder = new List<string>
         {
             "Gustave", "Julie", "Lune", "Maelle", "Monoco", "Verso", "Sciel", "Consumables", "Character Skills", "Anything"
         };
-        
-        using (StreamReader r = new StreamReader($"{RandomizerLogic.DataDirectory}/skill_categories.json"))
-        {
-            string json = r.ReadToEnd();
-            var customCategoryTranslationsString = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(json);
-            
-            PlainNameToCodeNames = customCategoryTranslationsString;
-            CustomCategories = customCategoryTranslationsString.Keys.ToList();
-        }
-        
-        PlainNameToCodeNames["Anything"] = Controllers.SkillsController.ObjectsData.Select(o => o.CodeName).ToList();
-        PlainNamesList = ["Anything"];
-        
-        PlainNamesList.AddRange(CustomCategories);
-        
-        foreach (var skillData in Controllers.SkillsController.ObjectsData)
-        {
-            PlainNamesList.Add(skillData.CustomName);
-            PlainNameToCodeNames[skillData.CustomName] = [skillData.CodeName];
-        }
         
         PresetFiles = new()
         {
@@ -43,21 +24,24 @@ public class CustomSkillPlacement: CustomPlacement
             {"Custom preset 2", "Data/presets/skills/custom_2.json"},
         };
         
+        LoadCategories($"{RandomizerLogic.DataDirectory}/skill_categories.json");
+        
         LoadDefaultPreset();
     }
 
     public override void LoadDefaultPreset()
     {
-        throw new NotImplementedException();
-    }
-
-    public override void UpdateDefaultFrequencies(Dictionary<string, float> translatedFrequencyAdjustments)
-    {
-        throw new NotImplementedException();
-    }
-
-    public override string GetTrulyRandom()
-    {
-        return Controllers.SkillsController.GetRandomObject().CodeName;
+        AddNotRandomized("Consumables");
+        CustomPlacementRules = new Dictionary<string, Dictionary<string, float>>
+        {
+            { "Gustave", new Dictionary<string, float> { { "Gustave", 1 } } },
+            { "Lune", new Dictionary<string, float> { { "Lune", 1 } } },
+            { "Maelle", new Dictionary<string, float> { { "Maelle", 1 } } },
+            { "Monoco", new Dictionary<string, float> { { "Monoco", 1 } } },
+            { "Verso", new Dictionary<string, float> { { "Verso", 1 } } },
+            { "Sciel", new Dictionary<string, float> { { "Sciel", 1 } } },
+        };
+        FrequencyAdjustments = new Dictionary<string, float>();
+        FinalReplacementFrequencies = new Dictionary<string, Dictionary<string, float>>();
     }
 }

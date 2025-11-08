@@ -22,7 +22,7 @@ public class BattleTowerItemSource: ItemSource
             List<ItemSourceParticle> items = new();
             foreach (StructPropertyData itemStruct in (stageData.Value[4] as ArrayPropertyData).Value)
             {
-                var itemData = ItemsController.GetItemData(((itemStruct.Value[0] as StructPropertyData).Value[1] as NamePropertyData).ToString());
+                var itemData = Controllers.ItemsController.GetObject(((itemStruct.Value[0] as StructPropertyData).Value[1] as NamePropertyData).ToString());
                 var quantity = (itemStruct.Value[1] as IntPropertyData).Value;
                 
                 items.Add(new ItemSourceParticle(itemData, quantity));

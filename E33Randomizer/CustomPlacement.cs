@@ -32,15 +32,37 @@ public abstract class CustomPlacement
     public Dictionary<string, float> DefaultFrequencies = new();
     public Dictionary<string, Dictionary<string, float>> FinalReplacementFrequencies = new();
     public List<string> CategoryOrder = new();
-
+    public IEnumerable<ObjectData> AllObjects;
+    
     public Dictionary<string, string> PresetFiles = new();
     protected string CatchAllName = "";
     
-    public abstract void InitPlainNames();
+    public abstract void Init();
     public abstract void LoadDefaultPreset();
-    public abstract string GetTrulyRandom();
-    public abstract void UpdateDefaultFrequencies(Dictionary<string, float> translatedFrequencyAdjustments);
-
+    
+    public void LoadCategories(string categoriesJsonFile)
+    {
+        using (StreamReader r = new StreamReader(categoriesJsonFile))
+        {
+            string json = r.ReadToEnd();
+            var customCategoryTranslationsString = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(json);
+            
+            PlainNameToCodeNames = customCategoryTranslationsString;
+            CustomCategories = customCategoryTranslationsString.Keys.ToList();
+        }
+        
+        PlainNameToCodeNames[CatchAllName] = AllObjects.Select(i => i.CodeName).ToList();
+        PlainNamesList = [CatchAllName];
+        
+        PlainNamesList.AddRange(CustomCategories);
+        
+        foreach (var objectData in AllObjects)
+        {
+            PlainNamesList.Add(objectData.CustomName);
+            PlainNameToCodeNames[objectData.CustomName] = [objectData.CodeName];
+        }
+    }
+    
     public void ApplyOopsAll(string objectCodeName)
     {
         CustomPlacementRules = new Dictionary<string, Dictionary<string, float>>()
@@ -190,6 +212,17 @@ public abstract class CustomPlacement
             }
         }
         UpdateDefaultFrequencies(translatedFrequencyAdjustments);
+    }
+
+    public void UpdateDefaultFrequencies(Dictionary<string, float> translatedFrequencyAdjustments)
+    {
+        DefaultFrequencies = AllObjects.Select(e => new KeyValuePair<string,float>(e.CodeName, translatedFrequencyAdjustments.ContainsKey(e.CodeName) ?  translatedFrequencyAdjustments[e.CodeName] : 1)).ToDictionary();
+        DefaultFrequencies = DefaultFrequencies.Where(kv => kv.Value > 0.0001).ToDictionary();
+    }
+
+    public string GetTrulyRandom()
+    {
+        return Utils.GetRandomWeighted(DefaultFrequencies, ExcludedCodeNames);
     }
     
     public string Replace(string originalCodeName)

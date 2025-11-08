@@ -38,11 +38,11 @@ public class Encounter
         {
             var enemyName = enemy.Value[1] as NamePropertyData;
             var enemyCodeName = enemyName.Value.Value.Value;
-            if (EnemiesController.mismatchedEnemyCodeNames.ContainsKey(enemyCodeName))
+            if (EnemyData.MismatchedEnemyCodeNames.ContainsKey(enemyCodeName))
             {
-                enemyCodeName = EnemiesController.mismatchedEnemyCodeNames[enemyCodeName];
+                enemyCodeName = EnemyData.MismatchedEnemyCodeNames[enemyCodeName];
             }
-            var enemyData = EnemiesController.GetEnemyData(enemyCodeName);
+            var enemyData = Controllers.EnemiesController.GetObject(enemyCodeName);
             if (enemyData.IsBroken)
             {
                 IsBroken = true;
@@ -68,7 +68,7 @@ public class Encounter
     public Encounter(string encounterName, List<string> encounterEnemies)
     {
         Name = encounterName;
-        Enemies = EnemiesController.GetEnemyDataList(encounterEnemies);
+        Enemies = Controllers.EnemiesController.GetObjects(encounterEnemies);
         foreach (var enemyData in Enemies)
         {
             PossibleLootDrops.AddRange(enemyData.PossibleLoot);
@@ -109,23 +109,6 @@ public class Encounter
         disableCameraEndMovementField.Value = disableCameraEndMovement;
         disableReactionBattleLinesField.Value = disableReactionBattleLines;
         isNarrativeBattleField.Value = isNarrativeBattle;
-    }
-
-    public void HandleEncounterLoot()
-    {
-        if (Size == 0 || PossibleLootDrops.Count == 0)
-        {
-            return;
-        }
-
-        var result = EnemiesController.AddEnemyClone(Enemies[0], $"{Name}_{Enemies[0].CodeName}");
-        if (result == null)
-        {
-            return;
-        }
-        
-        result.AddDrops(PossibleLootDrops);
-        LootEnemy = result;
     }
     
     public override bool Equals(object? obj)

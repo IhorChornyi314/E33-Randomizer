@@ -31,8 +31,9 @@ public class CustomEnemyPlacement: CustomPlacement
         { "Petanks", "Petank" },
     };
     
-    public override void InitPlainNames()
+    public override void Init()
     {
+        AllObjects = Controllers.EnemiesController.ObjectsData;
         CatchAllName = "Anyone";
         CategoryOrder = new List<string>
         {
@@ -41,33 +42,6 @@ public class CustomEnemyPlacement: CustomPlacement
             "Minibosses", "Non-Chromatic Bosses", "Chromatic Bosses", "All Regular Enemies",
             "Main Plot Bosses", "Side Bosses", "All Bosses", "All Bosses and Minibosses", "Anyone"
         };
-        
-        using (StreamReader r = new StreamReader($"{RandomizerLogic.DataDirectory}/enemy_categories.json"))
-        {
-            string json = r.ReadToEnd();
-            var customCategoryTranslationsString = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(json);
-            PlainNameToCodeNames = customCategoryTranslationsString;
-            CustomCategories = customCategoryTranslationsString.Keys.ToList();
-        }
-
-
-        PlainNameToCodeNames["Anyone"] = EnemiesController.enemies.Select(e => e.CodeName).ToList();
-        PlainNamesList = ["Anyone"];
-        
-        PlainNamesList.AddRange(CustomCategories);
-        PlainNamesList.InsertRange(PlainNamesList.IndexOf("All Regular Enemies") + 1, ArchetypeNames.Keys);
-
-        foreach (var archetypeName in ArchetypeNames)
-        {
-            var allByArchetype = EnemiesController.GetAllByArchetype(archetypeName.Value);
-            PlainNameToCodeNames[archetypeName.Key] = allByArchetype.Select(e => e.CodeName).ToList();
-        }
-        
-        foreach (var enemyData in EnemiesController.enemies)
-        {
-            PlainNamesList.Add(enemyData.CustomName);
-            PlainNameToCodeNames[enemyData.CustomName] = [enemyData.CodeName];
-        }
         
         PresetFiles = new()
         {
@@ -78,6 +52,16 @@ public class CustomEnemyPlacement: CustomPlacement
             {"Custom preset 1", "Data/presets/enemies/custom_1.json"},
             {"Custom preset 2", "Data/presets/enemies/custom_2.json"},
         };
+        
+        LoadCategories($"{RandomizerLogic.DataDirectory}/enemy_categories.json");
+        
+        PlainNamesList.InsertRange(PlainNamesList.IndexOf("All Regular Enemies") + 1, ArchetypeNames.Keys);
+
+        foreach (var archetypeName in ArchetypeNames)
+        {
+            var allByArchetype = Controllers.EnemiesController.GetAllByArchetype(archetypeName.Value);
+            PlainNameToCodeNames[archetypeName.Key] = allByArchetype.Select(e => e.CodeName).ToList();
+        }
         
         LoadDefaultPreset();
     }
@@ -104,16 +88,5 @@ public class CustomEnemyPlacement: CustomPlacement
             { "Mimes", 0.2f }
         };
         FinalReplacementFrequencies = new Dictionary<string, Dictionary<string, float>>();
-    }
-    
-    public override void UpdateDefaultFrequencies(Dictionary<string, float> translatedFrequencyAdjustments)
-    {
-        DefaultFrequencies = EnemiesController.enemies.Select(e => new KeyValuePair<string,float>(e.CodeName, translatedFrequencyAdjustments.ContainsKey(e.CodeName) ?  translatedFrequencyAdjustments[e.CodeName] : 1)).ToDictionary(kv => kv.Key, kv => kv.Value);
-        DefaultFrequencies = DefaultFrequencies.Where(kv => kv.Value > 0.0001).ToDictionary();
-    }
-
-    public override string GetTrulyRandom()
-    {
-        return RandomizerLogic.GetRandomEnemy().CodeName;
     }
 }

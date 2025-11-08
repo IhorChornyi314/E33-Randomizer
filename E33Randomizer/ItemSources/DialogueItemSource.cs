@@ -167,7 +167,7 @@ public class DialogueItemSource : ItemSource
             }
 
             var itemName = (rewardStruct.Value[checkPath.Last()] as NamePropertyData).ToString();
-            var itemData = ItemsController.GetItemData(itemName);
+            var itemData = Controllers.ItemsController.GetObject(itemName);
             var itemQuantity = _getItemQuantity(checkName);
 
             SourceSections[checkName] = [new ItemSourceParticle(itemData, itemQuantity)];

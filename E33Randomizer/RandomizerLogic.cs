@@ -120,46 +120,13 @@ public static class RandomizerLogic
     
         mappings = new Usmap($"{DataDirectory}/Mappings.usmap");
         Controllers.InitControllers();
-        EnemiesController.Init();
-        using (StreamReader r = new StreamReader($"{DataDirectory}/enemy_data.json"))
-        {
-            string json = r.ReadToEnd();
-            var enemyList = JsonConvert.DeserializeObject<List<Dictionary<string, string>>>(json);
-            foreach (var enemyCustomData in enemyList)
-            {
-                EnemyCustomNames[enemyCustomData["CodeName"]] = enemyCustomData["Name"];
-            }
-        }
-        EnemiesController.ReadAsset($"{DataDirectory}/Originals/DT_jRPG_Enemies.uasset");
         
-        using (StreamReader r = new StreamReader($"{DataDirectory}/item_data.json"))
-        {
-            string json = r.ReadToEnd();
-            var itemList = JsonConvert.DeserializeObject<List<Dictionary<string, string>>>(json);
-            foreach (var itemCustomData in itemList)
-            {
-                ItemCustomNames[itemCustomData["CodeName"]] = itemCustomData["CustomName"];
-            }
-        }
-        ItemsController.Init();
-        
-        ConstructTotalEnemyFrequencies();
         ConstructEnemyFrequenciesWithinArchetype();
-        CustomEnemyPlacement.InitPlainNames();
-        CustomItemPlacement.InitPlainNames();
+        CustomEnemyPlacement.Init();
+        CustomItemPlacement.Init();
         SpecialRules.Reset();
-        EncountersController.ReadEncounterAssets();
-        EncountersController.ConstructEncountersByLocation();
     }
 
-    public static void ConstructTotalEnemyFrequencies()
-    {
-        TotalEnemyFrequencies = new Dictionary<string, float>();
-        foreach (var enemyData in EnemiesController.enemies)
-        {
-            TotalEnemyFrequencies[enemyData.CodeName] = 1;
-        }
-    }
 
     public static void ConstructEnemyFrequenciesWithinArchetype()
     {
@@ -167,7 +134,7 @@ public static class RandomizerLogic
         foreach (var archetype in Archetypes)
         {
             EnemyFrequenciesWithinArchetype[archetype] = new Dictionary<string, float>();
-            foreach (var enemyData in EnemiesController.enemies.FindAll(e => e.Archetype == archetype))
+            foreach (var enemyData in Controllers.EnemiesController.ObjectsData.FindAll(e => e.Archetype == archetype))
             {
                 EnemyFrequenciesWithinArchetype[archetype][enemyData.CodeName] = 1;
             }
@@ -186,31 +153,31 @@ public static class RandomizerLogic
         
         if (writeTxt)
         {
-            EncountersController.WriteEncountersTxt(exportPath + "encounters.txt");
-            ItemsController.WriteChecksTxt(exportPath + "checks.txt");
+            Controllers.EnemiesController.WriteTxt(exportPath + "encounters.txt");
+            Controllers.ItemsController.WriteTxt(exportPath + "checks.txt");
         }
 
         // if (Settings.TieDropsToEncounters)
         // {
-        //     EnemiesController.ClearEnemyDrops();
-        //     EncountersController.HandleLoot();
+        //     EnemiesControllerOld.ClearEnemyDrops();
+        //     EnemiesController.HandleLoot();
         // }
 
         if (Settings.RandomizeEnemies)
         {
-            EncountersController.WriteEncounterAssets();
+            Controllers.EnemiesController.WriteEncounterAssets();
             // if (Settings.TieDropsToEncounters && !Settings.RandomizeItems)
             // {
-            //     EnemiesController.WriteAsset();
+            //     EnemiesControllerOld.WriteAsset();
             // }
         }
 
         if (Settings.RandomizeItems)
         {
-            ItemsController.WriteItemAssets();
+            Controllers.ItemsController.WriteItemAssets();
             if (Settings.MakeEveryItemVisible)
             {
-                ItemsController.WriteTableAssets();
+                Controllers.ItemsController.WriteTableAssets();
             }
         }
 
@@ -222,31 +189,30 @@ public static class RandomizerLogic
         var retocArgs = $"to-zen --version UE5_4 randomizer \"{exportPath}randomizer_P.utoc\"";
 
         Process.Start("retoc.exe", retocArgs);
-        EnemiesController.Reset();
-        EncountersController.Reset();
+        Controllers.EnemiesController.Reset();
     }
 
     public static EnemyData GetRandomByArchetype(string archetype)
     {
-        return EnemiesController.GetEnemyData(Utils.GetRandomWeighted(EnemyFrequenciesWithinArchetype[archetype]));
+        return Controllers.EnemiesController.GetObject(Utils.GetRandomWeighted(EnemyFrequenciesWithinArchetype[archetype]));
     }
 
     public static EnemyData GetRandomEnemy()
     {
-        return EnemiesController.GetEnemyData(Utils.GetRandomWeighted(CustomEnemyPlacement.DefaultFrequencies, CustomEnemyPlacement.ExcludedCodeNames));
+        return Controllers.EnemiesController.GetObject(Utils.GetRandomWeighted(CustomEnemyPlacement.DefaultFrequencies, CustomEnemyPlacement.ExcludedCodeNames));
     }
     
     public static ItemData GetRandomItem()
     {
-        return ItemsController.GetItemData(Utils.GetRandomWeighted(CustomItemPlacement.DefaultFrequencies, CustomItemPlacement.ExcludedCodeNames));
+        return Controllers.ItemsController.GetObject(Utils.GetRandomWeighted(CustomItemPlacement.DefaultFrequencies, CustomItemPlacement.ExcludedCodeNames));
     }
 
     public static void Randomize(bool saveData = true)
     {
         usedSeed = Settings.Seed != -1 ? Settings.Seed : Environment.TickCount; 
         rand = new Random(usedSeed);
-        if (Settings.RandomizeEnemies) EncountersController.GenerateNewEncounters();
-        if (Settings.RandomizeItems) ItemsController.GenerateNewItemChecks();
+        if (Settings.RandomizeEnemies) Controllers.EnemiesController.Randomize();
+        if (Settings.RandomizeItems) Controllers.ItemsController.Randomize();
         if (Settings.RandomizeSkills) Controllers.SkillsController.Randomize();
         if (saveData)
             PackAndConvertData();

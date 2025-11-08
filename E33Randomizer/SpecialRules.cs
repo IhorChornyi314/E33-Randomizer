@@ -76,10 +76,10 @@ public static class SpecialRules
     private static void ResetBossPool()
     {
         var bossPoolCodeNames = RandomizerLogic.CustomEnemyPlacement.PlainNameToCodeNames["All Bosses"];
-        EnemyData[] bossPoolArray = EnemiesController.GetEnemyDataList(bossPoolCodeNames).ToArray();
+        EnemyData[] bossPoolArray = Controllers.EnemiesController.GetObjects(bossPoolCodeNames).ToArray();
         RandomizerLogic.rand.Shuffle(bossPoolArray);
         RemainingBossPool = new List<EnemyData>(bossPoolArray);
-        var translatedExcluded = EnemiesController.GetEnemyDataList(RandomizerLogic.CustomEnemyPlacement.ExcludedCodeNames);
+        var translatedExcluded = Controllers.EnemiesController.GetObjects(RandomizerLogic.CustomEnemyPlacement.ExcludedCodeNames);
         RemainingBossPool = RemainingBossPool.Where(e => !translatedExcluded.Contains(e)).ToList();
         if (!RandomizerLogic.Settings.IncludeCutContentEnemies)
         {
@@ -134,7 +134,7 @@ public static class SpecialRules
 
         var result = RemainingKeyItemPool.First();
         RemainingKeyItemPool.Remove(result);
-        return ItemsController.GetItemData(result);
+        return Controllers.ItemsController.GetObject(result);
     }
     
     public static void ApplySimonSpecialRule(Encounter encounter)
@@ -143,7 +143,7 @@ public static class SpecialRules
         {
             if (encounter.Enemies[i].CodeName == "Boss_Simon_Phase2")
             {
-                encounter.Enemies[i] = EnemiesController.GetEnemyData("Boss_Simon");
+                encounter.Enemies[i] = Controllers.EnemiesController.GetObject("Boss_Simon");
             }
         }
     }
@@ -178,7 +178,8 @@ public static class SpecialRules
             var numberOfBosses = encounter.Enemies.Count(e => e.IsBoss);
             if (numberOfBosses == 0)
             {
-                encounter.Enemies[0] = RandomizerLogic.GetRandomByArchetype("Boss");
+                //This will ignore custom placement 
+                encounter.Enemies[0] = Utils.Pick(Controllers.EnemiesController.GetAllByArchetype("Boss")); // RandomizerLogic.GetRandomByArchetype("Boss");
             }
         }
         
@@ -189,17 +190,17 @@ public static class SpecialRules
 
         if (encounter.Name == "MM_DanseuseAlphaSummon")
         {
-            encounter.Enemies = [EnemiesController.GetEnemyData("MM_Danseuse_CloneAlpha"), EnemiesController.GetEnemyData("MM_Danseuse_CloneAlpha")];
+            encounter.Enemies = [Controllers.EnemiesController.GetObject("MM_Danseuse_CloneAlpha"), Controllers.EnemiesController.GetObject("MM_Danseuse_CloneAlpha")];
         }
         
         if (encounter.Name == "MM_DanseuseClone*1")
         {
-            encounter.Enemies = [EnemiesController.GetEnemyData("MM_Danseuse_Clone")];
+            encounter.Enemies = [Controllers.EnemiesController.GetObject("MM_Danseuse_Clone")];
         }
         
         if (encounter.Name == "QUEST_Danseuse_DanceClass_Clone*1")
         {
-            encounter.Enemies = [EnemiesController.GetEnemyData("MM_Danseuse_Clone")];
+            encounter.Enemies = [Controllers.EnemiesController.GetObject("MM_Danseuse_Clone")];
         }
         
         // if (RandomizerLogic.Settings.BossNumberCapped && !encounter.IsBossEncounter)
@@ -230,7 +231,7 @@ public static class SpecialRules
         if (RandomizerLogic.Settings.EnsurePaintedPowerFromPaintress &&
             check.ItemSource.FileName == "DA_GA_SQT_RedAndWhiteTree")
         {
-            check.ItemSource.AddItem("BP_GameAction_AddItemToInventory_C_0", ItemsController.GetItemData("OverPowered"));
+            check.ItemSource.AddItem("BP_GameAction_AddItemToInventory_C_0", Controllers.ItemsController.GetObject("OverPowered"));
         }
 
         if (!RandomizerLogic.Settings.IncludeGearInPrologue && 
@@ -241,16 +242,16 @@ public static class SpecialRules
         {
             foreach (var itemParticle in check.ItemSource.SourceSections[check.Key])
             {
-                if (ItemsController.IsGearItem(itemParticle.Item))
+                if (Controllers.ItemsController.IsGearItem(itemParticle.Item))
                 {
-                    itemParticle.Item = ItemsController.GetItemData("UpgradeMaterial_Level1");
+                    itemParticle.Item = Controllers.ItemsController.GetObject("UpgradeMaterial_Level1");
                 }
             }
         }
         
         if (RandomizerLogic.Settings.RandomizeStartingWeapons && check.Key.Contains("Chest_Generic_Chroma"))
         {
-            var randomWeapon = ItemsController.GetRandomWeapon("Gustave");
+            var randomWeapon = Controllers.ItemsController.GetRandomWeapon("Gustave");
 
             check.ItemSource.SourceSections["Chest_Generic_Chroma"].Add(new ItemSourceParticle(randomWeapon));
         }

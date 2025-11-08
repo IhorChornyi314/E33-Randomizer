@@ -40,7 +40,7 @@ public class EnemyLootDropsItemSource: ItemSource
             List<ItemSourceParticle> drops = new();
             foreach (StructPropertyData itemStruct in (enemyData.Value[10] as ArrayPropertyData).Value)
             {
-                var itemData = ItemsController.GetItemData(((itemStruct.Value[0] as StructPropertyData).Value[1] as NamePropertyData).ToString());
+                var itemData = Controllers.ItemsController.GetObject(((itemStruct.Value[0] as StructPropertyData).Value[1] as NamePropertyData).ToString());
                 var quantity = (itemStruct.Value[1] as IntPropertyData).Value;
                 var dropChance = (itemStruct.Value[2] as DoublePropertyData).Value;
                 
@@ -52,7 +52,7 @@ public class EnemyLootDropsItemSource: ItemSource
             var check = new CheckData
             {
                 CodeName = enemyName,
-                CustomName = $"{EnemiesController.GetEnemyData(enemyName).CustomName}",
+                CustomName = $"{Controllers.EnemiesController.GetObject(enemyName).CustomName}",
                 IsBroken = false,
                 IsPartialCheck = true,
                 ItemSource = this,

@@ -48,7 +48,7 @@ public class GameActionItemSource: ItemSource
             foreach (StructPropertyData itemPropertyData in ((export as NormalExport).Data[0] as ArrayPropertyData).Value)
             {
                 var itemName = (((itemPropertyData.Value[0] as StructPropertyData).Value[0] as StructPropertyData).Value[1] as NamePropertyData).ToString();
-                var newItemData = ItemsController.GetItemData(itemName);
+                var newItemData = Controllers.ItemsController.GetObject(itemName);
                 var itemQuantity = (itemPropertyData.Value[1] as IntPropertyData).Value;
                 SourceSections[actionName].Add(new ItemSourceParticle(newItemData, itemQuantity));
             }

@@ -15,14 +15,15 @@ namespace E33Randomizer
     public partial class EditIndividualContainersWindow : Window
     {
         public EditIndividualObjectsWindowViewModel ViewModel { get; set; }
+        public BaseController Controller { get; set; }
         private ContainerViewModel _selectedContainerViewModel;
         private string _objectType;
 
-        public EditIndividualContainersWindow(string objectType)
+        public EditIndividualContainersWindow(BaseController controller)
         {
-            _objectType = objectType;
+            Controller = controller;
             InitializeComponent();
-            ViewModel = objectType == "Enemy" ? EncountersController.ViewModel : ItemsController.ViewModel;
+            ViewModel = controller.ViewModel;
             DataContext = ViewModel;
             ApplyObjectsType();
         }
@@ -51,14 +52,7 @@ namespace E33Randomizer
         {
             if (_selectedContainerViewModel != null && AddObjectComboBox.SelectedItem is ObjectViewModel selectedObject)
             {
-                if (_objectType == "Enemy")
-                {
-                    EncountersController.AddEnemyToEncounter(selectedObject.CodeName, _selectedContainerViewModel.CodeName);
-                }
-                else if (_objectType == "Item")
-                {
-                    ItemsController.AddItemToCheck(selectedObject.CodeName, _selectedContainerViewModel.CodeName);
-                }
+                Controller.AddObjectToContainer(selectedObject.CodeName, _selectedContainerViewModel.CodeName);
             }
             AddObjectComboBox.SelectedIndex = -1;
         }
@@ -67,14 +61,7 @@ namespace E33Randomizer
         {
             if (_selectedContainerViewModel != null && sender is Button button && button.Tag is ObjectViewModel selectedObject)
             {
-                if (_objectType == "Enemy")
-                {
-                    EncountersController.RemoveEnemyFromEncounter(selectedObject.Index, _selectedContainerViewModel.CodeName);
-                }
-                else if (_objectType == "Item")
-                {
-                    ItemsController.RemoveItemFromCheck(selectedObject.Index, _selectedContainerViewModel.CodeName);
-                }
+                Controller.RemoveObjectFromContainer(selectedObject.Index, _selectedContainerViewModel.CodeName);
             }
         }
 
@@ -82,15 +69,7 @@ namespace E33Randomizer
         {
             try
             {
-                switch (_objectType)
-                {
-                    case "Enemy":
-                        EncountersController.GenerateNewEncounters();
-                        break;
-                    case "Item":
-                        ItemsController.GenerateNewItemChecks();
-                        break;
-                }
+                Controller.Randomize();
             }
             catch (Exception ex)
             {
@@ -132,16 +111,7 @@ namespace E33Randomizer
             {
                 try
                 {
-                    switch (_objectType)
-                    {
-                        case "Enemy":
-                            EncountersController.ReadEncountersTxt(openFileDialog.FileName);
-                            break;
-                        case "Item":
-                            ItemsController.ReadChecksTxt(openFileDialog.FileName);
-                            break;
-                    }
-                    
+                    Controller.ReadTxt(openFileDialog.FileName);
                 }
                 catch (Exception ex)
                 {
@@ -166,15 +136,7 @@ namespace E33Randomizer
             {
                 try
                 {
-                    switch (_objectType)
-                    {
-                        case "Enemy":
-                            EncountersController.WriteEncountersTxt(saveFileDialog.FileName);
-                            break;
-                        case "Item":
-                            ItemsController.WriteChecksTxt(saveFileDialog.FileName);
-                            break;
-                    }
+                    Controller.WriteTxt(saveFileDialog.FileName);
                     MessageBox.Show("TXT saved successfully!", 
                         "Save Complete", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
@@ -314,11 +276,11 @@ namespace E33Randomizer
                 OnPropertyChanged(nameof(SelectedComboBoxValue));
                 Name = _selectedComboBoxValue.Name;
                 CodeName = _selectedComboBoxValue.CodeName;
-                if (ItemsController.ItemsWithQuantities.Contains(CodeName))
+                if (Controllers.ItemsController.ItemsWithQuantities.Contains(CodeName))
                 {
                     _lastItemQuantity = ItemQuantity;
                 }
-                ItemQuantity = !ItemsController.ItemsWithQuantities.Contains(CodeName) ? -1 : _lastItemQuantity;
+                ItemQuantity = !Controllers.ItemsController.ItemsWithQuantities.Contains(CodeName) ? -1 : _lastItemQuantity;
             }
         }
         

@@ -30,9 +30,9 @@ public class GenericItemSource: ItemSource
         for (int i = 0; i < _asset.GetNameMapIndexList().Count; i++)
         {
             var name = _asset.GetNameMapIndexList()[i].ToString();
-            if (ItemsController.IsItem(name))
+            if (Controllers.ItemsController.IsItem(name))
             {
-                var newItem = ItemsController.GetItemData(name);
+                var newItem = Controllers.ItemsController.GetObject(name);
                 _originalNameReferenceIndexes.Add(i);
                 SourceSections[FileName].Add(new ItemSourceParticle(newItem));
             }
@@ -65,7 +65,7 @@ public class GenericItemSource: ItemSource
         foreach (var itemSourceParticle in SourceSections[FileName])
         {
             var oldItem = itemSourceParticle.Item;
-            var newItem = ItemsController.GetItemData(RandomizerLogic.CustomItemPlacement.Replace(oldItem.CodeName));
+            var newItem = Controllers.ItemsController.GetObject(RandomizerLogic.CustomItemPlacement.Replace(oldItem.CodeName));
             itemSourceParticle.Item = newItem;
         }
     }

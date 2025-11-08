@@ -86,7 +86,7 @@ public class MerchantInventoryItemSource: ItemSource
         foreach (var soldItemData in tableData)
         {
             var itemName = soldItemData.Name.ToString();
-            var itemData = ItemsController.GetItemData(itemName);
+            var itemData = Controllers.ItemsController.GetObject(itemName);
             var itemQuantity = (soldItemData.Value[3] as IntPropertyData).Value;
             var itemLocked = (soldItemData.Value[4] as ObjectPropertyData).Value.Index != 0;
             

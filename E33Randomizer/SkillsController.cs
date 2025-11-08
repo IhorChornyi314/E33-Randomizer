@@ -13,8 +13,35 @@ public class SkillsController: Controller<SkillData>
     {
         ReadObjectsData($"{RandomizerLogic.DataDirectory}/skill_data.json");
         ReadAssets($"{RandomizerLogic.DataDirectory}/SkillsData");
+        CustomPlacement = new CustomSkillPlacement();
+        CustomPlacement.Init();
     }
-    
+
+    public override void InitFromTxt(string text)
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void ApplyViewModel()
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void UpdateViewModel()
+    {
+        throw new NotImplementedException();
+    }
+
+    public override string ConvertToTxt()
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void Reset()
+    {
+        throw new NotImplementedException();
+    }
+
     public void ReadAssets(string filesDirectory)
     {
         var fileEntries = new List<string> (Directory.GetFiles(filesDirectory));
@@ -26,12 +53,22 @@ public class SkillsController: Controller<SkillData>
         }
     }
 
-    public void Randomize()
+    public override void Randomize()
     {
         foreach (var skillGraph in SkillGraphs)
         {
             skillGraph.Randomize();
         }
+    }
+
+    public override void AddObjectToContainer(string objectCodeName, string containerCodeName)
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void RemoveObjectFromContainer(int objectIndex, string containerCodeName)
+    {
+        throw new NotImplementedException();
     }
 
     public void WriteAssets()

@@ -12,17 +12,13 @@ using UAssetAPI.UnrealTypes;
 namespace E33Randomizer;
 
 
-public static class ItemsController
+public class ItemsController: Controller<ItemData>
 {
-    public static List<ItemData> ItemsData = new();
-    public static Dictionary<string, ItemData> ItemsByName = new();
-    public static List<ItemSource> ItemsSources = new();
-    public static List<string> ItemCodeNames = new();
-    public static EditIndividualObjectsWindowViewModel ViewModel = new();
+    public List<ItemSource> ItemsSources = new();
 
-    public static Dictionary<string, List<CheckData>> CheckTypes = new();
+    public Dictionary<string, List<CheckData>> CheckTypes = new();
 
-    public static List<string> ItemsWithQuantities = [
+    public List<string> ItemsWithQuantities = [
         "ChromaPack_Regular",
         "ChromaPack_Large",
         "ChromaPack_ExtraLarge",
@@ -35,47 +31,31 @@ public static class ItemsController
         "Consumable_LuminaPoint",
     ];
     
-    private static UAsset _compositeTableAsset;
-    private static UDataTable itemsCompositeTable;
-    private static Dictionary<string, UAsset> _itemsDataTables = new();
-    private static string _cleanSnapshot;
-
-    public static ItemData GetRandomItem()
-    {
-        var r = RandomizerLogic.rand.Next(ItemsData.Count);
-        return ItemsData[r];
-    }
+    private UAsset _compositeTableAsset;
+    private UDataTable itemsCompositeTable;
+    private Dictionary<string, UAsset> _itemsDataTables = new();
+    private string _cleanSnapshot;
     
-    public static ItemData GetItemData(string itemCodeName)
+    public bool IsItem(string itemCodeName)
     {
-        return ItemsByName.TryGetValue(itemCodeName, out var itemData) ? itemData : new ItemData();
+        return ObjectsByName.ContainsKey(itemCodeName);
     }
 
-    public static string GetItemCategory(string itemCodeName)
-    {
-        return RandomizerLogic.CustomItemPlacement.ItemCategories.GetValueOrDefault(itemCodeName, "Invalid");
-    }
-
-    public static bool IsItem(string itemCodeName)
-    {
-        return ItemCodeNames.Contains(itemCodeName);
-    }
-
-    public static bool IsGearItem(ItemData item)
+    public bool IsGearItem(ItemData item)
     {
         return item.CustomName.Contains("Weapon") || item.CustomName.Contains("Pictos");
     }
 
-    public static ItemData GetRandomWeapon(string characterName)
+    public ItemData GetRandomWeapon(string characterName)
     {
-        var allCharacterWeapons = ItemsData.Where(i => i.CustomName.Contains($"{characterName} Weapon")).ToList();
+        var allCharacterWeapons = ObjectsData.Where(i => i.CustomName.Contains($"{characterName} Weapon")).ToList();
         var filteredWeapons = allCharacterWeapons.Where(w => !RandomizerLogic.CustomItemPlacement.Excluded.Contains(w.CodeName)).ToList();
         if (filteredWeapons.Any()) allCharacterWeapons = filteredWeapons;
         
         return Utils.Pick(allCharacterWeapons);
     }
     
-    public static void ProcessFile(string fileName)
+    public void ProcessFile(string fileName)
     {
         if (fileName.Contains("BP_GameAction") || fileName.Contains("BP_PDT_GameAction") || fileName.Contains("S_ItemOperationData") || fileName.Contains("E_GestralFightClub_Fighters"))
         {
@@ -145,7 +125,7 @@ public static class ItemsController
         CheckTypes[checkType].AddRange(newSource.Checks);
     }
     
-    public static void BuildItemSources(string filesDirectory)
+    public void BuildItemSources(string filesDirectory)
     {
         if(!Directory.Exists(filesDirectory))
         {
@@ -163,7 +143,7 @@ public static class ItemsController
         UpdateViewModel();
     }
 
-    public static void ReadCompositeTableAsset(string assetPath)
+    public void ReadCompositeTableAsset(string assetPath)
     {
         _compositeTableAsset = new UAsset(assetPath, EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
         itemsCompositeTable = (_compositeTableAsset.Exports[0] as DataTableExport).Table;
@@ -174,14 +154,14 @@ public static class ItemsController
             (itemData.Value[19] as BoolPropertyData).Value = false;
         }
         
-        ItemsData = itemsCompositeTable.Data.Select(e => new ItemData(e)).ToList();
-        ItemsData = ItemsData.Where(e => !e.IsBroken).ToList();
-        ItemsData = ItemsData.OrderBy(e => e.CustomName).ToList();
-        ItemsByName = ItemsData.Select(e => new KeyValuePair<string, ItemData>(e.CodeName, e)).ToDictionary();
-        ItemCodeNames = ItemsData.Select(e => e.CodeName).ToList();
+        // ItemsData = itemsCompositeTable.Data.Select(e => new ItemData(e)).ToList();
+        // ObjectsData = ObjectsData.Where(e => !e.IsBroken).ToList();
+        // ObjectsData = ObjectsData.OrderBy(e => e.CustomName).ToList();
+        // ItemsByName = ObjectsData.Select(e => new KeyValuePair<string, ItemData>(e.CodeName, e)).ToDictionary();
+        // ItemCodeNames = ObjectsData.Select(e => e.CodeName).ToList();
     }
 
-    public static void ReadOtherTableAsset(string assetPath)
+    public void ReadOtherTableAsset(string assetPath)
     {
         var tableAsset = new UAsset(assetPath, EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
 
@@ -196,7 +176,7 @@ public static class ItemsController
         }
     }
     
-    public static void ReadTableAssets(string tablesDirectory)
+    public void ReadTableAssets(string tablesDirectory)
     {
         if(!Directory.Exists(tablesDirectory))
         {
@@ -215,7 +195,7 @@ public static class ItemsController
         }
     }
 
-    public static void WriteTableAssets()
+    public void WriteTableAssets()
     {
         foreach (var tableAsset in _itemsDataTables.Values)
         {
@@ -224,7 +204,7 @@ public static class ItemsController
         Utils.WriteAsset(_compositeTableAsset);
     }
 
-    public static void WriteItemAssets()
+    public void WriteItemAssets()
     {
         ApplyViewModel();
         RandomizeStartingEquipment();
@@ -235,7 +215,7 @@ public static class ItemsController
         }
     }
 
-    public static void GenerateNewItemChecks()
+    public override void Randomize()
     {
         SpecialRules.Reset();
         Reset();
@@ -255,7 +235,7 @@ public static class ItemsController
         UpdateViewModel();
     }
 
-    public static void InitFromTxt(string text)
+    public override void InitFromTxt(string text)
     {
         foreach (var line in text.Split('\n'))
         {
@@ -268,13 +248,8 @@ public static class ItemsController
         }
         UpdateViewModel();
     }
-    
-    public static void ReadChecksTxt(string fileName)
-    {
-        InitFromTxt(File.ReadAllText(fileName));
-    }
 
-    public static string ConvertToTxt()
+    public override string ConvertToTxt()
     {
         ApplyViewModel();
         var result = "";
@@ -287,15 +262,10 @@ public static class ItemsController
         }
         return result;
     }
-    
-    public static void WriteChecksTxt(string fileName)
-    {
-        var result = ConvertToTxt();
-        File.WriteAllText(fileName, result, Encoding.UTF8);
-    }
 
-    public static void Init()
+    public override void Initialize()
     {
+        ReadObjectsData($"{RandomizerLogic.DataDirectory}/item_data.json");
         ReadTableAssets($"{RandomizerLogic.DataDirectory}/Originals/ItemTables");
         BuildItemSources($"{RandomizerLogic.DataDirectory}/ItemData");
         ViewModel.ContainerName = "Check";
@@ -303,12 +273,12 @@ public static class ItemsController
         _cleanSnapshot = ConvertToTxt();
     }
 
-    public static void Reset()
+    public override void Reset()
     {
         InitFromTxt(_cleanSnapshot);
     }
 
-    public static void RandomizeStartingEquipment()
+    public void RandomizeStartingEquipment()
     {
         List<string> characterNames = ["Gustave", "Lune", "Maelle", "Sciel", "Verso", "Monoco"];
         if (RandomizerLogic.Settings.RandomizeStartingWeapons)
@@ -339,9 +309,9 @@ public static class ItemsController
                 if (!characterNames.Contains(characterName) && characterName != "Frey") continue;
                 characterName = characterName == "Frey" ? "Gustave" : characterName;
                 var cosmeticsStruct = propertyData.Value[21] as StructPropertyData;
-                var characterOutfits = ItemsData.Where(i => i.CustomName.Contains($"{characterName} Outfit")).ToList();
+                var characterOutfits = ObjectsData.Where(i => i.CustomName.Contains($"{characterName} Outfit")).ToList();
                 var randomOutfit = Utils.Pick(characterOutfits);
-                var characterHaircuts = ItemsData.Where(i => i.CustomName.Contains($"{characterName} Haircut")).ToList();
+                var characterHaircuts = ObjectsData.Where(i => i.CustomName.Contains($"{characterName} Haircut")).ToList();
                 var randomHaircut = Utils.Pick(characterHaircuts);
                 
                 tableAsset.AddNameReference(FString.FromString(randomHaircut.CodeName));
@@ -354,10 +324,10 @@ public static class ItemsController
         }
     }
     
-    public static void AddItemToCheck(string itemCodeName, string checkViewModelCodeName)
+    public override void AddObjectToContainer(string itemCodeName, string checkViewModelCodeName)
     {
         ApplyViewModel();
-        var itemData = GetItemData(itemCodeName);
+        var itemData = GetObject(itemCodeName);
         var itemSourceFileName = checkViewModelCodeName.Split("#")[0];
         var checkKey = checkViewModelCodeName.Split("#")[1];
         var itemSource = ItemsSources.FirstOrDefault(i => i.FileName == itemSourceFileName);
@@ -366,7 +336,7 @@ public static class ItemsController
         UpdateViewModel();
     }
     
-    public static void RemoveItemFromCheck(int itemIndex, string checkViewModelCodeName)
+    public override void RemoveObjectFromContainer(int itemIndex, string checkViewModelCodeName)
     {
         ApplyViewModel();
         var itemSourceFileName = checkViewModelCodeName.Split("#")[0];
@@ -377,7 +347,7 @@ public static class ItemsController
         UpdateViewModel();
     }
 
-    public static void ApplyViewModel()
+    public override void ApplyViewModel()
     {
         foreach (var categoryViewModel in ViewModel.Categories)
         {
@@ -392,7 +362,7 @@ public static class ItemsController
                 for (int i = 0; i < checkItemViewModels.Count; i++)
                 {
                     var itemViewModel = checkItemViewModels[i];
-                    itemSource.SourceSections[check.Key][i].Item = GetItemData(itemViewModel.CodeName);
+                    itemSource.SourceSections[check.Key][i].Item = GetObject(itemViewModel.CodeName);
                     itemSource.SourceSections[check.Key][i].Quantity = Math.Abs(itemViewModel.ItemQuantity);
                     itemSource.SourceSections[check.Key][i].MerchantInventoryLocked = itemViewModel.MerchantInventoryLocked;
                 }
@@ -400,15 +370,14 @@ public static class ItemsController
         }
     }
     
-    public static void UpdateViewModel()
+    public override void UpdateViewModel()
     {
         ViewModel.FilteredCategories.Clear();
         ViewModel.Categories.Clear();
-        var allObjects = ItemsData.Select(i => i as ObjectData).ToList();
         
         if (ViewModel.AllObjects.Count == 0)
         {
-            ViewModel.AllObjects = new ObservableCollection<ObjectViewModel>(ItemsData.Select(i => new ObjectViewModel(i)));
+            ViewModel.AllObjects = new ObservableCollection<ObjectViewModel>(ObjectsData.Select(i => new ObjectViewModel(i)));
         }
 
         foreach (var checkCategory in CheckTypes)
@@ -447,7 +416,7 @@ public static class ItemsController
                 
                 newTypeViewModel.Containers.Add(newContainer);
                 if (ViewModel.CurrentContainer != null && $"{check.ItemSource.FileName}#{check.Key}" == ViewModel.CurrentContainer.CodeName)
-                {
+                { 
                     ViewModel.CurrentContainer = newContainer;
                     ViewModel.UpdateDisplayedObjects();
                 }

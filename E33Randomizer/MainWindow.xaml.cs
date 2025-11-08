@@ -63,7 +63,7 @@ public partial class MainWindow
     {
         if (_editIndividualEncountersWindow == null)
         {
-            _editIndividualEncountersWindow = new EditIndividualContainersWindow("Enemy")
+            _editIndividualEncountersWindow = new EditIndividualContainersWindow(Controllers.EnemiesController)
             {
                 Owner = this
             };
@@ -91,7 +91,7 @@ public partial class MainWindow
     {
         if (_editIndividualChecksWindow == null)
         {
-            _editIndividualChecksWindow = new EditIndividualContainersWindow("Item")
+            _editIndividualChecksWindow = new EditIndividualContainersWindow(Controllers.ItemsController)
             {
                 Owner = this
             };

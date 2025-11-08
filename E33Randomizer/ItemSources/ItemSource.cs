@@ -20,7 +20,7 @@ public class ItemSourceParticle(ItemData item, int quantity = -1, double chance 
     public static ItemSourceParticle FromString(string rep)
     {
         var stringParts = rep.Split(':');
-        var newParticle = new ItemSourceParticle(ItemsController.GetItemData(stringParts[0]));
+        var newParticle = new ItemSourceParticle(Controllers.ItemsController.GetObject(stringParts[0]));
         newParticle.Quantity = int.Parse(stringParts[1]);
         newParticle.LootDropChance = double.Parse(stringParts[2]);
         newParticle.IsLootTableChest = bool.Parse(stringParts[3]);
@@ -101,7 +101,7 @@ public abstract class ItemSource
             if (oldSize == 0)
             {
                 for (int i = 0; i < newSize; i++)
-                    sourceSection.Value.Add(new ItemSourceParticle(ItemsController.GetRandomItem(), 1));
+                    sourceSection.Value.Add(new ItemSourceParticle(Controllers.ItemsController.GetRandomObject(), 1));
                 continue;
             }
             
@@ -120,7 +120,7 @@ public abstract class ItemSource
             foreach (var item in rewardData.Value)
             {
                 var newItemName = RandomizerLogic.CustomItemPlacement.Replace(item.Item.CodeName);
-                item.Item = ItemsController.GetItemData(newItemName);
+                item.Item = Controllers.ItemsController.GetObject(newItemName);
                 item.Quantity = item.Item.HasQuantities ? item.Quantity : 1;
                 if (HasItemQuantities && RandomizerLogic.Settings.ChangeItemQuantity && item.Item.HasQuantities)
                 {
