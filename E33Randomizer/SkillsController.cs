@@ -7,6 +7,7 @@ namespace E33Randomizer;
 
 public class SkillsController: Controller<SkillData>
 {
+    private string _cleanSnapshot;
     public List<SkillGraph> SkillGraphs = new();
 
     public override void Initialize()
@@ -15,29 +16,36 @@ public class SkillsController: Controller<SkillData>
         ReadAssets($"{RandomizerLogic.DataDirectory}/SkillsData");
         CustomPlacement = new CustomSkillPlacement();
         CustomPlacement.Init();
+        _cleanSnapshot = ConvertToTxt();
     }
 
     public override void InitFromTxt(string text)
     {
-        throw new NotImplementedException();
+        var graphLines = text.Split('\n');
+        foreach (var line in graphLines)
+        {
+            var characterName = line.Split('|')[0];
+            var skillGraph = SkillGraphs.Find(sG => sG.CharacterName == characterName);
+            skillGraph?.DecodeTxt(line);
+        }
     }
 
+    public override string ConvertToTxt()
+    {
+        return string.Join('\n', SkillGraphs.Select(sG => sG.EncodeTxt()));
+    }
+    
+    public override void Reset()
+    {
+        InitFromTxt(_cleanSnapshot);
+    }
+    
     public override void ApplyViewModel()
     {
         throw new NotImplementedException();
     }
 
     public override void UpdateViewModel()
-    {
-        throw new NotImplementedException();
-    }
-
-    public override string ConvertToTxt()
-    {
-        throw new NotImplementedException();
-    }
-
-    public override void Reset()
     {
         throw new NotImplementedException();
     }
@@ -63,15 +71,16 @@ public class SkillsController: Controller<SkillData>
 
     public override void AddObjectToContainer(string objectCodeName, string containerCodeName)
     {
-        throw new NotImplementedException();
+        throw new NotSupportedException("Skill nodes must have exactly one skill in them.");
+
     }
 
     public override void RemoveObjectFromContainer(int objectIndex, string containerCodeName)
     {
-        throw new NotImplementedException();
+        throw new NotSupportedException("Skill nodes must have exactly one skill in them.");
     }
 
-    public void WriteAssets()
+    public override void WriteAssets()
     {
         foreach (var skillGraph in SkillGraphs)
         {

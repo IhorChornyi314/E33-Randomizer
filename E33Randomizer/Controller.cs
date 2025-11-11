@@ -37,4 +37,6 @@ public abstract class Controller<T>: BaseController where T: ObjectData, new()
         return Utils.Pick(ObjectsData);
     }
     
+    public abstract void WriteAssets();
+    
 }

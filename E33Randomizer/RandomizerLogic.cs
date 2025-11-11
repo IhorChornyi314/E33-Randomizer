@@ -155,6 +155,9 @@ public static class RandomizerLogic
         {
             Controllers.EnemiesController.WriteTxt(exportPath + "encounters.txt");
             Controllers.ItemsController.WriteTxt(exportPath + "checks.txt");
+            using StreamWriter r = new StreamWriter(exportPath + "settings.json");
+            string json = JsonConvert.SerializeObject(Settings, Formatting.Indented);
+            r.Write(json);
         }
 
         // if (Settings.TieDropsToEncounters)
@@ -163,28 +166,7 @@ public static class RandomizerLogic
         //     EnemiesController.HandleLoot();
         // }
 
-        if (Settings.RandomizeEnemies)
-        {
-            Controllers.EnemiesController.WriteEncounterAssets();
-            // if (Settings.TieDropsToEncounters && !Settings.RandomizeItems)
-            // {
-            //     EnemiesControllerOld.WriteAsset();
-            // }
-        }
-
-        if (Settings.RandomizeItems)
-        {
-            Controllers.ItemsController.WriteItemAssets();
-            if (Settings.MakeEveryItemVisible)
-            {
-                Controllers.ItemsController.WriteTableAssets();
-            }
-        }
-
-        if (Settings.RandomizeSkills)
-        {
-            Controllers.SkillsController.WriteAssets();
-        }
+        Controllers.WriteAssets();
         
         var retocArgs = $"to-zen --version UE5_4 randomizer \"{exportPath}randomizer_P.utoc\"";
 

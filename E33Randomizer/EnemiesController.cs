@@ -72,7 +72,7 @@ public class EnemiesController: Controller<EnemyData>
         Utils.WriteAsset(asset);
     }
 
-    public void WriteEncounterAssets()
+    public override void WriteAssets()
     {
         ApplyViewModel();
         Directory.CreateDirectory("randomizer/Sandfall/Content/jRPGTemplate/Datatables");

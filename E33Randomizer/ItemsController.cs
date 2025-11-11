@@ -204,7 +204,7 @@ public class ItemsController: Controller<ItemData>
         Utils.WriteAsset(_compositeTableAsset);
     }
 
-    public void WriteItemAssets()
+    public override void WriteAssets()
     {
         ApplyViewModel();
         RandomizeStartingEquipment();
@@ -212,6 +212,11 @@ public class ItemsController: Controller<ItemData>
         {
             var itemsSourceAsset = itemsSource.SaveToAsset();
             Utils.WriteAsset(itemsSourceAsset);
+        }
+
+        if (RandomizerLogic.Settings.MakeEveryItemVisible)
+        {
+            WriteTableAssets();
         }
     }
 

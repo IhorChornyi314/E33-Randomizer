@@ -284,8 +284,6 @@ namespace E33Randomizer
             }
         }
         
-        
-        
         public ObjectViewModel(ObjectData objectData)
         {
             CodeName = objectData.CodeName;

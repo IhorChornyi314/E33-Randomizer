@@ -11,4 +11,20 @@ public static class Controllers
         SkillsController.Initialize();
         ItemsController.Initialize();
     }
+
+    public static void WriteAssets()
+    {
+        if (RandomizerLogic.Settings.RandomizeSkills)
+        {
+            SkillsController.WriteAssets();
+        }
+        if (RandomizerLogic.Settings.RandomizeItems)
+        {
+            ItemsController.WriteAssets();
+        }
+        if (RandomizerLogic.Settings.RandomizeEnemies)
+        {
+            EnemiesController.WriteAssets();
+        }
+    }
 }
