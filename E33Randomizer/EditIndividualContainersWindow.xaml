@@ -82,7 +82,7 @@
                                       MinWidth="200"/>
 
                             <xctk:IntegerUpDown Grid.Column="1" Name="NumberOfAdditionalEnemiesTextBox"
-                                                Text="{Binding ItemQuantity}"
+                                                Text="{Binding IntProperty}"
                                                 Margin="5,0,0,0"
                                                 VerticalAlignment="Center"
                                                 Height="25"
@@ -90,15 +90,15 @@
                                                 FontSize="16"
                                                 Minimum="0"
                                                 Maximum="99"
-                                                Visibility="{Binding HasQuantityControl, Converter={StaticResource BoolToVisibilityConverter}}" />
+                                                Visibility="{Binding HasIntPropertyControl, Converter={StaticResource BoolToVisibilityConverter}}" />
                             <CheckBox Grid.Column="2"
                                       VerticalAlignment="Center"
                                       VerticalContentAlignment="Center"
                                       Margin="10,0,0,0"
                                       Height="25"
                                       Width="25"
-                                      IsChecked="{Binding MerchantInventoryLocked}"
-                                      Visibility="{Binding IsMerchantInventory, Converter={StaticResource BoolToVisibilityConverter}}">
+                                      IsChecked="{Binding BoolProperty}"
+                                      Visibility="{Binding HasBoolPropertyControl, Converter={StaticResource BoolToVisibilityConverter}}">
                                 <CheckBox.LayoutTransform>
                                     <ScaleTransform ScaleX="1.2" ScaleY="1.2" />
                                 </CheckBox.LayoutTransform>

@@ -11,6 +11,7 @@ namespace E33Randomizer;
 public class Node
 {
     private StructPropertyData _structData;
+    public string OriginalSkillCodeName;
     public FPackageIndex SkillPackageIndex;
     public SkillData SkillData;
     public int UnlockCost;
@@ -25,6 +26,7 @@ public class Node
         SkillPackageIndex = ((_structData.Value[0] as StructPropertyData).Value[0] as ObjectPropertyData).Value;
         
         var stringParts = rep.Split(':');
+        OriginalSkillCodeName = stringParts[0];
         SkillData = Controllers.SkillsController.GetObject(stringParts[0]);
         UnlockCost = int.Parse(stringParts[1]);
         IsStarting = bool.Parse(stringParts[2]);
@@ -38,8 +40,8 @@ public class Node
         _structData = structData;
         SkillPackageIndex = ((_structData.Value[0] as StructPropertyData).Value[0] as ObjectPropertyData).Value;
         var skillImport = parentAsset.Imports[int.Abs(SkillPackageIndex.Index) - 1];
-        var skillCodeName = skillImport.ObjectName.ToString();
-        SkillData = Controllers.SkillsController.GetObject(skillCodeName);
+        OriginalSkillCodeName = skillImport.ObjectName.ToString();
+        SkillData = Controllers.SkillsController.GetObject(OriginalSkillCodeName);
         
         UnlockCost = ((_structData.Value[0] as StructPropertyData).Value[1] as IntPropertyData).Value;
         IsStarting = ((_structData.Value[0] as StructPropertyData).Value[2] as BoolPropertyData).Value;

@@ -368,8 +368,8 @@ public class ItemsController: Controller<ItemData>
                 {
                     var itemViewModel = checkItemViewModels[i];
                     itemSource.SourceSections[check.Key][i].Item = GetObject(itemViewModel.CodeName);
-                    itemSource.SourceSections[check.Key][i].Quantity = Math.Abs(itemViewModel.ItemQuantity);
-                    itemSource.SourceSections[check.Key][i].MerchantInventoryLocked = itemViewModel.MerchantInventoryLocked;
+                    itemSource.SourceSections[check.Key][i].Quantity = Math.Abs(itemViewModel.IntProperty);
+                    itemSource.SourceSections[check.Key][i].MerchantInventoryLocked = itemViewModel.BoolProperty;
                 }
             }
         }
@@ -397,6 +397,7 @@ public class ItemsController: Controller<ItemData>
                 var itemSource = check.ItemSource;
                 var items = itemSource.GetCheckItems(check.Key);
                 newContainer.Objects = new ObservableCollection<ObjectViewModel>(items.Select(i => new ObjectViewModel(i)));
+                newContainer.CanAddObjects = check.Key.Contains("BP_Dialog");
 
                 for (int i = 0; i < newContainer.Objects.Count; i++)
                 {
@@ -404,12 +405,12 @@ public class ItemsController: Controller<ItemData>
                     if (itemSource.HasItemQuantities)
                     {
                         var itemParticle = itemSource.SourceSections[check.Key][i];
-                        newContainer.Objects[i].ItemQuantity = itemParticle.Item.HasQuantities ? itemParticle.Quantity : -1;
+                        newContainer.Objects[i].IntProperty = itemParticle.Item.HasQuantities ? itemParticle.Quantity : -1;
                     }
                     if (checkCategory.Key == "Merchant inventories")
                     {
-                        newContainer.Objects[i].IsMerchantInventory = true;
-                        newContainer.Objects[i].MerchantInventoryLocked =
+                        newContainer.Objects[i].HasBoolPropertyControl = true;
+                        newContainer.Objects[i].BoolProperty =
                             itemSource.SourceSections[check.Key][i].MerchantInventoryLocked;
                     }
 

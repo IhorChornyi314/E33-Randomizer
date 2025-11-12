@@ -212,7 +212,7 @@ namespace E33Randomizer
         public void OnContainerSelected(ContainerViewModel container)
         {
             CurrentContainer = container;
-            CanAddObjects = !container.CodeName.Contains("BP_Dialog");
+            CanAddObjects = container.CanAddObjects; //!container.CodeName.Contains("BP_Dialog");
             OnPropertyChanged(nameof(CanAddObjects));
             UpdateDisplayedObjects();
         }
@@ -237,6 +237,8 @@ namespace E33Randomizer
             CodeName = containerCodeName;
             Name = containerCustomName == "" ? containerCodeName : containerCustomName;
         }
+
+        public bool CanAddObjects { get; set; } = true;
         public string CodeName { get; set; }
         public string Name { get; set; }
         
@@ -246,26 +248,26 @@ namespace E33Randomizer
     public class ObjectViewModel : INotifyPropertyChanged
     {
         private ObjectViewModel _selectedComboBoxValue;
-        private int _lastItemQuantity = 1;
+        private int _lastIntPropertyValue = 1;
         public string Name { get; set; }
         public ObservableCollection<ObjectViewModel> AllObjects { get; set; } = [];
         public bool CanDelete { get; set; } = true;
 
-        public bool HasQuantityControl => ItemQuantity != -1;
-        private int _itemQuantity = -1;
+        public bool HasIntPropertyControl => IntProperty != -1;
+        private int _intProperty = -1;
 
-        public int ItemQuantity
+        public int IntProperty
         {
-            get => _itemQuantity;
+            get => _intProperty;
             set
             {
-                _itemQuantity = value;
-                OnPropertyChanged(nameof(HasQuantityControl));
-                OnPropertyChanged(nameof(ItemQuantity));
+                _intProperty = value;
+                OnPropertyChanged(nameof(HasIntPropertyControl));
+                OnPropertyChanged(nameof(IntProperty));
             }
         }
-        public bool IsMerchantInventory { get; set; } = false;
-        public bool MerchantInventoryLocked { get; set; } = false;
+        public bool HasBoolPropertyControl { get; set; } = false;
+        public bool BoolProperty { get; set; } = false;
     
         public ObjectViewModel SelectedComboBoxValue
         {
@@ -278,9 +280,9 @@ namespace E33Randomizer
                 CodeName = _selectedComboBoxValue.CodeName;
                 if (Controllers.ItemsController.ItemsWithQuantities.Contains(CodeName))
                 {
-                    _lastItemQuantity = ItemQuantity;
+                    _lastIntPropertyValue = IntProperty;
                 }
-                ItemQuantity = !Controllers.ItemsController.ItemsWithQuantities.Contains(CodeName) ? -1 : _lastItemQuantity;
+                IntProperty = !Controllers.ItemsController.ItemsWithQuantities.Contains(CodeName) ? -1 : _lastIntPropertyValue;
             }
         }
         

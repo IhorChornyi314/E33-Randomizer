@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.ObjectModel;
+using System.IO;
 using Newtonsoft.Json;
 using UAssetAPI;
 using UAssetAPI.UnrealTypes;
@@ -42,12 +43,67 @@ public class SkillsController: Controller<SkillData>
     
     public override void ApplyViewModel()
     {
-        throw new NotImplementedException();
+        foreach (var categoryViewModel in ViewModel.Categories)
+        {
+            foreach (var skillNodeViewModel in categoryViewModel.Containers)
+            {
+                var codeName = skillNodeViewModel.CodeName;
+                var characterName = codeName.Split("#")[0];
+                var skillCodeName = codeName.Split("#")[1];
+                var skillGraph = SkillGraphs.FirstOrDefault(sG => sG.CharacterName == characterName);
+                var node = skillGraph.Nodes.FirstOrDefault(c => c.OriginalSkillCodeName == skillCodeName);
+                var skillViewModel = skillNodeViewModel.Objects[0];
+                node.SkillData = GetObject(skillViewModel.CodeName);
+                node.UnlockCost = skillViewModel.IntProperty;
+                node.IsStarting = skillViewModel.BoolProperty;
+            }
+        }
     }
 
     public override void UpdateViewModel()
     {
-        throw new NotImplementedException();
+        ViewModel.FilteredCategories.Clear();
+        ViewModel.Categories.Clear();
+        
+        if (ViewModel.AllObjects.Count == 0)
+        {
+            ViewModel.AllObjects = new ObservableCollection<ObjectViewModel>(ObjectsData.Select(i => new ObjectViewModel(i)));
+        }
+
+        foreach (var characterGraph in SkillGraphs)
+        {
+            var newTypeViewModel = new CategoryViewModel();
+            newTypeViewModel.CategoryName = characterGraph.CharacterName;
+            newTypeViewModel.Containers = new ObservableCollection<ContainerViewModel>();
+
+            foreach (var node in characterGraph.Nodes)
+            {
+                var newContainer = new ContainerViewModel($"{characterGraph.CharacterName}#{node.OriginalSkillCodeName}", node.SkillData.CustomName);
+                newContainer.Objects = new ObservableCollection<ObjectViewModel>([new ObjectViewModel(node.SkillData)]);
+                newContainer.Objects[0].CanDelete = false;
+                newContainer.Objects[0].Index = 0;
+                
+                newContainer.Objects[0].IntProperty = node.UnlockCost;
+                newContainer.Objects[0].BoolProperty = node.IsStarting;
+                newContainer.Objects[0].HasBoolPropertyControl = true;
+                
+                newContainer.CanAddObjects = false;
+                
+                newTypeViewModel.Containers.Add(newContainer);
+                if (ViewModel.CurrentContainer != null && $"{node.OriginalSkillCodeName}" == ViewModel.CurrentContainer.CodeName)
+                { 
+                    ViewModel.CurrentContainer = newContainer;
+                    ViewModel.UpdateDisplayedObjects();
+                }
+            }
+            
+            if (newTypeViewModel.Containers.Count > 0)
+            {
+                ViewModel.Categories.Add(newTypeViewModel);
+            }
+        }
+
+        ViewModel.UpdateFilteredCategories();
     }
 
     public void ReadAssets(string filesDirectory)
