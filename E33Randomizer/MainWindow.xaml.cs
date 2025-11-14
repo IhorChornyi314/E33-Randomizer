@@ -43,9 +43,11 @@ public partial class MainWindow
         {
             SaveSettings("default_settings.json");
         }
+        EnemyRandomizerTab.MainWindow = this;
+        ItemRandomizerTab.MainWindow = this;
     }
-
-    private void CustomEnemyPlacementButton_Click(object sender, RoutedEventArgs e)
+    
+    public void CustomEnemyPlacementButton_Click(object sender, RoutedEventArgs e)
     {
         if (_customEnemyPlacementWindow == null)
         {
@@ -59,7 +61,7 @@ public partial class MainWindow
         _customEnemyPlacementWindow.Show();
     }
 
-    private void EditEncountersButton_Click(object sender, RoutedEventArgs e)
+    public void EditEncountersButton_Click(object sender, RoutedEventArgs e)
     {
         if (_editIndividualEncountersWindow == null)
         {
@@ -73,7 +75,7 @@ public partial class MainWindow
         _editIndividualEncountersWindow.Show();
     }
 
-    private void CustomItemPlacementButton_Click(object sender, RoutedEventArgs e)
+    public void CustomItemPlacementButton_Click(object sender, RoutedEventArgs e)
     {
         if (_customItemPlacementWindow == null)
         {
@@ -87,7 +89,7 @@ public partial class MainWindow
         _customItemPlacementWindow.Show();
     }
 
-    private void EditChecksButton_Click(object sender, RoutedEventArgs e)
+    public void EditChecksButton_Click(object sender, RoutedEventArgs e)
     {
         if (_editIndividualChecksWindow == null)
         {

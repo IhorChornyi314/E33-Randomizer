@@ -1,0 +1,224 @@
+﻿<UserControl x:Class="E33Randomizer.RandomizeEnemiesTab"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:E33Randomizer"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </UserControl.Resources>
+                <Grid Margin="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <!-- Randomize Encounter Sizes -->
+                    <StackPanel Orientation="Vertical" Margin="0">
+                        <CheckBox Content="Randomize enemies"
+                                  IsChecked="{Binding RandomizeEnemies}"
+                                  Margin="0,0,0,0"
+                                  FontSize="14" />
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <CheckBox Grid.Column="0" Name="RandomizeEncounterSizesCheckBox"
+                                      Content="Randomize encounter sizes"
+                                      IsChecked="{Binding RandomizeEncounterSizes}"
+                                      Margin="0,0,0,0"
+                                      FontSize="14" />
+                            <CheckBox Grid.Column="1" Name="EncounterSize1CheckBox"
+                                      Tag="1"
+                                      Content="1"
+                                      IsChecked="{Binding EncounterSizeOne}"
+                                      Margin="10,0,0,0"
+                                      FontSize="14"
+                                      Visibility="{Binding IsChecked, ElementName=RandomizeEncounterSizesCheckBox, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                            <CheckBox Grid.Column="2" Name="EncounterSize2CheckBox"
+                                      Tag="2"
+                                      Content="2"
+                                      IsChecked="{Binding EncounterSizeTwo}"
+                                      Margin="0,0,0,0"
+                                      FontSize="14"
+                                      Visibility="{Binding IsChecked, ElementName=RandomizeEncounterSizesCheckBox, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                            <CheckBox Grid.Column="3" Name="EncounterSize3CheckBox"
+                                      Tag="3"
+                                      Content="3"
+                                      IsChecked="{Binding EncounterSizeThree}"
+                                      Margin="0,0,0,0"
+                                      FontSize="14"
+                                      Visibility="{Binding IsChecked, ElementName=RandomizeEncounterSizesCheckBox, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                        </Grid>
+
+                        <!-- Randomize Merchant Fights -->
+                        <StackPanel Orientation="Vertical" Margin="0">
+                            <CheckBox Name="ChangeSizeOfNonRandomEncountersCheckBox"
+                                      Content="Randomize size of encounters that don't contain randomized enemies"
+                                      IsChecked="{Binding ChangeSizeOfNonRandomizedEncounters}"
+                                      Margin="20, 0, 0, 0"
+                                      FontSize="14"
+                                      Visibility="{Binding IsChecked, ElementName=RandomizeEncounterSizesCheckBox, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                        </StackPanel>
+
+                        <CheckBox Name="RandomizeMerchantFightsCheckBox"
+                                  Content="Randomize merchant fights"
+                                  IsChecked="{Binding RandomizeMerchantFights}"
+                                  Margin="0"
+                                  FontSize="14" />
+                        <StackPanel Orientation="Vertical" Margin="0"
+                                    Grid.Row="2">
+                            <!-- <CheckBox Name="TieLootToEncountersButton" -->
+                            <!--           Content="Tie loot drops to encounters instead of enemies" -->
+                            <!--           IsChecked="True" -->
+                            <!--           Margin="0" -->
+                            <!--           FontSize="14"/> -->
+                            <TextBlock
+                                Text="Merchants' special wares unlocks and Maelle's paintress skills are considered loot drops. It is recommended that you only disable this if you are also running an item randomizer."
+                                Foreground="Orange"
+                                FontWeight="Bold"
+                                Margin="10,5,0,5"
+                                VerticalAlignment="Center"
+                                MaxWidth="800"
+                                TextWrapping="Wrap" />
+                        </StackPanel>
+                        <!-- Include Cut Content -->
+                        <StackPanel Orientation="Vertical" Margin="0"
+                                    Grid.Row="3">
+                            <CheckBox Name="IncludeCutContentCheckBox"
+                                      Content="Include cut content (gets overriden by custom placement)"
+                                      IsChecked="{Binding IncludeCutContentEnemies}"
+                                      FontSize="14" />
+                            <TextBlock
+                                Text="Be careful when parrying cut content enemies, as it can break their AI. You can replace broken enemies in Edit Encounters window."
+                                Foreground="Orange"
+                                FontWeight="Bold"
+                                Margin="10,5,0,5"
+                                VerticalAlignment="Center"
+                                Visibility="{Binding IsChecked, ElementName=IncludeCutContentCheckBox, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                        </StackPanel>
+
+                        <CheckBox Name="EnableEnemyOnslaughtCheckBox"
+                                  Grid.Row="4"
+                                  Content="Enable enemy onslaught"
+                                  IsChecked="{Binding EnableEnemyOnslaught}"
+                                  Margin="0"
+                                  FontSize="14" />
+                        <StackPanel Orientation="Vertical" Margin="0,0,0,0"
+                                    Grid.Row="5"
+                                    Visibility="{Binding IsChecked, ElementName=EnableEnemyOnslaughtCheckBox, Converter={StaticResource BooleanToVisibilityConverter}}">
+                            <TextBlock
+                                Text="The game has full support for 4 enemies, but the 5th and beyond gets lumped into a single spot outside the fighting arena. They will still function properly except that you won't be able to see their attacks or shoot them."
+                                Foreground="Orange"
+                                FontWeight="Bold"
+                                Margin="10,0,0,0"
+                                VerticalAlignment="Center"
+                                TextWrapping="Wrap"
+                                MaxWidth="800" />
+                            <CheckBox Name="RandomizeAdditionalEnemiesCheckBox"
+                                      Content="Randomize added enemies"
+                                      IsChecked="{Binding RandomizeAddedEnemies}"
+                                      Margin="20,10,0,0"
+                                      FontSize="14"
+                                      Grid.Row="6" />
+                            <StackPanel Orientation="Horizontal" Margin="15,0,0,0">
+                                <Label Content="Number of additional enemies:"
+                                       FontSize="14" />
+                                <xctk:IntegerUpDown Name="NumberOfAdditionalEnemiesTextBox"
+                                                    Text="{Binding EnemyOnslaughtAdditionalEnemies}"
+                                                    Margin="5,0,0,0"
+                                                    VerticalAlignment="Center"
+                                                    Maximum="99"
+                                                    Minimum="1"
+                                                    Height="25"
+                                                    Width="50"
+                                                    FontSize="16"
+                                                    MaxLength="2" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="15,0,0,0">
+                                <Label Content="Cap encounter size at:"
+                                       FontSize="14" />
+                                <xctk:IntegerUpDown Name="EnemyNumberCapTextBox"
+                                                    Text="{Binding EnemyOnslaughtEnemyCap}"
+                                                    Margin="5,0,0,0"
+                                                    VerticalAlignment="Center"
+                                                    Maximum="99"
+                                                    Minimum="1"
+                                                    Height="25"
+                                                    Width="50"
+                                                    FontSize="16"
+                                                    MaxLength="2" />
+                            </StackPanel>
+
+                        </StackPanel>
+                        <CheckBox Name="EnsureBossesInBossEncountersCheckBox"
+                                  Content="Ensure that boss encounters have at least one boss"
+                                  IsChecked="{Binding EnsureBossesInBossEncounters}"
+                                  Margin="0,0,0,0"
+                                  FontSize="14"
+                                  Grid.Row="7" />
+                        <CheckBox Name="ReduceBossRepetitionCheckBox"
+                                  Content="Reduce boss repetition (ignores frequency adjustments)"
+                                  IsChecked="{Binding ReduceBossRepetition}"
+                                  Margin="0,0,0,0"
+                                  FontSize="14"
+                                  Grid.Row="8" />
+
+                        <CheckBox Content="Replace Phase 2 Simon with Phase 1 in mandatory fights until after the Lune tutorial fight"
+                                  IsChecked="{Binding NoSimonP2BeforeLune}"
+                                  Margin="0,0,0,0"
+                                  FontSize="14" />
+                        <!-- Phase 2 Simon Dropdown -->
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,20"
+                                    Grid.Row="9" Visibility="Hidden">
+                            <Label Content="Replace Phase 2 Simon with Phase 1 in mandatory fights until after:"
+                                   FontSize="15" />
+                            <ComboBox Name="Phase2SimonComboBox"
+                                      SelectedItem="{Binding EarliestSimonP2Encounter}"
+                                      Width="150"
+                                      HorizontalAlignment="Left"
+                                      Margin="0,0,0,0"
+                                      FontSize="16">
+                                <ComboBoxItem Content="Lune Tutorial" IsSelected="True"
+                                              Tag="SM_Eveque_ShieldTutorial*1" />
+                                <ComboBoxItem Content="Eveque" Tag="GO_Curator_JumpTutorial*1" />
+                                <ComboBoxItem Content="Goblu" Tag="AS_PotatoBag_Boss" />
+                                <ComboBoxItem Content="Ultimate Sakapatate" Tag="QUEST_MatthieuTheColossus*1" />
+                                <ComboBoxItem Content="Gestral Tournament" Tag="EN_Francois" />
+                                <ComboBoxItem Content="Never" Tag="SM_Lancelier*1" />
+
+                            </ComboBox>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2">
+                        <!-- Custom Enemy Placement Button -->
+                        <Button Name="CustomEnemyPlacementButton"
+                                Content="Customize Enemy Placements"
+                                Width="500"
+                                Height="50"
+                                FontSize="20"
+                                HorizontalAlignment="Center"
+                                Margin="0,10,0,20"
+                                Background="Aqua"
+                                Click="CustomEnemyPlacementButton_Click"
+                                Grid.Row="10" />
+                        <!-- Custom Enemy Placement Button -->
+                        <Button Name="EditEncountersButton"
+                                Content="Edit Individual Encounters"
+                                Width="500"
+                                Height="50"
+                                FontSize="20"
+                                HorizontalAlignment="Center"
+                                Margin="0,10,0,20"
+                                Background="Aqua"
+                                Click="EditEncountersButton_Click"
+                                Grid.Row="11" />
+                    </StackPanel>
+                </Grid>
+</UserControl>
