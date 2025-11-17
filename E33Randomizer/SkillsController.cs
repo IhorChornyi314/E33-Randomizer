@@ -15,9 +15,12 @@ public class SkillsController: Controller<SkillData>
     {
         ReadObjectsData($"{RandomizerLogic.DataDirectory}/skill_data.json");
         ReadAssets($"{RandomizerLogic.DataDirectory}/SkillsData");
+        ViewModel.ContainerName = "Skill Tree";
+        ViewModel.ObjectName = "Skill";
         CustomPlacement = new CustomSkillPlacement();
         CustomPlacement.Init();
         _cleanSnapshot = ConvertToTxt();
+        UpdateViewModel();
     }
 
     public override void InitFromTxt(string text)
@@ -29,6 +32,7 @@ public class SkillsController: Controller<SkillData>
             var skillGraph = SkillGraphs.Find(sG => sG.CharacterName == characterName);
             skillGraph?.DecodeTxt(line);
         }
+        UpdateViewModel();
     }
 
     public override string ConvertToTxt()

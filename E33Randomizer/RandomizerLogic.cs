@@ -97,6 +97,7 @@ public static class RandomizerLogic
     public static Dictionary<string, string> ItemCustomNames = new ();
     public static CustomEnemyPlacement CustomEnemyPlacement = new ();
     public static CustomItemPlacement CustomItemPlacement = new ();
+    public static CustomSkillPlacement CustomSkillPlacement = new ();
     public static SettingsViewModel Settings = new ();
     
     public static Random rand;
@@ -124,7 +125,19 @@ public static class RandomizerLogic
         ConstructEnemyFrequenciesWithinArchetype();
         CustomEnemyPlacement.Init();
         CustomItemPlacement.Init();
+        CustomSkillPlacement.Init();
         SpecialRules.Reset();
+    }
+
+    public static CustomPlacement GetCustomPlacement(string objectType)
+    {
+        return objectType switch
+        {
+            "Enemy" => CustomEnemyPlacement,
+            "Item" => CustomItemPlacement,
+            "Skill" => CustomSkillPlacement,
+            _ => null
+        };
     }
 
 

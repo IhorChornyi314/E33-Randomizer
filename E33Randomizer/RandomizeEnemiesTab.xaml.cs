@@ -5,20 +5,18 @@ namespace E33Randomizer;
 
 public partial class RandomizeEnemiesTab : UserControl
 {
-    public MainWindow MainWindow;
-    
     public RandomizeEnemiesTab()
     {
         InitializeComponent();
     }
     
-    private void CustomEnemyPlacementButton_Click(object sender, RoutedEventArgs e)
+    private void CustomPlacementButton_Click(object sender, RoutedEventArgs e)
     {
-        MainWindow.CustomEnemyPlacementButton_Click(sender, e);
+        (Application.Current.MainWindow as MainWindow).OpenCustomPlacementButton_Click(sender, e);
     }
 
-    private void EditEncountersButton_Click(object sender, RoutedEventArgs e)
+    private void EditButton_Click(object sender, RoutedEventArgs e)
     {
-        MainWindow.EditEncountersButton_Click(sender, e);
+        (Application.Current.MainWindow as MainWindow).OpenEditObjectsButton_Click(sender, e);
     }
 }

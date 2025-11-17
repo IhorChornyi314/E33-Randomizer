@@ -3,9 +3,9 @@ using System.Windows.Controls;
 
 namespace E33Randomizer;
 
-public partial class RandomizeItemsTab : UserControl
+public partial class RandomizeSkillsTab : UserControl
 {
-    public RandomizeItemsTab()
+    public RandomizeSkillsTab()
     {
         InitializeComponent();
     }

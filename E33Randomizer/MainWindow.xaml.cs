@@ -20,6 +20,9 @@ public partial class MainWindow
 
     private CustomPlacementWindow _customItemPlacementWindow;
     private EditIndividualContainersWindow _editIndividualChecksWindow;
+    
+    private Dictionary<string, EditIndividualContainersWindow> _editIndividualContainersWindows = new ();
+    private Dictionary<string, CustomPlacementWindow> _customPlacementWindows = new ();
 
     public MainWindow()
     {
@@ -43,8 +46,6 @@ public partial class MainWindow
         {
             SaveSettings("default_settings.json");
         }
-        EnemyRandomizerTab.MainWindow = this;
-        ItemRandomizerTab.MainWindow = this;
     }
     
     public void CustomEnemyPlacementButton_Click(object sender, RoutedEventArgs e)
@@ -75,18 +76,19 @@ public partial class MainWindow
         _editIndividualEncountersWindow.Show();
     }
 
-    public void CustomItemPlacementButton_Click(object sender, RoutedEventArgs e)
+    public void OpenCustomPlacementButton_Click(object sender, RoutedEventArgs e)
     {
-        if (_customItemPlacementWindow == null)
+        var objectType = (sender as Button).Tag.ToString();
+        if (!_customPlacementWindows.ContainsKey(objectType))
         {
-            _customItemPlacementWindow = new CustomPlacementWindow(RandomizerLogic.CustomItemPlacement)
+            _customPlacementWindows[objectType] = new CustomPlacementWindow(RandomizerLogic.GetCustomPlacement(objectType))
             {
-                Owner = this,
+                Owner = this
             };
-            _customItemPlacementWindow.Closed += (_, _) => _customItemPlacementWindow = null;
+            _customPlacementWindows[objectType].Closed += (_, _) => _customPlacementWindows[objectType] = null;
         }
 
-        _customItemPlacementWindow.Show();
+        _customPlacementWindows[objectType].Show();
     }
 
     public void EditChecksButton_Click(object sender, RoutedEventArgs e)
@@ -101,6 +103,21 @@ public partial class MainWindow
         }
 
         _editIndividualChecksWindow.Show();
+    }
+
+    public void OpenEditObjectsButton_Click(object sender, RoutedEventArgs e)
+    {
+        var objectType = (sender as Button).Tag.ToString();
+        if (!_editIndividualContainersWindows.ContainsKey(objectType))
+        {
+            _editIndividualContainersWindows[objectType] = new EditIndividualContainersWindow(Controllers.GetController(objectType))
+            {
+                Owner = this
+            };
+            _editIndividualContainersWindows[objectType].Closed += (_, _) => _editIndividualContainersWindows[objectType] = null;
+        }
+
+        _editIndividualContainersWindows[objectType].Show();
     }
 
     private void GenerateButton_Click(object sender, RoutedEventArgs e)
@@ -323,7 +340,8 @@ public class SettingsViewModel : INotifyPropertyChanged
     public bool RandomizeGestralBeachRewards { get; set; } = true;
     public bool IncludeCutContentItems { get; set; } = true;
     
-    public bool RandomizeSkills { get; set; } = true;
+    public bool RandomizeSkills { get; set; } = false;
+    public bool ReduceSkillRepetition { get; set; } = true;
     
     public event PropertyChangedEventHandler PropertyChanged;
     protected virtual void OnPropertyChanged(string propertyName)

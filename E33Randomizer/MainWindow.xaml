@@ -16,16 +16,15 @@
 
         <!-- Main Tab Control -->
         <TabControl Grid.Row="0" Margin="0">
-
-            <!-- Enemy Randomizer Tab -->
             <TabItem Header="Enemy Randomizer">
                 <e33Randomizer:RandomizeEnemiesTab x:Name="EnemyRandomizerTab"/>
             </TabItem>
-            <!-- Item Randomizer Tab -->
             <TabItem Header="Item Randomizer">
                 <e33Randomizer:RandomizeItemsTab x:Name="ItemRandomizerTab"/>
             </TabItem>
-            <!--Misc Tab-->
+            <TabItem Header="Skill Randomizer">
+                <e33Randomizer:RandomizeSkillsTab x:Name="SkillRandomizerTab"/>
+            </TabItem>
             <TabItem Header="Misc">
                 <Grid>
                     <GroupBox Grid.Row="0" Header="Save File Patching" Margin="10, 10, 5, 0"
