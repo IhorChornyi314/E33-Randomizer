@@ -11,7 +11,6 @@ public class Encounter
     private UAsset _asset;
     public string Name;
     public List<EnemyData> Enemies;
-    public ArchetypeGroup Archetypes;
     public List<EnemyLootDrop> PossibleLootDrops = new();
     public bool IsBossEncounter = false;
     public bool IsBroken;
@@ -56,7 +55,6 @@ public class Encounter
             enemyArchetypes.Add(enemyData.Archetype);
         }
 
-        Archetypes = new ArchetypeGroup(enemyArchetypes);
         fleeImpossible = (_encounterData.Value[1] as BoolPropertyData).Value;
         levelOverride = (_encounterData.Value[2] as IntPropertyData).Value;
         disableCameraEndMovement = (_encounterData.Value[3] as BoolPropertyData).Value;

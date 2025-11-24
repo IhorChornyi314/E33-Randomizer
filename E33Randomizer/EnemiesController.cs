@@ -85,11 +85,17 @@ public class EnemiesController: Controller<EnemyData>
     
     public override void InitFromTxt(string text)
     {
-        Encounters.Clear();
         foreach (var line in text.Split('\n'))
         {
-            var newEncounter = new Encounter(line.Split('|')[0], line.Split('|')[1].Split(',').ToList());
-            Encounters.Add(newEncounter);
+            var encounterName = line.Split('|')[0];
+            var encounterIndex = Encounters.FindIndex(e => e.Name == encounterName);
+            if (encounterIndex == -1)
+                continue;
+            Encounters[encounterIndex].Enemies.Clear();
+            foreach (var enemyCodeName in line.Split('|')[1].Split(','))
+            {
+                Encounters[encounterIndex].Enemies.Add(GetObject(enemyCodeName));
+            }
         }
         UpdateViewModel();
     }
