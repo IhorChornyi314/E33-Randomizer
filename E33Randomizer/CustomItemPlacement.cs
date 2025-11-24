@@ -31,6 +31,7 @@ public class CustomItemPlacement: CustomPlacement
 
     public override void LoadDefaultPreset()
     {
+        ResetRules();
         AddNotRandomized("Skill Unlock");
         AddNotRandomized("Merchant Unlock");
         AddExcluded("Consumable");

@@ -68,7 +68,7 @@ public class CustomEnemyPlacement: CustomPlacement
     
     public override void LoadDefaultPreset()
     {
-        NotRandomized = [];
+        ResetRules();
         AddExcluded("Gimmick/Tutorial Enemies");
         AddExcluded("Map Part Enemies");
         CustomPlacementRules = new Dictionary<string, Dictionary<string, float>>

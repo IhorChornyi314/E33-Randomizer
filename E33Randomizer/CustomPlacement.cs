@@ -105,7 +105,7 @@ public abstract class CustomPlacement
     {
         using StreamWriter r = new StreamWriter(pathToJson);
         var presetData = new CustomPlacementPreset(NotRandomized, Excluded, CustomPlacementRules, FrequencyAdjustments);
-        string json = JsonConvert.SerializeObject(presetData);
+        string json = JsonConvert.SerializeObject(presetData, Formatting.Indented);
         r.Write(json);
     }
 
@@ -153,7 +153,7 @@ public abstract class CustomPlacement
         CustomPlacementRules[from].Remove(to);
     }
 
-    public List<string> PlainNamesToCodeNames(List<string> plainNames)
+    public List<string> PlainNamesToCodeNames(IEnumerable<string> plainNames)
     {
         var result = new List<string>();
         foreach (var plainName in plainNames)
@@ -180,6 +180,16 @@ public abstract class CustomPlacement
         }
 
         return result;
+    }
+
+    public void ResetRules()
+    {
+        Excluded.Clear();
+        ExcludedCodeNames.Clear();
+        NotRandomized.Clear();
+        NotRandomizedCodeNames.Clear();
+        CustomPlacementRules = new Dictionary<string, Dictionary<string, float>>();
+        FrequencyAdjustments = new Dictionary<string, float>();
     }
 
     public void Update()
@@ -223,6 +233,34 @@ public abstract class CustomPlacement
     public string GetTrulyRandom()
     {
         return Utils.GetRandomWeighted(DefaultFrequencies, ExcludedCodeNames);
+    }
+
+    public string GetCategory(string codeName)
+    {
+        foreach (var setCategory in CustomPlacementRules.Keys)
+        {
+            if (PlainNameToCodeNames[setCategory].Contains(codeName))
+            {
+                return setCategory;
+            }
+        }
+
+        return codeName;
+    }
+
+    public List<string> GetPossibleReplacements(string codeName, bool allowExcluded=true)
+    {
+        var replacementCategory = GetCategory(codeName);
+        if (CustomPlacementRules.ContainsKey(codeName))
+        {
+            var replacements = CustomPlacementRules[replacementCategory];
+            var plainReplacementNames = replacements.Keys.Where(k => replacements[k] > 0.0001).ToList();
+            if (allowExcluded)
+                return PlainNamesToCodeNames(plainReplacementNames);
+            return PlainNamesToCodeNames(plainReplacementNames.Where(n => !Excluded.Contains(n)));
+        }
+        var result = DefaultFrequencies.Where(kv => kv.Value > 0.0001).Select(kv => kv.Key).ToList();
+        return allowExcluded ? result : result.Where(n => !ExcludedCodeNames.Contains(n)).ToList();
     }
     
     public string Replace(string originalCodeName)

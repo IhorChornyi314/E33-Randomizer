@@ -27,7 +27,7 @@ public abstract class Controller<T>: BaseController where T: ObjectData, new()
         return ObjectsByName.TryGetValue(objectCodeName, out var obj) ? obj : DefaultObject;
     }
 
-    public List<T> GetObjects(List<string> objectCodeNames)
+    public List<T> GetObjects(IEnumerable<string> objectCodeNames)
     {
         return objectCodeNames.Select(GetObject).ToList();
     }

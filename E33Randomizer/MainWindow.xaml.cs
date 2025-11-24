@@ -47,39 +47,11 @@ public partial class MainWindow
             SaveSettings("default_settings.json");
         }
     }
-    
-    public void CustomEnemyPlacementButton_Click(object sender, RoutedEventArgs e)
-    {
-        if (_customEnemyPlacementWindow == null)
-        {
-            _customEnemyPlacementWindow = new CustomPlacementWindow(RandomizerLogic.CustomEnemyPlacement)
-            {
-                Owner = this,
-            };
-            _customEnemyPlacementWindow.Closed += (_, _) => _customEnemyPlacementWindow = null;
-        }
-
-        _customEnemyPlacementWindow.Show();
-    }
-
-    public void EditEncountersButton_Click(object sender, RoutedEventArgs e)
-    {
-        if (_editIndividualEncountersWindow == null)
-        {
-            _editIndividualEncountersWindow = new EditIndividualContainersWindow(Controllers.EnemiesController)
-            {
-                Owner = this
-            };
-            _editIndividualEncountersWindow.Closed += (_, _) => _editIndividualEncountersWindow = null;
-        }
-
-        _editIndividualEncountersWindow.Show();
-    }
 
     public void OpenCustomPlacementButton_Click(object sender, RoutedEventArgs e)
     {
         var objectType = (sender as Button).Tag.ToString();
-        if (!_customPlacementWindows.ContainsKey(objectType))
+        if (!_customPlacementWindows.ContainsKey(objectType) || _customPlacementWindows[objectType] == null)
         {
             _customPlacementWindows[objectType] = new CustomPlacementWindow(RandomizerLogic.GetCustomPlacement(objectType))
             {
@@ -91,24 +63,10 @@ public partial class MainWindow
         _customPlacementWindows[objectType].Show();
     }
 
-    public void EditChecksButton_Click(object sender, RoutedEventArgs e)
-    {
-        if (_editIndividualChecksWindow == null)
-        {
-            _editIndividualChecksWindow = new EditIndividualContainersWindow(Controllers.ItemsController)
-            {
-                Owner = this
-            };
-            _editIndividualChecksWindow.Closed += (_, _) => _editIndividualChecksWindow = null;
-        }
-
-        _editIndividualChecksWindow.Show();
-    }
-
     public void OpenEditObjectsButton_Click(object sender, RoutedEventArgs e)
     {
         var objectType = (sender as Button).Tag.ToString();
-        if (!_editIndividualContainersWindows.ContainsKey(objectType))
+        if (!_editIndividualContainersWindows.ContainsKey(objectType) || _editIndividualContainersWindows[objectType] == null)
         {
             _editIndividualContainersWindows[objectType] = new EditIndividualContainersWindow(Controllers.GetController(objectType))
             {
@@ -342,6 +300,9 @@ public class SettingsViewModel : INotifyPropertyChanged
     
     public bool RandomizeSkills { get; set; } = false;
     public bool ReduceSkillRepetition { get; set; } = true;
+    public bool IncludeCutContentSkills { get; set; } = false;
+    public bool RandomizeSkillUnlockCosts { get; set; } = false;
+    
     
     public event PropertyChangedEventHandler PropertyChanged;
     protected virtual void OnPropertyChanged(string propertyName)

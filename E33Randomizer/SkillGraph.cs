@@ -8,7 +8,7 @@ using UAssetAPI.UnrealTypes;
 
 namespace E33Randomizer;
 
-public class Node
+public class SkillNode
 {
     private StructPropertyData _structData;
     public string OriginalSkillCodeName;
@@ -20,7 +20,7 @@ public class Node
     public bool IsSecret;
     public FVector2D Position2D;
     
-    public Node(string rep, StructPropertyData structData)
+    public SkillNode(string rep, StructPropertyData structData)
     {
         _structData = structData;
         SkillPackageIndex = ((_structData.Value[0] as StructPropertyData).Value[0] as ObjectPropertyData).Value;
@@ -36,7 +36,7 @@ public class Node
         Position2D.Y = int.Parse(stringParts[6]);
     }
     
-    public Node(StructPropertyData structData, UAsset parentAsset){
+    public SkillNode(StructPropertyData structData, UAsset parentAsset){
         _structData = structData;
         SkillPackageIndex = ((_structData.Value[0] as StructPropertyData).Value[0] as ObjectPropertyData).Value;
         var skillImport = parentAsset.Imports[int.Abs(SkillPackageIndex.Index) - 1];
@@ -117,7 +117,8 @@ public class SkillGraph
     private UAsset _asset;
 
     private StructPropertyData _dummyStructData;
-    public List<Node> Nodes = new();
+    private int _totalSkillCost = 0;
+    public List<SkillNode> Nodes = new();
     // Edges in the uasset connect objects, so duplicate skills copy connections
     public List<Tuple<int, int>> Edges = new();
     public string CharacterName;
@@ -136,7 +137,8 @@ public class SkillGraph
         }
         foreach (StructPropertyData nodeStruct in nodesArrayData.Value)
         {
-            Nodes.Add(new Node(nodeStruct, _asset));
+            Nodes.Add(new SkillNode(nodeStruct, _asset));
+            _totalSkillCost += Nodes.Last().UnlockCost;
         }
         var edgesArrayData = (_asset.Exports[0] as NormalExport).Data[1] as ArrayPropertyData;
         if (edgesArrayData.Value.Length > 1)
@@ -162,16 +164,31 @@ public class SkillGraph
     {
         foreach (var node in Nodes)
         {
-            node.SkillData = Controllers.SkillsController.GetRandomObject();
-            node.UnlockCost = RandomizerLogic.rand.Next(10);
-            node.IsSecret = RandomizerLogic.rand.Next(10) > 5;
-            node.Position2D.X += RandomizerLogic.rand.Next(10) - 5;
-            node.Position2D.Y += RandomizerLogic.rand.Next(10) - 5;
+            var newSkillName = RandomizerLogic.CustomSkillPlacement.Replace(node.OriginalSkillCodeName);
+            node.SkillData = Controllers.SkillsController.GetObject(newSkillName);
+            
+            SpecialRules.ApplySpecialRulesToSkillNode(node);
         }
-
-        if (Edges.Count > 0)
+        
+        if (RandomizerLogic.Settings.RandomizeSkillUnlockCosts)
         {
-            Edges.Add(new  Tuple<int, int>(0, 5));
+            for (int i = 0; i < Nodes.Count * 6; i++)
+            {
+                var firstNodeIndex = RandomizerLogic.rand.Next(0, Nodes.Count - 1);
+                var secondNodeIndex = firstNodeIndex + 1;
+
+                if (Nodes[firstNodeIndex].IsStarting || Nodes[secondNodeIndex].IsStarting)
+                {
+                    continue;
+                }
+                    
+                if (Nodes[firstNodeIndex].UnlockCost > 0 && Nodes[firstNodeIndex].UnlockCost < 9 && 
+                    Nodes[secondNodeIndex].UnlockCost > 1 && Nodes[secondNodeIndex].UnlockCost < 10)
+                {
+                    Nodes[firstNodeIndex].UnlockCost += 1;
+                    Nodes[secondNodeIndex].UnlockCost -= 1;
+                }
+            }
         }
     }
 
@@ -182,7 +199,7 @@ public class SkillGraph
         var newDummyStructData = _dummyStructData.Clone() as StructPropertyData;
         newDummyStructData.Value[0] = newDummyStructData.Value[0].Clone() as StructPropertyData;
         newDummyStructData.Value[1] = newDummyStructData.Value[1].Clone() as StructPropertyData;
-        var newNode = new Node(newDummyStructData, _asset);
+        var newNode = new SkillNode(newDummyStructData, _asset);
         newNode.SkillData = skillData;
         newNode.UnlockCost = unlockCost;
         newNode.IsStarting = isStarting;
@@ -274,8 +291,11 @@ public class SkillGraph
             var newDummyStructData = _dummyStructData.Clone() as StructPropertyData;
             newDummyStructData.Value[0] = newDummyStructData.Value[0].Clone() as StructPropertyData;
             newDummyStructData.Value[1] = newDummyStructData.Value[1].Clone() as StructPropertyData;
-            Nodes.Add(new Node(nodeRep, newDummyStructData));
+            Nodes.Add(new SkillNode(nodeRep, newDummyStructData));
         }
+
+        if (Edges.Count == 0)
+            return;
         
         Edges.Clear();
         foreach (var edgeRep in stringParts[2].Split(','))

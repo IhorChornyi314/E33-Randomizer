@@ -278,11 +278,11 @@ namespace E33Randomizer
                 OnPropertyChanged(nameof(SelectedComboBoxValue));
                 Name = _selectedComboBoxValue.Name;
                 CodeName = _selectedComboBoxValue.CodeName;
-                if (Controllers.ItemsController.ItemsWithQuantities.Contains(CodeName))
+                if (HasIntPropertyControl)
                 {
                     _lastIntPropertyValue = IntProperty;
                 }
-                IntProperty = !Controllers.ItemsController.ItemsWithQuantities.Contains(CodeName) ? -1 : _lastIntPropertyValue;
+                IntProperty = !value.HasIntPropertyControl ? -1 : _lastIntPropertyValue;
             }
         }
         

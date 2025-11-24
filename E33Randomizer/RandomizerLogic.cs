@@ -168,6 +168,7 @@ public static class RandomizerLogic
         {
             Controllers.EnemiesController.WriteTxt(exportPath + "encounters.txt");
             Controllers.ItemsController.WriteTxt(exportPath + "checks.txt");
+            Controllers.SkillsController.WriteTxt(exportPath + "skills.txt");
             using StreamWriter r = new StreamWriter(exportPath + "settings.json");
             string json = JsonConvert.SerializeObject(Settings, Formatting.Indented);
             r.Write(json);

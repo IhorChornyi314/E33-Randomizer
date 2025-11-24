@@ -383,6 +383,10 @@ public class ItemsController: Controller<ItemData>
         if (ViewModel.AllObjects.Count == 0)
         {
             ViewModel.AllObjects = new ObservableCollection<ObjectViewModel>(ObjectsData.Select(i => new ObjectViewModel(i)));
+            foreach (var objectViewModel in ViewModel.AllObjects)
+            {
+                objectViewModel.IntProperty = ItemsWithQuantities.Contains(objectViewModel.CodeName) ? 1 : -1;
+            }
         }
 
         foreach (var checkCategory in CheckTypes)

@@ -68,10 +68,13 @@ public class SkillsController: Controller<SkillData>
     {
         ViewModel.FilteredCategories.Clear();
         ViewModel.Categories.Clear();
-        
         if (ViewModel.AllObjects.Count == 0)
         {
             ViewModel.AllObjects = new ObservableCollection<ObjectViewModel>(ObjectsData.Select(i => new ObjectViewModel(i)));
+            foreach (var objectViewModel in ViewModel.AllObjects)
+            {
+                objectViewModel.IntProperty = GetObject(objectViewModel.CodeName).CharacterName == "Monoco" ? -1 : 1;
+            }
         }
 
         foreach (var characterGraph in SkillGraphs)
@@ -82,8 +85,11 @@ public class SkillsController: Controller<SkillData>
 
             foreach (var node in characterGraph.Nodes)
             {
-                var newContainer = new ContainerViewModel($"{characterGraph.CharacterName}#{node.OriginalSkillCodeName}", node.SkillData.CustomName);
-                newContainer.Objects = new ObservableCollection<ObjectViewModel>([new ObjectViewModel(node.SkillData)]);
+                var originalCustomName = GetObject(node.OriginalSkillCodeName).CustomName;
+                
+                var newContainer = new ContainerViewModel($"{characterGraph.CharacterName}#{node.OriginalSkillCodeName}", originalCustomName);
+                newContainer.Objects = new ObservableCollection<ObjectViewModel>();
+                newContainer.Objects.Add(new ObjectViewModel(node.SkillData));
                 newContainer.Objects[0].CanDelete = false;
                 newContainer.Objects[0].Index = 0;
                 
@@ -94,7 +100,7 @@ public class SkillsController: Controller<SkillData>
                 newContainer.CanAddObjects = false;
                 
                 newTypeViewModel.Containers.Add(newContainer);
-                if (ViewModel.CurrentContainer != null && $"{node.OriginalSkillCodeName}" == ViewModel.CurrentContainer.CodeName)
+                if (ViewModel.CurrentContainer != null && $"{characterGraph.CharacterName}#{node.OriginalSkillCodeName}" == ViewModel.CurrentContainer.CodeName)
                 { 
                     ViewModel.CurrentContainer = newContainer;
                     ViewModel.UpdateDisplayedObjects();
@@ -123,9 +129,27 @@ public class SkillsController: Controller<SkillData>
 
     public override void Randomize()
     {
+        SpecialRules.Reset();
+        Reset();
+        var cutContentAlreadyExcluded = RandomizerLogic.CustomSkillPlacement.Excluded.Contains("Cut Content Skills");
+        if (!RandomizerLogic.Settings.IncludeCutContentSkills)
+        {
+            RandomizerLogic.CustomSkillPlacement.AddExcluded("Cut Content Skills");
+        }
+        RandomizerLogic.CustomSkillPlacement.Update();
+        
+        
+        RandomizerLogic.CustomSkillPlacement.Update();
         foreach (var skillGraph in SkillGraphs)
         {
+            SpecialRules.ResetSkillsPool();
             skillGraph.Randomize();
+        }
+        
+        UpdateViewModel();
+        if (!RandomizerLogic.Settings.IncludeCutContentSkills && !cutContentAlreadyExcluded)
+        {
+            RandomizerLogic.CustomSkillPlacement.RemoveExcluded("Cut Content Skills");
         }
     }
 

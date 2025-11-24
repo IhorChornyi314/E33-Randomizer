@@ -19,7 +19,7 @@
                     </Grid.RowDefinitions>
                     <StackPanel>
                         <CheckBox Content="Randomize skills"
-                                  IsChecked="{Binding RandomizeItems}"
+                                  IsChecked="{Binding RandomizeSkills}"
                                   Margin="0,0,0,0"
                                   FontSize="14" />
                         
@@ -27,7 +27,12 @@
                                   IsChecked="{Binding ReduceSkillRepetition}"
                                   Margin="0,0,0,0"
                                   FontSize="14" />
-                    </StackPanel>
+                        <CheckBox Name="RandomizeSkillUnlockCostsCheckBox"
+                                  Content="Randomize skill unlock costs"
+                                  IsChecked="{Binding RandomizeSkillUnlockCosts}"
+                                  Margin="0,6,0,0"
+                                  FontSize="14" />
+                        </StackPanel>
                     <StackPanel Grid.Row="2">
                         <Button Name="CustomSkillPlacementButton"
                                 Content="Customize Skill Placements"

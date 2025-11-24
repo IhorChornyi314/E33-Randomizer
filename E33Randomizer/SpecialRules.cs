@@ -1,4 +1,5 @@
-﻿using E33Randomizer.ItemSources;
+﻿using System.Configuration;
+using E33Randomizer.ItemSources;
 
 namespace E33Randomizer;
 
@@ -51,12 +52,10 @@ public static class SpecialRules
 
     public static List<string> DuelEncounters = [];
 
-    public static List<EnemyData> RemainingBossPool = new();
-    private static bool _bossPoolEmpty;
+    private static ObjectPool<EnemyData> _bossPool;
+    private static ObjectPool<ItemData> _keyItemsPool;
+    private static Dictionary<string, ObjectPool<SkillData>> _skillCategoryPools = new();
 
-    
-    public static List<string> RemainingKeyItemPool = new();
-    private static bool _keyItemPoolEmpty;
     
     private static List<string> _prologueDialogues =
     [
@@ -69,72 +68,22 @@ public static class SpecialRules
     
     public static void Reset()
     {
-        ResetBossPool();
-        ResetKeyItemPool();
-    }
-    
-    private static void ResetBossPool()
-    {
-        var bossPoolCodeNames = RandomizerLogic.CustomEnemyPlacement.PlainNameToCodeNames["All Bosses"];
-        EnemyData[] bossPoolArray = Controllers.EnemiesController.GetObjects(bossPoolCodeNames).ToArray();
-        RandomizerLogic.rand.Shuffle(bossPoolArray);
-        RemainingBossPool = new List<EnemyData>(bossPoolArray);
-        var translatedExcluded = Controllers.EnemiesController.GetObjects(RandomizerLogic.CustomEnemyPlacement.ExcludedCodeNames);
-        RemainingBossPool = RemainingBossPool.Where(e => !translatedExcluded.Contains(e)).ToList();
+        var bannedBosses = Controllers.EnemiesController.GetObjects(RandomizerLogic.CustomEnemyPlacement.ExcludedCodeNames);
         if (!RandomizerLogic.Settings.IncludeCutContentEnemies)
         {
-            RemainingBossPool = RemainingBossPool.Where(e => !e.CustomName.Contains("Cut")).ToList();
+            bannedBosses.AddRange(Controllers.EnemiesController.ObjectsData.Where(e => !e.CustomName.Contains("Cut")).ToList());
         }
-        if (RemainingBossPool.Count == 0)
-        {
-            _bossPoolEmpty = true;
-        }
+
+        _bossPool = new ObjectPool<EnemyData>(Controllers.EnemiesController.ObjectsData, bannedBosses);
+        _keyItemsPool = new ObjectPool<ItemData>(
+            Controllers.ItemsController.GetObjects(RandomizerLogic.CustomItemPlacement.PlainNameToCodeNames["Key Item"]),
+            Controllers.ItemsController.GetObjects(RandomizerLogic.CustomItemPlacement.ExcludedCodeNames)
+            );
     }
 
-    private static void ResetKeyItemPool()
+    public static void ResetSkillsPool()
     {
-        var keyItemCodeNames = RandomizerLogic.CustomItemPlacement.PlainNameToCodeNames["Key Item"].ToArray();
-        RandomizerLogic.rand.Shuffle(keyItemCodeNames);
-        RemainingKeyItemPool = new List<string>(keyItemCodeNames);
-        RemainingKeyItemPool = RemainingKeyItemPool.Where(e => !RandomizerLogic.CustomItemPlacement.ExcludedCodeNames.Contains(e)).ToList();
-        if (RemainingKeyItemPool.Count == 0)
-        {
-            _keyItemPoolEmpty = true;
-        }
-    }
-    
-    private static EnemyData GetBossReplacement()
-    {
-        if (RemainingBossPool.Count == 0)
-        {
-            ResetBossPool();
-        }
-
-        if (_bossPoolEmpty)
-        {
-            return null;
-        }
-
-        var result = RemainingBossPool.First();
-        RemainingBossPool.Remove(result);
-        return result;
-    }
-
-    private static ItemData GetKeyItemReplacement()
-    {
-        if (RemainingKeyItemPool.Count == 0)
-        {
-            ResetKeyItemPool();
-        }
-
-        if (_keyItemPoolEmpty)
-        {
-            return null;
-        }
-
-        var result = RemainingKeyItemPool.First();
-        RemainingKeyItemPool.Remove(result);
-        return Controllers.ItemsController.GetObject(result);
+        _skillCategoryPools = new Dictionary<string, ObjectPool<SkillData>>();
     }
     
     public static void ApplySimonSpecialRule(Encounter encounter)
@@ -216,7 +165,7 @@ public static class SpecialRules
             {
                 if (encounter.Enemies[i].IsBoss && !RandomizerLogic.CustomEnemyPlacement.NotRandomizedCodeNames.Contains(encounter.Enemies[i].CodeName))
                 {
-                    var newBoss = GetBossReplacement();
+                    var newBoss = _bossPool.GetObject();
                     if (newBoss != null)
                     {
                         encounter.Enemies[i] = newBoss;
@@ -262,10 +211,60 @@ public static class SpecialRules
             {
                 if (itemParticle.Item.CustomName.Contains("Key Item"))
                 {
-                    var newItem = GetKeyItemReplacement();
+                    var newItem = _keyItemsPool.GetObject();
                     if (newItem != null)
                         itemParticle.Item = newItem;
                 }
+            }
+        }
+    }
+
+    private static SkillData GetReplacedSkillPool(SkillData replacedSkill, string skillCategory)
+    {
+        var replacedSkillName = replacedSkill.CodeName;
+        var replacedSkillCategory = replacedSkillName;
+            
+        foreach (var categoryName in RandomizerLogic.CustomSkillPlacement.CustomPlacementRules[skillCategory].Keys)
+        {
+            if (RandomizerLogic.CustomSkillPlacement.PlainNameToCodeNames[categoryName]
+                .Contains(replacedSkillName))
+            {
+                replacedSkillCategory = categoryName;
+                break;
+            }
+        }
+            
+        if (!_skillCategoryPools.ContainsKey(replacedSkillCategory))
+        {
+            var possibleReplacementCodeNames = RandomizerLogic.CustomSkillPlacement.PlainNameToCodeNames.GetValueOrDefault(replacedSkillCategory, [replacedSkillName]);
+            var possibleReplacements = Controllers.SkillsController.GetObjects(possibleReplacementCodeNames);
+            _skillCategoryPools[replacedSkillCategory] = new ObjectPool<SkillData>(possibleReplacements, []);
+        }
+
+        return _skillCategoryPools[replacedSkillCategory].GetObject();
+    }
+    public static void ApplySpecialRulesToSkillNode(SkillNode node)
+    {
+        if (RandomizerLogic.Settings.ReduceSkillRepetition && !RandomizerLogic.CustomSkillPlacement.NotRandomizedCodeNames.Contains(node.OriginalSkillCodeName))
+        {
+            var skillCategory = RandomizerLogic.CustomSkillPlacement.GetCategory(node.OriginalSkillCodeName);
+
+            if (!RandomizerLogic.CustomSkillPlacement.CustomPlacementRules.ContainsKey(skillCategory))
+            {
+                if (!_skillCategoryPools.ContainsKey("Default"))
+                {
+                    var defaultReplacements = RandomizerLogic.CustomSkillPlacement.DefaultFrequencies.Where(x => x.Value > 0.0001).Select(x => x.Key);
+                    _skillCategoryPools["Default"] = new ObjectPool<SkillData>(Controllers.SkillsController.GetObjects(defaultReplacements), []);
+                }
+
+                skillCategory = "Default";
+            }
+            
+            var newSkill = skillCategory != "Default" ? GetReplacedSkillPool(node.SkillData, skillCategory) : _skillCategoryPools["Default"].GetObject();
+            
+            if (newSkill != null)
+            {
+                node.SkillData = newSkill;
             }
         }
     }
