@@ -88,6 +88,7 @@ public class EnemiesController: Controller<EnemyData>
         foreach (var line in text.Split('\n'))
         {
             var encounterName = line.Split('|')[0];
+            //TODO: does this break things by not changing duplicate encounters?
             var encounterIndex = Encounters.FindIndex(e => e.Name == encounterName);
             if (encounterIndex == -1)
                 continue;

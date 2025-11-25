@@ -126,6 +126,7 @@ public static class RandomizerLogic
         CustomEnemyPlacement.Init();
         CustomItemPlacement.Init();
         CustomSkillPlacement.Init();
+        CharacterStartingStateManager.Init();
         SpecialRules.Reset();
     }
 
@@ -181,6 +182,7 @@ public static class RandomizerLogic
         // }
 
         Controllers.WriteAssets();
+        CharacterStartingStateManager.SaveAssets();
         
         var retocArgs = $"to-zen --version UE5_4 randomizer \"{exportPath}randomizer_P.utoc\"";
 

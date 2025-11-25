@@ -288,44 +288,22 @@ public class ItemsController: Controller<ItemData>
         List<string> characterNames = ["Gustave", "Lune", "Maelle", "Sciel", "Verso", "Monoco"];
         if (RandomizerLogic.Settings.RandomizeStartingWeapons)
         {
-            var tableAsset = new UAsset($"{RandomizerLogic.DataDirectory}/Originals/StartingInfoTables/DT_jRPG_CharacterSaveStates.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
-            var tableData = (tableAsset.Exports[0] as DataTableExport).Table.Data;
-
-            foreach (var propertyData in tableData)
+            foreach (var characterName in characterNames)
             {
-                var characterName = propertyData.Name.ToString();
-                if (!characterNames.Contains(characterName)) continue;
-                var mapValues = (propertyData.Value[10] as MapPropertyData).Value.Values.ToList();
-                var nameProperty = mapValues[0] as NamePropertyData;
                 var randomWeapon = GetRandomWeapon(characterName);
-                tableAsset.AddNameReference(FString.FromString(randomWeapon.CodeName));
-                nameProperty.Value = FName.FromString(tableAsset, randomWeapon.CodeName);
+                CharacterStartingStateManager.SetStartingWeapon(characterName, randomWeapon);
             }
-            Utils.WriteAsset(tableAsset);
         }
         if (RandomizerLogic.Settings.RandomizeStartingCosmetics)
         {
-            var tableAsset = new UAsset($"{RandomizerLogic.DataDirectory}/Originals/StartingInfoTables/DT_jRPG_CharacterDefinitions.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
-            var tableData = (tableAsset.Exports[0] as DataTableExport).Table.Data;
-
-            foreach (var propertyData in tableData)
+            foreach (var characterName in characterNames)
             {
-                var characterName = propertyData.Name.ToString();
-                if (!characterNames.Contains(characterName) && characterName != "Frey") continue;
-                characterName = characterName == "Frey" ? "Gustave" : characterName;
-                var cosmeticsStruct = propertyData.Value[21] as StructPropertyData;
                 var characterOutfits = ObjectsData.Where(i => i.CustomName.Contains($"{characterName} Outfit")).ToList();
                 var randomOutfit = Utils.Pick(characterOutfits);
                 var characterHaircuts = ObjectsData.Where(i => i.CustomName.Contains($"{characterName} Haircut")).ToList();
                 var randomHaircut = Utils.Pick(characterHaircuts);
-                
-                tableAsset.AddNameReference(FString.FromString(randomHaircut.CodeName));
-                tableAsset.AddNameReference(FString.FromString(randomOutfit.CodeName));
-                
-                (cosmeticsStruct.Value[0] as NamePropertyData).Value = FName.FromString(tableAsset, randomOutfit.CodeName);
-                (cosmeticsStruct.Value[1] as NamePropertyData).Value = FName.FromString(tableAsset, randomHaircut.CodeName);
+                CharacterStartingStateManager.SetStartingCosmetics(characterName, randomOutfit, randomHaircut);
             }
-            Utils.WriteAsset(tableAsset);
         }
     }
     

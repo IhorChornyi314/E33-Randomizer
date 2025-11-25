@@ -49,7 +49,7 @@ public class SkillNode
         var requiredItemNameProperty =
             ((_structData.Value[0] as StructPropertyData).Value[3] as StructPropertyData).Value[1] as NamePropertyData;
         RequiredItem ??= requiredItemNameProperty.ToString();
-        IsSecret = ((_structData.Value[0] as StructPropertyData).Value[2] as BoolPropertyData).Value;
+        IsSecret = ((_structData.Value[0] as StructPropertyData).Value[4] as BoolPropertyData).Value;
 
         var positionDataArray = (_structData.Value[1] as StructPropertyData).Value[0] as Vector2DPropertyData;
         Position2D = positionDataArray.Value;
@@ -94,7 +94,7 @@ public class SkillNode
             (((_structData.Value[0] as StructPropertyData).Value[3] as StructPropertyData).Value[1] as NamePropertyData).Value = null;
         }
         
-        IsSecret = ((_structData.Value[0] as StructPropertyData).Value[2] as BoolPropertyData).Value;
+        ((_structData.Value[0] as StructPropertyData).Value[4] as BoolPropertyData).Value = IsSecret;
 
         ((_structData.Value[1] as StructPropertyData).Value[0] as Vector2DPropertyData).Value = Position2D;
         
@@ -118,6 +118,17 @@ public class SkillGraph
 
     private StructPropertyData _dummyStructData;
     private int _totalSkillCost = 0;
+
+    private static Dictionary<string, List<int>> _startingSkillIndexes = new Dictionary<string, List<int>>
+    {
+        {"Julie", new List<int> {}},
+        {"Gustave", new List<int> {1, 7}},
+        {"Lune", new List<int> {3, 7}},
+        {"Maelle", new List<int> {0, 1, 11}},
+        {"Sciel", new List<int> {0, 11}},
+        {"Verso", new List<int> {0, 7}},
+        {"Monoco", new List<int> {8, 31}},
+    };
     public List<SkillNode> Nodes = new();
     // Edges in the uasset connect objects, so duplicate skills copy connections
     public List<Tuple<int, int>> Edges = new();
@@ -169,6 +180,10 @@ public class SkillGraph
             
             SpecialRules.ApplySpecialRulesToSkillNode(node);
         }
+
+        
+        var newStartingSkills = _startingSkillIndexes[CharacterName].Select(i => Nodes[i].SkillData).ToList();
+        CharacterStartingStateManager.SetStartingSkills(CharacterName, newStartingSkills);
         
         if (RandomizerLogic.Settings.RandomizeSkillUnlockCosts)
         {
