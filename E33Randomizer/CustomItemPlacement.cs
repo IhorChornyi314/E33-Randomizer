@@ -44,7 +44,17 @@ public class CustomItemPlacement: CustomPlacement
             { "Upgrade Material", new Dictionary<string, float> { { "Upgrade Material", 1 } } },
             { "Music Record", new Dictionary<string, float> { { "Music Record", 1 } } },
         };
-        FrequencyAdjustments = new Dictionary<string, float>();
+        FrequencyAdjustments = new Dictionary<string, float>{
+            { "Cut Content Items", 0.5f },
+            { "Revive Tint Shard (Upgrade Material)", 0.1f },
+            { "Energy Tint Shard (Upgrade Material)", 0.1f },
+            { "Healing Tint Shard (Upgrade Material)", 0.1f },
+            { "Shape of Health (Upgrade Material)", 0.1f },
+            { "Shape of Energy (Upgrade Material)", 0.1f },
+            { "Shape of Life (Upgrade Material)", 0.1f },
+            { "Chroma Elixir Shard (Upgrade Material)", 0.1f },
+            { "Perfect Chroma Catalyst (Upgrade Material)", 0.4f }
+        };
         FinalReplacementFrequencies = new Dictionary<string, Dictionary<string, float>>();
     }
 }

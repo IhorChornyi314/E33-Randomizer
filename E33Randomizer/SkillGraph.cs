@@ -189,10 +189,17 @@ public class SkillGraph
         {
             for (int i = 0; i < Nodes.Count * 6; i++)
             {
-                var firstNodeIndex = RandomizerLogic.rand.Next(0, Nodes.Count - 1);
-                var secondNodeIndex = firstNodeIndex + 1;
+                var firstNodeIndex = RandomizerLogic.rand.Next(0, Nodes.Count);
+                var secondNodeIndex = (firstNodeIndex + 1) % Nodes.Count;
 
                 if (Nodes[firstNodeIndex].IsStarting || Nodes[secondNodeIndex].IsStarting)
+                {
+                    continue;
+                }
+
+                // Spark is unlocked by default despite not being a starting skill
+                if (Nodes[firstNodeIndex].OriginalSkillCodeName == "DA_Skill_Maelle_NEW18_Spark" ||
+                    Nodes[secondNodeIndex].OriginalSkillCodeName == "DA_Skill_Maelle_NEW18_Spark")
                 {
                     continue;
                 }

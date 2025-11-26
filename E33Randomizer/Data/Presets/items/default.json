@@ -1,30 +1,40 @@
 {
-    "NotRandomized": [
-        "Skill Unlock",
-        "Merchant Unlock"
-    ],
-    "Excluded": [
-        "Consumable"
-    ],
-    "CustomPlacement": {
-        "Pictos": {
-            "Pictos": 1.0
-        },
-        "Weapon": {
-            "Weapon": 1.0
-        },
-        "Key Item": {
-            "Key Item": 1.0
-        },
-        "Cosmetic": {
-            "Cosmetic": 1.0
-        },
-        "Upgrade Material": {
-            "Upgrade Material": 1.0
-        },
-        "Music Record": {
-            "Music Record": 1.0
-        }
+  "NotRandomized": [
+    "Skill Unlock",
+    "Merchant Unlock"
+  ],
+  "Excluded": [
+    "Consumable"
+  ],
+  "CustomPlacement": {
+    "Pictos": {
+      "Pictos": 1.0
     },
-    "FrequencyAdjustments": {}
+    "Weapon": {
+      "Weapon": 1.0
+    },
+    "Key Item": {
+      "Key Item": 1.0
+    },
+    "Cosmetic": {
+      "Cosmetic": 1.0
+    },
+    "Upgrade Material": {
+      "Upgrade Material": 1.0
+    },
+    "Music Record": {
+      "Music Record": 1.0
+    }
+  },
+  "FrequencyAdjustments": {
+    "Cut Content Items": 0.5,
+    "Revive Tint Shard (Upgrade Material)": 0.1,
+    "Energy Tint Shard (Upgrade Material)": 0.1,
+    "Healing Tint Shard (Upgrade Material)": 0.1,
+    "Shape of Health (Upgrade Material)": 0.1,
+    "Shape of Energy (Upgrade Material)": 0.1,
+    "Shape of Life (Upgrade Material)": 0.1,
+    "Chroma Elixir Shard (Upgrade Material)": 0.1,
+    "Perfect Chroma Catalyst (Upgrade Material)": 0.4
+  }
 }
