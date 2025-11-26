@@ -11,7 +11,7 @@ public class CustomSkillPlacement: CustomPlacement
         CatchAllName = "Anything";
         CategoryOrder = new List<string>
         {
-            "Gustave", "Lune", "Maelle", "Monoco", "Verso", "Sciel", "Julie", "Consumables", "Character Skills", "Anything"
+            "Gustave", "Lune", "Maelle", "Monoco", "Verso", "Sciel", "Julie", "Consumables", "Gradient Skills", "Non-gradient Skills", "Character Skills", "Cut Content Skills", "Anything"
         };
         
         PresetFiles = new()

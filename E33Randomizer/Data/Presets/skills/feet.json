@@ -1,0 +1,32 @@
+{
+  "NotRandomized": [
+    "Consumables"
+  ],
+  "Excluded": [],
+  "CustomPlacement": {
+    "Gustave": {
+      "Gustave": 0.9,
+      "Monoco": 0.1
+    },
+    "Lune": {
+      "Lune": 0.9,
+      "Monoco": 0.1
+    },
+    "Maelle": {
+      "Maelle": 0.9,
+      "Monoco": 0.1
+    },
+    "Monoco": {
+      "Monoco": 1.0
+    },
+    "Verso": {
+      "Verso": 0.9,
+      "Monoco": 0.1
+    },
+    "Sciel": {
+      "Sciel": 0.9,
+      "Monoco": 0.1
+    }
+  },
+  "FrequencyAdjustments": {}
+}
