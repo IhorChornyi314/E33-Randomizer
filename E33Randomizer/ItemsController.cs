@@ -286,6 +286,7 @@ public class ItemsController: Controller<ItemData>
     public void RandomizeStartingEquipment()
     {
         List<string> characterNames = ["Gustave", "Lune", "Maelle", "Sciel", "Verso", "Monoco"];
+        //TODO: Try changing Noahram in Sandfall/Content/Gameplay/Save/BP_SaveManager
         if (RandomizerLogic.Settings.RandomizeStartingWeapons)
         {
             foreach (var characterName in characterNames)

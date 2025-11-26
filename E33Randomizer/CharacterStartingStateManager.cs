@@ -21,6 +21,7 @@ public static class CharacterStartingStateManager
     public static void SetStartingWeapon(string characterName, ItemData weapon)
     {
         _wasModified = true;
+        // characterName = characterName == "Gustave" ? "Frey" : characterName;
         var tableData = (_characterSaveStatesAsset.Exports[0] as DataTableExport).Table.Data;
 
         foreach (var propertyData in tableData)
@@ -56,6 +57,7 @@ public static class CharacterStartingStateManager
     public static void SetStartingSkills(string characterName, List<SkillData> skills)
     {
         _wasModified = true;
+        characterName = characterName == "Gustave" ? "Frey" : characterName;
         var tableData = (_characterSaveStatesAsset.Exports[0] as DataTableExport).Table.Data;
 
         foreach (var propertyData in tableData)
