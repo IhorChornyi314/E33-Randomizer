@@ -36,7 +36,7 @@ public partial class MainWindow
         {
             MessageBox.Show($"Error starting: {ex.Message}",
                 "Loading Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            File.WriteAllText("startup_crash_log.txt", ex.ToString(), Encoding.UTF8);
+            File.WriteAllText("crash_log.txt", ex.ToString(), Encoding.UTF8);
         }
         if (File.Exists("default_settings.json"))
         {
@@ -92,7 +92,7 @@ public partial class MainWindow
         {
             MessageBox.Show($"Error generating: {ex.Message}",
                 "Generating Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            File.WriteAllText("generation_error_log.txt", e.ToString(), Encoding.UTF8);
+            File.WriteAllText("crash_log.txt", ex.ToString(), Encoding.UTF8);
         }
     }
 
@@ -142,7 +142,7 @@ public partial class MainWindow
             {
                 MessageBox.Show($"Error patching: {ex.Message}",
                     "Patching Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                File.WriteAllText("save_patch_error_log.txt", e.ToString(), Encoding.UTF8);
+                File.WriteAllText("crash_log.txt", ex.ToString(), Encoding.UTF8);
             }
         }
     }
@@ -212,7 +212,7 @@ public partial class MainWindow
         {
             MessageBox.Show($"Error loading: {ex.Message}",
                 "Loading Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            File.WriteAllText("preset_crash_log.txt", ex.ToString(), Encoding.UTF8);
+            File.WriteAllText("crash_log.txt", ex.ToString(), Encoding.UTF8);
         }
     }
 
@@ -228,7 +228,7 @@ public partial class MainWindow
         {
             MessageBox.Show($"Error saving: {ex.Message}",
                 "Saving Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            File.WriteAllText("preset_crash_log.txt", ex.ToString(), Encoding.UTF8);
+            File.WriteAllText("crash_log.txt", ex.ToString(), Encoding.UTF8);
         }
     }
 }
@@ -302,6 +302,11 @@ public class SettingsViewModel : INotifyPropertyChanged
     public bool ReduceSkillRepetition { get; set; } = true;
     public bool IncludeCutContentSkills { get; set; } = false;
     public bool RandomizeSkillUnlockCosts { get; set; } = false;
+    public bool RandomizeTreeEdges { get; set; } = true;
+    public int MinTreeEdges { get; set; } = 2;
+    public int MaxTreeEdges { get; set; } = 4;
+    public bool FullyRandomEdges { get; set; } = false;
+    public int RandomEdgeChancePercent { get; set; } = 60;
     
     
     public event PropertyChangedEventHandler PropertyChanged;

@@ -32,7 +32,62 @@
                                   IsChecked="{Binding RandomizeSkillUnlockCosts}"
                                   Margin="0,6,0,0"
                                   FontSize="14" />
+                        <CheckBox Name="RandomizeSkillTreeEdgesCheckBox"
+                                  Content="Randomize skill tree links"
+                                  IsChecked="{Binding RandomizeTreeEdges}"
+                                  Margin="0,6,0,0"
+                                  FontSize="14" />
+                                
+                        <StackPanel Orientation="Vertical" Margin="0,0,0,0"
+                                    Visibility="{Binding IsChecked, ElementName=RandomizeSkillTreeEdgesCheckBox, Converter={StaticResource BooleanToVisibilityConverter}}">
+                            <CheckBox Content="Use fully random node links (will reduce readability)"
+                                      IsChecked="{Binding FullyRandomEdges}"
+                                      Margin="0,6,0,0"
+                                      FontSize="14" />
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
+                                <Label Content="Change number of links to between"
+                                       FontSize="14" />
+                                <xctk:IntegerUpDown Text="{Binding MinTreeEdges}"
+                                                    Margin="5,0,0,0"
+                                                    VerticalAlignment="Center"
+                                                    Maximum="99"
+                                                    Minimum="2"
+                                                    Height="20"
+                                                    Width="50"
+                                                    FontSize="14"
+                                                    MaxLength="2" />
+                                <Label Content="and"
+                                       FontSize="14" />
+                                <xctk:IntegerUpDown Text="{Binding MaxTreeEdges}"
+                                                    Margin="5,0,0,0"
+                                                    VerticalAlignment="Center"
+                                                    Maximum="99"
+                                                    Minimum="2"
+                                                    Height="20"
+                                                    Width="50"
+                                                    FontSize="14"
+                                                    MaxLength="2" />
+                                <Label Content="links per node"
+                                       FontSize="14" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
+                                    <Label Content="Set the link density to"
+                                           FontSize="14" />
+                                    <xctk:IntegerUpDown Text="{Binding RandomEdgeChancePercent}"
+                                                        Margin="5,0,0,0"
+                                                        VerticalAlignment="Center"
+                                                        Maximum="100"
+                                                        Minimum="0"
+                                                        Height="20"
+                                                        Width="50"
+                                                        FontSize="14"
+                                                        MaxLength="3" />
+                                    <Label Content="%"
+                                           FontSize="14" />
+                            </StackPanel>
                         </StackPanel>
+                        
+                    </StackPanel>
                     <StackPanel Grid.Row="2">
                         <Button Name="CustomSkillPlacementButton"
                                 Content="Customize Skill Placements"

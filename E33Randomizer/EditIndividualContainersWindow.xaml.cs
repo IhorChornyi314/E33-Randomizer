@@ -75,7 +75,7 @@ namespace E33Randomizer
             {
                 MessageBox.Show($"Error generating: {ex.Message}", 
                     "Reroll Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                File.WriteAllText("reroll_error_log.txt", ex.ToString(), Encoding.UTF8);
+                File.WriteAllText("crash_log.txt", ex.ToString(), Encoding.UTF8);
             }
         }
         
@@ -94,7 +94,7 @@ namespace E33Randomizer
             {
                 MessageBox.Show($"Error packing: {ex.Message}", 
                     "Packing Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                File.WriteAllText("data_packing_error_log.txt", ex.ToString(), Encoding.UTF8);
+                File.WriteAllText("crash_log.txt", ex.ToString(), Encoding.UTF8);
             }
         }
 
@@ -117,7 +117,7 @@ namespace E33Randomizer
                 {
                     MessageBox.Show($"Error loading TXT: {ex.Message}", 
                         "Load Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    File.WriteAllText("txt_loading_error_log.txt", ex.ToString(), Encoding.UTF8);
+                    File.WriteAllText("crash_log.txt", ex.ToString(), Encoding.UTF8);
                 }
             }
         }
@@ -144,7 +144,7 @@ namespace E33Randomizer
                 {
                     MessageBox.Show($"Error saving TXT: {ex.Message}", 
                         "Save Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    File.WriteAllText("txt_saving_error_log.txt", ex.ToString(), Encoding.UTF8);
+                    File.WriteAllText("crash_log.txt", ex.ToString(), Encoding.UTF8);
                 }
             }
         }

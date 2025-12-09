@@ -165,7 +165,7 @@ public class SkillGraph
                 firstNodeIndex = firstNodeIndex == -1 ? firstNodeImportIndex : firstNodeIndex;
                 var secondNodeIndex = Nodes.FindIndex(n => n.SkillData.CodeName == secondNodeClassName);
                 secondNodeIndex = secondNodeIndex == -1 ? secondNodeImportIndex : secondNodeIndex;
-
+                
                 Edges.Add(new Tuple<int, int>(firstNodeIndex, secondNodeIndex));
             }
         }
@@ -173,6 +173,11 @@ public class SkillGraph
 
     public void Randomize()
     {
+        if (CharacterName == "Julie")
+        {
+            return;
+        }
+        
         foreach (var node in Nodes)
         {
             var newSkillName = RandomizerLogic.CustomSkillPlacement.Replace(node.OriginalSkillCodeName);
@@ -210,6 +215,171 @@ public class SkillGraph
                     Nodes[firstNodeIndex].UnlockCost += 1;
                     Nodes[secondNodeIndex].UnlockCost -= 1;
                 }
+            }
+        }
+
+        if (RandomizerLogic.Settings.RandomizeTreeEdges && CharacterName != "Monoco")
+        {
+            RandomizeEdges(RandomizerLogic.Settings.MinTreeEdges, RandomizerLogic.Settings.MaxTreeEdges, RandomizerLogic.Settings.FullyRandomEdges);
+        }
+    }
+
+    public Dictionary<int, List<int>> GetPossibleEdges(bool fullyRandom)
+    {
+        //TODO: Implement custom connection JSONs
+        
+        if (fullyRandom)
+        {
+            var connectedNodes = new List<int>();
+            foreach (var edge in Edges)
+            {
+                if (!connectedNodes.Contains(edge.Item1))
+                {
+                    connectedNodes.Add(edge.Item1);
+                }
+                if (!connectedNodes.Contains(edge.Item2))
+                {
+                    connectedNodes.Add(edge.Item2);
+                }
+            }
+
+            return connectedNodes.Select(n => new KeyValuePair<int, List<int>> (n, [..connectedNodes])).ToDictionary();
+        }
+        
+        
+        var adjacencyList = new Dictionary<int, List<int>>();
+        foreach (var edge in Edges)
+        {
+            if (!adjacencyList.ContainsKey(edge.Item1))
+            {
+                adjacencyList[edge.Item1] = [];
+            }
+            adjacencyList[edge.Item1].Add(edge.Item2);
+            
+            // We want a bidirectional adjacency list
+            if (!adjacencyList.ContainsKey(edge.Item2))
+            {
+                adjacencyList[edge.Item2] = [];
+            }
+            adjacencyList[edge.Item2].Add(edge.Item1);
+        }
+        return adjacencyList;
+    }
+
+    public int PickNextTreeNode(List<int> currentTreeNodes, int minEdges, int maxEdges,
+        Dictionary<int, int> currentNodeDegrees, Dictionary<int, int> availableNodeDegrees)
+    {
+        currentTreeNodes = Utils.ShuffleList(currentTreeNodes);
+        var lastAvailableNode = -1;
+        foreach (var node in currentTreeNodes)
+        {
+            if (availableNodeDegrees[node] > 0)
+            {
+                lastAvailableNode = node;
+            }
+            if (currentNodeDegrees[node] >= maxEdges || availableNodeDegrees[node] == 0) continue;
+            if (availableNodeDegrees[node] + currentNodeDegrees[node] < minEdges) continue;
+            return node;
+        }
+        return lastAvailableNode;
+    }
+    
+    public void RandomizeEdges(int minEdges, int maxEdges, bool fullyRandom)
+    {
+        var currentAdjacencyList = GetPossibleEdges(fullyRandom);
+        var possibleEdges = GetPossibleEdges(fullyRandom);
+        var connectedNodes = new List<int>();
+        foreach (var edge in Edges)
+        {
+            if (!connectedNodes.Contains(edge.Item1))
+            {
+                connectedNodes.Add(edge.Item1);
+            }
+            if (!connectedNodes.Contains(edge.Item2))
+            {
+                connectedNodes.Add(edge.Item2);
+            }
+        }
+        
+        var treeAdjacencyList = new Dictionary<int, List<int>>();
+        var currentNodeDegrees = currentAdjacencyList.Select(kvp => new KeyValuePair<int, int>(kvp.Key, 0)).ToDictionary();
+        var availableNodeDegrees = currentAdjacencyList.Select(kvp => new KeyValuePair<int, int>(kvp.Key, kvp.Value.Count)).ToDictionary();
+        
+        var currentTreeNodes = new List<int> ([Utils.Pick(connectedNodes)]);
+        
+        foreach (var availableNode in currentAdjacencyList[currentTreeNodes[0]])
+        {
+            if (currentAdjacencyList[availableNode].Remove(currentTreeNodes[0]))
+                availableNodeDegrees[availableNode] -= 1;
+        }
+        
+        for (int i = 0; i < connectedNodes.Count - 1; i++)
+        {
+            var nextNode = PickNextTreeNode(currentTreeNodes, minEdges, maxEdges, currentNodeDegrees, availableNodeDegrees);
+
+            if (nextNode == -1 || currentAdjacencyList[nextNode].Count == 0)
+            {
+                Console.WriteLine("Edge randomization fucked up, breaking one of the constraints");
+                nextNode = Utils.Pick(currentTreeNodes);
+            }
+            
+            var newEdge = Utils.Pick(currentAdjacencyList[nextNode]);
+            if (!treeAdjacencyList.ContainsKey(nextNode))
+            {
+                treeAdjacencyList[nextNode] = [];
+            }
+            treeAdjacencyList[nextNode].Add(newEdge);
+            currentNodeDegrees[nextNode] += 1;
+            currentNodeDegrees[newEdge] += 1;
+            
+            
+            foreach (var availableNode in possibleEdges[newEdge])
+            {
+                if (currentAdjacencyList[availableNode].Remove(newEdge))
+                    availableNodeDegrees[availableNode] -= 1;
+            }
+            
+            currentTreeNodes.Add(newEdge);
+        }
+        
+        var newAdjacencyList = new Dictionary<int, List<int>>();
+        
+        foreach (var edgesList in treeAdjacencyList)
+        {
+            var currentNode = edgesList.Key;
+            if (!newAdjacencyList.ContainsKey(currentNode))
+            {
+                newAdjacencyList[currentNode] = [];
+            }
+            foreach (var possibleEdge in possibleEdges[currentNode])
+            {
+                if (treeAdjacencyList[currentNode].Contains(possibleEdge))
+                {
+                    newAdjacencyList[currentNode].Add(possibleEdge);
+                    continue;
+                }
+                
+                if (newAdjacencyList[currentNode].Count >= maxEdges || currentNodeDegrees[possibleEdge] >= maxEdges) continue;
+                
+                var canAdd = newAdjacencyList[currentNode].Count < minEdges || RandomizerLogic.rand.Next(100) < RandomizerLogic.Settings.RandomEdgeChancePercent;
+                if (!canAdd) break;
+                
+                newAdjacencyList[currentNode].Add(possibleEdge);
+            }
+        }
+    
+        Edges.Clear();
+            
+        foreach (var edgesList in newAdjacencyList)
+        {
+            foreach (var edge in edgesList.Value)
+            {
+                if (Edges.Contains(new Tuple<int, int>(edgesList.Key, edge)) ||
+                    Edges.Contains(new Tuple<int, int>(edge, edgesList.Key)))
+                {
+                    continue;
+                }
+                Edges.Add(new Tuple<int, int>(edgesList.Key, edge));
             }
         }
     }

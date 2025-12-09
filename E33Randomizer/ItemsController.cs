@@ -43,7 +43,7 @@ public class ItemsController: Controller<ItemData>
 
     public bool IsGearItem(ItemData item)
     {
-        return item.CustomName.Contains("Weapon") || item.CustomName.Contains("Pictos");
+        return item.CustomName.EndsWith("Weapon)") || item.CustomName.EndsWith("Pictos)");
     }
 
     public ItemData GetRandomWeapon(string characterName)

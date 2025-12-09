@@ -48,4 +48,11 @@ public static class Utils
     {
         return RandomizerLogic.rand.Next(Math.Min(min, max), Math.Max(min, max) + 1);
     }
+
+    public static List<T> ShuffleList<T>(List<T> list)
+    {
+        var arr = list.ToArray();
+        RandomizerLogic.rand.Shuffle(arr);
+        return arr.ToList();
+    }
 }
