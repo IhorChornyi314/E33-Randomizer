@@ -32,6 +32,10 @@
                                   IsChecked="{Binding RandomizeSkillUnlockCosts}"
                                   Margin="0,6,0,0"
                                   FontSize="14" />
+                        <CheckBox Content="Unlock full Gustave skill tree"
+                                  IsChecked="{Binding UnlockGustaveSkills}"
+                                  Margin="0,6,0,0"
+                                  FontSize="14" />
                         <CheckBox Name="RandomizeSkillTreeEdgesCheckBox"
                                   Content="Randomize skill tree links"
                                   IsChecked="{Binding RandomizeTreeEdges}"
@@ -44,6 +48,10 @@
                                       IsChecked="{Binding FullyRandomEdges}"
                                       Margin="0,6,0,0"
                                       FontSize="14" />
+                            <!-- <CheckBox Content="Add links to Monoco's skill tree" -->
+                            <!--           IsChecked="{Binding GiveMonocoTreeEdges}" -->
+                            <!--           Margin="0,6,0,0" -->
+                            <!--           FontSize="14" /> -->
                             <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
                                 <Label Content="Change number of links to between"
                                        FontSize="14" />

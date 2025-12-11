@@ -7,6 +7,7 @@ using System.Windows.Input;
 using System.Text.RegularExpressions;
 using Microsoft.Win32;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace E33Randomizer;
 
@@ -196,16 +197,31 @@ public partial class MainWindow
         }
     }
 
+    private bool AllSettingsInJson(string json)
+    {
+        JObject obj = JObject.Parse(json);
+        var jsonProps = obj.Properties().Select(p => p.Name).ToHashSet();
+        var classProps = typeof(SettingsViewModel).GetProperties().Select(p => p.Name).ToHashSet();
+
+        return classProps.All(p => jsonProps.Contains(p));
+    }
+
     private void LoadSettings(string pathToJson)
     {
         try
         {
+            string json;
             using (StreamReader r = new StreamReader(pathToJson))
             {
-                string json = r.ReadToEnd();
+                json = r.ReadToEnd();
                 var newSettingsData = JsonConvert.DeserializeObject<SettingsViewModel>(json);
                 RandomizerLogic.Settings = newSettingsData;
                 DataContext = RandomizerLogic.Settings;
+            }
+            
+            if (!AllSettingsInJson(json))
+            {
+                SaveSettings(pathToJson);
             }
         }
         catch (Exception ex)
@@ -238,7 +254,6 @@ public class SettingsViewModel : INotifyPropertyChanged
 {
     public int Seed { get; set; } = -1;
     
-    public bool RandomizeItems { get; set; } = true;
     public bool RandomizeEnemies { get; set; } = true;
     
     public bool RandomizeEncounterSizes { get; set; } = false;
@@ -257,11 +272,14 @@ public class SettingsViewModel : INotifyPropertyChanged
     public bool EnsureBossesInBossEncounters { get; set; } = false;
     public bool ReduceBossRepetition { get; set; } = false;
     // public bool TieDropsToEncounters { get; set; } = false; 
+    
 
+    public bool RandomizeItems { get; set; } = true;
     public bool ChangeSizesOfNonRandomizedChecks { get; set; } = false;
     
     public bool ReduceKeyItemRepetition { get; set; } = true;
-    
+    public bool ReduceGearRepetition { get; set; } = true;
+
     public bool ChangeMerchantInventorySize { get; set; } = false;
     public int MerchantInventorySizeMax { get; set; } = 20;
     public int MerchantInventorySizeMin { get; set; } = 1;
@@ -301,8 +319,11 @@ public class SettingsViewModel : INotifyPropertyChanged
     public bool RandomizeSkills { get; set; } = false;
     public bool ReduceSkillRepetition { get; set; } = true;
     public bool IncludeCutContentSkills { get; set; } = false;
+    public bool UnlockGustaveSkills { get; set; } = false;
     public bool RandomizeSkillUnlockCosts { get; set; } = false;
     public bool RandomizeTreeEdges { get; set; } = true;
+    //TODO: Add dummy edge structs to Monoco's asset
+    public bool GiveMonocoTreeEdges { get; set; } = false;
     public int MinTreeEdges { get; set; } = 2;
     public int MaxTreeEdges { get; set; } = 4;
     public bool FullyRandomEdges { get; set; } = false;

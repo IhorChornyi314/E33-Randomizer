@@ -53,7 +53,7 @@ public static class SpecialRules
     public static List<string> DuelEncounters = [];
 
     private static ObjectPool<EnemyData> _bossPool;
-    private static ObjectPool<ItemData> _keyItemsPool;
+    private static ObjectPool<ItemData> _keyItemsPool, _gearItemsPool;
     private static Dictionary<string, ObjectPool<SkillData>> _skillCategoryPools = new();
 
     
@@ -71,7 +71,7 @@ public static class SpecialRules
         var bannedBosses = Controllers.EnemiesController.GetObjects(RandomizerLogic.CustomEnemyPlacement.ExcludedCodeNames);
         if (!RandomizerLogic.Settings.IncludeCutContentEnemies)
         {
-            bannedBosses.AddRange(Controllers.EnemiesController.ObjectsData.Where(e => !e.CustomName.Contains("Cut")).ToList());
+            bannedBosses.AddRange(Controllers.EnemiesController.ObjectsData.Where(e => e.CustomName.Contains("Cut")).ToList());
         }
 
         _bossPool = new ObjectPool<EnemyData>(Controllers.EnemiesController.ObjectsData, bannedBosses);
@@ -79,6 +79,10 @@ public static class SpecialRules
             Controllers.ItemsController.GetObjects(RandomizerLogic.CustomItemPlacement.PlainNameToCodeNames["Key Item"]),
             Controllers.ItemsController.GetObjects(RandomizerLogic.CustomItemPlacement.ExcludedCodeNames)
             );
+        var gearItems = new List<ItemData>(Controllers.ItemsController.GetObjects(RandomizerLogic.CustomItemPlacement.PlainNameToCodeNames["Weapon"]));
+        gearItems.AddRange(Controllers.ItemsController.GetObjects(RandomizerLogic.CustomItemPlacement.PlainNameToCodeNames["Pictos"]));
+        
+        _gearItemsPool = new ObjectPool<ItemData>(gearItems, Controllers.ItemsController.GetObjects(RandomizerLogic.CustomItemPlacement.ExcludedCodeNames));
     }
 
     public static void ResetSkillsPool()
@@ -217,6 +221,19 @@ public static class SpecialRules
                 }
             }
         }
+
+        if (RandomizerLogic.Settings.ReduceGearRepetition)
+        {
+            foreach (var itemParticle in check.ItemSource.SourceSections[check.Key])
+            {
+                if (Controllers.ItemsController.IsGearItem(itemParticle.Item))
+                {
+                    var newItem = _gearItemsPool.GetObject();
+                    if (newItem != null)
+                        itemParticle.Item = newItem;
+                }
+            }
+        }
     }
 
     private static SkillData GetReplacedSkillPool(SkillData replacedSkill, string skillCategory)
@@ -266,6 +283,11 @@ public static class SpecialRules
             {
                 node.SkillData = newSkill;
             }
+        }
+
+        if (RandomizerLogic.Settings.UnlockGustaveSkills && node.SkillData.CharacterName is "Gustave" or "Verso" && node is { IsSecret: true, IsStarting: false })
+        {
+            node.IsSecret = false;
         }
     }
 

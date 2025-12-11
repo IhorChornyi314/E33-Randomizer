@@ -351,7 +351,7 @@
     "DA_Skill_StrongHealingTint",
     "DA_Skill_StrongReviveTint"
   ],
-  "Gustave": [
+  "Gustave's Skills": [
     "DA_Skill_Gustave_Combo1",
     "DA_Skill_Gustave_FromFire",
     "DA_Skill_Gustave_MarkingShot",
@@ -361,10 +361,39 @@
     "DA_Skill_Gustave_Strikestorm",
     "DA_Skill_Gustave_UnleashCharge"
   ],
-  "Julie": [
+  "Julie's Skills": [
     "DA_Skill_Julie_Combo1"
   ],
-  "Lune": [
+  "Lune's Gradient Skills": [
+    "DA_Skill_Lune_SkyBreak",
+    "DA_Skill_Lune_TreeOfLife",
+    "DA_Skill_Lune_Tremor"
+  ],
+  "Lune's Non-gradient Skills": [
+    "DA_Skill_Lune_CripplingTsunami",
+    "DA_Skill_Lune_CrustalCrush",
+    "DA_Skill_Lune_EarthQuake",
+    "DA_Skill_Lune_EarthSpike",
+    "DA_Skill_Lune_Electrify",
+    "DA_Skill_Lune_ElementalGenesis",
+    "DA_Skill_Lune_ElementalTrick",
+    "DA_Skill_Lune_FireRage",
+    "DA_Skill_Lune_HealingLight",
+    "DA_Skill_Lune_Hell",
+    "DA_Skill_Lune_IceGust",
+    "DA_Skill_Lune_Immolation",
+    "DA_Skill_Lune_LightningDance",
+    "DA_Skill_Lune_Mayhem",
+    "DA_Skill_Lune_Rebirth",
+    "DA_Skill_Lune_Revitalization",
+    "DA_Skill_Lune_StormCaller",
+    "DA_Skill_Lune_Terraquake",
+    "DA_Skill_Lune_ThermalTransfer",
+    "DA_Skill_Lune_Thunderfall",
+    "DA_Skill_Lune_Typhoon",
+    "DA_Skill_Lune_Wildfire"
+  ],
+  "Lune's Skills": [
     "DA_Skill_Lune_CripplingTsunami",
     "DA_Skill_Lune_CrustalCrush",
     "DA_Skill_Lune_EarthQuake",
@@ -391,7 +420,7 @@
     "DA_Skill_Lune_Typhoon",
     "DA_Skill_Lune_Wildfire"
   ],
-  "Maelle": [
+  "Maelle's Skills": [
     "DA_Skill_Maelle_BreakingRules",
     "DA_Skill_Maelle_BurningCanvas",
     "DA_Skill_Maelle_Degagement",
@@ -420,7 +449,38 @@
     "DA_Skill_Maelle_SwordBallet",
     "DA_Skill_Maelle_VirtuoseStrike"
   ],
-  "Monoco": [
+  "Maelle's Gradient Skills": [
+    "DA_Skill_Maelle_Gommage",
+    "DA_Skill_Maelle_PhoenixFlame",
+    "DA_Skill_Maelle_VirtuoseStrike"
+  ],
+  "Maelle's Non-gradient Skills": [
+    "DA_Skill_Maelle_BreakingRules",
+    "DA_Skill_Maelle_BurningCanvas",
+    "DA_Skill_Maelle_Degagement",
+    "DA_Skill_Maelle_FencersFlurry",
+    "DA_Skill_Maelle_FleuretFury",
+    "DA_Skill_Maelle_GuardDown",
+    "DA_Skill_Maelle_GuardUp",
+    "DA_Skill_Maelle_GustaveSMemoire",
+    "DA_Skill_Maelle_LastChance",
+    "DA_Skill_Maelle_MomentumStrike",
+    "DA_Skill_Maelle_NEW11_MezzoForte",
+    "DA_Skill_Maelle_NEW13_Payback",
+    "DA_Skill_Maelle_NEW14_Percee",
+    "DA_Skill_Maelle_NEW18_Spark",
+    "DA_Skill_Maelle_NEW19_InvigoratingFire",
+    "DA_Skill_Maelle_NEW4_FireRise",
+    "DA_Skill_Maelle_NEW7_Egide",
+    "DA_Skill_Maelle_NEW9_RainOfFire",
+    "DA_Skill_Maelle_OffensiveSwitch",
+    "DA_Skill_Maelle_PhantomStrike",
+    "DA_Skill_Maelle_Pyrolyse",
+    "DA_Skill_Maelle_Revenge",
+    "DA_Skill_Maelle_Stendhal",
+    "DA_Skill_Maelle_SwordBallet"
+  ],
+  "Monoco's Skills": [
     "DA_Skill_BreakPoint",
     "DA_Skill_MightyStrike",
     "DA_Skill_Sanctuary",
@@ -471,7 +531,60 @@
     "DA_Skill_Transfo_StalactMeleeCombo",
     "DA_Skill_Transfo_TroubadourBuff"
   ],
-  "Verso": [
+  "Monoco's Gradient Skills": [
+    "DA_Skill_BreakPoint",
+    "DA_Skill_MightyStrike",
+    "DA_Skill_Sanctuary"
+  ],
+  "Monoco's Non-gradient Skills": [
+    "DA_Skill_Transfo_AbbestMelee",
+    "DA_Skill_Transfo_AberrationBurningLight",
+    "DA_Skill_Transfo_BalletCharm",
+    "DA_Skill_Transfo_BenisseurMortar",
+    "DA_Skill_Transfo_BoucheclierShield",
+    "DA_Skill_Transfo_BraseleurHammerSmash",
+    "DA_Skill_Transfo_BrulerAnchorsmash",
+    "DA_Skill_Transfo_ChalierRelentlessSword",
+    "DA_Skill_Transfo_ChapelierAxeSlash",
+    "DA_Skill_Transfo_ChevaliereBAoECombo",
+    "DA_Skill_Transfo_ChevaliereCAC",
+    "DA_Skill_Transfo_ChevaliereCAoECombo",
+    "DA_Skill_Transfo_ClairEnfeeble",
+    "DA_Skill_Transfo_ContorsionnisteAngryBlast",
+    "DA_Skill_Transfo_CreationFromTheVoid",
+    "DA_Skill_Transfo_CrulerShield",
+    "DA_Skill_Transfo_DanseuseWingDance",
+    "DA_Skill_Transfo_DemineurThunderStrike",
+    "DA_Skill_Transfo_DuallistStormBlood",
+    "DA_Skill_Transfo_EchassierCombo",
+    "DA_Skill_Transfo_EvequeSpear",
+    "DA_Skill_Transfo_FlyingCultistSlash",
+    "DA_Skill_Transfo_GaultCombo",
+    "DA_Skill_Transfo_GlaiseEarthquakes",
+    "DA_Skill_Transfo_GrosseTeteWrecking",
+    "DA_Skill_Transfo_HeavyCultistBloodSword",
+    "DA_Skill_Transfo_HexgaCombo",
+    "DA_Skill_Transfo_JarCombo",
+    "DA_Skill_Transfo_LampmasterSwordOfLight",
+    "DA_Skill_Transfo_Lancelier",
+    "DA_Skill_Transfo_LusterCombo",
+    "DA_Skill_Transfo_MoissonneuseVendange",
+    "DA_Skill_Transfo_ObscurCombo",
+    "DA_Skill_Transfo_OrphelinBuff",
+    "DA_Skill_Transfo_PelerinFreshAir",
+    "DA_Skill_Transfo_PortierCrashingDown",
+    "DA_Skill_Transfo_PotatobagBoss_FireShots",
+    "DA_Skill_Transfo_PotatoBagMageThunderThrows",
+    "DA_Skill_Transfo_PotatobagRangerThunderEstoc",
+    "DA_Skill_Transfo_PotatobagTankSlam",
+    "DA_Skill_Transfo_PotierBuff",
+    "DA_Skill_Transfo_RamasseurBonk",
+    "DA_Skill_Transfo_RocherHammering",
+    "DA_Skill_Transfo_SaplingAbsorption",
+    "DA_Skill_Transfo_StalactMeleeCombo",
+    "DA_Skill_Transfo_TroubadourBuff"
+  ],
+  "Verso's Skills": [
     "DA_Skill_Blitz",
     "DA_Skill_Combo1",
     "DA_Skill_LightHolder",
@@ -502,7 +615,40 @@
     "DA_Skill_Verso_Striker",
     "DA_Skill_Verso_Strikestorm"
   ],
-  "Sciel": [
+  "Verso's Gradient Skills": [
+    "DA_Skill_Verso_NEW_AngelsEyes",
+    "DA_Skill_Verso_NEW_Sabotage",
+    "DA_Skill_Verso_Striker"
+  ],
+  "Verso's Non-gradient Skills": [
+    "DA_Skill_Blitz",
+    "DA_Skill_Combo1",
+    "DA_Skill_LightHolder",
+    "DA_Skill_MarkingShot",
+    "DA_Skill_NEW_4",
+    "DA_Skill_PerfectRecovery",
+    "DA_Skill_Powerful",
+    "DA_Skill_Verso_AscendingAssault",
+    "DA_Skill_Verso_BerserkSlash",
+    "DA_Skill_Verso_Burden",
+    "DA_Skill_Verso_DefiantStrike",
+    "DA_Skill_Verso_Endbringer",
+    "DA_Skill_Verso_NEW_Followup",
+    "DA_Skill_Verso_NEW_FromFire",
+    "DA_Skill_Verso_NEW_Leadership",
+    "DA_Skill_Verso_NEW_Overcharge",
+    "DA_Skill_Verso_NEW_ParadigmShift",
+    "DA_Skill_Verso_NEW_PhantomStars",
+    "DA_Skill_Verso_NEW_Purification",
+    "DA_Skill_Verso_NEW_QuickStrike",
+    "DA_Skill_Verso_NEW_Speedburst",
+    "DA_Skill_Verso_PerfectBreak",
+    "DA_Skill_Verso_RadiantSlash",
+    "DA_Skill_Verso_RadiantStrike",
+    "DA_Skill_Verso_SteeledStrike",
+    "DA_Skill_Verso_Strikestorm"
+  ],
+  "Sciel's Skills": [
     "DA_Skill_Sciel_AllSet",
     "DA_Skill_Sciel_BadOmen",
     "DA_Skill_Sciel_CardWeaver",
@@ -526,6 +672,36 @@
     "DA_Skill_Sciel_SealedFate",
     "DA_Skill_Sciel_SearingBond",
     "DA_Skill_Sciel_ShadowBringer",
+    "DA_Skill_Sciel_SpectralSweep",
+    "DA_Skill_Sciel_SpeedUp",
+    "DA_Skill_Sciel_TwilightDance"
+  ],
+  "Sciel's Gradient Skills": [
+    "DA_Skill_Sciel_Doom",
+    "DA_Skill_Sciel_EndSlice",
+    "DA_Skill_Sciel_ShadowBringer"
+  ],
+  "Sciel's Non-gradient Skills": [
+    "DA_Skill_Sciel_AllSet",
+    "DA_Skill_Sciel_BadOmen",
+    "DA_Skill_Sciel_CardWeaver",
+    "DA_Skill_Sciel_DarkCleansing",
+    "DA_Skill_Sciel_DarkWave",
+    "DA_Skill_Sciel_FinalPath",
+    "DA_Skill_Sciel_FiringShadow",
+    "DA_Skill_Sciel_FortunesFury",
+    "DA_Skill_Sciel_Harvest",
+    "DA_Skill_Sciel_Intervention",
+    "DA_Skill_Sciel_new14_ShadowTargeting",
+    "DA_Skill_Sciel_new18_Postponed",
+    "DA_Skill_Sciel_new2_Foretelling2",
+    "DA_Skill_Sciel_new3_GrimPrediction",
+    "DA_Skill_Sciel_new4_ShadowDrop",
+    "DA_Skill_Sciel_new7_DarkAbsorption",
+    "DA_Skill_Sciel_OurSacrifice",
+    "DA_Skill_Sciel_PlentifulHarvest",
+    "DA_Skill_Sciel_SealedFate",
+    "DA_Skill_Sciel_SearingBond",
     "DA_Skill_Sciel_SpectralSweep",
     "DA_Skill_Sciel_SpeedUp",
     "DA_Skill_Sciel_TwilightDance"

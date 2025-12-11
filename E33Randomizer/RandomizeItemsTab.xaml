@@ -70,6 +70,10 @@
                                   IsChecked="{Binding ReduceKeyItemRepetition}"
                                   Margin="0,6,0,0"
                                   FontSize="14" />
+                        <CheckBox Content="Reduce gear repetition"
+                                  IsChecked="{Binding ReduceGearRepetition}"
+                                  Margin="0,6,0,0"
+                                  FontSize="14" />
                         <StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
                                 <CheckBox Name="ChangeMerchantInventoryLockedCheckBox"

@@ -7,23 +7,23 @@
     "Gradient Skills"
   ],
   "CustomPlacement": {
-    "Gustave": {
-      "Gustave": 1.0
+    "Gustave's Skills": {
+      "Gustave's Skills": 1.0
     },
-    "Lune": {
-      "Lune": 1.0
+    "Lune's Skills": {
+      "Lune's Skills": 1.0
     },
-    "Maelle": {
-      "Maelle": 1.0
+    "Maelle's Skills": {
+      "Maelle's Skills": 1.0
     },
-    "Monoco": {
-      "Monoco": 1.0
+    "Monoco's Skills": {
+      "Monoco's Skills": 1.0
     },
-    "Verso": {
-      "Verso": 1.0
+    "Verso's Skills": {
+      "Verso's Skills": 1.0
     },
-    "Sciel": {
-      "Sciel": 1.0
+    "Sciel's Skills": {
+      "Sciel's Skills": 1.0
     }
   },
   "FrequencyAdjustments": {}

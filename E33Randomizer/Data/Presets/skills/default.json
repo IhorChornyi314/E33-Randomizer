@@ -4,23 +4,38 @@
   ],
   "Excluded": [],
   "CustomPlacement": {
-    "Gustave": {
-      "Gustave": 1.0
+    "Gustave's Skills": {
+      "Gustave's Skills": 1.0
     },
-    "Lune": {
-      "Lune": 1.0
+    "Lune's Gradient Skills": {
+      "Lune's Gradient Skills": 1.0
     },
-    "Maelle": {
-      "Maelle": 1.0
+    "Lune's Non-gradient Skills": {
+      "Lune's Non-gradient Skills": 1.0
     },
-    "Monoco": {
-      "Monoco": 1.0
+    "Maelle's Gradient Skills": {
+      "Maelle's Gradient Skills": 1.0
     },
-    "Verso": {
-      "Verso": 1.0
+    "Maelle's Non-gradient Skills": {
+      "Maelle's Non-gradient Skills": 1.0
     },
-    "Sciel": {
-      "Sciel": 1.0
+    "Monoco's Gradient Skills": {
+      "Monoco's Gradient Skills": 1.0
+    },
+    "Monoco's Non-gradient Skills": {
+      "Monoco's Non-gradient Skills": 1.0
+    },
+    "Verso's Gradient Skills": {
+      "Verso's Gradient Skills": 1.0
+    },
+    "Verso's Non-gradient Skills": {
+      "Verso's Non-gradient Skills": 1.0
+    },
+    "Sciel's Gradient Skills": {
+      "Sciel's Gradient Skills": 1.0
+    },
+    "Sciel's Non-gradient Skills": {
+      "Sciel's Non-gradient Skills": 1.0
     }
   },
   "FrequencyAdjustments": {}

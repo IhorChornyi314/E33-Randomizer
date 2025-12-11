@@ -167,19 +167,14 @@ public static class RandomizerLogic
         
         if (writeTxt)
         {
-            Controllers.EnemiesController.WriteTxt(exportPath + "encounters.txt");
-            Controllers.ItemsController.WriteTxt(exportPath + "checks.txt");
-            Controllers.SkillsController.WriteTxt(exportPath + "skills.txt");
-            using StreamWriter r = new StreamWriter(exportPath + "settings.json");
-            string json = JsonConvert.SerializeObject(Settings, Formatting.Indented);
+            Directory.CreateDirectory(exportPath + "config/");
+            Controllers.EnemiesController.WriteTxt(exportPath + "config/encounters.txt");
+            Controllers.ItemsController.WriteTxt(exportPath + "config/checks.txt");
+            Controllers.SkillsController.WriteTxt(exportPath + "config/skills.txt");
+            using StreamWriter r = new StreamWriter(exportPath + "config/settings.json");
+            var json = JsonConvert.SerializeObject(Settings, Formatting.Indented);
             r.Write(json);
         }
-
-        // if (Settings.TieDropsToEncounters)
-        // {
-        //     EnemiesControllerOld.ClearEnemyDrops();
-        //     EnemiesController.HandleLoot();
-        // }
 
         Controllers.WriteAssets();
         CharacterStartingStateManager.SaveAssets();

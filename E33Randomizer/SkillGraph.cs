@@ -1,5 +1,7 @@
-﻿using System.Windows.Controls;
+﻿using System.IO;
+using System.Windows.Controls;
 using System.Windows.Data;
+using Newtonsoft.Json;
 using UAssetAPI;
 using UAssetAPI.ExportTypes;
 using UAssetAPI.PropertyTypes.Objects;
@@ -161,6 +163,7 @@ public class SkillGraph
                 var firstNodeClassName = _asset.Imports[int.Abs(firstNodeImportIndex) - 1].ObjectName.ToString();
                 var secondNodeClassName = _asset.Imports[int.Abs(secondNodeImportIndex) - 1].ObjectName.ToString();
                 
+                
                 var firstNodeIndex = Nodes.FindIndex(n => n.SkillData.CodeName == firstNodeClassName);
                 firstNodeIndex = firstNodeIndex == -1 ? firstNodeImportIndex : firstNodeIndex;
                 var secondNodeIndex = Nodes.FindIndex(n => n.SkillData.CodeName == secondNodeClassName);
@@ -217,53 +220,61 @@ public class SkillGraph
                 }
             }
         }
-
-        if (RandomizerLogic.Settings.RandomizeTreeEdges && CharacterName != "Monoco")
+        
+        if (RandomizerLogic.Settings.RandomizeTreeEdges && (CharacterName != "Monoco" || RandomizerLogic.Settings.GiveMonocoTreeEdges))
         {
-            RandomizeEdges(RandomizerLogic.Settings.MinTreeEdges, RandomizerLogic.Settings.MaxTreeEdges, RandomizerLogic.Settings.FullyRandomEdges);
+            var minEdges = Math.Min(RandomizerLogic.Settings.MinTreeEdges, RandomizerLogic.Settings.MaxTreeEdges);
+            var maxEdges = Math.Max(RandomizerLogic.Settings.MinTreeEdges, RandomizerLogic.Settings.MaxTreeEdges);
+            
+            RandomizeEdges(minEdges, maxEdges, RandomizerLogic.Settings.FullyRandomEdges);
         }
+    }
+
+    public List<int> GetLinkedNodes()
+    {
+        if (CharacterName == "Gustave" && !RandomizerLogic.Settings.UnlockGustaveSkills)
+        {
+            return [1, 7, 0, 4, 3, 2, 5, 6];
+        }
+
+        if (CharacterName == "Monoco")
+        {
+            // 36, 45, and 46 are gradients
+            return
+            [
+                0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27,
+                28, 29, 30, 31, 32, 33, 34, 35, 37, 38, 39, 40, 41, 42, 43, 44, 47, 48
+            ];
+        }
+        
+        var linkedNodes = new List<int>();
+        foreach (var edge in Edges)
+        {
+            if (!linkedNodes.Contains(edge.Item1))
+            {
+                linkedNodes.Add(edge.Item1);
+            }
+            if (!linkedNodes.Contains(edge.Item2))
+            {
+                linkedNodes.Add(edge.Item2);
+            }
+        }
+        return linkedNodes;
     }
 
     public Dictionary<int, List<int>> GetPossibleEdges(bool fullyRandom)
     {
-        //TODO: Implement custom connection JSONs
-        
-        if (fullyRandom)
+        if (fullyRandom || CharacterName == "Julie")
         {
-            var connectedNodes = new List<int>();
-            foreach (var edge in Edges)
-            {
-                if (!connectedNodes.Contains(edge.Item1))
-                {
-                    connectedNodes.Add(edge.Item1);
-                }
-                if (!connectedNodes.Contains(edge.Item2))
-                {
-                    connectedNodes.Add(edge.Item2);
-                }
-            }
-
-            return connectedNodes.Select(n => new KeyValuePair<int, List<int>> (n, [..connectedNodes])).ToDictionary();
+            var linkedNodes = GetLinkedNodes();
+            return linkedNodes.Select(n => new KeyValuePair<int, List<int>> (n, [..linkedNodes.Where(i => i != n)])).ToDictionary();
         }
         
+        var fileName = CharacterName == "Gustave" && RandomizerLogic.Settings.UnlockGustaveSkills ? "GustaveFull" : CharacterName;
         
-        var adjacencyList = new Dictionary<int, List<int>>();
-        foreach (var edge in Edges)
-        {
-            if (!adjacencyList.ContainsKey(edge.Item1))
-            {
-                adjacencyList[edge.Item1] = [];
-            }
-            adjacencyList[edge.Item1].Add(edge.Item2);
-            
-            // We want a bidirectional adjacency list
-            if (!adjacencyList.ContainsKey(edge.Item2))
-            {
-                adjacencyList[edge.Item2] = [];
-            }
-            adjacencyList[edge.Item2].Add(edge.Item1);
-        }
-        return adjacencyList;
+        using var r = new StreamReader($"{RandomizerLogic.DataDirectory}/SkillsData/CustomGraphs/{fileName}.json");
+        var json = r.ReadToEnd();
+        return JsonConvert.DeserializeObject<Dictionary<int, List<int>>>(json);
     }
 
     public int PickNextTreeNode(List<int> currentTreeNodes, int minEdges, int maxEdges,
@@ -288,24 +299,13 @@ public class SkillGraph
     {
         var currentAdjacencyList = GetPossibleEdges(fullyRandom);
         var possibleEdges = GetPossibleEdges(fullyRandom);
-        var connectedNodes = new List<int>();
-        foreach (var edge in Edges)
-        {
-            if (!connectedNodes.Contains(edge.Item1))
-            {
-                connectedNodes.Add(edge.Item1);
-            }
-            if (!connectedNodes.Contains(edge.Item2))
-            {
-                connectedNodes.Add(edge.Item2);
-            }
-        }
+        var linkedNodes = GetLinkedNodes();
         
         var treeAdjacencyList = new Dictionary<int, List<int>>();
-        var currentNodeDegrees = currentAdjacencyList.Select(kvp => new KeyValuePair<int, int>(kvp.Key, 0)).ToDictionary();
-        var availableNodeDegrees = currentAdjacencyList.Select(kvp => new KeyValuePair<int, int>(kvp.Key, kvp.Value.Count)).ToDictionary();
+        var currentNodeDegrees = linkedNodes.Select(n => new KeyValuePair<int, int>(n, 0)).ToDictionary();
+        var availableNodeDegrees = possibleEdges.Select(kvp => new KeyValuePair<int, int>(kvp.Key, kvp.Value.Count)).ToDictionary();
         
-        var currentTreeNodes = new List<int> ([Utils.Pick(connectedNodes)]);
+        var currentTreeNodes = new List<int> ([Utils.Pick(linkedNodes)]);
         
         foreach (var availableNode in currentAdjacencyList[currentTreeNodes[0]])
         {
@@ -313,7 +313,7 @@ public class SkillGraph
                 availableNodeDegrees[availableNode] -= 1;
         }
         
-        for (int i = 0; i < connectedNodes.Count - 1; i++)
+        for (int i = 0; i < linkedNodes.Count - 1; i++)
         {
             var nextNode = PickNextTreeNode(currentTreeNodes, minEdges, maxEdges, currentNodeDegrees, availableNodeDegrees);
 
@@ -342,29 +342,32 @@ public class SkillGraph
             currentTreeNodes.Add(newEdge);
         }
         
-        var newAdjacencyList = new Dictionary<int, List<int>>();
+        var newAdjacencyList = new Dictionary<int, List<int>>(treeAdjacencyList);
         
-        foreach (var edgesList in treeAdjacencyList)
+        foreach (var currentNode in linkedNodes)
         {
-            var currentNode = edgesList.Key;
             if (!newAdjacencyList.ContainsKey(currentNode))
             {
                 newAdjacencyList[currentNode] = [];
             }
             foreach (var possibleEdge in possibleEdges[currentNode])
             {
-                if (treeAdjacencyList[currentNode].Contains(possibleEdge))
+                if (newAdjacencyList.TryGetValue(currentNode, out List<int>? edges) && edges.Contains(possibleEdge))
                 {
-                    newAdjacencyList[currentNode].Add(possibleEdge);
                     continue;
                 }
                 
-                if (newAdjacencyList[currentNode].Count >= maxEdges || currentNodeDegrees[possibleEdge] >= maxEdges) continue;
+                if (currentNodeDegrees[currentNode] >= maxEdges || currentNodeDegrees[possibleEdge] >= maxEdges) continue;
                 
-                var canAdd = newAdjacencyList[currentNode].Count < minEdges || RandomizerLogic.rand.Next(100) < RandomizerLogic.Settings.RandomEdgeChancePercent;
-                if (!canAdd) break;
+                var canAdd = currentNodeDegrees[currentNode] < minEdges || currentNodeDegrees[possibleEdge] < minEdges || RandomizerLogic.rand.Next(100) < RandomizerLogic.Settings.RandomEdgeChancePercent;
+                if (!canAdd)
+                {
+                    continue;
+                }
                 
                 newAdjacencyList[currentNode].Add(possibleEdge);
+                currentNodeDegrees[currentNode] += 1;
+                currentNodeDegrees[possibleEdge] += 1;
             }
         }
     
