@@ -47,7 +47,6 @@ public class Encounter
                 IsBroken = true;
             }
             Enemies.Add(enemyData);
-            PossibleLootDrops.AddRange(enemyData.PossibleLoot);
             if (enemyData.Archetype == "Boss" || enemyData.Archetype == "Alpha")
             {
                 IsBossEncounter = true;
@@ -60,17 +59,6 @@ public class Encounter
         disableCameraEndMovement = (_encounterData.Value[3] as BoolPropertyData).Value;
         disableReactionBattleLines = (_encounterData.Value[4] as BoolPropertyData).Value;
         isNarrativeBattle = (_encounterData.Value[5] as BoolPropertyData).Value;
-        PossibleLootDrops =  PossibleLootDrops.Distinct().ToList();
-    }
-
-    public Encounter(string encounterName, List<string> encounterEnemies)
-    {
-        Name = encounterName;
-        Enemies = Controllers.EnemiesController.GetObjects(encounterEnemies);
-        foreach (var enemyData in Enemies)
-        {
-            PossibleLootDrops.AddRange(enemyData.PossibleLoot);
-        }
         PossibleLootDrops =  PossibleLootDrops.Distinct().ToList();
     }
 

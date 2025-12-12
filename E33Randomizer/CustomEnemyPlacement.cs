@@ -40,7 +40,7 @@ public class CustomEnemyPlacement: CustomPlacement
             "Merchants", "Mimes", "Cut Content Enemies", "Gimmick/Tutorial Enemies",
             "Petanks", "Giant Enemies/Bosses", "Regular", "Weak Regular", "Elusive Regular", "Strong Regular", 
             "Minibosses", "Non-Chromatic Bosses", "Chromatic Bosses", "All Regular Enemies",
-            "Main Plot Bosses", "Side Bosses", "All Bosses", "All Bosses and Minibosses", "Anyone"
+            "Main Plot Bosses", "Side Bosses", "All Bosses", "All Bosses and Minibosses", "DLC Enemies", "Anyone"
         };
         
         PresetFiles = new()
@@ -71,6 +71,8 @@ public class CustomEnemyPlacement: CustomPlacement
         ResetRules();
         AddExcluded("Gimmick/Tutorial Enemies");
         AddExcluded("Map Part Enemies");
+        AddExcluded("DLC Enemies");
+        AddNotRandomized("DLC Enemies");
         CustomPlacementRules = new Dictionary<string, Dictionary<string, float>>
         {
             { "Regular", new Dictionary<string, float> { { "Regular", 1 } } },

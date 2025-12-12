@@ -1,10 +1,12 @@
 {
     "NotRandomized": [
         "Skill Unlock",
-        "Merchant Unlock"
+        "Merchant Unlock",
+        "DLC Items"
     ],
     "Excluded": [
-        "Consumable"
+        "Consumable",
+        "DLC Items"
     ],
     "CustomPlacement": {
         "Pictos": {

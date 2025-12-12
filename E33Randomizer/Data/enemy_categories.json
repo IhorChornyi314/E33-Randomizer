@@ -760,5 +760,27 @@
         "MF_MaskSadness",
         "MF_MaskAnger",
         "MF_MaskJoy"
+    ],
+    "DLC Enemies": [
+        "Boss_LampMaster_ALPHA",
+        "Duolliste_A",
+        "Duolliste_B",
+        "Duolliste_P2",
+        "Boss_Clea_ALPHA",
+        "VD_Licorne",
+        "VD_Licorne_Alpha",
+        "VD_Barbasucette",
+        "VD_Barbasucette_Alpha",
+        "VD_GestralBalloon",
+        "VD_Franctale",
+        "VD_Franctale_Alpha",
+        "VD_Machinapieds",
+        "VD_Machinapieds_Alpha",
+        "VD_Licornapieds",
+        "VD_Osquio",
+        "Quest_FeintFight",
+        "VD_Quest_GestralSeesaw",
+        "Merchant_VersosDraft",
+        "VD_Mime"
     ]
 }

@@ -5,10 +5,12 @@
         "Key Item",
         "Cosmetic",
         "Upgrade Material",
-        "Music Record"
+        "Music Record",
+        "DLC Items"
     ],
     "Excluded": [
-        "Consumable"
+        "Consumable",
+        "DLC Items"
     ],
     "CustomPlacement": {
         "Pictos": {

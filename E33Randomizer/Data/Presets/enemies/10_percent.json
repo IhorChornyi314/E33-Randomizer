@@ -1,8 +1,11 @@
 {
-  "NotRandomized": [],
+  "NotRandomized": [
+    "DLC Enemies"
+  ],
   "Excluded": [
     "Gimmick/Tutorial Enemies",
-    "Map Part Enemies"
+    "Map Part Enemies",
+    "DLC Enemies"
   ],
   "CustomPlacement": {
     "Regular": {
