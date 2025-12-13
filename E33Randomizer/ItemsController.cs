@@ -107,6 +107,7 @@ public class ItemsController: Controller<ItemData>
         {
             newSource = new DialogueItemSource();
             checkType = "Dialogue rewards";
+            Console.WriteLine(fileName);
         }
         else
         {
