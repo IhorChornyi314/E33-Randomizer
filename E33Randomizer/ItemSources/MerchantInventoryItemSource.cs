@@ -52,7 +52,10 @@ public class MerchantInventoryItemSource: ItemSource
         {"DT_Merchant_WM_14", "Lucaroparfe (World Map)"},
         {"DT_Merchant_WM_15", "Jumeliba (World Map)"},
         {"DT_Merchant_WM_16", "Rubiju (World Map)"},
-        {"DT_Merchant_WM_17", "Citrelo (World Map)"}
+        {"DT_Merchant_WM_17", "Citrelo (World Map)"},
+        {"DT_Merchant_VersosDraft", "Najabla (Verso's Drafts)"},
+        {"DT_Merchant_WM_Chic", "Chic Merchant (World Map)"},
+        {"DT_Merchant_Osquio", "Osquio Merchant (Root of All Evil)"}
     };
     
     private static Dictionary<string, int> WorldMapMerchantLevels = new ()

@@ -2065,34 +2065,34 @@
         "Archetype": "Elite"
     },
     {
-        "CustomName": "Chromatic Simon (Cut Content)",
+        "CustomName": "Simon, the Divergent Star (DLC Enemy)",
         "CodeName": "Boss_Simon_ALPHA",
         "Archetype": "Boss"
     },
     {
         "CustomName": "Chromatic Lampmaster (DLC Enemy)",
         "CodeName": "Boss_LampMaster_ALPHA",
-        "Archetype": "HardOnly_OPBoss"
+        "Archetype": "Boss"
     },
     {
-        "CustomName": "Duollistes (DLC Enemy)",
+        "CustomName": "Duollistes - Dark (DLC Enemy)",
         "CodeName": "Duolliste_A",
-        "Archetype": "HardOnly_OPBoss"
+        "Archetype": "Boss"
     },
     {
-        "CustomName": "Duollistes (DLC Enemy)",
+        "CustomName": "Duollistes - Light (DLC Enemy)",
         "CodeName": "Duolliste_B",
-        "Archetype": "HardOnly_OPBoss"
+        "Archetype": "Boss"
     },
     {
-        "CustomName": "Duolliste (DLC Enemy)",
+        "CustomName": "Duolliste - Phase 2 (DLC Enemy)",
         "CodeName": "Duolliste_P2",
-        "Archetype": "HardOnly_OPBoss"
+        "Archetype": "Boss"
     },
     {
         "CustomName": "Clea Unleashed (DLC Enemy)",
         "CodeName": "Boss_Clea_ALPHA",
-        "Archetype": "HardOnly_OPBoss"
+        "Archetype": "Boss"
     },
     {
         "CustomName": "Licorne (DLC Enemy)",
@@ -2115,7 +2115,7 @@
         "Archetype": "Alpha"
     },
     {
-        "CustomName": "Half-baked Gestral (DLC Enemy)",
+        "CustomName": "Half-baked Gestral - Balloon Fight (DLC Enemy)",
         "CodeName": "VD_GestralBalloon",
         "Archetype": "Regular"
     },
@@ -2147,7 +2147,7 @@
     {
         "CustomName": "Osquio (DLC Enemy)",
         "CodeName": "VD_Osquio",
-        "Archetype": "Boss"
+        "Archetype": "Strong"
     },
     {
         "CustomName": "Monsieur Frappe (DLC Enemy)",
@@ -2155,12 +2155,12 @@
         "Archetype": "Regular"
     },
     {
-        "CustomName": "Half-baked Gestral (DLC Enemy)",
+        "CustomName": "Half-baked Gestral - Seesaw Quest (DLC Enemy)",
         "CodeName": "VD_Quest_GestralSeesaw",
         "Archetype": "Regular"
     },
     {
-        "CustomName": "Najabla (DLC Enemy)",
+        "CustomName": "Najabla (DLC Merchant)",
         "CodeName": "Merchant_VersosDraft",
         "Archetype": "Strong"
     },

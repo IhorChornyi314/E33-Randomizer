@@ -48,7 +48,9 @@ public class ChestsContentItemSource: ItemSource
         {"FlyingCasinoEntrance", "Flying Casino"},
         {"TheCarrousel", "The Carousel"},
         {"WhiteSands", "White Sands"},
-        {"SacredRiver", "Sacred River"}
+        {"SacredRiver", "Sacred River"},
+        {"VersosDraft", "Verso's Drafts"},
+        {"CleasTower", "Endless Tower"}
     };
     
     public override void LoadFromAsset(UAsset asset)

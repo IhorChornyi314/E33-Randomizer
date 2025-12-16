@@ -162,7 +162,18 @@
         "QUEST_HexgaLuster",
         "QUEST_JarNeedLight",
         "Portier_DoorSoul",
-        "QUEST_TroubadourCantPlay_Kill"
+        "QUEST_TroubadourCantPlay_Kill",
+        "Boss_Simon_ALPHA",
+        "Boss_LampMaster_ALPHA",
+        "Duolliste_A",
+        "Duolliste_B",
+        "Duolliste_P2",
+        "Boss_Clea_ALPHA",
+        "VD_Licorne_Alpha",
+        "VD_Barbasucette_Alpha",
+        "VD_Franctale_Alpha",
+        "VD_Machinapieds_Alpha",
+        "VD_Osquio"
     ],
     "All Bosses": [
         "RC_Alicia",
@@ -285,7 +296,18 @@
         "AS_PotatoBag_Boss",
         "TS_PotatoBag_Boss_Twilight",
         "AS_PotatoBag_Boss_Quest",
-        "MF_Axon_Visages"
+        "MF_Axon_Visages",
+        "Boss_Simon_ALPHA",
+        "Boss_LampMaster_ALPHA",
+        "Duolliste_A",
+        "Duolliste_B",
+        "Duolliste_P2",
+        "Boss_Clea_ALPHA",
+        "VD_Licorne_Alpha",
+        "VD_Barbasucette_Alpha",
+        "VD_Franctale_Alpha",
+        "VD_Machinapieds_Alpha",
+        "VD_Osquio"
     ],
     "Main Plot Bosses": [
         "SM_Boss_Eveque",
@@ -339,7 +361,18 @@
         "Boss_Simon_Phase2",
         "CT_Boss_Curator_CleaTower",
         "CT_Boss_Paintress_CleaTower",
-        "CFH_Gargant"
+        "CFH_Gargant",
+        "VD_Osquio"
+    ],
+    "Super Bosses": [
+        "Boss_Simon_ALPHA",
+        "Boss_LampMaster_ALPHA",
+        "Duolliste_A",
+        "Duolliste_B",
+        "Duolliste_P2",
+        "CFH_Boss_Clea",
+        "Boss_Simon_Phase2",
+        "VD_Osquio"
     ],
     "All Regular Enemies": [
         "SM_Abbest",
@@ -578,7 +611,13 @@
         "FC_ChalierHammer",
         "FC_ChalierSpear",
         "FC_ChalierSword",
-        "QUEST_TroubadourCantPlay"
+        "QUEST_TroubadourCantPlay",
+        "VD_Licorne",
+        "VD_Barbasucette",
+        "VD_Franctale",
+        "VD_Machinapieds",
+        "Merchant_VersosDraft",
+        "VD_Mime"
     ],
     "Giant Enemies/Bosses": [
         "MM_Gargant",
@@ -620,6 +659,7 @@
         "Merchant_OrangeForest",
         "Merchant_YellowForest",
         "Merchant_Optional1",
+        "Merchant_VersosDraft",
         "Merchant_GrandisStation"
     ],
     "Mimes": [
@@ -639,7 +679,8 @@
         "MF_Mime",
         "WM_Mime_Bald",
         "WM_Mime_01",
-        "WM_Mime_02"
+        "WM_Mime_02",
+        "VD_Mime"
     ],
     "Cut Content Enemies": [
         "AS_GestralBully_A",
@@ -665,7 +706,6 @@
         "MM_Pelerin_ALPHA",
         "YF_Potier_ALPHA",
         "YF_Sapling_ALPHA",
-        "Boss_Simon_ALPHA",
         "MM_Stalact_ALPHA",
         "AS_PotatoBag_Boss_ALPHA",
         "SM_Volester_ALPHA",
@@ -759,7 +799,9 @@
         "QUEST_Danseuse_DanceClass",
         "MF_MaskSadness",
         "MF_MaskAnger",
-        "MF_MaskJoy"
+        "MF_MaskJoy",
+        "VD_Quest_GestralSeesaw",
+        "Quest_FeintFight"
     ],
     "DLC Enemies": [
         "Boss_LampMaster_ALPHA",

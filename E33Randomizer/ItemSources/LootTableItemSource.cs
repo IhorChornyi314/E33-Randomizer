@@ -17,7 +17,8 @@ public class LootTableItemSource: ItemSource
         {"DT_LootTable_UpgradeItems_Elite", "Mini-bosses drops"},
         {"DT_LootTable_UpgradeItems_Exploration", "Chroma catalysts"},
         {"DT_LootTable_UpgradeItems_Petank", "Petank drops"},
-        {"DT_LootTable_UpgradeItems_Regular", "Regular enemy drops"}
+        {"DT_LootTable_UpgradeItems_Regular", "Regular enemy drops"},
+        {"DT_LootTable_SkinGustave_Visage", "Visage costumes"}
     };
 
     private static Dictionary<string, string> _entryCustomNames = new()

@@ -93,6 +93,11 @@ public class DialogueItemSource : ItemSource
         { "BP_Dialogue_Lumiere_ExpFestival_Token_Haircut_Amandine", "Lumiere Act I: Amandine's Gorgeous Haircut" },
         { "BP_Dialogue_Lumiere_ExpFestival_Token_Pictos_Claude", "Lumiere Act I: Tom's Personal Masterpiece" },
         { "BP_Dialogue_Lumiere_ExpFestival_Maelle", "Lumiere Act I: Maelle Festival Duel Reward" },
+        { "BP_Dialogue_VD_Bath_Lifeguard", "Verso's Drafts: Esquie Statue Puzzle Reward" },
+        { "BP_Dialogue_VD_FeintFight", "Verso's Drafts: Feint Fight Reward" },
+        { "BP_Dialogue_VD_Poolside_JumpReward", "Verso's Drafts: Plank Jump Reward" },
+        { "BP_Dialogue_VD_SeesawChallenge", "Verso's Drafts: Seesaw Challenge Reward" },
+        { "BP_Dialog_VD_GestralVerso_Ride", "Verso's Drafts: Ride Reward" },
     };
 
     private int _getItemQuantity(string key)
@@ -110,7 +115,12 @@ public class DialogueItemSource : ItemSource
         var quantityProperty =
             ((_asset.Exports[path[0]] as NormalExport).Data[path[1]] as ArrayPropertyData).Value[path[2]] as
             IntPropertyData;
-
+        
+        if (quantityProperty == null)
+        {
+            throw new Exception($"Invalid DialogueRewardQuantitiesPath for {key}!");
+        }
+        
         return quantityProperty.Value;
     }
 
@@ -144,6 +154,11 @@ public class DialogueItemSource : ItemSource
 
         var rewardPaths = DialogueRewardPaths[FileName];
 
+        if (FileName.Contains("BP_Dialogue_DarkGestralArena_Pots"))
+        {
+            Console.WriteLine("BP_Dialogue_DarkGestralArena_Pots");
+        }
+        
         foreach (var rewardPath in rewardPaths)
         {
             var checkName = rewardPath.Key;
@@ -169,6 +184,11 @@ public class DialogueItemSource : ItemSource
             var itemName = (rewardStruct.Value[checkPath.Last()] as NamePropertyData).ToString();
             var itemData = Controllers.ItemsController.GetObject(itemName);
             var itemQuantity = _getItemQuantity(checkName);
+
+            if (itemData.Equals(Controllers.ItemsController.DefaultObject))
+            {
+                throw new Exception($"Invalid DialogueRewardPath for {checkName}!");
+            }
 
             SourceSections[checkName] = [new ItemSourceParticle(itemData, itemQuantity)];
             var check = new CheckData

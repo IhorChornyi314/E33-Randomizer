@@ -5094,7 +5094,7 @@
         "HasQuantities": false
     },
     {
-        "CustomName": "Merchant_VersosDraft (Merchant Unlock) (Key Item)",
+        "CustomName": "Merchant_VersosDraft (Merchant Unlock)",
         "CodeName": "Merchant_VersosDraft",
         "Type": "Key",
         "HasQuantities": false

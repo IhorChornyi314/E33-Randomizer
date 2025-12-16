@@ -29,7 +29,8 @@ public class GameActionItemSource: ItemSource
         {"DA_GA_GRADIENT_Sciel2", "The Camp: Sciel Relationship Level 4 Reward"},
         {"DA_GA_GRADIENT_Sciel3", "The Camp: Sciel Relationship Level 7 Reward"},
         {"DA_GA_GRADIENT_Verso2", "The Camp: Esquie Relationship Level 4 Reward"},
-        {"DA_GA_GRADIENT_Verso3", "The Camp: Esquie Relationship Level 7 Reward"}
+        {"DA_GA_GRADIENT_Verso3", "The Camp: Esquie Relationship Level 7 Reward"},
+        {"DA_GA_SQT_OsquioBoss", "The Root of All Evil: Osquio's Rewards"}
     };
     
     public override void LoadFromAsset(UAsset asset)

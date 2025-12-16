@@ -959,5 +959,119 @@
             0,
             1
         ]
+    },
+    "BP_Dialogue_VD_Bath_Lifeguard": {
+        "Quest_CakePiece": [
+            1,
+            2,
+            0,
+            1
+        ],
+        "Quest_BirthdayCake": [
+            1,
+            1,
+            0,
+            1
+        ],
+        "FaceMonoco_DoubleBun": [
+            1,
+            3,
+            0,
+            1
+        ]
+    },
+    "BP_Dialogue_VD_FeintFight": {
+        "Feint": [
+            1,
+            1,
+            0,
+            1
+        ]
+    },
+    "BP_Dialogue_VD_Poolside_JumpReward": {
+        "FaceMaelle_DoubleBun": [
+            1,
+            1,
+            1,
+            0,
+            1
+        ],
+        "FaceMonoco_FrenchBob": [
+            1,
+            1,
+            2,
+            0,
+            1
+        ],
+        "Consumable_LuminaPoint": [
+            1,
+            1,
+            0,
+            0,
+            1
+        ]
+    },
+    "BP_Dialogue_VD_SeesawChallenge": {
+        "EmpoweringJumps": [
+            1,
+            2,
+            0,
+            1
+        ]
+    },
+    "BP_Dialog_VD_GestralVerso_Ride": {
+        "Quest_CakePiece_3": [
+            1,
+            3,
+            0,
+            1
+        ],
+        "Quest_BirthdayCake": [
+            1,
+            2,
+            0,
+            1
+        ],
+        "SkinLune_Esquie": [
+            1,
+            1,
+            2,
+            0,
+            1
+        ],
+        "SkinSciel_Esquie": [
+            1,
+            1,
+            3,
+            0,
+            1
+        ],
+        "SkinGustave_Esquie": [
+            1,
+            4,
+            0,
+            1
+        ],
+        "SkinVerso_Esquie": [
+            1,
+            1,
+            1,
+            0,
+            1
+        ],
+        "SkinMaelle_Esquie": [
+            1,
+            1,
+            0,
+            0,
+            1
+        ],
+        "SkinMonoco_Esquie": [
+            1,
+            1,
+            4,
+            0,
+            1
+        ]
     }
 }

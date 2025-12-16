@@ -57,7 +57,7 @@ public class ItemsController: Controller<ItemData>
     
     public void ProcessFile(string fileName)
     {
-        if (fileName.Contains("BP_GameAction") || fileName.Contains("BP_PDT_GameAction") || fileName.Contains("S_ItemOperationData") || fileName.Contains("E_GestralFightClub_Fighters"))
+        if (fileName.Contains("BP_GameAction") || fileName.Contains("BP_PDT_GameAction") || fileName.Contains("S_ItemOperationData") || fileName.Contains("S_TriggerCinematicVariables") || fileName.Contains("E_GestralFightClub_Fighters"))
         {
             return;
         }
@@ -103,11 +103,15 @@ public class ItemsController: Controller<ItemData>
             newSource = new LootTableItemSource();
             checkType = fileName.Contains("DT_LootTable_UpgradeItems_Exploration") ? "Map pickups" : "Enemy drops";
         }
+        else if (fileName.Contains("DT_LootTable_SkinGustave_Visage"))
+        {
+            newSource = new LootTableItemSource();
+            checkType = "Map pickups";
+        }
         else if (DialogueItemSource.DialogueRewardPaths.ContainsKey(asset.FolderName.ToString().Split('/').Last()))
         {
             newSource = new DialogueItemSource();
             checkType = "Dialogue rewards";
-            Console.WriteLine(fileName);
         }
         else
         {
