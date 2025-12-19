@@ -1,0 +1,65 @@
+﻿[
+  {
+    "CodeName": "Noah",
+    "CustomName": "Gustave",
+    "Enum": 0,
+    "StartingSkin": "SkinGustave_Default",
+    "IsPlayable": true
+  },
+  {
+    "CodeName": "Lune",
+    "CustomName": "Lune",
+    "Enum": 2,
+    "StartingSkin": "SkinLune_Default",
+    "IsPlayable": true
+  },
+  {
+    "CodeName": "Maelle",
+    "CustomName": "Maelle",
+    "Enum": 1,
+    "StartingSkin": "SkinMaelle_Default",
+    "IsPlayable": true
+  },
+  {
+    "CodeName": "Sciel",
+    "CustomName": "Sciel",
+    "Enum": 3,
+    "StartingSkin": "SkinSciel_Default",
+    "IsPlayable": true
+  },
+  {
+    "CodeName": "Verso",
+    "CustomName": "Verso",
+    "Enum": 4,
+    "StartingSkin": "SkinVerso_Default",
+    "IsPlayable": true
+  },
+  {
+    "CodeName": "Monoco",
+    "CustomName": "Monoco",
+    "Enum": 5,
+    "StartingSkin": "SkinMonoco_Default",
+    "IsPlayable": true
+  },
+  {
+    "CodeName": "Julie",
+    "CustomName": "Julie",
+    "Enum": 6,
+    "StartingSkin": "SkinJulie_Default",
+    "IsPlayable": false
+  },
+  {
+    "CodeName": "Sophie",
+    "CustomName": "Sophie",
+    "Enum": 7,
+    "StartingSkin": "SkinSophie_Default",
+    "IsPlayable": false
+  },
+  {
+    "CodeName": "Alicia",
+    "CustomName": "Alicia",
+    "Enum": 8,
+    "StartingSkin": "SkinAlicia_Default",
+    "IsPlayable": false
+  }
+]

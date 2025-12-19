@@ -16,7 +16,6 @@ public static class RandomizerLogic
     public static List<string> BrokenEnemies =
     [
         "QUEST_WeaponlessChalier",
-        "Boss_Simon_ALPHA",
         "FB_Dualliste_Phase1",
         "YF_Jar_AlternativeA",
         "YF_Jar_AlternativeB",

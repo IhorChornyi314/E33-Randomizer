@@ -56,9 +56,10 @@ public abstract class CustomPlacement
         
         PlainNamesList.AddRange(CustomCategories);
         
+        PlainNamesList.AddRange(AllObjects.Select(i => i.CustomName).Order());
+        
         foreach (var objectData in AllObjects)
         {
-            PlainNamesList.Add(objectData.CustomName);
             PlainNameToCodeNames[objectData.CustomName] = [objectData.CodeName];
         }
     }

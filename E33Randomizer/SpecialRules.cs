@@ -177,6 +177,11 @@ public static class SpecialRules
                 }
             }
         }
+
+        if (encounter.Name != "Boss_Duolliste_P2")
+        {
+            encounter.Enemies = encounter.Enemies.Select(e => e.CodeName == "Duolliste_P2" ? Controllers.EnemiesController.GetObject("Duolliste_A"): e).ToList();
+        }
     }
 
     public static void ApplySpecialRulesToCheck(CheckData check)

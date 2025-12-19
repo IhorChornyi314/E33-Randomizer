@@ -158,7 +158,6 @@ public class SkillsController: Controller<SkillData>
     public override void AddObjectToContainer(string objectCodeName, string containerCodeName)
     {
         throw new NotSupportedException("Skill nodes must have exactly one skill in them.");
-
     }
 
     public override void RemoveObjectFromContainer(int objectIndex, string containerCodeName)
