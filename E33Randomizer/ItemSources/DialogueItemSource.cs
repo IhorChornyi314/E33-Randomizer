@@ -153,11 +153,6 @@ public class DialogueItemSource : ItemSource
         base.LoadFromAsset(asset);
 
         var rewardPaths = DialogueRewardPaths[FileName];
-
-        if (FileName.Contains("BP_Dialogue_DarkGestralArena_Pots"))
-        {
-            Console.WriteLine("BP_Dialogue_DarkGestralArena_Pots");
-        }
         
         foreach (var rewardPath in rewardPaths)
         {

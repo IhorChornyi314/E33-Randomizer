@@ -385,7 +385,7 @@ public class ItemsController: Controller<ItemData>
                 var itemSource = check.ItemSource;
                 var items = itemSource.GetCheckItems(check.Key);
                 newContainer.Objects = new ObservableCollection<ObjectViewModel>(items.Select(i => new ObjectViewModel(i)));
-                newContainer.CanAddObjects = check.Key.Contains("BP_Dialog");
+                newContainer.CanAddObjects = checkCategory.Key != "Dialogue rewards";
 
                 for (int i = 0; i < newContainer.Objects.Count; i++)
                 {
