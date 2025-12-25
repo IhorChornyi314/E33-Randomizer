@@ -57,7 +57,9 @@ public class ItemsController: Controller<ItemData>
     
     public void ProcessFile(string fileName)
     {
-        if (fileName.Contains("BP_GameAction") || fileName.Contains("BP_PDT_GameAction") || fileName.Contains("S_ItemOperationData") || fileName.Contains("S_TriggerCinematicVariables") || fileName.Contains("E_GestralFightClub_Fighters"))
+        if (fileName.Contains("GameActionsData") && !fileName.Contains("_GA_")) return;
+        
+        if (fileName.Contains("S_ItemOperationData") || fileName.Contains("S_TriggerCinematicVariables") || fileName.Contains("E_GestralFightClub_Fighters"))
         {
             return;
         }

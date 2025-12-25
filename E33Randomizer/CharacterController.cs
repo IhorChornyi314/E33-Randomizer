@@ -1,5 +1,8 @@
 ﻿using System.IO;
 using UAssetAPI;
+using UAssetAPI.ExportTypes;
+using UAssetAPI.PropertyTypes.Objects;
+using UAssetAPI.PropertyTypes.Structs;
 using UAssetAPI.UnrealTypes;
 
 namespace E33Randomizer;
@@ -8,6 +11,8 @@ public class CharacterController: Controller<CharacterData>
 {
     private string _cleanSnapshot;
     private UAsset _sophieJoinAsset;
+    private UAsset _gustaveJoinAsset;
+    private UAsset _replaceGustaveAsset;
     private UAsset _sophieLeaveAsset;
     private UAsset _luneJoinAsset;
     private UAsset _maelleJoinAsset;
@@ -16,31 +21,108 @@ public class CharacterController: Controller<CharacterData>
     private UAsset _versoReplaceGustaveAsset;
     private UAsset _monocoJoinAsset;
     private UAsset _gustaveReplaceVersoAsset;
-
+    
     public CharacterData[] charactersJoinOrder = new CharacterData[6];
     
     public override void Initialize()
     {
         ReadObjectsData($"{RandomizerLogic.DataDirectory}/character_data.json");
+        charactersJoinOrder = [GetObject("Frey"), GetObject("Lune"), GetObject("Maelle"), GetObject("Sciel"), GetObject("Verso"), GetObject("Monoco")];
         _cleanSnapshot = ConvertToTxt();
-        charactersJoinOrder = [GetObject("Noah"), GetObject("Lune"), GetObject("Maelle"), GetObject("Sciel"), GetObject("Verso"), GetObject("Monoco")];
+        ReadAssets($"{RandomizerLogic.DataDirectory}/ParandomizerData/CharacterJoinGAs");
     }
 
     public void ReadAssets(string filesDirectory)
     {
-        _sophieJoinAsset = new UAsset($"{filesDirectory}/DA_SEQ_MyFlower_P2.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+        _gustaveJoinAsset = new UAsset($"{filesDirectory}/DA_GA_SQT_TheDeparture.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+        _replaceGustaveAsset = new UAsset($"{filesDirectory}/DA_ReplaceCharacter_GustaveByRandom.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
         _luneJoinAsset = new UAsset($"{filesDirectory}/DA_GA_SQT_LuneJoinGroup.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
         _maelleJoinAsset = new UAsset($"{filesDirectory}/DA_GA_SQT_MaelleJoinsGroup.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
         _scielJoinAsset = new UAsset($"{filesDirectory}/DA_GA_SQT_ScielJoinsGroup_P1.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
         _ripGustaveAsset = new UAsset($"{filesDirectory}/DA_GA_SQT_GustaveDieEndLevel.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
-        _versoReplaceGustaveAsset = new UAsset($"{filesDirectory}/DA_ReplaceCharacter_GustaveByVerso.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+        _versoReplaceGustaveAsset = new UAsset($"{filesDirectory}/DA_ReplaceCharacter_GustaveByVerso_modified.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
         _monocoJoinAsset = new UAsset($"{filesDirectory}/DA_GA_SQT_MonocoUnlock.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
         _gustaveReplaceVersoAsset = new UAsset($"{filesDirectory}/DA_ReplaceCharacter_VersoByGustave.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
     }
 
+    public void SetGustaveSpotCharacter(CharacterData newCharacter)
+    {
+        var characterName = newCharacter.CodeName;
+        if (characterName == "Frey") return;
+        
+        _gustaveJoinAsset.AddNameReference(FString.FromString("DA_ReplaceCharacter_GustaveByRandom"));
+        _gustaveJoinAsset.AddNameReference(FString.FromString("/Game/Gameplay/GameActionsSystem/ReplaceCharacter/Content/DA_ReplaceCharacter_GustaveByRandom"));
+        _gustaveJoinAsset.AddNameReference(FString.FromString("BP_GameAction_ReplaceCharacter_C"));
+        _gustaveJoinAsset.AddNameReference(FString.FromString("/Game/Gameplay/GameActionsSystem/ReplaceCharacter/BP_GameAction_ReplaceCharacter"));
+        
+        var outerImport = new Import("/Script/CoreUObject", "Package", FPackageIndex.FromRawIndex(0), "/Game/Gameplay/GameActionsSystem/ReplaceCharacter/Content/DA_ReplaceCharacter_GustaveByRandom", false, _gustaveJoinAsset);
+        var outerIndex = _gustaveJoinAsset.AddImport(outerImport);
+        
+        var outerDefaultImport = new Import("/Script/CoreUObject", "Package", FPackageIndex.FromRawIndex(0), "/Game/Gameplay/GameActionsSystem/ReplaceCharacter/BP_GameAction_ReplaceCharacter", false, _gustaveJoinAsset);
+        var outerDefaultIndex = _gustaveJoinAsset.AddImport(outerDefaultImport);
+        
+        var innerImport = new Import("/Game/Gameplay/GameActionsSystem/ReplaceCharacter/BP_GameAction_ReplaceCharacter", "BP_GameAction_ReplaceCharacter_C", outerIndex, "DA_ReplaceCharacter_GustaveByRandom", false, _gustaveJoinAsset);
+        var innerImportIndex = _gustaveJoinAsset.AddImport(innerImport);
+        
+        var innerDefaultImport = new Import("/Game/Gameplay/GameActionsSystem/ReplaceCharacter/BP_GameAction_ReplaceCharacter", "BP_GameAction_ReplaceCharacter_C", outerDefaultIndex, "Default__BP_GameAction_ReplaceCharacter_C", false, _gustaveJoinAsset);
+        _gustaveJoinAsset.AddImport(innerDefaultImport);
+
+        var actionsArray = (_gustaveJoinAsset.Exports[0] as NormalExport).Data[0] as ArrayPropertyData;
+        // Action 3 has external reference
+        var newActionStruct = actionsArray.Value[3].Clone() as StructPropertyData;
+        
+        (newActionStruct.Value[0] as ObjectPropertyData).Value = innerImportIndex;
+        actionsArray.Value = actionsArray.Value.Append(newActionStruct).ToArray();
+        
+        var replaceActionStruct = (_replaceGustaveAsset.Exports[0] as NormalExport).Data[0] as StructPropertyData;
+        (replaceActionStruct.Value[1] as EnumPropertyData).FromString(["E_Characters", $"E_Characters::NewEnumerator{newCharacter.Enum}"], _replaceGustaveAsset);
+        Utils.ReplaceNameReference(_ripGustaveAsset, "E_Characters::NewEnumerator0", $"E_Characters::NewEnumerator{newCharacter.Enum}");
+        
+        replaceActionStruct = (_versoReplaceGustaveAsset.Exports[0] as NormalExport).Data[0] as StructPropertyData;
+        (replaceActionStruct.Value[0] as EnumPropertyData).FromString(["E_Characters", $"E_Characters::NewEnumerator{newCharacter.Enum}"], _versoReplaceGustaveAsset);
+        
+        replaceActionStruct = (_gustaveReplaceVersoAsset.Exports[0] as NormalExport).Data[0] as StructPropertyData;
+        (replaceActionStruct.Value[1] as EnumPropertyData).FromString(["E_Characters", $"E_Characters::NewEnumerator{newCharacter.Enum}"], _gustaveReplaceVersoAsset);
+    }
+
+    public void SetLuneSpotCharacter(string characterName)
+    {
+        if (characterName == "Lune") return;
+        Utils.ReplaceNameReference(_luneJoinAsset, "Lune", characterName);
+    }
+    
+    public void SetMaelleSpotCharacter(string characterName)
+    {
+        if (characterName == "Maelle") return;
+        Utils.ReplaceNameReference(_maelleJoinAsset, "Maelle", characterName);
+    }
+    
+    public void SetScielSpotCharacter(string characterName)
+    {
+        if (characterName == "Sciel") return;
+        Utils.ReplaceNameReference(_scielJoinAsset, "Sciel", characterName);
+    }
+    
+    public void SetVersoSpotCharacter(CharacterData newCharacter)
+    {
+        if (newCharacter.CodeName == "Verso") return;
+        
+        var replaceActionStruct = (_versoReplaceGustaveAsset.Exports[0] as NormalExport).Data[0] as StructPropertyData;
+        (replaceActionStruct.Value[1] as EnumPropertyData).FromString(["E_Characters", $"E_Characters::NewEnumerator{newCharacter.Enum}"], _versoReplaceGustaveAsset);
+        
+        replaceActionStruct = (_gustaveReplaceVersoAsset.Exports[0] as NormalExport).Data[0] as StructPropertyData;
+        (replaceActionStruct.Value[0] as EnumPropertyData).FromString(["E_Characters", $"E_Characters::NewEnumerator{newCharacter.Enum}"], _gustaveReplaceVersoAsset);
+    }
+    
+    public void SetMonocoSpotCharacter(string characterName)
+    {
+        if (characterName == "Monoco") return;
+        Utils.ReplaceNameReference(_monocoJoinAsset, "Monoco", characterName);
+    }
+    
     public override void Randomize()
     {
-        throw new NotImplementedException();
+        RandomizerLogic.rand.Shuffle(charactersJoinOrder);
     }
 
     public override void AddObjectToContainer(string objectCodeName, string containerCodeName)
@@ -55,7 +137,8 @@ public class CharacterController: Controller<CharacterData>
 
     public override void InitFromTxt(string text)
     {
-        throw new NotImplementedException();
+        var characterCodeNames = text.Split('\n');
+        charactersJoinOrder = characterCodeNames.Select(GetObject).ToArray();
     }
 
     public override void ApplyViewModel()
@@ -70,16 +153,31 @@ public class CharacterController: Controller<CharacterData>
 
     public override string ConvertToTxt()
     {
-        throw new NotImplementedException();
+        return string.Join("\n", charactersJoinOrder.Select(c => c.CodeName));
     }
 
     public override void Reset()
     {
-        throw new NotImplementedException();
+        charactersJoinOrder = [GetObject("Frey"), GetObject("Lune"), GetObject("Maelle"), GetObject("Sciel"), GetObject("Verso"), GetObject("Monoco")];
     }
 
     public override void WriteAssets()
     {
-        throw new NotImplementedException();
+        SetGustaveSpotCharacter(charactersJoinOrder[0]);
+        SetLuneSpotCharacter(charactersJoinOrder[1].CodeName);
+        SetMaelleSpotCharacter(charactersJoinOrder[2].CodeName);
+        SetScielSpotCharacter(charactersJoinOrder[3].CodeName);
+        SetVersoSpotCharacter(charactersJoinOrder[4]);
+        SetMonocoSpotCharacter(charactersJoinOrder[5].CodeName);
+        
+        Utils.WriteAsset(_gustaveJoinAsset);
+        Utils.WriteAsset(_replaceGustaveAsset);
+        Utils.WriteAsset(_luneJoinAsset);
+        Utils.WriteAsset(_maelleJoinAsset);
+        Utils.WriteAsset(_scielJoinAsset);
+        Utils.WriteAsset(_ripGustaveAsset);
+        Utils.WriteAsset(_versoReplaceGustaveAsset);
+        Utils.WriteAsset(_monocoJoinAsset);
+        Utils.WriteAsset(_gustaveReplaceVersoAsset);
     }
 }

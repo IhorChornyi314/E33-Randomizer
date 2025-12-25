@@ -25,6 +25,9 @@
             <TabItem Header="Skill Randomizer">
                 <e33Randomizer:RandomizeSkillsTab x:Name="SkillRandomizerTab"/>
             </TabItem>
+            <TabItem Header="Paramdomizer">
+                <e33Randomizer:ParamdomizerTab x:Name="ParamdomizerTab"/>
+            </TabItem>
             <TabItem Header="Misc">
                 <Grid>
                     <GroupBox Grid.Row="0" Header="Save File Patching" Margin="10, 10, 5, 0"

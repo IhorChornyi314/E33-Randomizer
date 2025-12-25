@@ -5,6 +5,7 @@ public static class Controllers
     public static SkillsController SkillsController = new();
     public static ItemsController ItemsController = new();
     public static EnemiesController EnemiesController = new();
+    public static CharacterController CharacterController = new();
 
     public static BaseController GetController(string objectType)
     {
@@ -13,6 +14,7 @@ public static class Controllers
             "Enemy" => EnemiesController,
             "Item" => ItemsController,
             "Skill" => SkillsController,
+            "Character" => CharacterController,
             _ => null
         };
     }
@@ -22,6 +24,7 @@ public static class Controllers
         EnemiesController.Initialize();
         SkillsController.Initialize();
         ItemsController.Initialize();
+        CharacterController.Initialize();
     }
 
     public static void WriteAssets()
@@ -37,6 +40,10 @@ public static class Controllers
         if (RandomizerLogic.Settings.RandomizeEnemies)
         {
             EnemiesController.WriteAssets();
+        }
+        if (RandomizerLogic.Settings.RandomizeCharacters)
+        {
+            CharacterController.WriteAssets();
         }
     }
 }

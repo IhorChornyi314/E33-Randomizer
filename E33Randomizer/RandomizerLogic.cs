@@ -170,6 +170,7 @@ public static class RandomizerLogic
             Controllers.EnemiesController.WriteTxt(exportPath + "config/encounters.txt");
             Controllers.ItemsController.WriteTxt(exportPath + "config/checks.txt");
             Controllers.SkillsController.WriteTxt(exportPath + "config/skills.txt");
+            Controllers.CharacterController.WriteTxt(exportPath + "config/characters.txt");
             using StreamWriter r = new StreamWriter(exportPath + "config/settings.json");
             var json = JsonConvert.SerializeObject(Settings, Formatting.Indented);
             r.Write(json);
@@ -206,6 +207,7 @@ public static class RandomizerLogic
         if (Settings.RandomizeEnemies) Controllers.EnemiesController.Randomize();
         if (Settings.RandomizeItems) Controllers.ItemsController.Randomize();
         if (Settings.RandomizeSkills) Controllers.SkillsController.Randomize();
+        if (Settings.RandomizeCharacters) Controllers.CharacterController.Randomize();
         if (saveData)
             PackAndConvertData();
     }

@@ -329,6 +329,8 @@ public class SettingsViewModel : INotifyPropertyChanged
     public bool FullyRandomEdges { get; set; } = false;
     public int RandomEdgeChancePercent { get; set; } = 60;
     
+    public bool RandomizeCharacters { get; set; } = false;
+    
     
     public event PropertyChangedEventHandler PropertyChanged;
     protected virtual void OnPropertyChanged(string propertyName)

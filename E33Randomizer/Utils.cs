@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using UAssetAPI;
+using UAssetAPI.UnrealTypes;
 
 namespace E33Randomizer;
 
@@ -54,5 +55,12 @@ public static class Utils
         var arr = list.ToArray();
         RandomizerLogic.rand.Shuffle(arr);
         return arr.ToList();
+    }
+
+    public static void ReplaceNameReference(UAsset asset, string oldName, string newName)
+    {
+        if (oldName == newName) return;
+        var oldNameIndex = asset.SearchNameReference(FString.FromString(oldName));
+        asset.SetNameReference(oldNameIndex, FString.FromString(newName));
     }
 }
