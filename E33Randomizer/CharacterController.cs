@@ -91,10 +91,12 @@ public class CharacterController: Controller<CharacterData>
         Utils.ReplaceNameReference(_luneJoinAsset, "Lune", characterName);
     }
     
-    public void SetMaelleSpotCharacter(string characterName)
+    public void SetMaelleSpotCharacter(CharacterData newCharacter)
     {
-        if (characterName == "Maelle") return;
-        Utils.ReplaceNameReference(_maelleJoinAsset, "Maelle", characterName);
+        if (newCharacter.CodeName == "Maelle") return;
+        
+        Utils.ReplaceNameReference(_maelleJoinAsset, "Maelle", newCharacter.CodeName);
+        Utils.ReplaceNameReference(_maelleJoinAsset, "E_Characters::NewEnumerator1", $"E_Characters::NewEnumerator{newCharacter.Enum}");
     }
     
     public void SetScielSpotCharacter(string characterName)
@@ -165,7 +167,7 @@ public class CharacterController: Controller<CharacterData>
     {
         SetGustaveSpotCharacter(charactersJoinOrder[0]);
         SetLuneSpotCharacter(charactersJoinOrder[1].CodeName);
-        SetMaelleSpotCharacter(charactersJoinOrder[2].CodeName);
+        SetMaelleSpotCharacter(charactersJoinOrder[2]);
         SetScielSpotCharacter(charactersJoinOrder[3].CodeName);
         SetVersoSpotCharacter(charactersJoinOrder[4]);
         SetMonocoSpotCharacter(charactersJoinOrder[5].CodeName);

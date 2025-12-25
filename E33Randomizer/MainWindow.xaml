@@ -98,7 +98,7 @@
                                         ShowButtonSpinner="False"
                                         Margin="10,0,20,0"
                                         VerticalAlignment="Center"
-                                        Maximum="999999999"
+                                        Maximum="2000000000"
                                         Minimum="-1"
                                         HorizontalAlignment="Left"
                                         Height="25"
