@@ -9,17 +9,20 @@ namespace E33Randomizer;
 
 public class CharacterController: Controller<CharacterData>
 {
-    private string _cleanSnapshot;
     private UAsset _sophieJoinAsset;
     private UAsset _gustaveJoinAsset;
     private UAsset _replaceGustaveAsset;
     private UAsset _sophieLeaveAsset;
     private UAsset _luneJoinAsset;
+    private UAsset _luneJoinCinematicAsset;
     private UAsset _maelleJoinAsset;
+    private UAsset _maelleJoinCinematicAsset;
     private UAsset _scielJoinAsset;
+    private UAsset _scielJoinCinematicAsset;
     private UAsset _ripGustaveAsset;
     private UAsset _versoReplaceGustaveAsset;
     private UAsset _monocoJoinAsset;
+    private UAsset _monocoJoinCinematicAsset;
     private UAsset _gustaveReplaceVersoAsset;
     
     public CharacterData[] charactersJoinOrder = new CharacterData[6];
@@ -28,7 +31,6 @@ public class CharacterController: Controller<CharacterData>
     {
         ReadObjectsData($"{RandomizerLogic.DataDirectory}/character_data.json");
         charactersJoinOrder = [GetObject("Frey"), GetObject("Lune"), GetObject("Maelle"), GetObject("Sciel"), GetObject("Verso"), GetObject("Monoco")];
-        _cleanSnapshot = ConvertToTxt();
         ReadAssets($"{RandomizerLogic.DataDirectory}/ParandomizerData/CharacterJoinGAs");
     }
 
@@ -36,12 +38,22 @@ public class CharacterController: Controller<CharacterData>
     {
         _gustaveJoinAsset = new UAsset($"{filesDirectory}/DA_GA_SQT_TheDeparture.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
         _replaceGustaveAsset = new UAsset($"{filesDirectory}/DA_ReplaceCharacter_GustaveByRandom.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+        
         _luneJoinAsset = new UAsset($"{filesDirectory}/DA_GA_SQT_LuneJoinGroup.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+        _luneJoinCinematicAsset = new UAsset($"{filesDirectory}/DA_GA_CIN_LuminizerIntro.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+        
         _maelleJoinAsset = new UAsset($"{filesDirectory}/DA_GA_SQT_MaelleJoinsGroup.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+        _maelleJoinCinematicAsset = new UAsset($"{filesDirectory}/DA_GA_CIN_MaelleReunion.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+        
         _scielJoinAsset = new UAsset($"{filesDirectory}/DA_GA_SQT_ScielJoinsGroup_P1.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+        _scielJoinCinematicAsset = new UAsset($"{filesDirectory}/DA_GA_CIN_PostGestralTournament.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+        
         _ripGustaveAsset = new UAsset($"{filesDirectory}/DA_GA_SQT_GustaveDieEndLevel.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
         _versoReplaceGustaveAsset = new UAsset($"{filesDirectory}/DA_ReplaceCharacter_GustaveByVerso_modified.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+        
         _monocoJoinAsset = new UAsset($"{filesDirectory}/DA_GA_SQT_MonocoUnlock.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+        _monocoJoinCinematicAsset = new UAsset($"{filesDirectory}/DA_GA_CIN_MonocoJoinsTheGroup_GrandisOutside.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+        
         _gustaveReplaceVersoAsset = new UAsset($"{filesDirectory}/DA_ReplaceCharacter_VersoByGustave.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
     }
 
@@ -70,7 +82,8 @@ public class CharacterController: Controller<CharacterData>
         var actionsArray = (_gustaveJoinAsset.Exports[0] as NormalExport).Data[0] as ArrayPropertyData;
         // Action 3 has external reference
         var newActionStruct = actionsArray.Value[3].Clone() as StructPropertyData;
-        
+
+        newActionStruct.Name = FName.FromString(_gustaveJoinAsset, "5");
         (newActionStruct.Value[0] as ObjectPropertyData).Value = innerImportIndex;
         actionsArray.Value = actionsArray.Value.Append(newActionStruct).ToArray();
         
@@ -89,6 +102,7 @@ public class CharacterController: Controller<CharacterData>
     {
         if (characterName == "Lune") return;
         Utils.ReplaceNameReference(_luneJoinAsset, "Lune", characterName);
+        Utils.ReplaceNameReference(_luneJoinCinematicAsset, "Lune", characterName);
     }
     
     public void SetMaelleSpotCharacter(CharacterData newCharacter)
@@ -96,6 +110,7 @@ public class CharacterController: Controller<CharacterData>
         if (newCharacter.CodeName == "Maelle") return;
         
         Utils.ReplaceNameReference(_maelleJoinAsset, "Maelle", newCharacter.CodeName);
+        Utils.ReplaceNameReference(_maelleJoinCinematicAsset, "Maelle", newCharacter.CodeName);
         Utils.ReplaceNameReference(_maelleJoinAsset, "E_Characters::NewEnumerator1", $"E_Characters::NewEnumerator{newCharacter.Enum}");
     }
     
@@ -103,6 +118,7 @@ public class CharacterController: Controller<CharacterData>
     {
         if (characterName == "Sciel") return;
         Utils.ReplaceNameReference(_scielJoinAsset, "Sciel", characterName);
+        Utils.ReplaceNameReference(_scielJoinCinematicAsset, "Sciel", characterName);
     }
     
     public void SetVersoSpotCharacter(CharacterData newCharacter)
@@ -120,6 +136,7 @@ public class CharacterController: Controller<CharacterData>
     {
         if (characterName == "Monoco") return;
         Utils.ReplaceNameReference(_monocoJoinAsset, "Monoco", characterName);
+        Utils.ReplaceNameReference(_monocoJoinCinematicAsset, "Monoco", characterName);
     }
     
     public override void Randomize()
@@ -165,6 +182,12 @@ public class CharacterController: Controller<CharacterData>
 
     public override void WriteAssets()
     {
+        //TODO: Change the other characters in preset fights
+        //TODO: Figure out what to do with the set character dialogues
+        //TODO: Fix the party not behaving properly
+        
+        //As of now it would take too much effort to fix all this, so I have to cut this out
+        
         SetGustaveSpotCharacter(charactersJoinOrder[0]);
         SetLuneSpotCharacter(charactersJoinOrder[1].CodeName);
         SetMaelleSpotCharacter(charactersJoinOrder[2]);
@@ -175,11 +198,15 @@ public class CharacterController: Controller<CharacterData>
         Utils.WriteAsset(_gustaveJoinAsset);
         Utils.WriteAsset(_replaceGustaveAsset);
         Utils.WriteAsset(_luneJoinAsset);
+        Utils.WriteAsset(_luneJoinCinematicAsset);
         Utils.WriteAsset(_maelleJoinAsset);
+        Utils.WriteAsset(_maelleJoinCinematicAsset);
         Utils.WriteAsset(_scielJoinAsset);
+        Utils.WriteAsset(_scielJoinCinematicAsset);
         Utils.WriteAsset(_ripGustaveAsset);
         Utils.WriteAsset(_versoReplaceGustaveAsset);
         Utils.WriteAsset(_monocoJoinAsset);
+        Utils.WriteAsset(_monocoJoinCinematicAsset);
         Utils.WriteAsset(_gustaveReplaceVersoAsset);
     }
 }
