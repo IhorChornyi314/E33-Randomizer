@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace E33Randomizer;
 
-class CustomPlacementPreset(
+public class CustomPlacementPreset(
     List<string> n,
     List<string> e,
     Dictionary<string, Dictionary<string, float>> c,
@@ -39,6 +39,11 @@ public abstract class CustomPlacement
     
     public abstract void Init();
     public abstract void LoadDefaultPreset();
+
+    public CustomPlacement()
+    {
+        Init();
+    }
     
     public void LoadCategories(string categoriesJsonFile)
     {
@@ -77,6 +82,25 @@ public abstract class CustomPlacement
         NotRandomized.Clear();
         NotRandomizedCodeNames.Clear();
     }
+
+    public void LoadFromPreset(CustomPlacementPreset preset)
+    {
+        NotRandomized.Clear();
+        NotRandomizedCodeNames.Clear();
+        Excluded.Clear();
+        ExcludedCodeNames.Clear();
+            
+        foreach (var notRandomized in preset.NotRandomized)
+        {
+            AddNotRandomized(notRandomized);
+        }
+        foreach (var excluded in preset.Excluded)
+        {
+            AddExcluded(excluded);
+        }
+        CustomPlacementRules = preset.CustomPlacement;
+        FrequencyAdjustments = preset.FrequencyAdjustments;
+    }
     
     public void LoadFromJson(string pathToJson)
     {
@@ -84,21 +108,7 @@ public abstract class CustomPlacement
         {
             string json = r.ReadToEnd();
             var presetData = JsonConvert.DeserializeObject<CustomPlacementPreset>(json);
-            NotRandomized.Clear();
-            NotRandomizedCodeNames.Clear();
-            Excluded.Clear();
-            ExcludedCodeNames.Clear();
-            
-            foreach (var notRandomized in presetData.NotRandomized)
-            {
-                AddNotRandomized(notRandomized);
-            }
-            foreach (var excluded in presetData.Excluded)
-            {
-                AddExcluded(excluded);
-            }
-            CustomPlacementRules = presetData.CustomPlacement;
-            FrequencyAdjustments = presetData.FrequencyAdjustments;
+            LoadFromPreset(presetData);
         }
     }
     
@@ -132,6 +142,12 @@ public abstract class CustomPlacement
     {
         NotRandomized.Remove(plainName);
         NotRandomizedCodeNames = NotRandomizedCodeNames.Except(PlainNameToCodeNames[plainName]).ToList();
+    }
+
+    public bool IsRandomized(string codeName)
+    {
+        // TODO: Strictly speaking we should also catch the case when a thing is rolled into itself 100% of the time but eh
+        return !NotRandomizedCodeNames.Contains(codeName);
     }
     
     public void SetCustomPlacement(string from, string to, float frequency)

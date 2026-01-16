@@ -9,7 +9,6 @@ public abstract class Controller<T>: BaseController where T: ObjectData, new()
     public T DefaultObject = new ();
     public List<T> ObjectsData = new();
     public Dictionary<string, T> ObjectsByName = new();
-    public CustomPlacement CustomPlacement;
 
     public void ReadObjectsData(string path)
     {

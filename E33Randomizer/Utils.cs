@@ -50,6 +50,11 @@ public static class Utils
         return RandomizerLogic.rand.Next(Math.Min(min, max), Math.Max(min, max) + 1);
     }
 
+    public static bool IsBetween(int val, int a, int b)
+    {
+        return val >= Math.Min(a, b) && val <= Math.Max(a, b);
+    }
+
     public static List<T> ShuffleList<T>(List<T> list)
     {
         var arr = list.ToArray();

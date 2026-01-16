@@ -5,6 +5,7 @@ public abstract class ObjectData
     public string CustomName = "";
     public string CodeName = "";
     public bool IsBroken = false;
+    public bool IsCutContent = false;
     
     public override bool Equals(object? obj)
     {

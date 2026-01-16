@@ -71,7 +71,7 @@ public static class SpecialRules
         var bannedBosses = Controllers.EnemiesController.GetObjects(RandomizerLogic.CustomEnemyPlacement.ExcludedCodeNames);
         if (!RandomizerLogic.Settings.IncludeCutContentEnemies)
         {
-            bannedBosses.AddRange(Controllers.EnemiesController.ObjectsData.Where(e => e.CustomName.Contains("Cut")).ToList());
+            bannedBosses.AddRange(Controllers.EnemiesController.ObjectsData.Where(e => e.IsCutContent).ToList());
         }
 
         _bossPool = new ObjectPool<EnemyData>(Controllers.EnemiesController.ObjectsData, bannedBosses);

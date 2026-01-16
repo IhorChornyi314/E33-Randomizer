@@ -85,8 +85,8 @@ public abstract class ItemSource
         {
             if (!RandomizerLogic.Settings.ChangeSizesOfNonRandomizedChecks && sourceSection.Value.Count > 0)
             {
-                var encounterRandomized = sourceSection.Value.Any(e => !RandomizerLogic.CustomItemPlacement.NotRandomizedCodeNames.Contains(e.Item.CodeName));
-                if (!encounterRandomized) continue;
+                var checkRandomized = sourceSection.Value.Any(e => !RandomizerLogic.CustomItemPlacement.NotRandomizedCodeNames.Contains(e.Item.CodeName));
+                if (!checkRandomized) continue;
             }
             
             var newSize = Utils.Between(min, max);

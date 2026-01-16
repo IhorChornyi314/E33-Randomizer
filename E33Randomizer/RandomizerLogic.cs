@@ -91,12 +91,18 @@ public static class RandomizerLogic
         "AutoPrecision",
         "BramblePerformer"
     ];
+    #if DEBUG
+        public static string DataDirectory = Environment.GetEnvironmentVariable("E33RandoDataPath");
+    #else
+            public static string DataDirectory = "Data";
+    #endif
+    
     public static Usmap mappings;
     public static Dictionary<string, string> EnemyCustomNames = new ();
     public static Dictionary<string, string> ItemCustomNames = new ();
-    public static CustomEnemyPlacement CustomEnemyPlacement = new ();
-    public static CustomItemPlacement CustomItemPlacement = new ();
-    public static CustomSkillPlacement CustomSkillPlacement = new ();
+    public static CustomEnemyPlacement CustomEnemyPlacement;
+    public static CustomItemPlacement CustomItemPlacement;
+    public static CustomSkillPlacement CustomSkillPlacement;
     public static SettingsViewModel Settings = new ();
     
     public static Random rand;
@@ -104,27 +110,23 @@ public static class RandomizerLogic
     public static Dictionary<string, Dictionary<string, float>> EnemyFrequenciesWithinArchetype = new();
     public static Dictionary<string, float> TotalEnemyFrequencies;
     public static string PresetName = "";
-    #if DEBUG
-        public static string DataDirectory = Environment.GetEnvironmentVariable("E33RandoDataPath");
-    #else
-        public static string DataDirectory = "Data";
-    #endif
+    
 
     public static List<string> Archetypes =
         ["Regular", "Weak", "Strong", "Elite", "Boss", "Alpha", "Elusive", "Petank"];
 
     public static void Init()
     {
-        usedSeed = Settings.Seed != -1 ? Settings.Seed : Environment.TickCount % 999999999; 
+        usedSeed = Settings.Seed != -1 ? Settings.Seed : Environment.TickCount % 99999999; 
         rand = new Random(usedSeed);
     
         mappings = new Usmap($"{DataDirectory}/Mappings.usmap");
         Controllers.InitControllers();
         
         ConstructEnemyFrequenciesWithinArchetype();
-        CustomEnemyPlacement.Init();
-        CustomItemPlacement.Init();
-        CustomSkillPlacement.Init();
+        CustomEnemyPlacement = new();
+        CustomItemPlacement = new();
+        CustomSkillPlacement = new();
         CharacterStartingStateManager.Init();
         SpecialRules.Reset();
     }

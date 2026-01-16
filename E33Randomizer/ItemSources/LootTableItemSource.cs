@@ -106,9 +106,9 @@ public class LootTableItemSource: ItemSource
 
     public override void Randomize()
     {
-        _minNumberOfItems = FileName.Contains("Exploration") ? RandomizerLogic.Settings.ChestContentsNumberMin : RandomizerLogic.Settings.TowerRewardsNumberMin;
-        _maxNumberOfItems = FileName.Contains("Exploration") ? RandomizerLogic.Settings.ChestContentsNumberMax : RandomizerLogic.Settings.TowerRewardsNumberMax;
-        _changeNumberOfItems = FileName.Contains("Exploration") ? RandomizerLogic.Settings.ChangeNumberOfChestContents : RandomizerLogic.Settings.ChangeNumberOfTowerRewards;
+        _minNumberOfItems = FileName.Contains("Exploration") || FileName.Contains("Visage") ? RandomizerLogic.Settings.ChestContentsNumberMin : RandomizerLogic.Settings.LootDropsNumberMin;
+        _maxNumberOfItems = FileName.Contains("Exploration") || FileName.Contains("Visage") ? RandomizerLogic.Settings.ChestContentsNumberMax : RandomizerLogic.Settings.LootDropsNumberMax;
+        _changeNumberOfItems = FileName.Contains("Exploration") || FileName.Contains("Visage") ? RandomizerLogic.Settings.ChangeNumberOfChestContents : RandomizerLogic.Settings.ChangeNumberOfLootDrops;
         base.Randomize();
     }
 }

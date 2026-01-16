@@ -17,8 +17,6 @@ public class SkillsController: Controller<SkillData>
         ReadAssets($"{RandomizerLogic.DataDirectory}/SkillsData");
         ViewModel.ContainerName = "Skill Tree";
         ViewModel.ObjectName = "Skill";
-        CustomPlacement = new CustomSkillPlacement();
-        CustomPlacement.Init();
         _cleanSnapshot = ConvertToTxt();
         UpdateViewModel();
     }
@@ -118,6 +116,7 @@ public class SkillsController: Controller<SkillData>
 
     public void ReadAssets(string filesDirectory)
     {
+        SkillGraphs.Clear();
         var fileEntries = new List<string> (Directory.GetFiles(filesDirectory));
         foreach (var fileEntry in fileEntries.Where(f => f.Contains("DA_SkillGraph") && f.EndsWith(".uasset")))
         {

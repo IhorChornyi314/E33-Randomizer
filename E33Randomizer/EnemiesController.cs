@@ -117,7 +117,7 @@ public class EnemiesController: Controller<EnemyData>
         SpecialRules.Reset();
         ReadEncounterAssets();
         var cutContentAlreadyExcluded = RandomizerLogic.CustomEnemyPlacement.Excluded.Contains("Cut Content Enemies");
-        if (!RandomizerLogic.Settings.IncludeCutContentEnemies)
+        if (!RandomizerLogic.Settings.IncludeCutContentEnemies && !cutContentAlreadyExcluded)
         {
             RandomizerLogic.CustomEnemyPlacement.AddExcluded("Cut Content Enemies");
         }

@@ -1,4 +1,6 @@
 .idea/
 E33Randomizer/bin/
 E33Randomizer/obj/
+Tests/bin/
+Tests/obj/
 *.user

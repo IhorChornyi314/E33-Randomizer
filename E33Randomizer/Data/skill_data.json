@@ -5,7 +5,8 @@
     "ClassName": "DA_Skill_MediumEnergyTint",
     "NameID": "Consumable_Energy_Level1",
     "ClassPath": "/Game/Content/Gameplay/SkillTree/Content/Consumables/DA_Skill_MediumEnergyTint",
-    "CharacterName": "Consumables"
+    "CharacterName": "Consumables",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_MediumHealingTint",
@@ -13,7 +14,8 @@
     "ClassName": "DA_Skill_MediumHealingTint",
     "NameID": "Consumable_Health_Level1",
     "ClassPath": "/Game/Content/Gameplay/SkillTree/Content/Consumables/DA_Skill_MediumHealingTint",
-    "CharacterName": "Consumables"
+    "CharacterName": "Consumables",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_MediumReviveTint",
@@ -21,7 +23,8 @@
     "ClassName": "DA_Skill_MediumReviveTint",
     "NameID": "Consumable_Revive_Level1",
     "ClassPath": "/Game/Content/Gameplay/SkillTree/Content/Consumables/DA_Skill_MediumReviveTint",
-    "CharacterName": "Consumables"
+    "CharacterName": "Consumables",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_SmallEnergyTint",
@@ -29,7 +32,8 @@
     "ClassName": "DA_Skill_SmallEnergyTint",
     "NameID": "Consumable_Energy_Level0",
     "ClassPath": "/Game/Content/Gameplay/SkillTree/Content/Consumables/DA_Skill_SmallEnergyTint",
-    "CharacterName": "Consumables"
+    "CharacterName": "Consumables",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_SmallHealingTint",
@@ -37,7 +41,8 @@
     "ClassName": "DA_Skill_SmallHealingTint",
     "NameID": "Consumable_Health_Level0",
     "ClassPath": "/Game/Content/Gameplay/SkillTree/Content/Consumables/DA_Skill_SmallHealingTint",
-    "CharacterName": "Consumables"
+    "CharacterName": "Consumables",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_SmallReviveTint",
@@ -45,7 +50,8 @@
     "ClassName": "DA_Skill_SmallReviveTint",
     "NameID": "Consumable_Revive_Level0",
     "ClassPath": "/Game/Content/Gameplay/SkillTree/Content/Consumables/DA_Skill_SmallReviveTint",
-    "CharacterName": "Consumables"
+    "CharacterName": "Consumables",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_StrongEnergyTint",
@@ -53,7 +59,8 @@
     "ClassName": "DA_Skill_StrongEnergyTint",
     "NameID": "Consumable_Energy_Level2",
     "ClassPath": "/Game/Content/Gameplay/SkillTree/Content/Consumables/DA_Skill_StrongEnergyTint",
-    "CharacterName": "Consumables"
+    "CharacterName": "Consumables",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_StrongHealingTint",
@@ -61,7 +68,8 @@
     "ClassName": "DA_Skill_StrongHealingTint",
     "NameID": "Consumable_Health_Level2",
     "ClassPath": "/Game/Content/Gameplay/SkillTree/Content/Consumables/DA_Skill_StrongHealingTint",
-    "CharacterName": "Consumables"
+    "CharacterName": "Consumables",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_StrongReviveTint",
@@ -69,7 +77,8 @@
     "ClassName": "DA_Skill_StrongReviveTint",
     "NameID": "Consumable_Revive_Level2",
     "ClassPath": "/Game/Content/Gameplay/SkillTree/Content/Consumables/DA_Skill_StrongReviveTint",
-    "CharacterName": "Consumables"
+    "CharacterName": "Consumables",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Gustave_Combo1",
@@ -77,7 +86,8 @@
     "ClassName": "DA_Skill_Gustave_Combo1",
     "NameID": "Combo1_Gustave",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Gustave/DA_Skill_Gustave_Combo1",
-    "CharacterName": "Gustave"
+    "CharacterName": "Gustave",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Gustave_FromFire",
@@ -85,7 +95,8 @@
     "ClassName": "DA_Skill_Gustave_FromFire",
     "NameID": "FromFire_Gustave",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Gustave/DA_Skill_Gustave_FromFire",
-    "CharacterName": "Gustave"
+    "CharacterName": "Gustave",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Gustave_MarkingShot",
@@ -93,7 +104,8 @@
     "ClassName": "DA_Skill_Gustave_MarkingShot",
     "NameID": "MarkingShot_Gustave",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Gustave/DA_Skill_Gustave_MarkingShot",
-    "CharacterName": "Gustave"
+    "CharacterName": "Gustave",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Gustave_PerfectBreak",
@@ -101,7 +113,8 @@
     "ClassName": "DA_Skill_Gustave_PerfectBreak",
     "NameID": "PerfectBreak_Gustave",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Gustave/DA_Skill_Gustave_PerfectBreak",
-    "CharacterName": "Gustave"
+    "CharacterName": "Gustave",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Gustave_PerfectRecovery",
@@ -109,7 +122,8 @@
     "ClassName": "DA_Skill_Gustave_PerfectRecovery",
     "NameID": "PerfectRecovery_Gustave",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Gustave/DA_Skill_Gustave_PerfectRecovery",
-    "CharacterName": "Gustave"
+    "CharacterName": "Gustave",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Gustave_Powerful",
@@ -117,7 +131,8 @@
     "ClassName": "DA_Skill_Gustave_Powerful",
     "NameID": "Powerful_Gustave",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Gustave/DA_Skill_Gustave_Powerful",
-    "CharacterName": "Gustave"
+    "CharacterName": "Gustave",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Gustave_Strikestorm",
@@ -125,7 +140,8 @@
     "ClassName": "DA_Skill_Gustave_Strikestorm",
     "NameID": "StrikeStorm_Gustave",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Gustave/DA_Skill_Gustave_Strikestorm",
-    "CharacterName": "Gustave"
+    "CharacterName": "Gustave",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Gustave_UnleashCharge",
@@ -133,7 +149,8 @@
     "ClassName": "DA_Skill_Gustave_UnleashCharge",
     "NameID": "UnleashCharge",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Gustave/DA_Skill_Gustave_UnleashCharge",
-    "CharacterName": "Gustave"
+    "CharacterName": "Gustave",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Julie_Combo1",
@@ -141,7 +158,8 @@
     "ClassName": "DA_Skill_Julie_Combo1",
     "NameID": "Combo1_Julie",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Julie/DA_Skill_Julie_Combo1",
-    "CharacterName": "Julie"
+    "CharacterName": "Julie",
+    "IsCutContent": true
   },
   {
     "CodeName": "DA_Skill_Lune_CripplingTsunami",
@@ -149,7 +167,8 @@
     "ClassName": "DA_Skill_Lune_CripplingTsunami",
     "NameID": "CripplingTsunami",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_CripplingTsunami",
-    "CharacterName": "Lune"
+    "CharacterName": "Lune",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Lune_CrustalCrush",
@@ -157,7 +176,8 @@
     "ClassName": "DA_Skill_Lune_CrustalCrush",
     "NameID": "CrustalCrush",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_CrustalCrush",
-    "CharacterName": "Lune"
+    "CharacterName": "Lune",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Lune_EarthQuake",
@@ -165,7 +185,8 @@
     "ClassName": "DA_Skill_Lune_EarthQuake",
     "NameID": "Earthquake",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_EarthQuake",
-    "CharacterName": "Lune"
+    "CharacterName": "Lune",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Lune_EarthSpike",
@@ -173,7 +194,8 @@
     "ClassName": "DA_Skill_Lune_EarthSpike",
     "NameID": "RockSlide",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_EarthSpike",
-    "CharacterName": "Lune"
+    "CharacterName": "Lune",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Lune_Electrify",
@@ -181,7 +203,8 @@
     "ClassName": "DA_Skill_Lune_Electrify",
     "NameID": "Electrify",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_Electrify",
-    "CharacterName": "Lune"
+    "CharacterName": "Lune",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Lune_ElementalGenesis",
@@ -189,7 +212,8 @@
     "ClassName": "DA_Skill_Lune_ElementalGenesis",
     "NameID": "ElementalGenesis",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_ElementalGenesis",
-    "CharacterName": "Lune"
+    "CharacterName": "Lune",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Lune_ElementalTrick",
@@ -197,7 +221,8 @@
     "ClassName": "DA_Skill_Lune_ElementalTrick",
     "NameID": "ElementalTrick",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_ElementalTrick",
-    "CharacterName": "Lune"
+    "CharacterName": "Lune",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Lune_FireRage",
@@ -205,7 +230,8 @@
     "ClassName": "DA_Skill_Lune_FireRage",
     "NameID": "FireRage",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_FireRage",
-    "CharacterName": "Lune"
+    "CharacterName": "Lune",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Lune_HealingLight",
@@ -213,7 +239,8 @@
     "ClassName": "DA_Skill_Lune_HealingLight",
     "NameID": "HealingLight",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_HealingLight",
-    "CharacterName": "Lune"
+    "CharacterName": "Lune",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Lune_Hell",
@@ -221,7 +248,8 @@
     "ClassName": "DA_Skill_Lune_Hell",
     "NameID": "Hell",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_Hell",
-    "CharacterName": "Lune"
+    "CharacterName": "Lune",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Lune_IceGust",
@@ -229,7 +257,8 @@
     "ClassName": "DA_Skill_Lune_IceGust",
     "NameID": "IceGust",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_IceGust",
-    "CharacterName": "Lune"
+    "CharacterName": "Lune",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Lune_Immolation",
@@ -237,7 +266,8 @@
     "ClassName": "DA_Skill_Lune_Immolation",
     "NameID": "Immolation",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_Immolation",
-    "CharacterName": "Lune"
+    "CharacterName": "Lune",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Lune_LightningDance",
@@ -245,7 +275,8 @@
     "ClassName": "DA_Skill_Lune_LightningDance",
     "NameID": "LightningDance",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_LightningDance",
-    "CharacterName": "Lune"
+    "CharacterName": "Lune",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Lune_Mayhem",
@@ -253,7 +284,8 @@
     "ClassName": "DA_Skill_Lune_Mayhem",
     "NameID": "Mayhem",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_Mayhem",
-    "CharacterName": "Lune"
+    "CharacterName": "Lune",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Lune_Rebirth",
@@ -261,7 +293,8 @@
     "ClassName": "DA_Skill_Lune_Rebirth",
     "NameID": "Rebirth",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_Rebirth",
-    "CharacterName": "Lune"
+    "CharacterName": "Lune",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Lune_Revitalization",
@@ -269,7 +302,8 @@
     "ClassName": "DA_Skill_Lune_Revitalization",
     "NameID": "Revitalization",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_Revitalization",
-    "CharacterName": "Lune"
+    "CharacterName": "Lune",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Lune_SkyBreak",
@@ -277,7 +311,8 @@
     "ClassName": "DA_Skill_Lune_SkyBreak",
     "NameID": "SkyBreak",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_SkyBreak",
-    "CharacterName": "Lune"
+    "CharacterName": "Lune",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Lune_StormCaller",
@@ -285,7 +320,8 @@
     "ClassName": "DA_Skill_Lune_StormCaller",
     "NameID": "StormCaller",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_StormCaller",
-    "CharacterName": "Lune"
+    "CharacterName": "Lune",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Lune_Terraquake",
@@ -293,7 +329,8 @@
     "ClassName": "DA_Skill_Lune_Terraquake",
     "NameID": "Terraquake",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_Terraquake",
-    "CharacterName": "Lune"
+    "CharacterName": "Lune",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Lune_ThermalTransfer",
@@ -301,7 +338,8 @@
     "ClassName": "DA_Skill_Lune_ThermalTransfer",
     "NameID": "ThermalTransfer",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_ThermalTransfer",
-    "CharacterName": "Lune"
+    "CharacterName": "Lune",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Lune_Thunderfall",
@@ -309,7 +347,8 @@
     "ClassName": "DA_Skill_Lune_Thunderfall",
     "NameID": "Thunderfall",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_Thunderfall",
-    "CharacterName": "Lune"
+    "CharacterName": "Lune",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Lune_TreeOfLife",
@@ -317,7 +356,8 @@
     "ClassName": "DA_Skill_Lune_TreeOfLife",
     "NameID": "TreeOfLife",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_TreeOfLife",
-    "CharacterName": "Lune"
+    "CharacterName": "Lune",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Lune_Tremor",
@@ -325,7 +365,8 @@
     "ClassName": "DA_Skill_Lune_Tremor",
     "NameID": "Tremor",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_Tremor",
-    "CharacterName": "Lune"
+    "CharacterName": "Lune",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Lune_Typhoon",
@@ -333,7 +374,8 @@
     "ClassName": "DA_Skill_Lune_Typhoon",
     "NameID": "Typhoon",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_Typhoon",
-    "CharacterName": "Lune"
+    "CharacterName": "Lune",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Lune_Wildfire",
@@ -341,7 +383,8 @@
     "ClassName": "DA_Skill_Lune_Wildfire",
     "NameID": "Wildfire",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_Wildfire",
-    "CharacterName": "Lune"
+    "CharacterName": "Lune",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Maelle_BreakingRules",
@@ -349,7 +392,8 @@
     "ClassName": "DA_Skill_Maelle_BreakingRules",
     "NameID": "BreakingRules",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_BreakingRules",
-    "CharacterName": "Maelle"
+    "CharacterName": "Maelle",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Maelle_BurningCanvas",
@@ -357,7 +401,8 @@
     "ClassName": "DA_Skill_Maelle_BurningCanvas",
     "NameID": "BurningCanvas",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_BurningCanvas",
-    "CharacterName": "Maelle"
+    "CharacterName": "Maelle",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Maelle_Degagement",
@@ -365,7 +410,8 @@
     "ClassName": "DA_Skill_Maelle_Degagement",
     "NameID": "Degagement",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_Degagement",
-    "CharacterName": "Maelle"
+    "CharacterName": "Maelle",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Maelle_FencersFlurry",
@@ -373,7 +419,8 @@
     "ClassName": "DA_Skill_Maelle_FencersFlurry",
     "NameID": "FencersFlurry",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_FencersFlurry",
-    "CharacterName": "Maelle"
+    "CharacterName": "Maelle",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Maelle_FleuretFury",
@@ -381,7 +428,8 @@
     "ClassName": "DA_Skill_Maelle_FleuretFury",
     "NameID": "FleuretFury",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_FleuretFury",
-    "CharacterName": "Maelle"
+    "CharacterName": "Maelle",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Maelle_Gommage",
@@ -389,7 +437,8 @@
     "ClassName": "DA_Skill_Maelle_Gommage",
     "NameID": "Gommage",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_Gommage",
-    "CharacterName": "Maelle"
+    "CharacterName": "Maelle",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Maelle_GuardDown",
@@ -397,7 +446,8 @@
     "ClassName": "DA_Skill_Maelle_GuardDown",
     "NameID": "GuardDown",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_GuardDown",
-    "CharacterName": "Maelle"
+    "CharacterName": "Maelle",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Maelle_GuardUp",
@@ -405,7 +455,8 @@
     "ClassName": "DA_Skill_Maelle_GuardUp",
     "NameID": "GuardUp",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_GuardUp",
-    "CharacterName": "Maelle"
+    "CharacterName": "Maelle",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Maelle_GustaveSMemoire",
@@ -413,7 +464,8 @@
     "ClassName": "DA_Skill_Maelle_GustaveSMemoire",
     "NameID": "GustaveSMemoire",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_GustaveSMemoire",
-    "CharacterName": "Maelle"
+    "CharacterName": "Maelle",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Maelle_LastChance",
@@ -421,7 +473,8 @@
     "ClassName": "DA_Skill_Maelle_LastChance",
     "NameID": "LastChance",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_LastChance",
-    "CharacterName": "Maelle"
+    "CharacterName": "Maelle",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Maelle_MomentumStrike",
@@ -429,7 +482,8 @@
     "ClassName": "DA_Skill_Maelle_MomentumStrike",
     "NameID": "MomentumStrike",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_MomentumStrike",
-    "CharacterName": "Maelle"
+    "CharacterName": "Maelle",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Maelle_NEW11_MezzoForte",
@@ -437,7 +491,8 @@
     "ClassName": "DA_Skill_Maelle_NEW11_MezzoForte",
     "NameID": "MezzoForte",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_NEW11_MezzoForte",
-    "CharacterName": "Maelle"
+    "CharacterName": "Maelle",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Maelle_NEW13_Payback",
@@ -445,7 +500,8 @@
     "ClassName": "DA_Skill_Maelle_NEW13_Payback",
     "NameID": "Payback",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_NEW13_Payback",
-    "CharacterName": "Maelle"
+    "CharacterName": "Maelle",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Maelle_NEW14_Percee",
@@ -453,7 +509,8 @@
     "ClassName": "DA_Skill_Maelle_NEW14_Percee",
     "NameID": "Percee",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_NEW14_Percee",
-    "CharacterName": "Maelle"
+    "CharacterName": "Maelle",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Maelle_NEW18_Spark",
@@ -461,7 +518,8 @@
     "ClassName": "DA_Skill_Maelle_NEW18_Spark",
     "NameID": "Spark",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_NEW18_Spark",
-    "CharacterName": "Maelle"
+    "CharacterName": "Maelle",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Maelle_NEW19_InvigoratingFire",
@@ -469,7 +527,8 @@
     "ClassName": "DA_Skill_Maelle_NEW19_InvigoratingFire",
     "NameID": "InvigoratingFire",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_NEW19_InvigoratingFire",
-    "CharacterName": "Maelle"
+    "CharacterName": "Maelle",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Maelle_NEW4_FireRise",
@@ -477,7 +536,8 @@
     "ClassName": "DA_Skill_Maelle_NEW4_FireRise",
     "NameID": "FireRise",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_NEW4_FireRise",
-    "CharacterName": "Maelle"
+    "CharacterName": "Maelle",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Maelle_NEW7_Egide",
@@ -485,7 +545,8 @@
     "ClassName": "DA_Skill_Maelle_NEW7_Egide",
     "NameID": "Egide",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_NEW7_Egide",
-    "CharacterName": "Maelle"
+    "CharacterName": "Maelle",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Maelle_NEW9_RainOfFire",
@@ -493,7 +554,8 @@
     "ClassName": "DA_Skill_Maelle_NEW9_RainOfFire",
     "NameID": "RainOfFire",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_NEW9_RainOfFire",
-    "CharacterName": "Maelle"
+    "CharacterName": "Maelle",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Maelle_OffensiveSwitch",
@@ -501,7 +563,8 @@
     "ClassName": "DA_Skill_Maelle_OffensiveSwitch",
     "NameID": "OffensiveSwitch",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_OffensiveSwitch",
-    "CharacterName": "Maelle"
+    "CharacterName": "Maelle",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Maelle_PhantomStrike",
@@ -509,7 +572,8 @@
     "ClassName": "DA_Skill_Maelle_PhantomStrike",
     "NameID": "PhantomStrike",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_PhantomStrike",
-    "CharacterName": "Maelle"
+    "CharacterName": "Maelle",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Maelle_PhoenixFlame",
@@ -517,7 +581,8 @@
     "ClassName": "DA_Skill_Maelle_PhoenixFlame",
     "NameID": "PhoenixFlame",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_PhoenixFlame",
-    "CharacterName": "Maelle"
+    "CharacterName": "Maelle",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Maelle_Pyrolyse",
@@ -525,7 +590,8 @@
     "ClassName": "DA_Skill_Maelle_Pyrolyse",
     "NameID": "Pyrolyse",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_Pyrolyse",
-    "CharacterName": "Maelle"
+    "CharacterName": "Maelle",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Maelle_Revenge",
@@ -533,7 +599,8 @@
     "ClassName": "DA_Skill_Maelle_Revenge",
     "NameID": "Revenge",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_Revenge",
-    "CharacterName": "Maelle"
+    "CharacterName": "Maelle",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Maelle_Stendhal",
@@ -541,7 +608,8 @@
     "ClassName": "DA_Skill_Maelle_Stendhal",
     "NameID": "Stendhal",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_Stendhal",
-    "CharacterName": "Maelle"
+    "CharacterName": "Maelle",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Maelle_SwordBallet",
@@ -549,7 +617,8 @@
     "ClassName": "DA_Skill_Maelle_SwordBallet",
     "NameID": "SwordBallet",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_SwordBallet",
-    "CharacterName": "Maelle"
+    "CharacterName": "Maelle",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Maelle_VirtuoseStrike",
@@ -557,7 +626,8 @@
     "ClassName": "DA_Skill_Maelle_VirtuoseStrike",
     "NameID": "VirtuoseStrike",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_VirtuoseStrike",
-    "CharacterName": "Maelle"
+    "CharacterName": "Maelle",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_BreakPoint",
@@ -565,7 +635,8 @@
     "ClassName": "DA_Skill_BreakPoint",
     "NameID": "BreakPoint",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_BreakPoint",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_MightyStrike",
@@ -573,7 +644,8 @@
     "ClassName": "DA_Skill_MightyStrike",
     "NameID": "MightyStrike",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_MightyStrike",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Sanctuary",
@@ -581,7 +653,8 @@
     "ClassName": "DA_Skill_Sanctuary",
     "NameID": "Sanctuary",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Sanctuary",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_AbbestMelee",
@@ -589,7 +662,8 @@
     "ClassName": "DA_Skill_Transfo_AbbestMelee",
     "NameID": "AbbestMelee",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_AbbestMelee",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_AberrationBurningLight",
@@ -597,7 +671,8 @@
     "ClassName": "DA_Skill_Transfo_AberrationBurningLight",
     "NameID": "AberrationBurningLight",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_AberrationBurningLight",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_BalletCharm",
@@ -605,7 +680,8 @@
     "ClassName": "DA_Skill_Transfo_BalletCharm",
     "NameID": "BalletCharm",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_BalletCharm",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_BenisseurMortar",
@@ -613,7 +689,8 @@
     "ClassName": "DA_Skill_Transfo_BenisseurMortar",
     "NameID": "BenisseurMortar",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_BenisseurMortar",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_BoucheclierShield",
@@ -621,7 +698,8 @@
     "ClassName": "DA_Skill_Transfo_BoucheclierShield",
     "NameID": "BoucheclierShield",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_BoucheclierShield",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_BraseleurHammerSmash",
@@ -629,7 +707,8 @@
     "ClassName": "DA_Skill_Transfo_BraseleurHammerSmash",
     "NameID": "HammerSmash",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_BraseleurHammerSmash",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_BrulerAnchorsmash",
@@ -637,7 +716,8 @@
     "ClassName": "DA_Skill_Transfo_BrulerAnchorsmash",
     "NameID": "BrulerAnchorSmash",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_BrulerAnchorsmash",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_ChalierRelentlessSword",
@@ -645,7 +725,8 @@
     "ClassName": "DA_Skill_Transfo_ChalierRelentlessSword",
     "NameID": "ChalierRelentlessSword",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_ChalierRelentlessSword",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_ChapelierAxeSlash",
@@ -653,7 +734,8 @@
     "ClassName": "DA_Skill_Transfo_ChapelierAxeSlash",
     "NameID": "ChapelierAxeSlash",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_ChapelierAxeSlash",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_ChevaliereBAoECombo",
@@ -661,7 +743,8 @@
     "ClassName": "DA_Skill_Transfo_ChevaliereBAoECombo",
     "NameID": "ChevaliereBAoECombo",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_ChevaliereBAoECombo",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_ChevaliereCAC",
@@ -669,7 +752,8 @@
     "ClassName": "DA_Skill_Transfo_ChevaliereCAC",
     "NameID": "ChevaliereCAC",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_ChevaliereCAC",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_ChevaliereCAoECombo",
@@ -677,7 +761,8 @@
     "ClassName": "DA_Skill_Transfo_ChevaliereCAoECombo",
     "NameID": "ChevaliereCAOECombo",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_ChevaliereCAoECombo",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_ClairEnfeeble",
@@ -685,7 +770,8 @@
     "ClassName": "DA_Skill_Transfo_ClairEnfeeble",
     "NameID": "ClairEnfeeble",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_ClairEnfeeble",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_ContorsionnisteAngryBlast",
@@ -693,7 +779,8 @@
     "ClassName": "DA_Skill_Transfo_ContorsionnisteAngryBlast",
     "NameID": "ContorsionnisteAngryBlast",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_ContorsionnisteAngryBlast",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_CreationFromTheVoid",
@@ -701,7 +788,8 @@
     "ClassName": "DA_Skill_Transfo_CreationFromTheVoid",
     "NameID": "CreationFromTheVoid",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_CreationFromTheVoid",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_CrulerShield",
@@ -709,7 +797,8 @@
     "ClassName": "DA_Skill_Transfo_CrulerShield",
     "NameID": "CrulerShield",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_CrulerShield",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_DanseuseWingDance",
@@ -717,7 +806,8 @@
     "ClassName": "DA_Skill_Transfo_DanseuseWingDance",
     "NameID": "DanseuseWingDance",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_DanseuseWingDance",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_DemineurThunderStrike",
@@ -725,7 +815,8 @@
     "ClassName": "DA_Skill_Transfo_DemineurThunderStrike",
     "NameID": "DemineurThunderStrike",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_DemineurThunderStrike",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_DuallistStormBlood",
@@ -733,7 +824,8 @@
     "ClassName": "DA_Skill_Transfo_DuallistStormBlood",
     "NameID": "StormBlood",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_DuallistStormBlood",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_EchassierCombo",
@@ -741,7 +833,8 @@
     "ClassName": "DA_Skill_Transfo_EchassierCombo",
     "NameID": "EchassierCombo",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_EchassierCombo",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_EvequeSpear",
@@ -749,7 +842,8 @@
     "ClassName": "DA_Skill_Transfo_EvequeSpear",
     "NameID": "EvequeSpear",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_EvequeSpear",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_FlyingCultistSlash",
@@ -757,7 +851,8 @@
     "ClassName": "DA_Skill_Transfo_FlyingCultistSlash",
     "NameID": "FlyingSlashes",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_FlyingCultistSlash",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_GaultCombo",
@@ -765,7 +860,8 @@
     "ClassName": "DA_Skill_Transfo_GaultCombo",
     "NameID": "GaultCombo",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_GaultCombo",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_GlaiseEarthquakes",
@@ -773,7 +869,8 @@
     "ClassName": "DA_Skill_Transfo_GlaiseEarthquakes",
     "NameID": "GlaiseEarthquakes",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_GlaiseEarthquakes",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_GrosseTeteWrecking",
@@ -781,7 +878,8 @@
     "ClassName": "DA_Skill_Transfo_GrosseTeteWrecking",
     "NameID": "GrosseTeteWrecking",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_GrosseTeteWrecking",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_HeavyCultistBloodSword",
@@ -789,7 +887,8 @@
     "ClassName": "DA_Skill_Transfo_HeavyCultistBloodSword",
     "NameID": "HeavyCultistBloodSword",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_HeavyCultistBloodSword",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_HexgaCombo",
@@ -797,7 +896,8 @@
     "ClassName": "DA_Skill_Transfo_HexgaCombo",
     "NameID": "HexgaCombo",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_HexgaCombo",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_JarCombo",
@@ -805,7 +905,8 @@
     "ClassName": "DA_Skill_Transfo_JarCombo",
     "NameID": "JarCombo",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_JarCombo",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_LampmasterSwordOfLight",
@@ -813,7 +914,8 @@
     "ClassName": "DA_Skill_Transfo_LampmasterSwordOfLight",
     "NameID": "LampmasterSwordOfLight",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_LampmasterSwordOfLight",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_Lancelier",
@@ -821,7 +923,8 @@
     "ClassName": "DA_Skill_Transfo_Lancelier",
     "NameID": "LancelierEstoc",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_Lancelier",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_LusterCombo",
@@ -829,7 +932,8 @@
     "ClassName": "DA_Skill_Transfo_LusterCombo",
     "NameID": "LusterCombo",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_LusterCombo",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_MoissonneuseVendange",
@@ -837,7 +941,8 @@
     "ClassName": "DA_Skill_Transfo_MoissonneuseVendange",
     "NameID": "MoissonneuseVendange",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_MoissonneuseVendange",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_ObscurCombo",
@@ -845,7 +950,8 @@
     "ClassName": "DA_Skill_Transfo_ObscurCombo",
     "NameID": "ObscurCombo",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_ObscurCombo",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_OrphelinBuff",
@@ -853,7 +959,8 @@
     "ClassName": "DA_Skill_Transfo_OrphelinBuff",
     "NameID": "OrphelinBuff",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_OrphelinBuff",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_PelerinFreshAir",
@@ -861,7 +968,8 @@
     "ClassName": "DA_Skill_Transfo_PelerinFreshAir",
     "NameID": "PelerinFreshAir",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_PelerinFreshAir",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_PortierCrashingDown",
@@ -869,7 +977,8 @@
     "ClassName": "DA_Skill_Transfo_PortierCrashingDown",
     "NameID": "PortierCrashingDown",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_PortierCrashingDown",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_PotatobagBoss_FireShots",
@@ -877,7 +986,8 @@
     "ClassName": "DA_Skill_Transfo_PotatobagBoss_FireShots",
     "NameID": "PotatobagBossFireShots",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_PotatobagBoss_FireShots",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_PotatoBagMageThunderThrows",
@@ -885,7 +995,8 @@
     "ClassName": "DA_Skill_Transfo_PotatoBagMageThunderThrows",
     "NameID": "ThunderThrows",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_PotatoBagMageThunderThrows",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_PotatobagRangerThunderEstoc",
@@ -893,7 +1004,8 @@
     "ClassName": "DA_Skill_Transfo_PotatobagRangerThunderEstoc",
     "NameID": "ThunderEstoc",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_PotatobagRangerThunderEstoc",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_PotatobagTankSlam",
@@ -901,7 +1013,8 @@
     "ClassName": "DA_Skill_Transfo_PotatobagTankSlam",
     "NameID": "PotatobagSlam",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_PotatobagTankSlam",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_PotierBuff",
@@ -909,7 +1022,8 @@
     "ClassName": "DA_Skill_Transfo_PotierBuff",
     "NameID": "PotierBuff",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_PotierBuff",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_RamasseurBonk",
@@ -917,7 +1031,8 @@
     "ClassName": "DA_Skill_Transfo_RamasseurBonk",
     "NameID": "RamasseurBonk",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_RamasseurBonk",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_RocherHammering",
@@ -925,7 +1040,8 @@
     "ClassName": "DA_Skill_Transfo_RocherHammering",
     "NameID": "RocherHammering",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_RocherHammering",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_SaplingAbsorption",
@@ -933,7 +1049,8 @@
     "ClassName": "DA_Skill_Transfo_SaplingAbsorption",
     "NameID": "SaplingAbsorption",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_SaplingAbsorption",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_StalactMeleeCombo",
@@ -941,7 +1058,8 @@
     "ClassName": "DA_Skill_Transfo_StalactMeleeCombo",
     "NameID": "StalactCombo",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_StalactMeleeCombo",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Transfo_TroubadourBuff",
@@ -949,7 +1067,8 @@
     "ClassName": "DA_Skill_Transfo_TroubadourBuff",
     "NameID": "Trumpet",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_TroubadourBuff",
-    "CharacterName": "Monoco"
+    "CharacterName": "Monoco",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Blitz",
@@ -957,7 +1076,8 @@
     "ClassName": "DA_Skill_Blitz",
     "NameID": "Blitz",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Blitz",
-    "CharacterName": "Verso"
+    "CharacterName": "Verso",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Combo1",
@@ -965,7 +1085,8 @@
     "ClassName": "DA_Skill_Combo1",
     "NameID": "Combo1",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Combo1",
-    "CharacterName": "Verso"
+    "CharacterName": "Verso",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_LightHolder",
@@ -973,7 +1094,8 @@
     "ClassName": "DA_Skill_LightHolder",
     "NameID": "OldLightHolder",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_LightHolder",
-    "CharacterName": "Verso"
+    "CharacterName": "Verso",
+    "IsCutContent": true
   },
   {
     "CodeName": "DA_Skill_MarkingShot",
@@ -981,7 +1103,8 @@
     "ClassName": "DA_Skill_MarkingShot",
     "NameID": "MarkingShot",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_MarkingShot",
-    "CharacterName": "Verso"
+    "CharacterName": "Verso",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_NEW_4",
@@ -989,7 +1112,8 @@
     "ClassName": "DA_Skill_NEW_4",
     "NameID": "LightHolder",
     "ClassPath": "/Game/Content/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_NEW_4",
-    "CharacterName": "Verso"
+    "CharacterName": "Verso",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_PerfectRecovery",
@@ -997,7 +1121,8 @@
     "ClassName": "DA_Skill_PerfectRecovery",
     "NameID": "PerfectRecovery",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_PerfectRecovery",
-    "CharacterName": "Verso"
+    "CharacterName": "Verso",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Powerful",
@@ -1005,7 +1130,8 @@
     "ClassName": "DA_Skill_Powerful",
     "NameID": "Powerful",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Powerful",
-    "CharacterName": "Verso"
+    "CharacterName": "Verso",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Verso_AscendingAssault",
@@ -1013,7 +1139,8 @@
     "ClassName": "DA_Skill_Verso_AscendingAssault",
     "NameID": "AscendingAssault",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_AscendingAssault",
-    "CharacterName": "Verso"
+    "CharacterName": "Verso",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Verso_BerserkSlash",
@@ -1021,7 +1148,8 @@
     "ClassName": "DA_Skill_Verso_BerserkSlash",
     "NameID": "BerserkSlash",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_BerserkSlash",
-    "CharacterName": "Verso"
+    "CharacterName": "Verso",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Verso_Burden",
@@ -1029,7 +1157,8 @@
     "ClassName": "DA_Skill_Verso_Burden",
     "NameID": "Burden",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_Burden",
-    "CharacterName": "Verso"
+    "CharacterName": "Verso",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Verso_DefiantStrike",
@@ -1037,7 +1166,8 @@
     "ClassName": "DA_Skill_Verso_DefiantStrike",
     "NameID": "DefiantStrike",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_DefiantStrike",
-    "CharacterName": "Verso"
+    "CharacterName": "Verso",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Verso_Endbringer",
@@ -1045,7 +1175,8 @@
     "ClassName": "DA_Skill_Verso_Endbringer",
     "NameID": "EndBringer",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_Endbringer",
-    "CharacterName": "Verso"
+    "CharacterName": "Verso",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Verso_NEW_AngelsEyes",
@@ -1053,7 +1184,8 @@
     "ClassName": "DA_Skill_Verso_NEW_AngelsEyes",
     "NameID": "AngelsEyes",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_NEW_AngelsEyes",
-    "CharacterName": "Verso"
+    "CharacterName": "Verso",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Verso_NEW_Followup",
@@ -1061,7 +1193,8 @@
     "ClassName": "DA_Skill_Verso_NEW_Followup",
     "NameID": "FollowUp",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_NEW_Followup",
-    "CharacterName": "Verso"
+    "CharacterName": "Verso",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Verso_NEW_FromFire",
@@ -1069,7 +1202,8 @@
     "ClassName": "DA_Skill_Verso_NEW_FromFire",
     "NameID": "FromFire",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_NEW_FromFire",
-    "CharacterName": "Verso"
+    "CharacterName": "Verso",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Verso_NEW_Leadership",
@@ -1077,7 +1211,8 @@
     "ClassName": "DA_Skill_Verso_NEW_Leadership",
     "NameID": "Leadership",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_NEW_Leadership",
-    "CharacterName": "Verso"
+    "CharacterName": "Verso",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Verso_NEW_Overcharge",
@@ -1085,7 +1220,8 @@
     "ClassName": "DA_Skill_Verso_NEW_Overcharge",
     "NameID": "Overcharge",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_NEW_Overcharge",
-    "CharacterName": "Verso"
+    "CharacterName": "Verso",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Verso_NEW_ParadigmShift",
@@ -1093,7 +1229,8 @@
     "ClassName": "DA_Skill_Verso_NEW_ParadigmShift",
     "NameID": "ParadigmShift",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_NEW_ParadigmShift",
-    "CharacterName": "Verso"
+    "CharacterName": "Verso",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Verso_NEW_PhantomStars",
@@ -1101,7 +1238,8 @@
     "ClassName": "DA_Skill_Verso_NEW_PhantomStars",
     "NameID": "PhantomStars",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_NEW_PhantomStars",
-    "CharacterName": "Verso"
+    "CharacterName": "Verso",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Verso_NEW_Purification",
@@ -1109,7 +1247,8 @@
     "ClassName": "DA_Skill_Verso_NEW_Purification",
     "NameID": "Purification",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_NEW_Purification",
-    "CharacterName": "Verso"
+    "CharacterName": "Verso",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Verso_NEW_QuickStrike",
@@ -1117,7 +1256,8 @@
     "ClassName": "DA_Skill_Verso_NEW_QuickStrike",
     "NameID": "QuickStrike",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_NEW_QuickStrike",
-    "CharacterName": "Verso"
+    "CharacterName": "Verso",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Verso_NEW_Sabotage",
@@ -1125,7 +1265,8 @@
     "ClassName": "DA_Skill_Verso_NEW_Sabotage",
     "NameID": "Sabotage",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_NEW_Sabotage",
-    "CharacterName": "Verso"
+    "CharacterName": "Verso",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Verso_NEW_Speedburst",
@@ -1133,7 +1274,8 @@
     "ClassName": "DA_Skill_Verso_NEW_Speedburst",
     "NameID": "SpeedBurst",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_NEW_Speedburst",
-    "CharacterName": "Verso"
+    "CharacterName": "Verso",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Verso_PerfectBreak",
@@ -1141,7 +1283,8 @@
     "ClassName": "DA_Skill_Verso_PerfectBreak",
     "NameID": "PerfectBreak",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_PerfectBreak",
-    "CharacterName": "Verso"
+    "CharacterName": "Verso",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Verso_RadiantSlash",
@@ -1149,7 +1292,8 @@
     "ClassName": "DA_Skill_Verso_RadiantSlash",
     "NameID": "RadiantSlash",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_RadiantSlash",
-    "CharacterName": "Verso"
+    "CharacterName": "Verso",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Verso_RadiantStrike",
@@ -1157,7 +1301,8 @@
     "ClassName": "DA_Skill_Verso_RadiantStrike",
     "NameID": "RadiantStrike",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_RadiantStrike",
-    "CharacterName": "Verso"
+    "CharacterName": "Verso",
+    "IsCutContent": true
   },
   {
     "CodeName": "DA_Skill_Verso_SteeledStrike",
@@ -1165,7 +1310,8 @@
     "ClassName": "DA_Skill_Verso_SteeledStrike",
     "NameID": "SteeledStrike",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_SteeledStrike",
-    "CharacterName": "Verso"
+    "CharacterName": "Verso",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Verso_Striker",
@@ -1173,7 +1319,8 @@
     "ClassName": "DA_Skill_Verso_Striker",
     "NameID": "Striker",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_Striker",
-    "CharacterName": "Verso"
+    "CharacterName": "Verso",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Verso_Strikestorm",
@@ -1181,7 +1328,8 @@
     "ClassName": "DA_Skill_Verso_Strikestorm",
     "NameID": "StrikeStorm",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_Strikestorm",
-    "CharacterName": "Verso"
+    "CharacterName": "Verso",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Sciel_AllSet",
@@ -1189,7 +1337,8 @@
     "ClassName": "DA_Skill_Sciel_AllSet",
     "NameID": "AllSet",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_AllSet",
-    "CharacterName": "Sciel"
+    "CharacterName": "Sciel",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Sciel_BadOmen",
@@ -1197,7 +1346,8 @@
     "ClassName": "DA_Skill_Sciel_BadOmen",
     "NameID": "BadOmen",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_BadOmen",
-    "CharacterName": "Sciel"
+    "CharacterName": "Sciel",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Sciel_CardWeaver",
@@ -1205,7 +1355,8 @@
     "ClassName": "DA_Skill_Sciel_CardWeaver",
     "NameID": "CardWeaver",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_CardWeaver",
-    "CharacterName": "Sciel"
+    "CharacterName": "Sciel",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Sciel_DarkCleansing",
@@ -1213,7 +1364,8 @@
     "ClassName": "DA_Skill_Sciel_DarkCleansing",
     "NameID": "DarkCleansing",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_DarkCleansing",
-    "CharacterName": "Sciel"
+    "CharacterName": "Sciel",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Sciel_DarkWave",
@@ -1221,7 +1373,8 @@
     "ClassName": "DA_Skill_Sciel_DarkWave",
     "NameID": "DarkWave",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_DarkWave",
-    "CharacterName": "Sciel"
+    "CharacterName": "Sciel",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Sciel_Doom",
@@ -1229,7 +1382,8 @@
     "ClassName": "DA_Skill_Sciel_Doom",
     "NameID": "Doom",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_Doom",
-    "CharacterName": "Sciel"
+    "CharacterName": "Sciel",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Sciel_EndSlice",
@@ -1237,7 +1391,8 @@
     "ClassName": "DA_Skill_Sciel_EndSlice",
     "NameID": "EndSlice",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_EndSlice",
-    "CharacterName": "Sciel"
+    "CharacterName": "Sciel",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Sciel_FinalPath",
@@ -1245,7 +1400,8 @@
     "ClassName": "DA_Skill_Sciel_FinalPath",
     "NameID": "FinalPath",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_FinalPath",
-    "CharacterName": "Sciel"
+    "CharacterName": "Sciel",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Sciel_FiringShadow",
@@ -1253,7 +1409,8 @@
     "ClassName": "DA_Skill_Sciel_FiringShadow",
     "NameID": "FiringShadow",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_FiringShadow",
-    "CharacterName": "Sciel"
+    "CharacterName": "Sciel",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Sciel_FortunesFury",
@@ -1261,7 +1418,8 @@
     "ClassName": "DA_Skill_Sciel_FortunesFury",
     "NameID": "FortunesFury",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_FortunesFury",
-    "CharacterName": "Sciel"
+    "CharacterName": "Sciel",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Sciel_Harvest",
@@ -1269,7 +1427,8 @@
     "ClassName": "DA_Skill_Sciel_Harvest",
     "NameID": "Harvest",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_Harvest",
-    "CharacterName": "Sciel"
+    "CharacterName": "Sciel",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Sciel_Intervention",
@@ -1277,7 +1436,8 @@
     "ClassName": "DA_Skill_Sciel_Intervention",
     "NameID": "Intervention",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_Intervention",
-    "CharacterName": "Sciel"
+    "CharacterName": "Sciel",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Sciel_new14_ShadowTargeting",
@@ -1285,7 +1445,8 @@
     "ClassName": "DA_Skill_Sciel_new14_ShadowTargeting",
     "NameID": "ShadowTargeting",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_new14_ShadowTargeting",
-    "CharacterName": "Sciel"
+    "CharacterName": "Sciel",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Sciel_new18_Postponed",
@@ -1293,7 +1454,8 @@
     "ClassName": "DA_Skill_Sciel_new18_Postponed",
     "NameID": "Postponed",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_new18_Postponed",
-    "CharacterName": "Sciel"
+    "CharacterName": "Sciel",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Sciel_new2_Foretelling2",
@@ -1301,7 +1463,8 @@
     "ClassName": "DA_Skill_Sciel_new2_Foretelling2",
     "NameID": "Foretelling2",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_new2_Foretelling2",
-    "CharacterName": "Sciel"
+    "CharacterName": "Sciel",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Sciel_new3_GrimPrediction",
@@ -1309,7 +1472,8 @@
     "ClassName": "DA_Skill_Sciel_new3_GrimPrediction",
     "NameID": "GrimPrediction",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_new3_GrimPrediction",
-    "CharacterName": "Sciel"
+    "CharacterName": "Sciel",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Sciel_new4_ShadowDrop",
@@ -1317,7 +1481,8 @@
     "ClassName": "DA_Skill_Sciel_new4_ShadowDrop",
     "NameID": "ShadowDrop",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_new4_ShadowDrop",
-    "CharacterName": "Sciel"
+    "CharacterName": "Sciel",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Sciel_new7_DarkAbsorption",
@@ -1325,7 +1490,8 @@
     "ClassName": "DA_Skill_Sciel_new7_DarkAbsorption",
     "NameID": "DarkAbsorption",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_new7_DarkAbsorption",
-    "CharacterName": "Sciel"
+    "CharacterName": "Sciel",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Sciel_OurSacrifice",
@@ -1333,7 +1499,8 @@
     "ClassName": "DA_Skill_Sciel_OurSacrifice",
     "NameID": "OurSacrifice",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_OurSacrifice",
-    "CharacterName": "Sciel"
+    "CharacterName": "Sciel",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Sciel_PlentifulHarvest",
@@ -1341,7 +1508,8 @@
     "ClassName": "DA_Skill_Sciel_PlentifulHarvest",
     "NameID": "PlentifulHarvest",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_PlentifulHarvest",
-    "CharacterName": "Sciel"
+    "CharacterName": "Sciel",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Sciel_SealedFate",
@@ -1349,7 +1517,8 @@
     "ClassName": "DA_Skill_Sciel_SealedFate",
     "NameID": "SealedFate",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_SealedFate",
-    "CharacterName": "Sciel"
+    "CharacterName": "Sciel",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Sciel_SearingBond",
@@ -1357,7 +1526,8 @@
     "ClassName": "DA_Skill_Sciel_SearingBond",
     "NameID": "SearingBond",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_SearingBond",
-    "CharacterName": "Sciel"
+    "CharacterName": "Sciel",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Sciel_ShadowBringer",
@@ -1365,7 +1535,8 @@
     "ClassName": "DA_Skill_Sciel_ShadowBringer",
     "NameID": "ShadowBringer",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_ShadowBringer",
-    "CharacterName": "Sciel"
+    "CharacterName": "Sciel",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Sciel_SpectralSweep",
@@ -1373,7 +1544,8 @@
     "ClassName": "DA_Skill_Sciel_SpectralSweep",
     "NameID": "SpectralSweep",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_SpectralSweep",
-    "CharacterName": "Sciel"
+    "CharacterName": "Sciel",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Sciel_SpeedUp",
@@ -1381,7 +1553,8 @@
     "ClassName": "DA_Skill_Sciel_SpeedUp",
     "NameID": "SpeedUp",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_SpeedUp",
-    "CharacterName": "Sciel"
+    "CharacterName": "Sciel",
+    "IsCutContent": false
   },
   {
     "CodeName": "DA_Skill_Sciel_TwilightDance",
@@ -1389,6 +1562,7 @@
     "ClassName": "DA_Skill_Sciel_TwilightDance",
     "NameID": "TwilightDance",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_TwilightDance",
-    "CharacterName": "Sciel"
+    "CharacterName": "Sciel",
+    "IsCutContent": false
   }
 ]

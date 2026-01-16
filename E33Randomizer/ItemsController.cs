@@ -59,7 +59,7 @@ public class ItemsController: Controller<ItemData>
     {
         if (fileName.Contains("GameActionsData") && !fileName.Contains("_GA_")) return;
         
-        if (fileName.Contains("S_ItemOperationData") || fileName.Contains("S_TriggerCinematicVariables") || fileName.Contains("E_GestralFightClub_Fighters"))
+        if (fileName.Contains("S_ItemOperationData") || fileName.Contains("S_TriggerCinematicVariables") || fileName.Contains("E_GestralFightClub_Fighters") || fileName.Contains("BP_GameAction"))
         {
             return;
         }
