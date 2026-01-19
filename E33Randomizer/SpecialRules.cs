@@ -54,6 +54,9 @@ public static class SpecialRules
 
     private static ObjectPool<EnemyData> _bossPool;
     private static ObjectPool<ItemData> _keyItemsPool, _gearItemsPool;
+    private static List<SkillData> cutContentSkills = new();
+    private static List<ItemData> cutContentItems = new();
+    private static List<EnemyData> cutContentEnemies = new();
     private static Dictionary<string, ObjectPool<SkillData>> _skillCategoryPools = new();
 
     
@@ -68,21 +71,32 @@ public static class SpecialRules
     
     public static void Reset()
     {
+        cutContentSkills = Controllers.SkillsController.ObjectsData.Where(s => s.IsCutContent).ToList();
+        cutContentEnemies = Controllers.EnemiesController.ObjectsData.Where(s => s.IsCutContent).ToList();
+        cutContentItems = Controllers.ItemsController.ObjectsData.Where(s => s.IsCutContent).ToList();
+        
         var bannedBosses = Controllers.EnemiesController.GetObjects(RandomizerLogic.CustomEnemyPlacement.ExcludedCodeNames);
         if (!RandomizerLogic.Settings.IncludeCutContentEnemies)
         {
-            bannedBosses.AddRange(Controllers.EnemiesController.ObjectsData.Where(e => e.IsCutContent).ToList());
+            bannedBosses.AddRange(cutContentEnemies);
         }
 
-        _bossPool = new ObjectPool<EnemyData>(Controllers.EnemiesController.ObjectsData, bannedBosses);
+        _bossPool = new ObjectPool<EnemyData>(
+            Controllers.EnemiesController.GetObjects(RandomizerLogic.CustomEnemyPlacement.PlainNameToCodeNames["All Bosses"]), bannedBosses);
+
+        var bannedItems = Controllers.ItemsController.GetObjects(RandomizerLogic.CustomItemPlacement.ExcludedCodeNames);
+        if (!RandomizerLogic.Settings.IncludeCutContentItems)
+        {
+            bannedItems.AddRange(cutContentItems);
+        }
         _keyItemsPool = new ObjectPool<ItemData>(
             Controllers.ItemsController.GetObjects(RandomizerLogic.CustomItemPlacement.PlainNameToCodeNames["Key Item"]),
-            Controllers.ItemsController.GetObjects(RandomizerLogic.CustomItemPlacement.ExcludedCodeNames)
+            bannedItems
             );
         var gearItems = new List<ItemData>(Controllers.ItemsController.GetObjects(RandomizerLogic.CustomItemPlacement.PlainNameToCodeNames["Weapon"]));
         gearItems.AddRange(Controllers.ItemsController.GetObjects(RandomizerLogic.CustomItemPlacement.PlainNameToCodeNames["Pictos"]));
         
-        _gearItemsPool = new ObjectPool<ItemData>(gearItems, Controllers.ItemsController.GetObjects(RandomizerLogic.CustomItemPlacement.ExcludedCodeNames));
+        _gearItemsPool = new ObjectPool<ItemData>(gearItems, bannedItems);
     }
 
     public static void ResetSkillsPool()
@@ -94,7 +108,7 @@ public static class SpecialRules
     {
         for (int i = 0; i < encounter.Size; i++)
         {
-            if (encounter.Enemies[i].CodeName == "Boss_Simon_Phase2")
+            if (encounter.Enemies[i].CodeName == "Boss_Simon_Phase2" || encounter.Enemies[i].CodeName == "Boss_Simon_ALPHA")
             {
                 encounter.Enemies[i] = Controllers.EnemiesController.GetObject("Boss_Simon");
             }
@@ -140,28 +154,11 @@ public static class SpecialRules
         {
             ApplySimonSpecialRule(encounter);
         }
-
-        if (encounter.Name == "MM_DanseuseAlphaSummon")
-        {
-            encounter.Enemies = [Controllers.EnemiesController.GetObject("MM_Danseuse_CloneAlpha"), Controllers.EnemiesController.GetObject("MM_Danseuse_CloneAlpha")];
-        }
-        
-        if (encounter.Name == "MM_DanseuseClone*1")
-        {
-            encounter.Enemies = [Controllers.EnemiesController.GetObject("MM_Danseuse_Clone")];
-        }
-        
-        if (encounter.Name == "QUEST_Danseuse_DanceClass_Clone*1")
-        {
-            encounter.Enemies = [Controllers.EnemiesController.GetObject("MM_Danseuse_Clone")];
-        }
         
         // if (RandomizerLogic.Settings.BossNumberCapped && !encounter.IsBossEncounter)
         // {
         //     CapNumberOfBosses(encounter);
         // }
-
-        
 
         if (RandomizerLogic.Settings.ReduceBossRepetition)
         {
@@ -180,18 +177,26 @@ public static class SpecialRules
 
         if (encounter.Name != "Boss_Duolliste_P2")
         {
-            encounter.Enemies = encounter.Enemies.Select(e => e.CodeName == "Duolliste_P2" ? Controllers.EnemiesController.GetObject("Duolliste_A"): e).ToList();
+            encounter.Enemies = encounter.Enemies.Select(e =>
+                e.CodeName == "Duolliste_P2" ? Controllers.EnemiesController.GetObject("Duolliste_A") : e).ToList();
+        }
+
+        switch (encounter.Name)
+        {
+            case "MM_DanseuseAlphaSummon":
+                encounter.Enemies = [Controllers.EnemiesController.GetObject("MM_Danseuse_CloneAlpha"), Controllers.EnemiesController.GetObject("MM_Danseuse_CloneAlpha")];
+                break;
+            case "MM_DanseuseClone*1":
+                encounter.Enemies = [Controllers.EnemiesController.GetObject("MM_Danseuse_Clone")];
+                break;
+            case "QUEST_Danseuse_DanceClass_Clone*1":
+                encounter.Enemies = [Controllers.EnemiesController.GetObject("QUEST_Danseuse_DanceClass_Clone")];
+                break;
         }
     }
 
     public static void ApplySpecialRulesToCheck(CheckData check)
     {
-        if (RandomizerLogic.Settings.EnsurePaintedPowerFromPaintress &&
-            check.ItemSource.FileName == "DA_GA_SQT_RedAndWhiteTree")
-        {
-            check.ItemSource.AddItem("BP_GameAction_AddItemToInventory_C_0", Controllers.ItemsController.GetObject("OverPowered"));
-        }
-
         if (!RandomizerLogic.Settings.IncludeGearInPrologue && 
             (_prologueDialogues.Contains(check.ItemSource.FileName) || 
              check.Key.Contains("Chest_Lumiere_ACT1") ||
@@ -239,6 +244,12 @@ public static class SpecialRules
                 }
             }
         }
+        
+        if (RandomizerLogic.Settings.EnsurePaintedPowerFromPaintress &&
+            check.ItemSource.FileName == "DA_GA_SQT_RedAndWhiteTree")
+        {
+            check.ItemSource.AddItem("BP_GameAction_AddItemToInventory_C_0", Controllers.ItemsController.GetObject("OverPowered"));
+        }
     }
 
     private static SkillData GetReplacedSkillPool(SkillData replacedSkill, string skillCategory)
@@ -260,7 +271,15 @@ public static class SpecialRules
         {
             var possibleReplacementCodeNames = RandomizerLogic.CustomSkillPlacement.PlainNameToCodeNames.GetValueOrDefault(replacedSkillCategory, [replacedSkillName]);
             var possibleReplacements = Controllers.SkillsController.GetObjects(possibleReplacementCodeNames);
-            _skillCategoryPools[replacedSkillCategory] = new ObjectPool<SkillData>(possibleReplacements, []);
+            
+            var excludedPool = Controllers.SkillsController.GetObjects(RandomizerLogic.CustomSkillPlacement.ExcludedCodeNames);
+
+            if (!RandomizerLogic.Settings.IncludeCutContentSkills)
+            {
+                excludedPool.AddRange(cutContentSkills);
+            }
+            
+            _skillCategoryPools[replacedSkillCategory] = new ObjectPool<SkillData>(possibleReplacements, excludedPool);
         }
 
         return _skillCategoryPools[replacedSkillCategory].GetObject();
@@ -276,7 +295,15 @@ public static class SpecialRules
                 if (!_skillCategoryPools.ContainsKey("Default"))
                 {
                     var defaultReplacements = RandomizerLogic.CustomSkillPlacement.DefaultFrequencies.Where(x => x.Value > 0.0001).Select(x => x.Key);
-                    _skillCategoryPools["Default"] = new ObjectPool<SkillData>(Controllers.SkillsController.GetObjects(defaultReplacements), []);
+                    
+                    var excludedPool = Controllers.SkillsController.GetObjects(RandomizerLogic.CustomSkillPlacement.ExcludedCodeNames);
+
+                    if (!RandomizerLogic.Settings.IncludeCutContentSkills)
+                    {
+                        excludedPool.AddRange(cutContentSkills);
+                    }
+                    
+                    _skillCategoryPools["Default"] = new ObjectPool<SkillData>(Controllers.SkillsController.GetObjects(defaultReplacements), excludedPool);
                 }
 
                 skillCategory = "Default";

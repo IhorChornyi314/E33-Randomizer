@@ -5,6 +5,7 @@ using AutoFixture;
 using E33Randomizer;
 using FluentAssertions;
 using NUnit.Framework;
+using NUnit.Framework.Internal;
 using Tests.Rules;
 using Tests.RuleTests;
 
@@ -36,6 +37,8 @@ namespace Tests
                 new ChangeSizeOfNonRandomizedEncounters(),
                 new EnsureBossesInBossEncounters(),
                 new EnsurePaintedPowerFromPaintress(),
+                new ExcludeBossDuollisteP2(),
+                new HardcodeSpecialEncounters(),
                 new IncludeCutContentEnemies(),
                 new IncludeCutContentItems(),
                 new IncludeCutContentSkills(),
@@ -55,14 +58,14 @@ namespace Tests
             };
 
             RandomizerLogic.Init();
-            TestLogic.OriginalData = TestLogic.CollectState();
+            TestLogic.OriginalData = TestLogic.CollectState(null);
         }
 
         [Test]
         public void TestRandomCases()
         {
             var failureDetails = new List<string>();
-            const int iterations = 1;
+            const int iterations = 50;
 
             for (int i = 0; i < iterations; i++)
             {
@@ -109,7 +112,8 @@ namespace Tests
             {
                 Seed = new Random().Next(),
                 ReduceBossRepetition = true,
-                EnsureBossesInBossEncounters = true
+                EnsureBossesInBossEncounters = true,
+                RandomizeSkills = true
             };
             
             var config = new Config(
@@ -134,6 +138,144 @@ namespace Tests
                 string.Join("\n", failureDetails.Take(20)) +
                 (failureDetails.Count > 20 ? $"\n... and {failureDetails.Count - 20} more failures" : "")
             );
+        }
+
+        [Test]
+        public void TestCustomPlacementExcluded()
+        {
+            var settings = new SettingsViewModel
+            {
+                Seed = new Random().Next(),
+                EnableEnemyOnslaught = true,
+                EnemyOnslaughtAdditionalEnemies = 99,
+                EnemyOnslaughtEnemyCap = 99,
+                RandomizeAddedEnemies = true
+            };
+            
+            var config = new Config(
+                settings,
+                new CustomEnemyPlacement(),
+                new CustomItemPlacement(),
+                new CustomSkillPlacement()
+            );
+            
+            var output = TestLogic.RunRandomizer(config);
+            
+            CustomPlacementTestLogic.TestExcluded(output, config).Should().BeTrue();
+        }
+        
+        [Test]
+        public void TestCustomPlacementNotRandomized()
+        {
+            var settings = new SettingsViewModel
+            {
+                Seed = new Random().Next(),
+                EnableEnemyOnslaught = true,
+                EnemyOnslaughtAdditionalEnemies = 99,
+                EnemyOnslaughtEnemyCap = 99,
+                RandomizeAddedEnemies = true
+            };
+            
+            var config = new Config(
+                settings,
+                new CustomEnemyPlacement(),
+                new CustomItemPlacement(),
+                new CustomSkillPlacement()
+            );
+            
+            var output = TestLogic.RunRandomizer(config);
+            
+            CustomPlacementTestLogic.TestNotRandomized(output, config).Should().BeTrue();
+        }
+
+        [Test]
+        public void TestGetRandomWeighted()
+        {
+            var weights = new Dictionary<string, float>
+            {
+                ["a"] = 0.05f,
+                ["b"] = 0.25f,
+                ["c"] = 0.35f,
+                ["d"] = 0.35f
+            };
+
+            List<string> banned = ["b"];
+            
+            var pickedCount = new Dictionary<string, int>
+            {
+                ["a"] = 0,
+                ["b"] = 0,
+                ["c"] = 0,
+                ["d"] = 0
+            };
+
+            var gensCount = 100000;
+            
+            for (int i = 0; i < gensCount; i++)
+            {
+                var pick = Utils.GetRandomWeighted(weights, banned);
+                pickedCount.TryAdd(pick, 0);
+                pickedCount[pick]++;
+            }
+            
+            var frequencies = pickedCount.Select(kvp => (float)kvp.Value / gensCount).ToList();
+
+            frequencies[0].Should().BeInRange(0.064f, 0.069f);
+            frequencies[1].Should().Be(0);
+            frequencies[2].Should().BeInRange(0.464f, 0.469f);
+            frequencies[3].Should().BeInRange(0.464f, 0.469f);
+        }
+        
+        [Test]
+        public void TestCustomPlacementFrequencyAdjustment()
+        {
+            var settings = new SettingsViewModel
+            {
+                Seed = TestLogic.Random.Next(),
+                EnableEnemyOnslaught = true,
+                EnemyOnslaughtAdditionalEnemies = 99,
+                EnemyOnslaughtEnemyCap = 99,
+                RandomizeAddedEnemies = true
+            };
+
+            var config = new Config(
+                settings,
+                new CustomEnemyPlacement(),
+                new CustomItemPlacement(),
+                new CustomSkillPlacement()
+            );
+            
+            var adjustedOutput = TestLogic.RunRandomizer(config);
+            
+            config.Settings.Seed = TestLogic.Random.Next();
+            config.CustomEnemyPlacement.FrequencyAdjustments.Clear();
+            config.CustomEnemyPlacement.Update();
+            
+            var unadjustedOutput = TestLogic.RunRandomizer(config);
+
+            config.CustomEnemyPlacement = new CustomEnemyPlacement();
+            
+            CustomPlacementTestLogic.TestFrequencyAdjustment(unadjustedOutput, adjustedOutput, config).Should().BeTrue();
+        }
+        
+        [Test]
+        public void TestDefaultCustomPlacement()
+        {
+            var settings = new SettingsViewModel
+            {
+                Seed = new Random().Next(),
+            };
+            
+            var config = new Config(
+                settings,
+                new CustomEnemyPlacement(),
+                new CustomItemPlacement(),
+                new CustomSkillPlacement()
+            );
+            
+            var output = TestLogic.RunRandomizer(config);
+            
+            CustomPlacementTestLogic.TestDefaultCustomPlacement(output, config).Should().BeTrue();
         }
     }
 

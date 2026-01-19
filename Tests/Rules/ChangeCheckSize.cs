@@ -63,8 +63,10 @@ public class ChangeCheckSize: OutputRuleBase
         {
             _changedChecksPerCategory[checkType] = [];
         }
+
+        var checkSize = config.Settings.EnsurePaintedPowerFromPaintress && check.Name.Contains("DA_GA_SQT_RedAndWhiteTree") ? check.Size - 1 : check.Size;
         
-        if (originalSize != check.Size)
+        if (originalSize != checkSize)
         {
             _changedChecksPerCategory[checkType].Add(check.Name);
         }
@@ -72,15 +74,15 @@ public class ChangeCheckSize: OutputRuleBase
         switch (checkType)
         {
             case "Merchant inventories":
-                return !config.Settings.ChangeMerchantInventorySize || Utils.IsBetween(check.Size, config.Settings.MerchantInventorySizeMin, config.Settings.MerchantInventorySizeMax);
+                return !config.Settings.ChangeMerchantInventorySize || Utils.IsBetween(checkSize, config.Settings.MerchantInventorySizeMin, config.Settings.MerchantInventorySizeMax);
             case "Cutscene rewards":
-                return !config.Settings.ChangeNumberOfActionRewards || Utils.IsBetween(check.Size, config.Settings.ActionRewardsNumberMin, config.Settings.ActionRewardsNumberMax);
+                return !config.Settings.ChangeNumberOfActionRewards || Utils.IsBetween(checkSize, config.Settings.ActionRewardsNumberMin, config.Settings.ActionRewardsNumberMax);
             case "Map pickups":
-                return !config.Settings.ChangeNumberOfChestContents || Utils.IsBetween(check.Size, config.Settings.ChestContentsNumberMin, config.Settings.ChestContentsNumberMax);
+                return !config.Settings.ChangeNumberOfChestContents || Utils.IsBetween(checkSize, config.Settings.ChestContentsNumberMin, config.Settings.ChestContentsNumberMax);
             case "Enemy drops":
-                return !config.Settings.ChangeNumberOfLootDrops || Utils.IsBetween(check.Size, config.Settings.LootDropsNumberMin, config.Settings.LootDropsNumberMax);
+                return !config.Settings.ChangeNumberOfLootDrops || Utils.IsBetween(checkSize, config.Settings.LootDropsNumberMin, config.Settings.LootDropsNumberMax);
             case "Endless tower rewards":
-                return !config.Settings.ChangeNumberOfTowerRewards || Utils.IsBetween(check.Size, config.Settings.TowerRewardsNumberMin, config.Settings.TowerRewardsNumberMax);
+                return !config.Settings.ChangeNumberOfTowerRewards || Utils.IsBetween(checkSize, config.Settings.TowerRewardsNumberMin, config.Settings.TowerRewardsNumberMax);
             case "Dialogue rewards":
                 return true;
             default:

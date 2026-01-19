@@ -12,15 +12,17 @@ public static class Utils
         float total = 0;
         foreach (var weight in weights)
         {
-            total += weight.Value;
+            if (!banned.Contains(weight.Key))
+                total += weight.Value;
         }
 
         var chance = RandomizerLogic.rand.NextSingle() * total;
         float running = 0;
         foreach (var weight in weights)
         {
+            if (banned.Contains(weight.Key)) continue;
             running += weight.Value;
-            if (running >= chance && !banned.Contains(weight.Key) && weight.Value > 0.0001)
+            if (running >= chance && weight.Value > 0.00001)
             {
                 return weight.Key;
             }

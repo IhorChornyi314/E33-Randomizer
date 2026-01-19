@@ -7,13 +7,7 @@ public class ReduceKeyItemRepetition: OutputRuleBase
     {
         if (!config.Settings.ReduceKeyItemRepetition) return true;
 
-        var randomizedCheckNames =
-            TestLogic.OriginalData.Checks.Where(c => c.Items.Any(i => config.CustomItemPlacement.IsRandomized(i.Item.CodeName))
-            ).Select(c => c.Name);
-
-        var randomizedChecks = output.Checks.Where(c => randomizedCheckNames.Contains(c.Name));
-        
-        var keyItemsGenerated = randomizedChecks.SelectMany(c => c.Items, (_, data) => data)
+        var keyItemsGenerated = output.RandomizedChecks.SelectMany(c => c.Items, (_, data) => data)
             .Where(i => i.Item.CustomName.Contains("Key Item")).Select(i => i.Item.CodeName);
         var keyItemFrequencies = TestUtils.CalculateFrequencies(keyItemsGenerated.ToList());
         var expectedFrequency = 1.0 / keyItemsGenerated.Distinct().Count();

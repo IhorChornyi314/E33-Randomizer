@@ -34,9 +34,7 @@ public class CustomItemPlacement: CustomPlacement
         ResetRules();
         AddNotRandomized("Skill Unlock");
         AddNotRandomized("Merchant Unlock");
-        AddNotRandomized("DLC Items");
         AddExcluded("Consumable");
-        AddExcluded("DLC Items");
         CustomPlacementRules = new Dictionary<string, Dictionary<string, float>>
         {
             { "Pictos", new Dictionary<string, float> { { "Pictos", 1 } } },

@@ -1,10 +1,8 @@
 {
     "NotRandomized": [
-        "DLC Enemies"
     ],
     "Excluded": [
-        "Map Part Enemies", 
-        "DLC Enemies"
+        "Map Part Enemies"
     ],
     "CustomPlacement": {
         "Anyone": {

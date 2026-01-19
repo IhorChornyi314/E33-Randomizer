@@ -20,11 +20,7 @@ public class ChangeCheckQuantities: OutputRuleBase
         
         List<string> checksWithItemQuantityChanges = [];
         
-        var changedCheckNames = TestLogic.OriginalData.Checks.Where(c =>
-            c.Items.Any(i => config.CustomItemPlacement.IsRandomized(i.Item.CodeName))).Select(c => c.Name);
-        var checks = output.Checks.Where(c => changedCheckNames.Contains(c.Name));
-        
-        checks = checks.Where(c => !dialoguesWithoutQuantities.Contains(c.Name));
+        var checks = output.RandomizedChecks.Where(c => !dialoguesWithoutQuantities.Contains(c.Name));
         foreach (var check in checks)
         {
             var originalCheck = TestLogic.OriginalData.GetCheck(check.Name);

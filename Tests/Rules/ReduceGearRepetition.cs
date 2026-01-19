@@ -9,13 +9,8 @@ public class ReduceGearRepetition: OutputRuleBase
     {
         if (!config.Settings.ReduceGearRepetition) return true;
 
-        var randomizedCheckNames =
-            TestLogic.OriginalData.Checks.Where(c => c.Items.Any(i => config.CustomItemPlacement.IsRandomized(i.Item.CodeName))
-            ).Select(c => c.Name);
-
-        var randomizedChecks = output.Checks.Where(c => randomizedCheckNames.Contains(c.Name));
         
-        var gearItemsGenerated = randomizedChecks.SelectMany(c => c.Items, (_, data) => data)
+        var gearItemsGenerated = output.RandomizedChecks.SelectMany(c => c.Items, (_, data) => data)
             .Where(i => Controllers.ItemsController.IsGearItem(i.Item)).Select(i => i.Item.CodeName);
         var gearItemFrequencies = TestUtils.CalculateFrequencies(gearItemsGenerated.ToList());
         var expectedFrequency = 1.0 / gearItemsGenerated.Distinct().Count();

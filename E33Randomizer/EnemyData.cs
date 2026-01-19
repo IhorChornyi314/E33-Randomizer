@@ -37,7 +37,8 @@ public class EnemyData: ObjectData
     };
     
     public string Archetype = "Regular";
-    public bool IsBoss => Archetype == "Boss" || Archetype == "Alpha";
+    // For balance reasons Osquio is considered a Strong enemy
+    public bool IsBoss => Archetype == "Boss" || Archetype == "Alpha" || CodeName == "VD_Osquio";
 
     public EnemyData()
     {

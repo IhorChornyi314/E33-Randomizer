@@ -71,8 +71,6 @@ public class CustomEnemyPlacement: CustomPlacement
         ResetRules();
         AddExcluded("Gimmick/Tutorial Enemies");
         AddExcluded("Map Part Enemies");
-        AddExcluded("DLC Enemies");
-        AddNotRandomized("DLC Enemies");
         CustomPlacementRules = new Dictionary<string, Dictionary<string, float>>
         {
             { "Regular", new Dictionary<string, float> { { "Regular", 1 } } },

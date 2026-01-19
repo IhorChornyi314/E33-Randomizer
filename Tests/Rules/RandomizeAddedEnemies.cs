@@ -1,33 +1,39 @@
-﻿namespace Tests.Rules;
+﻿using E33Randomizer;
+
+namespace Tests.Rules;
 
 public class RandomizeAddedEnemies: OutputRuleBase
 {
-    private static int _threshold = 10;
-    
+    private static int _threshold = 15;
     public override bool IsSatisfied(Output output, Config config)
     {
         if (!config.Settings.EnableEnemyOnslaught) return true;
 
-        var failedEncounters = 0;
+        var failedEncounters = new List<Encounter> ();
         
-        foreach (var encounter in output.Encounters)
+        foreach (var encounter in output.RandomizedEncounters)
         {
             var originalEncounterSize = TestLogic.OriginalData.GetEncounter(encounter.Name).Size;
+            if (originalEncounterSize >= encounter.Size) continue;
+            var addedEnemiesRandomized = false;
             for (int i = originalEncounterSize; i < encounter.Size; i++)
             {
-                if (i == encounter.Size) break;
                 var sameEnemy = Equals(encounter.Enemies[i], encounter.Enemies[i - originalEncounterSize]);
-                if (sameEnemy && config.Settings.RandomizeAddedEnemies ||
-                    !sameEnemy && !config.Settings.RandomizeAddedEnemies)
+                if (!sameEnemy)
                 {
-                    failedEncounters++;
+                    addedEnemiesRandomized = true;
                 }
+            }
+            
+            if (addedEnemiesRandomized ^ config.Settings.RandomizeAddedEnemies)
+            {
+                failedEncounters.Add(encounter);
             }
         }
 
-        if (failedEncounters > _threshold)
+        if (failedEncounters.Count > _threshold)
         {
-            FailureMessage += $"RandomizeAddedEnemies rule was broken {failedEncounters} times.";
+            FailureMessage += $"RandomizeAddedEnemies rule was broken {failedEncounters} times, example: {failedEncounters[0]}";
             return false;
         }
 

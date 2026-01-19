@@ -12,8 +12,8 @@ public class SkillTree
     public SkillTree(SkillGraph graph)
     {
         Skills = graph.Nodes.Select(n => n.SkillData).ToList();
-        SkillNodes = graph.Nodes;
-        Edges = graph.Edges;
+        SkillNodes = new List<SkillNode>(graph.Nodes);
+        Edges = new List<Tuple<int, int>>(graph.Edges);
         Name = graph.CharacterName;
     }
 }

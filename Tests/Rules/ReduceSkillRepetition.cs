@@ -9,12 +9,7 @@ public class ReduceSkillRepetition: OutputRuleBase
     {
         if (!config.Settings.ReduceSkillRepetition) return true;
         
-        var randomizedNodes = output.SkillTrees.SelectMany(
-            sT => sT.SkillNodes, (_, data) => data).
-            Where(sN => config.CustomSkillPlacement.IsRandomized(sN.OriginalSkillCodeName)
-            );
-        
-        var skillsGenerated = randomizedNodes.Select(n => n.SkillData.CodeName);
+        var skillsGenerated = output.RandomizedSkillNodes.Select(n => n.SkillData.CodeName);
         var skillFrequencies = TestUtils.CalculateFrequencies(skillsGenerated.ToList());
         var expectedFrequency = 1.0 / skillsGenerated.Distinct().Count();
 
