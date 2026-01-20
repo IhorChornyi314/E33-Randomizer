@@ -1,4 +1,5 @@
 ﻿using E33Randomizer;
+using Tests.Rules;
 
 namespace Tests;
 
@@ -18,7 +19,9 @@ public static class TestLogic
     {
         var result = new Output();
 
-        result.Encounters = new List<Encounter>(Controllers.EnemiesController.Encounters);
+        result.Encounters = new List<Encounter>(Controllers.EnemiesController.Encounters); 
+        result.Encounters = result.Encounters
+            .Where(e => !RemoveBrokenObjects.BrokenEncounters.Contains(e.Name)).ToList();
         result.Checks =
             Controllers.ItemsController.ItemsSources.SelectMany(iS => iS.SourceSections,
                 (source, pair) => new Check($"{source.FileName}#{pair.Key}", pair.Value)).ToList();

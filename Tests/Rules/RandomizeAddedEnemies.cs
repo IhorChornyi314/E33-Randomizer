@@ -33,7 +33,7 @@ public class RandomizeAddedEnemies: OutputRuleBase
 
         if (failedEncounters.Count > _threshold)
         {
-            FailureMessage += $"RandomizeAddedEnemies rule was broken {failedEncounters} times, example: {failedEncounters[0]}";
+            FailureMessage += $"RandomizeAddedEnemies rule was broken {failedEncounters.Count} times, example: {failedEncounters[0]}";
             return false;
         }
 

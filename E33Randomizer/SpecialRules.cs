@@ -49,6 +49,29 @@ public static class SpecialRules
         "L_Boss_Paintress_P1",
         "L_Boss_Curator_P1"
     ];
+    
+    public static Dictionary<string, string> BrokenEnemyReplacements = new Dictionary<string, string>()
+    {
+        {"QUEST_WeaponlessChalier", "FC_ChalierSword"},
+        {"FB_Dualliste_Phase1", "FB_DuallisteLR"},
+        {"YF_Jar_AlternativeA", "YF_Jar_AlternativeC"},
+        {"YF_Jar_AlternativeB", "YF_Jar_AlternativeC"},
+        {"SM_Volester_AlternativA", "SM_Volester_AlternativD"},
+        {"SM_Volester_AlternativB", "SM_Volester_AlternativD"},
+        {"SM_Volester_AlternativC", "SM_Volester_AlternativD"},
+        {"Petank_Parent", "Petank_Blue"},
+    };
+    
+    public static Dictionary<string, string> BrokenItemReplacements = new Dictionary<string, string>()
+    {
+        {"MitigatedPerfection", "Verleso"},
+        {"Chroma", "ChromaPack_Large"},
+        {"04_Key_Placeholder", "Quest_OldKey"},
+        {"Gold_Small", "ChromaPack_Regular"},
+        {"Gold_Medium", "ChromaPack_Large"},
+        {"Gold_Big", "ChromaPack_ExtraLarge"},
+        {"Consumable_SkillPoint", "Consumable_LuminaPoint"},
+    };
 
     public static List<string> DuelEncounters = [];
 
@@ -76,6 +99,7 @@ public static class SpecialRules
         cutContentItems = Controllers.ItemsController.ObjectsData.Where(s => s.IsCutContent).ToList();
         
         var bannedBosses = Controllers.EnemiesController.GetObjects(RandomizerLogic.CustomEnemyPlacement.ExcludedCodeNames);
+        bannedBosses.AddRange(Controllers.EnemiesController.GetObjects(RandomizerLogic.BrokenEnemies));
         if (!RandomizerLogic.Settings.IncludeCutContentEnemies)
         {
             bannedBosses.AddRange(cutContentEnemies);
@@ -85,6 +109,7 @@ public static class SpecialRules
             Controllers.EnemiesController.GetObjects(RandomizerLogic.CustomEnemyPlacement.PlainNameToCodeNames["All Bosses"]), bannedBosses);
 
         var bannedItems = Controllers.ItemsController.GetObjects(RandomizerLogic.CustomItemPlacement.ExcludedCodeNames);
+        bannedItems.AddRange(Controllers.ItemsController.GetObjects(RandomizerLogic.BrokenItems));
         if (!RandomizerLogic.Settings.IncludeCutContentItems)
         {
             bannedItems.AddRange(cutContentItems);
@@ -137,6 +162,17 @@ public static class SpecialRules
             }
         }
     }
+
+    public static void ReplaceBrokenEnemies(Encounter encounter)
+    {
+        for (int i = 0; i < encounter.Size; i++)
+        {
+            if (BrokenEnemyReplacements.TryGetValue(encounter.Enemies[i].CodeName, out string? value))
+            {
+                encounter.Enemies[i] = Controllers.EnemiesController.GetObject(value);
+            }
+        }
+    }
     
     public static void ApplySpecialRulesToEncounter(Encounter encounter)
     {
@@ -150,10 +186,6 @@ public static class SpecialRules
             }
         }
         
-        if (RandomizerLogic.Settings.NoSimonP2BeforeLune && MandatoryEncounters.Contains(encounter.Name) && MandatoryEncounters.IndexOf(encounter.Name) < 5)
-        {
-            ApplySimonSpecialRule(encounter);
-        }
         
         // if (RandomizerLogic.Settings.BossNumberCapped && !encounter.IsBossEncounter)
         // {
@@ -174,7 +206,14 @@ public static class SpecialRules
                 }
             }
         }
-
+        
+        if (RandomizerLogic.Settings.NoSimonP2BeforeLune && MandatoryEncounters.Contains(encounter.Name) && MandatoryEncounters.IndexOf(encounter.Name) < 5)
+        {
+            ApplySimonSpecialRule(encounter);
+        }
+        
+        ReplaceBrokenEnemies(encounter);
+        
         if (encounter.Name != "Boss_Duolliste_P2")
         {
             encounter.Enemies = encounter.Enemies.Select(e =>
@@ -192,6 +231,29 @@ public static class SpecialRules
             case "QUEST_Danseuse_DanceClass_Clone*1":
                 encounter.Enemies = [Controllers.EnemiesController.GetObject("QUEST_Danseuse_DanceClass_Clone")];
                 break;
+        }
+    }
+    
+    public static void ReplaceBrokenItems(CheckData check)
+    {
+        foreach (var itemParticle in check.ItemSource.SourceSections[check.Key])
+        {
+            if (!RandomizerLogic.BrokenItems.Contains(itemParticle.Item.CodeName)) continue;
+            
+            if (BrokenItemReplacements.TryGetValue(itemParticle.Item.CodeName, out string? value))
+            {
+                itemParticle.Item = Controllers.ItemsController.GetObject(value);
+            }
+            else if (itemParticle.Item.CodeName.Contains("Foot"))
+            {
+                itemParticle.Item = Controllers.ItemsController.GetObject("StalactFoot");
+            }
+            else
+            {
+                var newItem = _gearItemsPool.GetObject();
+                if (newItem != null)
+                    itemParticle.Item = newItem;
+            }
         }
     }
 
@@ -244,6 +306,8 @@ public static class SpecialRules
                 }
             }
         }
+        
+        ReplaceBrokenItems(check);
         
         if (RandomizerLogic.Settings.EnsurePaintedPowerFromPaintress &&
             check.ItemSource.FileName == "DA_GA_SQT_RedAndWhiteTree")

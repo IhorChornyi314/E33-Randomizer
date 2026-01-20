@@ -84,6 +84,7 @@ public static class CustomPlacementTestLogic
             if (originalEnemyCategories[i] != generatedEnemyCategories[i])
             {
                 wrongEnemies.Add(originalEnemies[i]);
+                Console.WriteLine($"Enemy {originalEnemies[i]} has been replaced by {generatedEnemies[i]}");
             }
         }
         

@@ -13,6 +13,18 @@ namespace E33Randomizer;
 
 public static class RandomizerLogic
 {
+    public static List<string> BrokenEncounters =
+    [
+        "Quest_WeaponlessChalier*1",
+        "FB_Dualliste_Phase1*1",
+        "JarAlternativeA*1",
+        "JarAlternativeA*1_Gault*2",
+        "JarAlternativeB*1",
+        "VolesterAlternativA*1",
+        "VolesterAlternativB*1",
+        "VolesterAlternativC*1",
+        "WM_Potier*1_Glaise*1_Volester*1",
+    ];
     public static List<string> BrokenEnemies =
     [
         "QUEST_WeaponlessChalier",

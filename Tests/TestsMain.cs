@@ -54,11 +54,14 @@ namespace Tests
                 new ReduceGearRepetition(),
                 new ReduceKeyItemRepetition(),
                 new ReduceSkillRepetition(),
+                new RemoveBrokenObjects(),
                 new UnlockGustaveSkills(),
             };
 
             RandomizerLogic.Init();
             TestLogic.OriginalData = TestLogic.CollectState(null);
+            TestLogic.OriginalData.Encounters = TestLogic.OriginalData.Encounters
+                .Where(e => e.Enemies.All(i => !RemoveBrokenObjects.BrokenEnemies.Contains(i.CodeName))).ToList();
         }
 
         [Test]
