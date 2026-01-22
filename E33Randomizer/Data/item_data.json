@@ -39,7 +39,7 @@
         "CodeName": "RiskSeeker",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "Survivor (Pictos)",
@@ -151,14 +151,14 @@
         "CodeName": "MitigatedPerfection",
         "Type": "Weapon",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "LimonsolPictos (Broken Pictos)",
         "CodeName": "LimonsolPictos",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "Beselbum (Maelle Weapon)",
@@ -207,7 +207,7 @@
         "CodeName": "02_ArmPicto_Placeholder",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "03_Weapon_Placeholder (Gustave Weapon)",
@@ -305,7 +305,7 @@
         "CodeName": "AntiShock",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "Anti Dizzy (Pictos)",
@@ -368,133 +368,133 @@
         "CodeName": "NullPhysical",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "NullFire (Broken Pictos)",
         "CodeName": "NullFire",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "NullIce (Broken Pictos)",
         "CodeName": "NullIce",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "NullEarth (Broken Pictos)",
         "CodeName": "NullEarth",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "NullThunder (Broken Pictos)",
         "CodeName": "NullThunder",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "NullDark (Broken Pictos)",
         "CodeName": "NullDark",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "NullLight (Broken Pictos)",
         "CodeName": "NullLight",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "AbsorbPhysical (Broken Pictos)",
         "CodeName": "AbsorbPhysical",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "AbsorbFire (Broken Pictos)",
         "CodeName": "AbsorbFire",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "AbsorbIce (Broken Pictos)",
         "CodeName": "AbsorbIce",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "AbsorbEarth (Broken Pictos)",
         "CodeName": "AbsorbEarth",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "AbsorbLight (Broken Pictos)",
         "CodeName": "AbsorbLight",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "AbsorbThunder (Broken Pictos)",
         "CodeName": "AbsorbThunder",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "AbsorbDark (Broken Pictos)",
         "CodeName": "AbsorbDark",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "Speedster (Broken Pictos)",
         "CodeName": "Speedster",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "Blitz (Broken Pictos)",
         "CodeName": "Blitz",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "AngelGrace (Broken Pictos)",
         "CodeName": "AngelGrace",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "AngelPresent (Broken Pictos)",
         "CodeName": "AngelPresent",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "AngelicChance (Broken Pictos)",
         "CodeName": "AngelicChance",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "Back At You (Pictos)",
@@ -515,7 +515,7 @@
         "CodeName": "RiskTaker",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "Energising Start I (Pictos)",
@@ -599,35 +599,35 @@
         "CodeName": "HighOnPerfect",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "FasterThanHisShadow (Broken Pictos)",
         "CodeName": "FasterThanHisShadow",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "Bramble Skin (Broken Pictos)",
         "CodeName": "BrambleSkin",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "SpreadingBrambleSkin (Broken Pictos)",
         "CodeName": "SpreadingBrambleSkin",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "BrambleParry (Broken Pictos)",
         "CodeName": "BrambleParry",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "Bloody Bullet (Pictos)",
@@ -641,35 +641,35 @@
         "CodeName": "FastAttacker",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "ReviveBombFire (Broken Pictos)",
         "CodeName": "ReviveBombFire",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "ReviveBombIce (Broken Pictos)",
         "CodeName": "ReviveBombIce",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "ReviveBombThunder (Broken Pictos)",
         "CodeName": "ReviveBombThunder",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "ReviveBombEarth (Broken Pictos)",
         "CodeName": "ReviveBombEarth",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "Energising Revive (Pictos)",
@@ -697,7 +697,7 @@
         "CodeName": "ReviveWithPrecision",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "Powerful Revive (Pictos)",
@@ -718,35 +718,35 @@
         "CodeName": "FireSkin",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "FrozenSkin (Broken Pictos)",
         "CodeName": "FrozenSkin",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "InvertedSkin (Broken Pictos)",
         "CodeName": "InvertedSkin",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "OverConfident (Broken Pictos)",
         "CodeName": "OverConfident",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "Fugitive (Broken Pictos)",
         "CodeName": "Fugitive",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "Solidifying (Pictos)",
@@ -774,7 +774,7 @@
         "CodeName": "TurboKiller",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "SniperWolf (Pictos)",
@@ -865,7 +865,7 @@
         "CodeName": "FlashDodge",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "Hazardous Choice (Pictos)",
@@ -893,49 +893,49 @@
         "CodeName": "DeathBombFire",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "DeathBombFrozen (Broken Pictos)",
         "CodeName": "DeathBombFrozen",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "DeathBombThunder (Broken Pictos)",
         "CodeName": "DeathBombThunder",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "DeathBombEarth (Broken Pictos)",
         "CodeName": "DeathBombEarth",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "DeathBombLight (Broken Pictos)",
         "CodeName": "DeathBombLight",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "DeathBombDark (Broken Pictos)",
         "CodeName": "DeathBombDark",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "DeathBombVoid (Broken Pictos)",
         "CodeName": "DeathBombVoid",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "Energising Death (Pictos)",
@@ -998,7 +998,7 @@
         "CodeName": "PhysicalModifier",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "Auto Death (Pictos)",
@@ -1040,7 +1040,7 @@
         "CodeName": "MakeItQuick",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "Lanceram (Gustave Weapon)",
@@ -1432,7 +1432,7 @@
         "CodeName": "AutoPrecision",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "Anti Exhaust (Pictos)",
@@ -1474,7 +1474,7 @@
         "CodeName": "Chroma",
         "Type": "Gold",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "Learner A (Pictos)",
@@ -1488,7 +1488,7 @@
         "CodeName": "BramblePerformer",
         "Type": "Pictos",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "Solidifying Meditation (Pictos)",
@@ -1558,7 +1558,7 @@
         "CodeName": "04_Key_Placeholder",
         "Type": "Key",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "Dualiso (Verso Weapon)",
@@ -1845,21 +1845,21 @@
         "CodeName": "Gold_Small",
         "Type": "Gold",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "Gold_Medium (Broken Item)",
         "CodeName": "Gold_Medium",
         "Type": "Gold",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "Gold_Big (Broken Item)",
         "CodeName": "Gold_Big",
         "Type": "Gold",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "TEST_FullStatsPicto (Pictos)",
@@ -3399,14 +3399,14 @@
         "CodeName": "Quest_MoltenHeart",
         "Type": "Key",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "Chromatic Ink (Key Item)",
         "CodeName": "Quest_ChromaticInk",
         "Type": "Key",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "Intact Mine (Key Item)",
@@ -3476,7 +3476,7 @@
         "CodeName": "Quest_StationKey",
         "Type": "Key",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "Manor Family Canvas (Key Item)",
@@ -5289,7 +5289,7 @@
         "CodeName": "Consumable_SkillPoint",
         "Type": "Inventory",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "Chroma Elixir Shard (Upgrade Material)",
@@ -5415,7 +5415,7 @@
         "CodeName": "Gustave_SkillTreeUnlock",
         "Type": "SkillUnlocker",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "Quest_MaellePainterSkillsUnlock (Skill Unlock)",
@@ -5464,7 +5464,7 @@
         "CodeName": "BourgeonFoot",
         "Type": "SkillUnlocker",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "Bruler's Foot (Lovely Foot)",
@@ -5772,21 +5772,21 @@
         "CodeName": "VeilleurFoot",
         "Type": "SkillUnlocker",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "Petank's Foot (Lovely Foot)",
         "CodeName": "PetankFoot",
         "Type": "SkillUnlocker",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "Noire's Foot (Lovely Foot)",
         "CodeName": "NoireFoot",
         "Type": "SkillUnlocker",
         "HasQuantities": false,
-        "IsCutContent": false
+        "IsCutContent": true
     },
     {
         "CustomName": "Eveque's Foot (Lovely Foot)",

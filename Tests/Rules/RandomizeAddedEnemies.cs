@@ -4,7 +4,7 @@ namespace Tests.Rules;
 
 public class RandomizeAddedEnemies: OutputRuleBase
 {
-    private static int _threshold = 15;
+    private static int _threshold = 25;
     public override bool IsSatisfied(Output output, Config config)
     {
         if (!config.Settings.EnableEnemyOnslaught) return true;
