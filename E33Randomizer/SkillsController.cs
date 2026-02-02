@@ -23,6 +23,7 @@ public class SkillsController: Controller<SkillData>
 
     public override void InitFromTxt(string text)
     {
+        text = text.ReplaceLineEndings("\n");
         var graphLines = text.Split('\n');
         foreach (var line in graphLines)
         {

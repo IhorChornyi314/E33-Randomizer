@@ -14,6 +14,8 @@ namespace E33Randomizer;
 
 public class ItemsController: Controller<ItemData>
 {
+    private static List<string> _ignoredFiles = [];
+    
     public List<ItemSource> ItemsSources = new();
 
     public Dictionary<string, List<CheckData>> CheckTypes = new();
@@ -57,6 +59,7 @@ public class ItemsController: Controller<ItemData>
     
     public void ProcessFile(string fileName)
     {
+        if (_ignoredFiles.Contains(fileName.Split('\\')[^1])) return;
         if (fileName.Contains("GameActionsData") && !fileName.Contains("_GA_")) return;
         
         if (fileName.Contains("S_ItemOperationData") || fileName.Contains("S_TriggerCinematicVariables") || fileName.Contains("E_GestralFightClub_Fighters") || fileName.Contains("BP_GameAction"))
@@ -249,6 +252,7 @@ public class ItemsController: Controller<ItemData>
 
     public override void InitFromTxt(string text)
     {
+        text = text.ReplaceLineEndings("\n");
         foreach (var line in text.Split('\n'))
         {
             if (line == "") continue;
@@ -277,6 +281,13 @@ public class ItemsController: Controller<ItemData>
 
     public override void Initialize()
     {
+        using (StreamReader r = new StreamReader($"{RandomizerLogic.DataDirectory}/broken_files.txt"))
+        {
+            string text = r.ReadToEnd();
+            text = text.ReplaceLineEndings("\n");
+            _ignoredFiles = text.Split('\n').ToList();
+        }
+        
         ReadObjectsData($"{RandomizerLogic.DataDirectory}/item_data.json");
         ReadTableAssets($"{RandomizerLogic.DataDirectory}/Originals/ItemTables");
         BuildItemSources($"{RandomizerLogic.DataDirectory}/ItemData");

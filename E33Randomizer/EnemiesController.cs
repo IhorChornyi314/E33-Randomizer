@@ -85,6 +85,7 @@ public class EnemiesController: Controller<EnemyData>
     
     public override void InitFromTxt(string text)
     {
+        text = text.ReplaceLineEndings("\n");
         foreach (var line in text.Split('\n'))
         {
             var encounterName = line.Split('|')[0];

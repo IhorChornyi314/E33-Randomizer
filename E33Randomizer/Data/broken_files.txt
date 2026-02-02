@@ -1,0 +1,7 @@
+# BP_Dialogue_Lumiere_ExpFestival_Apprentices.uasset
+# BP_Dialogue_Lumiere_ExpFestival_Token_Artifact_Colette.uasset
+# BP_Dialogue_Lumiere_ExpFestival_Token_Haircut_Amandine.uasset
+# BP_Dialogue_Lumiere_ExpFestival_Token_Pictos_Claude.uasset
+# BP_Dialogue_Lumiere_ExpFestival_Maelle.uasset
+# BP_Dialogue_Jules.uasset
+# BP_Dialogue_GV_ArenaRegistrar.uasset

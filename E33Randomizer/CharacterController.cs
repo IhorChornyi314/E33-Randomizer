@@ -156,6 +156,7 @@ public class CharacterController: Controller<CharacterData>
 
     public override void InitFromTxt(string text)
     {
+        text = text.ReplaceLineEndings("\n");
         var characterCodeNames = text.Split('\n');
         charactersJoinOrder = characterCodeNames.Select(GetObject).ToArray();
     }
