@@ -119,13 +119,22 @@
 
             <StackPanel DockPanel.Dock="Bottom">
                 <TextBlock Name="AddObjectTextBlock" Text="Add Enemy:" Margin="0,0,0,5" FontWeight="SemiBold" />
-                <ComboBox x:Name="AddObjectComboBox"
-                          ItemsSource="{Binding AllObjects}"
-                          DisplayMemberPath="Name"
-                          SelectedValuePath="Id"
-                          Margin="0,0,0,10"
-                          SelectionChanged="AddObjectComboBox_SelectionChanged"
-                          IsEnabled="{Binding CanAddObjects}"/>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <ComboBox x:Name="AddObjectComboBox"
+                              ItemsSource="{Binding AllObjects}"
+                              DisplayMemberPath="Name"
+                              SelectedValuePath="Id"
+                              Margin="0,0,10,0"
+                              IsEnabled="{Binding CanAddObjects}"
+                              IsEditable="True"
+                              StaysOpenOnEdit="True"
+                              PreviewKeyUp="AddObjectComboBox_OnPreviewKeyUp"
+                              MinWidth="200"/>
+                    <Button x:Name="AddObjectButton" Content="Add" Width="60" Height="25"
+                            Click="AddObjectButton_Click"
+                            IsEnabled="{Binding CanAddObjects}"
+                            VerticalAlignment="Top"/>
+                </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
                     <Button x:Name="LoadTextButton" Content="Load encounters from .txt file" Width="180" Height="30"
                             Margin="0,0,10,0" Click="ReadDataFromTxt" />
