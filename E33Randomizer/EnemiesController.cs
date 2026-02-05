@@ -283,7 +283,9 @@ public class EnemiesController: Controller<EnemyData>
                 var encounterCodeName = encounterViewModel.CodeName;
                 var encounterEnemiesViewModel = encounterViewModel.Objects;
                 var encounter = Encounters.FirstOrDefault(e => e.Name == encounterCodeName);
-                encounter.Enemies.Clear();
+                if (encounter == null) continue;
+                    encounter.Enemies.Clear();
+
                 foreach (var enemyViewModel in encounterEnemiesViewModel)
                 {
                     encounter.Enemies.Add(GetObject(enemyViewModel.CodeName));
