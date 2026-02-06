@@ -19,6 +19,35 @@ namespace E33Randomizer
         public BaseController Controller { get; set; }
         private ContainerViewModel? _selectedContainerViewModel = null;
         private string? _objectType = null;
+        private TextBox? _addComboTextBox;
+
+        private void AddObjectComboBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (sender is not ComboBox cb) return;
+
+            cb.ApplyTemplate();
+            _addComboTextBox = cb.Template.FindName("PART_EditableTextBox", cb) as TextBox;
+
+            if (_addComboTextBox != null)
+            {
+                _addComboTextBox.TextChanged -= AddComboTextBox_TextChanged;
+                _addComboTextBox.TextChanged += AddComboTextBox_TextChanged;
+            }
+        }
+
+        private void AddComboTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            // Only open when the user is editing this control
+            if (!AddObjectComboBox.IsKeyboardFocusWithin) return;
+
+            AddObjectComboBox.IsDropDownOpen = true;
+        }
+
+        private void AddObjectComboBox_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            if (!AddObjectComboBox.IsDropDownOpen)
+                AddObjectComboBox.IsDropDownOpen = true;
+        }
 
         public EditIndividualContainersWindow(BaseController controller)
         {

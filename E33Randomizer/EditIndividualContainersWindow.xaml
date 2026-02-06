@@ -136,7 +136,9 @@
                             StaysOpenOnEdit="True"
                             Text="{Binding AddObjectFilterTerm, UpdateSourceTrigger=PropertyChanged}"
                             MinWidth="200"
-                            Margin="0,0,10,0"/>
+                            Margin="0,0,10,0"
+                            Loaded="AddObjectComboBox_Loaded"
+                            GotKeyboardFocus="AddObjectComboBox_GotKeyboardFocus"/>
 
                     <Button x:Name="AddObjectButton"
                             Grid.Column="1"
