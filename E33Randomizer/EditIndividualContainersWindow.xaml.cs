@@ -50,36 +50,40 @@ namespace E33Randomizer
         {
             if (e.NewValue is ContainerViewModel selectedContainer)
             {
-                _selectedContainerViewModel = selectedContainer;
                 ViewModel.OnContainerSelected(selectedContainer);
             }
         }
 
         private void AddObjectButton_Click(object sender, RoutedEventArgs e)
         {
-            if (_selectedContainerViewModel == null) return;
+            var container = ViewModel.CurrentContainer;
+            if (container == null) return;
 
             var selected = ViewModel.SelectedAddObject;
             if (selected == null) return;
 
-            Controller.AddObjectToContainer(selected.CodeName, _selectedContainerViewModel.CodeName);
+            Controller.AddObjectToContainer(selected.CodeName, container.CodeName);
 
-            // Clear selection + filter (and keep UI consistent)
             ViewModel.SelectedAddObject = null;
             ViewModel.AddObjectFilterTerm = string.Empty;
-
-            // Optional: keep focus on the textbox for rapid adding
-            if (FindName("AddObjectComboBox") is ComboBox cb)
-                cb.Focus();
         }
+
 
         private void RemoveObject_Click(object sender, RoutedEventArgs e)
         {
-            if (_selectedContainerViewModel != null && sender is Button button && button.Tag is ObjectViewModel selectedObject)
-            {
-                Controller.RemoveObjectFromContainer(selectedObject.Index, _selectedContainerViewModel.CodeName);
-            }
+            var container = ViewModel.CurrentContainer;
+            if (container == null) return;
+
+            if (sender is not Button button) return;
+            if (button.Tag is not ObjectViewModel selectedObject) return;
+
+            // Use the same list the UI is showing
+            var idx = ViewModel.DisplayedObjects.IndexOf(selectedObject);
+            if (idx < 0) return;
+
+            Controller.RemoveObjectFromContainer(idx, container.CodeName);
         }
+
 
         public void RegenerateData(object sender, RoutedEventArgs e)
         {
