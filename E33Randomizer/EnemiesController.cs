@@ -221,17 +221,57 @@ public class EnemiesController: Controller<EnemyData>
 
     public override void AddObjectToContainer(string enemyCodeName, string encounterCodeName)
     {
-        ApplyViewModel();
+        // Update underlying encounter data
         var enemyData = GetObject(enemyCodeName);
-        Encounters.FindAll(e => e.Name == encounterCodeName).ForEach(e => e.Enemies.Add(enemyData));
-        UpdateViewModel();
+        foreach (var encounter in Encounters.Where(e => e.Name == encounterCodeName))
+        {
+            encounter.Enemies.Add(enemyData);
+        }
+
+        // Update ViewModel for the affected container without rebuilding the whole tree
+        var containerVm = ViewModel.Categories
+            .SelectMany(c => c.Containers)
+            .FirstOrDefault(c => c.CodeName == encounterCodeName);
+
+        if (containerVm != null)
+        {
+            var newObjectVm = new ObjectViewModel(enemyData);
+            newObjectVm.InitComboBox(ViewModel.AllObjects);
+            containerVm.Objects.Add(newObjectVm);
+
+            if (ViewModel.CurrentContainer == containerVm)
+            {
+                ViewModel.DisplayedObjects.Add(newObjectVm);
+            }
+        }
     }
     
     public override void RemoveObjectFromContainer(int enemyIndex, string encounterCodeName)
     {
-        ApplyViewModel();
-        Encounters.FindAll(e => e.Name == encounterCodeName).ForEach(e => e.Enemies.RemoveAt(enemyIndex));
-        UpdateViewModel();
+        // Update underlying encounter data
+        foreach (var encounter in Encounters.Where(e => e.Name == encounterCodeName))
+        {
+            if (enemyIndex >= 0 && enemyIndex < encounter.Enemies.Count)
+            {
+                encounter.Enemies.RemoveAt(enemyIndex);
+            }
+        }
+
+        // Update ViewModel for the affected container without rebuilding the whole tree
+        var containerVm = ViewModel.Categories
+            .SelectMany(c => c.Containers)
+            .FirstOrDefault(c => c.CodeName == encounterCodeName);
+
+        if (containerVm != null && enemyIndex >= 0 && enemyIndex < containerVm.Objects.Count)
+        {
+            var removedVm = containerVm.Objects[enemyIndex];
+            containerVm.Objects.RemoveAt(enemyIndex);
+
+            if (ViewModel.CurrentContainer == containerVm)
+            {
+                ViewModel.DisplayedObjects.Remove(removedVm);
+            }
+        }
     }
     
     public override void ApplyViewModel()
@@ -243,7 +283,9 @@ public class EnemiesController: Controller<EnemyData>
                 var encounterCodeName = encounterViewModel.CodeName;
                 var encounterEnemiesViewModel = encounterViewModel.Objects;
                 var encounter = Encounters.FirstOrDefault(e => e.Name == encounterCodeName);
-                encounter.Enemies.Clear();
+                if (encounter == null) continue;
+                    encounter.Enemies.Clear();
+
                 foreach (var enemyViewModel in encounterEnemiesViewModel)
                 {
                     encounter.Enemies.Add(GetObject(enemyViewModel.CodeName));
