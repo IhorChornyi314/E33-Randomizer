@@ -325,6 +325,20 @@ public class ItemsController: Controller<ItemData>
             }
         }
     }
+
+    public void AddSkillUnlockItems()
+    {
+    }
+
+    public void AddNewItem(ItemData item, string tableName)
+    {
+        ObjectsData.Add(item);
+        ObjectsByName[item.CodeName] = item;
+        
+        var table = (_itemsDataTables[tableName].Exports[0] as DataTableExport).Data;
+        var dummyItem = table[0].Clone() as StructPropertyData;
+        
+    }
     
     public override void AddObjectToContainer(string itemCodeName, string checkViewModelCodeName)
     {

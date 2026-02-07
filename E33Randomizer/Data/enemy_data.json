@@ -957,7 +957,7 @@
         "CustomName": "Chromatic Goblu (World Map)",
         "CodeName": "GO_Goblu_ALPHA",
         "Archetype": "Alpha",
-        "IsCutContent": true
+        "IsCutContent": false
     },
     {
         "CustomName": "Chromatic Demineur (Endless Tower)",
