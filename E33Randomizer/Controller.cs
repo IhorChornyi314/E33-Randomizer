@@ -10,6 +10,43 @@ public abstract class Controller<T>: BaseController where T: ObjectData, new()
     public List<T> ObjectsData = new();
     public Dictionary<string, T> ObjectsByName = new();
 
+    public void AddObjectToContainerVM(ObjectData objectData, string containerName)
+    {
+        var containerVm = ViewModel.Categories
+            .SelectMany(c => c.Containers)
+            .FirstOrDefault(c => c.CodeName == containerName);
+
+        if (containerVm != null)
+        {
+            var newObjectVm = new ObjectViewModel(objectData);
+            newObjectVm.InitComboBox(ViewModel.AllObjects);
+            containerVm.Objects.Add(newObjectVm);
+
+            if (ViewModel.CurrentContainer == containerVm)
+            {
+                ViewModel.DisplayedObjects.Add(newObjectVm);
+            }
+        }
+    }
+
+    public void RemoveObjectFromContainerVM(int objectIndex, string containerName)
+    {
+        var containerVm = ViewModel.Categories
+            .SelectMany(c => c.Containers)
+            .FirstOrDefault(c => c.CodeName == containerName);
+
+        if (containerVm != null && objectIndex >= 0 && objectIndex < containerVm.Objects.Count)
+        {
+            var removedVm = containerVm.Objects[objectIndex];
+            containerVm.Objects.RemoveAt(objectIndex);
+
+            if (ViewModel.CurrentContainer == containerVm)
+            {
+                ViewModel.DisplayedObjects.Remove(removedVm);
+            }
+        }
+    }
+    
     public void ReadObjectsData(string path)
     {
         using (StreamReader r = new StreamReader(path))

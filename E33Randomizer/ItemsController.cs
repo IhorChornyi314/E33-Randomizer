@@ -342,25 +342,25 @@ public class ItemsController: Controller<ItemData>
     
     public override void AddObjectToContainer(string itemCodeName, string checkViewModelCodeName)
     {
-        ApplyViewModel();
         var itemData = GetObject(itemCodeName);
         var itemSourceFileName = checkViewModelCodeName.Split("#")[0];
         var checkKey = checkViewModelCodeName.Split("#")[1];
         var itemSource = ItemsSources.FirstOrDefault(i => i.FileName == itemSourceFileName);
         var check = itemSource.Checks.FirstOrDefault(c => c.Key == checkKey);
         itemSource.AddItem(check.Key, itemData);
-        UpdateViewModel();
+        AddObjectToContainerVM(itemData, checkViewModelCodeName);
     }
     
     public override void RemoveObjectFromContainer(int itemIndex, string checkViewModelCodeName)
     {
-        ApplyViewModel();
+        if (itemIndex < 0) return;
+        
         var itemSourceFileName = checkViewModelCodeName.Split("#")[0];
         var checkKey = checkViewModelCodeName.Split("#")[1];
         var itemSource = ItemsSources.FirstOrDefault(i => i.FileName == itemSourceFileName);
         var check = itemSource.Checks.FirstOrDefault(c => c.Key == checkKey);
         itemSource.RemoveItem(check.Key, itemIndex);
-        UpdateViewModel();
+        RemoveObjectFromContainerVM(itemIndex, checkViewModelCodeName);
     }
 
     public override void ApplyViewModel()
@@ -393,7 +393,7 @@ public class ItemsController: Controller<ItemData>
         
         if (ViewModel.AllObjects.Count == 0)
         {
-            ViewModel.AllObjects = new ObservableCollection<ObjectViewModel>(ObjectsData.Select(i => new ObjectViewModel(i)));
+            ViewModel.AllObjects = new ObservableCollection<ObjectViewModel>(ObjectsData.Select(i => new ObjectViewModel(i)).OrderBy(ovm => ovm.Name));
             foreach (var objectViewModel in ViewModel.AllObjects)
             {
                 objectViewModel.IntProperty = ItemsWithQuantities.Contains(objectViewModel.CodeName) ? 1 : -1;

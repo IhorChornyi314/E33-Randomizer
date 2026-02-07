@@ -221,57 +221,20 @@ public class EnemiesController: Controller<EnemyData>
 
     public override void AddObjectToContainer(string enemyCodeName, string encounterCodeName)
     {
-        // Update underlying encounter data
         var enemyData = GetObject(enemyCodeName);
-        foreach (var encounter in Encounters.Where(e => e.Name == encounterCodeName))
-        {
-            encounter.Enemies.Add(enemyData);
-        }
+        Encounters.FindAll(e => e.Name == encounterCodeName).ForEach(e => e.Enemies.Add(enemyData));
 
-        // Update ViewModel for the affected container without rebuilding the whole tree
-        var containerVm = ViewModel.Categories
-            .SelectMany(c => c.Containers)
-            .FirstOrDefault(c => c.CodeName == encounterCodeName);
-
-        if (containerVm != null)
-        {
-            var newObjectVm = new ObjectViewModel(enemyData);
-            newObjectVm.InitComboBox(ViewModel.AllObjects);
-            containerVm.Objects.Add(newObjectVm);
-
-            if (ViewModel.CurrentContainer == containerVm)
-            {
-                ViewModel.DisplayedObjects.Add(newObjectVm);
-            }
-        }
+        AddObjectToContainerVM(enemyData, encounterCodeName);
     }
     
     public override void RemoveObjectFromContainer(int enemyIndex, string encounterCodeName)
     {
-        // Update underlying encounter data
-        foreach (var encounter in Encounters.Where(e => e.Name == encounterCodeName))
-        {
-            if (enemyIndex >= 0 && enemyIndex < encounter.Enemies.Count)
-            {
-                encounter.Enemies.RemoveAt(enemyIndex);
-            }
-        }
+        if (enemyIndex < 0) return;
+        
+        Encounters.FindAll(e => e.Name == encounterCodeName && enemyIndex < e.Enemies.Count).ForEach(
+            e => e.Enemies.RemoveAt(enemyIndex));
 
-        // Update ViewModel for the affected container without rebuilding the whole tree
-        var containerVm = ViewModel.Categories
-            .SelectMany(c => c.Containers)
-            .FirstOrDefault(c => c.CodeName == encounterCodeName);
-
-        if (containerVm != null && enemyIndex >= 0 && enemyIndex < containerVm.Objects.Count)
-        {
-            var removedVm = containerVm.Objects[enemyIndex];
-            containerVm.Objects.RemoveAt(enemyIndex);
-
-            if (ViewModel.CurrentContainer == containerVm)
-            {
-                ViewModel.DisplayedObjects.Remove(removedVm);
-            }
-        }
+        RemoveObjectFromContainerVM(enemyIndex, encounterCodeName);
     }
     
     public override void ApplyViewModel()
@@ -301,7 +264,7 @@ public class EnemiesController: Controller<EnemyData>
     
         if (ViewModel.AllObjects.Count == 0)
         {
-            ViewModel.AllObjects = new ObservableCollection<ObjectViewModel>(ObjectsData.Select(e => new ObjectViewModel(e)));
+            ViewModel.AllObjects = new ObservableCollection<ObjectViewModel>(ObjectsData.Select(e => new ObjectViewModel(e)).OrderBy(ovm => ovm.Name));
         }
         
         var encountersByLocation = EncounterIndexesByLocation;
