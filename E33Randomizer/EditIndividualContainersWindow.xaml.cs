@@ -9,6 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Microsoft.Win32;
+using System.Windows.Data;
 
 namespace E33Randomizer
 {
@@ -16,8 +17,37 @@ namespace E33Randomizer
     {
         public EditIndividualObjectsWindowViewModel ViewModel { get; set; }
         public BaseController Controller { get; set; }
-        private ContainerViewModel _selectedContainerViewModel;
-        private string _objectType;
+        private ContainerViewModel? _selectedContainerViewModel = null;
+        private string? _objectType = null;
+        private TextBox? _addComboTextBox;
+
+        private void AddObjectComboBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (sender is not ComboBox cb) return;
+
+            cb.ApplyTemplate();
+            _addComboTextBox = cb.Template.FindName("PART_EditableTextBox", cb) as TextBox;
+
+            if (_addComboTextBox != null)
+            {
+                _addComboTextBox.TextChanged -= AddComboTextBox_TextChanged;
+                _addComboTextBox.TextChanged += AddComboTextBox_TextChanged;
+            }
+        }
+
+        private void AddComboTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            // Only open when the user is editing this control
+            if (!AddObjectComboBox.IsKeyboardFocusWithin) return;
+
+            AddObjectComboBox.IsDropDownOpen = true;
+        }
+
+        private void AddObjectComboBox_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            if (!AddObjectComboBox.IsDropDownOpen)
+                AddObjectComboBox.IsDropDownOpen = true;
+        }
 
         public EditIndividualContainersWindow(BaseController controller)
         {
@@ -30,12 +60,18 @@ namespace E33Randomizer
 
         private void ApplyObjectsType()
         {
-            (FindName("ContainersTextBlock") as TextBlock).Text = ViewModel.ContainerName + "s";
-            (FindName("AddObjectTextBlock") as TextBlock).Text = $"Add {ViewModel.ObjectName.ToLower()}:";
-            (FindName("ObjectsTextBlock") as TextBlock).Text = $"{ViewModel.ObjectName}s in the {ViewModel.ContainerName.ToLower()}".Replace("ys", "ies");
-            (FindName("LoadTextButton") as Button).Content = $"Load {ViewModel.ContainerName.ToLower()}s from .txt file";
-            (FindName("SaveTextButton") as Button).Content = $"Save {ViewModel.ContainerName.ToLower()}s to .txt file";
-            (FindName("SearchLabel") as Label).Content = $"Search by {ViewModel.ContainerName.ToLower()} or {ViewModel.ObjectName.ToLower()} names:";
+            var containersTextBlock = FindName("ContainersTextBlock") as TextBlock;
+            if (containersTextBlock != null) containersTextBlock.Text = ViewModel.ContainerName + "s";
+            var addObjectTextBlock = FindName("AddObjectTextBlock") as TextBlock;
+            if (addObjectTextBlock != null) addObjectTextBlock.Text = $"Add {ViewModel.ObjectName.ToLower()}:";
+            var objectsTextBlock = FindName("ObjectsTextBlock") as TextBlock;
+            if (objectsTextBlock != null) objectsTextBlock.Text = $"{ViewModel.ObjectName}s in the {ViewModel.ContainerName.ToLower()}".Replace("ys", "ies");
+            var loadTextButton = FindName("LoadTextButton") as Button;
+            if (loadTextButton != null) loadTextButton.Content = $"Load {ViewModel.ContainerName.ToLower()}s from .txt file";
+            var saveTextButton = FindName("SaveTextButton") as Button;
+            if (saveTextButton != null) saveTextButton.Content = $"Save {ViewModel.ContainerName.ToLower()}s to .txt file";
+            var searchLabel = FindName("SearchLabel") as Label;
+            if (searchLabel != null) searchLabel.Content = $"Search by {ViewModel.ContainerName.ToLower()} or {ViewModel.ObjectName.ToLower()} names:";
             Title = $"Edit individual {ViewModel.ContainerName.ToLower()}s";
         }
         
@@ -43,27 +79,40 @@ namespace E33Randomizer
         {
             if (e.NewValue is ContainerViewModel selectedContainer)
             {
-                _selectedContainerViewModel = selectedContainer;
                 ViewModel.OnContainerSelected(selectedContainer);
             }
         }
 
-        private void AddObjectComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void AddObjectButton_Click(object sender, RoutedEventArgs e)
         {
-            if (_selectedContainerViewModel != null && AddObjectComboBox.SelectedItem is ObjectViewModel selectedObject)
-            {
-                Controller.AddObjectToContainer(selectedObject.CodeName, _selectedContainerViewModel.CodeName);
-            }
-            AddObjectComboBox.SelectedIndex = -1;
+            var container = ViewModel.CurrentContainer;
+            if (container == null) return;
+
+            var selected = ViewModel.SelectedAddObject;
+            if (selected == null) return;
+
+            Controller.AddObjectToContainer(selected.CodeName, container.CodeName);
+
+            ViewModel.SelectedAddObject = null;
+            ViewModel.AddObjectFilterTerm = string.Empty;
         }
+
 
         private void RemoveObject_Click(object sender, RoutedEventArgs e)
         {
-            if (_selectedContainerViewModel != null && sender is Button button && button.Tag is ObjectViewModel selectedObject)
-            {
-                Controller.RemoveObjectFromContainer(selectedObject.Index, _selectedContainerViewModel.CodeName);
-            }
+            var container = ViewModel.CurrentContainer;
+            if (container == null) return;
+
+            if (sender is not Button button) return;
+            if (button.Tag is not ObjectViewModel selectedObject) return;
+
+            // Use the same list the UI is showing
+            var idx = ViewModel.DisplayedObjects.IndexOf(selectedObject);
+            if (idx < 0) return;
+
+            Controller.RemoveObjectFromContainer(idx, container.CodeName);
         }
+
 
         public void RegenerateData(object sender, RoutedEventArgs e)
         {
@@ -151,83 +200,190 @@ namespace E33Randomizer
 
         private void SearchTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
         {
-            ViewModel.SearchTerm = SearchTextBox.Text;
-            ViewModel.UpdateFilteredCategories();
+            var searchTextBox = FindName("SearchTextBox") as TextBox;
+            if (searchTextBox != null)
+            {
+                ViewModel.SearchTerm = searchTextBox.Text;
+                ViewModel.UpdateFilteredCategories();
+            }
         }
     }
 
-    public class EditIndividualObjectsWindowViewModel : INotifyPropertyChanged
+public class EditIndividualObjectsWindowViewModel : INotifyPropertyChanged
+{
+    // --- Add-object filtering ---
+
+    private string _addObjectFilterTerm = string.Empty;
+    public string AddObjectFilterTerm
     {
-        public string ContainerName { get; set; }
-        public string ObjectName { get; set; }
-        public List<CategoryViewModel> Categories { get; set; }
-        public ObservableCollection<CategoryViewModel> FilteredCategories { get; set; }
-        public ObservableCollection<ObjectViewModel> DisplayedObjects { get; set; }
-        public ObservableCollection<ObjectViewModel> AllObjects { get; set; }
-        public ContainerViewModel CurrentContainer = null;
-        public string SearchTerm = "";
-        public bool CanAddObjects { get; set; }  = true;
-        
-
-        public EditIndividualObjectsWindowViewModel()
+        get => _addObjectFilterTerm;
+        set
         {
-            DisplayedObjects = [];
-            FilteredCategories = [];
-            Categories = [];
-            AllObjects = [];
-        }
-
-        public void UpdateFilteredCategories()
-        {
-            FilteredCategories.Clear();
-
-            foreach (var category in Categories)
-            {
-                var newCategory = new CategoryViewModel();
-                newCategory.CategoryName = category.CategoryName;
-                newCategory.Containers = new ObservableCollection<ContainerViewModel>(category.Containers.OrderBy(c => c.Name).Where(c => 
-                        c.Name.ToLower().Contains(SearchTerm.ToLower()) ||
-                        c.CodeName.ToLower().Contains(SearchTerm.ToLower()) ||
-                        c.Objects.Any(o => o.CodeName.ToLower().Contains(SearchTerm.ToLower()) || o.Name.ToLower().Contains(SearchTerm.ToLower())
-                        )
-                    )
-                );
-                if (newCategory.Containers.Count > 0)
-                {
-                    FilteredCategories.Add(newCategory);
-                }
-            }
-        }
-
-        public void UpdateDisplayedObjects()
-        {
-            DisplayedObjects.Clear();
-            foreach (var objectViewModel in CurrentContainer.Objects)
-            {
-                objectViewModel.InitComboBox(AllObjects);
-                DisplayedObjects.Add(objectViewModel);
-            }
-        }
-
-        public void OnContainerSelected(ContainerViewModel container)
-        {
-            CurrentContainer = container;
-            CanAddObjects = container.CanAddObjects; //!container.CodeName.Contains("BP_Dialog");
-            OnPropertyChanged(nameof(CanAddObjects));
-            UpdateDisplayedObjects();
-        }
-        
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            if (_addObjectFilterTerm == value) return;
+            _addObjectFilterTerm = value;
+            OnPropertyChanged(nameof(AddObjectFilterTerm));
+            RefreshAddObjectsFilter();
         }
     }
+
+    private ObjectViewModel? _selectedAddObject;
+    public ObjectViewModel? SelectedAddObject
+    {
+        get => _selectedAddObject;
+        set
+        {
+            if (_selectedAddObject == value) return;
+            _selectedAddObject = value;
+            OnPropertyChanged(nameof(SelectedAddObject));
+        }
+    }
+
+    private ObservableCollection<ObjectViewModel> _allObjects = new();
+    public ObservableCollection<ObjectViewModel> AllObjects
+    {
+        get => _allObjects;
+        set
+        {
+            if (ReferenceEquals(_allObjects, value)) return;
+            _allObjects = value ?? new ObservableCollection<ObjectViewModel>();
+            OnPropertyChanged(nameof(AllObjects));
+
+            // Rebuild the independent view when the collection instance changes
+            AddObjectsView = new ListCollectionView(_allObjects);
+            AddObjectsView.Filter = AddObjectsFilter;
+            OnPropertyChanged(nameof(AddObjectsView));
+
+            RefreshAddObjectsFilter();
+        }
+    }
+
+    // This is what the Add ComboBox binds to
+    private ICollectionView _addObjectsView;
+    public ICollectionView AddObjectsView
+    {
+        get => _addObjectsView;
+        private set => _addObjectsView = value;
+    }
+
+    private bool AddObjectsFilter(object obj)
+    {
+        if (obj is not ObjectViewModel o) return false;
+
+        if (string.IsNullOrWhiteSpace(AddObjectFilterTerm))
+            return true;
+
+        var term = AddObjectFilterTerm.Trim().ToLowerInvariant();
+        return (o.Name ?? "").ToLowerInvariant().Contains(term)
+               || (o.CodeName ?? "").ToLowerInvariant().Contains(term);
+    }
+
+    private void RefreshAddObjectsFilter()
+    {
+        AddObjectsView?.Refresh();
+    }
+
+    // --- Existing stuff you already had ---
+
+    public string ContainerName { get; set; } = string.Empty;
+    public string ObjectName { get; set; } = string.Empty;
+
+    public List<CategoryViewModel> Categories { get; set; } = new();
+    public ObservableCollection<CategoryViewModel> FilteredCategories { get; set; } = new();
+    public ObservableCollection<ObjectViewModel> DisplayedObjects { get; set; } = new();
+
+    public ContainerViewModel? CurrentContainer = null;
+
+    private string _searchTerm = string.Empty;
+    public string SearchTerm
+    {
+        get => _searchTerm;
+        set
+        {
+            if (_searchTerm == value) return;
+            _searchTerm = value ?? string.Empty;
+            OnPropertyChanged(nameof(SearchTerm));
+        }
+    }
+
+    private bool _canAddObjects = true;
+    public bool CanAddObjects
+    {
+        get => _canAddObjects;
+        set
+        {
+            if (_canAddObjects == value) return;
+            _canAddObjects = value;
+            OnPropertyChanged(nameof(CanAddObjects));
+        }
+    }
+
+    public EditIndividualObjectsWindowViewModel()
+    {
+        // Create a default view over the default AllObjects instance
+        AddObjectsView = new ListCollectionView(AllObjects);
+        AddObjectsView.Filter = AddObjectsFilter;
+    }
+
+    public void UpdateFilteredCategories()
+    {
+        FilteredCategories.Clear();
+
+        var term = (SearchTerm ?? string.Empty).ToLowerInvariant();
+
+        foreach (var category in Categories)
+        {
+            var newCategory = new CategoryViewModel
+            {
+                CategoryName = category.CategoryName,
+                Containers = new ObservableCollection<ContainerViewModel>(
+                    category.Containers
+                        .OrderBy(c => c.Name)
+                        .Where(c =>
+                            (c.Name ?? "").ToLowerInvariant().Contains(term) ||
+                            (c.CodeName ?? "").ToLowerInvariant().Contains(term) ||
+                            c.Objects.Any(o =>
+                                (o.CodeName ?? "").ToLowerInvariant().Contains(term) ||
+                                (o.Name ?? "").ToLowerInvariant().Contains(term)
+                            )
+                        )
+                )
+            };
+
+            if (newCategory.Containers.Count > 0)
+                FilteredCategories.Add(newCategory);
+        }
+    }
+
+    public void UpdateDisplayedObjects()
+    {
+        DisplayedObjects.Clear();
+
+        if (CurrentContainer == null) return;
+
+        foreach (var objectViewModel in CurrentContainer.Objects)
+        {
+            objectViewModel.InitComboBox(AllObjects);
+            DisplayedObjects.Add(objectViewModel);
+        }
+    }
+
+    public void OnContainerSelected(ContainerViewModel container)
+    {
+        CurrentContainer = container;
+        CanAddObjects = container.CanAddObjects;
+        UpdateDisplayedObjects();
+    }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+    protected virtual void OnPropertyChanged(string propertyName)
+        => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+}
+
 
     public class CategoryViewModel
     {
-        public string CategoryName { get; set; }
-        public ObservableCollection<ContainerViewModel> Containers { get; set; }
+        public string CategoryName { get; set; } = string.Empty;
+        public ObservableCollection<ContainerViewModel> Containers { get; set; } = new ObservableCollection<ContainerViewModel>();
     }
 
     public class ContainerViewModel
@@ -236,21 +392,21 @@ namespace E33Randomizer
         {
             CodeName = containerCodeName;
             Name = containerCustomName == "" ? containerCodeName : containerCustomName;
+            Objects = new ObservableCollection<ObjectViewModel>();
         }
 
         public bool CanAddObjects { get; set; } = true;
-        public string CodeName { get; set; }
-        public string Name { get; set; }
-        
-        public ObservableCollection<ObjectViewModel> Objects { get; set; }
+        public string CodeName { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
+        public ObservableCollection<ObjectViewModel> Objects { get; set; } = new ObservableCollection<ObjectViewModel>();
     }
 
     public class ObjectViewModel : INotifyPropertyChanged
     {
-        private ObjectViewModel _selectedComboBoxValue;
+        private ObjectViewModel? _selectedComboBoxValue;
         private int _lastIntPropertyValue = 1;
-        public string Name { get; set; }
-        public ObservableCollection<ObjectViewModel> AllObjects { get; set; } = [];
+        public string Name { get; set; } = string.Empty;
+        public ObservableCollection<ObjectViewModel> AllObjects { get; set; } = new ObservableCollection<ObjectViewModel>();
         public bool CanDelete { get; set; } = true;
 
         public bool HasIntPropertyControl => IntProperty != -1;
@@ -269,20 +425,23 @@ namespace E33Randomizer
         public bool HasBoolPropertyControl { get; set; } = false;
         public bool BoolProperty { get; set; } = false;
     
-        public ObjectViewModel SelectedComboBoxValue
+        public ObjectViewModel? SelectedComboBoxValue
         {
             get => _selectedComboBoxValue;
             set
             {
                 _selectedComboBoxValue = value;
                 OnPropertyChanged(nameof(SelectedComboBoxValue));
-                Name = _selectedComboBoxValue.Name;
-                CodeName = _selectedComboBoxValue.CodeName;
-                if (HasIntPropertyControl)
+                if (_selectedComboBoxValue != null)
                 {
-                    _lastIntPropertyValue = IntProperty;
+                    Name = _selectedComboBoxValue.Name;
+                    CodeName = _selectedComboBoxValue.CodeName;
+                    if (HasIntPropertyControl)
+                    {
+                        _lastIntPropertyValue = IntProperty;
+                    }
+                    IntProperty = !value.HasIntPropertyControl ? -1 : _lastIntPropertyValue;
                 }
-                IntProperty = !value.HasIntPropertyControl ? -1 : _lastIntPropertyValue;
             }
         }
         
@@ -303,8 +462,8 @@ namespace E33Randomizer
         }
         
         public int Index { get; set; }
-        public string CodeName { get; set; }
-        public event PropertyChangedEventHandler PropertyChanged;
+        public string CodeName { get; set; } = string.Empty;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         protected virtual void OnPropertyChanged(string propertyName)
         {

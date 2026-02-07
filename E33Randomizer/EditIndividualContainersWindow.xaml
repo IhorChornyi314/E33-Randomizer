@@ -6,7 +6,7 @@
         Title="Edit Individual Encounters" Height="725" Width="900" MinHeight="725" MinWidth="900"
         WindowStartupLocation="CenterScreen">
     <Window.Resources>
-        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -74,12 +74,12 @@
                             </Grid.ColumnDefinitions>
 
                             <ComboBox Grid.Column="0"
-                                      ItemsSource="{Binding AllObjects}"
-                                      SelectedValue="{Binding SelectedComboBoxValue}"
-                                      DisplayMemberPath="Name"
-                                      VerticalAlignment="Center"
-                                      Margin="5,2"
-                                      MinWidth="200"/>
+                                                ItemsSource="{Binding AllObjects}"
+                                                SelectedItem="{Binding SelectedComboBoxValue, Mode=TwoWay}"
+                                                DisplayMemberPath="Name"
+                                                VerticalAlignment="Center"
+                                                Margin="5,2"
+                                                MinWidth="200"/>
 
                             <xctk:IntegerUpDown Grid.Column="1" Name="NumberOfAdditionalEnemiesTextBox"
                                                 Text="{Binding IntProperty}"
@@ -119,13 +119,37 @@
 
             <StackPanel DockPanel.Dock="Bottom">
                 <TextBlock Name="AddObjectTextBlock" Text="Add Enemy:" Margin="0,0,0,5" FontWeight="SemiBold" />
-                <ComboBox x:Name="AddObjectComboBox"
-                          ItemsSource="{Binding AllObjects}"
-                          DisplayMemberPath="Name"
-                          SelectedValuePath="Id"
-                          Margin="0,0,0,10"
-                          SelectionChanged="AddObjectComboBox_SelectionChanged"
-                          IsEnabled="{Binding CanAddObjects}"/>
+                <Grid Margin="0,0,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <ComboBox x:Name="AddObjectComboBox"
+                            Grid.Column="0"
+                            ItemsSource="{Binding AddObjectsView}"
+                            DisplayMemberPath="Name"
+                            SelectedItem="{Binding SelectedAddObject, Mode=TwoWay}"
+                            IsEnabled="{Binding CanAddObjects}"
+                            IsEditable="True"
+                            IsTextSearchEnabled="False"
+                            StaysOpenOnEdit="True"
+                            Text="{Binding AddObjectFilterTerm, UpdateSourceTrigger=PropertyChanged}"
+                            MinWidth="200"
+                            Margin="0,0,10,0"
+                            Loaded="AddObjectComboBox_Loaded"
+                            GotKeyboardFocus="AddObjectComboBox_GotKeyboardFocus"/>
+
+                    <Button x:Name="AddObjectButton"
+                            Grid.Column="1"
+                            Content="Add"
+                            Width="60"
+                            Height="25"
+                            Click="AddObjectButton_Click"
+                            IsEnabled="{Binding CanAddObjects}"
+                            VerticalAlignment="Center"/>
+                </Grid>
+
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
                     <Button x:Name="LoadTextButton" Content="Load encounters from .txt file" Width="180" Height="30"
                             Margin="0,0,10,0" Click="ReadDataFromTxt" />

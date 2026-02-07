@@ -104,7 +104,22 @@ public static class RandomizerLogic
         "BramblePerformer"
     ];
     #if DEBUG
-        public static string DataDirectory = Environment.GetEnvironmentVariable("E33RandoDataPath");
+        public static string DataDirectory
+        {
+            get
+            {
+                var envPath = Environment.GetEnvironmentVariable("E33RandoDataPath");
+                if (!string.IsNullOrEmpty(envPath))
+                    return envPath;
+
+                // Navigate up from bin/Debug/net9.0-windows to the E33Randomizer project root
+                var baseDir = AppDomain.CurrentDomain.BaseDirectory;
+                var projectDir = Path.Combine(baseDir, "..", "..", "..");
+                var dataDir = Path.Combine(projectDir, "Data");
+                var fullPath = Path.GetFullPath(dataDir);
+                return fullPath;
+            }
+        }
     #else
             public static string DataDirectory = "Data";
     #endif
