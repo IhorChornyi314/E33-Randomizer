@@ -261,13 +261,4 @@ public static class RandomizerLogic
         
         Utils.WriteAsset(asset);
     }
-
-    public static void Test()
-    {
-        string json = File.ReadAllText($"{DataDirectory}/Temp/DA_ConditionChecker_Merchant_GrandisStation.json");
-        UAsset asset = UAsset.DeserializeJson(json);
-        asset.Mappings = mappings;
-        asset.Write("test.uasset");
-        Console.WriteLine("!");
-    }
 }

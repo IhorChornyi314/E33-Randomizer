@@ -6,4 +6,6 @@ public class SkillData: ObjectData
     public string ClassName;
     public string CharacterName;
     public string NameID;
+    public string IconPath;
+    public string StringPath;
 }

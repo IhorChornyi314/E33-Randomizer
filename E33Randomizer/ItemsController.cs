@@ -230,6 +230,60 @@ public class ItemsController: Controller<ItemData>
         }
     }
 
+    public void AddSkillItemsToChecks(List<CheckData> randomizableChecks)
+    {
+        randomizableChecks = Utils.ShuffleList(randomizableChecks).Where(c => !c.IsFixedSize).ToList();
+        if (randomizableChecks.Count == 0) return;
+        
+        for (int i = 0; i < Controllers.SkillsController.SkillItems.Count; i++)
+        {
+            randomizableChecks[i % randomizableChecks.Count].ItemSource.AddItem(randomizableChecks[i].Key, Controllers.SkillsController.SkillItems[i]);
+        }
+    }
+
+    public void AddSkillItemsToCompositeTable()
+    {
+        var table = (_compositeTableAsset.Exports[0] as DataTableExport).Table.Data;
+        
+        var dummyItem = table.Find(s => s.Name.ToString() == "Quest_MaellePainterSkillsUnlock").Clone() as StructPropertyData;
+        foreach (var skillItem in Controllers.SkillsController.SkillItems)
+        {
+            var skillData = Controllers.SkillsController.GetObject(skillItem.CodeName);
+            
+            _compositeTableAsset.AddNameReference(FString.FromString(skillData.CodeName));
+            var newItem = dummyItem.Clone() as StructPropertyData;
+            
+            newItem.Name = FName.FromString(_compositeTableAsset, skillData.CodeName);
+            (newItem.Value[0] as NamePropertyData).Value = FName.FromString(_compositeTableAsset, skillData.CodeName);
+
+            if (skillData.StringPath.Length > 0)
+            {
+                _compositeTableAsset.AddNameReference(FString.FromString(skillData.StringPath));
+                newItem.Value[1] = table[0].Value[1].Clone() as TextPropertyData;
+                (newItem.Value[1] as TextPropertyData).Value = FString.FromString(skillData.StringPath);
+                (newItem.Value[1] as TextPropertyData).TableId = FName.FromString(_compositeTableAsset, "/Game/StringTables/ST_MainCharacters_Skills.ST_MainCharacters_Skills");
+            }
+            
+            
+            if (skillData.IconPath.Length > 0)
+            {
+                _compositeTableAsset.AddNameReference(FString.FromString(skillData.IconPath));
+                _compositeTableAsset.AddNameReference(FString.FromString(skillData.IconPath.Split('/').Last()));
+                (newItem.Value[5] as SoftObjectPropertyData).FromString([skillData.IconPath, skillData.IconPath.Split('/').Last(), ""], _compositeTableAsset);
+            }
+            
+            table.Add(newItem);
+        }
+    }
+
+    public void AddItem(ItemData newItem)
+    {
+        if (ObjectsData.Contains(newItem)) return;
+        
+        ObjectsData.Add(newItem);
+        ObjectsByName[newItem.CodeName] = newItem;
+    }
+
     public override void Randomize()
     {
         SpecialRules.Reset();
@@ -243,6 +297,10 @@ public class ItemsController: Controller<ItemData>
         var randomizableSources = ItemsSources.Where(SpecialRules.Randomizable).ToList();
         randomizableSources.ForEach(i => i.Randomize());
         ItemsSources.ForEach(i => i.Checks.ForEach(SpecialRules.ApplySpecialRulesToCheck));
+        if (RandomizerLogic.Settings.AddSkillsAsItems)
+        {
+            AddSkillItemsToChecks(randomizableSources.SelectMany(iS => iS.Checks).ToList());
+        }
         if (!RandomizerLogic.Settings.IncludeCutContentItems && !cutContentAlreadyExcluded)
         {
             RandomizerLogic.CustomItemPlacement.RemoveExcluded("Cut Content Items");
@@ -325,20 +383,6 @@ public class ItemsController: Controller<ItemData>
             }
         }
     }
-
-    public void AddSkillUnlockItems()
-    {
-    }
-
-    public void AddNewItem(ItemData item, string tableName)
-    {
-        ObjectsData.Add(item);
-        ObjectsByName[item.CodeName] = item;
-        
-        var table = (_itemsDataTables[tableName].Exports[0] as DataTableExport).Data;
-        var dummyItem = table[0].Clone() as StructPropertyData;
-        
-    }
     
     public override void AddObjectToContainer(string itemCodeName, string checkViewModelCodeName)
     {
@@ -391,7 +435,7 @@ public class ItemsController: Controller<ItemData>
         ViewModel.FilteredCategories.Clear();
         ViewModel.Categories.Clear();
         
-        if (ViewModel.AllObjects.Count == 0)
+        if (ViewModel.AllObjects.Count != ObjectsData.Count)
         {
             ViewModel.AllObjects = new ObservableCollection<ObjectViewModel>(ObjectsData.Select(i => new ObjectViewModel(i)).OrderBy(ovm => ovm.Name));
             foreach (var objectViewModel in ViewModel.AllObjects)

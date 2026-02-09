@@ -6,7 +6,9 @@
     "NameID": "Consumable_Energy_Level1",
     "ClassPath": "/Game/Content/Gameplay/SkillTree/Content/Consumables/DA_Skill_MediumEnergyTint",
     "CharacterName": "Consumables",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "/Game/UI/Resources/Textures/GameMenu/Ico/Consumable/T_UI_EnergyTintB",
+    "StringPath": ""
   },
   {
     "CodeName": "DA_Skill_MediumHealingTint",
@@ -15,7 +17,9 @@
     "NameID": "Consumable_Health_Level1",
     "ClassPath": "/Game/Content/Gameplay/SkillTree/Content/Consumables/DA_Skill_MediumHealingTint",
     "CharacterName": "Consumables",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "/Game/UI/Resources/Textures/GameMenu/Ico/Consumable/T_UI_HealingTintB",
+    "StringPath": ""
   },
   {
     "CodeName": "DA_Skill_MediumReviveTint",
@@ -24,7 +28,9 @@
     "NameID": "Consumable_Revive_Level1",
     "ClassPath": "/Game/Content/Gameplay/SkillTree/Content/Consumables/DA_Skill_MediumReviveTint",
     "CharacterName": "Consumables",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "/Game/UI/Resources/Textures/GameMenu/Ico/Consumable/T_UI_ReviveTintB",
+    "StringPath": ""
   },
   {
     "CodeName": "DA_Skill_SmallEnergyTint",
@@ -33,7 +39,9 @@
     "NameID": "Consumable_Energy_Level0",
     "ClassPath": "/Game/Content/Gameplay/SkillTree/Content/Consumables/DA_Skill_SmallEnergyTint",
     "CharacterName": "Consumables",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "/Game/UI/Resources/Textures/GameMenu/Ico/Consumable/T_UI_EnergyTintA",
+    "StringPath": ""
   },
   {
     "CodeName": "DA_Skill_SmallHealingTint",
@@ -42,7 +50,9 @@
     "NameID": "Consumable_Health_Level0",
     "ClassPath": "/Game/Content/Gameplay/SkillTree/Content/Consumables/DA_Skill_SmallHealingTint",
     "CharacterName": "Consumables",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "/Game/UI/Resources/Textures/GameMenu/Ico/Consumable/T_UI_HealingTintA",
+    "StringPath": ""
   },
   {
     "CodeName": "DA_Skill_SmallReviveTint",
@@ -51,7 +61,9 @@
     "NameID": "Consumable_Revive_Level0",
     "ClassPath": "/Game/Content/Gameplay/SkillTree/Content/Consumables/DA_Skill_SmallReviveTint",
     "CharacterName": "Consumables",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "/Game/UI/Resources/Textures/GameMenu/Ico/Consumable/T_UI_ReviveTintA",
+    "StringPath": ""
   },
   {
     "CodeName": "DA_Skill_StrongEnergyTint",
@@ -60,7 +72,9 @@
     "NameID": "Consumable_Energy_Level2",
     "ClassPath": "/Game/Content/Gameplay/SkillTree/Content/Consumables/DA_Skill_StrongEnergyTint",
     "CharacterName": "Consumables",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "/Game/UI/Resources/Textures/GameMenu/Ico/Consumable/T_UI_EnergyTintS",
+    "StringPath": ""
   },
   {
     "CodeName": "DA_Skill_StrongHealingTint",
@@ -69,7 +83,9 @@
     "NameID": "Consumable_Health_Level2",
     "ClassPath": "/Game/Content/Gameplay/SkillTree/Content/Consumables/DA_Skill_StrongHealingTint",
     "CharacterName": "Consumables",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "/Game/UI/Resources/Textures/GameMenu/Ico/Consumable/T_UI_HealingTintS",
+    "StringPath": ""
   },
   {
     "CodeName": "DA_Skill_StrongReviveTint",
@@ -78,7 +94,9 @@
     "NameID": "Consumable_Revive_Level2",
     "ClassPath": "/Game/Content/Gameplay/SkillTree/Content/Consumables/DA_Skill_StrongReviveTint",
     "CharacterName": "Consumables",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "/Game/UI/Resources/Textures/GameMenu/Ico/Consumable/T_UI_ReviveTintS",
+    "StringPath": ""
   },
   {
     "CodeName": "DA_Skill_Gustave_Combo1",
@@ -87,7 +105,9 @@
     "NameID": "Combo1_Gustave",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Gustave/DA_Skill_Gustave_Combo1",
     "CharacterName": "Gustave",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Gustave/T_UI_Skill_Gustave_LumiereAssault",
+    "StringPath": "Verso_Combo1_Gustave_Name"
   },
   {
     "CodeName": "DA_Skill_Gustave_FromFire",
@@ -96,7 +116,9 @@
     "NameID": "FromFire_Gustave",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Gustave/DA_Skill_Gustave_FromFire",
     "CharacterName": "Gustave",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Gustave/T_UI_Skill_Gustave_FromFire",
+    "StringPath": "Verso_FromFire_Gustave_Name"
   },
   {
     "CodeName": "DA_Skill_Gustave_MarkingShot",
@@ -105,7 +127,9 @@
     "NameID": "MarkingShot_Gustave",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Gustave/DA_Skill_Gustave_MarkingShot",
     "CharacterName": "Gustave",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Gustave/T_UI_Skill_Gustave_MarkingShot",
+    "StringPath": "Verso_MarkingShot_Gustave_Name"
   },
   {
     "CodeName": "DA_Skill_Gustave_PerfectBreak",
@@ -114,7 +138,9 @@
     "NameID": "PerfectBreak_Gustave",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Gustave/DA_Skill_Gustave_PerfectBreak",
     "CharacterName": "Gustave",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Gustave/T_UI_Skill_Gustave_Shatter",
+    "StringPath": "Verso_PerfectBreak_Gustave_Name"
   },
   {
     "CodeName": "DA_Skill_Gustave_PerfectRecovery",
@@ -123,7 +149,9 @@
     "NameID": "PerfectRecovery_Gustave",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Gustave/DA_Skill_Gustave_PerfectRecovery",
     "CharacterName": "Gustave",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Gustave/T_UI_Skill_Gustave_PerfectRecovery",
+    "StringPath": "Verso_PerfectRecovery_Gustave_Name"
   },
   {
     "CodeName": "DA_Skill_Gustave_Powerful",
@@ -132,7 +160,9 @@
     "NameID": "Powerful_Gustave",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Gustave/DA_Skill_Gustave_Powerful",
     "CharacterName": "Gustave",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Gustave/T_UI_Skill_Gustave_Powerful",
+    "StringPath": "Verso_Powerful_Gustave_Name"
   },
   {
     "CodeName": "DA_Skill_Gustave_Strikestorm",
@@ -141,7 +171,9 @@
     "NameID": "StrikeStorm_Gustave",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Gustave/DA_Skill_Gustave_Strikestorm",
     "CharacterName": "Gustave",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Gustave/T_UI_Skill_Gustave_StrikeStorm",
+    "StringPath": "Verso_StrikeStorm_Gustave_Name"
   },
   {
     "CodeName": "DA_Skill_Gustave_UnleashCharge",
@@ -150,7 +182,9 @@
     "NameID": "UnleashCharge",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Gustave/DA_Skill_Gustave_UnleashCharge",
     "CharacterName": "Gustave",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Gustave/T_UI_Skill_Gustave_UnleashedCharge",
+    "StringPath": "Verso_UnleashCharge_Name"
   },
   {
     "CodeName": "DA_Skill_Julie_Combo1",
@@ -159,7 +193,9 @@
     "NameID": "Combo1_Julie",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Julie/DA_Skill_Julie_Combo1",
     "CharacterName": "Julie",
-    "IsCutContent": true
+    "IsCutContent": true,
+    "IconPath": "",
+    "StringPath": ""
   },
   {
     "CodeName": "DA_Skill_Lune_CripplingTsunami",
@@ -168,7 +204,9 @@
     "NameID": "CripplingTsunami",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_CripplingTsunami",
     "CharacterName": "Lune",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Lune/T_UI_Skill_Lune_CripplingTsunami",
+    "StringPath": "Lune_CripplingTsunami_Name"
   },
   {
     "CodeName": "DA_Skill_Lune_CrustalCrush",
@@ -177,7 +215,9 @@
     "NameID": "CrustalCrush",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_CrustalCrush",
     "CharacterName": "Lune",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Lune/T_UI_Skill_Lune_CrustalCrush",
+    "StringPath": "Lune_CrustalCrush_Name"
   },
   {
     "CodeName": "DA_Skill_Lune_EarthQuake",
@@ -186,7 +226,9 @@
     "NameID": "Earthquake",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_EarthQuake",
     "CharacterName": "Lune",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Lune/T_UI_Skill_Lune_EarthRising",
+    "StringPath": "Lune_Earthquake_Name"
   },
   {
     "CodeName": "DA_Skill_Lune_EarthSpike",
@@ -195,7 +237,9 @@
     "NameID": "RockSlide",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_EarthSpike",
     "CharacterName": "Lune",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Lune/T_UI_Skill_Lune_RockSlide",
+    "StringPath": "Lune_EarthSpike_Name"
   },
   {
     "CodeName": "DA_Skill_Lune_Electrify",
@@ -204,7 +248,9 @@
     "NameID": "Electrify",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_Electrify",
     "CharacterName": "Lune",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Lune/T_UI_Skill_Lune_Electrify",
+    "StringPath": "Lune_Electrify_Name"
   },
   {
     "CodeName": "DA_Skill_Lune_ElementalGenesis",
@@ -213,7 +259,9 @@
     "NameID": "ElementalGenesis",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_ElementalGenesis",
     "CharacterName": "Lune",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Lune/T_UI_Skill_Lune_ElementalGenesis",
+    "StringPath": "Lune_ElementalGenesis_Name"
   },
   {
     "CodeName": "DA_Skill_Lune_ElementalTrick",
@@ -222,7 +270,9 @@
     "NameID": "ElementalTrick",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_ElementalTrick",
     "CharacterName": "Lune",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Lune/T_UI_Skill_Lune_ElementalTrick",
+    "StringPath": "Lune_ElementalTrick_Name"
   },
   {
     "CodeName": "DA_Skill_Lune_FireRage",
@@ -231,7 +281,9 @@
     "NameID": "FireRage",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_FireRage",
     "CharacterName": "Lune",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Lune/T_UI_Skill_Lune_FireRage",
+    "StringPath": "Lune_FireRage_Name"
   },
   {
     "CodeName": "DA_Skill_Lune_HealingLight",
@@ -240,7 +292,9 @@
     "NameID": "HealingLight",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_HealingLight",
     "CharacterName": "Lune",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Lune/T_UI_Skill_Lune_HealingLight",
+    "StringPath": "Lune_HealingLight_Name"
   },
   {
     "CodeName": "DA_Skill_Lune_Hell",
@@ -249,7 +303,9 @@
     "NameID": "Hell",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_Hell",
     "CharacterName": "Lune",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Lune/T_UI_Skill_Lune_Hell",
+    "StringPath": "Lune_Hell_Name"
   },
   {
     "CodeName": "DA_Skill_Lune_IceGust",
@@ -258,7 +314,9 @@
     "NameID": "IceGust",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_IceGust",
     "CharacterName": "Lune",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Lune/T_UI_Skill_Lune_IceGust",
+    "StringPath": "Lune_IceGust_Name"
   },
   {
     "CodeName": "DA_Skill_Lune_Immolation",
@@ -267,7 +325,9 @@
     "NameID": "Immolation",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_Immolation",
     "CharacterName": "Lune",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Lune/T_UI_Skill_Lune_Immolation",
+    "StringPath": "Lune_Immolation_Name"
   },
   {
     "CodeName": "DA_Skill_Lune_LightningDance",
@@ -276,7 +336,9 @@
     "NameID": "LightningDance",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_LightningDance",
     "CharacterName": "Lune",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Lune/T_UI_Skill_Lune_LightningStrike",
+    "StringPath": "Lune_LightningDance_Name"
   },
   {
     "CodeName": "DA_Skill_Lune_Mayhem",
@@ -285,7 +347,9 @@
     "NameID": "Mayhem",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_Mayhem",
     "CharacterName": "Lune",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Lune/T_UI_Skill_Lune_Mayhem",
+    "StringPath": "Lune_Mayhem_Name"
   },
   {
     "CodeName": "DA_Skill_Lune_Rebirth",
@@ -294,7 +358,9 @@
     "NameID": "Rebirth",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_Rebirth",
     "CharacterName": "Lune",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Lune/T_UI_Skill_Lune_Rebirth",
+    "StringPath": "Lune_Rebirth_Name"
   },
   {
     "CodeName": "DA_Skill_Lune_Revitalization",
@@ -303,7 +369,9 @@
     "NameID": "Revitalization",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_Revitalization",
     "CharacterName": "Lune",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Lune/T_UI_Skill_Lune_Regeneration",
+    "StringPath": "Lune_Revitalization_Name"
   },
   {
     "CodeName": "DA_Skill_Lune_SkyBreak",
@@ -312,7 +380,9 @@
     "NameID": "SkyBreak",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_SkyBreak",
     "CharacterName": "Lune",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Lune/T_UI_Skill_Lune_SkyBreak",
+    "StringPath": "Lune_SkyBreak_Name"
   },
   {
     "CodeName": "DA_Skill_Lune_StormCaller",
@@ -321,7 +391,9 @@
     "NameID": "StormCaller",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_StormCaller",
     "CharacterName": "Lune",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Lune/T_UI_Skill_Lune_StormCaller",
+    "StringPath": "Lune_StormCaller_Name"
   },
   {
     "CodeName": "DA_Skill_Lune_Terraquake",
@@ -330,7 +402,9 @@
     "NameID": "Terraquake",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_Terraquake",
     "CharacterName": "Lune",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Lune/T_UI_Skill_Lune_TerraQuake",
+    "StringPath": "Lune_Terraquake_Name"
   },
   {
     "CodeName": "DA_Skill_Lune_ThermalTransfer",
@@ -339,7 +413,9 @@
     "NameID": "ThermalTransfer",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_ThermalTransfer",
     "CharacterName": "Lune",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Lune/T_UI_Skill_Lune_ThermalTransfer",
+    "StringPath": "Lune_ThermalTransfer_Name"
   },
   {
     "CodeName": "DA_Skill_Lune_Thunderfall",
@@ -348,7 +424,9 @@
     "NameID": "Thunderfall",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_Thunderfall",
     "CharacterName": "Lune",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Lune/T_UI_Skill_Lune_Thunderfall",
+    "StringPath": "Lune_Thunderfall_Name"
   },
   {
     "CodeName": "DA_Skill_Lune_TreeOfLife",
@@ -357,7 +435,9 @@
     "NameID": "TreeOfLife",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_TreeOfLife",
     "CharacterName": "Lune",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Lune/T_UI_Skill_Lune_TreeOfLife",
+    "StringPath": "Lune_TreeOfLife_Name"
   },
   {
     "CodeName": "DA_Skill_Lune_Tremor",
@@ -366,7 +446,9 @@
     "NameID": "Tremor",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_Tremor",
     "CharacterName": "Lune",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Lune/T_UI_Skill_Lune_Tremor",
+    "StringPath": "Lune_Tremor_Name"
   },
   {
     "CodeName": "DA_Skill_Lune_Typhoon",
@@ -375,7 +457,9 @@
     "NameID": "Typhoon",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_Typhoon",
     "CharacterName": "Lune",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Lune/T_UI_Skill_Lune_Typhoon",
+    "StringPath": "Lune_Typhoon_Name"
   },
   {
     "CodeName": "DA_Skill_Lune_Wildfire",
@@ -384,7 +468,9 @@
     "NameID": "Wildfire",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Lune/Skills/DA_Skill_Lune_Wildfire",
     "CharacterName": "Lune",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Lune/T_UI_Skill_Lune_Wildfire",
+    "StringPath": "Lune_Wildfire_Name"
   },
   {
     "CodeName": "DA_Skill_Maelle_BreakingRules",
@@ -393,7 +479,9 @@
     "NameID": "BreakingRules",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_BreakingRules",
     "CharacterName": "Maelle",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Maelle/T_UI_Skill_Maelle_BreakingRules",
+    "StringPath": "Maelle_BreakingRules_Name"
   },
   {
     "CodeName": "DA_Skill_Maelle_BurningCanvas",
@@ -402,7 +490,9 @@
     "NameID": "BurningCanvas",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_BurningCanvas",
     "CharacterName": "Maelle",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Maelle/T_UI_Skill_Maelle_RunningCanvas",
+    "StringPath": "Maelle_BurningCanvas_Name"
   },
   {
     "CodeName": "DA_Skill_Maelle_Degagement",
@@ -411,7 +501,9 @@
     "NameID": "Degagement",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_Degagement",
     "CharacterName": "Maelle",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Maelle/T_UI_Skill_Maelle_Degagement",
+    "StringPath": "Maelle_Degagement_Name"
   },
   {
     "CodeName": "DA_Skill_Maelle_FencersFlurry",
@@ -420,7 +512,9 @@
     "NameID": "FencersFlurry",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_FencersFlurry",
     "CharacterName": "Maelle",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Maelle/T_UI_Skill_Maelle_FencersFlurry",
+    "StringPath": "Maelle_FencersFlurry_Name"
   },
   {
     "CodeName": "DA_Skill_Maelle_FleuretFury",
@@ -429,7 +523,9 @@
     "NameID": "FleuretFury",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_FleuretFury",
     "CharacterName": "Maelle",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Maelle/T_UI_Skill_Maelle_FleuretFury",
+    "StringPath": "Maelle_FleuretFury_Name"
   },
   {
     "CodeName": "DA_Skill_Maelle_Gommage",
@@ -438,7 +534,9 @@
     "NameID": "Gommage",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_Gommage",
     "CharacterName": "Maelle",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Maelle/T_UI_Skill_Maelle_Gommage",
+    "StringPath": "Maelle_Gommage_Name"
   },
   {
     "CodeName": "DA_Skill_Maelle_GuardDown",
@@ -447,7 +545,9 @@
     "NameID": "GuardDown",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_GuardDown",
     "CharacterName": "Maelle",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Maelle/T_UI_Skill_Maelle_GuardDown",
+    "StringPath": "Maelle_GuardDown_Name"
   },
   {
     "CodeName": "DA_Skill_Maelle_GuardUp",
@@ -456,7 +556,9 @@
     "NameID": "GuardUp",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_GuardUp",
     "CharacterName": "Maelle",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Maelle/T_UI_Skill_Maelle_GuardUp",
+    "StringPath": "Maelle_GuardUp_Name"
   },
   {
     "CodeName": "DA_Skill_Maelle_GustaveSMemoire",
@@ -465,7 +567,9 @@
     "NameID": "GustaveSMemoire",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_GustaveSMemoire",
     "CharacterName": "Maelle",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Maelle/T_UI_Skill_Maelle_GustaveMemoires",
+    "StringPath": "Maelle_GustaveSMemoire_Name"
   },
   {
     "CodeName": "DA_Skill_Maelle_LastChance",
@@ -474,7 +578,9 @@
     "NameID": "LastChance",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_LastChance",
     "CharacterName": "Maelle",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Maelle/T_UI_Skill_Maelle_LastChance",
+    "StringPath": "Maelle_LastChance_Name"
   },
   {
     "CodeName": "DA_Skill_Maelle_MomentumStrike",
@@ -483,7 +589,9 @@
     "NameID": "MomentumStrike",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_MomentumStrike",
     "CharacterName": "Maelle",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Maelle/T_UI_Skill_Maelle_MomentumStrike",
+    "StringPath": "Maelle_MomentumStrike_Name"
   },
   {
     "CodeName": "DA_Skill_Maelle_NEW11_MezzoForte",
@@ -492,7 +600,9 @@
     "NameID": "MezzoForte",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_NEW11_MezzoForte",
     "CharacterName": "Maelle",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Maelle/T_UI_Skill_Maelle_MezzoForte",
+    "StringPath": "Maelle_MezzoForte_Name"
   },
   {
     "CodeName": "DA_Skill_Maelle_NEW13_Payback",
@@ -501,7 +611,9 @@
     "NameID": "Payback",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_NEW13_Payback",
     "CharacterName": "Maelle",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Maelle/T_UI_Skill_Maelle_Payback",
+    "StringPath": "Maelle_Payback_Name"
   },
   {
     "CodeName": "DA_Skill_Maelle_NEW14_Percee",
@@ -510,7 +622,9 @@
     "NameID": "Percee",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_NEW14_Percee",
     "CharacterName": "Maelle",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Maelle/T_UI_Skill_Maelle_Percee",
+    "StringPath": "Maelle_Percee_Name"
   },
   {
     "CodeName": "DA_Skill_Maelle_NEW18_Spark",
@@ -519,7 +633,9 @@
     "NameID": "Spark",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_NEW18_Spark",
     "CharacterName": "Maelle",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Maelle/T_UI_Skill_Maelle_Spark",
+    "StringPath": "Maelle_Spark_Name"
   },
   {
     "CodeName": "DA_Skill_Maelle_NEW19_InvigoratingFire",
@@ -528,7 +644,9 @@
     "NameID": "InvigoratingFire",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_NEW19_InvigoratingFire",
     "CharacterName": "Maelle",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Maelle/T_UI_Skill_Maelle_InvigoratingFire",
+    "StringPath": "Maelle_InvigoratingFire_Name"
   },
   {
     "CodeName": "DA_Skill_Maelle_NEW4_FireRise",
@@ -537,7 +655,9 @@
     "NameID": "FireRise",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_NEW4_FireRise",
     "CharacterName": "Maelle",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Maelle/T_UI_Skill_Maelle_FireRise",
+    "StringPath": "Maelle_FireRise_Name"
   },
   {
     "CodeName": "DA_Skill_Maelle_NEW7_Egide",
@@ -546,7 +666,9 @@
     "NameID": "Egide",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_NEW7_Egide",
     "CharacterName": "Maelle",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Maelle/T_UI_Skill_Maelle_Egide",
+    "StringPath": "Maelle_Egide_Name"
   },
   {
     "CodeName": "DA_Skill_Maelle_NEW9_RainOfFire",
@@ -555,7 +677,9 @@
     "NameID": "RainOfFire",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_NEW9_RainOfFire",
     "CharacterName": "Maelle",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Maelle/T_UI_Skill_Maelle_ReignOfFire",
+    "StringPath": "Maelle_RainOfFire_Name"
   },
   {
     "CodeName": "DA_Skill_Maelle_OffensiveSwitch",
@@ -564,7 +688,9 @@
     "NameID": "OffensiveSwitch",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_OffensiveSwitch",
     "CharacterName": "Maelle",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Maelle/T_UI_Skill_Maelle_OffensiveSwitch",
+    "StringPath": "Maelle_OffensiveSwitch_Name"
   },
   {
     "CodeName": "DA_Skill_Maelle_PhantomStrike",
@@ -573,7 +699,9 @@
     "NameID": "PhantomStrike",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_PhantomStrike",
     "CharacterName": "Maelle",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Maelle/T_UI_Skill_Maelle_PhantomStrike",
+    "StringPath": "Maelle_PhantomStrike_Name"
   },
   {
     "CodeName": "DA_Skill_Maelle_PhoenixFlame",
@@ -582,7 +710,9 @@
     "NameID": "PhoenixFlame",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_PhoenixFlame",
     "CharacterName": "Maelle",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Maelle/T_UI_Skill_Maelle_PhoenixFlame",
+    "StringPath": "Maelle_PhoenixFlame_Name"
   },
   {
     "CodeName": "DA_Skill_Maelle_Pyrolyse",
@@ -591,7 +721,9 @@
     "NameID": "Pyrolyse",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_Pyrolyse",
     "CharacterName": "Maelle",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Maelle/T_UI_Skill_Maelle_Pyrolyse",
+    "StringPath": "Maelle_Pyrolyse_Name"
   },
   {
     "CodeName": "DA_Skill_Maelle_Revenge",
@@ -600,7 +732,9 @@
     "NameID": "Revenge",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_Revenge",
     "CharacterName": "Maelle",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Maelle/T_UI_Skill_Maelle_Revenge",
+    "StringPath": "Maelle_Revenge_Name"
   },
   {
     "CodeName": "DA_Skill_Maelle_Stendhal",
@@ -609,7 +743,9 @@
     "NameID": "Stendhal",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_Stendhal",
     "CharacterName": "Maelle",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Maelle/T_UI_Skill_Maelle_Stendhal",
+    "StringPath": "Maelle_Stendhal_Name"
   },
   {
     "CodeName": "DA_Skill_Maelle_SwordBallet",
@@ -618,7 +754,9 @@
     "NameID": "SwordBallet",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_SwordBallet",
     "CharacterName": "Maelle",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Maelle/T_UI_Skill_Maelle_SwordBallet",
+    "StringPath": "Maelle_SwordBallet_Name"
   },
   {
     "CodeName": "DA_Skill_Maelle_VirtuoseStrike",
@@ -627,7 +765,9 @@
     "NameID": "VirtuoseStrike",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Maelle/Skills/DA_Skill_Maelle_VirtuoseStrike",
     "CharacterName": "Maelle",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Maelle/T_UI_Skill_Maelle_VirtuoseStrike",
+    "StringPath": "Maelle_VirtuoseStrike_Name"
   },
   {
     "CodeName": "DA_Skill_BreakPoint",
@@ -636,7 +776,9 @@
     "NameID": "BreakPoint",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_BreakPoint",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_Breakpoint",
+    "StringPath": "Monoco_BreakPoint_Name"
   },
   {
     "CodeName": "DA_Skill_MightyStrike",
@@ -645,7 +787,9 @@
     "NameID": "MightyStrike",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_MightyStrike",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_MightyStrike",
+    "StringPath": "Monoco_MightyStrike_Name"
   },
   {
     "CodeName": "DA_Skill_Sanctuary",
@@ -654,7 +798,9 @@
     "NameID": "Sanctuary",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Sanctuary",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_Sanctuary",
+    "StringPath": "Monoco_Sanctuary_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_AbbestMelee",
@@ -663,7 +809,9 @@
     "NameID": "AbbestMelee",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_AbbestMelee",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_Abbest",
+    "StringPath": "Monoco_AbbestMelee_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_AberrationBurningLight",
@@ -672,7 +820,9 @@
     "NameID": "AberrationBurningLight",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_AberrationBurningLight",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_BurningLight",
+    "StringPath": "Monoco_AberrationBurningLight_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_BalletCharm",
@@ -681,7 +831,9 @@
     "NameID": "BalletCharm",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_BalletCharm",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_Servante",
+    "StringPath": "Monoco_BalletCharm_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_BenisseurMortar",
@@ -690,7 +842,9 @@
     "NameID": "BenisseurMortar",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_BenisseurMortar",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_Benisseur",
+    "StringPath": "Monoco_BenisseurMortar_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_BoucheclierShield",
@@ -699,7 +853,9 @@
     "NameID": "BoucheclierShield",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_BoucheclierShield",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_Bouchclier",
+    "StringPath": "Monoco_BoucheclierShield_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_BraseleurHammerSmash",
@@ -708,7 +864,9 @@
     "NameID": "HammerSmash",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_BraseleurHammerSmash",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_Braseleur",
+    "StringPath": "Monoco_BraseleurHammerSmash_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_BrulerAnchorsmash",
@@ -717,7 +875,9 @@
     "NameID": "BrulerAnchorSmash",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_BrulerAnchorsmash",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_Bruler",
+    "StringPath": "Monoco_BrulerAnchorSmash_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_ChalierRelentlessSword",
@@ -726,7 +886,9 @@
     "NameID": "ChalierRelentlessSword",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_ChalierRelentlessSword",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_Chalier",
+    "StringPath": "Monoco_ChalierRelentlessSword_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_ChapelierAxeSlash",
@@ -735,7 +897,9 @@
     "NameID": "ChapelierAxeSlash",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_ChapelierAxeSlash",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_Chapelier",
+    "StringPath": "Monoco_ChapelierAxeSlash_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_ChevaliereBAoECombo",
@@ -744,7 +908,9 @@
     "NameID": "ChevaliereBAoECombo",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_ChevaliereBAoECombo",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_ChevaliereB",
+    "StringPath": "Monoco_ChevaliereBAoECombo_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_ChevaliereCAC",
@@ -753,7 +919,9 @@
     "NameID": "ChevaliereCAC",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_ChevaliereCAC",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_ChevaliereA",
+    "StringPath": "Monoco_ChevaliereCaC_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_ChevaliereCAoECombo",
@@ -762,7 +930,9 @@
     "NameID": "ChevaliereCAOECombo",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_ChevaliereCAoECombo",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_ChevaliereA",
+    "StringPath": "Monoco_ChevaliereFrozenCombo_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_ClairEnfeeble",
@@ -771,7 +941,9 @@
     "NameID": "ClairEnfeeble",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_ClairEnfeeble",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_Enfeeble",
+    "StringPath": "Monoco_ClairEnfeeble_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_ContorsionnisteAngryBlast",
@@ -780,7 +952,9 @@
     "NameID": "ContorsionnisteAngryBlast",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_ContorsionnisteAngryBlast",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_Contortioniste",
+    "StringPath": "Monoco_ContorsionnisteAngryBlast_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_CreationFromTheVoid",
@@ -789,7 +963,9 @@
     "NameID": "CreationFromTheVoid",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_CreationFromTheVoid",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_FromTheVoid",
+    "StringPath": "Monoco_CreationFromTheVoid_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_CrulerShield",
@@ -798,7 +974,9 @@
     "NameID": "CrulerShield",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_CrulerShield",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_Cruler",
+    "StringPath": "Monoco_CrulerShield_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_DanseuseWingDance",
@@ -807,7 +985,9 @@
     "NameID": "DanseuseWingDance",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_DanseuseWingDance",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_Danseuse",
+    "StringPath": "Monoco_DanseuseWingDance_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_DemineurThunderStrike",
@@ -816,7 +996,9 @@
     "NameID": "DemineurThunderStrike",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_DemineurThunderStrike",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_Demineur",
+    "StringPath": "Monoco_DemineurThunderStrike_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_DuallistStormBlood",
@@ -825,7 +1007,9 @@
     "NameID": "StormBlood",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_DuallistStormBlood",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_Duelliste",
+    "StringPath": "Monoco_DuallistStormBlood_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_EchassierCombo",
@@ -834,7 +1018,9 @@
     "NameID": "EchassierCombo",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_EchassierCombo",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_DoubleStab",
+    "StringPath": "Monoco_EchassierCombo_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_EvequeSpear",
@@ -843,7 +1029,9 @@
     "NameID": "EvequeSpear",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_EvequeSpear",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_Eveque",
+    "StringPath": "Monoco_EvequeSpear_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_FlyingCultistSlash",
@@ -852,7 +1040,9 @@
     "NameID": "FlyingSlashes",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_FlyingCultistSlash",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_CultistMage",
+    "StringPath": "Monoco_CultistFlyingSlashes_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_GaultCombo",
@@ -861,7 +1051,9 @@
     "NameID": "GaultCombo",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_GaultCombo",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_Gault",
+    "StringPath": "Monoco_GaultCombo_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_GlaiseEarthquakes",
@@ -870,7 +1062,9 @@
     "NameID": "GlaiseEarthquakes",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_GlaiseEarthquakes",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_Glaise",
+    "StringPath": "Monoco_GlaiseEarthquake_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_GrosseTeteWrecking",
@@ -879,7 +1073,9 @@
     "NameID": "GrosseTeteWrecking",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_GrosseTeteWrecking",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_Wrecking",
+    "StringPath": "Monoco_GrosseTeteWrecking_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_HeavyCultistBloodSword",
@@ -888,7 +1084,9 @@
     "NameID": "HeavyCultistBloodSword",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_HeavyCultistBloodSword",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_CultistHeavy",
+    "StringPath": "Monoco_CultistBloodSword_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_HexgaCombo",
@@ -897,7 +1095,9 @@
     "NameID": "HexgaCombo",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_HexgaCombo",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_Hexga",
+    "StringPath": "Monoco_HexgaCombo_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_JarCombo",
@@ -906,7 +1106,9 @@
     "NameID": "JarCombo",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_JarCombo",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_Jar",
+    "StringPath": "Monoco_JarCombo_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_LampmasterSwordOfLight",
@@ -915,7 +1117,9 @@
     "NameID": "LampmasterSwordOfLight",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_LampmasterSwordOfLight",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_SwordOfLight",
+    "StringPath": "Monoco_LampmasterSwordOfLight_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_Lancelier",
@@ -924,7 +1128,9 @@
     "NameID": "LancelierEstoc",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_Lancelier",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_Lancelier",
+    "StringPath": "Monoco_LancelierEstoc_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_LusterCombo",
@@ -933,7 +1139,9 @@
     "NameID": "LusterCombo",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_LusterCombo",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_Luster",
+    "StringPath": "Monoco_LusterCombo_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_MoissonneuseVendange",
@@ -942,7 +1150,9 @@
     "NameID": "MoissonneuseVendange",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_MoissonneuseVendange",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_Moissoneuse",
+    "StringPath": "Monoco_MoissonneuseVendange_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_ObscurCombo",
@@ -951,7 +1161,9 @@
     "NameID": "ObscurCombo",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_ObscurCombo",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_DarkSlashes",
+    "StringPath": "Monoco_ObscurCombo_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_OrphelinBuff",
@@ -960,7 +1172,9 @@
     "NameID": "OrphelinBuff",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_OrphelinBuff",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_Orphelin",
+    "StringPath": "Monoco_OrphelinPowerful_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_PelerinFreshAir",
@@ -969,7 +1183,9 @@
     "NameID": "PelerinFreshAir",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_PelerinFreshAir",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_Pelerin",
+    "StringPath": "Monoco_PelerinFreshAir_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_PortierCrashingDown",
@@ -978,7 +1194,9 @@
     "NameID": "PortierCrashingDown",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_PortierCrashingDown",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_Portier",
+    "StringPath": "Monoco_PortierSmash_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_PotatobagBoss_FireShots",
@@ -987,7 +1205,9 @@
     "NameID": "PotatobagBossFireShots",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_PotatobagBoss_FireShots",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_BossPotatobagA",
+    "StringPath": "Monoco_PotatobagBossFireShots_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_PotatoBagMageThunderThrows",
@@ -996,7 +1216,9 @@
     "NameID": "ThunderThrows",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_PotatoBagMageThunderThrows",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_PotatoBagMage",
+    "StringPath": "Monoco_PotatobagMageThunderThrows_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_PotatobagRangerThunderEstoc",
@@ -1005,7 +1227,9 @@
     "NameID": "ThunderEstoc",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_PotatobagRangerThunderEstoc",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_PotatoBagFighter",
+    "StringPath": "Monoco_PotatobagRangerThunderEstoc_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_PotatobagTankSlam",
@@ -1014,7 +1238,9 @@
     "NameID": "PotatobagSlam",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_PotatobagTankSlam",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_PotatoBagHeavy",
+    "StringPath": "Monoco_PotatobagTankSlam_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_PotierBuff",
@@ -1023,7 +1249,9 @@
     "NameID": "PotierBuff",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_PotierBuff",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_Potier",
+    "StringPath": "Monoco_PotierBuff_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_RamasseurBonk",
@@ -1032,7 +1260,9 @@
     "NameID": "RamasseurBonk",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_RamasseurBonk",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_Ramasseur",
+    "StringPath": "Monoco_RamasseurBonk_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_RocherHammering",
@@ -1041,7 +1271,9 @@
     "NameID": "RocherHammering",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_RocherHammering",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_Hammering",
+    "StringPath": "Monoco_RocherHammering_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_SaplingAbsorption",
@@ -1050,7 +1282,9 @@
     "NameID": "SaplingAbsorption",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_SaplingAbsorption",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_Sapling",
+    "StringPath": "Monoco_SaplingAbsorption_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_StalactMeleeCombo",
@@ -1059,7 +1293,9 @@
     "NameID": "StalactCombo",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_StalactMeleeCombo",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_StalactA",
+    "StringPath": "Monoco_StalactCombo_Name"
   },
   {
     "CodeName": "DA_Skill_Transfo_TroubadourBuff",
@@ -1068,7 +1304,9 @@
     "NameID": "Trumpet",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Monoco/Skills/DA_Skill_Transfo_TroubadourBuff",
     "CharacterName": "Monoco",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Monoco/T_UI_Skill_Monoco_Troubadour",
+    "StringPath": "Monoco_TroubadourBuff_Name"
   },
   {
     "CodeName": "DA_Skill_Blitz",
@@ -1077,7 +1315,9 @@
     "NameID": "Blitz",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Blitz",
     "CharacterName": "Verso",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Verso/T_UI_Skill_Verso_Blitz",
+    "StringPath": "Verso_Blitz_Name"
   },
   {
     "CodeName": "DA_Skill_Combo1",
@@ -1086,7 +1326,9 @@
     "NameID": "Combo1",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Combo1",
     "CharacterName": "Verso",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Verso/T_UI_Skill_Verso_LumiereAssault",
+    "StringPath": "Verso_Combo1_Name"
   },
   {
     "CodeName": "DA_Skill_LightHolder",
@@ -1095,7 +1337,9 @@
     "NameID": "OldLightHolder",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_LightHolder",
     "CharacterName": "Verso",
-    "IsCutContent": true
+    "IsCutContent": true,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Verso/T_UI_Skill_Verso_LightHolder",
+    "StringPath": "Verso_LightHolder_Name"
   },
   {
     "CodeName": "DA_Skill_MarkingShot",
@@ -1104,7 +1348,9 @@
     "NameID": "MarkingShot",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_MarkingShot",
     "CharacterName": "Verso",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Gustave/T_UI_Skill_Gustave_MarkingShot",
+    "StringPath": "Verso_MarkingShot_Name"
   },
   {
     "CodeName": "DA_Skill_NEW_4",
@@ -1113,7 +1359,9 @@
     "NameID": "LightHolder",
     "ClassPath": "/Game/Content/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_NEW_4",
     "CharacterName": "Verso",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Verso/T_UI_Skill_Verso_LightHolder",
+    "StringPath": "Verso_LightHolder_Name"
   },
   {
     "CodeName": "DA_Skill_PerfectRecovery",
@@ -1122,7 +1370,9 @@
     "NameID": "PerfectRecovery",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_PerfectRecovery",
     "CharacterName": "Verso",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Gustave/T_UI_Skill_Gustave_PerfectRecovery",
+    "StringPath": "Verso_PerfectRecovery_Name"
   },
   {
     "CodeName": "DA_Skill_Powerful",
@@ -1131,7 +1381,9 @@
     "NameID": "Powerful",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Powerful",
     "CharacterName": "Verso",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Gustave/T_UI_Skill_Gustave_Powerful",
+    "StringPath": "Verso_Powerful_Name"
   },
   {
     "CodeName": "DA_Skill_Verso_AscendingAssault",
@@ -1140,7 +1392,9 @@
     "NameID": "AscendingAssault",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_AscendingAssault",
     "CharacterName": "Verso",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Verso/T_UI_Skill_Verso_AscendingAssault",
+    "StringPath": "Verso_AscendingAssault_Name"
   },
   {
     "CodeName": "DA_Skill_Verso_BerserkSlash",
@@ -1149,7 +1403,9 @@
     "NameID": "BerserkSlash",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_BerserkSlash",
     "CharacterName": "Verso",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Verso/T_UI_Skill_Verso_BerserkSlash",
+    "StringPath": "Verso_BerserkSlash_Name"
   },
   {
     "CodeName": "DA_Skill_Verso_Burden",
@@ -1158,7 +1414,9 @@
     "NameID": "Burden",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_Burden",
     "CharacterName": "Verso",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Verso/T_UI_Skill_Verso_Burden",
+    "StringPath": "Verso_Burden_Name"
   },
   {
     "CodeName": "DA_Skill_Verso_DefiantStrike",
@@ -1167,7 +1425,9 @@
     "NameID": "DefiantStrike",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_DefiantStrike",
     "CharacterName": "Verso",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Verso/T_UI_Skill_Verso_DefiantStrike",
+    "StringPath": "Verso_DefiantStrike_Name"
   },
   {
     "CodeName": "DA_Skill_Verso_Endbringer",
@@ -1176,7 +1436,9 @@
     "NameID": "EndBringer",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_Endbringer",
     "CharacterName": "Verso",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Verso/T_UI_Skill_Verso_EndBringer",
+    "StringPath": "Verso_EndBringer_Name"
   },
   {
     "CodeName": "DA_Skill_Verso_NEW_AngelsEyes",
@@ -1185,7 +1447,9 @@
     "NameID": "AngelsEyes",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_NEW_AngelsEyes",
     "CharacterName": "Verso",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Verso/T_UI_Skill_Verso_AngelEyes",
+    "StringPath": "Verso_AngelsEyes_Name"
   },
   {
     "CodeName": "DA_Skill_Verso_NEW_Followup",
@@ -1194,7 +1458,9 @@
     "NameID": "FollowUp",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_NEW_Followup",
     "CharacterName": "Verso",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Verso/T_UI_Skill_Verso_FollowUp",
+    "StringPath": "Verso_Followup_Name"
   },
   {
     "CodeName": "DA_Skill_Verso_NEW_FromFire",
@@ -1203,7 +1469,9 @@
     "NameID": "FromFire",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_NEW_FromFire",
     "CharacterName": "Verso",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Gustave/T_UI_Skill_Gustave_FromFire",
+    "StringPath": "Verso_FromFire_Name"
   },
   {
     "CodeName": "DA_Skill_Verso_NEW_Leadership",
@@ -1212,7 +1480,9 @@
     "NameID": "Leadership",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_NEW_Leadership",
     "CharacterName": "Verso",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Verso/T_UI_Skill_Verso_Leadership",
+    "StringPath": "Verso_Leadership_Name"
   },
   {
     "CodeName": "DA_Skill_Verso_NEW_Overcharge",
@@ -1221,7 +1491,9 @@
     "NameID": "Overcharge",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_NEW_Overcharge",
     "CharacterName": "Verso",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Verso/T_UI_Skill_Verso_Overcharge",
+    "StringPath": "Verso_Overcharge_Name"
   },
   {
     "CodeName": "DA_Skill_Verso_NEW_ParadigmShift",
@@ -1230,7 +1502,9 @@
     "NameID": "ParadigmShift",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_NEW_ParadigmShift",
     "CharacterName": "Verso",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Verso/T_UI_Skill_Verso_ParadigmShift",
+    "StringPath": "Verso_ParadigmShift_Name"
   },
   {
     "CodeName": "DA_Skill_Verso_NEW_PhantomStars",
@@ -1239,7 +1513,9 @@
     "NameID": "PhantomStars",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_NEW_PhantomStars",
     "CharacterName": "Verso",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Verso/T_UI_Skill_Verso_PhantomStars",
+    "StringPath": "Verso_PhantomStars_Name"
   },
   {
     "CodeName": "DA_Skill_Verso_NEW_Purification",
@@ -1248,7 +1524,9 @@
     "NameID": "Purification",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_NEW_Purification",
     "CharacterName": "Verso",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Verso/T_UI_Skill_Verso_Purification",
+    "StringPath": "Verso_Purification_Name"
   },
   {
     "CodeName": "DA_Skill_Verso_NEW_QuickStrike",
@@ -1257,7 +1535,9 @@
     "NameID": "QuickStrike",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_NEW_QuickStrike",
     "CharacterName": "Verso",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Verso/T_UI_Skill_Verso_QuickStrike",
+    "StringPath": "Verso_QuickStrike_Name"
   },
   {
     "CodeName": "DA_Skill_Verso_NEW_Sabotage",
@@ -1266,7 +1546,9 @@
     "NameID": "Sabotage",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_NEW_Sabotage",
     "CharacterName": "Verso",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Verso/T_UI_Skill_Verso_Sabotage",
+    "StringPath": "Verso_Sabotage_Name"
   },
   {
     "CodeName": "DA_Skill_Verso_NEW_Speedburst",
@@ -1275,7 +1557,9 @@
     "NameID": "SpeedBurst",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_NEW_Speedburst",
     "CharacterName": "Verso",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Verso/T_UI_Skill_Verso_SpeedBurst",
+    "StringPath": "Verso_SpeedBurst_Name"
   },
   {
     "CodeName": "DA_Skill_Verso_PerfectBreak",
@@ -1284,7 +1568,9 @@
     "NameID": "PerfectBreak",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_PerfectBreak",
     "CharacterName": "Verso",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Verso/T_UI_Skill_Verso_PerfectBreak",
+    "StringPath": "Verso_PerfectBreak_Name"
   },
   {
     "CodeName": "DA_Skill_Verso_RadiantSlash",
@@ -1293,7 +1579,9 @@
     "NameID": "RadiantSlash",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_RadiantSlash",
     "CharacterName": "Verso",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Verso/T_UI_Skill_Verso_RadiantSlash",
+    "StringPath": "Verso_RadiantSlash_Name"
   },
   {
     "CodeName": "DA_Skill_Verso_RadiantStrike",
@@ -1302,7 +1590,9 @@
     "NameID": "RadiantStrike",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_RadiantStrike",
     "CharacterName": "Verso",
-    "IsCutContent": true
+    "IsCutContent": true,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Verso/T_UI_Skill_Verso_RadiantSlash",
+    "StringPath": ""
   },
   {
     "CodeName": "DA_Skill_Verso_SteeledStrike",
@@ -1311,7 +1601,9 @@
     "NameID": "SteeledStrike",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_SteeledStrike",
     "CharacterName": "Verso",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Verso/T_UI_Skill_Verso_SteeledStrike",
+    "StringPath": "Verso_SteeledStrike_Name"
   },
   {
     "CodeName": "DA_Skill_Verso_Striker",
@@ -1320,7 +1612,9 @@
     "NameID": "Striker",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_Striker",
     "CharacterName": "Verso",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Verso/T_UI_Skill_Verso_Striker",
+    "StringPath": "Verso_Striker_Name"
   },
   {
     "CodeName": "DA_Skill_Verso_Strikestorm",
@@ -1329,7 +1623,9 @@
     "NameID": "StrikeStorm",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/NoahVerso/DA_Skills/DA_Skill_Verso_Strikestorm",
     "CharacterName": "Verso",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Gustave/T_UI_Skill_Gustave_StrikeStorm",
+    "StringPath": "Verso_StrikeStorm_Name"
   },
   {
     "CodeName": "DA_Skill_Sciel_AllSet",
@@ -1338,7 +1634,9 @@
     "NameID": "AllSet",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_AllSet",
     "CharacterName": "Sciel",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Sciel/T_UI_Skill_Sciel_AllSet",
+    "StringPath": "Sciel_AllSet_Name"
   },
   {
     "CodeName": "DA_Skill_Sciel_BadOmen",
@@ -1347,7 +1645,9 @@
     "NameID": "BadOmen",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_BadOmen",
     "CharacterName": "Sciel",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Sciel/T_UI_Skill_Sciel_BadOmen",
+    "StringPath": "Sciel_BadOmen_Name"
   },
   {
     "CodeName": "DA_Skill_Sciel_CardWeaver",
@@ -1356,7 +1656,9 @@
     "NameID": "CardWeaver",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_CardWeaver",
     "CharacterName": "Sciel",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Sciel/T_UI_Skill_Sciel_CardWeaver",
+    "StringPath": "Sciel_CardWeaver_Name"
   },
   {
     "CodeName": "DA_Skill_Sciel_DarkCleansing",
@@ -1365,7 +1667,9 @@
     "NameID": "DarkCleansing",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_DarkCleansing",
     "CharacterName": "Sciel",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Sciel/T_UI_Skill_Sciel_DarkCleansing",
+    "StringPath": "Sciel_DarkCleansing_Name"
   },
   {
     "CodeName": "DA_Skill_Sciel_DarkWave",
@@ -1374,7 +1678,9 @@
     "NameID": "DarkWave",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_DarkWave",
     "CharacterName": "Sciel",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Sciel/T_UI_Skill_Sciel_DarkWave",
+    "StringPath": "Sciel_DarkWave_Name"
   },
   {
     "CodeName": "DA_Skill_Sciel_Doom",
@@ -1383,7 +1689,9 @@
     "NameID": "Doom",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_Doom",
     "CharacterName": "Sciel",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Sciel/T_UI_Skill_Sciel_Doom",
+    "StringPath": "Sciel_Doom_Name"
   },
   {
     "CodeName": "DA_Skill_Sciel_EndSlice",
@@ -1392,7 +1700,9 @@
     "NameID": "EndSlice",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_EndSlice",
     "CharacterName": "Sciel",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Sciel/T_UI_Skill_Sciel_EndSlice",
+    "StringPath": "Sciel_EndSlice_Name"
   },
   {
     "CodeName": "DA_Skill_Sciel_FinalPath",
@@ -1401,7 +1711,9 @@
     "NameID": "FinalPath",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_FinalPath",
     "CharacterName": "Sciel",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Sciel/T_UI_Skill_Sciel_FinalPath",
+    "StringPath": "Sciel_FinalPath_Name"
   },
   {
     "CodeName": "DA_Skill_Sciel_FiringShadow",
@@ -1410,7 +1722,9 @@
     "NameID": "FiringShadow",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_FiringShadow",
     "CharacterName": "Sciel",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Sciel/T_UI_Skill_Sciel_FiringShadow",
+    "StringPath": "Sciel_FiringShadow_Name"
   },
   {
     "CodeName": "DA_Skill_Sciel_FortunesFury",
@@ -1419,7 +1733,9 @@
     "NameID": "FortunesFury",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_FortunesFury",
     "CharacterName": "Sciel",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Sciel/T_UI_Skill_Sciel_FortunesFury",
+    "StringPath": "Sciel_FortuneSFury_Name"
   },
   {
     "CodeName": "DA_Skill_Sciel_Harvest",
@@ -1428,7 +1744,9 @@
     "NameID": "Harvest",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_Harvest",
     "CharacterName": "Sciel",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Sciel/T_UI_Skill_Sciel_Harvest",
+    "StringPath": "Sciel_Harvest_Name"
   },
   {
     "CodeName": "DA_Skill_Sciel_Intervention",
@@ -1437,7 +1755,9 @@
     "NameID": "Intervention",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_Intervention",
     "CharacterName": "Sciel",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Sciel/T_UI_Skill_Sciel_Intervention",
+    "StringPath": "Sciel_Intervention_Name"
   },
   {
     "CodeName": "DA_Skill_Sciel_new14_ShadowTargeting",
@@ -1446,7 +1766,9 @@
     "NameID": "ShadowTargeting",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_new14_ShadowTargeting",
     "CharacterName": "Sciel",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Sciel/T_UI_Skill_Sciel_ShadowTargeting",
+    "StringPath": "Sciel_ShadowTargeting_Name"
   },
   {
     "CodeName": "DA_Skill_Sciel_new18_Postponed",
@@ -1455,7 +1777,9 @@
     "NameID": "Postponed",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_new18_Postponed",
     "CharacterName": "Sciel",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Sciel/T_UI_Skill_Sciel_Postponed",
+    "StringPath": "Sciel_Postponed_Name"
   },
   {
     "CodeName": "DA_Skill_Sciel_new2_Foretelling2",
@@ -1464,7 +1788,9 @@
     "NameID": "Foretelling2",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_new2_Foretelling2",
     "CharacterName": "Sciel",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Sciel/T_UI_Skill_Sciel_FocusedForetell",
+    "StringPath": "Sciel_FocusedForetell_Name"
   },
   {
     "CodeName": "DA_Skill_Sciel_new3_GrimPrediction",
@@ -1473,7 +1799,9 @@
     "NameID": "GrimPrediction",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_new3_GrimPrediction",
     "CharacterName": "Sciel",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Sciel/T_UI_Skill_Sciel_GrimPrediction",
+    "StringPath": "Sciel_GrimPrediction_Name"
   },
   {
     "CodeName": "DA_Skill_Sciel_new4_ShadowDrop",
@@ -1482,7 +1810,9 @@
     "NameID": "ShadowDrop",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_new4_ShadowDrop",
     "CharacterName": "Sciel",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Sciel/T_UI_Skill_Sciel_PhantomBlade",
+    "StringPath": "Sciel_ShadowDrop_Name"
   },
   {
     "CodeName": "DA_Skill_Sciel_new7_DarkAbsorption",
@@ -1491,7 +1821,9 @@
     "NameID": "DarkAbsorption",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_new7_DarkAbsorption",
     "CharacterName": "Sciel",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Sciel/T_UI_Skill_Sciel_DarkAbsorbtion",
+    "StringPath": "Sciel_DarkAbsorption_Name"
   },
   {
     "CodeName": "DA_Skill_Sciel_OurSacrifice",
@@ -1500,7 +1832,9 @@
     "NameID": "OurSacrifice",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_OurSacrifice",
     "CharacterName": "Sciel",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Sciel/T_UI_Skill_Sciel_OurSacrifice",
+    "StringPath": "Sciel_OurSacrifice_Name"
   },
   {
     "CodeName": "DA_Skill_Sciel_PlentifulHarvest",
@@ -1509,7 +1843,9 @@
     "NameID": "PlentifulHarvest",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_PlentifulHarvest",
     "CharacterName": "Sciel",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Sciel/T_UI_Skill_Sciel_PlentifulHarvest",
+    "StringPath": "Sciel_PlentifulHarvest_Name"
   },
   {
     "CodeName": "DA_Skill_Sciel_SealedFate",
@@ -1518,7 +1854,9 @@
     "NameID": "SealedFate",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_SealedFate",
     "CharacterName": "Sciel",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Sciel/T_UI_Skill_Sciel_SealedFate",
+    "StringPath": "Sciel_SealedFate_Name"
   },
   {
     "CodeName": "DA_Skill_Sciel_SearingBond",
@@ -1527,7 +1865,9 @@
     "NameID": "SearingBond",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_SearingBond",
     "CharacterName": "Sciel",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Sciel/T_UI_Skill_Sciel_SearingBond",
+    "StringPath": "Sciel_SearingBond_Name"
   },
   {
     "CodeName": "DA_Skill_Sciel_ShadowBringer",
@@ -1536,7 +1876,9 @@
     "NameID": "ShadowBringer",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_ShadowBringer",
     "CharacterName": "Sciel",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Sciel/T_UI_Skill_Sciel_ShadowBringer",
+    "StringPath": "Sciel_ShadowBringer_Name"
   },
   {
     "CodeName": "DA_Skill_Sciel_SpectralSweep",
@@ -1545,7 +1887,9 @@
     "NameID": "SpectralSweep",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_SpectralSweep",
     "CharacterName": "Sciel",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Sciel/T_UI_Skill_Sciel_SpectralSweep",
+    "StringPath": "Sciel_SpectralSweep_Name"
   },
   {
     "CodeName": "DA_Skill_Sciel_SpeedUp",
@@ -1554,7 +1898,9 @@
     "NameID": "SpeedUp",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_SpeedUp",
     "CharacterName": "Sciel",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Sciel/T_UI_Skill_Sciel_SpeedUp",
+    "StringPath": "Sciel_SpeedUp_Name"
   },
   {
     "CodeName": "DA_Skill_Sciel_TwilightDance",
@@ -1563,6 +1909,8 @@
     "NameID": "TwilightDance",
     "ClassPath": "/Game/Gameplay/SkillTree/Content/Sciel/Skills/DA_Skill_Sciel_TwilightDance",
     "CharacterName": "Sciel",
-    "IsCutContent": false
+    "IsCutContent": false,
+    "IconPath": "Game/Content/UI/Resources/Textures/Icons/Skills/Sciel/T_UI_Skill_Sciel_TwilightDance",
+    "StringPath": "Sciel_TwilightDance_Name"
   }
 ]

@@ -22,8 +22,9 @@ public static class Controllers
     public static void InitControllers()
     {
         EnemiesController.Initialize();
-        SkillsController.Initialize();
+        // It is important to init items before skills for skill unlock items
         ItemsController.Initialize();
+        SkillsController.Initialize();
         CharacterController.Initialize();
     }
 

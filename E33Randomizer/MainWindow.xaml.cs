@@ -328,6 +328,7 @@ public class SettingsViewModel : INotifyPropertyChanged
     public int MaxTreeEdges { get; set; } = 4;
     public bool FullyRandomEdges { get; set; } = false;
     public int RandomEdgeChancePercent { get; set; } = 60;
+    public bool AddSkillsAsItems { get; set; } = false;
     
     public bool RandomizeCharacters { get; set; } = false;
     
