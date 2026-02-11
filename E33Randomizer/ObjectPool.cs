@@ -1,7 +1,6 @@
 ﻿namespace E33Randomizer;
 
 public class ObjectPool<T>(List<T> startingPool, List<T> excludedPool)
-    where T : ObjectData
 {
     public List<T> StartingPool = startingPool;
     public List<T> ExcludedPool = excludedPool;
@@ -21,14 +20,14 @@ public class ObjectPool<T>(List<T> startingPool, List<T> excludedPool)
 
     public T GetObject()
     {
-        if (_poolEmpty) return null;
+        if (_poolEmpty) return default;
         
         if (_currentPool.Count == 0)
         {
             Reshuffle();
         }
 
-        return _poolEmpty ? null : _currentPool.Dequeue();
+        return _poolEmpty ? default : _currentPool.Dequeue();
     }
     
 }

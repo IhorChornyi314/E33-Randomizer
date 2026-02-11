@@ -65,6 +65,7 @@ public class ChangeCheckSize: OutputRuleBase
         }
 
         var checkSize = config.Settings.EnsurePaintedPowerFromPaintress && check.Name.Contains("DA_GA_SQT_RedAndWhiteTree") ? check.Size - 1 : check.Size;
+        checkSize -= check.Items.Count(iS => Controllers.SkillsController.SkillItems.Contains(iS.Item));
         
         if (originalSize != checkSize)
         {

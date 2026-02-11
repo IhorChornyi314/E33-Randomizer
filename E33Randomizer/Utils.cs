@@ -70,4 +70,22 @@ public static class Utils
         var oldNameIndex = asset.SearchNameReference(FString.FromString(oldName));
         asset.SetNameReference(oldNameIndex, FString.FromString(newName));
     }
+
+    public static FPackageIndex AddImportToUAsset(UAsset asset, string className, string objectPath, string objectName=null, string innerClassPackage="/Script/Engine")
+    { 
+        objectName ??= objectPath.Split('/').Last();
+        if (asset.SearchForImport(FName.FromString(asset, objectName)) != 0) return FPackageIndex.FromRawIndex(asset.SearchForImport(FName.FromString(asset, objectName)));
+        
+        asset.AddNameReference(FString.FromString(objectName));
+        asset.AddNameReference(FString.FromString(objectPath));
+        if (innerClassPackage != "/Script/Engine")
+        {
+            asset.AddNameReference(FString.FromString(innerClassPackage));
+        }
+        
+        var outerImport = new Import("/Script/CoreUObject", "Package", FPackageIndex.FromRawIndex(0), objectPath, false, asset);
+        var outerIndex = asset.AddImport(outerImport);
+        var innerImport = new Import(innerClassPackage, className, outerIndex, objectName, false, asset);
+        return asset.AddImport(innerImport);
+    }
 }

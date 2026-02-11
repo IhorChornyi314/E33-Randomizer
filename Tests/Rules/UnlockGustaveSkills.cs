@@ -6,6 +6,8 @@ public class UnlockGustaveSkills: OutputRuleBase
 {
     public override bool IsSatisfied(Output output, Config config)
     {
+        if (config.Settings.MakeSkillsIntoItems) return true;
+        
         var gustaveSkillTree = output.SkillTrees.First(sT => sT.Name == "Gustave");
         
         var originalGustaveNodes = TestLogic.OriginalData.SkillTrees.First(sT => sT.Name == "Gustave").SkillNodes;

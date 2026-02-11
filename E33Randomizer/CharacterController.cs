@@ -62,23 +62,15 @@ public class CharacterController: Controller<CharacterData>
         var characterName = newCharacter.CodeName;
         if (characterName == "Frey") return;
         
-        _gustaveJoinAsset.AddNameReference(FString.FromString("DA_ReplaceCharacter_GustaveByRandom"));
-        _gustaveJoinAsset.AddNameReference(FString.FromString("/Game/Gameplay/GameActionsSystem/ReplaceCharacter/Content/DA_ReplaceCharacter_GustaveByRandom"));
-        _gustaveJoinAsset.AddNameReference(FString.FromString("BP_GameAction_ReplaceCharacter_C"));
-        _gustaveJoinAsset.AddNameReference(FString.FromString("/Game/Gameplay/GameActionsSystem/ReplaceCharacter/BP_GameAction_ReplaceCharacter"));
-        
-        var outerImport = new Import("/Script/CoreUObject", "Package", FPackageIndex.FromRawIndex(0), "/Game/Gameplay/GameActionsSystem/ReplaceCharacter/Content/DA_ReplaceCharacter_GustaveByRandom", false, _gustaveJoinAsset);
-        var outerIndex = _gustaveJoinAsset.AddImport(outerImport);
-        
-        var outerDefaultImport = new Import("/Script/CoreUObject", "Package", FPackageIndex.FromRawIndex(0), "/Game/Gameplay/GameActionsSystem/ReplaceCharacter/BP_GameAction_ReplaceCharacter", false, _gustaveJoinAsset);
-        var outerDefaultIndex = _gustaveJoinAsset.AddImport(outerDefaultImport);
-        
-        var innerImport = new Import("/Game/Gameplay/GameActionsSystem/ReplaceCharacter/BP_GameAction_ReplaceCharacter", "BP_GameAction_ReplaceCharacter_C", outerIndex, "DA_ReplaceCharacter_GustaveByRandom", false, _gustaveJoinAsset);
-        var innerImportIndex = _gustaveJoinAsset.AddImport(innerImport);
-        
-        var innerDefaultImport = new Import("/Game/Gameplay/GameActionsSystem/ReplaceCharacter/BP_GameAction_ReplaceCharacter", "BP_GameAction_ReplaceCharacter_C", outerDefaultIndex, "Default__BP_GameAction_ReplaceCharacter_C", false, _gustaveJoinAsset);
-        _gustaveJoinAsset.AddImport(innerDefaultImport);
+        var innerImportIndex = Utils.AddImportToUAsset(_gustaveJoinAsset, "BP_GameAction_ReplaceCharacter_C",
+            "/Game/Gameplay/GameActionsSystem/ReplaceCharacter/Content/DA_ReplaceCharacter_GustaveByRandom",
+            innerClassPackage: "/Game/Gameplay/GameActionsSystem/ReplaceCharacter/BP_GameAction_ReplaceCharacter");
 
+        Utils.AddImportToUAsset(_gustaveJoinAsset, "BP_GameAction_ReplaceCharacter_C",
+            "/Game/Gameplay/GameActionsSystem/ReplaceCharacter/BP_GameAction_ReplaceCharacter",
+            "Default__BP_GameAction_ReplaceCharacter_C",
+            "/Game/Gameplay/GameActionsSystem/ReplaceCharacter/BP_GameAction_ReplaceCharacter");
+        
         var actionsArray = (_gustaveJoinAsset.Exports[0] as NormalExport).Data[0] as ArrayPropertyData;
         // Action 3 has external reference
         var newActionStruct = actionsArray.Value[3].Clone() as StructPropertyData;

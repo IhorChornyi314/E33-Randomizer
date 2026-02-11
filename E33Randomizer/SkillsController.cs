@@ -133,18 +133,18 @@ public class SkillsController: Controller<SkillData>
     public void AddSkillItems()
     {
         SkillItems.Clear();
-        foreach (var skillData in ObjectsData)
+        foreach (var skillData in ObjectsData.Where(s => s.CharacterName != "Consumables" ))
         {
             var itemData = new ItemData();
             itemData.CodeName = skillData.CodeName;
             itemData.CustomName = skillData.CustomName.Replace(")", " Unlock)");
-            itemData.Type = "SkillUnlocker";
+            itemData.Type = "CustomSkillUnlocker";
             itemData.HasQuantities = false;
             SkillItems.Add(itemData);
             Controllers.ItemsController.AddItem(itemData);
         }
         
-        Controllers.ItemsController.AddSkillItemsToCompositeTable();
+        Controllers.ItemsController.AddSkillItemsToTables();
         Controllers.ItemsController.UpdateViewModel();
     }
 

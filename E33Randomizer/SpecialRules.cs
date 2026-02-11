@@ -385,6 +385,14 @@ public static class SpecialRules
         {
             node.IsSecret = false;
         }
+
+        if (RandomizerLogic.Settings.MakeSkillsIntoItems && !node.IsStarting)
+        {
+            node.IsSecret = true;
+            node.IsStarting = true;
+            node.UnlockCost = 0;
+            node.RequiredItem = node.SkillData.CodeName;
+        }
     }
 
     public static bool Randomizable(ItemSource source)

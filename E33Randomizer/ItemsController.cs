@@ -237,43 +237,60 @@ public class ItemsController: Controller<ItemData>
         
         for (int i = 0; i < Controllers.SkillsController.SkillItems.Count; i++)
         {
-            randomizableChecks[i % randomizableChecks.Count].ItemSource.AddItem(randomizableChecks[i].Key, Controllers.SkillsController.SkillItems[i]);
+            var firstIndex = i % randomizableChecks.Count;
+            randomizableChecks[firstIndex].ItemSource.AddItem(randomizableChecks[firstIndex].Key, Controllers.SkillsController.SkillItems[i]);
+            // One more for good measure
+            var secondIndex = RandomizerLogic.rand.Next(randomizableChecks.Count);
+            randomizableChecks[secondIndex].ItemSource.AddItem(randomizableChecks[secondIndex].Key, Controllers.SkillsController.SkillItems[i]);
         }
     }
 
-    public void AddSkillItemsToCompositeTable()
+    public void AddSkillItemsToTables()
     {
-        var table = (_compositeTableAsset.Exports[0] as DataTableExport).Table.Data;
+        _itemsDataTables["DT_Items_GradientAttackUnlocks"].AddNameReference(FString.FromString("/Game/StringTables/ST_MainCharacters_Skills.ST_MainCharacters_Skills"));
         
-        var dummyItem = table.Find(s => s.Name.ToString() == "Quest_MaellePainterSkillsUnlock").Clone() as StructPropertyData;
         foreach (var skillItem in Controllers.SkillsController.SkillItems)
         {
             var skillData = Controllers.SkillsController.GetObject(skillItem.CodeName);
-            
-            _compositeTableAsset.AddNameReference(FString.FromString(skillData.CodeName));
-            var newItem = dummyItem.Clone() as StructPropertyData;
-            
-            newItem.Name = FName.FromString(_compositeTableAsset, skillData.CodeName);
-            (newItem.Value[0] as NamePropertyData).Value = FName.FromString(_compositeTableAsset, skillData.CodeName);
-
-            if (skillData.StringPath.Length > 0)
-            {
-                _compositeTableAsset.AddNameReference(FString.FromString(skillData.StringPath));
-                newItem.Value[1] = table[0].Value[1].Clone() as TextPropertyData;
-                (newItem.Value[1] as TextPropertyData).Value = FString.FromString(skillData.StringPath);
-                (newItem.Value[1] as TextPropertyData).TableId = FName.FromString(_compositeTableAsset, "/Game/StringTables/ST_MainCharacters_Skills.ST_MainCharacters_Skills");
-            }
-            
-            
-            if (skillData.IconPath.Length > 0)
-            {
-                _compositeTableAsset.AddNameReference(FString.FromString(skillData.IconPath));
-                _compositeTableAsset.AddNameReference(FString.FromString(skillData.IconPath.Split('/').Last()));
-                (newItem.Value[5] as SoftObjectPropertyData).FromString([skillData.IconPath, skillData.IconPath.Split('/').Last(), ""], _compositeTableAsset);
-            }
-            
-            table.Add(newItem);
+            AddItemToTable(_compositeTableAsset, "Quest_MaellePainterSkillsUnlock", skillItem, skillData.IconPath, skillData.StringPath);
+            AddItemToTable(_itemsDataTables["DT_Items_GradientAttackUnlocks"], "Quest_MaellePainterSkillsUnlock", skillItem, skillData.IconPath, skillData.StringPath);
         }
+    }
+
+    public void AddItemToTable(UAsset tableAsset, string dummyItemName, ItemData itemData, string iconPath = "",
+        string stringPath = "")
+    {
+        var table = (tableAsset.Exports[0] as DataTableExport).Table.Data;
+        var dummyItem = table.Find(s => s.Name.ToString() == dummyItemName).Clone() as StructPropertyData;
+            
+        tableAsset.AddNameReference(FString.FromString(itemData.CodeName));
+        var newItem = dummyItem.Clone() as StructPropertyData;
+            
+        newItem.Name = FName.FromString(tableAsset, itemData.CodeName);
+        (newItem.Value[0] as NamePropertyData).Value = FName.FromString(tableAsset, itemData.CodeName);
+
+        if (stringPath.Length > 0)
+        {
+            var itemNameString = stringPath.Split(':').Last();
+            var itemNameSTPath = stringPath.Split(':')[0];
+            Utils.AddImportToUAsset(tableAsset, "StringTable", itemNameSTPath);
+            tableAsset.AddNameReference(FString.FromString(itemNameString));
+            tableAsset.AddNameReference(FString.FromString(itemNameSTPath));
+            newItem.Value[1] = table[0].Value[1].Clone() as TextPropertyData;
+            (newItem.Value[1] as TextPropertyData).Value = FString.FromString(itemNameString);
+            (newItem.Value[1] as TextPropertyData).TableId = FName.FromString(tableAsset, itemNameSTPath);
+            (newItem.Value[1] as TextPropertyData).Flags = 0;
+            (newItem.Value[1] as TextPropertyData).HistoryType = TextHistoryType.StringTableEntry;
+        }
+        
+        if (iconPath.Length > 0)
+        {
+            tableAsset.AddNameReference(FString.FromString(iconPath));
+            tableAsset.AddNameReference(FString.FromString(iconPath.Split('/').Last()));
+            (newItem.Value[5] as SoftObjectPropertyData).FromString([iconPath, iconPath.Split('/').Last(), ""], tableAsset);
+        }
+            
+        table.Add(newItem);
     }
 
     public void AddItem(ItemData newItem)
@@ -297,7 +314,7 @@ public class ItemsController: Controller<ItemData>
         var randomizableSources = ItemsSources.Where(SpecialRules.Randomizable).ToList();
         randomizableSources.ForEach(i => i.Randomize());
         ItemsSources.ForEach(i => i.Checks.ForEach(SpecialRules.ApplySpecialRulesToCheck));
-        if (RandomizerLogic.Settings.AddSkillsAsItems)
+        if (RandomizerLogic.Settings.MakeSkillsIntoItems)
         {
             AddSkillItemsToChecks(randomizableSources.SelectMany(iS => iS.Checks).ToList());
         }

@@ -63,12 +63,8 @@ public class SkillNode
         
         if (importIndex == 0)
         {
-            parentAsset.AddNameReference(FString.FromString(SkillData.ClassPath));
-            parentAsset.AddNameReference(FString.FromString(SkillData.ClassName));
-            var outerImport = new Import("/Script/CoreUObject", "Package", FPackageIndex.FromRawIndex(0), SkillData.ClassPath, false, parentAsset);
-            var outerIndex = parentAsset.AddImport(outerImport);
-            var innerImport = new Import("/Game/Gameplay/SkillTree/BP_DataAsset_Skill", "BP_DataAsset_Skill_C", outerIndex, SkillData.ClassName, false, parentAsset);
-            SkillPackageIndex = parentAsset.AddImport(innerImport);
+            SkillPackageIndex = Utils.AddImportToUAsset(parentAsset, "BP_DataAsset_Skill_C", SkillData.ClassPath,
+                "/Game/Gameplay/SkillTree/BP_DataAsset_Skill");
             importIndex = SkillPackageIndex.Index;
         }
         SkillPackageIndex = FPackageIndex.FromRawIndex(importIndex);
@@ -80,12 +76,8 @@ public class SkillNode
         
         if (RequiredItem != "null")
         {
-            parentAsset.AddNameReference(FString.FromString("DT_jRPG_Items_Composite"));
-            parentAsset.AddNameReference(FString.FromString("/Game/jRPGTemplate/Datatables/DT_jRPG_Items_Composite"));
-            var outerImport = new Import("/Script/CoreUObject", "Package", FPackageIndex.FromRawIndex(0), "/Game/jRPGTemplate/Datatables/DT_jRPG_Items_Composite", false, parentAsset);
-            var outerIndex = parentAsset.AddImport(outerImport);
-            var innerImport = new Import("/Script/Engine", "CompositeDataTable", outerIndex, "DT_jRPG_Items_Composite", false, parentAsset);
-            var itemDataTableIndex = parentAsset.AddImport(innerImport);
+            var itemDataTableIndex = Utils.AddImportToUAsset(parentAsset, "CompositeDataTable",
+                "/Game/jRPGTemplate/Datatables/DT_jRPG_Items_Composite");
             parentAsset.AddNameReference(FString.FromString(RequiredItem));
             (((_structData.Value[0] as StructPropertyData).Value[3] as StructPropertyData).Value[1] as NamePropertyData).Value = FName.FromString(parentAsset, RequiredItem);
             (((_structData.Value[0] as StructPropertyData).Value[3] as StructPropertyData).Value[0] as
@@ -187,6 +179,15 @@ public class SkillGraph
             node.SkillData = Controllers.SkillsController.GetObject(newSkillName);
             
             SpecialRules.ApplySpecialRulesToSkillNode(node);
+        }
+
+        if (RandomizerLogic.Settings.GuaranteeGustaveOvercharge && CharacterName == "Gustave")
+        {
+            // Overcharge is 7
+            var replacedSkill = Nodes[7].SkillData;
+            var overchargeNode = Nodes.Find(n => n.SkillData.CodeName == "DA_Skill_Gustave_UnleashCharge");
+            if (overchargeNode != null) overchargeNode.SkillData = replacedSkill;
+            Nodes[7].SkillData = Controllers.SkillsController.GetObject("DA_Skill_Gustave_UnleashCharge");
         }
 
         

@@ -7,7 +7,7 @@ public class CustomItemPlacement: CustomPlacement
 {
     public override void Init()
     {
-        AllObjects = Controllers.ItemsController.ObjectsData;
+        AllObjects = Controllers.ItemsController.ObjectsData.Where(i => i.Type != "CustomSkillUnlocker");
         CatchAllName = "Anything";
         CategoryOrder = new List<string>
         {
