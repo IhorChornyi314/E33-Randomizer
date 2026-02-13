@@ -50,12 +50,10 @@ public class ChangeCheckSize: OutputRuleBase
         return checkType;
     }
     
-    private bool CheckItems(Check check, Config config)
+    private bool CheckItems(Check check, Config config, bool checkRandomized)
     {
         var originalSize = TestLogic.OriginalData.GetCheck(check.Name).Size;
-        var checkRandomized =
-            TestLogic.OriginalData.GetCheck(check.Name).Items.Any(i => config.CustomItemPlacement.IsRandomized(i.Item.CodeName));
-
+        
         if (!config.Settings.ChangeSizesOfNonRandomizedChecks && !checkRandomized) return true;
         
         var checkType = GetCheckType(check);
@@ -65,7 +63,9 @@ public class ChangeCheckSize: OutputRuleBase
         }
 
         var checkSize = config.Settings.EnsurePaintedPowerFromPaintress && check.Name.Contains("DA_GA_SQT_RedAndWhiteTree") ? check.Size - 1 : check.Size;
+        
         checkSize -= check.Items.Count(iS => Controllers.SkillsController.SkillItems.Contains(iS.Item));
+        if (config.Settings.RandomizeStartingWeapons && check.Name == "DT_ChestsContent#Chest_Generic_Chroma") checkSize -= 1;
         
         if (originalSize != checkSize)
         {
@@ -94,9 +94,10 @@ public class ChangeCheckSize: OutputRuleBase
     
     public override bool IsSatisfied(Output output, Config config)
     {
+        _changedChecksPerCategory.Clear();
         foreach (var check in output.Checks)
         {
-            if (!CheckItems(check, config))
+            if (!CheckItems(check, config, output.RandomizedChecks.Any(c => c.Name == check.Name)))
             {
                 FailureMessage += $"{check.Name}'s size is invalid: {check.Size}";
                 return false;

@@ -103,8 +103,7 @@ namespace Tests
 
             failureDetails.Should().BeEmpty(
                 $"Found {failureDetails.Count} rule violations in {iterations} runs:\n" +
-                string.Join("\n", failureDetails.Take(20)) +
-                (failureDetails.Count > 20 ? $"\n... and {failureDetails.Count - 20} more failures" : "")
+                string.Join("\n", failureDetails)
             );
         }
 

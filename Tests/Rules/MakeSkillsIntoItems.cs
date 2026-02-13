@@ -10,6 +10,12 @@ public class MakeSkillsIntoItems: OutputRuleBase
         {
             numberOfSkillItems.TryAdd(skillItem, 0);
         }
+
+        if (config.Settings.MakeSkillsIntoItems && output.SkillTrees.Any(sT => sT.Edges.Count != 0 && sT.Name != "Julie"))
+        {
+            FailureMessage += $"Expected 0 edges in trees";
+            return false;
+        }
         
         var totalNumberOfSkillItems = 0;
         foreach (var check in output.Checks)

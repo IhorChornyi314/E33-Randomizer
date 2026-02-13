@@ -110,7 +110,8 @@ public class SkillGraph
 {
     private UAsset _asset;
 
-    private StructPropertyData _dummyStructData;
+    private StructPropertyData _dummyNodeStructData;
+    private StructPropertyData _dummyEdgeStructData;
     private int _totalSkillCost = 0;
 
     private static Dictionary<string, List<int>> _startingSkillIndexes = new Dictionary<string, List<int>>
@@ -136,9 +137,9 @@ public class SkillGraph
         var nodesArrayData = (_asset.Exports[0] as NormalExport).Data[0] as ArrayPropertyData;
         if (nodesArrayData.Value.Length > 0)
         {
-            _dummyStructData = nodesArrayData.Value[0].Clone() as StructPropertyData;
-            _dummyStructData.Value[0] = _dummyStructData.Value[0].Clone() as StructPropertyData;
-            _dummyStructData.Value[1] = _dummyStructData.Value[1].Clone() as StructPropertyData;
+            _dummyNodeStructData = nodesArrayData.Value[0].Clone() as StructPropertyData;
+            _dummyNodeStructData.Value[0] = _dummyNodeStructData.Value[0].Clone() as StructPropertyData;
+            _dummyNodeStructData.Value[1] = _dummyNodeStructData.Value[1].Clone() as StructPropertyData;
         }
         foreach (StructPropertyData nodeStruct in nodesArrayData.Value)
         {
@@ -148,6 +149,7 @@ public class SkillGraph
         var edgesArrayData = (_asset.Exports[0] as NormalExport).Data[1] as ArrayPropertyData;
         if (edgesArrayData.Value.Length > 1)
         {
+            _dummyEdgeStructData = edgesArrayData.Value[0].Clone() as StructPropertyData;
             foreach (StructPropertyData edgeStruct in edgesArrayData.Value)
             {
                 var firstNodeImportIndex = (edgeStruct.Value[0] as ObjectPropertyData).Value.Index;
@@ -228,6 +230,11 @@ public class SkillGraph
             var maxEdges = Math.Max(RandomizerLogic.Settings.MinTreeEdges, RandomizerLogic.Settings.MaxTreeEdges);
             
             RandomizeEdges(minEdges, maxEdges, RandomizerLogic.Settings.FullyRandomEdges);
+        }
+
+        if (RandomizerLogic.Settings.MakeSkillsIntoItems)
+        {
+            Edges.Clear();
         }
     }
 
@@ -392,7 +399,7 @@ public class SkillGraph
     // Honestly I don't know if I even should have AddNode
     public void AddNode(SkillData skillData, int unlockCost, bool isStarting = true, bool isSecret = false, List<int> connectedNodeIndexes = null, Tuple<double, double> position2D = null)
     {
-        var newDummyStructData = _dummyStructData.Clone() as StructPropertyData;
+        var newDummyStructData = _dummyNodeStructData.Clone() as StructPropertyData;
         newDummyStructData.Value[0] = newDummyStructData.Value[0].Clone() as StructPropertyData;
         newDummyStructData.Value[1] = newDummyStructData.Value[1].Clone() as StructPropertyData;
         var newNode = new SkillNode(newDummyStructData, _asset);
@@ -444,13 +451,12 @@ public class SkillGraph
         var nodesArrayData = (_asset.Exports[0] as NormalExport).Data[0] as ArrayPropertyData;
         nodesArrayData.Value = Nodes.Select(n => n.ToStruct(_asset)).ToArray();
 
-        if (Edges.Count == 0)
+        if (CharacterName == "Monoco")
         {
             return _asset;
         }
         
         var edgesArrayData = (_asset.Exports[0] as NormalExport).Data[1] as ArrayPropertyData;
-        var edgeStructDummy = edgesArrayData.Value[0].Clone() as StructPropertyData;
         edgesArrayData.Value = [];
 
         List<StructPropertyData> newEdges = new();
@@ -459,7 +465,7 @@ public class SkillGraph
             var firstPackageIndex = edge.Item1 < 0 ? FPackageIndex.FromRawIndex(edge.Item1) : Nodes[edge.Item1].SkillPackageIndex;
             var secondPackageIndex = edge.Item2 < 0 ? FPackageIndex.FromRawIndex(edge.Item2) : Nodes[edge.Item2].SkillPackageIndex;
             
-            var edgeStruct = edgeStructDummy.Clone() as StructPropertyData;
+            var edgeStruct = _dummyEdgeStructData.Clone() as StructPropertyData;
             (edgeStruct.Value[0] as ObjectPropertyData).Value = firstPackageIndex;
             (edgeStruct.Value[1] as ObjectPropertyData).Value = secondPackageIndex;
             newEdges.Add(edgeStruct);
@@ -484,7 +490,7 @@ public class SkillGraph
         Nodes.Clear();
         foreach (var nodeRep in stringParts[1].Split(','))
         {
-            var newDummyStructData = _dummyStructData.Clone() as StructPropertyData;
+            var newDummyStructData = _dummyNodeStructData.Clone() as StructPropertyData;
             newDummyStructData.Value[0] = newDummyStructData.Value[0].Clone() as StructPropertyData;
             newDummyStructData.Value[1] = newDummyStructData.Value[1].Clone() as StructPropertyData;
             Nodes.Add(new SkillNode(nodeRep, newDummyStructData));

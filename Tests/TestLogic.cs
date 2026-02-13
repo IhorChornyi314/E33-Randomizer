@@ -8,7 +8,7 @@ public static class TestLogic
     public static Output OriginalData;
     public static Random Random = new Random();
 
-    private static List<string> _specialCaseEncounterNames = [
+    public static List<string> SpecialCaseEncounterNames = [
         "Boss_Duolliste_P2", 
         "MM_DanseuseAlphaSummon", 
         "MM_DanseuseClone*1",
@@ -33,7 +33,7 @@ public static class TestLogic
             OriginalData.Encounters.Where(e => e.Enemies.Any(i => config.CustomEnemyPlacement.IsRandomized(i.CodeName))
             ).Select(e => e.Name);
 
-        randomizedEncounterNames = randomizedEncounterNames.Where(n => !_specialCaseEncounterNames.Contains(n));
+        randomizedEncounterNames = randomizedEncounterNames.Where(n => !SpecialCaseEncounterNames.Contains(n));
         if (!config.Settings.RandomizeMerchantFights)
         {
             randomizedEncounterNames = randomizedEncounterNames.Where(n => !n.Contains("Merchant"));

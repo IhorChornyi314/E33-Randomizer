@@ -8,12 +8,12 @@ public class ChangeMerchantInventoryLocked: OutputRuleBase
         var lockedFrequency = 0.0f;
         foreach (var outputCheck in output.Checks)
         {
-            if (!outputCheck.Name.Contains("Merchant")) continue;
+            if (!outputCheck.Name.Contains("DT_Merchant_")) continue;
             var originalCheck = TestLogic.OriginalData.GetCheck(outputCheck.Name);
             for (int i = 0; i < Math.Min(outputCheck.Size, originalCheck.Size); i++)
             {
-                if (!(config.Settings.ChangeMerchantInventoryLocked ^ originalCheck.Items[i].MerchantInventoryLocked ==
-                        outputCheck.Items[i].MerchantInventoryLocked))
+                if (!config.Settings.ChangeMerchantInventoryLocked && originalCheck.Items[i].MerchantInventoryLocked !=
+                        outputCheck.Items[i].MerchantInventoryLocked)
                 {
                     FailureMessage += $"{outputCheck.Name}'s locked status invalid";
                     return false;
@@ -23,6 +23,9 @@ public class ChangeMerchantInventoryLocked: OutputRuleBase
             var lockedCount = outputCheck.Items.Count(i => i.MerchantInventoryLocked);
             lockedFrequency += outputCheck.Size != 0 ? (float)lockedCount / outputCheck.Size : 0;
         }
+
+        if (!config.Settings.ChangeMerchantInventoryLocked) return true;
+        
         lockedFrequency /= output.Checks.Count;
         var lockedPercent = (int)(lockedFrequency * 100);
         if (Math.Abs(lockedFrequency - config.Settings.MerchantInventoryLockedChancePercent / 100.0) > _threshold)

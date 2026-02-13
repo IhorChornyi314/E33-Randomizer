@@ -52,6 +52,8 @@ public class ItemsController: Controller<ItemData>
     {
         var allCharacterWeapons = ObjectsData.Where(i => i.CustomName.Contains($"{characterName} Weapon")).ToList();
         var filteredWeapons = allCharacterWeapons.Where(w => !RandomizerLogic.CustomItemPlacement.Excluded.Contains(w.CodeName)).ToList();
+        if (!RandomizerLogic.Settings.IncludeCutContentItems) filteredWeapons = filteredWeapons.Where(w => !w.IsCutContent).ToList();
+        
         if (filteredWeapons.Any()) allCharacterWeapons = filteredWeapons;
         
         return Utils.Pick(allCharacterWeapons);
