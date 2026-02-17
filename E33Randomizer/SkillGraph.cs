@@ -496,7 +496,7 @@ public class SkillGraph
             Nodes.Add(new SkillNode(nodeRep, newDummyStructData));
         }
 
-        if (Edges.Count == 0)
+        if (CharacterName == "Monoco")
             return;
         
         Edges.Clear();

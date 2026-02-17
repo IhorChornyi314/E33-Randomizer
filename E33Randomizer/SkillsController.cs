@@ -150,8 +150,6 @@ public class SkillsController: Controller<SkillData>
 
     public override void Randomize()
     {
-        //TODO: Add option to lock/unlock Gustave locked skills
-        //TODO: Modify the character save states uasset to account for the new skill trees
         SpecialRules.Reset();
         Reset();
         var cutContentAlreadyExcluded = RandomizerLogic.CustomSkillPlacement.Excluded.Contains("Cut Content Skills");

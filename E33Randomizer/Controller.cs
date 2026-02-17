@@ -12,11 +12,10 @@ public abstract class Controller<T>: BaseController where T: ObjectData, new()
 
     public void AddObjectToContainerVM(ObjectData objectData, string containerName)
     {
-        var containerVm = ViewModel.Categories
+        var containerVms = ViewModel.Categories
             .SelectMany(c => c.Containers)
-            .FirstOrDefault(c => c.CodeName == containerName);
-
-        if (containerVm != null)
+            .Where(c => c.CodeName == containerName);
+        foreach (var containerVm in containerVms)
         {
             var newObjectVm = new ObjectViewModel(objectData);
             newObjectVm.InitComboBox(ViewModel.AllObjects);

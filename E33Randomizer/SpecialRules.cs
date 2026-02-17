@@ -386,7 +386,7 @@ public static class SpecialRules
             node.IsSecret = false;
         }
 
-        if (RandomizerLogic.Settings.MakeSkillsIntoItems && !node.IsStarting)
+        if (RandomizerLogic.Settings.MakeSkillsIntoItems && (!node.IsStarting || node.IsSecret))
         {
             node.IsSecret = true;
             node.IsStarting = true;
