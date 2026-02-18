@@ -21,6 +21,7 @@ public class SkillNode
     public string RequiredItem;
     public bool IsSecret;
     public FVector2D Position2D;
+    public bool IsUnlockedByDefault;
     
     public SkillNode(string rep, StructPropertyData structData)
     {
@@ -34,8 +35,9 @@ public class SkillNode
         IsStarting = bool.Parse(stringParts[2]);
         RequiredItem = stringParts[3];
         IsSecret = bool.Parse(stringParts[4]);
-        Position2D.X = int.Parse(stringParts[5]);
-        Position2D.Y = int.Parse(stringParts[6]);
+        IsUnlockedByDefault = bool.Parse(stringParts[5]);
+        Position2D.X = int.Parse(stringParts[6]);
+        Position2D.Y = int.Parse(stringParts[7]);
     }
     
     public SkillNode(StructPropertyData structData, UAsset parentAsset){
@@ -55,11 +57,16 @@ public class SkillNode
 
         var positionDataArray = (_structData.Value[1] as StructPropertyData).Value[0] as Vector2DPropertyData;
         Position2D = positionDataArray.Value;
+
+        IsUnlockedByDefault = UnlockCost == 0 && !IsSecret || OriginalSkillCodeName == "DA_Skill_Maelle_NEW18_Spark";
     }
 
     public StructPropertyData ToStruct(UAsset parentAsset)
     {
         var importIndex = parentAsset.SearchForImport(FName.FromString(parentAsset, SkillData.CodeName));
+
+        parentAsset.AddNameReference(FString.FromString(SkillData.ClassPath));
+        parentAsset.AddNameReference(FString.FromString(SkillData.CodeName));
         
         if (importIndex == 0)
         {
@@ -76,16 +83,19 @@ public class SkillNode
         
         if (RequiredItem != "null")
         {
-            var itemDataTableIndex = Utils.AddImportToUAsset(parentAsset, "CompositeDataTable",
-                "/Game/jRPGTemplate/Datatables/DT_jRPG_Items_Composite");
-            parentAsset.AddNameReference(FString.FromString(RequiredItem));
+            Utils.AddImportToUAsset(parentAsset, "CompositeDataTable", "/Game/jRPGTemplate/Datatables/DT_jRPG_Items_Composite");
+            var itemDataTableIndex = Utils.AddImportToUAsset(parentAsset, "DataTable",
+                "/Game/Gameplay/SkillTree/Content/DT_Items_GradientAttackUnlocks");
+            parentAsset.AddNameReference(FString.FromString(RequiredItem), true);
             (((_structData.Value[0] as StructPropertyData).Value[3] as StructPropertyData).Value[1] as NamePropertyData).Value = FName.FromString(parentAsset, RequiredItem);
             (((_structData.Value[0] as StructPropertyData).Value[3] as StructPropertyData).Value[0] as
                 ObjectPropertyData).Value = itemDataTableIndex;
         }
         else
         {
-            (((_structData.Value[0] as StructPropertyData).Value[3] as StructPropertyData).Value[1] as NamePropertyData).Value = null;
+            (((_structData.Value[0] as StructPropertyData).Value[3] as StructPropertyData).Value[1] as NamePropertyData).Value = FName.FromString(parentAsset, "None");
+            (((_structData.Value[0] as StructPropertyData).Value[3] as StructPropertyData).Value[0] as
+                ObjectPropertyData).Value = null;
         }
         
         ((_structData.Value[0] as StructPropertyData).Value[4] as BoolPropertyData).Value = IsSecret;
@@ -97,7 +107,7 @@ public class SkillNode
 
     public string EncodeTxt()
     {
-        return $"{SkillData.CodeName}:{UnlockCost}:{IsStarting}:{RequiredItem}:{IsSecret}:{(int)Position2D.X}:{(int)Position2D.Y}";
+        return $"{SkillData.CodeName}:{UnlockCost}:{IsStarting}:{RequiredItem}:{IsSecret}:{IsUnlockedByDefault}:{(int)Position2D.X}:{(int)Position2D.Y}";
     }
 
     public override string ToString()

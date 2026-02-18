@@ -44,7 +44,7 @@ public static class Controllers
         }
         if (RandomizerLogic.Settings.RandomizeCharacters)
         {
-            CharacterController.WriteAssets();
+            //CharacterController.WriteAssets();
         }
     }
 }

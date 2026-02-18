@@ -236,7 +236,7 @@ public static class RandomizerLogic
         if (Settings.RandomizeEnemies) Controllers.EnemiesController.Randomize();
         if (Settings.RandomizeItems) Controllers.ItemsController.Randomize();
         if (Settings.RandomizeSkills) Controllers.SkillsController.Randomize();
-        if (Settings.RandomizeCharacters) Controllers.CharacterController.Randomize();
+        //if (Settings.RandomizeCharacters) Controllers.CharacterController.Randomize();
         if (saveData)
             PackAndConvertData();
     }

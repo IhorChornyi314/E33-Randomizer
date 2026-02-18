@@ -386,12 +386,12 @@ public static class SpecialRules
             node.IsSecret = false;
         }
 
-        if (RandomizerLogic.Settings.MakeSkillsIntoItems && (!node.IsStarting || node.IsSecret))
+        if (RandomizerLogic.Settings.MakeSkillsIntoItems)
         {
-            node.IsSecret = true;
+            node.IsSecret = !node.IsUnlockedByDefault;
             node.IsStarting = true;
             node.UnlockCost = 0;
-            node.RequiredItem = node.SkillData.CodeName;
+            node.RequiredItem = node.IsUnlockedByDefault ? "null" : node.SkillData.CodeName;
         }
     }
 
