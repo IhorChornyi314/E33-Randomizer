@@ -35,9 +35,9 @@ public class SkillNode
         IsStarting = bool.Parse(stringParts[2]);
         RequiredItem = stringParts[3];
         IsSecret = bool.Parse(stringParts[4]);
-        IsUnlockedByDefault = bool.Parse(stringParts[5]);
-        Position2D.X = int.Parse(stringParts[6]);
-        Position2D.Y = int.Parse(stringParts[7]);
+        Position2D.X = int.Parse(stringParts[5]);
+        Position2D.Y = int.Parse(stringParts[6]);
+        IsUnlockedByDefault = SkillGraph.StartingSkillNames.SelectMany(s => s.Value).Contains(OriginalSkillCodeName);
     }
     
     public SkillNode(StructPropertyData structData, UAsset parentAsset){
@@ -124,15 +124,25 @@ public class SkillGraph
     private StructPropertyData _dummyEdgeStructData;
     private int _totalSkillCost = 0;
 
-    private static Dictionary<string, List<int>> _startingSkillIndexes = new Dictionary<string, List<int>>
+    private static Dictionary<string, List<int>> _startingSkillIndexes = new()
     {
-        {"Julie", new List<int> {}},
-        {"Gustave", new List<int> {1, 7}},
-        {"Lune", new List<int> {3, 7}},
-        {"Maelle", new List<int> {0, 1, 11}},
-        {"Sciel", new List<int> {0, 11}},
-        {"Verso", new List<int> {0, 7}},
-        {"Monoco", new List<int> {8, 31}},
+        {"Julie", []},
+        {"Gustave", [1, 7]},
+        {"Lune", [3, 7]},
+        {"Maelle", [0, 1, 11]},
+        {"Sciel", [0, 11]},
+        {"Verso", [0, 7]},
+        {"Monoco", [8, 31]},
+    };
+    public static Dictionary<string, List<string>> StartingSkillNames = new()
+    {
+        {"Julie", []},
+        {"Gustave", ["DA_Skill_Gustave_UnleashCharge", "DA_Skill_Gustave_Combo1"]},
+        {"Lune", ["DA_Skill_Lune_Immolation", "DA_Skill_Lune_IceGust"]},
+        {"Maelle", ["DA_Skill_Maelle_OffensiveSwitch", "DA_Skill_Maelle_NEW18_Spark", "DA_Skill_Maelle_NEW14_Percee"]},
+        {"Sciel", ["DA_Skill_Sciel_new2_Foretelling2", "DA_Skill_Sciel_new3_GrimPrediction"]},
+        {"Verso", ["DA_Skill_Combo1", "DA_Skill_Verso_NEW_FromFire"]},
+        {"Monoco", ["DA_Skill_Transfo_StalactMeleeCombo", "DA_Skill_Transfo_ChalierRelentlessSword"]},
     };
     public List<SkillNode> Nodes = new();
     // Edges in the uasset connect objects, so duplicate skills copy connections
