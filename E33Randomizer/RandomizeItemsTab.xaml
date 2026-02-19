@@ -54,6 +54,11 @@
                                   IsChecked="{Binding RandomizeStartingCosmetics}"
                                   Margin="0,6,0,0"
                                   FontSize="14" />
+                        <CheckBox Name="RandomizeMonocoFeetCheckBox"
+                                  Content="Randomize enemy feet drops"
+                                  IsChecked="{Binding RandomizeMonocoFeet}"
+                                  Margin="0,6,0,0"
+                                  FontSize="14" />
                         <CheckBox Content="Enable gear rolls in prologue (they will be level 16 and can drastically alter the difficulty)"
                                   IsChecked="{Binding IncludeGearInPrologue}"
                                   Margin="0,6,0,0"

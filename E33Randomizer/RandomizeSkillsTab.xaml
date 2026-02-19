@@ -46,11 +46,6 @@
                                   IsChecked="{Binding MakeSkillsIntoItems}"
                                   Margin="0,6,0,0"
                                   FontSize="14" />
-                        <CheckBox Name="RandomizeMonocoFeetCheckBox"
-                                  Content="Randomize enemy feet drops"
-                                  IsChecked="{Binding RandomizeMonocoFeet}"
-                                  Margin="0,6,0,0"
-                                  FontSize="14" />
                         <CheckBox Name="RandomizeSkillTreeEdgesCheckBox"
                                   Content="Randomize skill tree links"
                                   IsChecked="{Binding RandomizeTreeEdges}"

@@ -107,7 +107,7 @@ public class SkillNode
 
     public string EncodeTxt()
     {
-        return $"{SkillData.CodeName}:{UnlockCost}:{IsStarting}:{RequiredItem}:{IsSecret}:{IsUnlockedByDefault}:{(int)Position2D.X}:{(int)Position2D.Y}";
+        return $"{SkillData.CodeName}:{UnlockCost}:{IsStarting}:{RequiredItem}:{IsSecret}:{(int)Position2D.X}:{(int)Position2D.Y}";
     }
 
     public override string ToString()
