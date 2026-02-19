@@ -21,6 +21,7 @@ public class EnemiesController: Controller<EnemyData>
         ReadObjectsData($"{RandomizerLogic.DataDirectory}/enemy_data.json");
         ReadEncounterAssets();
         ConstructEncountersByLocation();
+        ResetRandomObjectPool();
     }
     
     public void ReadEncounterAssets()
@@ -122,6 +123,8 @@ public class EnemiesController: Controller<EnemyData>
             RandomizerLogic.CustomEnemyPlacement.AddExcluded("Cut Content Enemies");
         }
         RandomizerLogic.CustomEnemyPlacement.Update();
+        ResetRandomObjectPool(RandomizerLogic.CustomEnemyPlacement.ExcludedCodeNames.Select(GetObject).ToList());
+        
         Encounters.ForEach(ModifyEncounter);
         if (!RandomizerLogic.Settings.IncludeCutContentEnemies && !cutContentAlreadyExcluded)
         {

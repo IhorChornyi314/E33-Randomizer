@@ -313,6 +313,7 @@ public class ItemsController: Controller<ItemData>
             RandomizerLogic.CustomItemPlacement.AddExcluded("Cut Content Items");
         }
         RandomizerLogic.CustomItemPlacement.Update();
+        ResetRandomObjectPool(RandomizerLogic.CustomItemPlacement.ExcludedCodeNames.Select(GetObject).ToList());
         var randomizableSources = ItemsSources.Where(SpecialRules.Randomizable).ToList();
         randomizableSources.ForEach(i => i.Randomize());
         ItemsSources.ForEach(i => i.Checks.ForEach(SpecialRules.ApplySpecialRulesToCheck));
@@ -371,6 +372,7 @@ public class ItemsController: Controller<ItemData>
         ViewModel.ContainerName = "Check";
         ViewModel.ObjectName = "Item";
         _cleanSnapshot = ConvertToTxt();
+        ResetRandomObjectPool();
     }
 
     public override void Reset()

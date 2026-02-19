@@ -8,8 +8,14 @@ public abstract class Controller<T>: BaseController where T: ObjectData, new()
 {
     public T DefaultObject = new ();
     public List<T> ObjectsData = new();
+    public ObjectPool<T> RandomObjectPool;
     public Dictionary<string, T> ObjectsByName = new();
 
+    public void ResetRandomObjectPool(List<T> excluded=null)
+    {
+        RandomObjectPool = new ObjectPool<T>(ObjectsData, excluded);
+    }
+    
     public void AddObjectToContainerVM(ObjectData objectData, string containerName)
     {
         var containerVms = ViewModel.Categories
@@ -69,7 +75,11 @@ public abstract class Controller<T>: BaseController where T: ObjectData, new()
 
     public T GetRandomObject()
     {
-        return Utils.Pick(ObjectsData);
+        if (RandomObjectPool == null)
+        {
+            ResetRandomObjectPool();
+        }
+        return RandomObjectPool.GetObject();
     }
     
     public abstract void WriteAssets();

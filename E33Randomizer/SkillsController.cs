@@ -22,6 +22,7 @@ public class SkillsController: Controller<SkillData>
         _cleanSnapshot = ConvertToTxt();
         AddSkillItems();
         UpdateViewModel();
+        ResetRandomObjectPool();
     }
 
     public override void InitFromTxt(string text)
@@ -158,9 +159,8 @@ public class SkillsController: Controller<SkillData>
             RandomizerLogic.CustomSkillPlacement.AddExcluded("Cut Content Skills");
         }
         RandomizerLogic.CustomSkillPlacement.Update();
+        ResetRandomObjectPool(RandomizerLogic.CustomSkillPlacement.ExcludedCodeNames.Select(GetObject).ToList());
         
-        
-        RandomizerLogic.CustomSkillPlacement.Update();
         foreach (var skillGraph in SkillGraphs)
         {
             SpecialRules.ResetSkillsPool();
