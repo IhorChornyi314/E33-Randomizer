@@ -314,13 +314,14 @@ public class SettingsViewModel : INotifyPropertyChanged
     public bool RandomizeStartingWeapons { get; set; } = false;
     public bool RandomizeStartingCosmetics { get; set; } = false;
     public bool RandomizeGestralBeachRewards { get; set; } = true;
+    public bool RandomizeMonocoFeet { get; set; } = true;
     public bool IncludeCutContentItems { get; set; } = true;
     
-    public bool RandomizeSkills { get; set; } = false;
+    public bool RandomizeSkills { get; set; } = true;
     public bool ReduceSkillRepetition { get; set; } = true;
     public bool IncludeCutContentSkills { get; set; } = false;
     public bool UnlockGustaveSkills { get; set; } = false;
-    public bool GuaranteeGustaveOvercharge { get; set; } = false;
+    public bool GuaranteeGustaveOvercharge { get; set; } = true;
     public bool RandomizeSkillUnlockCosts { get; set; } = false;
     public bool RandomizeTreeEdges { get; set; } = true;
     //TODO: Add dummy edge structs to Monoco's asset
@@ -330,7 +331,6 @@ public class SettingsViewModel : INotifyPropertyChanged
     public bool FullyRandomEdges { get; set; } = false;
     public int RandomEdgeChancePercent { get; set; } = 60;
     public bool MakeSkillsIntoItems { get; set; } = false;
-    public bool RandomizeMonocoFeet { get; set; } = false;
     
     public bool RandomizeCharacters { get; set; } = false;
     
