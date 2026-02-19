@@ -34,7 +34,7 @@ public static class Controllers
         {
             SkillsController.WriteAssets();
         }
-        if (RandomizerLogic.Settings.RandomizeItems)
+        if (RandomizerLogic.Settings.RandomizeItems || (RandomizerLogic.Settings.MakeSkillsIntoItems && RandomizerLogic.Settings.RandomizeSkills))
         {
             ItemsController.WriteAssets();
         }
