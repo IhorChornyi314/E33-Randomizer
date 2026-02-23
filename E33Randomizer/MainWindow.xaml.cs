@@ -281,30 +281,30 @@ public class SettingsViewModel : INotifyPropertyChanged
     public bool ReduceGearRepetition { get; set; } = true;
 
     public bool ChangeMerchantInventorySize { get; set; } = false;
-    public int MerchantInventorySizeMax { get; set; } = 20;
+    public int MerchantInventorySizeMax { get; set; } = 15;
     public int MerchantInventorySizeMin { get; set; } = 1;
     
     public bool ChangeItemQuantity { get; set; } = false;
-    public int ItemQuantityMax { get; set; } = 20;
+    public int ItemQuantityMax { get; set; } = 10;
     public int ItemQuantityMin { get; set; } = 1;
     
     public bool ChangeMerchantInventoryLocked { get; set; } = false;
     public int MerchantInventoryLockedChancePercent { get; set; } = 10;
     
     public bool ChangeNumberOfLootDrops { get; set; } = false;
-    public int LootDropsNumberMax { get; set; } = 5;
-    public int LootDropsNumberMin { get; set; } = 1;
+    public int LootDropsNumberMax { get; set; } = 3;
+    public int LootDropsNumberMin { get; set; } = 0;
     
     public bool ChangeNumberOfTowerRewards { get; set; } = false;
-    public int TowerRewardsNumberMax { get; set; } = 5;
+    public int TowerRewardsNumberMax { get; set; } = 3;
     public int TowerRewardsNumberMin { get; set; } = 1;
     
     public bool ChangeNumberOfChestContents { get; set; } = false;
-    public int ChestContentsNumberMax { get; set; } = 5;
+    public int ChestContentsNumberMax { get; set; } = 2;
     public int ChestContentsNumberMin { get; set; } = 1;
     
     public bool ChangeNumberOfActionRewards { get; set; } = false;
-    public int ActionRewardsNumberMax { get; set; } = 5;
+    public int ActionRewardsNumberMax { get; set; } = 3;
     public int ActionRewardsNumberMin { get; set; } = 1;
     
     public bool MakeEveryItemVisible { get; set; } = true;
