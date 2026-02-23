@@ -30,7 +30,7 @@ public class GenericItemSource: ItemSource
         for (int i = 0; i < _asset.GetNameMapIndexList().Count; i++)
         {
             var name = _asset.GetNameMapIndexList()[i].ToString();
-            if (Controllers.ItemsController.IsItem(name))
+            if (Controllers.ItemsController.IsObject(name))
             {
                 var newItem = Controllers.ItemsController.GetObject(name);
                 _originalNameReferenceIndexes.Add(i);

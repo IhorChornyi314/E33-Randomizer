@@ -20,6 +20,12 @@ public class ItemSourceParticle(ItemData item, int quantity = -1, double chance 
     public static ItemSourceParticle FromString(string rep)
     {
         var stringParts = rep.Split(':');
+        
+        if (!Controllers.ItemsController.IsObject(stringParts[0]))
+        {
+            throw new Exception($"Error reading checks txt: Unrecognized item {stringParts[0]}! Delete or fix its line.");
+        }
+        
         var newParticle = new ItemSourceParticle(Controllers.ItemsController.GetObject(stringParts[0]));
         newParticle.Quantity = int.Parse(stringParts[1]);
         newParticle.LootDropChance = double.Parse(stringParts[2]);

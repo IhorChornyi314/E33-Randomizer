@@ -29,14 +29,24 @@ public class SkillNode
         SkillPackageIndex = ((_structData.Value[0] as StructPropertyData).Value[0] as ObjectPropertyData).Value;
         
         var stringParts = rep.Split(':');
-        OriginalSkillCodeName = stringParts[0];
         SkillData = Controllers.SkillsController.GetObject(stringParts[0]);
-        UnlockCost = int.Parse(stringParts[1]);
-        IsStarting = bool.Parse(stringParts[2]);
-        RequiredItem = stringParts[3];
-        IsSecret = bool.Parse(stringParts[4]);
-        Position2D.X = int.Parse(stringParts[5]);
-        Position2D.Y = int.Parse(stringParts[6]);
+        OriginalSkillCodeName = stringParts[1];
+        
+        if (!Controllers.SkillsController.IsObject(OriginalSkillCodeName))
+        {
+            throw new Exception($"Error reading skills txt: Unrecognized skill name {OriginalSkillCodeName}! Delete or fix its line.");
+        }
+        if (!Controllers.SkillsController.IsObject(stringParts[0]))
+        {
+            throw new Exception($"Error reading skills txt: Unrecognized skill name {stringParts[0]}! Delete or fix its line.");
+        }
+        
+        UnlockCost = int.Parse(stringParts[2]);
+        IsStarting = bool.Parse(stringParts[3]);
+        RequiredItem = stringParts[4];
+        IsSecret = bool.Parse(stringParts[5]);
+        Position2D.X = int.Parse(stringParts[6]);
+        Position2D.Y = int.Parse(stringParts[7]);
         IsUnlockedByDefault = SkillGraph.StartingSkillNames.SelectMany(s => s.Value).Contains(OriginalSkillCodeName);
     }
     
@@ -107,7 +117,7 @@ public class SkillNode
 
     public string EncodeTxt()
     {
-        return $"{SkillData.CodeName}:{UnlockCost}:{IsStarting}:{RequiredItem}:{IsSecret}:{(int)Position2D.X}:{(int)Position2D.Y}";
+        return $"{SkillData.CodeName}:{OriginalSkillCodeName}:{UnlockCost}:{IsStarting}:{RequiredItem}:{IsSecret}:{(int)Position2D.X}:{(int)Position2D.Y}";
     }
 
     public override string ToString()

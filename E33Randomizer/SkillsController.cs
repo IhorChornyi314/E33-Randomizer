@@ -43,7 +43,11 @@ public class SkillsController: Controller<SkillData>
         {
             var characterName = line.Split('|')[0];
             var skillGraph = SkillGraphs.Find(sG => sG.CharacterName == characterName);
-            skillGraph?.DecodeTxt(line);
+            if (skillGraph == null)
+            {
+                throw new Exception($"Error reading skills txt: Unrecognized character name {characterName}! Delete or fix its line.");
+            }
+            skillGraph.DecodeTxt(line);
         }
         UpdateViewModel();
     }

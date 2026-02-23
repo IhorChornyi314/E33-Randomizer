@@ -62,6 +62,11 @@ public abstract class Controller<T>: BaseController where T: ObjectData, new()
 
         ObjectsByName = ObjectsData.Select(o => new KeyValuePair<string, T>(o.CodeName, o)).ToDictionary();
     }
+
+    public bool IsObject(string codeName)
+    {
+        return ObjectsByName.ContainsKey(codeName);
+    }
     
     public T GetObject(string objectCodeName)
     {

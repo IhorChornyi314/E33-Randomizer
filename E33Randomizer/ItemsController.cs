@@ -61,11 +61,6 @@ public class ItemsController: Controller<ItemData>
     private UDataTable itemsCompositeTable;
     private Dictionary<string, UAsset> _itemsDataTables = new();
     private string _cleanSnapshot;
-    
-    public bool IsItem(string itemCodeName)
-    {
-        return ObjectsByName.ContainsKey(itemCodeName);
-    }
 
     public bool IsGearItem(ItemData item)
     {
@@ -388,9 +383,17 @@ public class ItemsController: Controller<ItemData>
             var particlesString = line.Split('|')[1].Split('?')[0];
             var particles = particlesString.Length != 0 ? particlesString.Split(',').Select(ItemSourceParticle.FromString).ToList() : [];
             var source = ItemsSources.Find(i => i.FileName == itemSourceName);
+            if (source == null || !source.SourceSections.ContainsKey(sectionKey))
+            {
+                throw new Exception($"Error reading checks txt: Unrecognized check id {itemSourceName}#{sectionKey}! Delete or fix its line.");
+            }
             source.SourceSections[sectionKey] = particles;
             if (line.Contains('?'))
             {
+                if (!Controllers.ItemsController.IsObject(line.Split('?')[1]))
+                {
+                    throw new Exception($"Error reading checks txt: Unrecognized foot {line.Split('?')[1]}! Delete or fix its line.");
+                }
                 ShapeshiftCaptureLootItems[sectionKey] = line.Split('?')[1];
             }
         }
