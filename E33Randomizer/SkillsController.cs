@@ -41,6 +41,7 @@ public class SkillsController: Controller<SkillData>
         var graphLines = text.Split('\n');
         foreach (var line in graphLines)
         {
+            if (line == "") continue;
             var characterName = line.Split('|')[0];
             var skillGraph = SkillGraphs.Find(sG => sG.CharacterName == characterName);
             if (skillGraph == null)

@@ -92,6 +92,7 @@ public class EnemiesController: Controller<EnemyData>
         text = text.ReplaceLineEndings("\n");
         foreach (var line in text.Split('\n'))
         {
+            if (line == "") continue;
             var encounterName = line.Split('|')[0];
             var encounterIndex = Encounters.FindIndex(e => e.Name == encounterName);
             if (encounterIndex == -1)

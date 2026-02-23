@@ -60,7 +60,8 @@ public class EnemyLootDropsItemSource: ItemSource
                 Key = enemyName,
             };
             Checks.Add(check);
-            Controllers.ItemsController.ShapeshiftCaptureLootItems[enemyName] = enemyData.Value[18].ToString();
+            var leg = enemyData.Value[18].ToString();
+            Controllers.ItemsController.ShapeshiftCaptureLootItems[enemyName] = leg == "null" ? "None" : leg;
         }
     }
 

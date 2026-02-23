@@ -390,11 +390,12 @@ public class ItemsController: Controller<ItemData>
             source.SourceSections[sectionKey] = particles;
             if (line.Contains('?'))
             {
-                if (!Controllers.ItemsController.IsObject(line.Split('?')[1]))
+                var leg = line.Split('?')[1];
+                if (!Controllers.ItemsController.IsObject(leg) && leg != "None")
                 {
-                    throw new Exception($"Error reading checks txt: Unrecognized foot {line.Split('?')[1]}! Delete or fix its line.");
+                    throw new Exception($"Error reading checks txt: Unrecognized foot {leg}! Delete or fix its line.");
                 }
-                ShapeshiftCaptureLootItems[sectionKey] = line.Split('?')[1];
+                ShapeshiftCaptureLootItems[sectionKey] = leg;
             }
         }
         UpdateViewModel();
@@ -475,7 +476,6 @@ public class ItemsController: Controller<ItemData>
     public void RandomizeStartingEquipment()
     {
         List<string> characterNames = ["Gustave", "Lune", "Maelle", "Sciel", "Verso", "Monoco"];
-        //TODO: Try changing Noahram in Sandfall/Content/Gameplay/Save/BP_SaveManager
         if (RandomizerLogic.Settings.RandomizeStartingWeapons)
         {
             foreach (var characterName in characterNames)
