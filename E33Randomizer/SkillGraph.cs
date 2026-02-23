@@ -94,8 +94,17 @@ public class SkillNode
         if (RequiredItem != "null")
         {
             Utils.AddImportToUAsset(parentAsset, "CompositeDataTable", "/Game/jRPGTemplate/Datatables/DT_jRPG_Items_Composite");
-            var itemDataTableIndex = Utils.AddImportToUAsset(parentAsset, "DataTable",
-                "/Game/Gameplay/SkillTree/Content/DT_Items_GradientAttackUnlocks");
+            FPackageIndex itemDataTableIndex;
+            if (RequiredItem.EndsWith("Foot"))
+            {
+                itemDataTableIndex = Utils.AddImportToUAsset(parentAsset, "DataTable",
+                    "/Game/jRPGTemplate/Datatables/DT_ShapeshiftCaptureLootItems");
+            }
+            else
+            {
+                itemDataTableIndex = Utils.AddImportToUAsset(parentAsset, "DataTable",
+                    "/Game/Gameplay/SkillTree/Content/DT_Items_GradientAttackUnlocks");
+            }
             parentAsset.AddNameReference(FString.FromString(RequiredItem), true);
             (((_structData.Value[0] as StructPropertyData).Value[3] as StructPropertyData).Value[1] as NamePropertyData).Value = FName.FromString(parentAsset, RequiredItem);
             (((_structData.Value[0] as StructPropertyData).Value[3] as StructPropertyData).Value[0] as
