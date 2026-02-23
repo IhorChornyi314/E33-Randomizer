@@ -273,13 +273,6 @@ public static class SpecialRules
                 }
             }
         }
-        
-        if (RandomizerLogic.Settings.RandomizeStartingWeapons && check.Key.Contains("Chest_Generic_Chroma"))
-        {
-            var randomWeapon = Controllers.ItemsController.GetRandomWeapon("Gustave");
-
-            check.ItemSource.SourceSections["Chest_Generic_Chroma"].Add(new ItemSourceParticle(randomWeapon));
-        }
 
         if (RandomizerLogic.Settings.ReduceKeyItemRepetition)
         {
@@ -384,6 +377,7 @@ public static class SpecialRules
         if (RandomizerLogic.Settings.UnlockGustaveSkills && node.SkillData.CharacterName is "Gustave" or "Verso" && node is { IsSecret: true, IsStarting: false })
         {
             node.IsSecret = false;
+            node.RequiredItem = "null";
         }
 
         if (RandomizerLogic.Settings.MakeSkillsIntoItems)
@@ -391,7 +385,7 @@ public static class SpecialRules
             node.IsSecret = !node.IsUnlockedByDefault;
             node.IsStarting = true;
             node.UnlockCost = 0;
-            node.RequiredItem = node.IsUnlockedByDefault ? "null" : node.SkillData.CodeName;
+            node.RequiredItem = node.IsUnlockedByDefault ? "null" : SkillsController.GetSkillUnlockItemName(node.SkillData);
         }
     }
 

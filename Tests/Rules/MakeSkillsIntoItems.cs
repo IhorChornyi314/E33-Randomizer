@@ -1,10 +1,12 @@
-﻿namespace Tests.Rules;
+﻿using E33Randomizer;
+
+namespace Tests.Rules;
 
 public class MakeSkillsIntoItems: OutputRuleBase
 {
     public override bool IsSatisfied(Output output, Config config)
     {
-        var skillItemNames = output.SkillTrees.SelectMany(sT => sT.Skills).Select(s => s.CodeName).ToList();
+        var skillItemNames = output.SkillTrees.SelectMany(sT => sT.Skills).Select(SkillsController.GetSkillUnlockItemName).ToList();
         var numberOfSkillItems = new Dictionary<string, int>();
         foreach (var skillItem in skillItemNames)
         {

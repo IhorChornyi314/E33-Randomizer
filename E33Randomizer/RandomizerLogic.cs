@@ -211,7 +211,6 @@ public static class RandomizerLogic
         var retocArgs = $"to-zen --version UE5_4 randomizer \"{exportPath}randomizer_P.utoc\"";
 
         Process.Start("retoc.exe", retocArgs);
-        Controllers.EnemiesController.Reset();
     }
 
     public static EnemyData GetRandomByArchetype(string archetype)

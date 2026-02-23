@@ -12,13 +12,11 @@ public class EnemyLootDropsItemSource: ItemSource
     private Dictionary<string, int> _enemyLevelOffsets = new();
     private StructPropertyData _dummyDropStruct = null;
     private ObjectPropertyData _compositeTableReference = null;
-    private ObjectPool<string> _shapeshiftCaptureLootItems = null;
     
     public override void LoadFromAsset(UAsset asset)
     {
         HasItemQuantities = true;
-        var shapeshiftItems = new List<string>();
-        
+        Controllers.ItemsController.ShapeshiftCaptureLootItems.Clear();
         base.LoadFromAsset(asset);
         var tableData = (asset.Exports[0] as DataTableExport).Table.Data;
         
@@ -62,13 +60,8 @@ public class EnemyLootDropsItemSource: ItemSource
                 Key = enemyName,
             };
             Checks.Add(check);
-            
-            var legLootItem = enemyData.Value[18].ToString();
-            if (!shapeshiftItems.Contains(legLootItem)) shapeshiftItems.Add(legLootItem);
+            Controllers.ItemsController.ShapeshiftCaptureLootItems[enemyName] = enemyData.Value[18].ToString();
         }
-
-        shapeshiftItems.Remove("None");
-        _shapeshiftCaptureLootItems = new ObjectPool<string>(shapeshiftItems, []);
     }
 
     public override UAsset SaveToAsset()
@@ -100,7 +93,7 @@ public class EnemyLootDropsItemSource: ItemSource
 
             if (RandomizerLogic.Settings.RandomizeMonocoFeet)
             {
-                var newLeg = _shapeshiftCaptureLootItems.GetObject();
+                var newLeg = Controllers.ItemsController.ShapeshiftCaptureLootItems.GetValueOrDefault(enemyName, "None");
                 (enemyData.Value[18] as NamePropertyData).Value = FName.FromString(_asset, newLeg);
             }
         }

@@ -48,7 +48,6 @@ namespace Tests
                 new NoSimonP2BeforeLune(),
                 new RandomizeAddedEnemies(),
                 new RandomizeGestralBeachRewards(),
-                new RandomizeGustaveStartingWeapon(),
                 new RandomizeMerchantFights(),
                 new RandomizeSkillUnlockCosts(),
                 new RandomizeTreeEdges(),

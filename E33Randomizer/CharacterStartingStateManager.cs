@@ -10,18 +10,21 @@ public static class CharacterStartingStateManager
 {
     private static UAsset _characterSaveStatesAsset;
     private static UAsset _characterDefinitionsAsset;
+    private static UAsset _saveManager;
     private static bool _wasModified;
     
     public static void Init()
     {
         _characterSaveStatesAsset = new UAsset($"{RandomizerLogic.DataDirectory}/Originals/StartingInfoTables/DT_jRPG_CharacterSaveStates.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
         _characterDefinitionsAsset = new UAsset($"{RandomizerLogic.DataDirectory}/Originals/StartingInfoTables/DT_jRPG_CharacterDefinitions.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+        _saveManager = new UAsset($"{RandomizerLogic.DataDirectory}/ItemData/SaveManager/BP_SaveManager.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
     }
 
     public static void SetStartingWeapon(string characterName, ItemData weapon)
     {
+        if (weapon == null) return;
         _wasModified = true;
-        // characterName = characterName == "Gustave" ? "Frey" : characterName;
+        characterName = characterName == "Gustave" ? "Frey" : characterName;
         var tableData = (_characterSaveStatesAsset.Exports[0] as DataTableExport).Table.Data;
 
         foreach (var propertyData in tableData)
@@ -32,10 +35,16 @@ public static class CharacterStartingStateManager
             _characterSaveStatesAsset.AddNameReference(FString.FromString(weapon.CodeName));
             nameProperty.Value = FName.FromString(_characterSaveStatesAsset, weapon.CodeName);
         }
+
+        if (characterName == "Frey")
+        {
+            Utils.ReplaceNameReference(_saveManager, "Noahram", weapon.CodeName);
+        }
     }
 
     public static void SetStartingCosmetics(string characterName, ItemData skin, ItemData face)
     {
+        if (skin == null || face == null) return;
         _wasModified = true;
         characterName = characterName == "Gustave" ? "Frey" : characterName;
         
@@ -79,7 +88,16 @@ public static class CharacterStartingStateManager
     public static void SaveAssets()
     {
         if (!_wasModified) return;
+        foreach (var startingWeapon in Controllers.ItemsController.RandomizedStartingWeapons)
+        {
+            SetStartingWeapon(startingWeapon.Key, startingWeapon.Value);
+        }
+        foreach (var startingOutfit in Controllers.ItemsController.RandomizedStartingOutfits)
+        {
+            SetStartingCosmetics(startingOutfit.Key, startingOutfit.Value.Item1, startingOutfit.Value.Item2);
+        }
         Utils.WriteAsset(_characterSaveStatesAsset);
         Utils.WriteAsset(_characterDefinitionsAsset);
+        Utils.WriteAsset(_saveManager);
     }
 }

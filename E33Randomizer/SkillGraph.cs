@@ -70,7 +70,7 @@ public class SkillNode
         
         if (importIndex == 0)
         {
-            SkillPackageIndex = Utils.AddImportToUAsset(parentAsset, "BP_DataAsset_Skill_C", SkillData.ClassPath,
+            SkillPackageIndex = Utils.AddImportToUAsset(parentAsset, "BP_DataAsset_Skill_C", SkillData.ClassPath, SkillData.ClassName,
                 "/Game/Gameplay/SkillTree/BP_DataAsset_Skill");
             importIndex = SkillPackageIndex.Index;
         }
@@ -514,6 +514,10 @@ public class SkillGraph
             newDummyStructData.Value[0] = newDummyStructData.Value[0].Clone() as StructPropertyData;
             newDummyStructData.Value[1] = newDummyStructData.Value[1].Clone() as StructPropertyData;
             Nodes.Add(new SkillNode(nodeRep, newDummyStructData));
+            if (CharacterName == "Gustave" && StartingSkillNames["Verso"].Contains(Nodes[^1].OriginalSkillCodeName))
+            {
+                Nodes[^1].IsUnlockedByDefault = false;
+            }
         }
 
         if (CharacterName == "Monoco")

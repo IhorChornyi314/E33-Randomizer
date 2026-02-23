@@ -289,6 +289,30 @@
             1
         ]
     },
+    "BP_Dialogue_Gardens_GustaveFlower": {
+        "Quest_FlowerforSophie": [
+            1,
+            1,
+            0,
+            1
+        ]
+    },
+    "BP_Dialogue_Gardens_Maelle_FlowerReminder": {
+        "Quest_FlowerforSophie": [
+            1,
+            1,
+            0,
+            1
+        ]
+    },
+    "BP_Dialogue_Gardens_Maelle_SophieDownThere": {
+        "Quest_FlowerforSophie": [
+            1,
+            1,
+            0,
+            1
+        ]
+    },
     "BP_Dialogue_HexgaLuster": {
         "Consumable_Respec": [
             1,

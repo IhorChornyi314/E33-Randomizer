@@ -13,6 +13,16 @@ public class SkillsController: Controller<SkillData>
     public List<SkillGraph> SkillGraphs = new();
     public List<ItemData> SkillItems = new();
 
+    public static string GetSkillUnlockItemName(SkillData skill)
+    {
+        return skill.CodeName + "_Unlock";
+    }
+
+    public static SkillData GetSkillFromUnlockItem(string unlockItemName)
+    {
+        return Controllers.SkillsController.GetObject(unlockItemName.Replace("_Unlock", ""));
+    }
+
     public override void Initialize()
     {
         ReadObjectsData($"{RandomizerLogic.DataDirectory}/skill_data.json");
@@ -137,7 +147,7 @@ public class SkillsController: Controller<SkillData>
         foreach (var skillData in ObjectsData.Where(s => s.CharacterName != "Consumables" ))
         {
             var itemData = new ItemData();
-            itemData.CodeName = skillData.CodeName;
+            itemData.CodeName = GetSkillUnlockItemName(skillData);
             itemData.CustomName = skillData.CustomName.Replace(")", " Unlock)");
             itemData.Type = "CustomSkillUnlocker";
             itemData.HasQuantities = false;

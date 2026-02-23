@@ -34,22 +34,11 @@
                                   IsChecked="{Binding EnsurePaintedPowerFromPaintress}"
                                   Margin="0,6,0,0"
                                   FontSize="14" />
-                        <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
-                            <CheckBox Name="RandomizeStartingWeaponsCheckBox"
-                                Content="Randomize starting weapons"
-                                      IsChecked="{Binding RandomizeStartingWeapons}"
-                                      Margin="0,6,0,0"
-                                      FontSize="14" />
-                            <TextBlock
-                                Text="Gustave's weapon will be behind him when he wakes up at the start of Act I"
-                                Foreground="Orange"
-                                FontWeight="Bold"
-                                Margin="10,6,0,0"
-                                VerticalAlignment="Center"
-                                TextWrapping="Wrap"
-                                MaxWidth="800" 
-                                Visibility="{Binding IsChecked, ElementName=RandomizeStartingWeaponsCheckBox, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-                        </StackPanel>
+                        <CheckBox Name="RandomizeStartingWeaponsCheckBox"
+                                  Content="Randomize starting weapons"
+                                  IsChecked="{Binding RandomizeStartingWeapons}"
+                                  Margin="0,6,0,0"
+                                  FontSize="14" />
                         <CheckBox Content="Randomize starting cosmetics"
                                   IsChecked="{Binding RandomizeStartingCosmetics}"
                                   Margin="0,6,0,0"

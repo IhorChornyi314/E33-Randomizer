@@ -9,9 +9,7 @@ public static class CustomPlacementTestLogic
     public static bool TestExcluded(Output output, Config config)
     {
         var excludedEnemies = config.CustomEnemyPlacement.ExcludedCodeNames;
-        var randomizedEncounters = TestLogic.OriginalData.Encounters.Where(e =>
-            e.Enemies.Any(e => config.CustomEnemyPlacement.IsRandomized(e.CodeName))).Select(e => e.Name);
-        var generatedEnemies = output.Encounters.Where(e => randomizedEncounters.Contains(e.Name)).
+        var generatedEnemies = output.RandomizedEncounters.
             SelectMany(e => e.Enemies).Select(e => e.CodeName);
         return !generatedEnemies.Any(e => excludedEnemies.Contains(e));
     }

@@ -15,6 +15,7 @@ namespace E33Randomizer;
 public class ItemsController: Controller<ItemData>
 {
     private static List<string> _ignoredFiles = [];
+    private static List<string> _defaultWeapons = ["Noahram", "Lunerim", "Maellum", "Scieleson", "Monocaro"];
     
     public List<ItemSource> ItemsSources = new();
 
@@ -32,6 +33,29 @@ public class ItemsController: Controller<ItemData>
         "Consumable_Respec",
         "Consumable_LuminaPoint",
     ];
+    
+    public Dictionary<string, ItemData> RandomizedStartingWeapons = new()
+    {
+        {"Gustave", null},
+        {"Lune", null},
+        {"Maelle", null},
+        {"Sciel", null},
+        {"Verso", null},
+        {"Monoco", null},
+    };
+    
+    public Dictionary<string, Tuple<ItemData, ItemData>> RandomizedStartingOutfits = new()
+    {
+        {"Gustave", null},
+        {"Lune", null},
+        {"Maelle", null},
+        {"Sciel", null},
+        {"Verso", null},
+        {"Monoco", null},
+    };
+
+    public ObjectPool<string> ShapeshiftCaptureLootItemsPool;
+    public Dictionary<string, string> ShapeshiftCaptureLootItems = new();
     
     private UAsset _compositeTableAsset;
     private UDataTable itemsCompositeTable;
@@ -53,6 +77,7 @@ public class ItemsController: Controller<ItemData>
         var allCharacterWeapons = ObjectsData.Where(i => i.CustomName.Contains($"{characterName} Weapon")).ToList();
         var filteredWeapons = allCharacterWeapons.Where(w => !RandomizerLogic.CustomItemPlacement.Excluded.Contains(w.CodeName)).ToList();
         if (!RandomizerLogic.Settings.IncludeCutContentItems) filteredWeapons = filteredWeapons.Where(w => !w.IsCutContent).ToList();
+        filteredWeapons = filteredWeapons.Where(w => !_defaultWeapons.Contains(w.CodeName)).ToList();
         
         if (filteredWeapons.Any()) allCharacterWeapons = filteredWeapons;
         
@@ -219,7 +244,7 @@ public class ItemsController: Controller<ItemData>
     public override void WriteAssets()
     {
         ApplyViewModel();
-        RandomizeStartingEquipment();
+        
         foreach (var itemsSource in ItemsSources)
         {
             var itemsSourceAsset = itemsSource.SaveToAsset();
@@ -253,7 +278,7 @@ public class ItemsController: Controller<ItemData>
         
         foreach (var skillItem in Controllers.SkillsController.SkillItems)
         {
-            var skillData = Controllers.SkillsController.GetObject(skillItem.CodeName);
+            var skillData = SkillsController.GetSkillFromUnlockItem(skillItem.CodeName);
             AddItemToTable(_compositeTableAsset, "Quest_MaellePainterSkillsUnlock", skillItem, skillData.IconPath, skillData.StringPath);
             AddItemToTable(_itemsDataTables["DT_Items_GradientAttackUnlocks"], "Quest_MaellePainterSkillsUnlock", skillItem, skillData.IconPath, skillData.StringPath);
         }
@@ -314,9 +339,13 @@ public class ItemsController: Controller<ItemData>
         }
         RandomizerLogic.CustomItemPlacement.Update();
         ResetRandomObjectPool(RandomizerLogic.CustomItemPlacement.ExcludedCodeNames.Select(GetObject).ToList());
+        RandomizeStartingEquipment();
+        RandomizeFeet();
+        
         var randomizableSources = ItemsSources.Where(SpecialRules.Randomizable).ToList();
         randomizableSources.ForEach(i => i.Randomize());
         ItemsSources.ForEach(i => i.Checks.ForEach(SpecialRules.ApplySpecialRulesToCheck));
+        
         if (RandomizerLogic.Settings.MakeSkillsIntoItems)
         {
             AddSkillItemsToChecks(randomizableSources.SelectMany(iS => iS.Checks).ToList());
@@ -330,15 +359,40 @@ public class ItemsController: Controller<ItemData>
 
     public override void InitFromTxt(string text)
     {
+        ResetStartingEquipment();
         text = text.ReplaceLineEndings("\n");
-        foreach (var line in text.Split('\n'))
+        var lines = text.Split('\n');
+        foreach (var line in lines)
         {
             if (line == "") continue;
+            if (line.StartsWith("weapons"))
+            {
+                var weapons = line.Split('|')[1];
+                foreach (var weapon in weapons.Split(','))
+                {
+                    RandomizedStartingWeapons[weapon.Split(':')[0]] = GetObject(weapon.Split(':')[1]);
+                }
+                continue;
+            }
+            if (line.StartsWith("equipment"))
+            {
+                var equipment = line.Split('|')[1];
+                foreach (var equip in equipment.Split(','))
+                {
+                    RandomizedStartingOutfits[equip.Split(':')[0]] = new Tuple<ItemData, ItemData>(GetObject(equip.Split(':')[1]), GetObject(equip.Split(':')[2]));
+                }
+                continue;
+            }
             var itemSourceName = line.Split('#')[0];
             var sectionKey = line.Split('#')[1].Split('|')[0];
-            var particles = line.Contains(":") ? line.Split('|')[1].Split(',').Select(ItemSourceParticle.FromString).ToList() : [];
+            var particlesString = line.Split('|')[1].Split('?')[0];
+            var particles = particlesString.Length != 0 ? particlesString.Split(',').Select(ItemSourceParticle.FromString).ToList() : [];
             var source = ItemsSources.Find(i => i.FileName == itemSourceName);
             source.SourceSections[sectionKey] = particles;
+            if (line.Contains('?'))
+            {
+                ShapeshiftCaptureLootItems[sectionKey] = line.Split('?')[1];
+            }
         }
         UpdateViewModel();
     }
@@ -347,14 +401,46 @@ public class ItemsController: Controller<ItemData>
     {
         ApplyViewModel();
         var result = "";
+        result += "weapons|" + string.Join(',', RandomizedStartingWeapons.Select(kvp => $"{kvp.Key}:{kvp.Value.CodeName}")) + '\n';
+        result += "equipment|" + string.Join(',', 
+            RandomizedStartingOutfits.Select(kvp => $"{kvp.Key}:{kvp.Value.Item1.CodeName}:{kvp.Value.Item2.CodeName}")
+            ) + '\n';
         foreach (var itemsSource in ItemsSources)
         {
             foreach (var section in itemsSource.SourceSections)
             {
-                result += $"{itemsSource.FileName}#{section.Key}|" + string.Join(',', section.Value) + "\n";
+                result += $"{itemsSource.FileName}#{section.Key}|" + string.Join(',', section.Value);
+                if (itemsSource.FileName == "DT_jRPG_Enemies")
+                {
+                    var leg = ShapeshiftCaptureLootItems.GetValueOrDefault(section.Key, "None");
+                    result += $"?{leg}";
+                }
+                result += Environment.NewLine;
             }
         }
         return result;
+    }
+
+    public void ResetStartingEquipment()
+    {
+        RandomizedStartingWeapons = new()
+        {
+            {"Gustave", GetObject("Noahram")},
+            {"Lune", GetObject("Lunerim")},
+            {"Maelle", GetObject("Maellum")},
+            {"Sciel", GetObject("Scieleson")},
+            {"Verso", GetObject("Verleso")},
+            {"Monoco", GetObject("Monocaro")},
+        };
+        RandomizedStartingOutfits = new()
+        {
+            {"Gustave", new Tuple<ItemData, ItemData>(GetObject("SkinGustave_Default"), GetObject("FaceGustave_Default"))},
+            {"Lune", new Tuple<ItemData, ItemData>(GetObject("SkinLune_Default"), GetObject("FaceLune_Default"))},
+            {"Maelle", new Tuple<ItemData, ItemData>(GetObject("SkinMaelle_Default"), GetObject("FaceMaelle_Default"))},
+            {"Sciel", new Tuple<ItemData, ItemData>(GetObject("SkinSciel_Default"), GetObject("FaceSciel_Default"))},
+            {"Verso", new Tuple<ItemData, ItemData>(GetObject("SkinVerso_Default"), GetObject("FaceVerso_Default"))},
+            {"Monoco", new Tuple<ItemData, ItemData>(GetObject("SkinMonoco_Default"), GetObject("FaceMonoco_Default"))},
+        };
     }
 
     public override void Initialize()
@@ -371,13 +457,16 @@ public class ItemsController: Controller<ItemData>
         BuildItemSources($"{RandomizerLogic.DataDirectory}/ItemData");
         ViewModel.ContainerName = "Check";
         ViewModel.ObjectName = "Item";
-        _cleanSnapshot = ConvertToTxt();
         ResetRandomObjectPool();
+        ResetStartingEquipment();
+        _cleanSnapshot = ConvertToTxt();
+        ShapeshiftCaptureLootItemsPool = new ObjectPool<string>(ShapeshiftCaptureLootItems.Values.ToList(), []);
     }
 
     public override void Reset()
     {
         InitFromTxt(_cleanSnapshot);
+        ShapeshiftCaptureLootItemsPool = new ObjectPool<string>(ShapeshiftCaptureLootItems.Values.ToList(), []);
     }
 
     public void RandomizeStartingEquipment()
@@ -388,8 +477,7 @@ public class ItemsController: Controller<ItemData>
         {
             foreach (var characterName in characterNames)
             {
-                var randomWeapon = GetRandomWeapon(characterName);
-                CharacterStartingStateManager.SetStartingWeapon(characterName, randomWeapon);
+                RandomizedStartingWeapons[characterName] = GetRandomWeapon(characterName);
             }
         }
         if (RandomizerLogic.Settings.RandomizeStartingCosmetics)
@@ -400,8 +488,17 @@ public class ItemsController: Controller<ItemData>
                 var randomOutfit = Utils.Pick(characterOutfits);
                 var characterHaircuts = ObjectsData.Where(i => i.CustomName.Contains($"{characterName} Haircut")).ToList();
                 var randomHaircut = Utils.Pick(characterHaircuts);
-                CharacterStartingStateManager.SetStartingCosmetics(characterName, randomOutfit, randomHaircut);
+                RandomizedStartingOutfits[characterName] = new Tuple<ItemData, ItemData>(randomOutfit, randomHaircut);
             }
+        }
+    }
+
+    public void RandomizeFeet()
+    {
+        if (!RandomizerLogic.Settings.RandomizeMonocoFeet) return;
+        foreach (var leg in ShapeshiftCaptureLootItems)
+        {
+            ShapeshiftCaptureLootItems[leg.Key] = ShapeshiftCaptureLootItemsPool.GetObject();
         }
     }
     
