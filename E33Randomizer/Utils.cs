@@ -88,4 +88,42 @@ public static class Utils
         var innerImport = new Import(innerClassPackage, className, outerIndex, objectName, false, asset);
         return asset.AddImport(innerImport);
     }
+    
+    public static FPackageIndex AddImportToUAsset(UAsset asset, ImportData innerImportData, ImportData outerImportData, ImportData defaultImportData=null)
+    {
+        var outerIndex = FPackageIndex.FromRawIndex(asset.SearchForImport(FName.FromString(asset, outerImportData.ObjectName)));
+        var innerIndex = FPackageIndex.FromRawIndex(asset.SearchForImport(FName.FromString(asset, innerImportData.ObjectName)));
+        var defaultIndex = FPackageIndex.FromRawIndex(
+            defaultImportData == null ? 0 : asset.SearchForImport(FName.FromString(asset, defaultImportData.ObjectName))
+            );
+
+        if (outerIndex.Index == 0)
+        {
+            asset.AddNameReference(FString.FromString(outerImportData.ObjectName));
+            var outerImport = new Import("/Script/CoreUObject", "Package", FPackageIndex.FromRawIndex(0), outerImportData.ObjectName, false, asset);
+            outerIndex = asset.AddImport(outerImport);
+        }
+
+        if (innerIndex.Index == 0)
+        {
+            asset.AddNameReference(FString.FromString(innerImportData.ClassPackage));
+            asset.AddNameReference(FString.FromString(innerImportData.ClassName));
+            asset.AddNameReference(FString.FromString(innerImportData.ObjectName));
+            
+            var innerImport = new Import(innerImportData.ClassPackage, innerImportData.ClassName, outerIndex, innerImportData.ObjectName, false, asset);
+            innerIndex = asset.AddImport(innerImport);
+        }
+
+        if (defaultIndex.Index == 0 && defaultImportData != null)
+        {
+            asset.AddNameReference(FString.FromString(defaultImportData.ClassPackage));
+            asset.AddNameReference(FString.FromString(defaultImportData.ClassName));
+            asset.AddNameReference(FString.FromString(defaultImportData.ObjectName));
+            
+            var defaultImport = new Import(defaultImportData.ClassPackage, defaultImportData.ClassName, outerIndex, defaultImportData.ObjectName, false, asset);
+            defaultIndex = asset.AddImport(defaultImport);
+        }
+        
+        return innerIndex;
+    }
 }

@@ -148,6 +148,7 @@ public static class RandomizerLogic
         rand = new Random(usedSeed);
     
         mappings = new Usmap($"{DataDirectory}/Mappings.usmap");
+        // StaticFileChanger.Run();
         Controllers.InitControllers();
         
         ConstructEnemyFrequenciesWithinArchetype();
@@ -238,26 +239,5 @@ public static class RandomizerLogic
         //if (Settings.RandomizeCharacters) Controllers.CharacterController.Randomize();
         if (saveData)
             PackAndConvertData();
-    }
-
-    public static void GenerateConditionCheckerFile(string questName)
-    {
-        var asset = new UAsset($"{DataDirectory}/Originals/DA_ConditionChecker_Merchant_GrandisStation.uasset", EngineVersion.VER_UE5_4, mappings);
-
-        var newConditionalName = $"DA_ConditionChecker_Merchant_{questName}";
-        
-        asset.SetNameReference(2, FString.FromString(questName.Split("999")[0]));
-        asset.SetNameReference(20, FString.FromString(questName.Split("999")[1]));
-        asset.SetNameReference(5, FString.FromString(newConditionalName));
-        asset.SetNameReference(6, FString.FromString($"/Game/Gameplay/Inventory/Merchant/Merchants_ConditionsChecker/{newConditionalName}"));
-
-        var e = asset.Exports[1] as NormalExport;
-        (e.Data[0] as TextPropertyData).Value = FString.FromString("ST_GM_MERCHANT_CONDITION_REACH_A_POINT");
-        (e.Data[1] as TextPropertyData).Value = FString.FromString("ST_GM_MERCHANT_CONDITION_REACH_A_POINT_DESC");
-        
-        
-        asset.FolderName = FString.FromString($"/Game/Gameplay/Inventory/Merchant/Merchants_ConditionsChecker/{newConditionalName}");
-        
-        Utils.WriteAsset(asset);
     }
 }

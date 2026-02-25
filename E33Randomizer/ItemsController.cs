@@ -16,6 +16,7 @@ public class ItemsController: Controller<ItemData>
 {
     private static List<string> _ignoredFiles = [];
     private static List<string> _defaultWeapons = ["Noahram", "Lunerim", "Maellum", "Scieleson", "Monocaro"];
+    private static Dictionary<string, List<string>> _rockChests = new();
     
     public List<ItemSource> ItemsSources = new();
 
@@ -236,6 +237,17 @@ public class ItemsController: Controller<ItemData>
         Utils.WriteAsset(_compositeTableAsset);
     }
 
+    public void WriteReplacementAssets()
+    {
+        var fileEntries = new List<string> (Directory.GetFiles($"{RandomizerLogic.DataDirectory}/ItemData/StoryReplacementData/"));
+        var copyDir = "randomizer/Sandfall/Content/Levels/WorldMap/Camps/GameActions/Quests/";
+        Directory.CreateDirectory(copyDir);
+        foreach (var file in fileEntries)
+        {
+            File.Copy(file, copyDir + Path.GetFileName(file));
+        }
+    }
+
     public override void WriteAssets()
     {
         ApplyViewModel();
@@ -249,6 +261,11 @@ public class ItemsController: Controller<ItemData>
         if (RandomizerLogic.Settings.MakeEveryItemVisible)
         {
             WriteTableAssets();
+        }
+
+        if (RandomizerLogic.Settings.RandomizeEsquieRocks)
+        {
+            WriteReplacementAssets();
         }
     }
 
@@ -266,6 +283,28 @@ public class ItemsController: Controller<ItemData>
             randomizableChecks[secondIndex].ItemSource.AddItem(randomizableChecks[secondIndex].Key, Controllers.SkillsController.SkillItems[i]);
         }
     }
+    
+    public void AddRocksToChecks(List<CheckData> randomizableChecks)
+    {
+        List<string> rockNames = ["Florrie", "Dorrie", "Soarrie"];
+
+        foreach (var rockName in rockNames)
+        {
+            var rockChests = new List<string>();
+            if (RandomizerLogic.Settings.LimitEsquieRandomization)
+            {
+                rockChests = _rockChests[$"{rockName}LimitedLocations"];
+            }
+            else
+            {
+                rockChests = _rockChests[$"{rockName}AllLocations"];
+            }
+
+            var checkName = Utils.Pick(rockChests);
+            var rockCheck = randomizableChecks.Find(c => c.Key == checkName);
+            rockCheck.ItemSource.AddItem(rockCheck.Key, GetObject($"QUEST_EsquieRock{rockName}"));
+        }
+    }
 
     public void AddSkillItemsToTables()
     {
@@ -279,8 +318,28 @@ public class ItemsController: Controller<ItemData>
         }
     }
 
+    public void AddRockItems()
+    {
+        List<string> rockNames = ["Florrie", "Dorrie", "Soarrie"];
+
+        var iconPath = "/Game/UI/Resources/Textures/Icons/Items/T_UI_Icon_Item_ChromaticInk";
+        
+        foreach (var rockName in rockNames)
+        {
+            var rockItem = new  ItemData
+            {
+                CustomName = rockName + " (Esquie's Rock)",
+                CodeName = $"QUEST_EsquieRock{rockName}",
+                Type = "Key"
+            };
+            AddItem(rockItem);
+            AddItemToTable(_compositeTableAsset, "LostGestral", rockItem, iconPath);
+            AddItemToTable(_itemsDataTables["DT_QuestItems"], "LostGestral", rockItem, iconPath);
+        }
+    }
+
     public void AddItemToTable(UAsset tableAsset, string dummyItemName, ItemData itemData, string iconPath = "",
-        string stringPath = "")
+        string stringPath = "", string descriptionPath="")
     {
         var table = (tableAsset.Exports[0] as DataTableExport).Table.Data;
         var dummyItem = table.Find(s => s.Name.ToString() == dummyItemName).Clone() as StructPropertyData;
@@ -304,6 +363,15 @@ public class ItemsController: Controller<ItemData>
             (newItem.Value[1] as TextPropertyData).Flags = 0;
             (newItem.Value[1] as TextPropertyData).HistoryType = TextHistoryType.StringTableEntry;
         }
+        else
+        {
+            newItem.Value[1] = table[0].Value[1].Clone() as TextPropertyData;
+            (newItem.Value[1] as TextPropertyData).Value = FString.FromString(itemData.CustomName.Split(" (")[0]);
+            (newItem.Value[1] as TextPropertyData).CultureInvariantString = FString.FromString(itemData.CustomName.Split(" (")[0]);
+            (newItem.Value[1] as TextPropertyData).TableId = null;
+            (newItem.Value[1] as TextPropertyData).Flags = ETextFlag.CultureInvariant;
+            (newItem.Value[1] as TextPropertyData).HistoryType = TextHistoryType.None;
+        }
         
         if (iconPath.Length > 0)
         {
@@ -311,7 +379,30 @@ public class ItemsController: Controller<ItemData>
             tableAsset.AddNameReference(FString.FromString(iconPath.Split('/').Last()));
             (newItem.Value[5] as SoftObjectPropertyData).FromString([iconPath, iconPath.Split('/').Last(), ""], tableAsset);
         }
-            
+
+        if (descriptionPath.Length > 0)
+        {
+            var itemDescriptionString = stringPath.Split(':').Last();
+            var itemDescriptionSTPath = stringPath.Split(':')[0];
+            Utils.AddImportToUAsset(tableAsset, "StringTable", itemDescriptionSTPath);
+            tableAsset.AddNameReference(FString.FromString(itemDescriptionString));
+            tableAsset.AddNameReference(FString.FromString(itemDescriptionSTPath));
+            newItem.Value[6] = table[0].Value[6].Clone() as TextPropertyData;
+            (newItem.Value[6] as TextPropertyData).Value = FString.FromString(itemDescriptionString);
+            (newItem.Value[6] as TextPropertyData).TableId = FName.FromString(tableAsset, itemDescriptionSTPath);
+            (newItem.Value[6] as TextPropertyData).Flags = 0;
+            (newItem.Value[6] as TextPropertyData).HistoryType = TextHistoryType.StringTableEntry;
+        }
+        else
+        {
+            newItem.Value[6] = table[0].Value[6].Clone() as TextPropertyData;
+            (newItem.Value[6] as TextPropertyData).Value = FString.FromString("");
+            (newItem.Value[6] as TextPropertyData).CultureInvariantString = FString.FromString("");
+            (newItem.Value[6] as TextPropertyData).TableId = null;
+            (newItem.Value[6] as TextPropertyData).Flags = ETextFlag.CultureInvariant;
+            (newItem.Value[6] as TextPropertyData).HistoryType = TextHistoryType.None;
+        }
+        
         table.Add(newItem);
     }
 
@@ -345,6 +436,12 @@ public class ItemsController: Controller<ItemData>
         {
             AddSkillItemsToChecks(randomizableSources.SelectMany(iS => iS.Checks).ToList());
         }
+
+        if (RandomizerLogic.Settings.RandomizeEsquieRocks)
+        {
+            AddRocksToChecks(ItemsSources.SelectMany(iS => iS.Checks).ToList());
+        }
+        
         if (!RandomizerLogic.Settings.IncludeCutContentItems && !cutContentAlreadyExcluded)
         {
             RandomizerLogic.CustomItemPlacement.RemoveExcluded("Cut Content Items");
@@ -447,6 +544,15 @@ public class ItemsController: Controller<ItemData>
         };
     }
 
+    public void ReadRockChests()
+    {
+        using (StreamReader r = new StreamReader($"{RandomizerLogic.DataDirectory}/rock_chests.json"))
+        {
+            string json = r.ReadToEnd();
+            _rockChests = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(json);
+        }
+    }
+
     public override void Initialize()
     {
         using (StreamReader r = new StreamReader($"{RandomizerLogic.DataDirectory}/broken_files.txt"))
@@ -456,6 +562,8 @@ public class ItemsController: Controller<ItemData>
             _ignoredFiles = text.Split('\n').ToList();
         }
         
+        ReadRockChests();
+        
         ReadObjectsData($"{RandomizerLogic.DataDirectory}/item_data.json");
         ReadTableAssets($"{RandomizerLogic.DataDirectory}/Originals/ItemTables");
         BuildItemSources($"{RandomizerLogic.DataDirectory}/ItemData");
@@ -463,6 +571,7 @@ public class ItemsController: Controller<ItemData>
         ViewModel.ObjectName = "Item";
         ResetRandomObjectPool();
         ResetStartingEquipment();
+        AddRockItems();
         _cleanSnapshot = ConvertToTxt();
         ShapeshiftCaptureLootItemsPool = new ObjectPool<string>(ShapeshiftCaptureLootItems.Values.ToList(), []);
     }

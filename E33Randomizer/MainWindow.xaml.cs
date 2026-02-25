@@ -279,6 +279,8 @@ public class SettingsViewModel : INotifyPropertyChanged
     
     public bool ReduceKeyItemRepetition { get; set; } = true;
     public bool ReduceGearRepetition { get; set; } = true;
+    public bool RandomizeEsquieRocks { get; set; } = false;
+    public bool LimitEsquieRandomization { get; set; } = true;
 
     public bool ChangeMerchantInventorySize { get; set; } = false;
     public int MerchantInventorySizeMax { get; set; } = 15;

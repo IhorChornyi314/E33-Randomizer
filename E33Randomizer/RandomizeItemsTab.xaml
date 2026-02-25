@@ -43,6 +43,18 @@
                                   IsChecked="{Binding RandomizeStartingCosmetics}"
                                   Margin="0,6,0,0"
                                   FontSize="14" />
+                        
+                        <CheckBox Name="RandomizeEsquieRocksWeaponsCheckBox"
+                                  Content="Randomize Esquie's rocks into map pickups"
+                                  IsChecked="{Binding RandomizeEsquieRocks}"
+                                  Margin="0,6,0,0"
+                                  FontSize="14" />
+                        <CheckBox Name="LimitEsquieRocksWeaponsCheckBox"
+                                  Content="Limit Esquie's rocks to only their original areas"
+                                  IsChecked="{Binding LimitEsquieRandomization}"
+                                  Margin="0,6,0,0"
+                                  FontSize="14" 
+                                  Visibility="{Binding IsChecked, ElementName=RandomizeEsquieRocksWeaponsCheckBox, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                         <CheckBox Name="RandomizeMonocoFeetCheckBox"
                                   Content="Randomize enemy feet drops"
                                   IsChecked="{Binding RandomizeMonocoFeet}"

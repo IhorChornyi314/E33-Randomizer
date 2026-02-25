@@ -98,6 +98,7 @@ public static class CharacterStartingStateManager
         }
         Utils.WriteAsset(_characterSaveStatesAsset);
         Utils.WriteAsset(_characterDefinitionsAsset);
-        Utils.WriteAsset(_saveManager);
+        if (RandomizerLogic.Settings.RandomizeStartingWeapons)
+            Utils.WriteAsset(_saveManager);
     }
 }
