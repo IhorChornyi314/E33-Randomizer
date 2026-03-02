@@ -1,0 +1,13 @@
+﻿{
+  "DA_GA_NOTIF_CustomEsquieFly": "randomizer/Sandfall/Content/Levels/WorldMap/Camps/GameActions/Quests",
+  "DA_GA_NOTIF_CustomEsquieSwim": "randomizer/Sandfall/Content/Levels/WorldMap/Camps/GameActions/Quests",
+  "DA_GA_NOTIF_CustomEsquieSwimBoost": "randomizer/Sandfall/Content/Levels/WorldMap/Camps/GameActions/Quests",
+  "DA_GA_SQT_BeatingMirrorRenoirRound2": "randomizer/Sandfall/Content/Levels/OldLumiere/GameActions",
+  "DA_GA_SQT_BossPaintress": "randomizer/Sandfall/Content/Levels/Monolith/Monolith_Exterior_Peak/GameActions",
+  "DA_GA_SQT_COND_EsquieRocks": "randomizer/Sandfall/Content/Levels/WorldMap/Camps/GameActions/Quests",
+  "DA_GA_SQT_COND_RelationshipQuests": "randomizer/Sandfall/Content/Levels/WorldMap/Camps/GameActions/Quests",
+  "DA_GA_SQT_GiveDorrieToEsquie": "randomizer/Sandfall/Content/Levels/WorldMap/Camps/GameActions/Quests",
+  "DA_GA_SQT_GiveFlorrieToEsquie": "randomizer/Sandfall/Content/Levels/WorldMap/Camps/GameActions/Quests",
+  "DA_GA_SQT_GiveSoarrieToEsquie": "randomizer/Sandfall/Content/Levels/WorldMap/Camps/GameActions/Quests",
+  "DA_GA_SQT_GustaveDieEndLevel": "randomizer/Sandfall/Content/Levels/SeaCliff/GameActions"
+}

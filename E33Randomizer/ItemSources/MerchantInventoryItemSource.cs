@@ -141,9 +141,15 @@ public class MerchantInventoryItemSource: ItemSource
             var newItemStruct = dummyItemStruct.Clone() as StructPropertyData;
             newItemStruct.Name = FName.FromString(_asset, inventoryItem.Item.CodeName);
             (newItemStruct.Value[0] as NamePropertyData).Value = FName.FromString(_asset, inventoryItem.Item.CodeName);
+            (newItemStruct.Value[1] as IntPropertyData).Value = -1;
             (newItemStruct.Value[3] as IntPropertyData).Value = Math.Max(inventoryItem.Quantity, 1);
             if (WorldMapMerchantLevels.TryGetValue(FileName, out var level))
                 (newItemStruct.Value[2] as IntPropertyData).Value = level;
+            else
+            {
+                (newItemStruct.Value[2] as IntPropertyData).Value = -1;
+            }
+            
             if (dummyConditionStructLocked != null && inventoryItem.MerchantInventoryLocked || dummyConditionStructUnlocked == null)
             {
                 newItemStruct.Value[4] = dummyConditionStructLocked.Clone() as ObjectPropertyData;

@@ -194,6 +194,42 @@ public static class StaticFileChanger
         
         Utils.WriteAsset(relationshipQuests);
     }
+
+    public static void RemoveExplorationCapacity()
+    {
+        var gustaveDie = new UAsset($"D:\\Mods\\Unreal Engine Mods\\retoc\\out\\Sandfall\\Content\\Levels\\SeaCliff\\GameActions\\DA_GA_SQT_GustaveDieEndLevel.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+        var actionSequence = ((gustaveDie.Exports[4] as NormalExport).Data[0] as ArrayPropertyData);
+        // 11 is unlocking capacity
+        actionSequence.Value =
+        [
+            actionSequence.Value[0], actionSequence.Value[1], actionSequence.Value[2], actionSequence.Value[3], actionSequence.Value[4],
+            actionSequence.Value[5], actionSequence.Value[6], actionSequence.Value[7], actionSequence.Value[8], actionSequence.Value[9],
+            actionSequence.Value[10], actionSequence.Value[12]
+        ];
+        
+        Utils.WriteAsset(gustaveDie);
+        
+        var oldLumiereEnd = new UAsset($"D:\\Mods\\Unreal Engine Mods\\retoc\\out\\Sandfall\\Content\\Levels\\OldLumiere\\GameActions\\DA_GA_SQT_BeatingMirrorRenoirRound2.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+        actionSequence = ((oldLumiereEnd.Exports[1] as NormalExport).Data[0] as ArrayPropertyData);
+        // 3 is unlocking capacity
+        actionSequence.Value =
+        [
+            actionSequence.Value[0], actionSequence.Value[1], actionSequence.Value[2], actionSequence.Value[4], actionSequence.Value[5]
+        ];
+        
+        Utils.WriteAsset(oldLumiereEnd);
+        
+        var monolithEnd = new UAsset($"D:\\Mods\\Unreal Engine Mods\\retoc\\out\\Sandfall\\Content\\Levels\\Monolith\\Monolith_Exterior_Peak\\GameActions\\DA_GA_SQT_BossPaintress.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+        actionSequence = ((monolithEnd.Exports[1] as NormalExport).Data[0] as ArrayPropertyData);
+        // 3 is unlocking capacity
+        actionSequence.Value =
+        [
+            actionSequence.Value[0], actionSequence.Value[1], actionSequence.Value[2], actionSequence.Value[3], actionSequence.Value[5],
+            actionSequence.Value[6], actionSequence.Value[7], actionSequence.Value[8]
+        ];
+        
+        Utils.WriteAsset(monolithEnd);
+    }
     
     public static void Run()
     {
@@ -207,8 +243,9 @@ public static class StaticFileChanger
         // CreateRockGA("Florrie", "E_WorldMapExplorationCapacity::NewEnumerator2", "Swim");
         // CreateRockGA("Dorrie", "E_WorldMapExplorationCapacity::NewEnumerator3", "SwimBoost");
         // CreateRockGA("Soarrie", "E_WorldMapExplorationCapacity::NewEnumerator4", "Fly");
-        CreateEsquieRocks();
+        //CreateEsquieRocks();
         // CreateRelationshipQuests();
+        RemoveExplorationCapacity();
         Console.WriteLine();
     }
 }

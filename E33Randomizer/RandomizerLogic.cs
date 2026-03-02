@@ -148,7 +148,7 @@ public static class RandomizerLogic
         rand = new Random(usedSeed);
     
         mappings = new Usmap($"{DataDirectory}/Mappings.usmap");
-        // StaticFileChanger.Run();
+        StaticFileChanger.Run();
         Controllers.InitControllers();
         
         ConstructEnemyFrequenciesWithinArchetype();
@@ -181,6 +181,24 @@ public static class RandomizerLogic
             {
                 EnemyFrequenciesWithinArchetype[archetype][enemyData.CodeName] = 1;
             }
+        }
+    }
+    
+    public static void WriteReplacementAssets(List<string> filenames)
+    {
+        Dictionary<string, string> filePaths;
+        using (StreamReader r = new StreamReader($"{DataDirectory}/StaticAssets/file_paths.json"))
+        {
+            string json = r.ReadToEnd();
+            filePaths = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
+        }
+
+        foreach (var file in filenames)
+        {
+            var internalPath = filePaths[file];
+            Directory.CreateDirectory(internalPath);
+            File.Copy($"{DataDirectory}/StaticAssets/{file}.uasset", $"{internalPath}/{file}.uasset");
+            File.Copy($"{DataDirectory}/StaticAssets/{file}.uexp", $"{internalPath}/{file}.uexp");
         }
     }
 

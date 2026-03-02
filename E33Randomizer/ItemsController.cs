@@ -237,15 +237,23 @@ public class ItemsController: Controller<ItemData>
         Utils.WriteAsset(_compositeTableAsset);
     }
 
-    public void WriteReplacementAssets()
+    public void WriteEsquieRockReplacementAssets()
     {
-        var fileEntries = new List<string> (Directory.GetFiles($"{RandomizerLogic.DataDirectory}/ItemData/StoryReplacementData/"));
-        var copyDir = "randomizer/Sandfall/Content/Levels/WorldMap/Camps/GameActions/Quests/";
-        Directory.CreateDirectory(copyDir);
-        foreach (var file in fileEntries)
-        {
-            File.Copy(file, copyDir + Path.GetFileName(file));
-        }
+        List<string> files =
+        [
+            "DA_GA_NOTIF_CustomEsquieFly",
+            "DA_GA_NOTIF_CustomEsquieSwim",
+            "DA_GA_NOTIF_CustomEsquieSwimBoost",
+            "DA_GA_SQT_BeatingMirrorRenoirRound2",
+            "DA_GA_SQT_BossPaintress",
+            "DA_GA_SQT_COND_EsquieRocks",
+            "DA_GA_SQT_COND_RelationshipQuests",
+            "DA_GA_SQT_GiveDorrieToEsquie",
+            "DA_GA_SQT_GiveFlorrieToEsquie",
+            "DA_GA_SQT_GiveSoarrieToEsquie",
+            "DA_GA_SQT_GustaveDieEndLevel"
+        ];
+        RandomizerLogic.WriteReplacementAssets(files);
     }
 
     public override void WriteAssets()
@@ -265,7 +273,7 @@ public class ItemsController: Controller<ItemData>
 
         if (RandomizerLogic.Settings.RandomizeEsquieRocks)
         {
-            WriteReplacementAssets();
+            WriteEsquieRockReplacementAssets();
         }
     }
 
