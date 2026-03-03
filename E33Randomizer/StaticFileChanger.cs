@@ -204,7 +204,7 @@ public static class StaticFileChanger
         [
             actionSequence.Value[0], actionSequence.Value[1], actionSequence.Value[2], actionSequence.Value[3], actionSequence.Value[4],
             actionSequence.Value[5], actionSequence.Value[6], actionSequence.Value[7], actionSequence.Value[8], actionSequence.Value[9],
-            actionSequence.Value[10], actionSequence.Value[12]
+            actionSequence.Value[10], actionSequence.Value[12], actionSequence.Value[13], actionSequence.Value[14]
         ];
         
         Utils.WriteAsset(gustaveDie);
@@ -217,7 +217,7 @@ public static class StaticFileChanger
             actionSequence.Value[0], actionSequence.Value[1], actionSequence.Value[2], actionSequence.Value[4], actionSequence.Value[5]
         ];
         
-        Utils.WriteAsset(oldLumiereEnd);
+        // Utils.WriteAsset(oldLumiereEnd);
         
         var monolithEnd = new UAsset($"D:\\Mods\\Unreal Engine Mods\\retoc\\out\\Sandfall\\Content\\Levels\\Monolith\\Monolith_Exterior_Peak\\GameActions\\DA_GA_SQT_BossPaintress.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
         actionSequence = ((monolithEnd.Exports[1] as NormalExport).Data[0] as ArrayPropertyData);
@@ -228,11 +228,32 @@ public static class StaticFileChanger
             actionSequence.Value[6], actionSequence.Value[7], actionSequence.Value[8]
         ];
         
-        Utils.WriteAsset(monolithEnd);
+        // Utils.WriteAsset(monolithEnd);
+    }
+
+    public static void RemoveWorldMapNotifs()
+    {
+        var swimNotif = new UAsset($"D:\\Mods\\Unreal Engine Mods\\retoc\\out\\Sandfall\\Content\\Levels\\WorldMap\\GameActions\\DA_GA_SQT_Tuto_EsquieBoat.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+        var coralNotif = new UAsset($"D:\\Mods\\Unreal Engine Mods\\retoc\\out\\Sandfall\\Content\\Levels\\WorldMap\\GameActions\\DA_GA_SQT_Tuto_EsquieBoatPlus.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+        var flyNotif = new UAsset($"D:\\Mods\\Unreal Engine Mods\\retoc\\out\\Sandfall\\Content\\Levels\\WorldMap\\GameActions\\DA_GA_SQT_Tuto_EsquiePlaneAndBoatPlus.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+        
+        var sqtSwim = ((swimNotif.Exports[0] as NormalExport).Data[0] as ArrayPropertyData);
+        sqtSwim.Value = [];
+
+        var sqtCoral = ((coralNotif.Exports[0] as NormalExport).Data[0] as ArrayPropertyData);
+        sqtCoral.Value = [sqtCoral.Value[1]];
+        
+        var sqtFly = ((flyNotif.Exports[0] as NormalExport).Data[0] as ArrayPropertyData);
+        sqtFly.Value = [sqtFly.Value[1]];
+        
+        Utils.WriteAsset(swimNotif);
+        Utils.WriteAsset(coralNotif);
+        Utils.WriteAsset(flyNotif);
     }
     
     public static void Run()
     {
+        return;
         if (Directory.Exists("randomizer"))
         {
             Directory.Delete("randomizer", true);
@@ -246,6 +267,7 @@ public static class StaticFileChanger
         //CreateEsquieRocks();
         // CreateRelationshipQuests();
         RemoveExplorationCapacity();
+        // RemoveWorldMapNotifs();
         Console.WriteLine();
     }
 }

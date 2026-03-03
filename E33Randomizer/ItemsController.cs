@@ -251,7 +251,10 @@ public class ItemsController: Controller<ItemData>
             "DA_GA_SQT_GiveDorrieToEsquie",
             "DA_GA_SQT_GiveFlorrieToEsquie",
             "DA_GA_SQT_GiveSoarrieToEsquie",
-            "DA_GA_SQT_GustaveDieEndLevel"
+            "DA_GA_SQT_GustaveDieEndLevel",
+            "DA_GA_SQT_Tuto_EsquieBoat",
+            "DA_GA_SQT_Tuto_EsquieBoatPlus",
+            "DA_GA_SQT_Tuto_EsquiePlaneAndBoatPlus"
         ];
         RandomizerLogic.WriteReplacementAssets(files);
     }

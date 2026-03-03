@@ -9,5 +9,8 @@
   "DA_GA_SQT_GiveDorrieToEsquie": "randomizer/Sandfall/Content/Levels/WorldMap/Camps/GameActions/Quests",
   "DA_GA_SQT_GiveFlorrieToEsquie": "randomizer/Sandfall/Content/Levels/WorldMap/Camps/GameActions/Quests",
   "DA_GA_SQT_GiveSoarrieToEsquie": "randomizer/Sandfall/Content/Levels/WorldMap/Camps/GameActions/Quests",
-  "DA_GA_SQT_GustaveDieEndLevel": "randomizer/Sandfall/Content/Levels/SeaCliff/GameActions"
+  "DA_GA_SQT_GustaveDieEndLevel": "randomizer/Sandfall/Content/Levels/SeaCliff/GameActions",
+  "DA_GA_SQT_Tuto_EsquieBoat": "randomizer/Sandfall/Content/Levels/WorldMap/GameActions",
+  "DA_GA_SQT_Tuto_EsquieBoatPlus": "randomizer/Sandfall/Content/Levels/WorldMap/GameActions",
+  "DA_GA_SQT_Tuto_EsquiePlaneAndBoatPlus": "randomizer/Sandfall/Content/Levels/WorldMap/GameActions"
 }
