@@ -4,7 +4,7 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:e33Randomizer="clr-namespace:E33Randomizer"
         Title="Expedition 33 Randomizer" Height="800" Width="800"
-        MinHeight="800" MinWidth="800">
+        MinHeight="850" MinWidth="800">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </Window.Resources>

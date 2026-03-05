@@ -89,6 +89,8 @@ public static class StaticFileChanger
             var gaReference = (ca.Data[0] as StructPropertyData).Value[0] as ObjectPropertyData;
             gaReference.Name = FName.FromString(relationshipQuests, "GameActionReference");
             gaReference.Value = removeRockIndex;
+
+            ((ca.Data[1] as StructPropertyData).Value[0] as ObjectPropertyData).Value.Index = 3 + i;
         }
 
         var seq = (relationshipQuests.Exports[17] as NormalExport).Data[0] as ArrayPropertyData;
@@ -207,6 +209,8 @@ public static class StaticFileChanger
             actionSequence.Value[10], actionSequence.Value[12], actionSequence.Value[13], actionSequence.Value[14]
         ];
         
+        Utils.ReplaceNameReference(gustaveDie, "Level.SpawnPoint.WorldMap.PostSeaCliffForcedCamp", "Level.SpawnPoint.WorldMap.SeaCliffExit");
+        
         Utils.WriteAsset(gustaveDie);
         
         var oldLumiereEnd = new UAsset($"D:\\Mods\\Unreal Engine Mods\\retoc\\out\\Sandfall\\Content\\Levels\\OldLumiere\\GameActions\\DA_GA_SQT_BeatingMirrorRenoirRound2.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
@@ -264,9 +268,9 @@ public static class StaticFileChanger
         // CreateRockGA("Florrie", "E_WorldMapExplorationCapacity::NewEnumerator2", "Swim");
         // CreateRockGA("Dorrie", "E_WorldMapExplorationCapacity::NewEnumerator3", "SwimBoost");
         // CreateRockGA("Soarrie", "E_WorldMapExplorationCapacity::NewEnumerator4", "Fly");
-        //CreateEsquieRocks();
+        CreateEsquieRocks();
         // CreateRelationshipQuests();
-        RemoveExplorationCapacity();
+        // RemoveExplorationCapacity();
         // RemoveWorldMapNotifs();
         Console.WriteLine();
     }
