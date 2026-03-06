@@ -282,13 +282,10 @@ public abstract class CustomPlacement
     
     public string Replace(string originalCodeName)
     {
-        if (NotRandomizedCodeNames.Contains(originalCodeName))
+        if (NotRandomizedCodeNames.Contains(originalCodeName) || !FinalReplacementFrequencies.TryGetValue(originalCodeName, out var frequency))
         {
             return originalCodeName;
         }
-
-        if (!FinalReplacementFrequencies.TryGetValue(originalCodeName, out var frequency))
-            return GetTrulyRandom();
         
         var newItem = Utils.GetRandomWeighted(
             frequency,

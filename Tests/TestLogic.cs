@@ -14,6 +14,16 @@ public static class TestLogic
         "MM_DanseuseClone*1",
         "QUEST_Danseuse_DanceClass_Clone*1"
     ];
+    
+    public static int GetCheckSizeWithoutAdditions(Check check, Config config)
+    {
+        var checkSize = config.Settings.EnsurePaintedPowerFromPaintress && check.Name.Contains("DA_GA_SQT_RedAndWhiteTree") ? check.Size - 1 : check.Size;
+        
+        checkSize -= check.Items.Count(iS => Controllers.SkillsController.SkillItems.Contains(iS.Item));
+        List<string> rocks = ["QUEST_EsquieRockFlorrie", "QUEST_EsquieRockDorrie", "QUEST_EsquieRockSoarrie"];
+        checkSize -= check.Items.Count(iS => rocks.Contains(iS.Item.CodeName));
+        return checkSize;
+    }
 
     public static Output CollectState(Config config)
     {

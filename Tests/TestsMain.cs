@@ -47,6 +47,7 @@ namespace Tests
                 new MakeSkillsIntoItems(),
                 new NoSimonP2BeforeLune(),
                 new RandomizeAddedEnemies(),
+                new RandomizeEsquieRocks(),
                 new RandomizeGestralBeachRewards(),
                 new RandomizeMerchantFights(),
                 new RandomizeSkillUnlockCosts(),
@@ -225,8 +226,8 @@ namespace Tests
 
             frequencies[0].Should().BeInRange(0.064f, 0.069f);
             frequencies[1].Should().Be(0);
-            frequencies[2].Should().BeInRange(0.464f, 0.469f);
-            frequencies[3].Should().BeInRange(0.464f, 0.469f);
+            frequencies[2].Should().BeInRange(0.46f, 0.47f);
+            frequencies[3].Should().BeInRange(0.46f, 0.47f);
         }
         
         [Test]

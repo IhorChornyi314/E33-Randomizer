@@ -62,11 +62,9 @@ public class ChangeCheckSize: OutputRuleBase
             _changedChecksPerCategory[checkType] = [];
         }
 
-        var checkSize = config.Settings.EnsurePaintedPowerFromPaintress && check.Name.Contains("DA_GA_SQT_RedAndWhiteTree") ? check.Size - 1 : check.Size;
-        
-        checkSize -= check.Items.Count(iS => Controllers.SkillsController.SkillItems.Contains(iS.Item));
-        
-        if (originalSize != checkSize)
+        var checkSize = TestLogic.GetCheckSizeWithoutAdditions(check, config);
+
+        if (checkSize != originalSize)
         {
             _changedChecksPerCategory[checkType].Add(check.Name);
         }
@@ -86,7 +84,7 @@ public class ChangeCheckSize: OutputRuleBase
             case "Dialogue rewards":
                 return true;
             default:
-                FailureMessage += $"{check.Name}'s type could not be determined";
+                FailureMessage += $"{check.Name}'s type could not be determined\n";
                 return false;
         }
     }
@@ -98,34 +96,34 @@ public class ChangeCheckSize: OutputRuleBase
         {
             if (!CheckItems(check, config, output.RandomizedChecks.Any(c => c.Name == check.Name)))
             {
-                FailureMessage += $"{check.Name}'s size is invalid: {check.Size}";
+                FailureMessage += $"{check.Name}'s size is invalid: {check.Size}\n";
                 return false;
             }
         }
 
         if (!(config.Settings.ChangeMerchantInventorySize ^ _changedChecksPerCategory["Merchant inventories"].Count == 0))
         {
-            FailureMessage += $"{_changedChecksPerCategory["Merchant inventories"].Count} merchant check sizes changed";
+            FailureMessage += $"{_changedChecksPerCategory["Merchant inventories"].Count} merchant check sizes changed\n";
             return false;
         }
         if (!(config.Settings.ChangeNumberOfActionRewards ^ _changedChecksPerCategory["Cutscene rewards"].Count == 0))
         {
-            FailureMessage += $"{_changedChecksPerCategory["Cutscene rewards"].Count} cutscene check sizes changed";
+            FailureMessage += $"{_changedChecksPerCategory["Cutscene rewards"].Count} cutscene check sizes changed\n";
             return false;
         }
         if (!(config.Settings.ChangeNumberOfChestContents ^ _changedChecksPerCategory["Map pickups"].Count == 0))
         {
-            FailureMessage += $"{_changedChecksPerCategory["Map pickups"].Count} chest check sizes changed";
+            FailureMessage += $"{_changedChecksPerCategory["Map pickups"].Count} chest check sizes changed\n";
             return false;
         }
         if (!(config.Settings.ChangeNumberOfLootDrops ^ _changedChecksPerCategory["Enemy drops"].Count == 0))
         {
-            FailureMessage += $"{_changedChecksPerCategory["Enemy drops"].Count} loot check sizes changed";
+            FailureMessage += $"{_changedChecksPerCategory["Enemy drops"].Count} loot check sizes changed\n";
             return false;
         }
         if (!(config.Settings.ChangeNumberOfTowerRewards ^ _changedChecksPerCategory["Endless tower rewards"].Count == 0))
         {
-            FailureMessage += $"{_changedChecksPerCategory["Endless tower rewards"].Count} tower check sizes changed";
+            FailureMessage += $"{_changedChecksPerCategory["Endless tower rewards"].Count} tower check sizes changed\n";
             return false;
         }
         return true;

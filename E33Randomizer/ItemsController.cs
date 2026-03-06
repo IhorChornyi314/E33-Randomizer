@@ -61,6 +61,7 @@ public class ItemsController: Controller<ItemData>
     private UAsset _compositeTableAsset;
     private UDataTable itemsCompositeTable;
     private Dictionary<string, UAsset> _itemsDataTables = new();
+    private List<ItemData> _rockItems;
     private string _cleanSnapshot;
 
     public bool IsGearItem(ItemData item)
@@ -329,8 +330,9 @@ public class ItemsController: Controller<ItemData>
         }
     }
 
-    public void AddRockItems()
+    public List<ItemData> AddRockItems()
     {
+        var rockItems = new List<ItemData>();
         List<string> rockNames = ["Florrie", "Dorrie", "Soarrie"];
 
         var iconPath = "/Game/UI/Resources/Textures/Icons/Items/T_UI_Icon_Item_ChromaticInk";
@@ -343,10 +345,14 @@ public class ItemsController: Controller<ItemData>
                 CodeName = $"QUEST_EsquieRock{rockName}",
                 Type = "Key"
             };
+            
+            rockItems.Add(rockItem);
+            
             AddItem(rockItem);
             AddItemToTable(_compositeTableAsset, "LostGestral", rockItem, iconPath);
             AddItemToTable(_itemsDataTables["DT_QuestItems"], "LostGestral", rockItem, iconPath);
         }
+        return rockItems;
     }
 
     public void AddItemToTable(UAsset tableAsset, string dummyItemName, ItemData itemData, string iconPath = "",
@@ -435,7 +441,10 @@ public class ItemsController: Controller<ItemData>
             RandomizerLogic.CustomItemPlacement.AddExcluded("Cut Content Items");
         }
         RandomizerLogic.CustomItemPlacement.Update();
-        ResetRandomObjectPool(RandomizerLogic.CustomItemPlacement.ExcludedCodeNames.Select(GetObject).ToList());
+        var excludedItems = RandomizerLogic.CustomItemPlacement.ExcludedCodeNames.Select(GetObject);
+        excludedItems = excludedItems.Concat(_rockItems);
+        excludedItems = excludedItems.Concat(Controllers.SkillsController.SkillItems);
+        ResetRandomObjectPool(excludedItems.ToList());
         RandomizeStartingEquipment();
         RandomizeFeet();
         
@@ -580,9 +589,9 @@ public class ItemsController: Controller<ItemData>
         BuildItemSources($"{RandomizerLogic.DataDirectory}/ItemData");
         ViewModel.ContainerName = "Check";
         ViewModel.ObjectName = "Item";
+        _rockItems = AddRockItems();
         ResetRandomObjectPool();
         ResetStartingEquipment();
-        AddRockItems();
         _cleanSnapshot = ConvertToTxt();
         ShapeshiftCaptureLootItemsPool = new ObjectPool<string>(ShapeshiftCaptureLootItems.Values.ToList(), []);
     }
