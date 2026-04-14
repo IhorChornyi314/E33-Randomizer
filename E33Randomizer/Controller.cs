@@ -10,6 +10,7 @@ public abstract class Controller<T>: BaseController where T: ObjectData, new()
     public List<T> ObjectsData = new();
     public ObjectPool<T> RandomObjectPool;
     public Dictionary<string, T> ObjectsByName = new();
+    protected string _cleanSnapshot;
 
     public void ResetRandomObjectPool(List<T> excluded=null)
     {

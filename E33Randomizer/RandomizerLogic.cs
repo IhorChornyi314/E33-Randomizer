@@ -130,6 +130,7 @@ public static class RandomizerLogic
     public static CustomEnemyPlacement CustomEnemyPlacement;
     public static CustomItemPlacement CustomItemPlacement;
     public static CustomSkillPlacement CustomSkillPlacement;
+    public static CustomLocationPlacement CustomLocationPlacement;
     public static SettingsViewModel Settings = new ();
     
     public static Random rand;
@@ -155,6 +156,7 @@ public static class RandomizerLogic
         CustomEnemyPlacement = new();
         CustomItemPlacement = new();
         CustomSkillPlacement = new();
+        CustomLocationPlacement = new();
         CharacterStartingStateManager.Init();
         SpecialRules.Reset();
     }
@@ -166,6 +168,7 @@ public static class RandomizerLogic
             "Enemy" => CustomEnemyPlacement,
             "Item" => CustomItemPlacement,
             "Skill" => CustomSkillPlacement,
+            "Location" => CustomLocationPlacement,
             _ => null
         };
     }
@@ -254,6 +257,7 @@ public static class RandomizerLogic
         if (Settings.RandomizeEnemies) Controllers.EnemiesController.Randomize();
         if (Settings.RandomizeItems) Controllers.ItemsController.Randomize();
         if (Settings.RandomizeSkills) Controllers.SkillsController.Randomize();
+        if (Settings.RandomizeLocations) Controllers.LocationController.Randomize();
         //if (Settings.RandomizeCharacters) Controllers.CharacterController.Randomize();
         if (saveData)
             PackAndConvertData();

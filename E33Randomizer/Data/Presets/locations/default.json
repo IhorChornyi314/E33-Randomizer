@@ -1,0 +1,17 @@
+{
+  "NotRandomized": [
+  ],
+  "Excluded": [],
+  "CustomPlacement": {
+    "Act I Locations": {
+      "Act I Locations": 1.0
+    },
+    "Act II Locations": {
+      "Act II Locations": 1.0
+    },
+    "Act III Locations": {
+      "Act III Locations": 1.0
+    }
+  },
+  "FrequencyAdjustments": {}
+}

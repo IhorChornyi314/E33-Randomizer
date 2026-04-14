@@ -25,6 +25,9 @@
             <TabItem Header="Skill Randomizer">
                 <e33Randomizer:RandomizeSkillsTab x:Name="SkillRandomizerTab"/>
             </TabItem>
+            <TabItem Header="Location Randomizer">
+                <e33Randomizer:RandomizeLocationsTab x:Name="LocationRandomizerTab"/>
+            </TabItem>
             <!--<TabItem Header="Paramdomizer">
                 <e33Randomizer:ParamdomizerTab x:Name="ParamdomizerTab"/>
             </TabItem>-->

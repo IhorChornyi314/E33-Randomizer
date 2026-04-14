@@ -6,6 +6,7 @@ public static class Controllers
     public static ItemsController ItemsController = new();
     public static EnemiesController EnemiesController = new();
     public static CharacterController CharacterController = new();
+    public static LocationController LocationController = new();
 
     public static BaseController GetController(string objectType)
     {
@@ -15,6 +16,7 @@ public static class Controllers
             "Item" => ItemsController,
             "Skill" => SkillsController,
             "Character" => CharacterController,
+            "Location" => LocationController,
             _ => null
         };
     }
@@ -26,6 +28,7 @@ public static class Controllers
         ItemsController.Initialize();
         SkillsController.Initialize();
         CharacterController.Initialize();
+        LocationController.Initialize();
     }
 
     public static void WriteAssets()

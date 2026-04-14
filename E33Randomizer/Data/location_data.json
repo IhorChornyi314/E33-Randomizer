@@ -1,0 +1,4999 @@
+﻿[
+  {
+    "CodeName": "Level.SpawnPoint.AbbestCave.Arena",
+    "CustomName": "Abbest Cave - Entrance",
+    "LevelAsset": "Level_Cave_AbbestAlpha",
+    "LevelScaling": 30,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.AbbestCave.Entry"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.AbbestCave.Entry",
+    "CustomName": "Abbest Cave - Entry",
+    "LevelAsset": "Level_Cave_AbbestAlpha",
+    "LevelScaling": 30,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.AbbestCave.Arena"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.AbbestCaveEntry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.AncientSanctuary.Arena",
+    "CustomName": "Ancient Sanctuary - Giant Bell Alley",
+    "LevelAsset": "Level_AncientSanctuary_Main_V2",
+    "LevelScaling": 12,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.AncientSanctuary.Entry",
+      "Level.SpawnPoint.AncientSanctuary.Exit",
+      "Level.SpawnPoint.AncientSanctuary.RedForest",
+      "Level.SpawnPoint.AncientSanctuary.TanksArena"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.AncientSanctuary.Entry",
+    "CustomName": "Ancient Sanctuary - Entry",
+    "LevelAsset": "Level_AncientSanctuary_Main_V2",
+    "LevelScaling": 12,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.AncientSanctuary.Arena",
+      "Level.SpawnPoint.AncientSanctuary.Exit",
+      "Level.SpawnPoint.AncientSanctuary.RedForest",
+      "Level.SpawnPoint.AncientSanctuary.TanksArena"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.AncientSanctuaryEntry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.AncientSanctuary.Exit",
+    "CustomName": "Ancient Sanctuary - Exit",
+    "LevelAsset": "Level_AncientSanctuary_Main_V2",
+    "LevelScaling": 12,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.AncientSanctuary.Arena",
+      "Level.SpawnPoint.AncientSanctuary.Entry",
+      "Level.SpawnPoint.AncientSanctuary.RedForest",
+      "Level.SpawnPoint.AncientSanctuary.TanksArena"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.AncientSanctuaryExit",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.AncientSanctuary.GestralTotem",
+    "CustomName": "Ancient Sanctuary - Gestral Totem",
+    "LevelAsset": "Level_AncientSanctuary_Main_V2",
+    "LevelScaling": 12,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.AncientSanctuary.RedForest",
+    "CustomName": "Ancient Sanctuary - Entrance",
+    "LevelAsset": "Level_AncientSanctuary_Main_V2",
+    "LevelScaling": 12,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.AncientSanctuary.Arena",
+      "Level.SpawnPoint.AncientSanctuary.Entry",
+      "Level.SpawnPoint.AncientSanctuary.Exit",
+      "Level.SpawnPoint.AncientSanctuary.TanksArena"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.AncientSanctuary.TanksArena",
+    "CustomName": "Ancient Sanctuary - Sanctuary Maze",
+    "LevelAsset": "Level_AncientSanctuary_Main_V2",
+    "LevelScaling": 12,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.AncientSanctuary.Arena",
+      "Level.SpawnPoint.AncientSanctuary.Entry",
+      "Level.SpawnPoint.AncientSanctuary.Exit",
+      "Level.SpawnPoint.AncientSanctuary.RedForest"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.AxonPath.Entry",
+    "CustomName": "Renoir's Drafts - Entry",
+    "LevelAsset": "Level_Monolith_Floor_1",
+    "LevelScaling": 93,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.AxonPath.Exit",
+      "Level.SpawnPoint.AxonPath.SavepointEnd",
+      "Level.SpawnPoint.AxonPath.VistaEntrance"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.AxonPathEntry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.AxonPath.Exit",
+    "CustomName": "Renoir's Drafts - Exit",
+    "LevelAsset": "Level_Monolith_Floor_1",
+    "LevelScaling": 93,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.AxonPath.Entry",
+      "Level.SpawnPoint.AxonPath.SavepointEnd",
+      "Level.SpawnPoint.AxonPath.VistaEntrance"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.AxonPath.SavepointEnd",
+    "CustomName": "Renoir's Drafts - Golden Tree",
+    "LevelAsset": "Level_Monolith_Floor_1",
+    "LevelScaling": 93,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.AxonPath.Entry",
+      "Level.SpawnPoint.AxonPath.Exit",
+      "Level.SpawnPoint.AxonPath.VistaEntrance"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.AxonPath.VistaEntrance",
+    "CustomName": "Renoir's Drafts - Entrance",
+    "LevelAsset": "Level_Monolith_Floor_1",
+    "LevelScaling": 93,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.AxonPath.Entry",
+      "Level.SpawnPoint.AxonPath.Exit",
+      "Level.SpawnPoint.AxonPath.SavepointEnd"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.BladeGraveyard.Entry",
+    "CustomName": "Blades' Graveyard - Entry",
+    "LevelAsset": "Level_Mini_BladesGraveyard",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.BladesGraveyardEntry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.BoatGraveyardBlue",
+    "CustomName": "Twilight Quarry - Boat Graveyard Blue",
+    "LevelAsset": "Level_Mini_BoatGraveyard_2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.BoatGraveyardBlue.Entry",
+    "CustomName": "Twilight Quarry - Entry",
+    "LevelAsset": "Level_Mini_BoatGraveyard_2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.BoatGraveyardBlueEntry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.BoatGraveyardPurple",
+    "CustomName": "Boat Graveyard - Boat Graveyard Purple",
+    "LevelAsset": "Level_Mini_BoatGraveyard_1",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.BoatGraveyardPurple.Entry",
+    "CustomName": "Boat Graveyard - Entry",
+    "LevelAsset": "Level_Mini_BoatGraveyard_1",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.BoatGraveyardPurpleEntry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.Camp.Entry",
+    "CustomName": "Camp - Campfire",
+    "LevelAsset": "Level_Camp_Main",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.CavernCrusher.Entry",
+    "CustomName": "Crushing Cavern - Entrance",
+    "LevelAsset": "SmallLevel_Cavern_CrushingWalls",
+    "LevelScaling": 27,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.CavernCrusherEntry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.Cemetery.Entry",
+    "CustomName": "Floating Cemetery - Entrance",
+    "LevelAsset": "SmallLevel_Cemetery_Blockout",
+    "LevelScaling": 55,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.FloatingCemeteryEntry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.ChromaZoneEntrance.Cave",
+    "CustomName": "Sunless Cliffs - Chroma Portal",
+    "LevelAsset": "Level_Main_ChromaZoneEntrance",
+    "LevelScaling": 92,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.ChromaZoneEntrance.Entry",
+      "Level.SpawnPoint.ChromaZoneEntrance.Portal"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.ChromaZoneEntrance.Entry",
+    "CustomName": "Sunless Cliffs - Entry",
+    "LevelAsset": "Level_Main_ChromaZoneEntrance",
+    "LevelScaling": 92,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.ChromaZoneEntrance.Cave",
+      "Level.SpawnPoint.ChromaZoneEntrance.Portal"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.ChromaZoneEntrance.Portal",
+    "CustomName": "Sunless Cliffs - Portal",
+    "LevelAsset": "Level_Main_ChromaZoneEntrance",
+    "LevelScaling": 92,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.ChromaZoneEntrance.Cave",
+      "Level.SpawnPoint.ChromaZoneEntrance.Entry"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.ChromaZoneEntrance",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.CleaOrangeForest.CenterPlazza",
+    "CustomName": "Falling Leaves - Resinveil Grove",
+    "LevelAsset": "Level_OraneForest_Main",
+    "LevelScaling": 41,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.CleaOrangeForest.Entry",
+      "Level.SpawnPoint.CleaOrangeForest.ManorDoor"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.CleaOrangeForest.Entry",
+    "CustomName": "Falling Leaves - Entry",
+    "LevelAsset": "Level_OraneForest_Main",
+    "LevelScaling": 41,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.CleaOrangeForest.CenterPlazza",
+      "Level.SpawnPoint.CleaOrangeForest.ManorDoor"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.CleaOrangeForestEntry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.CleaOrangeForest.ManorDoor",
+    "CustomName": "Falling Leaves - Manor Door",
+    "LevelAsset": "Level_OraneForest_Main",
+    "LevelScaling": 41,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.CleaOrangeForest.CenterPlazza",
+      "Level.SpawnPoint.CleaOrangeForest.Entry"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.CleaOrangeForest.Scavenger",
+    "CustomName": "Falling Leaves - Scavenger",
+    "LevelAsset": "Level_OraneForest_Main",
+    "LevelScaling": 41,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.CleaWorkshop.BrokenLampmaster",
+    "CustomName": "Painting Workshop - Broken Conception",
+    "LevelAsset": "Level_Side_CleasWorkShop_V2",
+    "LevelScaling": 90,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.CleaWorkshop.Path1",
+      "Level.SpawnPoint.CleaWorkshop.Path2",
+      "Level.SpawnPoint.CleaWorkshop.Path3"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.CleaWorkshop.Path1",
+    "CustomName": "Painting Workshop - Path1",
+    "LevelAsset": "Level_Side_CleasWorkShop_V2",
+    "LevelScaling": 90,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.CleaWorkshop.BrokenLampmaster",
+      "Level.SpawnPoint.CleaWorkshop.Path2",
+      "Level.SpawnPoint.CleaWorkshop.Path3"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.CleaWorkshop.Path2",
+    "CustomName": "Painting Workshop - Path2",
+    "LevelAsset": "Level_Side_CleasWorkShop_V2",
+    "LevelScaling": 90,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.CleaWorkshop.BrokenLampmaster",
+      "Level.SpawnPoint.CleaWorkshop.Path1",
+      "Level.SpawnPoint.CleaWorkshop.Path3"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.CleaWorkshop.Path3",
+    "CustomName": "Painting Workshop - Path3",
+    "LevelAsset": "Level_Side_CleasWorkShop_V2",
+    "LevelScaling": 90,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.CleaWorkshop.BrokenLampmaster",
+      "Level.SpawnPoint.CleaWorkshop.Path1",
+      "Level.SpawnPoint.CleaWorkshop.Path2"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.CleasFlyingHouse.Center",
+    "CustomName": "Flying Manor - Central Plaza",
+    "LevelAsset": "Level_CleaFlyingHouse_Main",
+    "LevelScaling": 83,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.CleasFlyingHouse.Entry",
+      "Level.SpawnPoint.CleasFlyingHouse.PlazaTeleport"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.CleasFlyingHouse.Entry",
+    "CustomName": "Flying Manor - Entrance",
+    "LevelAsset": "Level_CleaFlyingHouse_Main",
+    "LevelScaling": 83,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.CleasFlyingHouse.Center",
+      "Level.SpawnPoint.CleasFlyingHouse.PlazaTeleport"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.CleasFlyingHouseEntry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.CleasFlyingHouse.PlazaTeleport",
+    "CustomName": "Flying Manor - Plaza Teleport",
+    "LevelAsset": "Level_CleaFlyingHouse_Main",
+    "LevelScaling": 83,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.CleasFlyingHouse.Center",
+      "Level.SpawnPoint.CleasFlyingHouse.Entry"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.CleasTower.Entrance",
+    "CustomName": "Endless Tower - Entrance",
+    "LevelAsset": "Level_Side_CleasTower",
+    "LevelScaling": 55,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.CleasTower.GroundEntrance",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.CleasTower.GroundEntrance",
+    "CustomName": "Endless Tower - Ground Entrance",
+    "LevelAsset": "CleasTower_GroundFloorEntrance",
+    "LevelScaling": 55,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.CleasTower.GroundEntranceTower"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.CleasTower.Entrance",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.CleasTower.GroundEntranceTower",
+    "CustomName": "Endless Tower - Ground Entrance Tower",
+    "LevelAsset": "Level_Side_CleasTower",
+    "LevelScaling": 55,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.CleasTower.GroundEntrance"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.CleasTower.Simon",
+    "CustomName": "Endless Tower - Simon",
+    "LevelAsset": "Level_Side_CleasTower",
+    "LevelScaling": 55,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.CrulerBruler.Entry",
+    "CustomName": "Coastal Cave - Entry",
+    "LevelAsset": "SmallLevel_CrulerBrulerWeaponry_Blockout",
+    "LevelScaling": 36,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.CrulerBruler.Forge"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.CoastalCaveEntry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.CrulerBruler.Forge",
+    "CustomName": "Coastal Cave - Forge",
+    "LevelAsset": "SmallLevel_CrulerBrulerWeaponry_Blockout",
+    "LevelScaling": 36,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.CrulerBruler.Entry"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.DarkGestralArena.Entry",
+    "CustomName": "Dark Gestral Arena - Entrance",
+    "LevelAsset": "SmallLevel_FA_DarkGestralArena",
+    "LevelScaling": 75,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.DarkGestralArenaEntry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.DarkShores.Entry",
+    "CustomName": "Dark Shores - Bloodied Beach",
+    "LevelAsset": "Level_DarkShores_Main_V1",
+    "LevelScaling": 68,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.DarkShores.Exit"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.DarkShoresEntrance",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.DarkShores.Exit",
+    "CustomName": "Dark Shores - Exit",
+    "LevelAsset": "Level_DarkShores_Main_V1",
+    "LevelScaling": 68,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.DarkShores.Entry"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.DoorMaze.CliffBottom",
+    "CustomName": "Esoteric Ruins - Lumiere's Wrecks",
+    "LevelAsset": "SmallLevel_DoorMaze_Blockout",
+    "LevelScaling": 28,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.DoorMaze.Entry"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.DoorMaze.Entry",
+    "CustomName": "Esoteric Ruins - Entry",
+    "LevelAsset": "SmallLevel_DoorMaze_Blockout",
+    "LevelScaling": 28,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.DoorMaze.CliffBottom"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.DoorMazeEntry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.EsquieNest.Entry",
+    "CustomName": "Esquie's Nest - Entry",
+    "LevelAsset": "LevelMain_EsquieNest",
+    "LevelScaling": 16,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.EsquieNest.GestralEntry"
+    ],
+    "ConditionalConnections": {
+      "Story.EsquiePassword": [
+        "Level.SpawnPoint.EsquieNest.Francois"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.WorldMap.EsquieNest",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.EsquieNest.Francois",
+    "CustomName": "Esquie's Nest - Francois' Cave",
+    "LevelAsset": "LevelMain_EsquieNest",
+    "LevelScaling": 16,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.EsquiePassword": [
+        "Level.SpawnPoint.EsquieNest.Entry"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": [
+      "EsquieAbility.Car"
+    ]
+  },
+  {
+    "CodeName": "Level.SpawnPoint.EsquieNest.FrancoisArena",
+    "CustomName": "Esquie's Nest - Francois Arena",
+    "LevelAsset": "LevelMain_EsquieNest",
+    "LevelScaling": 16,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.EsquieNest.GestralEntry",
+    "CustomName": "Esquie's Nest - Entrance",
+    "LevelAsset": "LevelMain_EsquieNest",
+    "LevelScaling": 16,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.EsquieNest.Entry"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.EsquieRealCousin.Entry",
+    "CustomName": "Root of All Evil - Entry",
+    "LevelAsset": "Level_Small_EsquieRealCousin",
+    "LevelScaling": 99,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.EsquieRealCousin.MainField"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.EsquieRealCousin.MainField",
+    "CustomName": "Root of All Evil - Main Field",
+    "LevelAsset": "Level_Small_EsquieRealCousin",
+    "LevelScaling": 99,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.EsquieRealCousin.Entry"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.FlyingCasino.Entry",
+    "CustomName": "Flying Casino - Entrance",
+    "LevelAsset": "SmallLevel_Mix_GL_AS_Zone_01",
+    "LevelScaling": 10,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.FlyingCasino",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.ForgottenBattlefield.Battlefield",
+    "CustomName": "Forgotten Battlefield - Vanguard Point",
+    "LevelAsset": "Level_Main_ForgottenBattlefield_V2",
+    "LevelScaling": 23,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.ForgottenBattlefield.DeadzoneTower",
+      "Level.SpawnPoint.ForgottenBattlefield.Entry",
+      "Level.SpawnPoint.ForgottenBattlefield.Exit",
+      "Level.SpawnPoint.ForgottenBattlefield.MainGate",
+      "Level.SpawnPoint.ForgottenBattlefield.MainRuins",
+      "Level.SpawnPoint.ForgottenBattlefield.SideBattlefield"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.ForgottenBattlefield.DeadzoneTower",
+    "CustomName": "Forgotten Battlefield - Deadzone Tower",
+    "LevelAsset": "Level_Main_ForgottenBattlefield_V2",
+    "LevelScaling": 23,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.ForgottenBattlefield.Battlefield",
+      "Level.SpawnPoint.ForgottenBattlefield.Entry",
+      "Level.SpawnPoint.ForgottenBattlefield.Exit",
+      "Level.SpawnPoint.ForgottenBattlefield.MainGate",
+      "Level.SpawnPoint.ForgottenBattlefield.MainRuins",
+      "Level.SpawnPoint.ForgottenBattlefield.SideBattlefield"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.ForgottenBattlefield.DuallistArena",
+    "CustomName": "Forgotten Battlefield - Ancient Bridge",
+    "LevelAsset": "Level_Main_ForgottenBattlefield_V2",
+    "LevelScaling": 23,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.ForgottenBattlefield.Entry",
+    "CustomName": "Forgotten Battlefield - Entrance",
+    "LevelAsset": "Level_Main_ForgottenBattlefield_V2",
+    "LevelScaling": 23,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.ForgottenBattlefield.Battlefield",
+      "Level.SpawnPoint.ForgottenBattlefield.DeadzoneTower",
+      "Level.SpawnPoint.ForgottenBattlefield.Exit",
+      "Level.SpawnPoint.ForgottenBattlefield.MainGate",
+      "Level.SpawnPoint.ForgottenBattlefield.MainRuins",
+      "Level.SpawnPoint.ForgottenBattlefield.SideBattlefield"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.ForgottenBattlefieldEntry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.ForgottenBattlefield.Exit",
+    "CustomName": "Forgotten Battlefield - Exit",
+    "LevelAsset": "Level_Main_ForgottenBattlefield_V2",
+    "LevelScaling": 23,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.ForgottenBattlefield.Battlefield",
+      "Level.SpawnPoint.ForgottenBattlefield.DeadzoneTower",
+      "Level.SpawnPoint.ForgottenBattlefield.Entry",
+      "Level.SpawnPoint.ForgottenBattlefield.MainGate",
+      "Level.SpawnPoint.ForgottenBattlefield.MainRuins",
+      "Level.SpawnPoint.ForgottenBattlefield.SideBattlefield"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.ForgottenBattlefieldExit",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.ForgottenBattlefield.MainGate",
+    "CustomName": "Forgotten Battlefield - Main Gate",
+    "LevelAsset": "Level_Main_ForgottenBattlefield_V2",
+    "LevelScaling": 23,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.ForgottenBattlefield.Battlefield",
+      "Level.SpawnPoint.ForgottenBattlefield.DeadzoneTower",
+      "Level.SpawnPoint.ForgottenBattlefield.Entry",
+      "Level.SpawnPoint.ForgottenBattlefield.Exit",
+      "Level.SpawnPoint.ForgottenBattlefield.MainRuins",
+      "Level.SpawnPoint.ForgottenBattlefield.SideBattlefield"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.ForgottenBattlefield.MainRuins",
+    "CustomName": "Forgotten Battlefield - Fort Ruins",
+    "LevelAsset": "Level_Main_ForgottenBattlefield_V2",
+    "LevelScaling": 23,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.ForgottenBattlefield.Battlefield",
+      "Level.SpawnPoint.ForgottenBattlefield.DeadzoneTower",
+      "Level.SpawnPoint.ForgottenBattlefield.Entry",
+      "Level.SpawnPoint.ForgottenBattlefield.Exit",
+      "Level.SpawnPoint.ForgottenBattlefield.MainGate",
+      "Level.SpawnPoint.ForgottenBattlefield.SideBattlefield"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.ForgottenBattlefield.SideBattlefield",
+    "CustomName": "Forgotten Battlefield - Battlefield",
+    "LevelAsset": "Level_Main_ForgottenBattlefield_V2",
+    "LevelScaling": 23,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.ForgottenBattlefield.Battlefield",
+      "Level.SpawnPoint.ForgottenBattlefield.DeadzoneTower",
+      "Level.SpawnPoint.ForgottenBattlefield.Entry",
+      "Level.SpawnPoint.ForgottenBattlefield.Exit",
+      "Level.SpawnPoint.ForgottenBattlefield.MainGate",
+      "Level.SpawnPoint.ForgottenBattlefield.MainRuins"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.FrozenHearts.CaveForest",
+    "CustomName": "Frozen Hearts - Iced Heart",
+    "LevelAsset": "Level_Side_FrozenHeart",
+    "LevelScaling": 63,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.FrozenHearts.CaveStation",
+      "Level.SpawnPoint.FrozenHearts.Entrance",
+      "Level.SpawnPoint.FrozenHearts.Frozenlakes",
+      "Level.SpawnPoint.FrozenHearts.ManorDoor",
+      "Level.SpawnPoint.FrozenHearts.TrainStation"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.FrozenHearts.CaveStation",
+    "CustomName": "Frozen Hearts - Icebound Terminal",
+    "LevelAsset": "Level_Side_FrozenHeart",
+    "LevelScaling": 63,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.FrozenHearts.CaveForest",
+      "Level.SpawnPoint.FrozenHearts.Entrance",
+      "Level.SpawnPoint.FrozenHearts.Frozenlakes",
+      "Level.SpawnPoint.FrozenHearts.ManorDoor",
+      "Level.SpawnPoint.FrozenHearts.TrainStation"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.FrozenHearts.Entrance",
+    "CustomName": "Frozen Hearts - Entrance",
+    "LevelAsset": "Level_Side_FrozenHeart",
+    "LevelScaling": 63,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.FrozenHearts.CaveForest",
+      "Level.SpawnPoint.FrozenHearts.CaveStation",
+      "Level.SpawnPoint.FrozenHearts.Frozenlakes",
+      "Level.SpawnPoint.FrozenHearts.ManorDoor",
+      "Level.SpawnPoint.FrozenHearts.TrainStation"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.FrozenHeartsEntry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.FrozenHearts.Frozenlakes",
+    "CustomName": "Frozen Hearts - Glacial Falls",
+    "LevelAsset": "Level_Side_FrozenHeart",
+    "LevelScaling": 63,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.FrozenHearts.CaveForest",
+      "Level.SpawnPoint.FrozenHearts.CaveStation",
+      "Level.SpawnPoint.FrozenHearts.Entrance",
+      "Level.SpawnPoint.FrozenHearts.ManorDoor",
+      "Level.SpawnPoint.FrozenHearts.TrainStation"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.FrozenHearts.ManorDoor",
+    "CustomName": "Frozen Hearts - Manor Door",
+    "LevelAsset": "Level_Side_FrozenHeart",
+    "LevelScaling": 63,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.FrozenHearts.CaveForest",
+      "Level.SpawnPoint.FrozenHearts.CaveStation",
+      "Level.SpawnPoint.FrozenHearts.Entrance",
+      "Level.SpawnPoint.FrozenHearts.Frozenlakes",
+      "Level.SpawnPoint.FrozenHearts.TrainStation"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.FrozenHearts.TrainStation",
+    "CustomName": "Frozen Hearts - Icebound Train Station",
+    "LevelAsset": "Level_Side_FrozenHeart",
+    "LevelScaling": 63,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.FrozenHearts.CaveForest",
+      "Level.SpawnPoint.FrozenHearts.CaveStation",
+      "Level.SpawnPoint.FrozenHearts.Entrance",
+      "Level.SpawnPoint.FrozenHearts.Frozenlakes",
+      "Level.SpawnPoint.FrozenHearts.ManorDoor"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.GestralBeach.Climb",
+    "CustomName": "Gestral Beach - Entrance",
+    "LevelAsset": "Level_GestralBeach_Day",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.GestralBeach.OnlyUp",
+    "CustomName": "Gestral Beach - Only Up",
+    "LevelAsset": "Level_GestralBeach_Day",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.GestralBeach.Race",
+    "CustomName": "Gestral Beach - Race",
+    "LevelAsset": "Level_GestralBeach_Day",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.GestralBeach.RaceFail",
+    "CustomName": "Gestral Beach - Race Fail",
+    "LevelAsset": "Level_GestralBeach_Day",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.GestralBeach.RaceRespawn",
+    "CustomName": "Gestral Beach - Race Respawn",
+    "LevelAsset": "Level_GestralBeach_Day",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.GestralBeach.RaceStart",
+    "CustomName": "Gestral Beach - Race Start",
+    "LevelAsset": "Level_GestralBeach_Day",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.GestralBeach.VolleyBall",
+    "CustomName": "Gestral Beach - Volley Ball",
+    "LevelAsset": "Level_GestralBeach_Day",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.GestralBeach.VolleyHard",
+    "CustomName": "Gestral Beach - Volley Hard",
+    "LevelAsset": "Level_GestralBeach_Day",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.GestralBeach.VolleyMedium",
+    "CustomName": "Gestral Beach - Volley Medium",
+    "LevelAsset": "Level_GestralBeach_Day",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.GestralBeach.Volley_Easy",
+    "CustomName": "Gestral Beach - Volley_ Easy",
+    "LevelAsset": "Level_GestralBeach_Day",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.GestralBeach.WipeOut",
+    "CustomName": "Gestral Beach - Wipe Out",
+    "LevelAsset": "Level_GestralBeach_Day",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.GestralBeach.WipeoutRespawnPoint",
+    "CustomName": "Gestral Beach - Wipeout Respawn Point",
+    "LevelAsset": "Level_GestralBeach_Day",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.GestralHiddenArena.Entry",
+    "CustomName": "Hidden Gestral Arena - Entrance",
+    "LevelAsset": "SmallLevel_YF_Zone_01",
+    "LevelScaling": 16,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.GestralHiddenArena",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.GestralTreeCity.Entry",
+    "CustomName": "Ancient Gestral City - Entry",
+    "LevelAsset": "Level_Mini_GestralTreeCity",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.GestralTreeCityEntry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.GestralVillage.ArenaAfterGolgra",
+    "CustomName": "Gestral Village - Arena After Golgra",
+    "LevelAsset": "Level_Main_GestralVillage_V2",
+    "LevelScaling": 15,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.GestralVillage.Entry",
+      "Level.SpawnPoint.GestralVillage.GestralArena",
+      "Level.SpawnPoint.GestralVillage.GestralManorDoor",
+      "Level.SpawnPoint.GestralVillage.VillageEntry"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.GestralVillage.Entry",
+    "CustomName": "Gestral Village - Entry",
+    "LevelAsset": "Level_Main_GestralVillage_V2",
+    "LevelScaling": 15,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.GestralVillage.ArenaAfterGolgra",
+      "Level.SpawnPoint.GestralVillage.GestralArena",
+      "Level.SpawnPoint.GestralVillage.GestralManorDoor",
+      "Level.SpawnPoint.GestralVillage.VillageEntry"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.GestralVillageEntry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.GestralVillage.GestralArena",
+    "CustomName": "Gestral Village - Gestral Arena",
+    "LevelAsset": "Level_Main_GestralVillage_V2",
+    "LevelScaling": 15,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.GestralVillage.ArenaAfterGolgra",
+      "Level.SpawnPoint.GestralVillage.Entry",
+      "Level.SpawnPoint.GestralVillage.GestralManorDoor",
+      "Level.SpawnPoint.GestralVillage.VillageEntry"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.GestralVillage.GestralManorDoor",
+    "CustomName": "Gestral Village - Gestral Manor Door",
+    "LevelAsset": "Level_Main_GestralVillage_V2",
+    "LevelScaling": 15,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.GestralVillage.ArenaAfterGolgra",
+      "Level.SpawnPoint.GestralVillage.Entry",
+      "Level.SpawnPoint.GestralVillage.GestralArena",
+      "Level.SpawnPoint.GestralVillage.VillageEntry"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.GestralVillage.VillageEntry",
+    "CustomName": "Gestral Village - Entrance",
+    "LevelAsset": "Level_Main_GestralVillage_V2",
+    "LevelScaling": 15,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.GestralVillage.ArenaAfterGolgra",
+      "Level.SpawnPoint.GestralVillage.Entry",
+      "Level.SpawnPoint.GestralVillage.GestralArena",
+      "Level.SpawnPoint.GestralVillage.GestralManorDoor"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": [
+      "Story.EsquiePassword"
+    ]
+  },
+  {
+    "CodeName": "Level.SpawnPoint.Goblu.CrulerCave",
+    "CustomName": "Flying Waters - Coral Cave",
+    "LevelAsset": "Level_Goblu_Main_V5",
+    "LevelScaling": 8,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.Goblu.Entry",
+      "Level.SpawnPoint.Goblu.Exit",
+      "Level.SpawnPoint.Goblu.GobluArena",
+      "Level.SpawnPoint.Goblu.LimonsolHome",
+      "Level.SpawnPoint.Goblu.LumiereStreet",
+      "Level.SpawnPoint.Goblu.ManorDoor"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.Goblu.Entry",
+    "CustomName": "Flying Waters - Entrance",
+    "LevelAsset": "Level_Goblu_Main_V5",
+    "LevelScaling": 8,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.Goblu.CrulerCave",
+      "Level.SpawnPoint.Goblu.Exit",
+      "Level.SpawnPoint.Goblu.GobluArena",
+      "Level.SpawnPoint.Goblu.LimonsolHome",
+      "Level.SpawnPoint.Goblu.LumiereStreet",
+      "Level.SpawnPoint.Goblu.ManorDoor"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.GobluEntry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.Goblu.Exit",
+    "CustomName": "Flying Waters - Exit",
+    "LevelAsset": "Level_Goblu_Main_V5",
+    "LevelScaling": 8,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.Goblu.CrulerCave",
+      "Level.SpawnPoint.Goblu.Entry",
+      "Level.SpawnPoint.Goblu.GobluArena",
+      "Level.SpawnPoint.Goblu.LimonsolHome",
+      "Level.SpawnPoint.Goblu.LumiereStreet",
+      "Level.SpawnPoint.Goblu.ManorDoor"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.GobluExit",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.Goblu.GobluArena",
+    "CustomName": "Flying Waters - Flower Field",
+    "LevelAsset": "Level_Goblu_Main_V5",
+    "LevelScaling": 8,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.Goblu.CrulerCave",
+      "Level.SpawnPoint.Goblu.Entry",
+      "Level.SpawnPoint.Goblu.Exit",
+      "Level.SpawnPoint.Goblu.LimonsolHome",
+      "Level.SpawnPoint.Goblu.LumiereStreet",
+      "Level.SpawnPoint.Goblu.ManorDoor"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.Goblu.LimonsolHome",
+    "CustomName": "Flying Waters - Noco's Hut",
+    "LevelAsset": "Level_Goblu_Main_V5",
+    "LevelScaling": 8,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.Goblu.CrulerCave",
+      "Level.SpawnPoint.Goblu.Entry",
+      "Level.SpawnPoint.Goblu.Exit",
+      "Level.SpawnPoint.Goblu.GobluArena",
+      "Level.SpawnPoint.Goblu.LumiereStreet",
+      "Level.SpawnPoint.Goblu.ManorDoor"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.Goblu.LumiereStreet",
+    "CustomName": "Flying Waters - Lumieran Streets",
+    "LevelAsset": "Level_Goblu_Main_V5",
+    "LevelScaling": 8,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.Goblu.CrulerCave",
+      "Level.SpawnPoint.Goblu.Entry",
+      "Level.SpawnPoint.Goblu.Exit",
+      "Level.SpawnPoint.Goblu.GobluArena",
+      "Level.SpawnPoint.Goblu.LimonsolHome",
+      "Level.SpawnPoint.Goblu.ManorDoor"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.Goblu.ManorDoor",
+    "CustomName": "Flying Waters - Manor Door",
+    "LevelAsset": "Level_Goblu_Main_V5",
+    "LevelScaling": 8,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.Goblu.CrulerCave",
+      "Level.SpawnPoint.Goblu.Entry",
+      "Level.SpawnPoint.Goblu.Exit",
+      "Level.SpawnPoint.Goblu.GobluArena",
+      "Level.SpawnPoint.Goblu.LimonsolHome",
+      "Level.SpawnPoint.Goblu.LumiereStreet"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.GobluLairs_X_AncientSanctuary.CasinoEntrance",
+    "CustomName": "Flying Casino - Casino Entrance",
+    "LevelAsset": "SmallLevel_Mix_GL_AS_Zone_01",
+    "LevelScaling": 10,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.GobluLairs_X_AncientSanctuary.Entry"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.GobluLairs_X_AncientSanctuary.Entry",
+    "CustomName": "Flying Casino - Entry",
+    "LevelAsset": "SmallLevel_Mix_GL_AS_Zone_01",
+    "LevelScaling": 10,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.GobluLairs_X_AncientSanctuary.CasinoEntrance"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.LostWoods.Entry",
+    "CustomName": "Lost Woods - Entry",
+    "LevelAsset": "Level_Mini_CleasAreaOrange",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.LostWoods",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.LumiereAct01.Entry",
+    "CustomName": "Lumiere - Entry",
+    "LevelAsset": "Level_Lumiere_Main_V2",
+    "LevelScaling": 48,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.LumiereAct03.Act02",
+    "CustomName": "Lumiere - Act02",
+    "LevelAsset": "Level_Lumiere_Main_V2",
+    "LevelScaling": 48,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.LumiereAct03.Act02RedAndWhite",
+      "Level.SpawnPoint.LumiereAct03.BigPlazza",
+      "Level.SpawnPoint.LumiereAct03.CrumblingBuildings",
+      "Level.SpawnPoint.LumiereAct03.Curator",
+      "Level.SpawnPoint.LumiereAct03.Dock",
+      "Level.SpawnPoint.LumiereAct03.Entry",
+      "Level.SpawnPoint.LumiereAct03.FloatingBuildings",
+      "Level.SpawnPoint.LumiereAct03.Gardens",
+      "Level.SpawnPoint.LumiereAct03.Opera",
+      "Level.SpawnPoint.LumiereAct03.PostEnding"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.LumiereAct03.Act02RedAndWhite",
+    "CustomName": "Lumiere - Act02 Red And White",
+    "LevelAsset": "Level_Lumiere_Main_V2",
+    "LevelScaling": 48,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.LumiereAct03.Act02",
+      "Level.SpawnPoint.LumiereAct03.BigPlazza",
+      "Level.SpawnPoint.LumiereAct03.CrumblingBuildings",
+      "Level.SpawnPoint.LumiereAct03.Curator",
+      "Level.SpawnPoint.LumiereAct03.Dock",
+      "Level.SpawnPoint.LumiereAct03.Entry",
+      "Level.SpawnPoint.LumiereAct03.FloatingBuildings",
+      "Level.SpawnPoint.LumiereAct03.Gardens",
+      "Level.SpawnPoint.LumiereAct03.Opera",
+      "Level.SpawnPoint.LumiereAct03.PostEnding"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.LumiereAct03.BigPlazza",
+    "CustomName": "Lumiere - Central Plaza",
+    "LevelAsset": "Level_Lumiere_Main_V2",
+    "LevelScaling": 48,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.LumiereAct03.Act02",
+      "Level.SpawnPoint.LumiereAct03.Act02RedAndWhite",
+      "Level.SpawnPoint.LumiereAct03.CrumblingBuildings",
+      "Level.SpawnPoint.LumiereAct03.Curator",
+      "Level.SpawnPoint.LumiereAct03.Dock",
+      "Level.SpawnPoint.LumiereAct03.Entry",
+      "Level.SpawnPoint.LumiereAct03.FloatingBuildings",
+      "Level.SpawnPoint.LumiereAct03.Gardens",
+      "Level.SpawnPoint.LumiereAct03.Opera",
+      "Level.SpawnPoint.LumiereAct03.PostEnding"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.LumiereAct03.CrumblingBuildings",
+    "CustomName": "Lumiere - Shattered Alley",
+    "LevelAsset": "Level_Lumiere_Main_V2",
+    "LevelScaling": 48,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.LumiereAct03.Act02",
+      "Level.SpawnPoint.LumiereAct03.Act02RedAndWhite",
+      "Level.SpawnPoint.LumiereAct03.BigPlazza",
+      "Level.SpawnPoint.LumiereAct03.Curator",
+      "Level.SpawnPoint.LumiereAct03.Dock",
+      "Level.SpawnPoint.LumiereAct03.Entry",
+      "Level.SpawnPoint.LumiereAct03.FloatingBuildings",
+      "Level.SpawnPoint.LumiereAct03.Gardens",
+      "Level.SpawnPoint.LumiereAct03.Opera",
+      "Level.SpawnPoint.LumiereAct03.PostEnding"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.LumiereAct03.Curator",
+    "CustomName": "Lumiere - Crooked Tower Walkway",
+    "LevelAsset": "Level_Lumiere_Main_V2",
+    "LevelScaling": 48,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.LumiereAct03.Act02",
+      "Level.SpawnPoint.LumiereAct03.Act02RedAndWhite",
+      "Level.SpawnPoint.LumiereAct03.BigPlazza",
+      "Level.SpawnPoint.LumiereAct03.CrumblingBuildings",
+      "Level.SpawnPoint.LumiereAct03.Dock",
+      "Level.SpawnPoint.LumiereAct03.Entry",
+      "Level.SpawnPoint.LumiereAct03.FloatingBuildings",
+      "Level.SpawnPoint.LumiereAct03.Gardens",
+      "Level.SpawnPoint.LumiereAct03.Opera",
+      "Level.SpawnPoint.LumiereAct03.PostEnding"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.LumiereAct03.Dock",
+    "CustomName": "Lumiere - Harbour",
+    "LevelAsset": "Level_Lumiere_Main_V2",
+    "LevelScaling": 48,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.LumiereAct03.Act02",
+      "Level.SpawnPoint.LumiereAct03.Act02RedAndWhite",
+      "Level.SpawnPoint.LumiereAct03.BigPlazza",
+      "Level.SpawnPoint.LumiereAct03.CrumblingBuildings",
+      "Level.SpawnPoint.LumiereAct03.Curator",
+      "Level.SpawnPoint.LumiereAct03.Entry",
+      "Level.SpawnPoint.LumiereAct03.FloatingBuildings",
+      "Level.SpawnPoint.LumiereAct03.Gardens",
+      "Level.SpawnPoint.LumiereAct03.Opera",
+      "Level.SpawnPoint.LumiereAct03.PostEnding"
+    ],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Level.SpawnPoint.LumiereAct03.Entry"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.LumiereAct03.Entry",
+    "CustomName": "Lumiere - Entry",
+    "LevelAsset": "Level_Lumiere_Main_V2",
+    "LevelScaling": 48,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.LumiereAct03.Act02",
+      "Level.SpawnPoint.LumiereAct03.Act02RedAndWhite",
+      "Level.SpawnPoint.LumiereAct03.BigPlazza",
+      "Level.SpawnPoint.LumiereAct03.CrumblingBuildings",
+      "Level.SpawnPoint.LumiereAct03.Curator",
+      "Level.SpawnPoint.LumiereAct03.Dock",
+      "Level.SpawnPoint.LumiereAct03.FloatingBuildings",
+      "Level.SpawnPoint.LumiereAct03.Gardens",
+      "Level.SpawnPoint.LumiereAct03.Opera",
+      "Level.SpawnPoint.LumiereAct03.PostEnding"
+    ],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Level.SpawnPoint.LumiereAct03.Dock"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.WorldMap.Lumiere",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.LumiereAct03.FloatingBuildings",
+    "CustomName": "Lumiere - Floating Buildings",
+    "LevelAsset": "Level_Lumiere_Main_V2",
+    "LevelScaling": 48,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.LumiereAct03.Act02",
+      "Level.SpawnPoint.LumiereAct03.Act02RedAndWhite",
+      "Level.SpawnPoint.LumiereAct03.BigPlazza",
+      "Level.SpawnPoint.LumiereAct03.CrumblingBuildings",
+      "Level.SpawnPoint.LumiereAct03.Curator",
+      "Level.SpawnPoint.LumiereAct03.Dock",
+      "Level.SpawnPoint.LumiereAct03.Entry",
+      "Level.SpawnPoint.LumiereAct03.Gardens",
+      "Level.SpawnPoint.LumiereAct03.Opera",
+      "Level.SpawnPoint.LumiereAct03.PostEnding"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.LumiereAct03.Gardens",
+    "CustomName": "Lumiere - Lumiere's Gardens",
+    "LevelAsset": "Level_Lumiere_Main_V2",
+    "LevelScaling": 48,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.LumiereAct03.Act02",
+      "Level.SpawnPoint.LumiereAct03.Act02RedAndWhite",
+      "Level.SpawnPoint.LumiereAct03.BigPlazza",
+      "Level.SpawnPoint.LumiereAct03.CrumblingBuildings",
+      "Level.SpawnPoint.LumiereAct03.Curator",
+      "Level.SpawnPoint.LumiereAct03.Dock",
+      "Level.SpawnPoint.LumiereAct03.Entry",
+      "Level.SpawnPoint.LumiereAct03.FloatingBuildings",
+      "Level.SpawnPoint.LumiereAct03.Opera",
+      "Level.SpawnPoint.LumiereAct03.PostEnding"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.LumiereAct03.Opera",
+    "CustomName": "Lumiere - Opera House",
+    "LevelAsset": "Level_Lumiere_Main_V2",
+    "LevelScaling": 48,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.LumiereAct03.Act02",
+      "Level.SpawnPoint.LumiereAct03.Act02RedAndWhite",
+      "Level.SpawnPoint.LumiereAct03.BigPlazza",
+      "Level.SpawnPoint.LumiereAct03.CrumblingBuildings",
+      "Level.SpawnPoint.LumiereAct03.Curator",
+      "Level.SpawnPoint.LumiereAct03.Dock",
+      "Level.SpawnPoint.LumiereAct03.Entry",
+      "Level.SpawnPoint.LumiereAct03.FloatingBuildings",
+      "Level.SpawnPoint.LumiereAct03.Gardens",
+      "Level.SpawnPoint.LumiereAct03.PostEnding"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.LumiereAct03.PostEnding",
+    "CustomName": "Lumiere - The End",
+    "LevelAsset": "Level_Lumiere_Main_V2",
+    "LevelScaling": 48,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.LumiereAct03.Act02",
+      "Level.SpawnPoint.LumiereAct03.Act02RedAndWhite",
+      "Level.SpawnPoint.LumiereAct03.BigPlazza",
+      "Level.SpawnPoint.LumiereAct03.CrumblingBuildings",
+      "Level.SpawnPoint.LumiereAct03.Curator",
+      "Level.SpawnPoint.LumiereAct03.Dock",
+      "Level.SpawnPoint.LumiereAct03.Entry",
+      "Level.SpawnPoint.LumiereAct03.FloatingBuildings",
+      "Level.SpawnPoint.LumiereAct03.Gardens",
+      "Level.SpawnPoint.LumiereAct03.Opera"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.Manor.AliciaBedroom",
+    "CustomName": "The Manor - Alicia Bedroom",
+    "LevelAsset": "Manor_Main_WP",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.Manor.AliciaRoomAct3",
+    "CustomName": "The Manor - Alicia Room Act3",
+    "LevelAsset": "Manor_Main_WP",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.Manor.AlineWorkshop",
+    "CustomName": "The Manor - Aline Workshop",
+    "LevelAsset": "Manor_Main_WP",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.Manor.Bathroom",
+    "CustomName": "The Manor - Bathroom",
+    "LevelAsset": "Manor_Main_WP",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.Manor.CleaBedroom",
+    "CustomName": "The Manor - Clea Bedroom",
+    "LevelAsset": "Manor_Main_WP",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.Manor.Entrance",
+    "CustomName": "The Manor - Entry Hall",
+    "LevelAsset": "Manor_Main_WP",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.Manor.Kitchen",
+    "CustomName": "The Manor - Kitchen",
+    "LevelAsset": "Manor_Main_WP",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.Manor.Library",
+    "CustomName": "The Manor - Library",
+    "LevelAsset": "Manor_Main_WP",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.Manor.ParentsBedroom",
+    "CustomName": "The Manor - Parents Bedroom",
+    "LevelAsset": "Manor_Main_WP",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.Manor.Room01",
+    "CustomName": "The Manor - Room01",
+    "LevelAsset": "Manor_Main_WP",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.Manor.Room02",
+    "CustomName": "The Manor - Room02",
+    "LevelAsset": "Manor_Main_WP",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.Manor.Room03",
+    "CustomName": "The Manor - Room03",
+    "LevelAsset": "Manor_Main_WP",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.Manor.VersoBedroom",
+    "CustomName": "The Manor - Verso Bedroom",
+    "LevelAsset": "Manor_Main_WP",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.MiniSpringMeadow.Entry",
+    "CustomName": "The Meadows - Entry",
+    "LevelAsset": "Level_Mini_SpringMeadows",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.MiniSpringMeadowEntry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.MiniWhiteTree.Entry",
+    "CustomName": "White Tree - Entry",
+    "LevelAsset": "Level_Mini_YellowForestWhiteTree",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.MiniWhiteTreeEntry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.MonocoMountain.Exit",
+    "CustomName": "Frozen Hearts - Exit",
+    "LevelAsset": "Level_Side_FrozenHeart",
+    "LevelScaling": 63,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.MonocoStation.EntryForgotten",
+    "CustomName": "Monoco's Station - Entry Forgotten",
+    "LevelAsset": "Level_MonocoStation",
+    "LevelScaling": 25,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.MonocoStation.EntryFrozenHearts",
+      "Level.SpawnPoint.MonocoStation.EntryOldLumiere",
+      "Level.SpawnPoint.MonocoStation.FrozenHearts",
+      "Level.SpawnPoint.MonocoStation.IceCorridor",
+      "Level.SpawnPoint.MonocoStation.InsideStation"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.MonocoStationEntryForgotten",
+    "Keys": [
+      "Story.MonocoAcquired"
+    ]
+  },
+  {
+    "CodeName": "Level.SpawnPoint.MonocoStation.EntryFrozenHearts",
+    "CustomName": "Monoco's Station - Entry Frozen Hearts",
+    "LevelAsset": "Level_MonocoStation",
+    "LevelScaling": 25,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.MonocoStation.EntryForgotten",
+      "Level.SpawnPoint.MonocoStation.EntryOldLumiere",
+      "Level.SpawnPoint.MonocoStation.FrozenHearts",
+      "Level.SpawnPoint.MonocoStation.IceCorridor",
+      "Level.SpawnPoint.MonocoStation.InsideStation"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.MonocoStationEntryFrozenHearts",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.MonocoStation.EntryOldLumiere",
+    "CustomName": "Monoco's Station - Old Lumiere Entrance",
+    "LevelAsset": "Level_MonocoStation",
+    "LevelScaling": 25,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.MonocoStation.EntryForgotten",
+      "Level.SpawnPoint.MonocoStation.EntryFrozenHearts",
+      "Level.SpawnPoint.MonocoStation.FrozenHearts",
+      "Level.SpawnPoint.MonocoStation.IceCorridor",
+      "Level.SpawnPoint.MonocoStation.InsideStation"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.MonocoStationEntryOldLumiere",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.MonocoStation.FrozenHearts",
+    "CustomName": "Monoco's Station - Frozen Heart Entrance",
+    "LevelAsset": "Level_MonocoStation",
+    "LevelScaling": 25,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.MonocoStation.EntryForgotten",
+      "Level.SpawnPoint.MonocoStation.EntryFrozenHearts",
+      "Level.SpawnPoint.MonocoStation.EntryOldLumiere",
+      "Level.SpawnPoint.MonocoStation.IceCorridor",
+      "Level.SpawnPoint.MonocoStation.InsideStation"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.MonocoStation.IceCorridor",
+    "CustomName": "Monoco's Station - Ice Corridor",
+    "LevelAsset": "Level_MonocoStation",
+    "LevelScaling": 25,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.MonocoStation.EntryForgotten",
+      "Level.SpawnPoint.MonocoStation.EntryFrozenHearts",
+      "Level.SpawnPoint.MonocoStation.EntryOldLumiere",
+      "Level.SpawnPoint.MonocoStation.FrozenHearts",
+      "Level.SpawnPoint.MonocoStation.InsideStation"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.MonocoStation.InsideStation",
+    "CustomName": "Monoco's Station - Monoco's Station",
+    "LevelAsset": "Level_MonocoStation",
+    "LevelScaling": 25,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.MonocoStation.EntryForgotten",
+      "Level.SpawnPoint.MonocoStation.EntryFrozenHearts",
+      "Level.SpawnPoint.MonocoStation.EntryOldLumiere",
+      "Level.SpawnPoint.MonocoStation.FrozenHearts",
+      "Level.SpawnPoint.MonocoStation.IceCorridor"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.MonolithExterior.Peak.Entry",
+    "CustomName": "Monolith Peak - Entrance",
+    "LevelAsset": "Level_Monolith_Exterior_Peak_Main",
+    "LevelScaling": 43,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": [
+      "Story.Act3Reached"
+    ]
+  },
+  {
+    "CodeName": "Level.SpawnPoint.MonolithInterior.Climb.AncientSanctuary",
+    "CustomName": "Inside The Monolith - Tainted Sanctuary",
+    "LevelAsset": "Level_Monolith_Interior_Climb_Main",
+    "LevelScaling": 43,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.MonolithInterior.Climb.Entry",
+      "Level.SpawnPoint.MonolithInterior.Climb.Exit",
+      "Level.SpawnPoint.MonolithInterior.Climb.ForgottenBattlefield",
+      "Level.SpawnPoint.MonolithInterior.Climb.Goblu",
+      "Level.SpawnPoint.MonolithInterior.Climb.Lumiere",
+      "Level.SpawnPoint.MonolithInterior.Climb.ManorDoor",
+      "Level.SpawnPoint.MonolithInterior.Climb.MonocoMountain",
+      "Level.SpawnPoint.MonolithInterior.Climb.RenoirArena",
+      "Level.SpawnPoint.MonolithInterior.Climb.SeaCliff",
+      "Level.SpawnPoint.MonolithInterior.Climb.SpringMeadows"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.MonolithInterior.Climb.Entry",
+    "CustomName": "Inside The Monolith - Entrance",
+    "LevelAsset": "Level_Monolith_Interior_Climb_Main",
+    "LevelScaling": 43,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.MonolithInterior.Climb.AncientSanctuary",
+      "Level.SpawnPoint.MonolithInterior.Climb.Exit",
+      "Level.SpawnPoint.MonolithInterior.Climb.ForgottenBattlefield",
+      "Level.SpawnPoint.MonolithInterior.Climb.Goblu",
+      "Level.SpawnPoint.MonolithInterior.Climb.Lumiere",
+      "Level.SpawnPoint.MonolithInterior.Climb.ManorDoor",
+      "Level.SpawnPoint.MonolithInterior.Climb.MonocoMountain",
+      "Level.SpawnPoint.MonolithInterior.Climb.RenoirArena",
+      "Level.SpawnPoint.MonolithInterior.Climb.SeaCliff",
+      "Level.SpawnPoint.MonolithInterior.Climb.SpringMeadows"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.MonolithInteriorEntry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.MonolithInterior.Climb.Exit",
+    "CustomName": "Inside The Monolith - Exit",
+    "LevelAsset": "Level_Monolith_Interior_Climb_Main",
+    "LevelScaling": 43,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.MonolithInterior.Climb.AncientSanctuary",
+      "Level.SpawnPoint.MonolithInterior.Climb.Entry",
+      "Level.SpawnPoint.MonolithInterior.Climb.ForgottenBattlefield",
+      "Level.SpawnPoint.MonolithInterior.Climb.Goblu",
+      "Level.SpawnPoint.MonolithInterior.Climb.Lumiere",
+      "Level.SpawnPoint.MonolithInterior.Climb.ManorDoor",
+      "Level.SpawnPoint.MonolithInterior.Climb.MonocoMountain",
+      "Level.SpawnPoint.MonolithInterior.Climb.RenoirArena",
+      "Level.SpawnPoint.MonolithInterior.Climb.SeaCliff",
+      "Level.SpawnPoint.MonolithInterior.Climb.SpringMeadows"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.MonolithInterior.Climb.ForgottenBattlefield",
+    "CustomName": "Inside The Monolith - Tainted Battlefield",
+    "LevelAsset": "Level_Monolith_Interior_Climb_Main",
+    "LevelScaling": 43,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.MonolithInterior.Climb.AncientSanctuary",
+      "Level.SpawnPoint.MonolithInterior.Climb.Entry",
+      "Level.SpawnPoint.MonolithInterior.Climb.Exit",
+      "Level.SpawnPoint.MonolithInterior.Climb.Goblu",
+      "Level.SpawnPoint.MonolithInterior.Climb.Lumiere",
+      "Level.SpawnPoint.MonolithInterior.Climb.ManorDoor",
+      "Level.SpawnPoint.MonolithInterior.Climb.MonocoMountain",
+      "Level.SpawnPoint.MonolithInterior.Climb.RenoirArena",
+      "Level.SpawnPoint.MonolithInterior.Climb.SeaCliff",
+      "Level.SpawnPoint.MonolithInterior.Climb.SpringMeadows"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.MonolithInterior.Climb.Goblu",
+    "CustomName": "Inside The Monolith - Tainted Waters",
+    "LevelAsset": "Level_Monolith_Interior_Climb_Main",
+    "LevelScaling": 43,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.MonolithInterior.Climb.AncientSanctuary",
+      "Level.SpawnPoint.MonolithInterior.Climb.Entry",
+      "Level.SpawnPoint.MonolithInterior.Climb.Exit",
+      "Level.SpawnPoint.MonolithInterior.Climb.ForgottenBattlefield",
+      "Level.SpawnPoint.MonolithInterior.Climb.Lumiere",
+      "Level.SpawnPoint.MonolithInterior.Climb.ManorDoor",
+      "Level.SpawnPoint.MonolithInterior.Climb.MonocoMountain",
+      "Level.SpawnPoint.MonolithInterior.Climb.RenoirArena",
+      "Level.SpawnPoint.MonolithInterior.Climb.SeaCliff",
+      "Level.SpawnPoint.MonolithInterior.Climb.SpringMeadows"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.MonolithInterior.Climb.Lumiere",
+    "CustomName": "Inside The Monolith - Tainted Lumiere",
+    "LevelAsset": "Level_Monolith_Interior_Climb_Main",
+    "LevelScaling": 43,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.MonolithInterior.Climb.AncientSanctuary",
+      "Level.SpawnPoint.MonolithInterior.Climb.Entry",
+      "Level.SpawnPoint.MonolithInterior.Climb.Exit",
+      "Level.SpawnPoint.MonolithInterior.Climb.ForgottenBattlefield",
+      "Level.SpawnPoint.MonolithInterior.Climb.Goblu",
+      "Level.SpawnPoint.MonolithInterior.Climb.ManorDoor",
+      "Level.SpawnPoint.MonolithInterior.Climb.MonocoMountain",
+      "Level.SpawnPoint.MonolithInterior.Climb.RenoirArena",
+      "Level.SpawnPoint.MonolithInterior.Climb.SeaCliff",
+      "Level.SpawnPoint.MonolithInterior.Climb.SpringMeadows"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.MonolithInterior.Climb.ManorDoor",
+    "CustomName": "Inside The Monolith - Manor Door",
+    "LevelAsset": "Level_Monolith_Interior_Climb_Main",
+    "LevelScaling": 43,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.MonolithInterior.Climb.AncientSanctuary",
+      "Level.SpawnPoint.MonolithInterior.Climb.Entry",
+      "Level.SpawnPoint.MonolithInterior.Climb.Exit",
+      "Level.SpawnPoint.MonolithInterior.Climb.ForgottenBattlefield",
+      "Level.SpawnPoint.MonolithInterior.Climb.Goblu",
+      "Level.SpawnPoint.MonolithInterior.Climb.Lumiere",
+      "Level.SpawnPoint.MonolithInterior.Climb.MonocoMountain",
+      "Level.SpawnPoint.MonolithInterior.Climb.RenoirArena",
+      "Level.SpawnPoint.MonolithInterior.Climb.SeaCliff",
+      "Level.SpawnPoint.MonolithInterior.Climb.SpringMeadows"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.MonolithInterior.Climb.MonocoMountain",
+    "CustomName": "Inside The Monolith - Tainted Hearts",
+    "LevelAsset": "Level_Monolith_Interior_Climb_Main",
+    "LevelScaling": 43,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.MonolithInterior.Climb.AncientSanctuary",
+      "Level.SpawnPoint.MonolithInterior.Climb.Entry",
+      "Level.SpawnPoint.MonolithInterior.Climb.Exit",
+      "Level.SpawnPoint.MonolithInterior.Climb.ForgottenBattlefield",
+      "Level.SpawnPoint.MonolithInterior.Climb.Goblu",
+      "Level.SpawnPoint.MonolithInterior.Climb.Lumiere",
+      "Level.SpawnPoint.MonolithInterior.Climb.ManorDoor",
+      "Level.SpawnPoint.MonolithInterior.Climb.RenoirArena",
+      "Level.SpawnPoint.MonolithInterior.Climb.SeaCliff",
+      "Level.SpawnPoint.MonolithInterior.Climb.SpringMeadows"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.MonolithInterior.Climb.RenoirArena",
+    "CustomName": "Inside The Monolith - Tower Peak",
+    "LevelAsset": "Level_Monolith_Interior_Climb_Main",
+    "LevelScaling": 43,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.MonolithInterior.Climb.AncientSanctuary",
+      "Level.SpawnPoint.MonolithInterior.Climb.Entry",
+      "Level.SpawnPoint.MonolithInterior.Climb.Exit",
+      "Level.SpawnPoint.MonolithInterior.Climb.ForgottenBattlefield",
+      "Level.SpawnPoint.MonolithInterior.Climb.Goblu",
+      "Level.SpawnPoint.MonolithInterior.Climb.Lumiere",
+      "Level.SpawnPoint.MonolithInterior.Climb.ManorDoor",
+      "Level.SpawnPoint.MonolithInterior.Climb.MonocoMountain",
+      "Level.SpawnPoint.MonolithInterior.Climb.SeaCliff",
+      "Level.SpawnPoint.MonolithInterior.Climb.SpringMeadows"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.MonolithInterior.Climb.SeaCliff",
+    "CustomName": "Inside The Monolith - Tainted Cliffs",
+    "LevelAsset": "Level_Monolith_Interior_Climb_Main",
+    "LevelScaling": 43,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.MonolithInterior.Climb.AncientSanctuary",
+      "Level.SpawnPoint.MonolithInterior.Climb.Entry",
+      "Level.SpawnPoint.MonolithInterior.Climb.Exit",
+      "Level.SpawnPoint.MonolithInterior.Climb.ForgottenBattlefield",
+      "Level.SpawnPoint.MonolithInterior.Climb.Goblu",
+      "Level.SpawnPoint.MonolithInterior.Climb.Lumiere",
+      "Level.SpawnPoint.MonolithInterior.Climb.ManorDoor",
+      "Level.SpawnPoint.MonolithInterior.Climb.MonocoMountain",
+      "Level.SpawnPoint.MonolithInterior.Climb.RenoirArena",
+      "Level.SpawnPoint.MonolithInterior.Climb.SpringMeadows"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.MonolithInterior.Climb.SpringMeadows",
+    "CustomName": "Inside The Monolith - Tainted Meadows",
+    "LevelAsset": "Level_Monolith_Interior_Climb_Main",
+    "LevelScaling": 43,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.MonolithInterior.Climb.AncientSanctuary",
+      "Level.SpawnPoint.MonolithInterior.Climb.Entry",
+      "Level.SpawnPoint.MonolithInterior.Climb.Exit",
+      "Level.SpawnPoint.MonolithInterior.Climb.ForgottenBattlefield",
+      "Level.SpawnPoint.MonolithInterior.Climb.Goblu",
+      "Level.SpawnPoint.MonolithInterior.Climb.Lumiere",
+      "Level.SpawnPoint.MonolithInterior.Climb.ManorDoor",
+      "Level.SpawnPoint.MonolithInterior.Climb.MonocoMountain",
+      "Level.SpawnPoint.MonolithInterior.Climb.RenoirArena",
+      "Level.SpawnPoint.MonolithInterior.Climb.SeaCliff"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.MonolithInterior.PaintressIntro.Entry",
+    "CustomName": "The Monolith - Entrance",
+    "LevelAsset": "Level_PaintressIntro_Main",
+    "LevelScaling": 40,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.MonolithInterior.PaintressIntro.Exit"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.MonolithInterior.PaintressIntro.Exit",
+    "CustomName": "The Monolith - Exit",
+    "LevelAsset": "Level_PaintressIntro_Main",
+    "LevelScaling": 40,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.MonolithInterior.PaintressIntro.Entry"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.OldLumiere.AlphaArea",
+    "CustomName": "Old Lumiere - Train Station Ruins",
+    "LevelAsset": "Level_OldLumiere_Main",
+    "LevelScaling": 28,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.OldLumiere.BrokenBuildings",
+      "Level.SpawnPoint.OldLumiere.EndPath",
+      "Level.SpawnPoint.OldLumiere.Entry",
+      "Level.SpawnPoint.OldLumiere.LunePath",
+      "Level.SpawnPoint.OldLumiere.MaellePath",
+      "Level.SpawnPoint.OldLumiere.ManorArena",
+      "Level.SpawnPoint.OldLumiere.ManorDoor"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.OldLumiere.BrokenBuildings",
+    "CustomName": "Old Lumiere - Entrance",
+    "LevelAsset": "Level_OldLumiere_Main",
+    "LevelScaling": 28,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.OldLumiere.AlphaArea",
+      "Level.SpawnPoint.OldLumiere.EndPath",
+      "Level.SpawnPoint.OldLumiere.Entry",
+      "Level.SpawnPoint.OldLumiere.LunePath",
+      "Level.SpawnPoint.OldLumiere.MaellePath",
+      "Level.SpawnPoint.OldLumiere.ManorArena",
+      "Level.SpawnPoint.OldLumiere.ManorDoor"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.OldLumiere.EndPath",
+    "CustomName": "Old Lumiere - Middle Street",
+    "LevelAsset": "Level_OldLumiere_Main",
+    "LevelScaling": 28,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.OldLumiere.AlphaArea",
+      "Level.SpawnPoint.OldLumiere.BrokenBuildings",
+      "Level.SpawnPoint.OldLumiere.Entry",
+      "Level.SpawnPoint.OldLumiere.LunePath",
+      "Level.SpawnPoint.OldLumiere.MaellePath",
+      "Level.SpawnPoint.OldLumiere.ManorArena",
+      "Level.SpawnPoint.OldLumiere.ManorDoor"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.OldLumiere.Entry",
+    "CustomName": "Old Lumiere - Entry",
+    "LevelAsset": "Level_OldLumiere_Main",
+    "LevelScaling": 28,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.OldLumiere.AlphaArea",
+      "Level.SpawnPoint.OldLumiere.BrokenBuildings",
+      "Level.SpawnPoint.OldLumiere.EndPath",
+      "Level.SpawnPoint.OldLumiere.LunePath",
+      "Level.SpawnPoint.OldLumiere.MaellePath",
+      "Level.SpawnPoint.OldLumiere.ManorArena",
+      "Level.SpawnPoint.OldLumiere.ManorDoor"
+    ],
+    "ConditionalConnections": {
+      "Story.MonocoAcquired": [
+        "Level.SpawnPoint.OldLumiere.LunePath"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.WorldMap.OldLumiereEntry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.OldLumiere.LunePath",
+    "CustomName": "Old Lumiere - Right Street",
+    "LevelAsset": "Level_OldLumiere_Main",
+    "LevelScaling": 28,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.OldLumiere.AlphaArea",
+      "Level.SpawnPoint.OldLumiere.BrokenBuildings",
+      "Level.SpawnPoint.OldLumiere.EndPath",
+      "Level.SpawnPoint.OldLumiere.Entry",
+      "Level.SpawnPoint.OldLumiere.MaellePath",
+      "Level.SpawnPoint.OldLumiere.ManorArena",
+      "Level.SpawnPoint.OldLumiere.ManorDoor"
+    ],
+    "ConditionalConnections": {
+      "Story.MonocoAcquired": [
+        "Level.SpawnPoint.OldLumiere.Entry"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.OldLumiere.MaellePath",
+    "CustomName": "Old Lumiere - Left Street",
+    "LevelAsset": "Level_OldLumiere_Main",
+    "LevelScaling": 28,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.OldLumiere.AlphaArea",
+      "Level.SpawnPoint.OldLumiere.BrokenBuildings",
+      "Level.SpawnPoint.OldLumiere.EndPath",
+      "Level.SpawnPoint.OldLumiere.Entry",
+      "Level.SpawnPoint.OldLumiere.LunePath",
+      "Level.SpawnPoint.OldLumiere.ManorArena",
+      "Level.SpawnPoint.OldLumiere.ManorDoor"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.OldLumiere.ManorArena",
+    "CustomName": "Old Lumiere - Manor Gardens",
+    "LevelAsset": "Level_OldLumiere_Main",
+    "LevelScaling": 28,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.OldLumiere.AlphaArea",
+      "Level.SpawnPoint.OldLumiere.BrokenBuildings",
+      "Level.SpawnPoint.OldLumiere.EndPath",
+      "Level.SpawnPoint.OldLumiere.Entry",
+      "Level.SpawnPoint.OldLumiere.LunePath",
+      "Level.SpawnPoint.OldLumiere.MaellePath",
+      "Level.SpawnPoint.OldLumiere.ManorDoor"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": [
+      "EsquieAbility.SwimPlus"
+    ]
+  },
+  {
+    "CodeName": "Level.SpawnPoint.OldLumiere.ManorDoor",
+    "CustomName": "Old Lumiere - Manor Door",
+    "LevelAsset": "Level_OldLumiere_Main",
+    "LevelScaling": 28,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.OldLumiere.AlphaArea",
+      "Level.SpawnPoint.OldLumiere.BrokenBuildings",
+      "Level.SpawnPoint.OldLumiere.EndPath",
+      "Level.SpawnPoint.OldLumiere.Entry",
+      "Level.SpawnPoint.OldLumiere.LunePath",
+      "Level.SpawnPoint.OldLumiere.MaellePath",
+      "Level.SpawnPoint.OldLumiere.ManorArena"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.Reacher.Alicia",
+    "CustomName": "The Reacher - Alicia",
+    "LevelAsset": "Level_Reacher_Main_V2",
+    "LevelScaling": 58,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.Reacher.Entry",
+      "Level.SpawnPoint.Reacher.FogArea",
+      "Level.SpawnPoint.Reacher.LadderArea",
+      "Level.SpawnPoint.Reacher.ManorDoor",
+      "Level.SpawnPoint.Reacher.Mountain",
+      "Level.SpawnPoint.Reacher.MountainTop"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.Reacher.Entry",
+    "CustomName": "The Reacher - Entrance",
+    "LevelAsset": "Level_Reacher_Main_V2",
+    "LevelScaling": 58,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.Reacher.Alicia",
+      "Level.SpawnPoint.Reacher.FogArea",
+      "Level.SpawnPoint.Reacher.LadderArea",
+      "Level.SpawnPoint.Reacher.ManorDoor",
+      "Level.SpawnPoint.Reacher.Mountain",
+      "Level.SpawnPoint.Reacher.MountainTop"
+    ],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Level.SpawnPoint.WorldMap.ReacherEntry"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.WorldMap.ReacherEntry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.Reacher.FogArea",
+    "CustomName": "The Reacher - Foggy Area",
+    "LevelAsset": "Level_Reacher_Main_V2",
+    "LevelScaling": 58,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.Reacher.Alicia",
+      "Level.SpawnPoint.Reacher.Entry",
+      "Level.SpawnPoint.Reacher.LadderArea",
+      "Level.SpawnPoint.Reacher.ManorDoor",
+      "Level.SpawnPoint.Reacher.Mountain",
+      "Level.SpawnPoint.Reacher.MountainTop"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.Reacher.LadderArea",
+    "CustomName": "The Reacher - Ladder Area",
+    "LevelAsset": "Level_Reacher_Main_V2",
+    "LevelScaling": 58,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.Reacher.Alicia",
+      "Level.SpawnPoint.Reacher.Entry",
+      "Level.SpawnPoint.Reacher.FogArea",
+      "Level.SpawnPoint.Reacher.ManorDoor",
+      "Level.SpawnPoint.Reacher.Mountain",
+      "Level.SpawnPoint.Reacher.MountainTop"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.Reacher.ManorDoor",
+    "CustomName": "The Reacher - Manor Door",
+    "LevelAsset": "Level_Reacher_Main_V2",
+    "LevelScaling": 58,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.Reacher.Alicia",
+      "Level.SpawnPoint.Reacher.Entry",
+      "Level.SpawnPoint.Reacher.FogArea",
+      "Level.SpawnPoint.Reacher.LadderArea",
+      "Level.SpawnPoint.Reacher.Mountain",
+      "Level.SpawnPoint.Reacher.MountainTop"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.Reacher.Mountain",
+    "CustomName": "The Reacher - Mountain",
+    "LevelAsset": "Level_Reacher_Main_V2",
+    "LevelScaling": 58,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.Reacher.Alicia",
+      "Level.SpawnPoint.Reacher.Entry",
+      "Level.SpawnPoint.Reacher.FogArea",
+      "Level.SpawnPoint.Reacher.LadderArea",
+      "Level.SpawnPoint.Reacher.ManorDoor",
+      "Level.SpawnPoint.Reacher.MountainTop"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.Reacher.MountainTop",
+    "CustomName": "The Reacher - Peak",
+    "LevelAsset": "Level_Reacher_Main_V2",
+    "LevelScaling": 58,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.Reacher.Alicia",
+      "Level.SpawnPoint.Reacher.Entry",
+      "Level.SpawnPoint.Reacher.FogArea",
+      "Level.SpawnPoint.Reacher.LadderArea",
+      "Level.SpawnPoint.Reacher.ManorDoor",
+      "Level.SpawnPoint.Reacher.Mountain"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.ReacherCliff.Entry",
+    "CustomName": "The Crows - Entrance",
+    "LevelAsset": "SmallLevel_RZ_Zone_01",
+    "LevelScaling": 65,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.ReacherCliff",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.RedForest.Entry",
+    "CustomName": "Crimson Forest - Entry",
+    "LevelAsset": "Level_RedForest_Main",
+    "LevelScaling": 52,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.RedForest.Plazza",
+      "Level.SpawnPoint.RedForest.TheThreeBlades"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.RedForest",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.RedForest.Plazza",
+    "CustomName": "Crimson Forest - Crimson Perch",
+    "LevelAsset": "Level_RedForest_Main",
+    "LevelScaling": 52,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.RedForest.Entry",
+      "Level.SpawnPoint.RedForest.TheThreeBlades"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.RedForest.TheThreeBlades",
+    "CustomName": "Crimson Forest - The Three Blades",
+    "LevelAsset": "Level_RedForest_Main",
+    "LevelScaling": 52,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.RedForest.Entry",
+      "Level.SpawnPoint.RedForest.Plazza"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.RedWoods.Entry",
+    "CustomName": "Red Woods - Entrance",
+    "LevelAsset": "SmallLevel_AS_Zone_01",
+    "LevelScaling": 60,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.RedWoodsEntry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.SacredRiver.Entry",
+    "CustomName": "Sacred River - Entry",
+    "LevelAsset": "SmallLevel_SacredRiver",
+    "LevelScaling": 60,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.SacredRiverEntry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.SeaCliff.BasaltWaves",
+    "CustomName": "Stone Wave Cliffs - Basalt Waves",
+    "LevelAsset": "Level_SeaCliff_Main_V2",
+    "LevelScaling": 19,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.SeaCliff.Caves",
+      "Level.SpawnPoint.SeaCliff.Entry",
+      "Level.SpawnPoint.SeaCliff.Exit",
+      "Level.SpawnPoint.SeaCliff.FloodedBuildings",
+      "Level.SpawnPoint.SeaCliff.ManorDoor",
+      "Level.SpawnPoint.SeaCliff.PaintressShrine",
+      "Level.SpawnPoint.SeaCliff.Village",
+      "Level.SpawnPoint.SeaCliff.ZeppelinEntry"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": [
+      "EsquieAbility.Swim"
+    ]
+  },
+  {
+    "CodeName": "Level.SpawnPoint.SeaCliff.Caves",
+    "CustomName": "Stone Wave Cliffs - Tide Caverns",
+    "LevelAsset": "Level_SeaCliff_Main_V2",
+    "LevelScaling": 19,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.SeaCliff.BasaltWaves",
+      "Level.SpawnPoint.SeaCliff.Entry",
+      "Level.SpawnPoint.SeaCliff.Exit",
+      "Level.SpawnPoint.SeaCliff.FloodedBuildings",
+      "Level.SpawnPoint.SeaCliff.ManorDoor",
+      "Level.SpawnPoint.SeaCliff.PaintressShrine",
+      "Level.SpawnPoint.SeaCliff.Village",
+      "Level.SpawnPoint.SeaCliff.ZeppelinEntry"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.SeaCliff.Entry",
+    "CustomName": "Stone Wave Cliffs - Entry",
+    "LevelAsset": "Level_SeaCliff_Main_V2",
+    "LevelScaling": 19,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.SeaCliff.BasaltWaves",
+      "Level.SpawnPoint.SeaCliff.Caves",
+      "Level.SpawnPoint.SeaCliff.Exit",
+      "Level.SpawnPoint.SeaCliff.FloodedBuildings",
+      "Level.SpawnPoint.SeaCliff.ManorDoor",
+      "Level.SpawnPoint.SeaCliff.PaintressShrine",
+      "Level.SpawnPoint.SeaCliff.Village",
+      "Level.SpawnPoint.SeaCliff.ZeppelinEntry"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.SeaCliffEntry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.SeaCliff.Exit",
+    "CustomName": "Stone Wave Cliffs - Exit",
+    "LevelAsset": "Level_SeaCliff_Main_V2",
+    "LevelScaling": 19,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.SeaCliff.BasaltWaves",
+      "Level.SpawnPoint.SeaCliff.Caves",
+      "Level.SpawnPoint.SeaCliff.Entry",
+      "Level.SpawnPoint.SeaCliff.FloodedBuildings",
+      "Level.SpawnPoint.SeaCliff.ManorDoor",
+      "Level.SpawnPoint.SeaCliff.PaintressShrine",
+      "Level.SpawnPoint.SeaCliff.Village",
+      "Level.SpawnPoint.SeaCliff.ZeppelinEntry"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.SeaCliffExit",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.SeaCliff.FloodedBuildings",
+    "CustomName": "Stone Wave Cliffs - Flooded Buildings",
+    "LevelAsset": "Level_SeaCliff_Main_V2",
+    "LevelScaling": 19,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.SeaCliff.BasaltWaves",
+      "Level.SpawnPoint.SeaCliff.Caves",
+      "Level.SpawnPoint.SeaCliff.Entry",
+      "Level.SpawnPoint.SeaCliff.Exit",
+      "Level.SpawnPoint.SeaCliff.ManorDoor",
+      "Level.SpawnPoint.SeaCliff.PaintressShrine",
+      "Level.SpawnPoint.SeaCliff.Village",
+      "Level.SpawnPoint.SeaCliff.ZeppelinEntry"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.SeaCliff.ManorDoor",
+    "CustomName": "Stone Wave Cliffs - Manor Door",
+    "LevelAsset": "Level_SeaCliff_Main_V2",
+    "LevelScaling": 19,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.SeaCliff.BasaltWaves",
+      "Level.SpawnPoint.SeaCliff.Caves",
+      "Level.SpawnPoint.SeaCliff.Entry",
+      "Level.SpawnPoint.SeaCliff.Exit",
+      "Level.SpawnPoint.SeaCliff.FloodedBuildings",
+      "Level.SpawnPoint.SeaCliff.PaintressShrine",
+      "Level.SpawnPoint.SeaCliff.Village",
+      "Level.SpawnPoint.SeaCliff.ZeppelinEntry"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.SeaCliff.PaintressShrine",
+    "CustomName": "Stone Wave Cliffs - Paintress Shrine",
+    "LevelAsset": "Level_SeaCliff_Main_V2",
+    "LevelScaling": 19,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.SeaCliff.BasaltWaves",
+      "Level.SpawnPoint.SeaCliff.Caves",
+      "Level.SpawnPoint.SeaCliff.Entry",
+      "Level.SpawnPoint.SeaCliff.Exit",
+      "Level.SpawnPoint.SeaCliff.FloodedBuildings",
+      "Level.SpawnPoint.SeaCliff.ManorDoor",
+      "Level.SpawnPoint.SeaCliff.Village",
+      "Level.SpawnPoint.SeaCliff.ZeppelinEntry"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.SeaCliff.Village",
+    "CustomName": "Stone Wave Cliffs - Old Farm",
+    "LevelAsset": "Level_SeaCliff_Main_V2",
+    "LevelScaling": 19,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.SeaCliff.BasaltWaves",
+      "Level.SpawnPoint.SeaCliff.Caves",
+      "Level.SpawnPoint.SeaCliff.Entry",
+      "Level.SpawnPoint.SeaCliff.Exit",
+      "Level.SpawnPoint.SeaCliff.FloodedBuildings",
+      "Level.SpawnPoint.SeaCliff.ManorDoor",
+      "Level.SpawnPoint.SeaCliff.PaintressShrine",
+      "Level.SpawnPoint.SeaCliff.ZeppelinEntry"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.SeaCliff.ZeppelinEntry",
+    "CustomName": "Stone Wave Cliffs - Entrance",
+    "LevelAsset": "Level_SeaCliff_Main_V2",
+    "LevelScaling": 19,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.SeaCliff.BasaltWaves",
+      "Level.SpawnPoint.SeaCliff.Caves",
+      "Level.SpawnPoint.SeaCliff.Entry",
+      "Level.SpawnPoint.SeaCliff.Exit",
+      "Level.SpawnPoint.SeaCliff.FloodedBuildings",
+      "Level.SpawnPoint.SeaCliff.ManorDoor",
+      "Level.SpawnPoint.SeaCliff.PaintressShrine",
+      "Level.SpawnPoint.SeaCliff.Village"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.SimonArea.Abyss",
+    "CustomName": "The Abyss - Simon",
+    "LevelAsset": "SmallLevel_SimonArea",
+    "LevelScaling": 99,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.SimonArea.Entry"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.SimonArea.Entry",
+    "CustomName": "The Abyss - Entry",
+    "LevelAsset": "SmallLevel_SimonArea",
+    "LevelScaling": 99,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.SimonArea.Abyss"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.SimonArea",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.SinisterCave.Entrance",
+    "CustomName": "Sinister Cave - Entrance",
+    "LevelAsset": "Level_Cave_InvisibleCave",
+    "LevelScaling": 38,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.SinisterCaveEntry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.Sirene.Ballet",
+    "CustomName": "Sirene - Dancing Classes",
+    "LevelAsset": "Level_Sirene_Main_V2",
+    "LevelScaling": 37,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.Sirene.Couturier",
+      "Level.SpawnPoint.Sirene.Entry",
+      "Level.SpawnPoint.Sirene.Glissando",
+      "Level.SpawnPoint.Sirene.ManorDoor",
+      "Level.SpawnPoint.Sirene.SirenArena"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.Sirene.Couturier",
+    "CustomName": "Sirene - Sewing Atelier",
+    "LevelAsset": "Level_Sirene_Main_V2",
+    "LevelScaling": 37,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.Sirene.Ballet",
+      "Level.SpawnPoint.Sirene.Entry",
+      "Level.SpawnPoint.Sirene.Glissando",
+      "Level.SpawnPoint.Sirene.ManorDoor",
+      "Level.SpawnPoint.Sirene.SirenArena"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": [
+      "Story.SireneHeartAquired"
+    ]
+  },
+  {
+    "CodeName": "Level.SpawnPoint.Sirene.Entry",
+    "CustomName": "Sirene - Entry",
+    "LevelAsset": "Level_Sirene_Main_V2",
+    "LevelScaling": 37,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.Sirene.Ballet",
+      "Level.SpawnPoint.Sirene.Couturier",
+      "Level.SpawnPoint.Sirene.Glissando",
+      "Level.SpawnPoint.Sirene.ManorDoor",
+      "Level.SpawnPoint.Sirene.SirenArena"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.SireneEntry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.Sirene.Glissando",
+    "CustomName": "Sirene - Crumbling Path",
+    "LevelAsset": "Level_Sirene_Main_V2",
+    "LevelScaling": 37,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.Sirene.Ballet",
+      "Level.SpawnPoint.Sirene.Couturier",
+      "Level.SpawnPoint.Sirene.Entry",
+      "Level.SpawnPoint.Sirene.ManorDoor",
+      "Level.SpawnPoint.Sirene.SirenArena"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.Sirene.ManorDoor",
+    "CustomName": "Sirene - Manor Door",
+    "LevelAsset": "Level_Sirene_Main_V2",
+    "LevelScaling": 37,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.Sirene.Ballet",
+      "Level.SpawnPoint.Sirene.Couturier",
+      "Level.SpawnPoint.Sirene.Entry",
+      "Level.SpawnPoint.Sirene.Glissando",
+      "Level.SpawnPoint.Sirene.SirenArena"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.Sirene.SirenArena",
+    "CustomName": "Sirene - Dancing Arena",
+    "LevelAsset": "Level_Sirene_Main_V2",
+    "LevelScaling": 37,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.Sirene.Ballet",
+      "Level.SpawnPoint.Sirene.Couturier",
+      "Level.SpawnPoint.Sirene.Entry",
+      "Level.SpawnPoint.Sirene.Glissando",
+      "Level.SpawnPoint.Sirene.ManorDoor"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.SireneSmallLevel.Entry",
+    "CustomName": "Sirene's Dress - Entrance",
+    "LevelAsset": "SmallLevel_Sirene_MusicHear",
+    "LevelScaling": 60,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.SireneSmallLevel.Inside"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.SireneSmallLevelEntry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.SireneSmallLevel.Inside",
+    "CustomName": "Sirene's Dress - Glissando",
+    "LevelAsset": "SmallLevel_Sirene_MusicHear",
+    "LevelScaling": 60,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.SireneSmallLevel.Entry"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.SkyIsland.Entry",
+    "CustomName": "Sky Island - Entrance",
+    "LevelAsset": "SmallLevel_FA_Zone_01",
+    "LevelScaling": 60,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.SkyIsland",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.SmallBourgeon.Entry",
+    "CustomName": "The Small Bourgeon - Entrance",
+    "LevelAsset": "SmallLevel_GL_Zone_01",
+    "LevelScaling": 13,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.SmallBourgeon",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.SmallLevelVisages.Bridge",
+    "CustomName": "Isle of the Eyes - Bridge",
+    "LevelAsset": "SmallLevel_MF_Zone_01",
+    "LevelScaling": 65,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.SmallLevelVisages.Entry"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.SmallLevelVisages.Entry",
+    "CustomName": "Isle of the Eyes - Entrance",
+    "LevelAsset": "SmallLevel_MF_Zone_01",
+    "LevelScaling": 65,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.SmallLevelVisages.Bridge"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.VisagesSmallLevelEntry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.SpringMeadows.DestroyedHome",
+    "CustomName": "Spring Meadows - Destroyed Home",
+    "LevelAsset": "Level_SpringMeadows_Main_V2",
+    "LevelScaling": 3,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.SpringMeadows.Entry",
+      "Level.SpawnPoint.SpringMeadows.Eveque",
+      "Level.SpawnPoint.SpringMeadows.GrandArea",
+      "Level.SpawnPoint.SpringMeadows.MeadowsCorridor",
+      "Level.SpawnPoint.SpringMeadows.OldExpeditionnerCamp",
+      "Level.SpawnPoint.SpringMeadows.TreeExit"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.SpringMeadows.Entry",
+    "CustomName": "Spring Meadows - Entrance",
+    "LevelAsset": "Level_SpringMeadows_Main_V2",
+    "LevelScaling": 3,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.SpringMeadows.DestroyedHome",
+      "Level.SpawnPoint.SpringMeadows.Eveque",
+      "Level.SpawnPoint.SpringMeadows.GrandArea",
+      "Level.SpawnPoint.SpringMeadows.MeadowsCorridor",
+      "Level.SpawnPoint.SpringMeadows.OldExpeditionnerCamp",
+      "Level.SpawnPoint.SpringMeadows.TreeExit"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.SpringMeadowsEntry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.SpringMeadows.Eveque",
+    "CustomName": "Spring Meadows - The Indigo Tree",
+    "LevelAsset": "Level_SpringMeadows_Main_V2",
+    "LevelScaling": 3,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.SpringMeadows.DestroyedHome",
+      "Level.SpawnPoint.SpringMeadows.Entry",
+      "Level.SpawnPoint.SpringMeadows.GrandArea",
+      "Level.SpawnPoint.SpringMeadows.MeadowsCorridor",
+      "Level.SpawnPoint.SpringMeadows.OldExpeditionnerCamp",
+      "Level.SpawnPoint.SpringMeadows.TreeExit"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.SpringMeadows.GrandArea",
+    "CustomName": "Spring Meadows - Grand Meadow",
+    "LevelAsset": "Level_SpringMeadows_Main_V2",
+    "LevelScaling": 3,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.SpringMeadows.DestroyedHome",
+      "Level.SpawnPoint.SpringMeadows.Entry",
+      "Level.SpawnPoint.SpringMeadows.Eveque",
+      "Level.SpawnPoint.SpringMeadows.MeadowsCorridor",
+      "Level.SpawnPoint.SpringMeadows.OldExpeditionnerCamp",
+      "Level.SpawnPoint.SpringMeadows.TreeExit"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.SpringMeadows.MeadowsCorridor",
+    "CustomName": "Spring Meadows - Meadows Corridor",
+    "LevelAsset": "Level_SpringMeadows_Main_V2",
+    "LevelScaling": 3,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.SpringMeadows.DestroyedHome",
+      "Level.SpawnPoint.SpringMeadows.Entry",
+      "Level.SpawnPoint.SpringMeadows.Eveque",
+      "Level.SpawnPoint.SpringMeadows.GrandArea",
+      "Level.SpawnPoint.SpringMeadows.OldExpeditionnerCamp",
+      "Level.SpawnPoint.SpringMeadows.TreeExit"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.SpringMeadows.OldExpeditionnerCamp",
+    "CustomName": "Spring Meadows - Abandoned Expeditioner Camp",
+    "LevelAsset": "Level_SpringMeadows_Main_V2",
+    "LevelScaling": 3,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.SpringMeadows.DestroyedHome",
+      "Level.SpawnPoint.SpringMeadows.Entry",
+      "Level.SpawnPoint.SpringMeadows.Eveque",
+      "Level.SpawnPoint.SpringMeadows.GrandArea",
+      "Level.SpawnPoint.SpringMeadows.MeadowsCorridor",
+      "Level.SpawnPoint.SpringMeadows.TreeExit"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.SpringMeadows.TreeExit",
+    "CustomName": "Spring Meadows - Indigo Tree Branches",
+    "LevelAsset": "Level_SpringMeadows_Main_V2",
+    "LevelScaling": 3,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.SpringMeadows.DestroyedHome",
+      "Level.SpawnPoint.SpringMeadows.Entry",
+      "Level.SpawnPoint.SpringMeadows.Eveque",
+      "Level.SpawnPoint.SpringMeadows.GrandArea",
+      "Level.SpawnPoint.SpringMeadows.MeadowsCorridor",
+      "Level.SpawnPoint.SpringMeadows.OldExpeditionnerCamp"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.StoneQuarry.Entry",
+    "CustomName": "Stone Quarry - Entrance",
+    "LevelAsset": "SmallLevel_FB_Zone_01",
+    "LevelScaling": 30,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.StoneQuarry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.StonewaveCliffsCave.Entry",
+    "CustomName": "Stone Wave Cliffs Cave - Entry",
+    "LevelAsset": "ConceptLevel_SeaCliff_V1",
+    "LevelScaling": 22,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.StonewaveCliffsCave.Vista"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.StonewaveCliffsCaveEntry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.StonewaveCliffsCave.Vista",
+    "CustomName": "Stone Wave Cliffs Cave - Entrance",
+    "LevelAsset": "ConceptLevel_SeaCliff_V1",
+    "LevelScaling": 22,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.StonewaveCliffsCave.Entry"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.TheBarrier.Entry",
+    "CustomName": "The Barrier - Entry",
+    "LevelAsset": "Level_TheBarrier_Main_V1",
+    "LevelScaling": 41,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.TheCanvas.Entrance",
+    "CustomName": "The Canvas - Entrance",
+    "LevelAsset": "Level_Monolith_Interior_PaintressGrandFinale_Main",
+    "LevelScaling": 55,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.TheCanvasEntry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.TheCarrousel.Entrance",
+    "CustomName": "The Carousel - Entrance",
+    "LevelAsset": "SmallLevel_Carrousel",
+    "LevelScaling": 30,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.CarrouselEntrance",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.TheChosenPath.Entry",
+    "CustomName": "The Chosen Path - Entrance",
+    "LevelAsset": "Level_Bonus_ChosenPath",
+    "LevelScaling": 60,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.ChosenPath",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.TheFountain.Entry",
+    "CustomName": "The Fountain - Entrance",
+    "LevelAsset": "SmallLevel_SM_Zone_01",
+    "LevelScaling": 80,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.TheFountain",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.TwilightSanctuary.Arena",
+    "CustomName": "Endless Night Sanctuary - Warrior's Route",
+    "LevelAsset": "Level_Side_TwilightSanctuary",
+    "LevelScaling": 73,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.TwilightSanctuary.Entry",
+      "Level.SpawnPoint.TwilightSanctuary.Totem"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.TwilightSanctuary.Entry",
+    "CustomName": "Endless Night Sanctuary - Entrance",
+    "LevelAsset": "Level_Side_TwilightSanctuary",
+    "LevelScaling": 73,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.TwilightSanctuary.Arena",
+      "Level.SpawnPoint.TwilightSanctuary.Totem"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.TwilightSanctuaryEntry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.TwilightSanctuary.Totem",
+    "CustomName": "Endless Night Sanctuary - Night Totem",
+    "LevelAsset": "Level_Side_TwilightSanctuary",
+    "LevelScaling": 73,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.TwilightSanctuary.Arena",
+      "Level.SpawnPoint.TwilightSanctuary.Entry"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.VersosDraft.CandyLand",
+    "CustomName": "Verso's Drafts - Candy Land",
+    "LevelAsset": "Level_Side_VersosDraft",
+    "LevelScaling": 86,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.VersosDraft.CandyLandDeadZone1",
+      "Level.SpawnPoint.VersosDraft.CandyLandDeadZone2",
+      "Level.SpawnPoint.VersosDraft.Entry",
+      "Level.SpawnPoint.VersosDraft.Exit",
+      "Level.SpawnPoint.VersosDraft.ForestDeadZone1",
+      "Level.SpawnPoint.VersosDraft.ForestDeadZone2",
+      "Level.SpawnPoint.VersosDraft.GestralBaths",
+      "Level.SpawnPoint.VersosDraft.GooglyEyesDoor",
+      "Level.SpawnPoint.VersosDraft.LicornapiedStation",
+      "Level.SpawnPoint.VersosDraft.OpenField"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.VersosDraft.CandyLandDeadZone1",
+    "CustomName": "Verso's Drafts - Candy Land Dead Zone1",
+    "LevelAsset": "Level_Side_VersosDraft",
+    "LevelScaling": 86,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.VersosDraft.CandyLand",
+      "Level.SpawnPoint.VersosDraft.CandyLandDeadZone2",
+      "Level.SpawnPoint.VersosDraft.Entry",
+      "Level.SpawnPoint.VersosDraft.Exit",
+      "Level.SpawnPoint.VersosDraft.ForestDeadZone1",
+      "Level.SpawnPoint.VersosDraft.ForestDeadZone2",
+      "Level.SpawnPoint.VersosDraft.GestralBaths",
+      "Level.SpawnPoint.VersosDraft.GooglyEyesDoor",
+      "Level.SpawnPoint.VersosDraft.LicornapiedStation",
+      "Level.SpawnPoint.VersosDraft.OpenField"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.VersosDraft.CandyLandDeadZone2",
+    "CustomName": "Verso's Drafts - Candy Land Dead Zone2",
+    "LevelAsset": "Level_Side_VersosDraft",
+    "LevelScaling": 86,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.VersosDraft.CandyLand",
+      "Level.SpawnPoint.VersosDraft.CandyLandDeadZone1",
+      "Level.SpawnPoint.VersosDraft.Entry",
+      "Level.SpawnPoint.VersosDraft.Exit",
+      "Level.SpawnPoint.VersosDraft.ForestDeadZone1",
+      "Level.SpawnPoint.VersosDraft.ForestDeadZone2",
+      "Level.SpawnPoint.VersosDraft.GestralBaths",
+      "Level.SpawnPoint.VersosDraft.GooglyEyesDoor",
+      "Level.SpawnPoint.VersosDraft.LicornapiedStation",
+      "Level.SpawnPoint.VersosDraft.OpenField"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.VersosDraft.Entry",
+    "CustomName": "Verso's Drafts - Entrance",
+    "LevelAsset": "Level_Side_VersosDraft",
+    "LevelScaling": 86,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.VersosDraft.CandyLand",
+      "Level.SpawnPoint.VersosDraft.CandyLandDeadZone1",
+      "Level.SpawnPoint.VersosDraft.CandyLandDeadZone2",
+      "Level.SpawnPoint.VersosDraft.Exit",
+      "Level.SpawnPoint.VersosDraft.ForestDeadZone1",
+      "Level.SpawnPoint.VersosDraft.ForestDeadZone2",
+      "Level.SpawnPoint.VersosDraft.GestralBaths",
+      "Level.SpawnPoint.VersosDraft.GooglyEyesDoor",
+      "Level.SpawnPoint.VersosDraft.LicornapiedStation",
+      "Level.SpawnPoint.VersosDraft.OpenField"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.VersosDraftEntry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.VersosDraft.Exit",
+    "CustomName": "Verso's Drafts - Exit",
+    "LevelAsset": "Level_Side_VersosDraft",
+    "LevelScaling": 86,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.VersosDraft.CandyLand",
+      "Level.SpawnPoint.VersosDraft.CandyLandDeadZone1",
+      "Level.SpawnPoint.VersosDraft.CandyLandDeadZone2",
+      "Level.SpawnPoint.VersosDraft.Entry",
+      "Level.SpawnPoint.VersosDraft.ForestDeadZone1",
+      "Level.SpawnPoint.VersosDraft.ForestDeadZone2",
+      "Level.SpawnPoint.VersosDraft.GestralBaths",
+      "Level.SpawnPoint.VersosDraft.GooglyEyesDoor",
+      "Level.SpawnPoint.VersosDraft.LicornapiedStation",
+      "Level.SpawnPoint.VersosDraft.OpenField"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.VersosDraft.ForestDeadZone1",
+    "CustomName": "Verso's Drafts - Forest Dead Zone1",
+    "LevelAsset": "Level_Side_VersosDraft",
+    "LevelScaling": 86,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.VersosDraft.CandyLand",
+      "Level.SpawnPoint.VersosDraft.CandyLandDeadZone1",
+      "Level.SpawnPoint.VersosDraft.CandyLandDeadZone2",
+      "Level.SpawnPoint.VersosDraft.Entry",
+      "Level.SpawnPoint.VersosDraft.Exit",
+      "Level.SpawnPoint.VersosDraft.ForestDeadZone2",
+      "Level.SpawnPoint.VersosDraft.GestralBaths",
+      "Level.SpawnPoint.VersosDraft.GooglyEyesDoor",
+      "Level.SpawnPoint.VersosDraft.LicornapiedStation",
+      "Level.SpawnPoint.VersosDraft.OpenField"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.VersosDraft.ForestDeadZone2",
+    "CustomName": "Verso's Drafts - Forest Dead Zone2",
+    "LevelAsset": "Level_Side_VersosDraft",
+    "LevelScaling": 86,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.VersosDraft.CandyLand",
+      "Level.SpawnPoint.VersosDraft.CandyLandDeadZone1",
+      "Level.SpawnPoint.VersosDraft.CandyLandDeadZone2",
+      "Level.SpawnPoint.VersosDraft.Entry",
+      "Level.SpawnPoint.VersosDraft.Exit",
+      "Level.SpawnPoint.VersosDraft.ForestDeadZone1",
+      "Level.SpawnPoint.VersosDraft.GestralBaths",
+      "Level.SpawnPoint.VersosDraft.GooglyEyesDoor",
+      "Level.SpawnPoint.VersosDraft.LicornapiedStation",
+      "Level.SpawnPoint.VersosDraft.OpenField"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.VersosDraft.GestralBaths",
+    "CustomName": "Verso's Drafts - Gestral Baths",
+    "LevelAsset": "Level_Side_VersosDraft",
+    "LevelScaling": 86,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.VersosDraft.CandyLand",
+      "Level.SpawnPoint.VersosDraft.CandyLandDeadZone1",
+      "Level.SpawnPoint.VersosDraft.CandyLandDeadZone2",
+      "Level.SpawnPoint.VersosDraft.Entry",
+      "Level.SpawnPoint.VersosDraft.Exit",
+      "Level.SpawnPoint.VersosDraft.ForestDeadZone1",
+      "Level.SpawnPoint.VersosDraft.ForestDeadZone2",
+      "Level.SpawnPoint.VersosDraft.GooglyEyesDoor",
+      "Level.SpawnPoint.VersosDraft.LicornapiedStation",
+      "Level.SpawnPoint.VersosDraft.OpenField"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.VersosDraft.GooglyEyesDoor",
+    "CustomName": "Verso's Drafts - Reverie Path",
+    "LevelAsset": "Level_Side_VersosDraft",
+    "LevelScaling": 86,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.VersosDraft.CandyLand",
+      "Level.SpawnPoint.VersosDraft.CandyLandDeadZone1",
+      "Level.SpawnPoint.VersosDraft.CandyLandDeadZone2",
+      "Level.SpawnPoint.VersosDraft.Entry",
+      "Level.SpawnPoint.VersosDraft.Exit",
+      "Level.SpawnPoint.VersosDraft.ForestDeadZone1",
+      "Level.SpawnPoint.VersosDraft.ForestDeadZone2",
+      "Level.SpawnPoint.VersosDraft.GestralBaths",
+      "Level.SpawnPoint.VersosDraft.LicornapiedStation",
+      "Level.SpawnPoint.VersosDraft.OpenField"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.VersosDraft.LicornapiedStation",
+    "CustomName": "Verso's Drafts - Licornapieds Station",
+    "LevelAsset": "Level_Side_VersosDraft",
+    "LevelScaling": 86,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.VersosDraft.CandyLand",
+      "Level.SpawnPoint.VersosDraft.CandyLandDeadZone1",
+      "Level.SpawnPoint.VersosDraft.CandyLandDeadZone2",
+      "Level.SpawnPoint.VersosDraft.Entry",
+      "Level.SpawnPoint.VersosDraft.Exit",
+      "Level.SpawnPoint.VersosDraft.ForestDeadZone1",
+      "Level.SpawnPoint.VersosDraft.ForestDeadZone2",
+      "Level.SpawnPoint.VersosDraft.GestralBaths",
+      "Level.SpawnPoint.VersosDraft.GooglyEyesDoor",
+      "Level.SpawnPoint.VersosDraft.OpenField"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.VersosDraft.OpenField",
+    "CustomName": "Verso's Drafts - Open Playground",
+    "LevelAsset": "Level_Side_VersosDraft",
+    "LevelScaling": 86,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.VersosDraft.CandyLand",
+      "Level.SpawnPoint.VersosDraft.CandyLandDeadZone1",
+      "Level.SpawnPoint.VersosDraft.CandyLandDeadZone2",
+      "Level.SpawnPoint.VersosDraft.Entry",
+      "Level.SpawnPoint.VersosDraft.Exit",
+      "Level.SpawnPoint.VersosDraft.ForestDeadZone1",
+      "Level.SpawnPoint.VersosDraft.ForestDeadZone2",
+      "Level.SpawnPoint.VersosDraft.GestralBaths",
+      "Level.SpawnPoint.VersosDraft.GooglyEyesDoor",
+      "Level.SpawnPoint.VersosDraft.LicornapiedStation"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.Visages.Anger",
+    "CustomName": "Visages - Anger Vale",
+    "LevelAsset": "Level_Visages_Main_V1",
+    "LevelScaling": 32,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.Visages.Entry",
+      "Level.SpawnPoint.Visages.Joy",
+      "Level.SpawnPoint.Visages.ManorDoor",
+      "Level.SpawnPoint.Visages.Plazza",
+      "Level.SpawnPoint.Visages.Sadness",
+      "Level.SpawnPoint.Visages.VisagesArena"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.Visages.Entry",
+    "CustomName": "Visages - Entry",
+    "LevelAsset": "Level_Visages_Main_V1",
+    "LevelScaling": 32,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.Visages.Anger",
+      "Level.SpawnPoint.Visages.Joy",
+      "Level.SpawnPoint.Visages.ManorDoor",
+      "Level.SpawnPoint.Visages.Plazza",
+      "Level.SpawnPoint.Visages.Sadness",
+      "Level.SpawnPoint.Visages.VisagesArena"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.VisagesEntry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.Visages.Joy",
+    "CustomName": "Visages - Joy Vale",
+    "LevelAsset": "Level_Visages_Main_V1",
+    "LevelScaling": 32,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.Visages.Anger",
+      "Level.SpawnPoint.Visages.Entry",
+      "Level.SpawnPoint.Visages.ManorDoor",
+      "Level.SpawnPoint.Visages.Plazza",
+      "Level.SpawnPoint.Visages.Sadness",
+      "Level.SpawnPoint.Visages.VisagesArena"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.Visages.ManorDoor",
+    "CustomName": "Visages - Manor Door",
+    "LevelAsset": "Level_Visages_Main_V1",
+    "LevelScaling": 32,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.Visages.Anger",
+      "Level.SpawnPoint.Visages.Entry",
+      "Level.SpawnPoint.Visages.Joy",
+      "Level.SpawnPoint.Visages.Plazza",
+      "Level.SpawnPoint.Visages.Sadness",
+      "Level.SpawnPoint.Visages.VisagesArena"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.Visages.Plazza",
+    "CustomName": "Visages - Plazza",
+    "LevelAsset": "Level_Visages_Main_V1",
+    "LevelScaling": 32,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.Visages.Anger",
+      "Level.SpawnPoint.Visages.Entry",
+      "Level.SpawnPoint.Visages.Joy",
+      "Level.SpawnPoint.Visages.ManorDoor",
+      "Level.SpawnPoint.Visages.Sadness",
+      "Level.SpawnPoint.Visages.VisagesArena"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": [
+      "Story.VisagesHeartAquired"
+    ]
+  },
+  {
+    "CodeName": "Level.SpawnPoint.Visages.Sadness",
+    "CustomName": "Visages - Sadness Vale",
+    "LevelAsset": "Level_Visages_Main_V1",
+    "LevelScaling": 32,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.Visages.Anger",
+      "Level.SpawnPoint.Visages.Entry",
+      "Level.SpawnPoint.Visages.Joy",
+      "Level.SpawnPoint.Visages.ManorDoor",
+      "Level.SpawnPoint.Visages.Plazza",
+      "Level.SpawnPoint.Visages.VisagesArena"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.Visages.VisagesArena",
+    "CustomName": "Visages - Peak",
+    "LevelAsset": "Level_Visages_Main_V1",
+    "LevelScaling": 32,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.Visages.Anger",
+      "Level.SpawnPoint.Visages.Entry",
+      "Level.SpawnPoint.Visages.Joy",
+      "Level.SpawnPoint.Visages.ManorDoor",
+      "Level.SpawnPoint.Visages.Plazza",
+      "Level.SpawnPoint.Visages.Sadness"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WhiteSands.Entry",
+    "CustomName": "White Sands - Entrance",
+    "LevelAsset": "Level_Monolith_Interior_Beach_Main",
+    "LevelScaling": 55,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.WhiteSandsEntry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.AbbestCaveEntry",
+    "CustomName": "World Map - Abbest Cave Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.WorldMap.SpringMeadowsEntry",
+      "Level.SpawnPoint.WorldMap.GobluEntry"
+    ],
+    "ConditionalConnections": {
+      "Shortcut.PostGO": [
+        "Special.WM.PostGO"
+      ],
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.AbbestCave.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.AncientSanctuaryEntry",
+    "CustomName": "World Map - Ancient Sanctuary Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.WorldMap.GobluExit",
+      "Level.SpawnPoint.WorldMap.EsquieNest",
+      "Level.SpawnPoint.WorldMap.GestralHiddenArena",
+      "Level.SpawnPoint.WorldMap.SmallBourgeon",
+      "Level.SpawnPoint.WorldMap.RedWoodsEntry"
+    ],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.AncientSanctuary.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.AncientSanctuaryExit",
+    "CustomName": "World Map - Ancient Sanctuary Exit",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.WorldMap.GestralVillageEntry"
+    ],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.AncientSanctuary.Exit",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.AxonPathEntry",
+    "CustomName": "World Map - Axon Path Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.SeaNorth"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.AxonPath.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.Barrier",
+    "CustomName": "World Map - Barrier Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.BarrierDestroyed",
+    "CustomName": "World Map - Barrier Destroyed Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.BladesGraveyardEntry",
+    "CustomName": "World Map - Blades Graveyard Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "EsquieAbility.Swim": [
+        "Special.WM.SeaSouth"
+      ],
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.BladeGraveyard.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.BoatGraveyardBlueEntry",
+    "CustomName": "World Map - Boat Graveyard Blue Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.BoatGraveyardBlue.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.BoatGraveyardPurpleEntry",
+    "CustomName": "World Map - Boat Graveyard Purple Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "EsquieAbility.Swim": [
+        "Special.WM.SeaNorth"
+      ],
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.BoatGraveyardPurple.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.CarrouselEntrance",
+    "CustomName": "World Map - Carrousel Entrance Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.WorldMap.MonocoStationEntryFrozenHearts",
+      "Level.SpawnPoint.WorldMap.FrozenHeartsEntry"
+    ],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.TheCarrousel.Entrance",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.CavernCrusherEntry",
+    "CustomName": "World Map - Cavern Crusher Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.CavernCrusher.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.ChosenPath",
+    "CustomName": "World Map - Chosen Path Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.TheChosenPath.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.ChromaZoneEntrance",
+    "CustomName": "World Map - Chroma Zone Entrance Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.ChromaZoneEntrance.Portal",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.CleaOrangeForestEntry",
+    "CustomName": "World Map - Clea Orange Forest Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.WorldMap.YellowForestExit"
+    ],
+    "ConditionalConnections": {
+      "EsquieAbility.Swim": [
+        "Special.WM.SeaNorth"
+      ],
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.CleaOrangeForest.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.CleaWorkshop1Entry",
+    "CustomName": "World Map - Clea Workshop1 Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "EsquieAbility.Swim": [
+        "Special.WM.SeaSouth"
+      ],
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.CleaWorkshop2Entry",
+    "CustomName": "World Map - Clea Workshop2 Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.CleaWorkshop3Entry",
+    "CustomName": "World Map - Clea Workshop3 Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.CleasFlyingHouseEntry",
+    "CustomName": "World Map - Cleas Flying House Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.CleasFlyingHouse.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.CleasTowerEntrance",
+    "CustomName": "World Map - Cleas Tower Entrance Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.CoastalCaveEntry",
+    "CustomName": "World Map - Coastal Cave Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "EsquieAbility.Swim": [
+        "Special.WM.PostFB"
+      ],
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.CrulerBruler.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.DarkGestralArenaEntry",
+    "CustomName": "World Map - Dark Gestral Arena Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.DarkGestralArena.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.DarkShores",
+    "CustomName": "World Map - Dark Shores Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.DarkShoresEntrance",
+    "CustomName": "World Map - Dark Shores Entrance Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "EsquieAbility.Swim": [
+        "Special.WM.SeaSouth"
+      ],
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.DarkShores.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.DarkShoresExit",
+    "CustomName": "World Map - Dark Shores Exit",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.DoorMazeEntry",
+    "CustomName": "World Map - Door Maze Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.WorldMap.MonocoStationEntryOldLumiere",
+      "Level.SpawnPoint.WorldMap.OldLumiereEntry"
+    ],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.DoorMaze.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.Dynamic",
+    "CustomName": "World Map - Dynamic Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.EsquieNest",
+    "CustomName": "World Map - Esquie Nest Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.WorldMap.GobluExit",
+      "Level.SpawnPoint.WorldMap.AncientSanctuaryEntry",
+      "Level.SpawnPoint.WorldMap.GestralHiddenArena",
+      "Level.SpawnPoint.WorldMap.SmallBourgeon",
+      "Level.SpawnPoint.WorldMap.RedWoodsEntry"
+    ],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.EsquieNest.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.FloatingCemeteryEntry",
+    "CustomName": "World Map - Floating Cemetery Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.Cemetery.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.FlyingCasino",
+    "CustomName": "World Map - Flying Casino Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.FlyingCasino.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.ForgottenBattlefieldEntry",
+    "CustomName": "World Map - Forgotten Battlefield Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "EsquieAbility.Swim": [
+        "Special.WM.SeaSouth"
+      ],
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.ForgottenBattlefield.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.ForgottenBattlefieldExit",
+    "CustomName": "World Map - Forgotten Battlefield Exit",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.WorldMap.StoneQuarry",
+      "Level.SpawnPoint.WorldMap.MonocoStationEntryForgotten"
+    ],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.ForgottenBattlefield.Exit",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.FrozenHeartsEntry",
+    "CustomName": "World Map - Frozen Hearts Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.WorldMap.MonocoStationEntryFrozenHearts",
+      "Level.SpawnPoint.WorldMap.CarrouselEntrance"
+    ],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.FrozenHearts.Entrance",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.GestralBeach_1",
+    "CustomName": "World Map - Gestral Beach_1 Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.GestralBeach_2",
+    "CustomName": "World Map - Gestral Beach_2 Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.GestralHiddenArena",
+    "CustomName": "World Map - Gestral Hidden Arena Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.WorldMap.GobluExit",
+      "Level.SpawnPoint.WorldMap.AncientSanctuaryEntry",
+      "Level.SpawnPoint.WorldMap.EsquieNest",
+      "Level.SpawnPoint.WorldMap.SmallBourgeon",
+      "Level.SpawnPoint.WorldMap.RedWoodsEntry"
+    ],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.GestralHiddenArena.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.GestralTreeCityEntry",
+    "CustomName": "World Map - Gestral Tree City Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.GestralTreeCity.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.GestralVillageEntry",
+    "CustomName": "World Map - Gestral Village Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.WorldMap.AncientSanctuaryExit"
+    ],
+    "ConditionalConnections": {
+      "Story.EsquiePassword": [
+        "Special.WM.PostGO"
+      ],
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.GestralVillage.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.Gestralbeach_3",
+    "CustomName": "World Map - Gestralbeach_3 Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.Gestralbeach_4",
+    "CustomName": "World Map - Gestralbeach_4 Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.Gestralbeach_5",
+    "CustomName": "World Map - Gestralbeach_5 Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.GobluEntry",
+    "CustomName": "World Map - Goblu Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.WorldMap.AbbestCaveEntry",
+      "Level.SpawnPoint.WorldMap.SpringMeadowsEntry"
+    ],
+    "ConditionalConnections": {
+      "Shortcut.PostGO": [
+        "Special.WM.PostGO"
+      ],
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.Goblu.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.GobluExit",
+    "CustomName": "World Map - Goblu Exit",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.WorldMap.AncientSanctuaryEntry",
+      "Level.SpawnPoint.WorldMap.EsquieNest",
+      "Level.SpawnPoint.WorldMap.GestralHiddenArena",
+      "Level.SpawnPoint.WorldMap.SmallBourgeon",
+      "Level.SpawnPoint.WorldMap.RedWoodsEntry"
+    ],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.Goblu.Exit",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.LostWoods",
+    "CustomName": "World Map - Lost Woods Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.LostWoods.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.Lumiere",
+    "CustomName": "World Map - Lumiere Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.LumiereAct03.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.ManorDoor1",
+    "CustomName": "World Map - Manor Door1 Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.ManorDoor2",
+    "CustomName": "World Map - Manor Door2 Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.MiniSpringMeadowEntry",
+    "CustomName": "World Map - Mini Spring Meadow Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "EsquieAbility.Swim": [
+        "Special.WM.SeaSouth"
+      ],
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.MiniSpringMeadow.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.MiniWhiteTreeEntry",
+    "CustomName": "World Map - Mini White Tree Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "EsquieAbility.Swim": [
+        "Special.WM.SeaSouth"
+      ],
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.MiniWhiteTree.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.MonocoStationEntry",
+    "CustomName": "World Map - Monoco Station Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.MonocoStationEntryForgotten",
+    "CustomName": "World Map - Monoco Station Entry Forgotten Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.WorldMap.ForgottenBattlefieldExit",
+      "Level.SpawnPoint.WorldMap.StoneQuarry"
+    ],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.MonocoStation.EntryForgotten",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.MonocoStationEntryFrozenHearts",
+    "CustomName": "World Map - Monoco Station Entry Frozen Hearts Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.WorldMap.CarrouselEntrance",
+      "Level.SpawnPoint.WorldMap.FrozenHeartsEntry"
+    ],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.MonocoStation.EntryFrozenHearts",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.MonocoStationEntryOldLumiere",
+    "CustomName": "World Map - Monoco Station Entry Old Lumiere Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.WorldMap.OldLumiereEntry",
+      "Level.SpawnPoint.WorldMap.DoorMazeEntry"
+    ],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.MonocoStation.EntryOldLumiere",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.MonolithInteriorEntry",
+    "CustomName": "World Map - Monolith Interior Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "EsquieAbility.Swim": [
+        "Special.WM.SeaNorth"
+      ],
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.MonolithInterior.Climb.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.OldLumiereEntry",
+    "CustomName": "World Map - Old Lumiere Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.WorldMap.MonocoStationEntryOldLumiere",
+      "Level.SpawnPoint.WorldMap.DoorMazeEntry"
+    ],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.OldLumiere.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.OldLumiereExit",
+    "CustomName": "World Map - Old Lumiere Exit",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "EsquieAbility.Swim": [
+        "Special.Dummy.WM.PostOLSwim"
+      ],
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.OldLumiere.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.PostEsquieNestForcedCamp",
+    "CustomName": "World Map - Post Esquie Nest Forced Camp Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.PostSeaCliffForcedCamp",
+    "CustomName": "World Map - Post Sea Cliff Forced Camp Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.ReacherCliff",
+    "CustomName": "World Map - Reacher Cliff Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.ReacherCliff.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.ReacherEntry",
+    "CustomName": "World Map - Reacher Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Level.SpawnPoint.Reacher.Entry"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.Reacher.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.RedForest",
+    "CustomName": "World Map - Red Forest Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.RedForest.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.RedWoodsEntry",
+    "CustomName": "World Map - Red Woods Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.WorldMap.GobluExit",
+      "Level.SpawnPoint.WorldMap.AncientSanctuaryEntry",
+      "Level.SpawnPoint.WorldMap.EsquieNest",
+      "Level.SpawnPoint.WorldMap.GestralHiddenArena",
+      "Level.SpawnPoint.WorldMap.SmallBourgeon"
+    ],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.RedWoods.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.SacredRiverEntry",
+    "CustomName": "World Map - Sacred River Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.SacredRiver.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.SeaCliffEntry",
+    "CustomName": "World Map - Sea Cliff Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.SeaCliff.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.SeaCliffExit",
+    "CustomName": "World Map - Sea Cliff Exit",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "EsquieAbility.Swim": [
+        "Special.WM.SeaSouth"
+      ],
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.SeaCliff.Exit",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.SimonArea",
+    "CustomName": "World Map - Simon Area Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.SimonArea.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.SinisterCaveEntry",
+    "CustomName": "World Map - Sinister Cave Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "EsquieAbility.Swim": [
+        "Special.WM.SeaNorth"
+      ],
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.SinisterCave.Entrance",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.SireneEntry",
+    "CustomName": "World Map - Sirene Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "EsquieAbility.Swim": [
+        "Special.WM.SeaNorth"
+      ],
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.Sirene.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.SireneSmallLevelEntry",
+    "CustomName": "World Map - Sirene Small Level Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.SireneSmallLevel.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.SkyIsland",
+    "CustomName": "World Map - Sky Island Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.SkyIsland.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.SmallBourgeon",
+    "CustomName": "World Map - Small Bourgeon Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.WorldMap.GobluExit",
+      "Level.SpawnPoint.WorldMap.AncientSanctuaryEntry",
+      "Level.SpawnPoint.WorldMap.EsquieNest",
+      "Level.SpawnPoint.WorldMap.GestralHiddenArena",
+      "Level.SpawnPoint.WorldMap.RedWoodsEntry"
+    ],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.SmallBourgeon.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.SpringMeadowsEntry",
+    "CustomName": "World Map - Spring Meadows Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.WorldMap.AbbestCaveEntry",
+      "Level.SpawnPoint.WorldMap.GobluEntry"
+    ],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.SpringMeadows.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.StoneQuarry",
+    "CustomName": "World Map - Stone Quarry Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.WorldMap.ForgottenBattlefieldExit",
+      "Level.SpawnPoint.WorldMap.MonocoStationEntryForgotten"
+    ],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.StoneQuarry.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.StonewaveCliffsCaveEntry",
+    "CustomName": "World Map - Stonewave Cliffs Cave Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "EsquieAbility.Swim": [
+        "Special.WM.SeaSouth"
+      ],
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.StonewaveCliffsCave.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.TheCanvasEntry",
+    "CustomName": "World Map - The Canvas Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.TheCanvas.Entrance",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.TheFountain",
+    "CustomName": "World Map - The Fountain Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.TheFountain.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.TheGreatestExpedition",
+    "CustomName": "World Map - The Greatest Expedition Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.TwilightSanctuaryEntry",
+    "CustomName": "World Map - Twilight Sanctuary Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.TwilightSanctuary.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.VersosDraftEntry",
+    "CustomName": "World Map - Versos Draft Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.VersosDraft.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.VisagesEntry",
+    "CustomName": "World Map - Visages Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "EsquieAbility.Swim": [
+        "Special.WM.SeaNorth"
+      ],
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.Visages.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.VisagesSmallLevelEntry",
+    "CustomName": "World Map - Visages Small Level Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.SmallLevelVisages.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.WhiteSandsEntry",
+    "CustomName": "World Map - White Sands Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.WhiteSands.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.YellowForestEntry",
+    "CustomName": "World Map - Yellow Forest Entry",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.YellowForest.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.WorldMap.YellowForestExit",
+    "CustomName": "World Map - Yellow Forest Exit",
+    "LevelAsset": "Level_WorldMap_Main_V2",
+    "LevelScaling": 1,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.WorldMap.CleaOrangeForestEntry"
+    ],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.WM.Fly"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.YellowForest.Exit",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.YellowForest.Arena",
+    "CustomName": "Yellow Harvest - Yellow Spire Wrecks",
+    "LevelAsset": "Level_YellowForest_Main",
+    "LevelScaling": 21,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.YellowForest.Entry",
+      "Level.SpawnPoint.YellowForest.Exit",
+      "Level.SpawnPoint.YellowForest.Lake"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.YellowForest.Entry",
+    "CustomName": "Yellow Harvest - Entrance",
+    "LevelAsset": "Level_YellowForest_Main",
+    "LevelScaling": 21,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.YellowForest.Arena",
+      "Level.SpawnPoint.YellowForest.Exit",
+      "Level.SpawnPoint.YellowForest.Lake"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.YellowForestEntry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.YellowForest.Exit",
+    "CustomName": "Yellow Harvest - Exit",
+    "LevelAsset": "Level_YellowForest_Main",
+    "LevelScaling": 21,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.YellowForest.Arena",
+      "Level.SpawnPoint.YellowForest.Entry",
+      "Level.SpawnPoint.YellowForest.Lake"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "Level.SpawnPoint.WorldMap.YellowForestExit",
+    "Keys": []
+  },
+  {
+    "CodeName": "Level.SpawnPoint.YellowForest.Lake",
+    "CustomName": "Yellow Harvest - Harvester's Hollow",
+    "LevelAsset": "Level_YellowForest_Main",
+    "LevelScaling": 21,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.YellowForest.Arena",
+      "Level.SpawnPoint.YellowForest.Entry",
+      "Level.SpawnPoint.YellowForest.Exit"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Special.Dummy.WM.PostMSShortcut",
+    "CustomName": "Special - Dummy for Post Monoco Station Shortcut",
+    "LevelAsset": "",
+    "LevelScaling": -1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Shortcut.PostMS": [
+        "Special.WM.PostFB"
+      ],
+      "EsquieAbility.Swim": [
+        "Special.GestralBeach.OnlyUp"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": [
+      "Shortcut.PostMS"
+    ]
+  },
+  {
+    "CodeName": "Special.Dummy.WM.PostMSSwim",
+    "CustomName": "Special - Dummy for Post Monoco Station Beach",
+    "LevelAsset": "",
+    "LevelScaling": -1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "EsquieAbility.Swim": [
+        "Special.WM.PostMS"
+      ],
+      "EsquieAbility.SwimPlus": [
+        "Special.WM.SeaNorth"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Special.Dummy.WM.PostOLSwim",
+    "CustomName": "Special - Dummy for Post Old Lumiere Beach",
+    "LevelAsset": "",
+    "LevelScaling": -1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "EsquieAbility.Swim": [
+        "Level.SpawnPoint.WorldMap.OldLumiereExit"
+      ],
+      "EsquieAbility.SwimPlus": [
+        "Special.WM.SeaNorth"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Special.Dummy.WM.SireneHeartAquiredFirst",
+    "CustomName": "Special - Dummy for Sirene Heart Get",
+    "LevelAsset": "",
+    "LevelScaling": -1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Special.Dummy.WM.VisagesHeartAquiredFirst",
+    "CustomName": "Special - Dummy for Visages Heart Get",
+    "LevelAsset": "",
+    "LevelScaling": -1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Special.Dummy.WM.BarrierBreakerAquired",
+    "CustomName": "Special - Dummy for Barrier Breaker Get",
+    "LevelAsset": "",
+    "LevelScaling": -1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": [
+      "Story.BarrierBreakerAquired"
+    ]
+  },
+  {
+    "CodeName": "Special.WM.PostGO",
+    "CustomName": "Special - World Map Area Post Flying Waters",
+    "LevelAsset": "",
+    "LevelScaling": -1,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.WorldMap.GobluExit",
+      "Level.SpawnPoint.WorldMap.AncientSanctuaryEntry",
+      "Level.SpawnPoint.WorldMap.EsquieNest",
+      "Level.SpawnPoint.WorldMap.GestralHiddenArena",
+      "Level.SpawnPoint.WorldMap.SmallBourgeon",
+      "Level.SpawnPoint.WorldMap.RedWoodsEntry",
+      "Special.GestralBeach.WipeOut"
+    ],
+    "ConditionalConnections": {
+      "Shortcut.PostGO": [
+        "Level.SpawnPoint.WorldMap.GobluEntry",
+        "Level.SpawnPoint.WorldMap.AbbestCaveEntry"
+      ],
+      "EsquieAbility.Car": [
+        "Special.WM.WithCar"
+      ],
+      "EsquieAbility.Swim": [
+        "Special.WM.SeaSouth"
+      ],
+      "Story.EsquiePassword": [
+        "Level.SpawnPoint.WorldMap.GestralVillageEntry"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": [
+      "Shortcut.PostGO"
+    ]
+  },
+  {
+    "CodeName": "Special.WM.WithCar",
+    "CustomName": "Special - World Map Area Post Meeting Esquie",
+    "LevelAsset": "",
+    "LevelScaling": -1,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.WorldMap.BoatGraveyardBlueEntry",
+      "Level.SpawnPoint.WorldMap.SeaCliffEntry",
+      "Level.SpawnPoint.WorldMap.YellowForestEntry"
+    ],
+    "ConditionalConnections": {
+      "EsquieAbility.Car": [
+        "Special.WM.PostGO"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Special.WM.SeaSouth",
+    "CustomName": "Special - World Map Area Southern Sea",
+    "LevelAsset": "",
+    "LevelScaling": -1,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.WorldMap.DarkShoresEntrance",
+      "Level.SpawnPoint.WorldMap.MiniSpringMeadowEntry",
+      "Level.SpawnPoint.WorldMap.StonewaveCliffsCaveEntry",
+      "Level.SpawnPoint.WorldMap.SeaCliffExit",
+      "Level.SpawnPoint.WorldMap.MiniWhiteTreeEntry",
+      "Special.GestralBeach.Volleyball",
+      "Level.SpawnPoint.WorldMap.BladesGraveyardEntry",
+      "Level.SpawnPoint.WorldMap.ForgottenBattlefieldEntry",
+      "Level.SpawnPoint.WorldMap.CleaWorkshop1Entry"
+    ],
+    "ConditionalConnections": {
+      "EsquieAbility.Swim": [
+        "Special.WM.PostGO"
+      ],
+      "EsquieAbility.SwimPlus": [
+        "Special.WM.SeaNorth"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Special.WM.SeaNorth",
+    "CustomName": "Special - World Map Area Northern Sea",
+    "LevelAsset": "",
+    "LevelScaling": -1,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.WorldMap.CleaOrangeForestEntry",
+      "Level.SpawnPoint.WorldMap.BoatGraveyardPurpleEntry",
+      "Special.WM.PostFB",
+      "Level.SpawnPoint.WorldMap.VisagesEntry",
+      "Level.SpawnPoint.WorldMap.SireneEntry",
+      "Level.SpawnPoint.WorldMap.SinisterCaveEntry",
+      "Level.SpawnPoint.WorldMap.MonolithInteriorEntry",
+      "Special.GestralBeach.Race"
+    ],
+    "ConditionalConnections": {
+      "EsquieAbility.SwimPlus": [
+        "Special.Dummy.WM.PostMSSwim",
+        "Special.Dummy.WM.PostOLSwim"
+      ],
+      "Story.Act3Reached": [
+        "Level.SpawnPoint.WorldMap.AxonPathEntry"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Special.WM.PostFB",
+    "CustomName": "Special - World Map Area Post Forgotten Battlefield",
+    "LevelAsset": "",
+    "LevelScaling": -1,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.WorldMap.ForgottenBattlefieldExit",
+      "Level.SpawnPoint.WorldMap.MonocoStationEntryForgotten",
+      "Level.SpawnPoint.WorldMap.CleaWorkshop2Entry",
+      "Level.SpawnPoint.WorldMap.StoneQuarry"
+    ],
+    "ConditionalConnections": {
+      "Shortcut.PostMS": [
+        "Special.Dummy.WM.PostMSShortcut"
+      ],
+      "EsquieAbility.Swim": [
+        "Special.WM.SeaNorth"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Special.WM.PostMS",
+    "CustomName": "Special - World Map Area Post Monoco Station",
+    "LevelAsset": "",
+    "LevelScaling": -1,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.WorldMap.MonocoStationEntryOldLumiere",
+      "Level.SpawnPoint.WorldMap.OldLumiereEntry",
+      "Level.SpawnPoint.WorldMap.DoorMazeEntry"
+    ],
+    "ConditionalConnections": {
+      "EsquieAbility.Swim": [
+        "Special.GestralBeach.OnlyUp",
+        "Special.Dummy.WM.PostMSSwim"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Special.WM.Fly",
+    "CustomName": "Special - World Map Area Flying",
+    "LevelAsset": "",
+    "LevelScaling": -1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Level.SpawnPoint.WorldMap.VersosDraftEntry"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Special.GestralBeach.WipeOut",
+    "CustomName": "Special - Gestral Beach Entrance: Parkour Course",
+    "LevelAsset": "",
+    "LevelScaling": -1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Special.GestralBeach.Volleyball",
+    "CustomName": "Special - Gestral Beach Entrance: Volleyball",
+    "LevelAsset": "",
+    "LevelScaling": -1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "EsquieAbility.Swim": [
+        "Special.WM.SeaSouth"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Special.GestralBeach.Race",
+    "CustomName": "Special - Gestral Beach Entrance: Time Race",
+    "LevelAsset": "",
+    "LevelScaling": -1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "EsquieAbility.Swim": [
+        "Special.WM.SeaNorth"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Special.GestralBeach.OnlyUp",
+    "CustomName": "Special - Gestral Beach Entrance: Gestral Ascension",
+    "LevelAsset": "",
+    "LevelScaling": -1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "EsquieAbility.Swim": [
+        "Special.Dummy.WM.PostMSShortcut"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Special.GestralBeach.GrandisMain",
+    "CustomName": "Special - Gestral Beach Entrance: Climb the Wall",
+    "LevelAsset": "",
+    "LevelScaling": -1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": []
+  }
+]

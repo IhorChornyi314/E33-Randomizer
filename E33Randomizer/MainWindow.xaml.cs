@@ -334,6 +334,9 @@ public class SettingsViewModel : INotifyPropertyChanged
     public int RandomEdgeChancePercent { get; set; } = 60;
     public bool MakeSkillsIntoItems { get; set; } = false;
     
+    public bool RandomizeLocations { get; set; } = false;
+    public bool ReduceLocationRepetition { get; set; } = false;
+    
     public bool RandomizeCharacters { get; set; } = false;
     
     

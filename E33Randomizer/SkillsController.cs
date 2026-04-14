@@ -8,8 +8,6 @@ namespace E33Randomizer;
 
 public class SkillsController: Controller<SkillData>
 {
-    private string _cleanSnapshot;
-
     public List<SkillGraph> SkillGraphs = new();
     public List<ItemData> SkillItems = new();
 
