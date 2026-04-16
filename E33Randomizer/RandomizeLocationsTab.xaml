@@ -33,7 +33,7 @@
                                 Margin="0,10,0,20"
                                 Background="Aqua"
                                 Click="CustomPlacementButton_Click" 
-                                Tag="Skill" />
+                                Tag="Location" />
                         <Button Name="EditLocationsButton"
                                 Content="Edit Individual Locations"
                                 Width="500"
@@ -43,7 +43,7 @@
                                 Margin="0,10,0,20"
                                 Background="Aqua"
                                 Click="EditButton_Click" 
-                                Tag="Skill" />
+                                Tag="Location" />
                     </StackPanel>
                 </Grid>
     </Grid>

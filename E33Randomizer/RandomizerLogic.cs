@@ -149,8 +149,8 @@ public static class RandomizerLogic
         rand = new Random(usedSeed);
     
         mappings = new Usmap($"{DataDirectory}/Mappings.usmap");
-        StaticFileChanger.Run();
         Controllers.InitControllers();
+        StaticFileChanger.Run();
         
         ConstructEnemyFrequenciesWithinArchetype();
         CustomEnemyPlacement = new();

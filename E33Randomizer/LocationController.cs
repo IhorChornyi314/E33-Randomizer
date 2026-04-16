@@ -1,14 +1,19 @@
 ﻿using System.Collections.ObjectModel;
 using System.IO;
 using Newtonsoft.Json;
+using UAssetAPI;
+using UAssetAPI.ExportTypes;
+using UAssetAPI.UnrealTypes;
 
 namespace E33Randomizer;
 
 public class LocationController: Controller<LocationData>
 {
     private LocationGraph _locationGraph = new LocationGraph();
-    private Dictionary<string, string> _destinationChanges = new();
+    public Dictionary<string, string> _destinationChanges = new();
     private List<string> _currentConstraints = new();
+    private UAsset _stringTableAsset;
+    
     public override void Initialize()
     {
         ReadObjectsData($"{RandomizerLogic.DataDirectory}/location_data.json");
@@ -17,6 +22,7 @@ public class LocationController: Controller<LocationData>
         _locationGraph.Init();
         ViewModel.ContainerName = "Original Destination";
         ViewModel.ObjectName = "New Destination";
+        ReadConstraintFile();
         _cleanSnapshot = ConvertToTxt();
         UpdateViewModel();
         ResetRandomObjectPool();
@@ -41,10 +47,27 @@ public class LocationController: Controller<LocationData>
 
     public void ReadConstraintFile()
     {
-        using (StreamReader r = new StreamReader($"{RandomizerLogic.DataDirectory}/critical_path.json"))
+        using (StreamReader r = new StreamReader($"{RandomizerLogic.DataDirectory}/LocationData/critical_path.json"))
         {
             string json = r.ReadToEnd();
             _currentConstraints = JsonConvert.DeserializeObject<List<string>>(json);
+        }
+    }
+
+    public void ConstructReplacementStringTableAsset()
+    {
+        _stringTableAsset = new UAsset($"{RandomizerLogic.DataDirectory}/LocationData/ST_LocationRandomizerData.uasset",EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+        
+        (_stringTableAsset.Exports[0] as StringTableExport).Table.Clear();
+        foreach (var destinationChange in _destinationChanges)
+        {
+            var originalData = GetObject(destinationChange.Key);
+            var original = $"{originalData.LevelAsset}:{originalData.CodeName}";
+            
+            var changedData = GetObject(destinationChange.Value);
+            var changed = $"{changedData.LevelAsset}:{changedData.CodeName}";
+            
+            (_stringTableAsset.Exports[0] as StringTableExport).Table.Add(FString.FromString(original), FString.FromString(changed));
         }
     }
 
@@ -83,7 +106,7 @@ public class LocationController: Controller<LocationData>
         ViewModel.Categories.Clear();
         if (ViewModel.AllObjects.Count == 0)
         {
-            ViewModel.AllObjects = new ObservableCollection<ObjectViewModel>(ObjectsData.Select(i => new ObjectViewModel(i)));
+            ViewModel.AllObjects = new ObservableCollection<ObjectViewModel>(ObjectsData.Select(i => new ObjectViewModel(i)).OrderBy(ovm => ovm.Name));
             foreach (var objectViewModel in ViewModel.AllObjects)
             {
                 objectViewModel.BoolProperty = true;
@@ -134,11 +157,12 @@ public class LocationController: Controller<LocationData>
 
     public override void Reset()
     {
-        throw new NotImplementedException();
+        InitFromTxt(_cleanSnapshot);
     }
 
     public override void WriteAssets()
     {
-        throw new NotImplementedException();
+        ConstructReplacementStringTableAsset();
+        Utils.WriteAsset(_stringTableAsset);
     }
 }

@@ -255,6 +255,35 @@ public static class StaticFileChanger
         Utils.WriteAsset(flyNotif);
     }
     
+    public static void ConstructDummyReplacementStringTableAsset()
+    {
+        var startingST = new UAsset($"D:\\Mods\\Unreal Engine Mods\\retoc\\out\\Sandfall\\Content\\StringTables\\UI\\ST_UI_ModalPopup.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+        
+        
+        startingST.SetNameReference(0, FString.FromString($"ST_LocationRandomizerData"));
+        startingST.SetNameReference(1, FString.FromString($"/Game/StringTables/ST_LocationRandomizerData"));
+
+        startingST.FolderName =
+            FString.FromString($"/Game/StringTables/ST_LocationRandomizerData");
+        
+        (startingST.Exports[0] as StringTableExport).Table.Clear();
+        (startingST.Exports[0] as StringTableExport).Table.TableNamespace = FString.FromString("ST_LocationRandomizerData");
+        // foreach (var destinationChange in Controllers.LocationController._destinationChanges)
+        // {
+        //     var originalData = Controllers.LocationController.GetObject(destinationChange.Key);
+        //     var original = $"{originalData.LevelAsset}:{originalData.CodeName}";
+        //     
+        //     var changedData = Controllers.LocationController.GetObject(destinationChange.Value);
+        //     var changed = $"{changedData.LevelAsset}:{changedData.CodeName}";
+        //
+        //
+        //     (startingST.Exports[0] as StringTableExport).Table.Add(FString.FromString(original), FString.FromString(changed));
+        // }
+            
+        (startingST.Exports[0] as StringTableExport).Table.Add(FString.FromString("OriginalAsset:OriginalTag"), FString.FromString("NewAsset:NewTag"));
+        Utils.WriteAsset(startingST);
+    }
+    
     public static void Run()
     {
         return;
@@ -262,13 +291,15 @@ public static class StaticFileChanger
         {
             Directory.Delete("randomizer", true);
         }
+
+        ConstructDummyReplacementStringTableAsset();
         // CreateEsquieNotif("Swim");
         // CreateEsquieNotif("SwimBoost");
         // CreateEsquieNotif("Fly");
         // CreateRockGA("Florrie", "E_WorldMapExplorationCapacity::NewEnumerator2", "Swim");
         // CreateRockGA("Dorrie", "E_WorldMapExplorationCapacity::NewEnumerator3", "SwimBoost");
         // CreateRockGA("Soarrie", "E_WorldMapExplorationCapacity::NewEnumerator4", "Fly");
-        CreateEsquieRocks();
+        // CreateEsquieRocks();
         // CreateRelationshipQuests();
         // RemoveExplorationCapacity();
         // RemoveWorldMapNotifs();
