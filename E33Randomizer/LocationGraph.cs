@@ -15,7 +15,7 @@ public class LocationNode
     public List<int> GetConnections(List<string> unlockedKeys)
     {
         var result = UnconditionalConnections;
-        if (PortalConnection != null)
+        if (PortalConnection != -1)
             result.Add(PortalConnection);
         foreach (var (key, connection) in ConditionalConnections)
         {
@@ -35,6 +35,11 @@ public class LocationNode
         PortalConnection = locationData.PortalConnection != "" ? nodeIndexes[locationData.PortalConnection] : -1;
         OriginalPortalConnection = locationData.PortalConnection != "" ? nodeIndexes[locationData.PortalConnection] : -1;
         Keys = new List<string>(locationData.Keys);
+    }
+
+    public override string ToString()
+    {
+        return $"{ID}: {CodeName}";
     }
 }
 
@@ -75,6 +80,9 @@ public class LocationGraph
     public bool GetPath(int startNode, int endNode, List<string> currentKeys, bool[] visited, List<int> path, out List<int> randomPath)
     {
         path.Add(startNode);
+        
+        Console.WriteLine(String.Join('-', path.Select(n => Nodes[n])));
+        
         visited[startNode] = true;
         randomPath = new List<int>(path);
         if (startNode == endNode)
@@ -82,7 +90,7 @@ public class LocationGraph
             return true;
         }
 
-        if (Nodes[startNode].Keys != null)
+        if (Nodes[startNode].Keys.Count != 0)
         {
             currentKeys.AddRange(Nodes[startNode].Keys);
         }
@@ -92,6 +100,7 @@ public class LocationGraph
 
         foreach (var connection in Nodes[startNode].GetConnections(currentKeys))
         {
+            if (visited[connection]) continue;
             if (GetPath(connection, endNode, currentKeys, visited, path, out randomPath))
             {
                 return true;

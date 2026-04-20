@@ -1243,7 +1243,7 @@
     "LevelScaling": 48,
     "UnconditionalConnections": [],
     "ConditionalConnections": {},
-    "PortalConnection": "",
+    "PortalConnection": "Level.SpawnPoint.SpringMeadows.Entry",
     "Keys": []
   },
   {

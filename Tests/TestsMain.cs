@@ -84,7 +84,8 @@ namespace Tests
                     settings,
                     new CustomEnemyPlacement(),
                     new CustomItemPlacement(),
-                    new CustomSkillPlacement()
+                    new CustomSkillPlacement(),
+                    new CustomLocationPlacement()
                     );
                 
                 
@@ -124,7 +125,8 @@ namespace Tests
                 settings,
                 new CustomEnemyPlacement(),
                 new CustomItemPlacement(),
-                new CustomSkillPlacement()
+                new CustomSkillPlacement(),
+                new CustomLocationPlacement()
             );
             
             var output = TestLogic.RunRandomizer(config);
@@ -160,7 +162,8 @@ namespace Tests
                 settings,
                 new CustomEnemyPlacement(),
                 new CustomItemPlacement(),
-                new CustomSkillPlacement()
+                new CustomSkillPlacement(),
+                new CustomLocationPlacement()
             );
             
             var output = TestLogic.RunRandomizer(config);
@@ -184,7 +187,8 @@ namespace Tests
                 settings,
                 new CustomEnemyPlacement(),
                 new CustomItemPlacement(),
-                new CustomSkillPlacement()
+                new CustomSkillPlacement(),
+                new CustomLocationPlacement()
             );
             
             var output = TestLogic.RunRandomizer(config);
@@ -246,7 +250,8 @@ namespace Tests
                 settings,
                 new CustomEnemyPlacement(),
                 new CustomItemPlacement(),
-                new CustomSkillPlacement()
+                new CustomSkillPlacement(),
+                new CustomLocationPlacement()
             );
             
             var adjustedOutput = TestLogic.RunRandomizer(config);
@@ -274,12 +279,86 @@ namespace Tests
                 settings,
                 new CustomEnemyPlacement(),
                 new CustomItemPlacement(),
-                new CustomSkillPlacement()
+                new CustomSkillPlacement(),
+                new CustomLocationPlacement()
             );
             
             var output = TestLogic.RunRandomizer(config);
             
             CustomPlacementTestLogic.TestDefaultCustomPlacement(output, config).Should().BeTrue();
+        }
+
+        [Test]
+        public void TestCriticalPathConstruction()
+        {
+            List<string> defaultConstrictions =
+            [
+                "Level.SpawnPoint.LumiereAct01.Entry",
+                "Level.SpawnPoint.GestralVillage.Entry",
+                "Level.SpawnPoint.EsquieNest.FrancoisArena",
+                "Level.SpawnPoint.SeaCliff.Entry",
+                "Level.SpawnPoint.MonocoStation.EntryForgotten",
+                "Level.SpawnPoint.OldLumiere.BrokenBuildings",
+                "Level.SpawnPoint.MonolithExterior.Peak.Entry",
+                "Level.SpawnPoint.LumiereAct03.Entry"
+            ];
+            
+            var settings = new SettingsViewModel
+            {
+                Seed = new Random().Next(),
+            };
+            
+            var config = new Config(
+                settings,
+                new CustomEnemyPlacement(),
+                new CustomItemPlacement(),
+                new CustomSkillPlacement(),
+                new CustomLocationPlacement()
+            );
+            
+            var output = TestLogic.RunRandomizer(config);
+
+            Queue<LocationNode> queue = new();
+            queue.Enqueue(output.GetLocationNode(defaultConstrictions[0]));
+            Dictionary<string, List<LocationNode>> lockedNodes = new();
+            List<string> collectedKeys = [];
+            while (queue.Count > 0 && defaultConstrictions.Count > 0)
+            {
+                var node = queue.Dequeue();
+                node.BFSVisited = true;
+                var addedNodes = new List<LocationNode>();
+                
+                defaultConstrictions.Remove(node.CodeName);
+                addedNodes.AddRange(node.UnconditionalConnections);
+                foreach (var key in node.Keys)
+                {
+                    lockedNodes.TryGetValue(key, out var unlockedNodes);
+                    addedNodes.AddRange(unlockedNodes);
+                    lockedNodes.Remove(key);
+                    
+                    collectedKeys.Add(key);
+                }
+
+                foreach (var (key, connections) in node.ConditionalConnections)
+                {
+                    if (collectedKeys.Contains(key))
+                    {
+                        addedNodes.AddRange(connections);
+                        continue;
+                    }
+                    
+                    if (lockedNodes.TryGetValue(key, out var lockedConnections))
+                    {
+                        lockedConnections.AddRange(connections);
+                    }
+                    else
+                    {
+                        lockedNodes.Add(key, connections);
+                    }
+                }
+                addedNodes.Where(n => !n.BFSVisited).ToList().ForEach(queue.Enqueue);
+            }
+            defaultConstrictions.Should().BeEmpty();
         }
     }
 

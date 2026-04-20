@@ -37,6 +37,24 @@ public static class TestLogic
                 (source, pair) => new Check($"{source.FileName}#{pair.Key}", pair.Value)).ToList();
         result.SkillTrees = Controllers.SkillsController.SkillGraphs.Select(sG => new SkillTree(sG)).ToList();
         
+        result.LocationNodes = Controllers.LocationController.ObjectsData.Select(n => new LocationNode(n)).ToList();
+        foreach (var node in result.LocationNodes)
+        {
+            var nodeData = Controllers.LocationController.GetObject(node.CodeName);
+            node.UnconditionalConnections = nodeData.UnconditionalConnections.Select(
+                n => result.LocationNodes.Find(ln => ln.CodeName == n)).ToList();
+            foreach (var (key, connections) in nodeData.ConditionalConnections)
+            {
+                node.ConditionalConnections[key] = connections.Select(
+                    n => result.LocationNodes.Find(ln => ln.CodeName == n)).ToList();
+            }
+
+            if (nodeData.PortalConnection == "") continue;
+        
+            var portalConnection = Controllers.LocationController._destinationChanges.GetValueOrDefault(nodeData.PortalConnection, nodeData.PortalConnection);
+            node.UnconditionalConnections.Add(result.LocationNodes.Find(n => n.CodeName == portalConnection));
+        }
+        
         if (config == null) return result;
         
         var randomizedEncounterNames =
@@ -61,6 +79,9 @@ public static class TestLogic
                 sT => sT.SkillNodes, (_, data) => data).
             Where(sN => config.CustomSkillPlacement.IsRandomized(sN.OriginalSkillCodeName)
             ).ToList();
+        
+        result.RandomizedLocationNodes = result.LocationNodes.Where(
+            n => !config.CustomLocationPlacement.NotRandomized.Contains(n.CodeName)).ToList();
         
         return result;
     }
