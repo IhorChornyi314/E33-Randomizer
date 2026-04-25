@@ -295,7 +295,7 @@ namespace Tests
             [
                 "Level.SpawnPoint.LumiereAct01.Entry",
                 "Level.SpawnPoint.GestralVillage.Entry",
-                "Level.SpawnPoint.EsquieNest.FrancoisArena",
+                "Level.SpawnPoint.EsquieNest.Francois",
                 "Level.SpawnPoint.SeaCliff.Entry",
                 "Level.SpawnPoint.MonocoStation.EntryForgotten",
                 "Level.SpawnPoint.OldLumiere.BrokenBuildings",
@@ -306,6 +306,7 @@ namespace Tests
             var settings = new SettingsViewModel
             {
                 Seed = new Random().Next(),
+                RandomizeLocations = true,
             };
             
             var config = new Config(
@@ -322,6 +323,7 @@ namespace Tests
             queue.Enqueue(output.GetLocationNode(defaultConstrictions[0]));
             Dictionary<string, List<LocationNode>> lockedNodes = new();
             List<string> collectedKeys = [];
+            Dictionary<LocationNode, LocationNode> parents = new();
             while (queue.Count > 0 && defaultConstrictions.Count > 0)
             {
                 var node = queue.Dequeue();
@@ -333,10 +335,10 @@ namespace Tests
                 foreach (var key in node.Keys)
                 {
                     lockedNodes.TryGetValue(key, out var unlockedNodes);
-                    addedNodes.AddRange(unlockedNodes);
+                    if (unlockedNodes != null) addedNodes.AddRange(unlockedNodes);
                     lockedNodes.Remove(key);
                     
-                    collectedKeys.Add(key);
+                    if (!collectedKeys.Contains(key)) collectedKeys.Add(key);
                 }
 
                 foreach (var (key, connections) in node.ConditionalConnections)
@@ -349,14 +351,18 @@ namespace Tests
                     
                     if (lockedNodes.TryGetValue(key, out var lockedConnections))
                     {
-                        lockedConnections.AddRange(connections);
+                        lockedNodes[key] = lockedConnections.Union(connections).ToList();
                     }
                     else
                     {
                         lockedNodes.Add(key, connections);
                     }
                 }
-                addedNodes.Where(n => !n.BFSVisited).ToList().ForEach(queue.Enqueue);
+
+                addedNodes = addedNodes.Where(n => !n.BFSVisited).ToList();
+                addedNodes = addedNodes.Except(queue).ToList();
+                addedNodes.ForEach(n => parents[n] = node);
+                addedNodes.ForEach(queue.Enqueue);
             }
             defaultConstrictions.Should().BeEmpty();
         }

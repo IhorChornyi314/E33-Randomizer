@@ -1500,7 +1500,9 @@
     "CustomName": "The Manor - Alicia Room Act3",
     "LevelAsset": "Manor_Main_WP",
     "LevelScaling": 1,
-    "UnconditionalConnections": [],
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.WorldMap.TheGreatestExpedition"
+    ],
     "ConditionalConnections": {},
     "PortalConnection": "",
     "Keys": []
@@ -1748,7 +1750,9 @@
     "CustomName": "Monolith Peak - Entrance",
     "LevelAsset": "Level_Monolith_Exterior_Peak_Main",
     "LevelScaling": 43,
-    "UnconditionalConnections": [],
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.Manor.AliciaRoomAct3"
+    ],
     "ConditionalConnections": {},
     "PortalConnection": "",
     "Keys": [
@@ -1878,7 +1882,7 @@
       "Level.SpawnPoint.MonolithInterior.Climb.SpringMeadows"
     ],
     "ConditionalConnections": {},
-    "PortalConnection": "",
+    "PortalConnection": "Level.SpawnPoint.MonolithExterior.Peak.Entry",
     "Keys": []
   },
   {
@@ -2760,7 +2764,7 @@
       "Level.SpawnPoint.SpringMeadows.TreeExit"
     ],
     "ConditionalConnections": {},
-    "PortalConnection": "Level.SpawnPoint.WorldMap.SpringMeadowsEntry",
+    "PortalConnection": "",
     "Keys": []
   },
   {
@@ -2845,7 +2849,7 @@
       "Level.SpawnPoint.SpringMeadows.OldExpeditionnerCamp"
     ],
     "ConditionalConnections": {},
-    "PortalConnection": "",
+    "PortalConnection": "Level.SpawnPoint.WorldMap.SpringMeadowsEntry",
     "Keys": []
   },
   {

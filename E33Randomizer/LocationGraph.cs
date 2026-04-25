@@ -14,14 +14,14 @@ public class LocationNode
 
     public List<int> GetConnections(List<string> unlockedKeys)
     {
-        var result = UnconditionalConnections;
+        var result = new List<int>(UnconditionalConnections);
         if (PortalConnection != -1)
             result.Add(PortalConnection);
         foreach (var (key, connection) in ConditionalConnections)
         {
             if (unlockedKeys.Contains(key)) result.AddRange(connection);
         }
-        return Utils.ShuffleList(result);
+        return result;
     }
 
     public LocationNode(LocationData locationData, Dictionary<string, int> nodeIndexes)
@@ -77,35 +77,33 @@ public class LocationGraph
         }
     }
     
-    public bool GetPath(int startNode, int endNode, List<string> currentKeys, bool[] visited, List<int> path, out List<int> randomPath)
+    public bool GetPath(int startNode, int endNode, List<string> currentKeys,
+        HashSet<(int, string)> visited, List<int> path, out List<int> randomPath)
     {
         path.Add(startNode);
-        
-        Console.WriteLine(String.Join('-', path.Select(n => Nodes[n])));
-        
-        visited[startNode] = true;
         randomPath = new List<int>(path);
-        if (startNode == endNode)
-        {
-            return true;
-        }
-
-        if (Nodes[startNode].Keys.Count != 0)
-        {
+        if (Nodes[startNode].Keys.Any(k => !currentKeys.Contains(k)))
             currentKeys.AddRange(Nodes[startNode].Keys);
+        
+        if (startNode == endNode) 
+            return true;
+        
+        var stateKey = (startNode, string.Join(',', currentKeys.OrderBy(k => k)));
+        if (!visited.Add(stateKey))
+        {
+            randomPath = new List<int>(path);
+            return false;
         }
         
         var backupPath = new List<int>(path);
         var backupKeys = new List<string>(currentKeys);
 
-        foreach (var connection in Nodes[startNode].GetConnections(currentKeys))
+        var connections = Nodes[startNode].GetConnections(currentKeys);
+        for (int i = connections.Count - 1; i >= 0; i--)
         {
-            if (visited[connection]) continue;
-            if (GetPath(connection, endNode, currentKeys, visited, path, out randomPath))
-            {
+            if (GetPath(connections[i], endNode, currentKeys, visited, path, out randomPath))
                 return true;
-            }
-            
+
             path = new List<int>(backupPath);
             currentKeys = new List<string>(backupKeys);
         }
@@ -120,7 +118,7 @@ public class LocationGraph
         
         List<int> currentPath = [];
         
-        var visited = new bool[Nodes.Count];
+        var visited = new HashSet<(int, string)>();
         var keys = new List<string>();
         
         for (int i = 0; i < constraints.Count - 1; i++)
@@ -128,27 +126,30 @@ public class LocationGraph
             int currentConstraint = constraints[i].ID;
             int nextConstraint = constraints[i + 1].ID;
             var intermediatePath = new List<int>();
+            // TODO: Investigate if this causes errors and maybe come up with a different method for random path construction
             if (!GetPath(currentConstraint, nextConstraint, keys, visited, intermediatePath, out var randomPath))
             {
-                int randomDepth = RandomizerLogic.rand.Next(randomPath.Count / 2, randomPath.Count);
-                int j = randomDepth;
-                // Iterate from the end of a random point in the slice back until we can alter the teleport point without changing the golden path
-                while (j > 0 && (currentPath.Contains(randomPath[j]) && Nodes[randomPath[j]].PortalConnection == -1))
+                List<int> suitablePoints = [];
+                for (int j = 0; j < randomPath.Count; j++)
                 {
-                    j--;
+                    if (!currentPath.Contains(randomPath[j]) && Nodes[randomPath[j]].PortalConnection != -1)
+                    {
+                        suitablePoints.Add(j);
+                    }
                 }
-                if (j == 0)
+                if (suitablePoints.Count == 0)
                 {
                     throw new Exception("Location randomization failed, aborting randomizer. Please change the seed or alter the settings if the error persists.");
                 }
-                currentPath.AddRange(randomPath[..j]);
-                destinationChanges[Nodes[Nodes[randomPath[j]].PortalConnection].CodeName] =
+                var point = Utils.Pick(suitablePoints);
+                currentPath.AddRange(randomPath[..(point + 1)]);
+                destinationChanges[Nodes[Nodes[randomPath[point]].PortalConnection].CodeName] =
                     Nodes[nextConstraint].CodeName;
-                Nodes[randomPath[j]].PortalConnection = nextConstraint;
+                Nodes[randomPath[point]].PortalConnection = nextConstraint;
             }
             else
             {
-                currentPath.AddRange(intermediatePath);
+                currentPath.AddRange(randomPath);
             }
         }
         return destinationChanges;

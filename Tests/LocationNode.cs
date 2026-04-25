@@ -16,4 +16,9 @@ public class LocationNode
         CodeName = data.CodeName;
         Keys = data.Keys;
     }
+
+    public override string ToString()
+    {
+        return CodeName;
+    }
 }
