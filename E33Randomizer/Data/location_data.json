@@ -2065,7 +2065,7 @@
       "Level.SpawnPoint.OldLumiere.ManorDoor"
     ],
     "ConditionalConnections": {},
-    "PortalConnection": "",
+    "PortalConnection": "Level.SpawnPoint.WorldMap.OldLumiereExit",
     "Keys": []
   },
   {
@@ -4206,7 +4206,7 @@
         "Special.WM.Fly"
       ]
     },
-    "PortalConnection": "Level.SpawnPoint.OldLumiere.Entry",
+    "PortalConnection": "Level.SpawnPoint.OldLumiere.EndPath",
     "Keys": []
   },
   {

@@ -78,15 +78,18 @@ public class LocationGraph
     }
     
     public bool GetPath(int startNode, int endNode, List<string> currentKeys,
-        HashSet<(int, string)> visited, List<int> path, out List<int> randomPath)
+        HashSet<(int, string)> visited, List<int> path, out List<int> randomPath, out List<string> collectedKeys)
     {
         path.Add(startNode);
         randomPath = new List<int>(path);
         if (Nodes[startNode].Keys.Any(k => !currentKeys.Contains(k)))
             currentKeys.AddRange(Nodes[startNode].Keys);
-        
-        if (startNode == endNode) 
+        collectedKeys = new List<string>(currentKeys);
+
+        if (startNode == endNode)
+        {
             return true;
+        }
         
         var stateKey = (startNode, string.Join(',', currentKeys.OrderBy(k => k)));
         if (!visited.Add(stateKey))
@@ -101,7 +104,7 @@ public class LocationGraph
         var connections = Nodes[startNode].GetConnections(currentKeys);
         for (int i = connections.Count - 1; i >= 0; i--)
         {
-            if (GetPath(connections[i], endNode, currentKeys, visited, path, out randomPath))
+            if (GetPath(connections[i], endNode, currentKeys, visited, path, out randomPath, out collectedKeys))
                 return true;
 
             path = new List<int>(backupPath);
@@ -127,7 +130,7 @@ public class LocationGraph
             int nextConstraint = constraints[i + 1].ID;
             var intermediatePath = new List<int>();
             // TODO: Investigate if this causes errors and maybe come up with a different method for random path construction
-            if (!GetPath(currentConstraint, nextConstraint, keys, visited, intermediatePath, out var randomPath))
+            if (!GetPath(currentConstraint, nextConstraint, keys, visited, intermediatePath, out var randomPath, out var collectedKeys))
             {
                 List<int> suitablePoints = [];
                 for (int j = 0; j < randomPath.Count; j++)
@@ -142,6 +145,12 @@ public class LocationGraph
                     throw new Exception("Location randomization failed, aborting randomizer. Please change the seed or alter the settings if the error persists.");
                 }
                 var point = Utils.Pick(suitablePoints);
+                for (int j = 0; j < point; j++)
+                {
+                    currentPath.Add(randomPath[j]);
+                    keys.AddRange(Nodes[randomPath[j]].Keys);
+                }
+                keys = keys.Distinct().ToList();
                 currentPath.AddRange(randomPath[..(point + 1)]);
                 destinationChanges[Nodes[Nodes[randomPath[point]].PortalConnection].CodeName] =
                     Nodes[nextConstraint].CodeName;
@@ -149,6 +158,8 @@ public class LocationGraph
             }
             else
             {
+                keys.AddRange(collectedKeys);
+                keys = keys.Distinct().ToList();
                 currentPath.AddRange(randomPath);
             }
         }
