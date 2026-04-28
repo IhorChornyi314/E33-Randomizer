@@ -45,6 +45,10 @@ public static class Controllers
         {
             EnemiesController.WriteAssets();
         }
+        if (RandomizerLogic.Settings.RandomizeLocations)
+        {
+            LocationController.WriteAssets();
+        }
         if (RandomizerLogic.Settings.RandomizeCharacters)
         {
             //CharacterController.WriteAssets();

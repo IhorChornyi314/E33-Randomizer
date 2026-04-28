@@ -307,6 +307,9 @@ namespace Tests
             {
                 Seed = new Random().Next(),
                 RandomizeLocations = true,
+                RandomizeEnemies = false,
+                RandomizeItems = false,
+                RandomizeSkills = false,
             };
             
             var config = new Config(

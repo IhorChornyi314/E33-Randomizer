@@ -12,6 +12,7 @@ public class LocationController: Controller<LocationData>
     private LocationGraph _locationGraph = new LocationGraph();
     public Dictionary<string, string> _destinationChanges = new();
     private List<string> _currentConstraints = new();
+    private List<LocationData> criticalPath = new();
     private UAsset _stringTableAsset;
     
     public override void Initialize()
@@ -30,12 +31,13 @@ public class LocationController: Controller<LocationData>
 
     public override void Randomize()
     {
+        RandomizerLogic.CustomLocationPlacement.Update();
         foreach (var originalLocation in _destinationChanges.Keys)
         {
             _destinationChanges[originalLocation] = RandomizerLogic.CustomLocationPlacement.Replace(originalLocation);
         }
         _locationGraph.ApplyDestinationChanges(_destinationChanges);
-        var criticalPathChanges = _locationGraph.ConstructGoldenPath(_currentConstraints);
+        var criticalPathChanges = _locationGraph.ConstructGoldenPath(_currentConstraints, out criticalPath);
         foreach (var (originalDestination, newDestination) in _destinationChanges)
         {
             if (criticalPathChanges.TryGetValue(newDestination, out var criticalPathChange))
@@ -84,7 +86,9 @@ public class LocationController: Controller<LocationData>
     public override void InitFromTxt(string text)
     {
         text = text.ReplaceLineEndings("\n");
-        _destinationChanges = text.Split('\n').Select(l => new KeyValuePair<string, string>(l.Split('|')[0], l.Split('|')[1])).ToDictionary();
+        
+        _destinationChanges = text.Split('\n').Where(line => !line.StartsWith("CRITICAL PATH"))
+            .Select(l => new KeyValuePair<string, string>(l.Split('|')[0], l.Split('|')[1])).ToDictionary();
     }
 
     public override void ApplyViewModel()
@@ -152,7 +156,9 @@ public class LocationController: Controller<LocationData>
 
     public override string ConvertToTxt()
     {
-        return string.Join('\n', _destinationChanges.Select(kvp => $"{kvp.Key}|{kvp.Value}"));
+        var result = "CRITICAL PATH:\t" + string.Join('>', criticalPath.Select(c => c.CustomName)) + '\n';
+        result += string.Join('\n', _destinationChanges.Select(kvp => $"{kvp.Key}|{kvp.Value}"));
+        return result;
     }
 
     public override void Reset()

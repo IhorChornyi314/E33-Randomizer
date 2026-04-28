@@ -3548,7 +3548,6 @@
     "LevelAsset": "Level_WorldMap_Main_V2",
     "LevelScaling": 1,
     "UnconditionalConnections": [
-      "Level.SpawnPoint.WorldMap.YellowForestExit"
     ],
     "ConditionalConnections": {
       "EsquieAbility.Swim": [
@@ -4625,9 +4624,7 @@
     "CustomName": "World Map - Yellow Forest Exit",
     "LevelAsset": "Level_WorldMap_Main_V2",
     "LevelScaling": 1,
-    "UnconditionalConnections": [
-      "Level.SpawnPoint.WorldMap.CleaOrangeForestEntry"
-    ],
+    "UnconditionalConnections": [],
     "ConditionalConnections": {
       "Story.Act3Reached": [
         "Special.WM.Fly"
@@ -4929,7 +4926,9 @@
     "CustomName": "Special - World Map Area Flying",
     "LevelAsset": "",
     "LevelScaling": -1,
-    "UnconditionalConnections": [],
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.WorldMap.Lumiere"
+    ],
     "ConditionalConnections": {
       "Story.Act3Reached": [
         "Level.SpawnPoint.WorldMap.VersosDraftEntry"

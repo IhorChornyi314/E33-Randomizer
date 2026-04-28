@@ -222,6 +222,7 @@ public static class RandomizerLogic
             Controllers.ItemsController.WriteTxt(exportPath + "config/checks.txt");
             Controllers.SkillsController.WriteTxt(exportPath + "config/skills.txt");
             Controllers.CharacterController.WriteTxt(exportPath + "config/characters.txt");
+            Controllers.LocationController.WriteTxt(exportPath + "config/locations.txt");
             using StreamWriter r = new StreamWriter(exportPath + "config/settings.json");
             var json = JsonConvert.SerializeObject(Settings, Formatting.Indented);
             r.Write(json);

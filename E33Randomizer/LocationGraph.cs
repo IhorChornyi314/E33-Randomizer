@@ -21,6 +21,8 @@ public class LocationNode
         {
             if (unlockedKeys.Contains(key)) result.AddRange(connection);
         }
+
+        Utils.ShuffleList(result);
         return result;
     }
 
@@ -78,23 +80,31 @@ public class LocationGraph
     }
     
     public bool GetPath(int startNode, int endNode, List<string> currentKeys,
-        HashSet<(int, string)> visited, List<int> path, out List<int> randomPath, out List<string> collectedKeys)
+        HashSet<(int, string)> visited, List<int> path, out List<int> newPath, out List<string> collectedKeys)
     {
+        if (path.Count > 400)
+        {
+            collectedKeys = new List<string>(currentKeys);
+            newPath = new List<int>();
+            return false;
+        }
+        
         path.Add(startNode);
-        randomPath = new List<int>(path);
         if (Nodes[startNode].Keys.Any(k => !currentKeys.Contains(k)))
             currentKeys.AddRange(Nodes[startNode].Keys);
         collectedKeys = new List<string>(currentKeys);
 
         if (startNode == endNode)
         {
+            newPath =  new List<int>(path);
             return true;
         }
         
         var stateKey = (startNode, string.Join(',', currentKeys.OrderBy(k => k)));
+        
         if (!visited.Add(stateKey))
         {
-            randomPath = new List<int>(path);
+            newPath = new ();
             return false;
         }
         
@@ -104,16 +114,95 @@ public class LocationGraph
         var connections = Nodes[startNode].GetConnections(currentKeys);
         for (int i = connections.Count - 1; i >= 0; i--)
         {
-            if (GetPath(connections[i], endNode, currentKeys, visited, path, out randomPath, out collectedKeys))
+            if (GetPath(connections[i], endNode, currentKeys, visited, path, out newPath, out collectedKeys))
                 return true;
 
             path = new List<int>(backupPath);
             currentKeys = new List<string>(backupKeys);
         }
+        newPath = new ();
         return false;
     }
+
+    public List<int> GetRandomPath(int startingPoint, List<int> currentPath, List<string> currentKeys, out List<string> newKeys)
+    {
+        var toVisitQueue = new Queue<int>();
+        toVisitQueue.Enqueue(startingPoint);
+        List<int> suitablePoints = new();
+        List<int> visited = new();
+        newKeys = new List<string>();
+        Dictionary<int, int> parents = new();
+        while (toVisitQueue.Count > 0)
+        {
+            var currentPoint = toVisitQueue.Dequeue();
+            
+            if (Nodes[currentPoint].PortalConnection != -1 && !currentPath.Contains(currentPoint)) suitablePoints.Add(currentPoint);
+            
+            var connections = Nodes[currentPoint].GetConnections(currentKeys);
+            connections = connections.Where(c => !visited.Contains(c)).ToList();
+            foreach (var connection in connections)
+            {
+                if (toVisitQueue.Contains(connection) || visited.Contains(connection)) continue;
+                parents[connection] = currentPoint;
+                toVisitQueue.Enqueue(connection);
+            }
+            visited.Add(currentPoint);
+        }
+        if (suitablePoints.Count == 0)
+        {
+            return null;
+        }
+        var point = Utils.Pick(suitablePoints);
+
+        List<int> path = [point];
+        newKeys.AddRange(Nodes[point].Keys);
+        while (point != startingPoint)
+        {
+            point = parents[point];
+            path.Add(point);
+            newKeys.AddRange(Nodes[point].Keys);
+        }
+        
+        newKeys = newKeys.Distinct().ToList();
+        path.Reverse();
+        return path;
+    }
+
+    public List<int> CleanUpPath(List<int> currentPath)
+    {
+        HashSet<(int, string)> visited = new();
+        List<int> pathWithoutRepetition = [];
+
+        List<string> currentKeys = [];
+        
+        foreach (var i in currentPath)
+        {
+            var stateKey = (i, string.Join(',', currentKeys.OrderBy(k => k)));
+
+            if (visited.Add(stateKey))
+            {
+                
+                pathWithoutRepetition.Add(i);
+                currentKeys.AddRange(Nodes[i].Keys);
+                currentKeys = currentKeys.Distinct().ToList();
+            }
+        }
+        
+        List<int> pathWithoutUnnecessarySteps = [pathWithoutRepetition[0]];
+        for (int i = 1; i < pathWithoutRepetition.Count - 1; i++)
+        {
+            if (
+                Nodes[pathWithoutRepetition[i]].UnconditionalConnections.Contains(pathWithoutUnnecessarySteps[^1]) &&
+                Nodes[pathWithoutRepetition[i + 1]].UnconditionalConnections.Contains(pathWithoutUnnecessarySteps[^1])
+                )
+                continue;
+            pathWithoutUnnecessarySteps.Add(pathWithoutRepetition[i]);
+        }
+        pathWithoutUnnecessarySteps.Add(pathWithoutRepetition[^1]);
+        return pathWithoutUnnecessarySteps;
+    }
     
-    public Dictionary<string, string> ConstructGoldenPath(List<string> constraintStrings)
+    public Dictionary<string, string> ConstructGoldenPath(List<string> constraintStrings, out List<LocationData> criticalPath)
     {
         var constraints = constraintStrings.Select(c => Nodes[nodeIndexes[c]]).ToList();
         
@@ -123,6 +212,8 @@ public class LocationGraph
         
         var visited = new HashSet<(int, string)>();
         var keys = new List<string>();
+
+        var failedAttempts = 0;
         
         for (int i = 0; i < constraints.Count - 1; i++)
         {
@@ -130,39 +221,40 @@ public class LocationGraph
             int nextConstraint = constraints[i + 1].ID;
             var intermediatePath = new List<int>();
             // TODO: Investigate if this causes errors and maybe come up with a different method for random path construction
-            if (!GetPath(currentConstraint, nextConstraint, keys, visited, intermediatePath, out var randomPath, out var collectedKeys))
+            if (!GetPath(currentConstraint, nextConstraint, keys, visited, intermediatePath, out var newPath, out var collectedKeys))
             {
-                List<int> suitablePoints = [];
-                for (int j = 0; j < randomPath.Count; j++)
+                var randomPath = GetRandomPath(currentConstraint, currentPath, collectedKeys, out var newKeys);
+
+                if (randomPath == null)
                 {
-                    if (!currentPath.Contains(randomPath[j]) && Nodes[randomPath[j]].PortalConnection != -1)
+                    i--;
+                    failedAttempts++;
+                    if (failedAttempts > 10)
                     {
-                        suitablePoints.Add(j);
+                        throw new Exception("Could not critical path, aborting randomization. Please change generation settings if this problem persists.");
                     }
+                    continue;
                 }
-                if (suitablePoints.Count == 0)
-                {
-                    throw new Exception("Location randomization failed, aborting randomizer. Please change the seed or alter the settings if the error persists.");
-                }
-                var point = Utils.Pick(suitablePoints);
-                for (int j = 0; j < point; j++)
-                {
-                    currentPath.Add(randomPath[j]);
-                    keys.AddRange(Nodes[randomPath[j]].Keys);
-                }
+                
+                currentPath.AddRange(randomPath);
+                keys.AddRange(newKeys);
                 keys = keys.Distinct().ToList();
-                currentPath.AddRange(randomPath[..(point + 1)]);
-                destinationChanges[Nodes[Nodes[randomPath[point]].PortalConnection].CodeName] =
+                destinationChanges[Nodes[Nodes[randomPath[^1]].PortalConnection].CodeName] =
                     Nodes[nextConstraint].CodeName;
-                Nodes[randomPath[point]].PortalConnection = nextConstraint;
+                Nodes[randomPath[^1]].PortalConnection = nextConstraint;
             }
             else
             {
                 keys.AddRange(collectedKeys);
                 keys = keys.Distinct().ToList();
-                currentPath.AddRange(randomPath);
+                currentPath.AddRange(newPath);
             }
+            visited.Clear();
         }
+        
+        var cleanPath = CleanUpPath(currentPath);
+        criticalPath = cleanPath.Select(i => Controllers.LocationController.GetObject(Nodes[i].CodeName)).ToList();
+
         return destinationChanges;
     }
 }
