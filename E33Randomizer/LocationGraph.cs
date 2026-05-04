@@ -1,6 +1,4 @@
-﻿using System.Windows.Controls.Primitives;
-
-namespace E33Randomizer;
+﻿namespace E33Randomizer;
 
 public class LocationNode
 {

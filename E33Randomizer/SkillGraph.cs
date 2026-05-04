@@ -1,7 +1,4 @@
-﻿using System.IO;
-using System.Windows.Controls;
-using System.Windows.Data;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using UAssetAPI;
 using UAssetAPI.ExportTypes;
 using UAssetAPI.PropertyTypes.Objects;

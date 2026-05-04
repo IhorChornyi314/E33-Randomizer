@@ -1,21 +1,13 @@
 ﻿<Window x:Class="E33Randomizer.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:e33Randomizer="clr-namespace:E33Randomizer"
-        Title="Expedition 33 Randomizer" Height="800" Width="800"
-        MinHeight="850" MinWidth="800">
-    <Window.Resources>
-        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
-    </Window.Resources>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
+        Title="Expedition 33 Randomizer" Height="800" Width="1000"
+        MinHeight="850" MinWidth="1000">
+    <Grid RowDefinitions="*,Auto">
 
         <!-- Main Tab Control -->
-        <TabControl Grid.Row="0" Margin="0">
+        <TabControl Grid.Row="0" TabStripPlacement="Left">
             <TabItem Header="Enemy Randomizer">
                 <e33Randomizer:RandomizeEnemiesTab x:Name="EnemyRandomizerTab"/>
             </TabItem>
@@ -83,7 +75,7 @@
         </TabControl>
 
         <!-- Bottom Section -->
-        <Border Grid.Row="1" Background="#F0F0F0" Padding="20">
+        <Border Grid.Row="1" Padding="20">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -95,7 +87,7 @@
                 <!-- Seed Input -->
                 <StackPanel Grid.Column="0" Orientation="Horizontal">
                     <Label Content="Seed:" VerticalAlignment="Center" FontWeight="Bold" />
-                    <xctk:IntegerUpDown Name="SeedTextBox"
+                    <NumericUpDown x:DataType="e33Randomizer:SettingsViewModel" x:Name="SeedTextBox"
                                         Grid.Column="1"
                                         Text="{Binding Seed}"
                                         ShowButtonSpinner="False"
@@ -105,40 +97,33 @@
                                         Minimum="-1"
                                         HorizontalAlignment="Left"
                                         Height="25"
-                                        Width="100"
-                                        MaxLength="10" />
+                                        Width="100"/>
                 </StackPanel>
                 
                 
-                <Button Name="SavePresetButton"
+                <Button x:Name="SavePresetButton"
                         Grid.Column="1"
                         Content="Save settings JSON"
                         Width="150"
                         Height="35"
                         Click="SavePresetButton_Click"
-                        Background="Gray"
-                        Foreground="White"
                         FontWeight="Bold" />
                 
-                <Button Name="LoadPresetButton"
+                <Button x:Name="LoadPresetButton"
                         Grid.Column="2"
                         Content="Load settings JSON"
                         Width="150"
                         Height="35"
                         Click="LoadPresetButton_Click"
-                        Background="Gray"
-                        Foreground="White"
                         FontWeight="Bold" />
                 
                 <!-- Generate Button -->
-                <Button Name="GenerateButton"
+                <Button x:Name="GenerateButton"
                         Grid.Column="3"
                         Content="Generate and pack mod"
                         Width="150"
                         Height="35"
                         Click="GenerateButton_Click"
-                        Background="#4CAF50"
-                        Foreground="White"
                         FontWeight="Bold" />
 
             </Grid>

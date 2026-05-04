@@ -1,5 +1,7 @@
-﻿using System.Windows;
-using System.Windows.Controls;
+﻿using Avalonia;
+using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Interactivity;
 
 namespace E33Randomizer;
 
@@ -12,11 +14,11 @@ public partial class RandomizeEnemiesTab : UserControl
     
     private void CustomPlacementButton_Click(object sender, RoutedEventArgs e)
     {
-        (Application.Current.MainWindow as MainWindow).OpenCustomPlacementButton_Click(sender, e);
+        App.GetMainWindow().OpenCustomPlacementButton_Click(sender, e);
     }
 
     private void EditButton_Click(object sender, RoutedEventArgs e)
     {
-        (Application.Current.MainWindow as MainWindow).OpenEditObjectsButton_Click(sender, e);
+        App.GetMainWindow().OpenEditObjectsButton_Click(sender, e);
     }
 }

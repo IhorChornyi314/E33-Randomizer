@@ -1,15 +1,18 @@
-﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
+﻿using System.ComponentModel;
+using System.Text;
 using System.Text.RegularExpressions;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using Microsoft.Win32;
+using Avalonia.Controls;
+using Avalonia;
+using Avalonia.Input;
+using Avalonia.Interactivity;
+using Avalonia.Layout;
+using Avalonia.Media;
+using Avalonia.Platform.Storage;
 using Newtonsoft.Json;
 
 namespace E33Randomizer
 {
-    public partial class CustomPlacementWindow
+    public partial class CustomPlacementWindow : Window
     {
         public string SelectedObjectForCustomPlacement = null;
         private CustomPlacement CustomPlacement;
@@ -28,7 +31,7 @@ namespace E33Randomizer
             int i = 0;
             foreach (var presetFile in CustomPlacement.PresetFiles)
             {
-                var presetButton = FindName($"PresetButton{i + 1}") as Button;
+                var presetButton = this.FindNameScope()?.Find<Button>($"PresetButton{i + 1}");
                 presetButton.Content = presetFile.Key;
                 presetButton.Tag = presetFile.Value;
                 i++;
@@ -164,8 +167,8 @@ namespace E33Randomizer
                 }
                 else
                 {
-                    MessageBox.Show($"{objectName} is already in the selected Objects list.", 
-                                    "Duplicate Object", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageDialog.Show(this, $"{objectName} is already in the selected Objects list.", 
+                                    "Duplicate Object", nameof(DialogBoxButton.OK), MessageBoxIcons.Information);
                 }
                 
                 ExcludedObjectsComboBox.SelectedItem = null;
@@ -201,8 +204,8 @@ namespace E33Randomizer
             }
             else
             {
-                MessageBox.Show("Please select an object from the dropdown first.", 
-                               "No Object Selected", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageDialog.Show(this, "Please select an object from the dropdown first.", 
+                               "No Object Selected", nameof(DialogBoxButton.OK), MessageBoxIcons.Warning);
             }
         }
 
@@ -218,62 +221,95 @@ namespace E33Randomizer
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Error loading preset: {ex.Message}; Reverting to Default.", 
-                        "Load Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageDialog.Show(this, $"Error loading preset: {ex.Message}; Reverting to Default.", 
+                        "Load Error", nameof(DialogBoxButton.OK), MessageBoxIcons.Error);
                     CustomPlacement.LoadDefaultPreset();
                     UpdateJsonTextBox();
                 }
             }
         }
 
-        private void LoadPresetButton_Click(object sender, RoutedEventArgs e)
+        private async void LoadPresetButton_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog
+            try
             {
-                Title = "Load Custom Preset",
-                Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*",
-                FilterIndex = 1
-            };
+                var topLevel = GetTopLevel(this);
+                if (topLevel is null) return;
 
-            if (openFileDialog.ShowDialog() == true)
+                var storage = topLevel.StorageProvider;
+
+                var files = await storage.OpenFilePickerAsync(new FilePickerOpenOptions
+                {
+                    Title = "Load Custom Preset",
+                    AllowMultiple = false,
+                    FileTypeFilter =
+                    [
+                        new FilePickerFileType("JSON files (*.json)") { Patterns = ["*.json"] },
+                        new FilePickerFileType("All Files") { Patterns = ["*"] }
+                    ]
+                });
+
+                if (files.Count == 1)
+                {
+                    try
+                    {
+                        CustomPlacement.LoadFromJson(files[0].Path.AbsolutePath);
+                        LoadCustomPlacementRows(SelectedObjectForCustomPlacement);
+                        Update();
+                    }
+                    catch (Exception ex)
+                    {
+                        await MessageDialog.ShowAsync(this, $"Error loading preset: {ex.Message}", 
+                            "Load Error", nameof(DialogBoxButton.OK), MessageBoxIcons.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
             {
-                try
-                {
-                    CustomPlacement.LoadFromJson(openFileDialog.FileName);
-                    LoadCustomPlacementRows(SelectedObjectForCustomPlacement);
-                    Update();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error loading preset: {ex.Message}", 
-                                   "Load Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+                await MessageDialog.ShowAsync(this, $"Error Loading preset: {ex.Message}", "Load Error", nameof(DialogBoxButton.OK),  MessageBoxIcons.Error);
             }
         }
 
-        private void SavePresetButton_Click(object sender, RoutedEventArgs e)
+        private async void SavePresetButton_Click(object sender, RoutedEventArgs e)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog
+            try
             {
-                Title = "Save Custom Preset",
-                Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*",
-                FilterIndex = 1,
-                DefaultExt = "json"
-            };
+                var topLevel = GetTopLevel(this);
+                if (topLevel is null) return;
 
-            if (saveFileDialog.ShowDialog() == true)
+                var storage = topLevel.StorageProvider;
+
+                var file = await storage.SaveFilePickerAsync(new FilePickerSaveOptions()
+                {
+                    Title = "Save Custom Preset",
+                    DefaultExtension =  ".json",
+                    FileTypeChoices = 
+                    [
+                        new FilePickerFileType("JSON files (*.json)") { Patterns = ["*.json"] },
+                        new FilePickerFileType("All Files") { Patterns = ["*"] }
+                    ]
+                });
+
+                if (file is not null)
+                {
+                    try
+                    {
+                        CustomPlacement.SaveToJson(file.Path.AbsolutePath);
+                        await MessageDialog.ShowAsync(this, "Preset saved successfully!", 
+                            "Save Complete", nameof(DialogBoxButton.OK), MessageBoxIcons.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        await MessageDialog.ShowAsync
+                        (this, $"Error saving preset: {ex.Message}", 
+                            "Save Error", nameof(DialogBoxButton.OK), MessageBoxIcons.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
             {
-                try
-                {
-                    CustomPlacement.SaveToJson(saveFileDialog.FileName);
-                    MessageBox.Show("Preset saved successfully!", 
-                                   "Save Complete", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error saving preset: {ex.Message}", 
-                                   "Save Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+                await MessageDialog.ShowAsync(this, $"Error Saving JSON: {ex.Message}", "Error", nameof(DialogBoxButton.OK),  MessageBoxIcons.Error);
+                await File.WriteAllTextAsync("crash_log.txt", ex.ToString(), Encoding.UTF8);
             }
         }
 
@@ -307,9 +343,9 @@ namespace E33Randomizer
                 Width = 30,
                 Height = 30,
                 Margin = new Thickness(0, 0, 5, 0),
-                Background = System.Windows.Media.Brushes.Red,
-                Foreground = System.Windows.Media.Brushes.White,
-                FontWeight = FontWeights.Bold
+                Background =Brushes.Red,
+                Foreground =Brushes.White,
+                FontWeight = FontWeight.Bold
             };
             removeButton.Click += (_, _) =>
             {
@@ -366,10 +402,10 @@ namespace E33Randomizer
                 }
             };
 
-            frequencyTextBox.PreviewTextInput += (_, e) =>
+            frequencyTextBox.TextChanged += (_, e) =>
             {
                 Regex regex = new Regex("[^0-9]+");
-                e.Handled = regex.IsMatch(e.Text);
+                e.Handled = regex.IsMatch((e.Source as TextBox)!.Text!);
                 UpdateJsonTextBox();
             };
             
@@ -390,7 +426,7 @@ namespace E33Randomizer
             objectCombo.SelectionChanged += (_, _) =>
             {
                 CustomPlacement.FrequencyAdjustments.Clear();
-                foreach (UIElement frequencyRow in FrequencyRowsContainer.Children)
+                foreach (Control frequencyRow in FrequencyRowsContainer.Children)
                 {
                     var comboBox = (frequencyRow as StackPanel).Children[1] as ComboBox;
                     var frequencyRowSlider = (frequencyRow as StackPanel).Children[2] as Slider;
@@ -418,7 +454,7 @@ namespace E33Randomizer
             FrequencyRowsContainer.Children.Remove(row);
         }
 
-        private void CustomPlacementObjectListBox_SelectionChanged(object sender, MouseButtonEventArgs e)
+        private void CustomPlacementObjectListBox_SelectionChanged(object sender, FocusChangedEventArgs e)
         {
             var item = (ListBoxItem)sender;
             if (item.Content is string selectedObject)
@@ -474,9 +510,9 @@ namespace E33Randomizer
                 Width = 30,
                 Height = 30,
                 Margin = new Thickness(0, 0, 5, 0),
-                Background = System.Windows.Media.Brushes.Red,
-                Foreground = System.Windows.Media.Brushes.White,
-                FontWeight = FontWeights.Bold
+                Background = Brushes.Red,
+                Foreground = Brushes.White,
+                FontWeight = FontWeight.Bold
             };
             removeButton.Click += (_, _) => RemoveCustomPlacementRow((string)(objectNameCombo.SelectedItem as ComboBoxItem)?.Content, row);
 
@@ -526,7 +562,7 @@ namespace E33Randomizer
                 }
             };
 
-            frequencyTextBox.PreviewTextInput += (_, e) =>
+            frequencyTextBox.TextInput += (_, e) =>
             {
                 Regex regex = new Regex("[^0-9]+");
                 e.Handled = regex.IsMatch(e.Text);
@@ -594,7 +630,7 @@ namespace E33Randomizer
             Close();
         }
 
-        private void Window_Closing(object sender, CancelEventArgs e)
+        private void Window_Closing(object sender, WindowClosingEventArgs e)
         {
             
         }

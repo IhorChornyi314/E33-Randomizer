@@ -6,7 +6,7 @@ namespace E33Randomizer;
 
 public static class Utils
 {
-    public static string GetRandomWeighted(Dictionary<string, float> weights, List<string> banned = null)
+    public static string GetRandomWeighted(Dictionary<string, float> weights, List<string>? banned = null)
     {
         banned ??= [];
         float total = 0;
@@ -27,7 +27,7 @@ public static class Utils
                 return weight.Key;
             }
         }
-        return weights.Keys.LastOrDefault(k => !banned.Contains(k));
+        return weights.Keys.LastOrDefault(k => !banned.Contains(k)) ?? string.Empty;
     }
     
     public static T Pick<T>(List<T> from)
@@ -71,7 +71,7 @@ public static class Utils
         asset.SetNameReference(oldNameIndex, FString.FromString(newName));
     }
 
-    public static FPackageIndex AddImportToUAsset(UAsset asset, string className, string objectPath, string objectName=null, string innerClassPackage="/Script/Engine")
+    public static FPackageIndex AddImportToUAsset(UAsset asset, string className, string objectPath, string? objectName=null, string innerClassPackage="/Script/Engine")
     { 
         objectName ??= objectPath.Split('/').Last();
         if (asset.SearchForImport(FName.FromString(asset, objectName)) != 0) return FPackageIndex.FromRawIndex(asset.SearchForImport(FName.FromString(asset, objectName)));
@@ -89,7 +89,7 @@ public static class Utils
         return asset.AddImport(innerImport);
     }
     
-    public static FPackageIndex AddImportToUAsset(UAsset asset, ImportData innerImportData, ImportData outerImportData, ImportData defaultImportData=null)
+    public static FPackageIndex AddImportToUAsset(UAsset asset, ImportData innerImportData, ImportData outerImportData, ImportData? defaultImportData=null)
     {
         var outerIndex = FPackageIndex.FromRawIndex(asset.SearchForImport(FName.FromString(asset, outerImportData.ObjectName)));
         var innerIndex = FPackageIndex.FromRawIndex(asset.SearchForImport(FName.FromString(asset, innerImportData.ObjectName)));
@@ -121,7 +121,7 @@ public static class Utils
             asset.AddNameReference(FString.FromString(defaultImportData.ObjectName));
             
             var defaultImport = new Import(defaultImportData.ClassPackage, defaultImportData.ClassName, outerIndex, defaultImportData.ObjectName, false, asset);
-            defaultIndex = asset.AddImport(defaultImport);
+            asset.AddImport(defaultImport);
         }
         
         return innerIndex;

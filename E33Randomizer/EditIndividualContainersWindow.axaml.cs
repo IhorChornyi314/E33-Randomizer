@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.IO;
-using System.Linq;
 using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using Microsoft.Win32;
-using System.Windows.Data;
+using Avalonia.Collections;
+using Avalonia.Controls;
+using Avalonia.Input;
+using Avalonia.Interactivity;
+using Avalonia.Platform.Storage;
+using Avalonia.VisualTree;
 
 namespace E33Randomizer
 {
@@ -26,7 +23,7 @@ namespace E33Randomizer
             if (sender is not ComboBox cb) return;
 
             cb.ApplyTemplate();
-            _addComboTextBox = cb.Template.FindName("PART_EditableTextBox", cb) as TextBox;
+            _addComboTextBox = cb.GetVisualChildren().Single(x => x.Name == "PART_EditableTextBox") as TextBox;
 
             if (_addComboTextBox != null)
             {
@@ -35,7 +32,7 @@ namespace E33Randomizer
             }
         }
 
-        private void AddComboTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void AddComboTextBox_TextChanged(object? sender, TextChangedEventArgs e)
         {
             // Only open when the user is editing this control
             if (!AddObjectComboBox.IsKeyboardFocusWithin) return;
@@ -43,14 +40,15 @@ namespace E33Randomizer
             AddObjectComboBox.IsDropDownOpen = true;
         }
 
-        private void AddObjectComboBox_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        private void AddObjectComboBox_GotKeyboardFocus(object sender, FocusChangedEventArgs e)
         {
             if (!AddObjectComboBox.IsDropDownOpen)
                 AddObjectComboBox.IsDropDownOpen = true;
         }
 
-        public EditIndividualContainersWindow(BaseController controller)
+        public EditIndividualContainersWindow(BaseController controller, Window owner)
         {
+            Owner = owner;
             Controller = controller;
             InitializeComponent();
             ViewModel = controller.ViewModel;
@@ -60,24 +58,24 @@ namespace E33Randomizer
 
         private void ApplyObjectsType()
         {
-            var containersTextBlock = FindName("ContainersTextBlock") as TextBlock;
+            var containersTextBlock = Owner?.FindNameScope()?.Find<TextBlock>("ContainersTextBlock");
             if (containersTextBlock != null) containersTextBlock.Text = ViewModel.ContainerName + "s";
-            var addObjectTextBlock = FindName("AddObjectTextBlock") as TextBlock;
+            var addObjectTextBlock = Owner?.FindNameScope()?.Find<TextBlock>("AddObjectTextBlock");
             if (addObjectTextBlock != null) addObjectTextBlock.Text = $"Add {ViewModel.ObjectName.ToLower()}:";
-            var objectsTextBlock = FindName("ObjectsTextBlock") as TextBlock;
+            var objectsTextBlock = Owner?.FindNameScope()?.Find<TextBlock>("ObjectsTextBlock");
             if (objectsTextBlock != null) objectsTextBlock.Text = $"{ViewModel.ObjectName}s in the {ViewModel.ContainerName.ToLower()}".Replace("ys", "ies");
-            var loadTextButton = FindName("LoadTextButton") as Button;
+            var loadTextButton = Owner?.FindNameScope()?.Find<Button>("LoadTextButton");
             if (loadTextButton != null) loadTextButton.Content = $"Load {ViewModel.ContainerName.ToLower()}s from .txt file";
-            var saveTextButton = FindName("SaveTextButton") as Button;
+            var saveTextButton = Owner?.FindNameScope()?.Find<Button>("SaveTextButton");
             if (saveTextButton != null) saveTextButton.Content = $"Save {ViewModel.ContainerName.ToLower()}s to .txt file";
-            var searchLabel = FindName("SearchLabel") as Label;
+            var searchLabel = Owner?.FindNameScope()?.Find<Label>("SearchLabel");
             if (searchLabel != null) searchLabel.Content = $"Search by {ViewModel.ContainerName.ToLower()} or {ViewModel.ObjectName.ToLower()} names:";
             Title = $"Edit individual {ViewModel.ContainerName.ToLower()}s";
         }
         
-        private void CategoryTreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        private void CategoryTreeView_SelectedItemChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (e.NewValue is ContainerViewModel selectedContainer)
+            if (e.AddedItems[0] is ContainerViewModel selectedContainer)
             {
                 ViewModel.OnContainerSelected(selectedContainer);
             }
@@ -122,8 +120,8 @@ namespace E33Randomizer
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error generating: {ex.Message}", 
-                    "Reroll Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageDialog.Show(this, $"Error generating: {ex.Message}", 
+                    "Reroll Error", nameof(DialogBoxButton.OK), MessageBoxIcons.Error);
                 File.WriteAllText("crash_log.txt", ex.ToString(), Encoding.UTF8);
             }
         }
@@ -135,72 +133,105 @@ namespace E33Randomizer
             try
             {
                 RandomizerLogic.PackAndConvertData();
-                MessageBox.Show($"Generation done! You can find the mod in the rand_{RandomizerLogic.usedSeed} folder.\n\n" +
+                MessageDialog.Show(this, $"Generation done! You can find the mod in the rand_{RandomizerLogic.usedSeed} folder.\n\n" +
                                 $"Used Seed: {RandomizerLogic.usedSeed}\n",
-                    "Generation Summary", MessageBoxButton.OK, MessageBoxImage.Information);
+                    "Generation Summary", nameof(DialogBoxButton.OK), MessageBoxIcons.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error packing: {ex.Message}", 
-                    "Packing Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageDialog.Show(this, $"Error packing: {ex.Message}", 
+                    "Packing Error", nameof(DialogBoxButton.OK), MessageBoxIcons.Error);
                 File.WriteAllText("crash_log.txt", ex.ToString(), Encoding.UTF8);
             }
         }
 
-        public void ReadDataFromTxt(object sender, RoutedEventArgs e)
+        public async void ReadDataFromTxt(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog
+            try
             {
-                Title = "Load TXT",
-                Filter = "TXT files (*.txt)|*.txt|All files (*.*)|*.*",
-                FilterIndex = 1
-            };
+                var topLevel = GetTopLevel(this);
+                if (topLevel is null) return;
 
-            if (openFileDialog.ShowDialog() == true)
+                var storage = topLevel.StorageProvider;
+
+                var files = await storage.OpenFilePickerAsync(new FilePickerOpenOptions
+                {
+                    Title = "Load TXT",
+                    AllowMultiple = false,
+                    FileTypeFilter =
+                    [
+                        new FilePickerFileType("TXT files (*.txt)") { Patterns = ["*.txt"] },
+                        new FilePickerFileType("All Files") { Patterns = ["*"] }
+                    ]
+                });
+            
+                if (files.Count == 1)
+                {
+                    try
+                    {
+                        Controller.ReadTxt(files[0].Path.AbsolutePath);
+                    }
+                    catch (Exception ex)
+                    {
+                        await MessageDialog.ShowAsync(this, $"Error loading TXT: {ex.Message}", 
+                            "Load Error", nameof(DialogBoxButton.OK), MessageBoxIcons.Error);
+                        await File.WriteAllTextAsync("crash_log.txt", ex.ToString(), Encoding.UTF8);
+                    }
+                }
+            }
+            catch (Exception ex)
             {
-                try
-                {
-                    Controller.ReadTxt(openFileDialog.FileName);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error loading TXT: {ex.Message}", 
-                        "Load Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    File.WriteAllText("crash_log.txt", ex.ToString(), Encoding.UTF8);
-                }
+                await MessageDialog.ShowAsync(this, $"Error Loading txt", "Error", nameof(DialogBoxButton.OK),  MessageBoxIcons.Error);
+                await File.WriteAllTextAsync("crash_log.txt", ex.ToString(), Encoding.UTF8);
             }
         }
 
-        public void SaveDataAsTxt(object sender, RoutedEventArgs e)
+        public async void SaveDataAsTxt(object sender, RoutedEventArgs e)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog
+            try
             {
-                Title = "Save TXT",
-                Filter = "TXT files (*.txt)|*.txt|All files (*.*)|*.*",
-                FilterIndex = 1,
-                DefaultExt = "txt"
-            };
+                var topLevel = GetTopLevel(this);
+                if (topLevel is null) return;
 
-            if (saveFileDialog.ShowDialog() == true)
+                var storage = topLevel.StorageProvider;
+
+                var file = await storage.SaveFilePickerAsync(new FilePickerSaveOptions()
+                {
+                    Title = "Save TXT",
+                    DefaultExtension = ".txt",
+                    FileTypeChoices = 
+                    [
+                        new FilePickerFileType("TXT files (*.txt)") { Patterns = ["*.txt"] },
+                        new FilePickerFileType("All Files") { Patterns = ["*"] }
+                    ]
+                });
+
+                if (file is not null)
+                {
+                    try
+                    {
+                        Controller.WriteTxt(file.Path.AbsolutePath);
+                        await MessageDialog.ShowAsync(this, "TXT saved successfully!", 
+                            "Save Complete", nameof(DialogBoxButton.OK), MessageBoxIcons.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        await MessageDialog.ShowAsync(this, $"Error saving TXT: {ex.Message}", 
+                            "Save Error", nameof(DialogBoxButton.OK), MessageBoxIcons.Error);
+                        await File.WriteAllTextAsync("crash_log.txt", ex.ToString(), Encoding.UTF8);
+                    }
+                }
+            }
+            catch (Exception ex)
             {
-                try
-                {
-                    Controller.WriteTxt(saveFileDialog.FileName);
-                    MessageBox.Show("TXT saved successfully!", 
-                        "Save Complete", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error saving TXT: {ex.Message}", 
-                        "Save Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    File.WriteAllText("crash_log.txt", ex.ToString(), Encoding.UTF8);
-                }
+                await MessageDialog.ShowAsync(this, $"Error Saving txt", "Error", nameof(DialogBoxButton.OK),  MessageBoxIcons.Error);
+                await File.WriteAllTextAsync("crash_log.txt", ex.ToString(), Encoding.UTF8);
             }
         }
 
         private void SearchTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
         {
-            var searchTextBox = FindName("SearchTextBox") as TextBox;
+            var searchTextBox = Owner?.FindNameScope()?.Find<TextBox>("SearchTextBox");
             if (searchTextBox != null)
             {
                 ViewModel.SearchTerm = searchTextBox.Text;
@@ -249,7 +280,7 @@ public class EditIndividualObjectsWindowViewModel : INotifyPropertyChanged
             OnPropertyChanged(nameof(AllObjects));
 
             // Rebuild the independent view when the collection instance changes
-            AddObjectsView = new ListCollectionView(_allObjects);
+            AddObjectsView = new DataGridCollectionView(_allObjects);
             AddObjectsView.Filter = AddObjectsFilter;
             OnPropertyChanged(nameof(AddObjectsView));
 
@@ -258,8 +289,8 @@ public class EditIndividualObjectsWindowViewModel : INotifyPropertyChanged
     }
 
     // This is what the Add ComboBox binds to
-    private ICollectionView _addObjectsView;
-    public ICollectionView AddObjectsView
+    private IDataGridCollectionView _addObjectsView;
+    public IDataGridCollectionView AddObjectsView
     {
         get => _addObjectsView;
         private set => _addObjectsView = value;
@@ -320,7 +351,7 @@ public class EditIndividualObjectsWindowViewModel : INotifyPropertyChanged
     public EditIndividualObjectsWindowViewModel()
     {
         // Create a default view over the default AllObjects instance
-        AddObjectsView = new ListCollectionView(AllObjects);
+        AddObjectsView = new DataGridCollectionView(AllObjects);
         AddObjectsView.Filter = AddObjectsFilter;
     }
 

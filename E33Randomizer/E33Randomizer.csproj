@@ -2,17 +2,30 @@
 
     <PropertyGroup>
         <ApplicationIcon>e33randoicon.ico</ApplicationIcon>
-        <OutputType>WinExe</OutputType>
-        <TargetFramework>net9.0-windows</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net10.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-        <UseWPF>true</UseWPF>
+        <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
+        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+        <LangVersion>preview</LangVersion>
+        <!-- Yes, this is the only thing you need to add to enable NativeAOT -->
+        <!-- To actually compile/publish, just run `dotnet publish -c Release -r <runtime_id_here>` -->
+<!--        <PublishAot>true</PublishAot>-->
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Extended.Wpf.Toolkit" Version="4.7.25104.5739" />
       <PackageReference Include="GenericReader" Version="2.2.4" />
       <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+        <PackageReference Include="Avalonia" Version="12.0.2"/>
+        <PackageReference Include="Avalonia.Controls.DataGrid" Version="12.0.0"/>
+        <PackageReference Include="Avalonia.Desktop" Version="12.0.2"/>
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="12.0.2"/>
+        <PackageReference Include="Avalonia.Fonts.Inter" Version="12.0.2"/>
+        <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+        <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.3.14"/>
+        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0"/>
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\external\UAssetAPI\UAssetAPI\UAssetAPI.csproj" />
