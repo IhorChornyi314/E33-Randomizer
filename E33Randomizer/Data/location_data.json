@@ -179,7 +179,9 @@
     "CustomName": "Twilight Quarry - Boat Graveyard Blue",
     "LevelAsset": "Level_Mini_BoatGraveyard_2",
     "LevelScaling": 1,
-    "UnconditionalConnections": [],
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.BoatGraveyardBlue.Entry"
+    ],
     "ConditionalConnections": {},
     "PortalConnection": "",
     "Keys": []
@@ -189,7 +191,9 @@
     "CustomName": "Twilight Quarry - Entry",
     "LevelAsset": "Level_Mini_BoatGraveyard_2",
     "LevelScaling": 1,
-    "UnconditionalConnections": [],
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.BoatGraveyardBlue"
+    ],
     "ConditionalConnections": {},
     "PortalConnection": "Level.SpawnPoint.WorldMap.BoatGraveyardBlueEntry",
     "Keys": []
@@ -199,7 +203,9 @@
     "CustomName": "Boat Graveyard - Boat Graveyard Purple",
     "LevelAsset": "Level_Mini_BoatGraveyard_1",
     "LevelScaling": 1,
-    "UnconditionalConnections": [],
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.BoatGraveyardPurple.Entry"
+    ],
     "ConditionalConnections": {},
     "PortalConnection": "",
     "Keys": []
@@ -209,7 +215,9 @@
     "CustomName": "Boat Graveyard - Entry",
     "LevelAsset": "Level_Mini_BoatGraveyard_1",
     "LevelScaling": 1,
-    "UnconditionalConnections": [],
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.BoatGraveyardPurple"
+    ],
     "ConditionalConnections": {},
     "PortalConnection": "Level.SpawnPoint.WorldMap.BoatGraveyardPurpleEntry",
     "Keys": []
@@ -636,7 +644,9 @@
     "CustomName": "Flying Casino - Entrance",
     "LevelAsset": "SmallLevel_Mix_GL_AS_Zone_01",
     "LevelScaling": 10,
-    "UnconditionalConnections": [],
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.GobluLairs_X_AncientSanctuary.Entry"
+    ],
     "ConditionalConnections": {},
     "PortalConnection": "Level.SpawnPoint.WorldMap.FlyingCasino",
     "Keys": []
@@ -860,7 +870,8 @@
       "Level.SpawnPoint.FrozenHearts.CaveStation",
       "Level.SpawnPoint.FrozenHearts.Entrance",
       "Level.SpawnPoint.FrozenHearts.Frozenlakes",
-      "Level.SpawnPoint.FrozenHearts.ManorDoor"
+      "Level.SpawnPoint.FrozenHearts.ManorDoor",
+      "Level.SpawnPoint.MonocoMountain.Exit"
     ],
     "ConditionalConnections": {},
     "PortalConnection": "",
@@ -1220,7 +1231,8 @@
     "LevelAsset": "SmallLevel_Mix_GL_AS_Zone_01",
     "LevelScaling": 10,
     "UnconditionalConnections": [
-      "Level.SpawnPoint.GobluLairs_X_AncientSanctuary.CasinoEntrance"
+      "Level.SpawnPoint.GobluLairs_X_AncientSanctuary.CasinoEntrance",
+      "Level.SpawnPoint.FlyingCasino.Entry"
     ],
     "ConditionalConnections": {},
     "PortalConnection": "",
@@ -1642,7 +1654,9 @@
     "CustomName": "Frozen Hearts - Exit",
     "LevelAsset": "Level_Side_FrozenHeart",
     "LevelScaling": 63,
-    "UnconditionalConnections": [],
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.FrozenHearts.Entrance"
+    ],
     "ConditionalConnections": {},
     "PortalConnection": "",
     "Keys": []
@@ -2598,7 +2612,7 @@
     "ConditionalConnections": {},
     "PortalConnection": "",
     "Keys": [
-      "Story.SireneHeartAquired"
+      "Story.SireneHeartAcquired"
     ]
   },
   {
@@ -3290,7 +3304,7 @@
     "ConditionalConnections": {},
     "PortalConnection": "",
     "Keys": [
-      "Story.VisagesHeartAquired"
+      "Story.VisageHeartAcquired"
     ]
   },
   {
@@ -4261,7 +4275,7 @@
         "Level.SpawnPoint.Reacher.Entry"
       ]
     },
-    "PortalConnection": "Level.SpawnPoint.Reacher.Entry",
+    "PortalConnection": "",
     "Keys": []
   },
   {
@@ -4743,27 +4757,35 @@
     "Keys": []
   },
   {
-    "CodeName": "Special.Dummy.WM.SireneHeartAquiredFirst",
+    "CodeName": "Special.Dummy.WM.SireneHeartAcquiredFirst",
     "CustomName": "Special - Dummy for Sirene Heart Get",
     "LevelAsset": "",
     "LevelScaling": -1,
     "UnconditionalConnections": [],
-    "ConditionalConnections": {},
+    "ConditionalConnections": {
+      "Story.VisageHeartAcquired": [
+        "Special.Dummy.WM.BarrierBreakerAcquired"
+      ]
+    },
     "PortalConnection": "",
     "Keys": []
   },
   {
-    "CodeName": "Special.Dummy.WM.VisagesHeartAquiredFirst",
+    "CodeName": "Special.Dummy.WM.VisageHeartAcquiredFirst",
     "CustomName": "Special - Dummy for Visages Heart Get",
     "LevelAsset": "",
     "LevelScaling": -1,
     "UnconditionalConnections": [],
-    "ConditionalConnections": {},
+    "ConditionalConnections": {
+      "Story.SireneHeartAcquired": [
+        "Special.Dummy.WM.BarrierBreakerAcquired"
+      ]
+    },
     "PortalConnection": "",
     "Keys": []
   },
   {
-    "CodeName": "Special.Dummy.WM.BarrierBreakerAquired",
+    "CodeName": "Special.Dummy.WM.BarrierBreakerAcquired",
     "CustomName": "Special - Dummy for Barrier Breaker Get",
     "LevelAsset": "",
     "LevelScaling": -1,
@@ -4771,7 +4793,7 @@
     "ConditionalConnections": {},
     "PortalConnection": "",
     "Keys": [
-      "Story.BarrierBreakerAquired"
+      "Story.BarrierBreakerAcquired"
     ]
   },
   {
@@ -4865,7 +4887,6 @@
       "Level.SpawnPoint.WorldMap.VisagesEntry",
       "Level.SpawnPoint.WorldMap.SireneEntry",
       "Level.SpawnPoint.WorldMap.SinisterCaveEntry",
-      "Level.SpawnPoint.WorldMap.MonolithInteriorEntry",
       "Special.GestralBeach.Race"
     ],
     "ConditionalConnections": {
@@ -4875,6 +4896,15 @@
       ],
       "Story.Act3Reached": [
         "Level.SpawnPoint.WorldMap.AxonPathEntry"
+      ],
+      "Story.SireneHeartAcquired": [
+        "Special.Dummy.WM.SireneHeartAcquired"
+      ],
+      "Story.VisageHeartAcquired": [
+        "Special.Dummy.WM.VisageHeartAcquired"
+      ],
+      "Story.BarrierBreakerAcquired": [
+        "Level.SpawnPoint.WorldMap.MonolithInteriorEntry"
       ]
     },
     "PortalConnection": "",

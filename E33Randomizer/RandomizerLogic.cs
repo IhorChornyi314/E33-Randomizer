@@ -103,6 +103,27 @@ public static class RandomizerLogic
         "AutoPrecision",
         "BramblePerformer"
     ];
+
+    public static List<string> BrokenLocations =
+    [
+        "Level.SpawnPoint.BoatGraveyardBlue",
+        "Level.SpawnPoint.BoatGraveyardPurple",
+        "Level.SpawnPoint.GestralBeach.Climb",
+        "Level.SpawnPoint.GestralBeach.OnlyUp",
+        "Level.SpawnPoint.GestralBeach.Race",
+        "Level.SpawnPoint.GestralBeach.RaceFail",
+        "Level.SpawnPoint.GestralBeach.RaceRespawn",
+        "Level.SpawnPoint.GestralBeach.RaceStart",
+        "Level.SpawnPoint.GestralBeach.VolleyBall",
+        "Level.SpawnPoint.GestralBeach.VolleyHard",
+        "Level.SpawnPoint.GestralBeach.VolleyMedium",
+        "Level.SpawnPoint.GestralBeach.Volley_Easy",
+        "Level.SpawnPoint.GestralBeach.WipeOut",
+        "Level.SpawnPoint.GestralBeach.WipeoutRespawnPoint",
+        "Level.SpawnPoint.AncientSanctuary.GestralTotem",
+        "Level.SpawnPoint.TheBarrier.Entry",
+        "Level.SpawnPoint.CleasTower.Simon"
+    ];
     #if DEBUG
         public static string DataDirectory
         {
