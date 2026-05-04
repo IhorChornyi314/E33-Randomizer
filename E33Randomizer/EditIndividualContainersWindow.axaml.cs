@@ -169,7 +169,7 @@ namespace E33Randomizer
                 {
                     try
                     {
-                        Controller.ReadTxt(files[0].Path.AbsolutePath);
+                        Controller.ReadTxt(files[0].Path.LocalPath);
                     }
                     catch (Exception ex)
                     {
@@ -210,7 +210,7 @@ namespace E33Randomizer
                 {
                     try
                     {
-                        Controller.WriteTxt(file.Path.AbsolutePath);
+                        Controller.WriteTxt(file.Path.LocalPath);
                         await MessageDialog.ShowAsync(this, "TXT saved successfully!", 
                             "Save Complete", nameof(DialogBoxButton.OK), MessageBoxIcons.Information);
                     }

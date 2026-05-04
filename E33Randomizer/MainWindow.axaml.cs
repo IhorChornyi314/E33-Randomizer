@@ -1,10 +1,12 @@
 ﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Platform.Storage;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace E33Randomizer;
 
@@ -109,74 +111,6 @@ public partial class MainWindow : Window
         }
     }
 
-    private async void EnableCountersInSaveButton_OnClick(object sender, RoutedEventArgs e)
-    {
-        try
-        {
-            string targetFolder = "";
-            try
-            {
-                string saveGamesBase = Path.Combine(
-                    Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-                    "Sandfall\\Saved\\SaveGames\\"
-                );
-                string[] subdirectories = Directory.GetDirectories(saveGamesBase);
-
-                targetFolder = subdirectories.Length is 0 or > 1 ? saveGamesBase : $"{subdirectories[0]}";
-            }
-            catch (DirectoryNotFoundException exception)
-            {
-            }
-        
-            var topLevel = GetTopLevel(this);
-            if (topLevel is null) return;
-
-            var storage = topLevel.StorageProvider;
-
-            var suggestedStartLocation = await StorageProvider.TryGetFolderFromPathAsync(targetFolder);
-        
-            var files = await storage.OpenFilePickerAsync(new FilePickerOpenOptions
-            {
-                Title = "Select a File",
-                AllowMultiple = false,
-                SuggestedStartLocation = suggestedStartLocation,
-                FileTypeFilter =
-                [
-                    new FilePickerFileType("SAV files (*.sav)") { Patterns = ["*.save"] },
-                    new FilePickerFileType("All Files") { Patterns = ["*"] }
-                ]
-            });
-
-            if (files.Count == 1)
-            {
-                try
-                {
-                    switch ((sender as Button).Tag as string)
-                    {
-                        case "AddCounters":
-                            SaveFilePatcher.AddCounters(files[0].Path.AbsolutePath);
-                            break;
-                        case "FixCurtain":
-                            SaveFilePatcher.FixCurtain(files[0].Path.AbsolutePath);
-                            break;
-                    }
-                
-                    await MessageDialog.ShowAsync(this, $"Save File Patched!",
-                        "Patched", nameof(DialogBoxButton.OK), MessageBoxIcons.Information);
-                }
-                catch (Exception ex)
-                {
-                    await MessageDialog.ShowAsync(this, $"Error patching: {ex.Message}",
-                        "Patching Error", nameof(DialogBoxButton.OK), MessageBoxIcons.Error);
-                    await File.WriteAllTextAsync("crash_log.txt", ex.ToString(), Encoding.UTF8);
-                }
-            }
-        }
-        catch (Exception ex)
-        {
-            await MessageDialog.ShowAsync(this, $"Error patching: {ex.Message}", "Error", nameof(DialogBoxButton.OK),  MessageBoxIcons.Error);
-        }
-    }
     
     private async void LoadPresetButton_Click(object sender, RoutedEventArgs e)
     {
@@ -202,7 +136,7 @@ public partial class MainWindow : Window
             {
                 try
                 {
-                    LoadSettings(files[0].Path.AbsolutePath);
+                    LoadSettings(files[0].Path.LocalPath);
                 }
                 catch (Exception ex)
                 {
@@ -241,7 +175,7 @@ public partial class MainWindow : Window
             {
                 try
                 {
-                    SaveSettings(file.Path.AbsolutePath);
+                    SaveSettings(file.Path.LocalPath);
                     await MessageDialog.ShowAsync(this, "Preset saved successfully!", 
                         "Save Complete", nameof(DialogBoxButton.OK), MessageBoxIcons.Information);
                 }
@@ -312,7 +246,7 @@ public partial class MainWindow : Window
 }
 
 
-public class SettingsViewModel : INotifyPropertyChanged
+public class SettingsViewModel : ObservableObject
 {
     public int Seed { get; set; } = -1;
     
@@ -401,10 +335,40 @@ public class SettingsViewModel : INotifyPropertyChanged
     
     public bool RandomizeCharacters { get; set; } = false;
     
-    
-    public event PropertyChangedEventHandler PropertyChanged;
-    protected virtual void OnPropertyChanged(string propertyName)
+    public int SelectedIndex
     {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        get;
+        set
+        {
+            if (field != value)
+            {
+                field = value;
+                OnPropertyChanged();
+                UpdateCurrentPage();
+            }
+        }
+    }
+
+    public object? CurrentPage
+    {
+        get;
+        set
+        {
+            field = value;
+            OnPropertyChanged();
+        }
+    }
+
+    private void UpdateCurrentPage()
+    {
+        CurrentPage = SelectedIndex switch
+        {
+            0 => new RandomizeEnemiesTab(),
+            1 => new RandomizeItemsTab(),
+            2 => new RandomizeSkillsTab(),
+            3 => new RandomizeLocationsTab(),
+            4 => new MiscTab(),
+            _ => new RandomizeEnemiesTab()
+        };
     }
 }

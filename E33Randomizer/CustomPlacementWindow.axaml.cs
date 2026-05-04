@@ -253,7 +253,7 @@ namespace E33Randomizer
                 {
                     try
                     {
-                        CustomPlacement.LoadFromJson(files[0].Path.AbsolutePath);
+                        CustomPlacement.LoadFromJson(files[0].Path.LocalPath);
                         LoadCustomPlacementRows(SelectedObjectForCustomPlacement);
                         Update();
                     }
@@ -294,7 +294,7 @@ namespace E33Randomizer
                 {
                     try
                     {
-                        CustomPlacement.SaveToJson(file.Path.AbsolutePath);
+                        CustomPlacement.SaveToJson(file.Path.LocalPath);
                         await MessageDialog.ShowAsync(this, "Preset saved successfully!", 
                             "Save Complete", nameof(DialogBoxButton.OK), MessageBoxIcons.Information);
                     }
