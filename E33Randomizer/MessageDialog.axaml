@@ -5,7 +5,7 @@
         Title="Confirm"
         Width="400" Height="200"
         WindowStartupLocation="CenterOwner"
-        CanResize="False"
+        CanResize="True"
         ShowInTaskbar="False">
     <Grid RowDefinitions="*,Auto" Margin="20" x:DataType="local:MessageDialogViewModel">
         <TextBlock Grid.Row="0" Text="{Binding Message, Mode=OneTime}"

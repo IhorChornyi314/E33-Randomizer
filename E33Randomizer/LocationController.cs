@@ -1,6 +1,5 @@
 ﻿using System.Collections.ObjectModel;
-using System.IO;
-using Newtonsoft.Json;
+using System.Text.Json;
 using UAssetAPI;
 using UAssetAPI.ExportTypes;
 using UAssetAPI.UnrealTypes;
@@ -52,7 +51,7 @@ public class LocationController: Controller<LocationData>
         using (StreamReader r = new StreamReader($"{RandomizerLogic.DataDirectory}/LocationData/critical_path.json"))
         {
             string json = r.ReadToEnd();
-            _currentConstraints = JsonConvert.DeserializeObject<List<string>>(json);
+            _currentConstraints = JsonSerializer.Deserialize<List<string>>(json, JsonSourceGenerationContext.Default.ListString) ?? [];
         }
     }
 

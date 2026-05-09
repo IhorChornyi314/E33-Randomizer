@@ -1,6 +1,4 @@
 ﻿using System.Collections.ObjectModel;
-using System.IO;
-using Newtonsoft.Json;
 using UAssetAPI;
 using UAssetAPI.UnrealTypes;
 

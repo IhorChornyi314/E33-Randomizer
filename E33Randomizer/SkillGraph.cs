@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿
+using System.Text.Json;
 using UAssetAPI;
 using UAssetAPI.ExportTypes;
 using UAssetAPI.PropertyTypes.Objects;
@@ -318,7 +319,7 @@ public class SkillGraph
         
         using var r = new StreamReader($"{RandomizerLogic.DataDirectory}/SkillsData/CustomGraphs/{fileName}.json");
         var json = r.ReadToEnd();
-        return JsonConvert.DeserializeObject<Dictionary<int, List<int>>>(json);
+        return JsonSerializer.Deserialize<Dictionary<int, List<int>>>(json, JsonSourceGenerationContext.Default.DictionaryInt32ListInt32) ?? [];
     }
 
     public int PickNextTreeNode(List<int> currentTreeNodes, int minEdges, int maxEdges,

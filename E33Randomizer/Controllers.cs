@@ -8,7 +8,7 @@ public static class Controllers
     public static CharacterController CharacterController = new();
     public static LocationController LocationController = new();
 
-    public static BaseController GetController(string objectType)
+    public static BaseController? GetController(string objectType)
     {
         return objectType switch
         {

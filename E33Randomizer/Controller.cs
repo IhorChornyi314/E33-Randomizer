@@ -1,6 +1,5 @@
-﻿using System.IO;
-using System.Text;
-using Newtonsoft.Json;
+﻿using System.Text.Json;
+using System.Text.Json.Serialization.Metadata;
 
 namespace E33Randomizer;
 
@@ -58,7 +57,17 @@ public abstract class Controller<T>: BaseController where T: ObjectData, new()
         using (StreamReader r = new StreamReader(path))
         {
             string json = r.ReadToEnd();
-            ObjectsData = JsonConvert.DeserializeObject<List<T>>(json);
+            ObjectsData = DefaultObject switch
+            {
+                CharacterData => JsonSerializer.Deserialize(json, JsonSourceGenerationContext.Default.ListCharacterData)?.Cast<T>().ToList() ?? [],
+                CheckData => JsonSerializer.Deserialize(json, JsonSourceGenerationContext.Default.ListCheckData)?.Cast<T>().ToList() ?? [],
+                EnemyData => JsonSerializer.Deserialize(json, JsonSourceGenerationContext.Default.ListEnemyData)?.Cast<T>().ToList() ?? [],
+                ItemData => JsonSerializer.Deserialize(json, JsonSourceGenerationContext.Default.ListItemData)?.Cast<T>().ToList() ?? [],
+                LocationData => JsonSerializer.Deserialize(json, JsonSourceGenerationContext.Default.ListLocationData)?.Cast<T>().ToList() ?? [],
+                SkillData => JsonSerializer.Deserialize(json, JsonSourceGenerationContext.Default.ListSkillData)?.Cast<T>().ToList() ?? [],
+                SpawnPointData => JsonSerializer.Deserialize(json, JsonSourceGenerationContext.Default.ListSpawnPointData)?.Cast<T>().ToList() ?? [],
+                _ => throw new NotImplementedException()
+            };
         }
 
         ObjectsByName = ObjectsData.Select(o => new KeyValuePair<string, T>(o.CodeName, o)).ToDictionary();

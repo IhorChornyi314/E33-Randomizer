@@ -1,5 +1,4 @@
 ﻿using UAssetAPI;
-using UAssetAPI.PropertyTypes.Objects;
 
 namespace E33Randomizer.ItemSources;
 

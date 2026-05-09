@@ -10,6 +10,7 @@
         <ApplicationManifest>app.manifest</ApplicationManifest>
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
         <LangVersion>preview</LangVersion>
+        <IsAotCompatible>true</IsAotCompatible>
         <!-- Yes, this is the only thing you need to add to enable NativeAOT -->
         <!-- To actually compile/publish, just run `dotnet publish -c Release -r <runtime_id_here>` -->
 <!--        <PublishAot>true</PublishAot>-->
@@ -17,7 +18,6 @@
 
     <ItemGroup>
       <PackageReference Include="GenericReader" Version="2.2.4" />
-      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
         <PackageReference Include="Avalonia" Version="12.0.2"/>
         <PackageReference Include="Avalonia.Controls.DataGrid" Version="12.0.0"/>
         <PackageReference Include="Avalonia.Desktop" Version="12.0.2"/>

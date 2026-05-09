@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using AutoFixture;
+﻿using AutoFixture;
 using E33Randomizer;
 using FluentAssertions;
 using NUnit.Framework;
-using NUnit.Framework.Internal;
 using Tests.Rules;
 using Tests.RuleTests;
 
@@ -20,6 +16,7 @@ namespace Tests
         [SetUp]
         public void SetUp()
         {
+            Environment.SetEnvironmentVariable("E33RandoDataPath", "/home/iamwyza/Source/E33-Randomizer/E33Randomizer/Data");
             _fixture = new Fixture();
             _fixture.Customize<int>(c => c.FromFactory(() => new Random().Next(1, 100)));
 

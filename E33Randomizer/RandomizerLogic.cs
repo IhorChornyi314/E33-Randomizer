@@ -1,19 +1,12 @@
-﻿using System.IO;
-using System.Diagnostics;
-using System.Text;
-using Newtonsoft.Json;
-using UAssetAPI;
-using UAssetAPI.ExportTypes;
-using UAssetAPI.PropertyTypes.Objects;
-using UAssetAPI.PropertyTypes.Structs;
-using UAssetAPI.UnrealTypes;
+﻿using System.Diagnostics;
+using System.Text.Json;
 using UAssetAPI.Unversioned;
 namespace E33Randomizer;
 
 
 public static class RandomizerLogic
 {
-    public static List<string> BrokenEncounters =
+    public static readonly List<string> BrokenEncounters =
     [
         "Quest_WeaponlessChalier*1",
         "FB_Dualliste_Phase1*1",
@@ -25,7 +18,8 @@ public static class RandomizerLogic
         "VolesterAlternativC*1",
         "WM_Potier*1_Glaise*1_Volester*1",
     ];
-    public static List<string> BrokenEnemies =
+    
+    public static readonly List<string> BrokenEnemies =
     [
         "QUEST_WeaponlessChalier",
         "FB_Dualliste_Phase1",
@@ -36,7 +30,8 @@ public static class RandomizerLogic
         "SM_Volester_AlternativC",
         "Petank_Parent"
     ];
-    public static List<string> BrokenItems =
+    
+    public static readonly List<string> BrokenItems =
     [
         "MitigatedPerfection",
         "Chroma",
@@ -182,7 +177,7 @@ public static class RandomizerLogic
         SpecialRules.Reset();
     }
 
-    public static CustomPlacement GetCustomPlacement(string objectType)
+    public static CustomPlacement? GetCustomPlacement(string objectType)
     {
         return objectType switch
         {
@@ -214,7 +209,7 @@ public static class RandomizerLogic
         using (StreamReader r = new StreamReader($"{DataDirectory}/StaticAssets/file_paths.json"))
         {
             string json = r.ReadToEnd();
-            filePaths = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
+            filePaths = JsonSerializer.Deserialize<Dictionary<string, string>>(json, JsonSourceGenerationContext.Default.DictionaryStringString) ?? throw new InvalidOperationException();
         }
 
         foreach (var file in filenames)
@@ -245,7 +240,7 @@ public static class RandomizerLogic
             Controllers.CharacterController.WriteTxt(exportPath + "config/characters.txt");
             Controllers.LocationController.WriteTxt(exportPath + "config/locations.txt");
             using StreamWriter r = new StreamWriter(exportPath + "config/settings.json");
-            var json = JsonConvert.SerializeObject(Settings, Formatting.Indented);
+            var json = JsonSerializer.Serialize(Settings, JsonSourceGenerationContextSerializationFactory.LazyJsonSourceGenerationContext.Value.SettingsViewModel);
             r.Write(json);
         }
 
@@ -254,7 +249,14 @@ public static class RandomizerLogic
         
         var retocArgs = $"to-zen --version UE5_4 randomizer \"{exportPath}randomizer_P.utoc\"";
 
-        Process.Start("retoc.exe", retocArgs);
+        string retocCommand = Environment.OSVersion.Platform switch
+        {
+            PlatformID.Win32NT => "retoc.exe",
+            PlatformID.Unix or PlatformID.MacOSX  => "retoc",
+            _ => throw new NotSupportedException()
+        };
+
+        Process.Start(retocCommand, retocArgs);
     }
 
     public static EnemyData GetRandomByArchetype(string archetype)

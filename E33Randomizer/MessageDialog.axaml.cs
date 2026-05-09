@@ -1,6 +1,4 @@
-using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Markup.Xaml;
 
 namespace E33Randomizer;
 
@@ -34,6 +32,6 @@ public partial class MessageDialog : Window
         var dialog = new MessageDialog();
         var vm = new MessageDialogViewModel(dialog,message,title,buttonConfirmText,icon);
         dialog.DataContext = vm;
-        dialog.ShowDialog(owner).GetAwaiter().GetResult();
+        dialog.ShowDialog(owner);
     }
 }

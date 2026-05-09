@@ -1,5 +1,4 @@
-﻿using System.Net;
-using UAssetAPI;
+﻿using UAssetAPI;
 using UAssetAPI.ExportTypes;
 using UAssetAPI.PropertyTypes.Objects;
 using UAssetAPI.PropertyTypes.Structs;

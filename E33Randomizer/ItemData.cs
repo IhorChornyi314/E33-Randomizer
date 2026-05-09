@@ -1,12 +1,11 @@
-﻿using UAssetAPI.PropertyTypes.Objects;
-using UAssetAPI.PropertyTypes.Structs;
+﻿using UAssetAPI.PropertyTypes.Structs;
 
 namespace E33Randomizer;
 
 public class ItemData: ObjectData
 {
-    public string Type = "Invalid";
-    public bool HasQuantities = false;
+    public string Type { get; set; } = "Invalid";
+    public bool HasQuantities { get; set; } = false;
     
     public ItemData()
     {

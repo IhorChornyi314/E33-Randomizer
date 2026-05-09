@@ -1,19 +1,34 @@
-﻿using System.IO;
-using System.Runtime.InteropServices;
-using Newtonsoft.Json;
+﻿
+
+using System.Text.Json;
 
 namespace E33Randomizer;
 
-public class CustomPlacementPreset(
-    List<string> n,
-    List<string> e,
-    Dictionary<string, Dictionary<string, float>> c,
-    Dictionary<string, float> f)
+public class CustomPlacementPreset
 {
-    public List<string> NotRandomized = n;
-    public List<string> Excluded = e;
-    public Dictionary<string, Dictionary<string, float>> CustomPlacement = c;
-    public Dictionary<string, float> FrequencyAdjustments = f;
+    public List<string> NotRandomized { get; set; }
+    public List<string> Excluded  { get; set; }
+    public Dictionary<string, Dictionary<string, float>> CustomPlacement  { get; set; }
+    public Dictionary<string, float> FrequencyAdjustments { get; set; }
+
+    [Obsolete("Only used for JSON Deserialization, not intended to be used directly.")]
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
+    public CustomPlacementPreset()
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
+    {
+        
+    }
+    
+    public CustomPlacementPreset(List<string> n,
+        List<string> e,
+        Dictionary<string, Dictionary<string, float>> c,
+        Dictionary<string, float> f)
+    {
+        NotRandomized = n;
+        Excluded = e;
+        CustomPlacement = c;
+        FrequencyAdjustments = f;
+    }
 }
 
 public abstract class CustomPlacement
@@ -50,7 +65,7 @@ public abstract class CustomPlacement
         using (StreamReader r = new StreamReader(categoriesJsonFile))
         {
             string json = r.ReadToEnd();
-            var customCategoryTranslationsString = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(json);
+            var customCategoryTranslationsString = JsonSerializer.Deserialize<Dictionary<string, List<string>>>(json, JsonSourceGenerationContext.Default.DictionaryStringListString) ?? [];
             
             PlainNameToCodeNames = customCategoryTranslationsString;
             CustomCategories = customCategoryTranslationsString.Keys.ToList();
@@ -107,7 +122,7 @@ public abstract class CustomPlacement
         using (StreamReader r = new StreamReader(pathToJson))
         {
             string json = r.ReadToEnd();
-            var presetData = JsonConvert.DeserializeObject<CustomPlacementPreset>(json);
+            var presetData = JsonSerializer.Deserialize<CustomPlacementPreset>(json, JsonSourceGenerationContext.Default.CustomPlacementPreset);
             LoadFromPreset(presetData);
         }
     }
@@ -116,7 +131,7 @@ public abstract class CustomPlacement
     {
         using StreamWriter r = new StreamWriter(pathToJson);
         var presetData = new CustomPlacementPreset(NotRandomized, Excluded, CustomPlacementRules, FrequencyAdjustments);
-        string json = JsonConvert.SerializeObject(presetData, Formatting.Indented);
+        string json = JsonSerializer.Serialize(presetData, JsonSourceGenerationContextSerializationFactory.LazyJsonSourceGenerationContext.Value.CustomPlacementPreset);
         r.Write(json);
     }
 

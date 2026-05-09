@@ -1,7 +1,7 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Text;
-using Newtonsoft.Json;
+﻿using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+
 using Newtonsoft.Json.Linq;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
@@ -210,7 +210,7 @@ public partial class MainWindow : Window
             using (StreamReader r = new StreamReader(pathToJson))
             {
                 json = r.ReadToEnd();
-                var newSettingsData = JsonConvert.DeserializeObject<SettingsViewModel>(json) ?? throw new Exception("Invalid settings.");
+                var newSettingsData = JsonSerializer.Deserialize(json, JsonSourceGenerationContext.Default.SettingsViewModel) ?? throw new Exception("Invalid settings.");
                 RandomizerLogic.Settings = newSettingsData;
                 DataContext = RandomizerLogic.Settings;
             }
@@ -233,7 +233,7 @@ public partial class MainWindow : Window
         try
         {
             using StreamWriter r = new StreamWriter(pathToJson);
-            string json = JsonConvert.SerializeObject(RandomizerLogic.Settings, Formatting.Indented);
+            string json = JsonSerializer.Serialize(RandomizerLogic.Settings, JsonSourceGenerationContextSerializationFactory.LazyJsonSourceGenerationContext.Value.SettingsViewModel);
             r.Write(json);
         }
         catch (Exception ex)
@@ -335,6 +335,7 @@ public class SettingsViewModel : ObservableObject
     
     public bool RandomizeCharacters { get; set; } = false;
     
+    [System.Text.Json.Serialization.JsonIgnore]
     public int SelectedIndex
     {
         get;
@@ -349,9 +350,10 @@ public class SettingsViewModel : ObservableObject
         }
     }
 
+    [JsonIgnore]
     public object? CurrentPage
     {
-        get;
+        get => field ?? new RandomizeEnemiesTab();
         set
         {
             field = value;

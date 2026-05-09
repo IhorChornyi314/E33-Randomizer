@@ -1,5 +1,4 @@
 ﻿using E33Randomizer;
-using Microsoft.ApplicationInsights;
 
 namespace Tests;
 

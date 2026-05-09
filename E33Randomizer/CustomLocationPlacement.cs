@@ -14,12 +14,12 @@ public class CustomLocationPlacement: CustomPlacement
         
         PresetFiles = new()
         {
-            {"Split categories (default)", "Data/presets/locations/default.json"},
-            {"Total randomness", "Data/presets/locations/total_random.json"},
-            {"No world map", "Data/presets/locations/no_world_map.json"},
-            {"Mostly world map", "Data/presets/locations/world_map_only.json"},
-            {"Custom preset 1", "Data/presets/locations/custom_1.json"},
-            {"Custom preset 2", "Data/presets/locations/custom_2.json"},
+            {"Split categories (default)", "Data/Presets/locations/default.json"},
+            {"Total randomness", "Data/Presets/locations/total_random.json"},
+            {"No world map", "Data/Presets/locations/no_world_map.json"},
+            {"Mostly world map", "Data/Presets/locations/world_map_only.json"},
+            {"Custom preset 1", "Data/Presets/locations/custom_1.json"},
+            {"Custom preset 2", "Data/Presets/locations/custom_2.json"},
         };
         
         LoadCategories($"{RandomizerLogic.DataDirectory}/location_categories.json");

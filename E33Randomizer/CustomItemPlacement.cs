@@ -1,7 +1,4 @@
-﻿using System.IO;
-using Newtonsoft.Json;
-
-namespace E33Randomizer;
+﻿namespace E33Randomizer;
 
 public class CustomItemPlacement: CustomPlacement
 {
@@ -16,12 +13,12 @@ public class CustomItemPlacement: CustomPlacement
         
         PresetFiles = new()
         {
-            {"Split categories (default)", "Data/presets/items/default.json"},
-            {"Total randomness", "Data/presets/items/total_random.json"},
-            {"Only change pictos and weapons", "Data/presets/items/pictos_weapons_only.json"},
-            {"Add more pictos", "Data/presets/items/more_pictos.json"},
-            {"Custom preset 1", "Data/presets/items/custom_1.json"},
-            {"Custom preset 2", "Data/presets/items/custom_2.json"},
+            {"Split categories (default)", "Data/Presets/items/default.json"},
+            {"Total randomness", "Data/Presets/items/total_random.json"},
+            {"Only change pictos and weapons", "Data/Presets/items/pictos_weapons_only.json"},
+            {"Add more pictos", "Data/Presets/items/more_pictos.json"},
+            {"Custom preset 1", "Data/Presets/items/custom_1.json"},
+            {"Custom preset 2", "Data/Presets/items/custom_2.json"},
         };
         
         LoadCategories($"{RandomizerLogic.DataDirectory}/item_categories.json");

@@ -1,7 +1,4 @@
-﻿using System.IO;
-using Newtonsoft.Json;
-
-namespace E33Randomizer;
+﻿namespace E33Randomizer;
 
 /*
  * Priority list:
@@ -45,12 +42,12 @@ public class CustomEnemyPlacement: CustomPlacement
         
         PresetFiles = new()
         {
-            {"Split categories (default)", "Data/presets/enemies/default.json"},
-            {"Total randomness", "Data/presets/enemies/total_random.json"},
-            {"10% of regular enemies are bosses", "Data/presets/enemies/10_percent.json"},
-            {"Make every enemy a boss", "Data/presets/enemies/everyone_is_a_boss.json"},
-            {"Custom preset 1", "Data/presets/enemies/custom_1.json"},
-            {"Custom preset 2", "Data/presets/enemies/custom_2.json"},
+            {"Split categories (default)", "Data/Presets/enemies/default.json"},
+            {"Total randomness", "Data/Presets/enemies/total_random.json"},
+            {"10% of regular enemies are bosses", "Data/Presets/enemies/10_percent.json"},
+            {"Make every enemy a boss", "Data/Presets/enemies/everyone_is_a_boss.json"},
+            {"Custom preset 1", "Data/Presets/enemies/custom_1.json"},
+            {"Custom preset 2", "Data/Presets/enemies/custom_2.json"},
         };
         
         LoadCategories($"{RandomizerLogic.DataDirectory}/enemy_categories.json");

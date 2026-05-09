@@ -1,8 +1,7 @@
 ﻿using System.Collections.ObjectModel;
-using System.IO;
-using System.Text;
+using System.Text.Json;
 using E33Randomizer.ItemSources;
-using Newtonsoft.Json;
+
 using UAssetAPI;
 using UAssetAPI.ExportTypes;
 using UAssetAPI.PropertyTypes.Objects;
@@ -35,7 +34,7 @@ public class ItemsController: Controller<ItemData>
         "Consumable_LuminaPoint",
     ];
     
-    public Dictionary<string, ItemData> RandomizedStartingWeapons = new()
+    public Dictionary<string, ItemData?> RandomizedStartingWeapons = new()
     {
         {"Gustave", null},
         {"Lune", null},
@@ -45,7 +44,7 @@ public class ItemsController: Controller<ItemData>
         {"Monoco", null},
     };
     
-    public Dictionary<string, Tuple<ItemData, ItemData>> RandomizedStartingOutfits = new()
+    public Dictionary<string, Tuple<ItemData, ItemData>?> RandomizedStartingOutfits = new()
     {
         {"Gustave", null},
         {"Lune", null},
@@ -62,7 +61,6 @@ public class ItemsController: Controller<ItemData>
     private UDataTable itemsCompositeTable;
     private Dictionary<string, UAsset> _itemsDataTables = new();
     private List<ItemData> _rockItems;
-    private string _cleanSnapshot;
 
     public bool IsGearItem(ItemData item)
     {
@@ -94,11 +92,11 @@ public class ItemsController: Controller<ItemData>
         
         using StreamReader DialogueRewardPathsReader = new StreamReader($"{RandomizerLogic.DataDirectory}/dialogue_reward_paths.json");
         string DialogueRewardPathsJson = DialogueRewardPathsReader.ReadToEnd();
-        DialogueItemSource.DialogueRewardPaths = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, List<int>>>>(DialogueRewardPathsJson);
+        DialogueItemSource.DialogueRewardPaths = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, List<int>>>>(DialogueRewardPathsJson, JsonSourceGenerationContext.Default.DictionaryStringDictionaryStringListInt32) ?? [];
         
         using StreamReader DialogueRewardQuantitiesPathsReader = new StreamReader($"{RandomizerLogic.DataDirectory}/dialogue_quantity_paths.json");
         string DialogueRewardQuantitiesPathsJson = DialogueRewardQuantitiesPathsReader.ReadToEnd();
-        DialogueItemSource.DialogueRewardQuantitiesPaths = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, List<int>>>>(DialogueRewardQuantitiesPathsJson);
+        DialogueItemSource.DialogueRewardQuantitiesPaths = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, List<int>>>>(DialogueRewardQuantitiesPathsJson, JsonSourceGenerationContext.Default.DictionaryStringDictionaryStringListInt32) ?? [];
         
         ItemSource newSource;
         string checkType;
@@ -569,7 +567,7 @@ public class ItemsController: Controller<ItemData>
         using (StreamReader r = new StreamReader($"{RandomizerLogic.DataDirectory}/rock_chests.json"))
         {
             string json = r.ReadToEnd();
-            _rockChests = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(json);
+            _rockChests = JsonSerializer.Deserialize<Dictionary<string, List<string>>>(json, JsonSourceGenerationContext.Default.DictionaryStringListString) ?? [];
         }
     }
 
@@ -640,7 +638,7 @@ public class ItemsController: Controller<ItemData>
         var itemSourceFileName = checkViewModelCodeName.Split("#")[0];
         var checkKey = checkViewModelCodeName.Split("#")[1];
         var itemSource = ItemsSources.FirstOrDefault(i => i.FileName == itemSourceFileName);
-        var check = itemSource.Checks.FirstOrDefault(c => c.Key == checkKey);
+        var check = itemSource?.Checks.FirstOrDefault(c => c.Key == checkKey);
         itemSource.AddItem(check.Key, itemData);
         AddObjectToContainerVM(itemData, checkViewModelCodeName);
     }

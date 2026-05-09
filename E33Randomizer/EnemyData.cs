@@ -1,7 +1,4 @@
-﻿using UAssetAPI.PropertyTypes.Objects;
-using UAssetAPI.PropertyTypes.Structs;
-
-namespace E33Randomizer;
+﻿namespace E33Randomizer;
 
 
 public class EnemyData: ObjectData
@@ -36,13 +33,21 @@ public class EnemyData: ObjectData
         {"GO_Demineur_Alpha", "GO_Demineur_ALPHA"},
     };
     
-    public string Archetype = "Regular";
+    public string Archetype { get; set; } = "Regular";
     // For balance reasons Osquio is considered a Strong enemy
     public bool IsBoss => Archetype == "Boss" || Archetype == "Alpha" || CodeName == "VD_Osquio";
-
+    
+    public EnemyData(string customName, string codeName)
+    {
+        CustomName = customName;
+        CodeName = codeName;
+    }
+    
     public EnemyData()
     {
         CustomName = "Place holder battle";
         CodeName = "Test_PlaceHolderBattleDude";
     }
+
+    
 }

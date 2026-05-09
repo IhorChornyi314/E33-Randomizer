@@ -4898,10 +4898,10 @@
         "Level.SpawnPoint.WorldMap.AxonPathEntry"
       ],
       "Story.SireneHeartAcquired": [
-        "Special.Dummy.WM.SireneHeartAcquired"
+        "Special.Dummy.WM.SireneHeartAcquiredFirst"
       ],
       "Story.VisageHeartAcquired": [
-        "Special.Dummy.WM.VisageHeartAcquired"
+        "Special.Dummy.WM.VisageHeartAcquiredFirst"
       ],
       "Story.BarrierBreakerAcquired": [
         "Level.SpawnPoint.WorldMap.MonolithInteriorEntry"

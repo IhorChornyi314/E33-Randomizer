@@ -1,11 +1,8 @@
 ﻿using System.Collections.ObjectModel;
-using System.IO;
-using System.Text;
-using Newtonsoft.Json;
+using System.Text.Json;
 using UAssetAPI;
 using UAssetAPI.ExportTypes;
 using UAssetAPI.UnrealTypes;
-using UAssetAPI.Unversioned;
 
 namespace E33Randomizer;
 
@@ -44,7 +41,7 @@ public class EnemiesController: Controller<EnemyData>
         using (StreamReader r = new StreamReader($"{RandomizerLogic.DataDirectory}/encounter_locations.json"))
         {
             string json = r.ReadToEnd();
-            var locationsEncounters = JsonConvert.DeserializeObject<Dictionary<string, List<string> >>(json);
+            var locationsEncounters = JsonSerializer.Deserialize<Dictionary<string, List<string> >>(json, JsonSourceGenerationContext.Default.DictionaryStringListString) ?? [];
             foreach (var locationEncounters in locationsEncounters)
             {
                 encounterLocations[locationEncounters.Key] = locationEncounters.Value.Select(eStr => Encounters.FindIndex(e => e.Name == eStr)).ToList();
@@ -92,7 +89,7 @@ public class EnemiesController: Controller<EnemyData>
         text = text.ReplaceLineEndings("\n");
         foreach (var line in text.Split('\n'))
         {
-            if (line == "") continue;
+            if (line.Trim() == "") continue;
             var encounterName = line.Split('|')[0];
             var encounterIndex = Encounters.FindIndex(e => e.Name == encounterName);
             if (encounterIndex == -1)
@@ -261,6 +258,10 @@ public class EnemiesController: Controller<EnemyData>
 
                 foreach (var enemyViewModel in encounterEnemiesViewModel)
                 {
+                    if (string.IsNullOrWhiteSpace(enemyViewModel.Name))
+                    {
+                        continue;
+                    }
                     encounter.Enemies.Add(GetObject(enemyViewModel.CodeName));
                 }
             }

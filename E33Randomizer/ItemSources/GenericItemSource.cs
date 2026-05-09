@@ -1,9 +1,4 @@
-﻿using System.IO;
-using System.Net;
-using System.Text;
-using Newtonsoft.Json;
-using UAssetAPI;
-using UAssetAPI.PropertyTypes.Structs;
+﻿using UAssetAPI;
 using UAssetAPI.UnrealTypes;
 
 namespace E33Randomizer.ItemSources;

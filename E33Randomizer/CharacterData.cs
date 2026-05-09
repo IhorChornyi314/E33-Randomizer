@@ -2,7 +2,7 @@
 
 public class CharacterData: ObjectData
 {
-    public int Enum;
-    public string StartingSkin;
-    public bool IsPlayable;
+    public int Enum { get; set; }
+    public string StartingSkin { get; set; }
+    public bool IsPlayable { get; set; }
 }

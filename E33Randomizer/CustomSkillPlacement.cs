@@ -1,7 +1,4 @@
-﻿using System.IO;
-using Newtonsoft.Json;
-
-namespace E33Randomizer;
+﻿namespace E33Randomizer;
 
 public class CustomSkillPlacement: CustomPlacement
 {

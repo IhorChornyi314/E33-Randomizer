@@ -1,5 +1,4 @@
-﻿using System.Configuration;
-using E33Randomizer.ItemSources;
+﻿using E33Randomizer.ItemSources;
 
 namespace E33Randomizer;
 

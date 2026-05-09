@@ -1,5 +1,5 @@
-﻿using System.ComponentModel;
-using System.Text;
+﻿using System.Text;
+using System.Text.Json;
 using System.Text.RegularExpressions;
 using Avalonia.Controls;
 using Avalonia;
@@ -8,7 +8,7 @@ using Avalonia.Interactivity;
 using Avalonia.Layout;
 using Avalonia.Media;
 using Avalonia.Platform.Storage;
-using Newtonsoft.Json;
+
 
 namespace E33Randomizer
 {
@@ -49,7 +49,7 @@ namespace E33Randomizer
         private void UpdateJsonTextBox()
         {
             var presetData = new CustomPlacementPreset(CustomPlacement.NotRandomized, CustomPlacement.Excluded, CustomPlacement.CustomPlacementRules, CustomPlacement.FrequencyAdjustments);
-            string json = JsonConvert.SerializeObject(presetData, Formatting.Indented);
+            string json = JsonSerializer.Serialize(presetData, JsonSourceGenerationContextSerializationFactory.LazyJsonSourceGenerationContext.Value.CustomPlacementPreset);
             PresetJsonTextBox.Text = json;
         }
         
@@ -209,24 +209,33 @@ namespace E33Randomizer
             }
         }
 
-        private void PresetButton_Click(object sender, RoutedEventArgs e)
+        private async void PresetButton_Click(object sender, RoutedEventArgs e)
         {
-            if (sender is Button { Tag: string presetFile })
+            try
             {
-                try
+                if (sender is Button { Tag: string presetFile })
                 {
-                    CustomPlacement.LoadFromJson(presetFile.Replace("Data", RandomizerLogic.DataDirectory));
-                    LoadCustomPlacementRows(SelectedObjectForCustomPlacement);
-                    Update();
-                }
-                catch (Exception ex)
-                {
-                    MessageDialog.Show(this, $"Error loading preset: {ex.Message}; Reverting to Default.", 
-                        "Load Error", nameof(DialogBoxButton.OK), MessageBoxIcons.Error);
-                    CustomPlacement.LoadDefaultPreset();
-                    UpdateJsonTextBox();
+                    try
+                    {
+                        CustomPlacement.LoadFromJson(presetFile.Replace("Data", RandomizerLogic.DataDirectory));
+                        LoadCustomPlacementRows(SelectedObjectForCustomPlacement);
+                        Update();
+                    }
+                    catch (Exception ex)
+                    {
+                        await MessageDialog.ShowAsync
+                        (this, $"Error loading preset: {ex.Message}; Reverting to Default.",
+                            "Load Error", nameof(DialogBoxButton.OK), MessageBoxIcons.Error);
+                        CustomPlacement.LoadDefaultPreset();
+                        UpdateJsonTextBox();
+                    }
                 }
             }
+            catch(Exception ex)
+            {
+                await MessageDialog.ShowAsync(this, $"Error loading preset: {ex.Message}; Reverting to Default.", "Load Error", nameof(DialogBoxButton.OK), MessageBoxIcons.Error);
+            }
+            
         }
 
         private async void LoadPresetButton_Click(object sender, RoutedEventArgs e)

@@ -1,4 +1,4 @@
-﻿using System.IO;
+﻿using System.Diagnostics.CodeAnalysis;
 using UAssetAPI;
 using UAssetAPI.ExportTypes;
 using UAssetAPI.PropertyTypes.Objects;

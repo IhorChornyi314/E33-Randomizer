@@ -1,11 +1,20 @@
-﻿namespace E33Randomizer;
+﻿using System.Text.Json.Serialization;
 
+namespace E33Randomizer;
+
+[JsonDerivedType(typeof(CharacterData))]
+[JsonDerivedType(typeof(CheckData))]
+[JsonDerivedType(typeof(EnemyData))]
+[JsonDerivedType(typeof(ItemData))]
+[JsonDerivedType(typeof(LocationData))]
+[JsonDerivedType(typeof(SkillData))]
+[JsonDerivedType(typeof(SpawnPointData))]
 public abstract class ObjectData
 {
-    public string CustomName = "";
-    public string CodeName = "";
-    public bool IsBroken = false;
-    public bool IsCutContent = false;
+    public string CustomName { get; set; } = string.Empty;
+    public string CodeName { get; set; } = string.Empty;
+    public bool IsBroken { get; set; }
+    public bool IsCutContent { get; set; }
     
     public override bool Equals(object? obj)
     {
