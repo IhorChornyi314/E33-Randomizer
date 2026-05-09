@@ -17,12 +17,12 @@ public class CustomSkillPlacement: CustomPlacement
         
         PresetFiles = new()
         {
-            {"Split categories (default)", "Data/presets/skills/default.json"},
-            {"Total randomness", "Data/presets/skills/total_random.json"},
-            {"Don't change gradients", "Data/presets/skills/non_gradient_only.json"},
-            {"Feet for everyone", "Data/presets/skills/feet.json"},
-            {"Custom preset 1", "Data/presets/skills/custom_1.json"},
-            {"Custom preset 2", "Data/presets/skills/custom_2.json"},
+            {"Split categories (default)", "Data/Presets/skills/default.json"},
+            {"Total randomness", "Data/Presets/skills/total_random.json"},
+            {"Don't change gradients", "Data/Presets/skills/non_gradient_only.json"},
+            {"Feet for everyone", "Data/Presets/skills/feet.json"},
+            {"Custom preset 1", "Data/Presets/skills/custom_1.json"},
+            {"Custom preset 2", "Data/Presets/skills/custom_2.json"},
         };
         
         LoadCategories($"{RandomizerLogic.DataDirectory}/skill_categories.json");

@@ -94,17 +94,17 @@
             </Grid.ColumnDefinitions>
             
             <Button Grid.Row="0" Grid.Column="0" x:Name="PresetButton1" Content="Split categories (default)" Height="35" 
-                    Margin="0,0,5,5" Click="PresetButton_Click" Tag="Data/presets/default.json"/>
+                    Margin="0,0,5,5" Click="PresetButton_Click" Tag="Data/Presets/default.json"/>
             <Button Grid.Row="0" Grid.Column="1" x:Name="PresetButton2" Content="Total randomness" Height="35" 
-                    Margin="5,0,0,5" Click="PresetButton_Click" Tag="Data/presets/total_random.json"/>
+                    Margin="5,0,0,5" Click="PresetButton_Click" Tag="Data/Presets/total_random.json"/>
             <Button Grid.Row="1" Grid.Column="0" x:Name="PresetButton3" Content="10% of regular enemies are bosses" Height="35"
-                    Margin="0,0,5,5" Click="PresetButton_Click" Tag="Data/presets/10_percent.json"/>
+                    Margin="0,0,5,5" Click="PresetButton_Click" Tag="Data/Presets/10_percent.json"/>
             <Button Grid.Row="1" Grid.Column="1" x:Name="PresetButton4" Content="Make every enemy a boss" Height="35" 
-                    Margin="5,0,0,5" Click="PresetButton_Click" Tag="Data/presets/everyone_is_a_boss.json"/>
+                    Margin="5,0,0,5" Click="PresetButton_Click" Tag="Data/Presets/everyone_is_a_boss.json"/>
             <Button Grid.Row="2" Grid.Column="0" x:Name="PresetButton5" Content="Custom preset 1" Height="35" 
-                    Margin="0,0,5,5" Click="PresetButton_Click" Tag="Data/presets/custom_1.json"/>
+                    Margin="0,0,5,5" Click="PresetButton_Click" Tag="Data/Presets/custom_1.json"/>
             <Button Grid.Row="2" Grid.Column="1" x:Name="PresetButton6" Content="Custom preset 2" Height="35" 
-                    Margin="5,0,0,5" Click="PresetButton_Click" Tag="Data/presets/custom_2.json"/>
+                    Margin="5,0,0,5" Click="PresetButton_Click" Tag="Data/Presets/custom_2.json"/>
         </Grid>
         
     </StackPanel>

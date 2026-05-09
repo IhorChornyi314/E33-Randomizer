@@ -2,13 +2,29 @@ using System.Text;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Platform.Storage;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace E33Randomizer;
 
 public partial class MiscTab : UserControl
 {
+    private readonly MiscTabViewModel _viewModel;
+    
     public MiscTab()
     {
+        _viewModel = new MiscTabViewModel
+        {
+            DefaultSaveFilePath = Environment.OSVersion.Platform switch
+            {
+                PlatformID.Win32NT => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Sandfall\\Saved\\SaveGames\\"),
+                PlatformID.Unix => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Steam/steamapps/compatdata/1903340/pfx/drive_c/users/steamuser/AppData/Local/Sandfall/Saved/SaveGames/"),
+                _ => throw new NotSupportedException()
+            }
+            
+        };
+
+        DataContext = _viewModel;
+        
         InitializeComponent();
     }
     
@@ -22,10 +38,7 @@ public partial class MiscTab : UserControl
             string targetFolder = "";
             try
             {
-                string saveGamesBase = Path.Combine(
-                    Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-                    "Sandfall\\Saved\\SaveGames\\"
-                );
+                string saveGamesBase = _viewModel.DefaultSaveFilePath;
                 string[] subdirectories = Directory.GetDirectories(saveGamesBase);
 
                 targetFolder = subdirectories.Length is 0 or > 1 ? saveGamesBase : $"{subdirectories[0]}";
@@ -45,7 +58,7 @@ public partial class MiscTab : UserControl
                 SuggestedStartLocation = suggestedStartLocation,
                 FileTypeFilter =
                 [
-                    new FilePickerFileType("SAV files (*.sav)") { Patterns = ["*.save"] },
+                    new FilePickerFileType("SAV files (*.sav)") { Patterns = ["*.sav"] },
                     new FilePickerFileType("All Files") { Patterns = ["*"] }
                 ]
             });
@@ -80,4 +93,10 @@ public partial class MiscTab : UserControl
             await MessageDialog.ShowAsync(topLevel, $"Error patching: {ex.Message}", "Error", nameof(DialogBoxButton.OK),  MessageBoxIcons.Error);
         }
     }
+}
+
+
+public class MiscTabViewModel : ObservableObject
+{
+    public string DefaultSaveFilePath { get; set; }
 }

@@ -122,7 +122,7 @@ public class LocationGraph
         return false;
     }
 
-    public List<int> GetRandomPath(int startingPoint, List<int> currentPath, List<string> currentKeys, out List<string> newKeys)
+    public List<int>? GetRandomPath(int startingPoint, List<int> currentPath, List<string> currentKeys, out List<string> newKeys)
     {
         var toVisitQueue = new Queue<int>();
         toVisitQueue.Enqueue(startingPoint);
@@ -227,7 +227,7 @@ public class LocationGraph
                 {
                     i--;
                     failedAttempts++;
-                    if (failedAttempts > 10)
+                    if (failedAttempts > 100)
                     {
                         throw new Exception("Could not critical path, aborting randomization. Please change generation settings if this problem persists.");
                     }

@@ -2,8 +2,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:e33Randomizer="clr-namespace:E33Randomizer"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="E33Randomizer.MiscTab">
+             x:Class="E33Randomizer.MiscTab" x:DataType="e33Randomizer:MiscTabViewModel">
     <Grid>
                     <GroupBox Grid.Row="0" Header="Save File Patching" Margin="10, 10, 5, 0"
                               VerticalAlignment="Top">
@@ -16,7 +17,7 @@
                             MaxWidth="800">
                             It is recommended that you patch your save file to gain access to Jump and Gradient Counters if you don't have those already.
                             <LineBreak/><LineBreak/>
-                            They are located in %USERPROFILE%/AppData/Local/Sandfall/Saved/SavedGames/[numbers]/ and are named "EXPEDITION_[save slot id]".
+                            They are located in <Run Text="{Binding DefaultSaveFilePath}" /> and are named "EXPEDITION_[save slot id]".
                             <LineBreak />
                             There's also a Backup folder that contains all of your "Load Previous Saves" saves.
                             Simply press the button and choose the save file that you want to patch.
