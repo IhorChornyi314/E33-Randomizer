@@ -14,9 +14,26 @@ namespace E33Randomizer
 {
     public partial class CustomPlacementWindow : Window
     {
-        public string SelectedObjectForCustomPlacement = null;
+        public string? SelectedObjectForCustomPlacement = null;
         private CustomPlacement CustomPlacement;
 
+        // Allowing for Design-Time viewer
+        public CustomPlacementWindow()
+        {
+            CustomPlacement = new CustomItemPlacement()
+            {
+                AllObjects = new List<ObjectData>()
+                {
+                    new ItemData(){ CodeName = "Short", CustomName = "SomeShortName"}
+                }
+            };
+            LoadCustomPlacementRows(SelectedObjectForCustomPlacement);
+            InitializeComponent();
+            PopulateObjectDropdowns();
+            InitPresetButtons();
+            Update();
+        }
+        
         public CustomPlacementWindow(CustomPlacement customPlacement)
         {
             CustomPlacement = customPlacement;
@@ -606,7 +623,7 @@ namespace E33Randomizer
             return row;
         }
 
-        private void RemoveCustomPlacementRow(string objectName, StackPanel row)
+        private void RemoveCustomPlacementRow(string? objectName, StackPanel row)
         {
             CustomPlacementRowsContainer.Children.Remove(row);
             if (objectName != null)
@@ -616,7 +633,7 @@ namespace E33Randomizer
             }
         }
 
-        private void LoadCustomPlacementRows(string objectName)
+        private void LoadCustomPlacementRows(string? objectName)
         {
             if (objectName == null)
             {

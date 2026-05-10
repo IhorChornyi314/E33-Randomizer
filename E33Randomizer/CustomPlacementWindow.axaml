@@ -141,7 +141,6 @@
                 <!-- Selected Object Display -->
                 <TextBlock Grid.Row="0" x:Name="SelectedObjectDisplay" 
                            Text="Nothing selected" 
-                           FontWeight="Bold" 
                            Margin="0,0,0,10"
                            HorizontalAlignment="Center"/>
                 

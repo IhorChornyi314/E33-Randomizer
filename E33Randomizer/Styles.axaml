@@ -1,0 +1,128 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <StackPanel Spacing="20">
+                <TextBlock>This is a TextBlock</TextBlock>
+                <Button Classes="e33Button">I'm a button with the e33Button class.</Button>
+                <CheckBox>This is a checkbox</CheckBox>
+                <Grid ColumnDefinitions="*,*" Margin="20">
+                    <Label Grid.Column="0">Numeric Up Down</Label>
+                    <NumericUpDown
+                        Grid.Column="1"
+                        ShowButtonSpinner="True"
+                        ButtonSpinnerLocation="Right"
+                        Text="1234"
+                        FormatString="0"
+                        Minimum="0"
+                        Width="200"
+                        Maximum="2000"
+                        Increment="1"
+                        Value="1234" FontSize="25" />
+                </Grid>
+                <TextBlock Classes="note">This is some warning/important info text.</TextBlock>
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+    <FluentTheme>
+        <FluentTheme.Palettes>
+            <ColorPaletteResources x:Key="Light" Accent="#d7bd94" AltHigh="White" AltLow="White" AltMedium="White"
+                                   AltMediumHigh="White" AltMediumLow="White" BaseHigh="#11100f" BaseLow="#ffcccccc"
+                                   BaseMedium="#ff898989" BaseMediumHigh="#ff5d5d5d" BaseMediumLow="#ff737373"
+                                   ChromeAltLow="#ff5d5d5d" ChromeBlackHigh="#11100f" ChromeBlackLow="#ffcccccc"
+                                   ChromeBlackMedium="#ff5d5d5d" ChromeBlackMediumLow="#ff898989"
+                                   ChromeDisabledHigh="#ffcccccc" ChromeDisabledLow="#ff898989" ChromeGray="#ff737373"
+                                   ChromeHigh="#ffcccccc" ChromeLow="#ffececec" ChromeMedium="#ffe6e6e6"
+                                   ChromeMediumLow="#ffececec" ChromeWhite="White" ListLow="#ffe6e6e6"
+                                   ListMedium="#ffcccccc" RegionColor="White" />
+            <ColorPaletteResources x:Key="Dark" Accent="#d7bd94" AltHigh="#11100f" AltLow="#11100f" AltMedium="#11100f"
+                                   AltMediumHigh="#11100f" AltMediumLow="#11100f" BaseHigh="White" BaseLow="#ff333333"
+                                   BaseMedium="#ff9a9a9a" BaseMediumHigh="#ffb4b4b4" BaseMediumLow="#ff676767"
+                                   ChromeAltLow="#ffb4b4b4" ChromeBlackHigh="#11100f" ChromeBlackLow="#ffb4b4b4"
+                                   ChromeBlackMedium="#11100f" ChromeBlackMediumLow="#11100f"
+                                   ChromeDisabledHigh="#ff333333" ChromeDisabledLow="#ff9a9a9a" ChromeGray="Gray"
+                                   ChromeHigh="Gray" ChromeLow="#ff151515" ChromeMedium="#ff1d1d1d"
+                                   ChromeMediumLow="#ff2c2c2c" ChromeWhite="White" ListLow="#ff1d1d1d"
+                                   ListMedium="#ff333333" RegionColor="#11100f" />
+        </FluentTheme.Palettes>
+    </FluentTheme>
+    <Style Selector=":is(TopLevel)">
+        <Setter Property="FontFamily" Value="fonts:E33Fonts#IM FELL Double Pica" />
+    </Style>
+
+    <!-- Buttons -->
+    <Style Selector="Button.e33Button:pointerover Image#Left">
+        <Setter Property="Source" Value="avares://E33Randomizer/Assets/Images/ButtonBaseHoverLeft.png" />
+    </Style>
+    <Style Selector="Button.e33Button:pointerover Image#Right">
+        <Setter Property="Source" Value="avares://E33Randomizer/Assets/Images/ButtonBaseHoverRight.png" />
+    </Style>
+    <Style Selector="Button.e33Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="#1b1918" />
+    </Style>
+    <Style Selector="Button.e33Button">
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="FontFamily" Value="fonts:E33Fonts#Cinzel" />
+        <Setter Property="Background" Value="#1b1918" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid HorizontalAlignment="Center"
+                      VerticalAlignment="Top" ColumnDefinitions="Auto,*,Auto">
+
+                    <!-- Left background image -->
+                    <Image Grid.Column="0" Name="Left"
+                           Source="avares://E33Randomizer/Assets/Images/ButtonBaseLeft.png" Stretch="None" />
+
+                    <!-- Middle transparent space (grows horizontally) -->
+                    <Panel Grid.Column="1" Background="#1b1918" />
+
+                    <!-- Right background image -->
+                    <Image Grid.Column="2" Name="Right"
+                           Source="avares://E33Randomizer/Assets/Images/ButtonBaseRight.png" Stretch="None" />
+
+                    <!-- Floating Button, overlapping all columns -->
+                    <ContentPresenter Grid.Column="0" Grid.ColumnSpan="3"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      ZIndex="1"
+                                      Name="PART_ContentPresenter"
+                                      Margin="20 0"
+                                      Content="{TemplateBinding Content}" />
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+
+    <!-- NumericUpDown -->
+    <Style Selector="NumericUpDown /template/ TextBox#PART_TextBox">
+        <Setter Property="LineHeight" Value="24" />
+        <Setter Property="Padding" Value="5 0" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="fonts:E33Fonts#Bebas Neue" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="FontSize" Value="{TemplateBinding FontSize}" />
+
+    </Style>
+
+    <!-- Checkboxes -->
+    <Style Selector="CheckBox">
+        <Setter Property="FontSize" Value="18" />
+    </Style>
+    <Style Selector="CheckBox:checked /template/ Border#NormalRectangle">
+        <Setter Property="Background" Value="black" />
+    </Style>
+
+    <!-- TextBlocks -->
+    <Style Selector="TextBlock.note">
+        <Setter Property="Foreground" Value="#d7bd94" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="Margin" Value="40,5,0,5" />
+    </Style>
+
+    <!-- Add Styles Here -->
+</Styles>

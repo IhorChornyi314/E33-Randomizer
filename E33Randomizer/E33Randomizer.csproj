@@ -30,5 +30,12 @@
     <ItemGroup>
         <ProjectReference Include="..\external\UAssetAPI\UAssetAPI\UAssetAPI.csproj" />
     </ItemGroup>
+    <ItemGroup>
+        <AvaloniaResource Include="Assets\Fonts\*" />
+        <AvaloniaResource Include="Assets\Images\*" />
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Assets\" />
+    </ItemGroup>
 
 </Project>

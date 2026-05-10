@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:e33Randomizer="clr-namespace:E33Randomizer"
              mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="850" d:DesignWidth="675">
                 <Grid Margin="20" x:DataType="e33Randomizer:SettingsViewModel">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -57,12 +57,7 @@
                             <!--           FontSize="14"/> -->
                             <TextBlock
                                 Text="Merchants' special wares unlocks and Maelle's paintress skills are considered loot drops. It is recommended that you only disable this if you are also running an item randomizer."
-                                
-                                FontWeight="Bold"
-                                Margin="10,5,0,5"
-                                VerticalAlignment="Center"
-                                MaxWidth="800"
-                                TextWrapping="Wrap" />
+                                Classes="note" />
                         </StackPanel>
                         <!-- Include Cut Content -->
                         <StackPanel Orientation="Vertical" Margin="0">
@@ -71,9 +66,7 @@
                                       IsChecked="{Binding IncludeCutContentEnemies}"/>
                             <TextBlock
                                 Text="Be careful when parrying cut content enemies, as it can break their AI. You can replace broken enemies in Edit Encounters window."
-                                FontWeight="Bold"
-                                Margin="10,5,0,5"
-                                VerticalAlignment="Center"
+                                Classes="note"
                                 IsVisible="{Binding IsChecked, ElementName=IncludeCutContentCheckBox}" />
                         </StackPanel>
 
@@ -84,12 +77,7 @@
                                     IsVisible="{Binding IsChecked, ElementName=EnableEnemyOnslaughtCheckBox}">
                             <TextBlock
                                 Text="The game has full support for 4 enemies, but the 5th and beyond gets lumped into a single spot outside the fighting arena. They will still function properly except that you won't be able to see their attacks or shoot them."
-                                
-                                FontWeight="Bold"
-                                Margin="10,0,0,0"
-                                VerticalAlignment="Center"
-                                TextWrapping="Wrap"
-                                MaxWidth="800" />
+                                Classes="note" />
                             <CheckBox x:Name="RandomizeAdditionalEnemiesCheckBox"
                                       Content="Randomize added enemies"
                                       IsChecked="{Binding RandomizeAddedEnemies}" />
@@ -140,15 +128,17 @@
                             </ComboBox>
                         </StackPanel>
                     </StackPanel>
-                    <StackPanel Grid.Row="2">
-                        <Button x:Name="CustomEnemyPlacementButton"
-                                Content="Customize Enemy Placements"
+                    <Grid Grid.Row="2" ColumnDefinitions="*,*">
+                        <Button Grid.Column="0" x:Name="CustomEnemyPlacementButton"
+                                Content="Edit Enemy Placements"
                                 Click="CustomPlacementButton_Click"
-                                Tag="Enemy" />
-                        <Button x:Name="EditEncountersButton"
+                                Tag="Enemy"
+                                Classes="e33Button"/>
+                        <Button Grid.Column="1" x:Name="EditEncountersButton"
                                 Content="Edit Individual Encounters"
                                 Click="EditButton_Click"
+                                Classes="e33Button"
                                 Tag="Enemy" />
-                    </StackPanel>
+                    </Grid>
                 </Grid>
 </UserControl>
