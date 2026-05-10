@@ -38,7 +38,7 @@ public static class CustomPlacementTestLogic
 
     public static bool TestFrequencyAdjustment(Output outputNotAdjusted, Output outputAdjusted, Config config)
     {
-        var adjustedEnemyPlainNames = config.CustomEnemyPlacement.FrequencyAdjustments.Keys;
+        var adjustedEnemyPlainNames = config.CustomEnemyPlacement.FrequencyAdjustments.ToList().Select(x => x.Key);
         var adjustedEnemyCodeNames = config.CustomEnemyPlacement.PlainNamesToCodeNames(adjustedEnemyPlainNames);
 
         adjustedEnemyCodeNames = adjustedEnemyCodeNames.Where(cN =>

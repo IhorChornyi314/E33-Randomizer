@@ -4,6 +4,8 @@
         Title="Custom Placement" Height="820" Width="900"
         MinHeight="820" MinWidth="900"
         WindowStartupLocation="CenterOwner"
+        xmlns:e33Randomizer="clr-namespace:E33Randomizer"
+        x:DataType="e33Randomizer:CustomPlacementWindowViewModel"
         Closing="Window_Closing">
     <Grid>
         <Grid.RowDefinitions>
@@ -17,7 +19,29 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <GroupBox Grid.Row="0" Header="Special Rules" Margin="10, 0, 5, 0">
+        <!-- Quick Presets Section -->
+        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
+            <Button Content="Quick Presets">
+                <Button.Flyout>
+                        <MenuFlyout ItemsSource="{Binding PresetFiles}">
+                            <MenuFlyout.ItemContainerTheme>
+                                <ControlTheme TargetType="MenuItem" BasedOn="{StaticResource {x:Type MenuItem}}" 
+                                              x:DataType="e33Randomizer:MenuItemViewModel">
+
+                                    <Setter Property="Header" Value="{Binding Name}"/>
+                                    <Setter Property="Command" Value="{Binding LoadPresetCommand}"/>
+                                    <Setter Property="CommandParameter" Value="{Binding FilePath}"/>
+                                    <Setter Property="StaysOpenOnClick" Value="False" />
+                                </ControlTheme>
+                            </MenuFlyout.ItemContainerTheme>
+                            </MenuFlyout>
+                </Button.Flyout>
+            </Button>
+            <ComboBox x:Name="OopsAllObjectComboBox" Height="30" IsVisible="{Binding SelectedPresetIsOops}" 
+                      SelectedValueBinding="{Binding OopsAllObjectsSelection}"/> 
+        </StackPanel>
+
+        <GroupBox Grid.Row="1" Header="Special Rules" Margin="10, 0, 5, 0">
             <Grid Margin="10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -67,50 +91,8 @@
         </GroupBox>
         
         
-        <!-- Quick Presets Section -->
-<GroupBox Grid.Row="0" Grid.Column="1" Header="Quick Presets" Margin="5, 0, 10, 0">
-    <StackPanel Margin="10">
-        <!-- Oops All Row -->
-        <Grid Margin="0,0,0,10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" x:Name="OopsAllButton" Content="Oops All" Width="80" Height="30" 
-                    Click="OopsAllButton_Click" Margin="0,0,10,0"/>
-            <ComboBox Grid.Column="1" x:Name="OopsAllObjectComboBox" Height="30"/>
-        </Grid>
-        
-        <!-- Preset Buttons Grid (3x2) -->
-        <Grid Margin="0,0,0,10">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            
-            <Button Grid.Row="0" Grid.Column="0" x:Name="PresetButton1" Content="Split categories (default)" Height="35" 
-                    Margin="0,0,5,5" Click="PresetButton_Click" Tag="Data/Presets/default.json"/>
-            <Button Grid.Row="0" Grid.Column="1" x:Name="PresetButton2" Content="Total randomness" Height="35" 
-                    Margin="5,0,0,5" Click="PresetButton_Click" Tag="Data/Presets/total_random.json"/>
-            <Button Grid.Row="1" Grid.Column="0" x:Name="PresetButton3" Content="10% of regular enemies are bosses" Height="35"
-                    Margin="0,0,5,5" Click="PresetButton_Click" Tag="Data/Presets/10_percent.json"/>
-            <Button Grid.Row="1" Grid.Column="1" x:Name="PresetButton4" Content="Make every enemy a boss" Height="35" 
-                    Margin="5,0,0,5" Click="PresetButton_Click" Tag="Data/Presets/everyone_is_a_boss.json"/>
-            <Button Grid.Row="2" Grid.Column="0" x:Name="PresetButton5" Content="Custom preset 1" Height="35" 
-                    Margin="0,0,5,5" Click="PresetButton_Click" Tag="Data/Presets/custom_1.json"/>
-            <Button Grid.Row="2" Grid.Column="1" x:Name="PresetButton6" Content="Custom preset 2" Height="35" 
-                    Margin="5,0,0,5" Click="PresetButton_Click" Tag="Data/Presets/custom_2.json"/>
-        </Grid>
-        
-    </StackPanel>
-</GroupBox>
-        
-<GroupBox Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Header="Custom Placement" Margin="10" MinHeight="300" MaxHeight="300">
+
+<GroupBox Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Header="Custom Placement" Margin="10" MinHeight="300" MaxHeight="300">
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -160,7 +142,7 @@
         </GroupBox>
     </Grid>
 </GroupBox>
-        <GroupBox Grid.Row="2" Grid.Column="0" Header="Frequency Adjustment" Margin="5, 0, 10, 0" MaxHeight="180">
+        <GroupBox Grid.Row="3" Grid.Column="0" Header="Frequency Adjustment" Margin="5, 0, 10, 0" MaxHeight="180">
             <Grid Margin="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -169,19 +151,48 @@
         
                 <!-- Scrollable Container for Frequency Rows -->
                 <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto" MaxHeight="150">
-                    <StackPanel x:Name="FrequencyRowsContainer"/>
+                    <ItemsControl ItemsSource="{Binding FrequencyAdjustments, Mode=TwoWay}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                                    <ComboBox Width="150" Height="30" Margin="0 0 10 0" VerticalAlignment="Center" 
+                                              SelectedValue="{Binding Key, Mode=TwoWay}"
+                                              ItemsSource="{Binding $parent[ItemsControl].((e33Randomizer:CustomPlacementWindowViewModel)DataContext).CustomCategories}"/>
+                                    <Button Content="-" Width="30" Height="30" Margin="0 0 5 0" Background="Red" Foreground="White" FontWeight="Bold"
+                                            Command="{Binding $parent[ItemsControl].((e33Randomizer:CustomPlacementWindowViewModel)DataContext).RemoveFrequencyRowCommand}"
+                                            CommandParameter="{Binding .}"/>
+                                    <Slider  Width="100"
+                                             Height="30"
+                                             Minimum="0"
+                                             Maximum="100"
+                                             Value="{Binding Value, Mode=TwoWay}"
+                                             Margin="0, 0, 10, 0"
+                                             VerticalAlignment="Center" />
+                                    <NumericUpDown
+                                            Width="60" Height="30" Value="{Binding Value, Mode=TwoWay}"
+                                            FormatString="0"
+                                            ShowButtonSpinner="False"
+                                            VerticalAlignment="Center"
+                                            VerticalContentAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
                 </ScrollViewer>
+                
         
                 <!-- Add Row Button -->
-                <Button Grid.Row="1" x:Name="AddFrequencyRowButton" Content="+ Add Frequency Row" 
-                        Height="35" Margin="0,10,0,0" Click="AddFrequencyRowButton_Click"
-                        Background="#4CAF50"  FontWeight="Bold"/>
+                <Button Grid.Row="1" 
+                        Content="Add Frequency Row" 
+                        Height="35" Margin="0,10,0,0" 
+                        Command="{Binding AddFrequencyRowCommand}"
+                        CommandParameter=""
+                        />
             </Grid>
         </GroupBox>
-        <GroupBox Grid.Row="2" Grid.Column="1" Header="Preset JSON" Margin="5, 0, 10, 0" MaxHeight="180" MinHeight="180">
+        <GroupBox Grid.Row="3" Grid.Column="1" Header="Preset JSON" Margin="5, 0, 10, 0" MaxHeight="180" MinHeight="180">
             <TextBox
-                x:Name="PresetJsonTextBox"
-                Text=""
+                Text="{Binding Json}"
                 IsReadOnly="True"
                 TextWrapping="Wrap"
                 AcceptsReturn="True"

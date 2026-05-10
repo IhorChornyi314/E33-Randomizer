@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using Avalonia.Controls;
@@ -8,10 +10,11 @@ using Avalonia.Interactivity;
 using Avalonia.Layout;
 using Avalonia.Media;
 using Avalonia.Platform.Storage;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 
-namespace E33Randomizer
-{
+namespace E33Randomizer;
     public partial class CustomPlacementWindow : Window
     {
         public string? SelectedObjectForCustomPlacement = null;
@@ -25,41 +28,51 @@ namespace E33Randomizer
                 AllObjects = new List<ObjectData>()
                 {
                     new ItemData(){ CodeName = "Short", CustomName = "SomeShortName"}
+                },
+                PresetFiles = new Dictionary<string, string>()
+                {
+                    {"Split categories (default)", "Data/Presets/enemies/default.json"},
+                    {"Total randomness", "Data/Presets/enemies/total_random.json"},
+                    {"10% of regular enemies are bosses", "Data/Presets/enemies/10_percent.json"},
+                    {"Make every enemy a boss", "Data/Presets/enemies/everyone_is_a_boss.json"},
+                    {"Custom preset 1", "Data/Presets/enemies/custom_1.json"},
+                    {"Custom preset 2", "Data/Presets/enemies/custom_2.json"},
                 }
             };
+            DataContext = new CustomPlacementWindowViewModel(CustomPlacement, this);
             LoadCustomPlacementRows(SelectedObjectForCustomPlacement);
             InitializeComponent();
             PopulateObjectDropdowns();
-            InitPresetButtons();
+            // InitPresetButtons();
             Update();
         }
         
         public CustomPlacementWindow(CustomPlacement customPlacement)
         {
             CustomPlacement = customPlacement;
+            DataContext = new CustomPlacementWindowViewModel(CustomPlacement, this);
             InitializeComponent();
             PopulateObjectDropdowns();
-            InitPresetButtons();
+            // InitPresetButtons();
             Update();
         }
 
-        private void InitPresetButtons()
-        {
-            int i = 0;
-            foreach (var presetFile in CustomPlacement.PresetFiles)
-            {
-                var presetButton = this.FindNameScope()?.Find<Button>($"PresetButton{i + 1}");
-                presetButton.Content = presetFile.Key;
-                presetButton.Tag = presetFile.Value;
-                i++;
-            }
-        }
+        // private void InitPresetButtons()
+        // {
+        //     int i = 0;
+        //     foreach (var presetFile in CustomPlacement.PresetFiles)
+        //     {
+        //         var presetButton = this.FindNameScope()?.Find<MenuItem>($"PresetButton{i + 1}");
+        //         presetButton.Header = presetFile.Key;
+        //         presetButton.Tag = presetFile.Value;
+        //         i++;
+        //     }
+        // }
 
         private void Update()
         {
             UpdateExcludedListBox();
             UpdateNotRandomizedListBox();
-            UpdateFrequencies();
             UpdateJsonTextBox();
         }
 
@@ -67,7 +80,7 @@ namespace E33Randomizer
         {
             var presetData = new CustomPlacementPreset(CustomPlacement.NotRandomized, CustomPlacement.Excluded, CustomPlacement.CustomPlacementRules, CustomPlacement.FrequencyAdjustments);
             string json = JsonSerializer.Serialize(presetData, JsonSourceGenerationContextSerializationFactory.LazyJsonSourceGenerationContext.Value.CustomPlacementPreset);
-            PresetJsonTextBox.Text = json;
+            // PresetJsonTextBox.Text = json;
         }
         
         private void UpdateExcludedListBox()
@@ -85,16 +98,6 @@ namespace E33Randomizer
             foreach (var notRandomizedOption in CustomPlacement.NotRandomized)
             {
                 NotRandomizedObjectsListBox.Items.Add(notRandomizedOption);
-            }
-        }
-
-        private void UpdateFrequencies()
-        {
-            FrequencyRowsContainer.Children.Clear();
-            foreach (var frequencyAdjustment in CustomPlacement.FrequencyAdjustments)
-            {
-                var newRow = CreateFrequencyRow(frequencyAdjustment.Key);
-                FrequencyRowsContainer.Children.Add(newRow);
             }
         }
         
@@ -209,51 +212,17 @@ namespace E33Randomizer
             }
         }
 
-        private void OopsAllButton_Click(object sender, RoutedEventArgs e)
+        private void OopsAllObjectComboBox_Change(object sender, SelectionChangedEventArgs e)
         {
-            if (OopsAllObjectComboBox.SelectedItem is ComboBoxItem selectedItem)
-            {
-                string objectCodeName = selectedItem.Content.ToString();
-                CustomPlacement.ApplyOopsAll(objectCodeName);
-                
-                LoadCustomPlacementRows(SelectedObjectForCustomPlacement);
-                Update();
-            }
-            else
-            {
-                MessageDialog.Show(this, "Please select an object from the dropdown first.", 
-                               "No Object Selected", nameof(DialogBoxButton.OK), MessageBoxIcons.Warning);
-            }
+           
+            string objectCodeName = (e.AddedItems[0] as ComboBoxItem).Content.ToString();
+            CustomPlacement.ApplyOopsAll(objectCodeName);
+            
+            LoadCustomPlacementRows(SelectedObjectForCustomPlacement);
+            Update();
         }
 
-        private async void PresetButton_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                if (sender is Button { Tag: string presetFile })
-                {
-                    try
-                    {
-                        CustomPlacement.LoadFromJson(presetFile.Replace("Data", RandomizerLogic.DataDirectory));
-                        LoadCustomPlacementRows(SelectedObjectForCustomPlacement);
-                        Update();
-                    }
-                    catch (Exception ex)
-                    {
-                        await MessageDialog.ShowAsync
-                        (this, $"Error loading preset: {ex.Message}; Reverting to Default.",
-                            "Load Error", nameof(DialogBoxButton.OK), MessageBoxIcons.Error);
-                        CustomPlacement.LoadDefaultPreset();
-                        UpdateJsonTextBox();
-                    }
-                }
-            }
-            catch(Exception ex)
-            {
-                await MessageDialog.ShowAsync(this, $"Error loading preset: {ex.Message}; Reverting to Default.", "Load Error", nameof(DialogBoxButton.OK), MessageBoxIcons.Error);
-            }
-            
-        }
+        
 
         private async void LoadPresetButton_Click(object sender, RoutedEventArgs e)
         {
@@ -337,147 +306,6 @@ namespace E33Randomizer
                 await MessageDialog.ShowAsync(this, $"Error Saving JSON: {ex.Message}", "Error", nameof(DialogBoxButton.OK),  MessageBoxIcons.Error);
                 await File.WriteAllTextAsync("crash_log.txt", ex.ToString(), Encoding.UTF8);
             }
-        }
-
-        private void AddFrequencyRowButton_Click(object sender, RoutedEventArgs e)
-        {
-            var newRow = CreateFrequencyRow("");
-            FrequencyRowsContainer.Children.Add(newRow);
-        }
-
-        private StackPanel CreateFrequencyRow(string objectName)
-        {
-            StackPanel row = new StackPanel
-            {
-                Orientation = Orientation.Horizontal,
-                Margin = new Thickness(0, 0, 0, 5)
-            };
-
-
-            ComboBox objectCombo = new ComboBox
-            {
-                Width = 150,
-                Height = 30,
-                Margin = new Thickness(0, 0, 10, 0),
-                VerticalAlignment = VerticalAlignment.Center
-            };
-            PopulateObjectComboBox(objectCombo);
-            
-            Button removeButton = new Button
-            {
-                Content = "-",
-                Width = 30,
-                Height = 30,
-                Margin = new Thickness(0, 0, 5, 0),
-                Background =Brushes.Red,
-                Foreground =Brushes.White,
-                FontWeight = FontWeight.Bold
-            };
-            removeButton.Click += (_, _) =>
-            {
-                var objectName = (string)(objectCombo.SelectedItem as ComboBoxItem)?.Content;
-                if (objectName != null)
-                {
-                    CustomPlacement.FrequencyAdjustments.Remove(objectName);
-                }
-                RemoveFrequencyRow(row);
-                UpdateJsonTextBox();
-            };
-
-            if (objectName != "")
-            {
-                objectCombo.SelectedIndex = CustomPlacement.PlainNamesList.IndexOf(objectName);
-            }
-
-            Slider frequencySlider = new Slider
-            {
-                Width = 100,
-                Height = 30,
-                Minimum = 0,
-                Maximum = 100,
-                Value = objectName == "" ? 100 : CustomPlacement.FrequencyAdjustments[objectName] * 100,
-                Margin = new Thickness(0, 0, 10, 0),
-                VerticalAlignment = VerticalAlignment.Center
-            };
-
-            TextBox frequencyTextBox = new TextBox
-            {
-                Width = 60,
-                Height = 30,
-                Text = objectName == "" ? "100" : (CustomPlacement.FrequencyAdjustments[objectName] * 100).ToString("F1"),
-                VerticalContentAlignment = VerticalAlignment.Center,
-                VerticalAlignment = VerticalAlignment.Center
-            };
-
-            Label percentLabel = new Label
-            {
-                Content = "%",
-                VerticalAlignment = VerticalAlignment.Center
-            };
-
-            frequencySlider.ValueChanged += (_, e) => {
-                if (!frequencyTextBox.IsFocused)
-                {
-                    frequencyTextBox.Text = e.NewValue.ToString("F1");
-                    if (objectCombo.SelectedItem != null)
-                    {
-                        CustomPlacement.FrequencyAdjustments[
-                            (string)(objectCombo.SelectedItem as ComboBoxItem).Content] = (float)e.NewValue / 100;
-                        UpdateJsonTextBox();
-                    }
-                }
-            };
-
-            frequencyTextBox.TextChanged += (_, e) =>
-            {
-                Regex regex = new Regex("[^0-9]+");
-                e.Handled = regex.IsMatch((e.Source as TextBox)!.Text!);
-                UpdateJsonTextBox();
-            };
-            
-            frequencyTextBox.TextChanged += (_, _) => {
-                frequencyTextBox.Text = frequencyTextBox.Text.Replace(" ", "");
-                if (double.TryParse(frequencyTextBox.Text, out double value) && value >= 0)
-                {
-                    frequencySlider.Value = value;
-                    if (objectCombo.SelectedItem != null)
-                    {
-                        CustomPlacement.FrequencyAdjustments[
-                            (string)(objectCombo.SelectedItem as ComboBoxItem).Content] = (float)value / 100;
-                        UpdateJsonTextBox();
-                    }
-                }
-            };
-            
-            objectCombo.SelectionChanged += (_, _) =>
-            {
-                CustomPlacement.FrequencyAdjustments.Clear();
-                foreach (Control frequencyRow in FrequencyRowsContainer.Children)
-                {
-                    var comboBox = (frequencyRow as StackPanel).Children[1] as ComboBox;
-                    var frequencyRowSlider = (frequencyRow as StackPanel).Children[2] as Slider;
-                    if ((string)(comboBox.SelectedItem as ComboBoxItem).Content == "")
-                    {
-                        continue;
-                    }
-                    CustomPlacement.FrequencyAdjustments[(string)(comboBox.SelectedItem as ComboBoxItem).Content] = (float)frequencyRowSlider.Value / 100;
-                }
-                UpdateJsonTextBox();
-            };
-
-            row.Children.Add(removeButton);
-            row.Children.Add(objectCombo);
-            row.Children.Add(frequencySlider);
-            row.Children.Add(frequencyTextBox);
-            row.Children.Add(percentLabel);
-
-
-            return row;
-        }
-
-        private void RemoveFrequencyRow(StackPanel row)
-        {
-            FrequencyRowsContainer.Children.Remove(row);
         }
 
         private void CustomPlacementObjectListBox_SelectionChanged(object sender, FocusChangedEventArgs e)
@@ -660,5 +488,219 @@ namespace E33Randomizer
         {
             
         }
+    }
+
+public sealed partial class CustomPlacementWindowViewModel : ObservableObject
+{
+    private readonly Window _window;
+    public CustomPlacement CustomPlacement { get; }
+
+    // TODO Remove window and fix error handling.
+    public CustomPlacementWindowViewModel(CustomPlacement customPlacement, Window window)
+    {
+        _window = window;
+        CustomPlacement = customPlacement;
+        FrequencyAdjustments = new ();
+        FrequencyAdjustments.CollectionChanged += FrequencyAdjustmentsOnCollectionChanged;
+        
+        PresetFiles = new();
+        CustomCategories = new();
+        LoadPresetsFromModel();
+        UpdateFromModel();
+    }
+
+    private void FrequencyAdjustmentsOnCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
+    {
+        switch (e.Action)
+        {
+            case NotifyCollectionChangedAction.Add:
+                if (e.NewItems?[0] is not StringFloatKeyValuePairViewModel item) return;
+                if (item.Key == "SelectOne") return;
+                CustomPlacement.FrequencyAdjustments.TryAdd(item.Key, item.Value);
+                break;
+            case NotifyCollectionChangedAction.Remove:
+                if (e.OldItems?[0] is not StringFloatKeyValuePairViewModel itemRemoved) return;
+                if (itemRemoved.Key == "SelectOne") return;
+                CustomPlacement.FrequencyAdjustments.Remove(itemRemoved.Key);
+                break;
+        }
+        
+        UpdateJsonTextBox();
+    }
+
+    private void UpdateFromModel()
+    {
+        LoadCategoriesFromModel();
+        LoadFrequenciesFromModel();
+    }
+
+    private void LoadFrequenciesFromModel()
+    {
+        FrequencyAdjustments.Clear();
+        foreach (var frequency in CustomPlacement.FrequencyAdjustments)
+        {
+            FrequencyAdjustments.Add(new (frequency.Key, frequency.Value * 100));
+        }
+    }
+
+    private void LoadCategoriesFromModel()
+    {
+        CustomCategories.Clear();
+        foreach (var category in CustomPlacement.CustomCategories)
+        {
+            CustomCategories.Add(category);
+        }
+    }
+
+    private void LoadPresetsFromModel()
+    {
+        PresetFiles.Clear();
+        foreach (var preset in CustomPlacement.PresetFiles)
+        {
+            PresetFiles.Add(new MenuItemViewModel(preset.Key, preset.Value, LoadPreset));
+        }
+    }
+        
+    [ObservableProperty]
+    public partial ObservableCollection<StringFloatKeyValuePairViewModel> FrequencyAdjustments { get; set; }
+
+    [ObservableProperty]
+    public partial string? OopsAllObjectsSelection { get; set; } = null;
+
+    [ObservableProperty] 
+    public partial string Json { get; set; } = string.Empty;
+
+    [ObservableProperty] 
+    public partial bool SelectedPresetIsOops { get; set; } = false;
+
+    [ObservableProperty]
+    public partial ObservableCollection<MenuItemViewModel> PresetFiles { get; set; }
+    
+    [ObservableProperty]
+    public partial ObservableCollection<string> CustomCategories { get; set; }
+
+    public string? SelectedObjectForCustomPlacement = null;
+    
+    
+    partial void OnOopsAllObjectsSelectionChanged(string? value)
+    {
+        if (value is null) return;
+        
+        CustomPlacement.ApplyOopsAll(value);
+    }
+    
+    private async Task LoadPreset(string presetFile)
+    {
+        SelectedPresetIsOops = false;
+        try
+        {
+            CustomPlacement.LoadFromJson(presetFile.Replace("Data", RandomizerLogic.DataDirectory));
+            UpdateFromModel();
+            LoadCustomPlacementRows(SelectedObjectForCustomPlacement);
+            UpdateJsonTextBox();
+        }
+        catch (Exception ex)
+        {
+            //TODO FIX
+            await MessageDialog.ShowAsync
+            (_window, $"Error loading preset: {ex.Message}; Reverting to Default.",
+                "Load Error", nameof(DialogBoxButton.OK), MessageBoxIcons.Error);
+            CustomPlacement.LoadDefaultPreset();
+            UpdateJsonTextBox();
+        }
+    }
+
+    [RelayCommand]
+    private void AddFrequencyRow()
+    {
+        FrequencyAdjustments.Add(new("SelectOne", 0));
+    }
+
+    [RelayCommand]
+    private void OopsAllButton()
+    {
+        SelectedPresetIsOops = true;
+    }
+
+    [RelayCommand]
+    private void RemoveFrequencyRow(StringFloatKeyValuePairViewModel model)
+    {
+        if (string.IsNullOrEmpty(model.Key)) return;
+        
+        FrequencyAdjustments.Remove(model);
+        CustomPlacement.FrequencyAdjustments.Remove(model.Key);
+    }
+
+    //TODO FIX
+    private void LoadCustomPlacementRows(string? objectName)
+    {
+        if (objectName == null)
+        {
+            return;
+        }
+        //CustomPlacementRowsContainer.Children.Clear();
+        if (!CustomPlacement.CustomPlacementRules.TryGetValue(objectName, out var customPlacements))
+        {
+            return;
+        }
+        foreach (var pair in customPlacements)
+        {
+            //var row = CreateCustomPlacementRow(pair.Key);
+            //CustomPlacementRowsContainer.Children.Add(row);
+        }
+    }
+    
+    private void UpdateJsonTextBox()
+    {
+        var presetData = new CustomPlacementPreset(CustomPlacement.NotRandomized, CustomPlacement.Excluded, CustomPlacement.CustomPlacementRules, CustomPlacement.FrequencyAdjustments);
+        string json = JsonSerializer.Serialize(presetData, JsonSourceGenerationContextSerializationFactory.LazyJsonSourceGenerationContext.Value.CustomPlacementPreset);
+        Json = json;
+    }
+
+    
+}
+
+public partial class MenuItemViewModel : ObservableObject
+{
+    [ObservableProperty]
+    public partial string Name { get; set; }
+
+    [ObservableProperty]
+    public partial string FilePath { get; set; }
+
+    [ObservableProperty]
+    public partial Func<string, Task> LoadPresetAction { get; set; }
+    
+    [RelayCommand]
+    public async Task LoadPreset()
+    {
+        await LoadPresetAction(FilePath);
+    }
+
+    public MenuItemViewModel(string name, string filePath, Func<string, Task> loadPresetAction)
+    {
+        Name = name;
+        FilePath = filePath;
+        LoadPresetAction = loadPresetAction;
+    }
+}
+
+public partial class StringFloatKeyValuePairViewModel : ObservableObject
+{
+    [ObservableProperty]
+    public partial string Key { get; set; }
+
+    [ObservableProperty]
+    public partial float Value { get; set; }
+
+    public StringFloatKeyValuePairViewModel(string key, float value)
+    {
+        Key = key;
+        Value = value;
+    }
+
+    partial void OnKeyChanged(string value)
+    {
+        Console.WriteLine(value);
     }
 }

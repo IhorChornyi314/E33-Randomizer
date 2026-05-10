@@ -1,6 +1,9 @@
 ﻿
 
+using System.Collections.ObjectModel;
 using System.Text.Json;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 namespace E33Randomizer;
 
@@ -31,7 +34,7 @@ public class CustomPlacementPreset
     }
 }
 
-public abstract class CustomPlacement
+public abstract partial class CustomPlacement : ObservableObject
 {
     public List<string> NotRandomized = [];
     public List<string> Excluded = [];
@@ -43,7 +46,7 @@ public abstract class CustomPlacement
     
     public List<string> CustomCategories = new(); 
     public Dictionary<string, Dictionary<string, float>> CustomPlacementRules = new();
-    public Dictionary<string, float> FrequencyAdjustments = new();
+    public Dictionary<string, float> FrequencyAdjustments { get; set; } = new();
     public Dictionary<string, float> DefaultFrequencies = new();
     public Dictionary<string, Dictionary<string, float>> FinalReplacementFrequencies = new();
     public List<string> CategoryOrder = new();
@@ -221,7 +224,7 @@ public abstract class CustomPlacement
         NotRandomized.Clear();
         NotRandomizedCodeNames.Clear();
         CustomPlacementRules = new Dictionary<string, Dictionary<string, float>>();
-        FrequencyAdjustments = new Dictionary<string, float>();
+        FrequencyAdjustments.Clear();
     }
 
     public void Update()

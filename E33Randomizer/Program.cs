@@ -1,4 +1,5 @@
 using Avalonia;
+using Avalonia.Logging;
 
 namespace E33Randomizer;
 
@@ -20,5 +21,7 @@ public sealed class Program
                 manager.AddFontCollection(new  FontCollection());
             })
             .WithInterFont()
-            .LogToTrace();
+            .LogToTrace(LogEventLevel.Warning)
+            // Add binding-specific verbose logging:
+            .LogToTrace(LogEventLevel.Verbose, LogArea.Binding);
 }
