@@ -2,6 +2,26 @@
 
 namespace E33Randomizer;
 
+public class PathTrace
+{
+    public int Node { get; set; }
+    public PathTrace Parent { get; set; }
+
+    public List<int> ToList()
+    {
+        var path = new List<int>();
+        var current = this;
+        while (current != null)
+        {
+            path.Add(current.Node);
+            current = current.Parent;
+        }
+
+        path.Reverse();
+        return path;
+    }
+}
+
 public class LocationNode
 {
     public int ID;
@@ -10,6 +30,10 @@ public class LocationNode
     public Dictionary<string, List<int>> ConditionalConnections;
     public int OriginalPortalConnection = -1;
     public int PortalConnection = -1;
+
+    public int Depth = Int32.MaxValue;
+
+    //TODO: Rework to bitset
     public List<string> Keys;
 
     public List<int> GetConnections(List<string> unlockedKeys)
@@ -33,9 +57,10 @@ public class LocationNode
         UnconditionalConnections = locationData.UnconditionalConnections.Select(c => nodeIndexes[c]).ToList();
         ConditionalConnections = locationData.ConditionalConnections
             .Select(kvp => new KeyValuePair<string, List<int>>(kvp.Key, kvp.Value.Select(c => nodeIndexes[c]).ToList()
-                )).ToDictionary();
+            )).ToDictionary();
         PortalConnection = locationData.PortalConnection != "" ? nodeIndexes[locationData.PortalConnection] : -1;
-        OriginalPortalConnection = locationData.PortalConnection != "" ? nodeIndexes[locationData.PortalConnection] : -1;
+        OriginalPortalConnection =
+            locationData.PortalConnection != "" ? nodeIndexes[locationData.PortalConnection] : -1;
         Keys = new List<string>(locationData.Keys);
     }
 
@@ -78,183 +103,119 @@ public class LocationGraph
             }
         }
     }
-    
-    public bool GetPath(int startNode, int endNode, List<string> currentKeys,
-        HashSet<(int, string)> visited, List<int> path, out List<int> newPath, out List<string> collectedKeys)
+
+    public Dictionary<string, string> ConstructGoldenPathBFS(List<string> constraintStrings,
+        out List<LocationData> criticalPath)
     {
-        if (path.Count > 400)
-        {
-            collectedKeys = new List<string>(currentKeys);
-            newPath = new List<int>();
-            return false;
-        }
-        
-        path.Add(startNode);
-        if (Nodes[startNode].Keys.Any(k => !currentKeys.Contains(k)))
-            currentKeys.AddRange(Nodes[startNode].Keys);
-        collectedKeys = new List<string>(currentKeys);
-
-        if (startNode == endNode)
-        {
-            newPath =  new List<int>(path);
-            return true;
-        }
-        
-        var stateKey = (startNode, string.Join(',', currentKeys.OrderBy(k => k)));
-        
-        if (!visited.Add(stateKey))
-        {
-            newPath = new ();
-            return false;
-        }
-        
-        var backupPath = new List<int>(path);
-        var backupKeys = new List<string>(currentKeys);
-
-        var connections = Nodes[startNode].GetConnections(currentKeys);
-        for (int i = connections.Count - 1; i >= 0; i--)
-        {
-            if (GetPath(connections[i], endNode, currentKeys, visited, path, out newPath, out collectedKeys))
-                return true;
-
-            path = new List<int>(backupPath);
-            currentKeys = new List<string>(backupKeys);
-        }
-        newPath = new ();
-        return false;
-    }
-
-    public List<int> GetRandomPath(int startingPoint, List<int> currentPath, List<string> currentKeys, out List<string> newKeys)
-    {
-        var toVisitQueue = new Queue<int>();
-        toVisitQueue.Enqueue(startingPoint);
-        List<int> suitablePoints = new();
-        List<int> visited = new();
-        newKeys = new List<string>();
-        Dictionary<int, int> parents = new();
-        while (toVisitQueue.Count > 0)
-        {
-            var currentPoint = toVisitQueue.Dequeue();
-            
-            if (Nodes[currentPoint].PortalConnection != -1 && !currentPath.Contains(currentPoint)) suitablePoints.Add(currentPoint);
-            
-            var connections = Nodes[currentPoint].GetConnections(currentKeys);
-            connections = connections.Where(c => !visited.Contains(c)).ToList();
-            foreach (var connection in connections)
-            {
-                if (toVisitQueue.Contains(connection) || visited.Contains(connection)) continue;
-                parents[connection] = currentPoint;
-                toVisitQueue.Enqueue(connection);
-            }
-            visited.Add(currentPoint);
-        }
-        if (suitablePoints.Count == 0)
-        {
-            return null;
-        }
-        var point = Utils.Pick(suitablePoints);
-
-        List<int> path = [point];
-        newKeys.AddRange(Nodes[point].Keys);
-        while (point != startingPoint)
-        {
-            point = parents[point];
-            path.Add(point);
-            newKeys.AddRange(Nodes[point].Keys);
-        }
-        
-        newKeys = newKeys.Distinct().ToList();
-        path.Reverse();
-        return path;
-    }
-
-    public List<int> CleanUpPath(List<int> currentPath)
-    {
-        HashSet<(int, string)> visited = new();
-        List<int> pathWithoutRepetition = [];
-
-        List<string> currentKeys = [];
-        
-        foreach (var i in currentPath)
-        {
-            var stateKey = (i, string.Join(',', currentKeys.OrderBy(k => k)));
-
-            if (visited.Add(stateKey))
-            {
-                
-                pathWithoutRepetition.Add(i);
-                currentKeys.AddRange(Nodes[i].Keys);
-                currentKeys = currentKeys.Distinct().ToList();
-            }
-        }
-        
-        List<int> pathWithoutUnnecessarySteps = [pathWithoutRepetition[0]];
-        for (int i = 1; i < pathWithoutRepetition.Count - 1; i++)
-        {
-            if (
-                Nodes[pathWithoutRepetition[i]].UnconditionalConnections.Contains(pathWithoutUnnecessarySteps[^1]) &&
-                Nodes[pathWithoutRepetition[i + 1]].UnconditionalConnections.Contains(pathWithoutUnnecessarySteps[^1])
-                )
-                continue;
-            pathWithoutUnnecessarySteps.Add(pathWithoutRepetition[i]);
-        }
-        pathWithoutUnnecessarySteps.Add(pathWithoutRepetition[^1]);
-        return pathWithoutUnnecessarySteps;
-    }
-    
-    public Dictionary<string, string> ConstructGoldenPath(List<string> constraintStrings, out List<LocationData> criticalPath)
-    {
+        criticalPath = new();
         var constraints = constraintStrings.Select(c => Nodes[nodeIndexes[c]]).ToList();
-        
         var destinationChanges = new Dictionary<string, string>();
-        
-        List<int> currentPath = [];
-        
+        var currentPath = new List<int>();
+
+        int startNode = nodeIndexes[constraints[0].CodeName];
+
+        var queue = new Queue<(int Node, string Keys, int Distance, PathTrace Trace)>();
         var visited = new HashSet<(int, string)>();
-        var keys = new List<string>();
+        var visitedOrder = new Stack<(int, string, PathTrace)>();
 
-        var failedAttempts = 0;
-        
-        for (int i = 0; i < constraints.Count - 1; i++)
+        string initialKeys = "";
+        var initialTrace = new PathTrace { Node = startNode, Parent = null };
+
+        queue.Enqueue((startNode, initialKeys, 0, initialTrace));
+        visited.Add((startNode, initialKeys));
+
+        while (constraints.Count > 0)
         {
-            int currentConstraint = constraints[i].ID;
-            int nextConstraint = constraints[i + 1].ID;
-            var intermediatePath = new List<int>();
-            // TODO: Investigate if this causes errors and maybe come up with a different method for random path construction
-            if (!GetPath(currentConstraint, nextConstraint, keys, visited, intermediatePath, out var newPath, out var collectedKeys))
+            while (constraints.Count > 0 && queue.Count > 0)
             {
-                var randomPath = GetRandomPath(currentConstraint, currentPath, collectedKeys, out var newKeys);
+                var (currentNode, currentKeysStr, distance, trace) = queue.Dequeue();
+                var node = Nodes[currentNode];
 
-                if (randomPath == null)
+                if (node.CodeName == constraints[0].CodeName)
                 {
-                    i--;
-                    failedAttempts++;
-                    if (failedAttempts > 10)
-                    {
-                        throw new Exception("Could not critical path, aborting randomization. Please change generation settings if this problem persists.");
-                    }
+                    constraints.RemoveAt(0);
+
+                    currentPath = trace.ToList();
+
+                    if (constraints.Count == 0) break;
+
+                    queue.Clear();
+                    visited.Clear();
+                    visitedOrder.Clear();
+
+                    queue.Enqueue((currentNode, currentKeysStr, distance, trace));
+                    visited.Add((currentNode, currentKeysStr));
                     continue;
                 }
-                
-                currentPath.AddRange(randomPath);
-                keys.AddRange(newKeys);
-                keys = keys.Distinct().ToList();
-                destinationChanges[Nodes[Nodes[randomPath[^1]].PortalConnection].CodeName] =
-                    Nodes[nextConstraint].CodeName;
-                Nodes[randomPath[^1]].PortalConnection = nextConstraint;
-            }
-            else
-            {
-                keys.AddRange(collectedKeys);
-                keys = keys.Distinct().ToList();
-                currentPath.AddRange(newPath);
-            }
-            visited.Clear();
-        }
-        
-        var cleanPath = CleanUpPath(currentPath);
-        criticalPath = cleanPath.Select(i => Controllers.LocationController.GetObject(Nodes[i].CodeName)).ToList();
 
+                node.Depth = Math.Min(node.Depth, distance);
+
+                List<string> currentKeysList = string.IsNullOrEmpty(currentKeysStr)
+                    ? new List<string>()
+                    : currentKeysStr.Split(',').ToList();
+
+                bool pickedUpNewKey = false;
+                foreach (var key in node.Keys)
+                {
+                    if (!currentKeysList.Contains(key))
+                    {
+                        currentKeysList.Add(key);
+                        pickedUpNewKey = true;
+                    }
+                }
+
+                string nextKeysStr = currentKeysStr;
+                if (pickedUpNewKey)
+                {
+                    currentKeysList.Sort();
+                    nextKeysStr = string.Join(',', currentKeysList);
+                }
+
+                var connections = node.GetConnections(currentKeysList);
+
+                foreach (int nextNode in connections)
+                {
+                    // Enforce strict order
+                    if (nextNode != constraints[0].ID && constraints.Any(c => c.ID == nextNode))
+                    {
+                        continue;
+                    }
+
+                    var nextState = (nextNode, nextKeysStr);
+                    if (!visited.Add(nextState)) continue;
+
+                    var nextTrace = new PathTrace { Node = nextNode, Parent = trace };
+                    visitedOrder.Push((nextNode, nextKeysStr, nextTrace));
+
+                    queue.Enqueue((nextNode, nextKeysStr, distance + 1, nextTrace));
+                }
+            }
+
+            if (constraints.Count == 0) break;
+
+            while (visitedOrder.Count > 0)
+            {
+                var (i, keysStr, trace) = visitedOrder.Pop();
+                visited.Remove((i, keysStr));
+                Nodes[i].Depth = Int16.MaxValue;
+
+                if (currentPath.Contains(i) || Nodes[i].PortalConnection == -1) continue;
+
+                destinationChanges[Nodes[Nodes[i].PortalConnection].CodeName] = constraints[0].CodeName;
+                Nodes[i].PortalConnection = constraints[0].ID;
+                var nextTrace = new PathTrace { Node = constraints[0].ID, Parent = trace };
+                queue.Enqueue((constraints[0].ID, keysStr, Nodes[i].Depth + 1, nextTrace));
+                break;
+            }
+
+            if (visitedOrder.Count == 0)
+            {
+                throw new Exception(
+                    "Could not construct critical path, aborting randomization. Please change generation settings if this problem persists.");
+            }
+        }
+
+        criticalPath = currentPath.Select(i => Controllers.LocationController.GetObject(Nodes[i].CodeName)).ToList();
         return destinationChanges;
     }
 }

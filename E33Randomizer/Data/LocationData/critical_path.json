@@ -1,10 +1,11 @@
 ﻿[
   "Level.SpawnPoint.LumiereAct01.Entry",
-  "Level.SpawnPoint.GestralVillage.Entry",
+  "Level.SpawnPoint.GestralVillage.VillageEntry",
   "Level.SpawnPoint.EsquieNest.Francois",
   "Level.SpawnPoint.SeaCliff.Entry",
   "Level.SpawnPoint.MonocoStation.EntryForgotten",
   "Level.SpawnPoint.OldLumiere.BrokenBuildings",
+  "Level.SpawnPoint.WorldMap.MonolithInteriorEntry",
   "Level.SpawnPoint.MonolithExterior.Peak.Entry",
   "Level.SpawnPoint.LumiereAct03.Entry"
 ]

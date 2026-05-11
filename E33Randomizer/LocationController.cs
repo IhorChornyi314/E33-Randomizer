@@ -37,7 +37,7 @@ public class LocationController: Controller<LocationData>
             _destinationChanges[originalLocation] = RandomizerLogic.CustomLocationPlacement.Replace(originalLocation);
         }
         _locationGraph.ApplyDestinationChanges(_destinationChanges);
-        var criticalPathChanges = _locationGraph.ConstructGoldenPath(_currentConstraints, out criticalPath);
+        var criticalPathChanges = _locationGraph.ConstructGoldenPathBFS(_currentConstraints, out criticalPath);
         foreach (var (originalDestination, newDestination) in _destinationChanges)
         {
             if (criticalPathChanges.TryGetValue(newDestination, out var criticalPathChange))

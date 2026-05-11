@@ -4761,7 +4761,9 @@
     "CustomName": "Special - Dummy for Sirene Heart Get",
     "LevelAsset": "",
     "LevelScaling": -1,
-    "UnconditionalConnections": [],
+    "UnconditionalConnections": [
+      "Special.WM.SeaNorth"
+    ],
     "ConditionalConnections": {
       "Story.VisageHeartAcquired": [
         "Special.Dummy.WM.BarrierBreakerAcquired"
@@ -4775,7 +4777,9 @@
     "CustomName": "Special - Dummy for Visages Heart Get",
     "LevelAsset": "",
     "LevelScaling": -1,
-    "UnconditionalConnections": [],
+    "UnconditionalConnections": [
+      "Special.WM.SeaNorth"
+    ],
     "ConditionalConnections": {
       "Story.SireneHeartAcquired": [
         "Special.Dummy.WM.BarrierBreakerAcquired"
@@ -4789,7 +4793,9 @@
     "CustomName": "Special - Dummy for Barrier Breaker Get",
     "LevelAsset": "",
     "LevelScaling": -1,
-    "UnconditionalConnections": [],
+    "UnconditionalConnections": [
+      "Special.WM.SeaNorth"
+    ],
     "ConditionalConnections": {},
     "PortalConnection": "",
     "Keys": [
@@ -4898,10 +4904,10 @@
         "Level.SpawnPoint.WorldMap.AxonPathEntry"
       ],
       "Story.SireneHeartAcquired": [
-        "Special.Dummy.WM.SireneHeartAcquired"
+        "Special.Dummy.WM.SireneHeartAcquiredFirst"
       ],
       "Story.VisageHeartAcquired": [
-        "Special.Dummy.WM.VisageHeartAcquired"
+        "Special.Dummy.WM.VisageHeartAcquiredFirst"
       ],
       "Story.BarrierBreakerAcquired": [
         "Level.SpawnPoint.WorldMap.MonolithInteriorEntry"
