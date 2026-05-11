@@ -37,7 +37,7 @@ public class LocationController: Controller<LocationData>
             _destinationChanges[originalLocation] = RandomizerLogic.CustomLocationPlacement.Replace(originalLocation);
         }
         _locationGraph.ApplyDestinationChanges(_destinationChanges);
-        var criticalPathChanges = _locationGraph.ConstructGoldenPathBFS(_currentConstraints, out criticalPath);
+        var criticalPathChanges = _locationGraph.ConstructGoldenPath(_currentConstraints, out criticalPath);
         foreach (var (originalDestination, newDestination) in _destinationChanges)
         {
             if (criticalPathChanges.TryGetValue(newDestination, out var criticalPathChange))
@@ -58,9 +58,9 @@ public class LocationController: Controller<LocationData>
 
     public void ConstructReplacementStringTableAsset()
     {
+        //In reality this is ST_UI_ModalPopup
         _stringTableAsset = new UAsset($"{RandomizerLogic.DataDirectory}/LocationData/ST_LocationRandomizerData.uasset",EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
         
-        (_stringTableAsset.Exports[0] as StringTableExport).Table.Clear();
         foreach (var destinationChange in _destinationChanges)
         {
             var originalData = GetObject(destinationChange.Key);

@@ -104,8 +104,7 @@ public class LocationGraph
         }
     }
 
-    public Dictionary<string, string> ConstructGoldenPathBFS(List<string> constraintStrings,
-        out List<LocationData> criticalPath)
+    public Dictionary<string, string> ConstructGoldenPath(List<string> constraintStrings, out List<LocationData> criticalPath)
     {
         criticalPath = new();
         var constraints = constraintStrings.Select(c => Nodes[nodeIndexes[c]]).ToList();

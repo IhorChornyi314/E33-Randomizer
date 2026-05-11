@@ -1,9 +1,18 @@
 local UEHelpers = require("UEHelpers")
-local mappingData = require("mapping")
+local loadMappingData = require("mapping")
+local mappingData = nil
 
 local targetFunction = "/Game/jRPGTemplate/Blueprints/Basics/FL_jRPG_CustomFunctionLibrary.FL_jRPG_CustomFunctionLibrary_C:Change Map Internal"
 
 local function hookCallback(Context, LevelDestination, SpawnPointTag)
+    if not mappingData then
+        mappingData = loadMappingData()
+        if not mappingData then
+            print("[LocationRandomizer] ERROR: Mapping data not loaded yet. Is the String Table referenced in memory?\n")
+            return
+        end
+    end
+
     local levelDest = LevelDestination:get().LevelAssetName_85_BF09694C41CC0444295731A40341A5F9:ToString()
     local currentTag = SpawnPointTag:get().TagName:ToString()
     local lookupKey = levelDest .. ":" .. currentTag
@@ -13,12 +22,14 @@ local function hookCallback(Context, LevelDestination, SpawnPointTag)
     local newDest = mappingData[lookupKey]
     if not newDest then return end
 
+    print("[LocationRandomizer] Found override: " .. newDest .. "\n")
+
     local newMap, newTagStr = newDest:match("([^:]+):(.+)")
     if not newMap or not newTagStr then return end
 
     local CustomGI = FindFirstOf("BP_jRPG_GI_Custom_C")
     if not CustomGI or not CustomGI:IsValid() then
-        print("[LocationRandomizer] ERROR: Could not find GI" .. "\n")
+        print("[LocationRandomizer] ERROR: Could not find GI\n")
         return
     end
 
