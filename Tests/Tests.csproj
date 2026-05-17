@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net9.0-windows</TargetFramework>
+        <TargetFramework>net10.0-windows</TargetFramework>
         <LangVersion>latest</LangVersion>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
@@ -25,11 +25,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="obj\Debug\net9.0-windows\Tests.AssemblyInfoInputs.cache" />
-      <Content Include="obj\Debug\net9.0-windows\Tests.assets.cache" />
-      <Content Include="obj\Debug\net9.0-windows\Tests.csproj.AssemblyReference.cache" />
-      <Content Include="obj\Debug\net9.0-windows\Tests.genautoregisteredextensionsinputcache.cache" />
-      <Content Include="obj\Debug\net9.0-windows\Tests.gentestingplatformentrypointinputcache.cache" />
+      <Content Include="obj\Debug\net10.0-windows\Tests.AssemblyInfoInputs.cache" />
+      <Content Include="obj\Debug\net10.0-windows\Tests.assets.cache" />
+      <Content Include="obj\Debug\net10.0-windows\Tests.csproj.AssemblyReference.cache" />
+      <Content Include="obj\Debug\net10.0-windows\Tests.genautoregisteredextensionsinputcache.cache" />
+      <Content Include="obj\Debug\net10.0-windows\Tests.gentestingplatformentrypointinputcache.cache" />
       <Content Include="obj\project.assets.json" />
       <Content Include="obj\project.nuget.cache" />
       <Content Include="obj\project.packagespec.json" />
@@ -39,7 +39,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Include="obj\Debug\net9.0-windows\.NETCoreApp,Version=v9.0.AssemblyAttributes.cs" />
+      <Compile Include="obj\Debug\net10.0-windows\.NETCoreApp,Version=v10.0.AssemblyAttributes.cs" />
     </ItemGroup>
 
 </Project>
