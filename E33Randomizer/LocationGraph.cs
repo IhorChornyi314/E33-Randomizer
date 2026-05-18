@@ -31,7 +31,7 @@ public class LocationNode
     public int OriginalPortalConnection = -1;
     public int PortalConnection = -1;
 
-    public int Depth = Int32.MaxValue;
+    public int Depth = Int16.MaxValue;
 
     //TODO: Rework to bitset
     public List<string> Keys;
@@ -82,17 +82,22 @@ public class LocationGraph
         Nodes = nodeData.Select(n => new LocationNode(n, nodeIndexes)).ToList();
     }
 
+    public LocationNode GetNode(string codeName)
+    {
+        return Nodes[nodeIndexes[codeName]];
+    }
+
     public void Reset()
     {
         foreach (var node in Nodes)
         {
             node.PortalConnection = node.OriginalPortalConnection;
+            node.Depth = Int16.MaxValue;
         }
     }
 
     public void ApplyDestinationChanges(Dictionary<string, string> destinationChanges)
     {
-        Reset();
         foreach (var node in Nodes)
         {
             if (node.PortalConnection == -1) continue;
@@ -120,7 +125,7 @@ public class LocationGraph
         string initialKeys = "";
         var initialTrace = new PathTrace { Node = startNode, Parent = null };
 
-        queue.Enqueue((startNode, initialKeys, 0, initialTrace));
+        queue.Enqueue((startNode, initialKeys, 1, initialTrace));
         visited.Add((startNode, initialKeys));
 
         while (constraints.Count > 0)
@@ -195,13 +200,17 @@ public class LocationGraph
             while (visitedOrder.Count > 0)
             {
                 var (i, keysStr, trace) = visitedOrder.Pop();
-                visited.Remove((i, keysStr));
-                Nodes[i].Depth = Int16.MaxValue;
 
-                if (currentPath.Contains(i) || Nodes[i].PortalConnection == -1) continue;
+                if (currentPath.Contains(i) || Nodes[i].PortalConnection == -1)
+                {
+                    visited.Remove((i, keysStr));
+                    Nodes[i].Depth = Int16.MaxValue;
+                    continue;
+                }
 
                 destinationChanges[Nodes[Nodes[i].PortalConnection].CodeName] = constraints[0].CodeName;
                 Nodes[i].PortalConnection = constraints[0].ID;
+                
                 var nextTrace = new PathTrace { Node = constraints[0].ID, Parent = trace };
                 queue.Enqueue((constraints[0].ID, keysStr, Nodes[i].Depth + 1, nextTrace));
                 break;
@@ -216,5 +225,57 @@ public class LocationGraph
 
         criticalPath = currentPath.Select(i => Controllers.LocationController.GetObject(Nodes[i].CodeName)).ToList();
         return destinationChanges;
+    }
+
+    public void ConstructDepths(string startNodeName)
+    {
+        int startNode = nodeIndexes[startNodeName];
+
+        var queue = new Queue<(int Node, string Keys, int Distance)>();
+        var visited = new HashSet<(int, string)>();
+
+        string initialKeys = "";
+
+        queue.Enqueue((startNode, initialKeys, 1));
+        visited.Add((startNode, initialKeys));
+
+        while (queue.Count > 0)
+        {
+            var (currentNode, currentKeysStr, distance) = queue.Dequeue();
+            var node = Nodes[currentNode];
+
+            node.Depth = node.Depth == Int16.MaxValue ? Math.Min(node.Depth, distance) : node.Depth;
+
+            List<string> currentKeysList = string.IsNullOrEmpty(currentKeysStr)
+                ? new List<string>()
+                : currentKeysStr.Split(',').ToList();
+
+            bool pickedUpNewKey = false;
+            foreach (var key in node.Keys)
+            {
+                if (!currentKeysList.Contains(key))
+                {
+                    currentKeysList.Add(key);
+                    pickedUpNewKey = true;
+                }
+            }
+
+            string nextKeysStr = currentKeysStr;
+            if (pickedUpNewKey)
+            {
+                currentKeysList.Sort();
+                nextKeysStr = string.Join(',', currentKeysList);
+            }
+
+            var connections = node.GetConnections(currentKeysList);
+
+            foreach (int nextNode in connections)
+            {
+                var nextState = (nextNode, nextKeysStr);
+                if (!visited.Add(nextState)) continue;
+
+                queue.Enqueue((nextNode, nextKeysStr, distance + 1));
+            }
+        }
     }
 }

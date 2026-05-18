@@ -51,7 +51,7 @@ public static class TestLogic
 
             if (nodeData.PortalConnection == "") continue;
         
-            var portalConnection = Controllers.LocationController._destinationChanges.GetValueOrDefault(nodeData.PortalConnection, nodeData.PortalConnection);
+            var portalConnection = Controllers.LocationController.DestinationChanges.GetValueOrDefault(nodeData.PortalConnection, nodeData.PortalConnection);
             node.UnconditionalConnections.Add(result.LocationNodes.Find(n => n.CodeName == portalConnection));
         }
         

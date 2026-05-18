@@ -268,7 +268,7 @@ public static class StaticFileChanger
         
         (startingST.Exports[0] as StringTableExport).Table.Clear();
         (startingST.Exports[0] as StringTableExport).Table.TableNamespace = FString.FromString("ST_LocationRandomizerData");
-        // foreach (var destinationChange in Controllers.LocationController._destinationChanges)
+        // foreach (var destinationChange in Controllers.LocationController.DestinationChanges)
         // {
         //     var originalData = Controllers.LocationController.GetObject(destinationChange.Key);
         //     var original = $"{originalData.LevelAsset}:{originalData.CodeName}";

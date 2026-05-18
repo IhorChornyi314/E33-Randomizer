@@ -336,7 +336,8 @@ public class SettingsViewModel : INotifyPropertyChanged
     
     public bool RandomizeLocations { get; set; } = true;
     public bool ReduceLocationRepetition { get; set; } = false;
-    
+    public bool ScaleOptionalAreas { get; set; } = true;
+    public int ScaleModifierPercentage { get; set; } = 100;
     public bool RandomizeCharacters { get; set; } = false;
     
     
