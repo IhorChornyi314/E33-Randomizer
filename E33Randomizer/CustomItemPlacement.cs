@@ -1,6 +1,8 @@
-﻿namespace E33Randomizer;
+﻿using System.Collections.ObjectModel;
 
-public class CustomItemPlacement: CustomPlacement
+namespace E33Randomizer;
+
+public class CustomItemPlacement: CustomPlacementWindowViewModel
 {
     public override void Init()
     {
@@ -41,17 +43,17 @@ public class CustomItemPlacement: CustomPlacement
             { "Upgrade Material", new Dictionary<string, float> { { "Upgrade Material", 1 } } },
             { "Music Record", new Dictionary<string, float> { { "Music Record", 1 } } },
         };
-        FrequencyAdjustments = new Dictionary<string, float>{
-            { "Cut Content Items", 0.5f },
-            { "Revive Tint Shard (Upgrade Material)", 0.1f },
-            { "Energy Tint Shard (Upgrade Material)", 0.1f },
-            { "Healing Tint Shard (Upgrade Material)", 0.1f },
-            { "Shape of Health (Upgrade Material)", 0.1f },
-            { "Shape of Energy (Upgrade Material)", 0.1f },
-            { "Shape of Life (Upgrade Material)", 0.1f },
-            { "Chroma Elixir Shard (Upgrade Material)", 0.1f },
-            { "Perfect Chroma Catalyst (Upgrade Material)", 0.4f }
-        };
+        FrequencyAdjustments.AddRange( new Dictionary<string, byte>{
+            { "Cut Content Items", 50 },
+            { "Revive Tint Shard (Upgrade Material)", 10 },
+            { "Energy Tint Shard (Upgrade Material)", 10 },
+            { "Healing Tint Shard (Upgrade Material)", 10 },
+            { "Shape of Health (Upgrade Material)", 10 },
+            { "Shape of Energy (Upgrade Material)", 10 },
+            { "Shape of Life (Upgrade Material)", 10 },
+            { "Chroma Elixir Shard (Upgrade Material)", 10 },
+            { "Perfect Chroma Catalyst (Upgrade Material)", 40 }
+        });
         FinalReplacementFrequencies = new Dictionary<string, Dictionary<string, float>>();
     }
 }

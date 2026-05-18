@@ -23,6 +23,7 @@ namespace E33Randomizer;
 [JsonSerializable(typeof(List<SkillData>))]
 [JsonSerializable(typeof(List<SpawnPointData>))]
 [JsonSerializable(typeof(List<ObjectData>))]
+[JsonSerializable(typeof(CustomPlacementWindowViewModel))]
 [JsonSerializable(typeof(Dictionary<string, List<string>>))]
 [JsonSerializable(typeof(Dictionary<string, Dictionary<string, List<int>>>))]
 [JsonSerializable(typeof(Dictionary<string, string>))]

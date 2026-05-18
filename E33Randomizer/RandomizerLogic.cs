@@ -177,7 +177,7 @@ public static class RandomizerLogic
         SpecialRules.Reset();
     }
 
-    public static CustomPlacement? GetCustomPlacement(string objectType)
+    public static CustomPlacementWindowViewModel? GetCustomPlacement(string objectType)
     {
         return objectType switch
         {

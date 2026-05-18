@@ -1,4 +1,7 @@
-﻿namespace E33Randomizer;
+﻿using System.Collections.ObjectModel;
+using Tmds.DBus.Protocol;
+
+namespace E33Randomizer;
 
 /*
  * Priority list:
@@ -14,7 +17,7 @@
  */
 
 
-public class CustomEnemyPlacement: CustomPlacement
+public class CustomEnemyPlacement: CustomPlacementWindowViewModel
 {
     public Dictionary<string, string> ArchetypeNames = new()
     {
@@ -79,11 +82,11 @@ public class CustomEnemyPlacement: CustomPlacement
             { "Chromatic Bosses", new Dictionary<string, float> { { "Chromatic Bosses", 1 } } },
             { "Petanks", new Dictionary<string, float> { { "Petanks", 1 } } },
         };
-        FrequencyAdjustments = new Dictionary<string, float>
+        FrequencyAdjustments.AddRange(new Dictionary<string, byte>
         {
-            { "Cut Content Enemies", 0.2f },
-            { "Mimes", 0.2f }
-        };
+            { "Cut Content Enemies", 20 },
+            { "Mimes", 20 }
+        });
         FinalReplacementFrequencies = new Dictionary<string, Dictionary<string, float>>();
     }
 }

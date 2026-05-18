@@ -15,7 +15,14 @@ public partial class MessageDialog : Window
         var dialog = new MessageDialog();
         var vm = new MessageDialogViewModel(dialog,message,title,buttonConfirmText,icon);
         dialog.DataContext = vm;
-        await dialog.ShowDialog(owner);
+        if (!owner.IsVisible)
+        {
+            dialog.Show();
+        }
+        else
+        {
+            await dialog.ShowDialog(owner);
+        }
     }
     
     public static async Task<T> ShowAsync<T>(Window owner, string message, string title, string buttonConfirmText, string icon)
@@ -23,7 +30,16 @@ public partial class MessageDialog : Window
         var dialog = new MessageDialog();
         var vm = new MessageDialogViewModel(dialog,message,title,buttonConfirmText,icon);
         dialog.DataContext = vm;
-        return await dialog.ShowDialog<T>(owner);
+        if (!owner.IsVisible)
+        {
+            dialog.Show();
+        }
+        else
+        {
+            return await dialog.ShowDialog<T>(owner);
+        }
+
+        return default;
     }
     
     [Obsolete("Use ShowAsync(Window) instead")]
@@ -32,6 +48,13 @@ public partial class MessageDialog : Window
         var dialog = new MessageDialog();
         var vm = new MessageDialogViewModel(dialog,message,title,buttonConfirmText,icon);
         dialog.DataContext = vm;
-        dialog.ShowDialog(owner);
+        if (!owner.IsVisible)
+        {
+            dialog.Show();
+        }
+        else
+        {
+            dialog.ShowDialog(owner);
+        }
     }
 }

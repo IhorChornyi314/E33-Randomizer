@@ -10,6 +10,6 @@
         }
     },
     "FrequencyAdjustments": {
-        "Cut Content Enemies": 0.2
+        "Cut Content Enemies": 20
     }
 }

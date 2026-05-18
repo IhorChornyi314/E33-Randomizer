@@ -29,7 +29,7 @@
                                               x:DataType="e33Randomizer:MenuItemViewModel">
 
                                     <Setter Property="Header" Value="{Binding Name}"/>
-                                    <Setter Property="Command" Value="{Binding LoadPresetCommand}"/>
+                                    <Setter Property="Command" Value="{Binding $parent[ItemsControl].((e33Randomizer:CustomPlacementWindowViewModel)DataContext).LoadFromJsonCommand}"/>
                                     <Setter Property="CommandParameter" Value="{Binding FilePath}"/>
                                     <Setter Property="StaysOpenOnClick" Value="False" />
                                 </ControlTheme>
@@ -149,6 +149,7 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
         
+                    
                 <!-- Scrollable Container for Frequency Rows -->
                 <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto" MaxHeight="150">
                     <ItemsControl ItemsSource="{Binding FrequencyAdjustments, Mode=TwoWay}">
@@ -156,21 +157,28 @@
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
                                     <ComboBox Width="150" Height="30" Margin="0 0 10 0" VerticalAlignment="Center" 
+                                              ItemsSource="{Binding $parent[ItemsControl].((e33Randomizer:CustomPlacementWindowViewModel)DataContext).CustomCategories}"
                                               SelectedValue="{Binding Key, Mode=TwoWay}"
-                                              ItemsSource="{Binding $parent[ItemsControl].((e33Randomizer:CustomPlacementWindowViewModel)DataContext).CustomCategories}"/>
+                                              Name="CategoryComboBox" />
+                                    <ItemsControl ItemsSource="{Binding #CategoryComboBox.(DataValidationErrors.Errors)}"
+                                                  Foreground="Red"
+                                                  FontSize="12" />
                                     <Button Content="-" Width="30" Height="30" Margin="0 0 5 0" Background="Red" Foreground="White" FontWeight="Bold"
                                             Command="{Binding $parent[ItemsControl].((e33Randomizer:CustomPlacementWindowViewModel)DataContext).RemoveFrequencyRowCommand}"
-                                            CommandParameter="{Binding .}"/>
+                                            CommandParameter="{Binding ., Mode=OneWay}"/>
                                     <Slider  Width="100"
                                              Height="30"
                                              Minimum="0"
                                              Maximum="100"
-                                             Value="{Binding Value, Mode=TwoWay}"
+                                             Name="Slider"
+                                             Value="{Binding Value, Mode=TwoWay, Delay=200}"
                                              Margin="0, 0, 10, 0"
                                              VerticalAlignment="Center" />
                                     <NumericUpDown
-                                            Width="60" Height="30" Value="{Binding Value, Mode=TwoWay}"
-                                            FormatString="0"
+                                            Width="60" Height="30" Value="{Binding #Slider.Value, Mode=TwoWay}"
+                                            FormatString="{}{0:N0}%"
+                                            Minimum="0"
+                                            Maximum="100"
                                             ShowButtonSpinner="False"
                                             VerticalAlignment="Center"
                                             VerticalContentAlignment="Center"/>

@@ -1,5 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Collections.Specialized;
+﻿using System.Collections;
 using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
@@ -10,7 +9,6 @@ using Avalonia.Interactivity;
 using Avalonia.Layout;
 using Avalonia.Media;
 using Avalonia.Platform.Storage;
-using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
 
@@ -18,7 +16,7 @@ namespace E33Randomizer;
     public partial class CustomPlacementWindow : Window
     {
         public string? SelectedObjectForCustomPlacement = null;
-        private CustomPlacement CustomPlacement;
+        private CustomPlacementWindowViewModel CustomPlacement;
 
         // Allowing for Design-Time viewer
         public CustomPlacementWindow()
@@ -29,7 +27,7 @@ namespace E33Randomizer;
                 {
                     new ItemData(){ CodeName = "Short", CustomName = "SomeShortName"}
                 },
-                PresetFiles = new Dictionary<string, string>()
+                PresetFiles = new ObservableCollectionWithChildListener<MenuItemViewModel>
                 {
                     {"Split categories (default)", "Data/Presets/enemies/default.json"},
                     {"Total randomness", "Data/Presets/enemies/total_random.json"},
@@ -39,35 +37,22 @@ namespace E33Randomizer;
                     {"Custom preset 2", "Data/Presets/enemies/custom_2.json"},
                 }
             };
-            DataContext = new CustomPlacementWindowViewModel(CustomPlacement, this);
+            DataContext = CustomPlacement;
             LoadCustomPlacementRows(SelectedObjectForCustomPlacement);
             InitializeComponent();
             PopulateObjectDropdowns();
             // InitPresetButtons();
             Update();
         }
-        
-        public CustomPlacementWindow(CustomPlacement customPlacement)
+
+        public CustomPlacementWindow(CustomPlacementWindowViewModel customPlacement)
         {
             CustomPlacement = customPlacement;
-            DataContext = new CustomPlacementWindowViewModel(CustomPlacement, this);
+            DataContext = CustomPlacement;
             InitializeComponent();
             PopulateObjectDropdowns();
-            // InitPresetButtons();
             Update();
         }
-
-        // private void InitPresetButtons()
-        // {
-        //     int i = 0;
-        //     foreach (var presetFile in CustomPlacement.PresetFiles)
-        //     {
-        //         var presetButton = this.FindNameScope()?.Find<MenuItem>($"PresetButton{i + 1}");
-        //         presetButton.Header = presetFile.Key;
-        //         presetButton.Tag = presetFile.Value;
-        //         i++;
-        //     }
-        // }
 
         private void Update()
         {
@@ -489,218 +474,3 @@ namespace E33Randomizer;
             
         }
     }
-
-public sealed partial class CustomPlacementWindowViewModel : ObservableObject
-{
-    private readonly Window _window;
-    public CustomPlacement CustomPlacement { get; }
-
-    // TODO Remove window and fix error handling.
-    public CustomPlacementWindowViewModel(CustomPlacement customPlacement, Window window)
-    {
-        _window = window;
-        CustomPlacement = customPlacement;
-        FrequencyAdjustments = new ();
-        FrequencyAdjustments.CollectionChanged += FrequencyAdjustmentsOnCollectionChanged;
-        
-        PresetFiles = new();
-        CustomCategories = new();
-        LoadPresetsFromModel();
-        UpdateFromModel();
-    }
-
-    private void FrequencyAdjustmentsOnCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
-    {
-        switch (e.Action)
-        {
-            case NotifyCollectionChangedAction.Add:
-                if (e.NewItems?[0] is not StringFloatKeyValuePairViewModel item) return;
-                if (item.Key == "SelectOne") return;
-                CustomPlacement.FrequencyAdjustments.TryAdd(item.Key, item.Value);
-                break;
-            case NotifyCollectionChangedAction.Remove:
-                if (e.OldItems?[0] is not StringFloatKeyValuePairViewModel itemRemoved) return;
-                if (itemRemoved.Key == "SelectOne") return;
-                CustomPlacement.FrequencyAdjustments.Remove(itemRemoved.Key);
-                break;
-        }
-        
-        UpdateJsonTextBox();
-    }
-
-    private void UpdateFromModel()
-    {
-        LoadCategoriesFromModel();
-        LoadFrequenciesFromModel();
-    }
-
-    private void LoadFrequenciesFromModel()
-    {
-        FrequencyAdjustments.Clear();
-        foreach (var frequency in CustomPlacement.FrequencyAdjustments)
-        {
-            FrequencyAdjustments.Add(new (frequency.Key, frequency.Value * 100));
-        }
-    }
-
-    private void LoadCategoriesFromModel()
-    {
-        CustomCategories.Clear();
-        foreach (var category in CustomPlacement.CustomCategories)
-        {
-            CustomCategories.Add(category);
-        }
-    }
-
-    private void LoadPresetsFromModel()
-    {
-        PresetFiles.Clear();
-        foreach (var preset in CustomPlacement.PresetFiles)
-        {
-            PresetFiles.Add(new MenuItemViewModel(preset.Key, preset.Value, LoadPreset));
-        }
-    }
-        
-    [ObservableProperty]
-    public partial ObservableCollection<StringFloatKeyValuePairViewModel> FrequencyAdjustments { get; set; }
-
-    [ObservableProperty]
-    public partial string? OopsAllObjectsSelection { get; set; } = null;
-
-    [ObservableProperty] 
-    public partial string Json { get; set; } = string.Empty;
-
-    [ObservableProperty] 
-    public partial bool SelectedPresetIsOops { get; set; } = false;
-
-    [ObservableProperty]
-    public partial ObservableCollection<MenuItemViewModel> PresetFiles { get; set; }
-    
-    [ObservableProperty]
-    public partial ObservableCollection<string> CustomCategories { get; set; }
-
-    public string? SelectedObjectForCustomPlacement = null;
-    
-    
-    partial void OnOopsAllObjectsSelectionChanged(string? value)
-    {
-        if (value is null) return;
-        
-        CustomPlacement.ApplyOopsAll(value);
-    }
-    
-    private async Task LoadPreset(string presetFile)
-    {
-        SelectedPresetIsOops = false;
-        try
-        {
-            CustomPlacement.LoadFromJson(presetFile.Replace("Data", RandomizerLogic.DataDirectory));
-            UpdateFromModel();
-            LoadCustomPlacementRows(SelectedObjectForCustomPlacement);
-            UpdateJsonTextBox();
-        }
-        catch (Exception ex)
-        {
-            //TODO FIX
-            await MessageDialog.ShowAsync
-            (_window, $"Error loading preset: {ex.Message}; Reverting to Default.",
-                "Load Error", nameof(DialogBoxButton.OK), MessageBoxIcons.Error);
-            CustomPlacement.LoadDefaultPreset();
-            UpdateJsonTextBox();
-        }
-    }
-
-    [RelayCommand]
-    private void AddFrequencyRow()
-    {
-        FrequencyAdjustments.Add(new("SelectOne", 0));
-    }
-
-    [RelayCommand]
-    private void OopsAllButton()
-    {
-        SelectedPresetIsOops = true;
-    }
-
-    [RelayCommand]
-    private void RemoveFrequencyRow(StringFloatKeyValuePairViewModel model)
-    {
-        if (string.IsNullOrEmpty(model.Key)) return;
-        
-        FrequencyAdjustments.Remove(model);
-        CustomPlacement.FrequencyAdjustments.Remove(model.Key);
-    }
-
-    //TODO FIX
-    private void LoadCustomPlacementRows(string? objectName)
-    {
-        if (objectName == null)
-        {
-            return;
-        }
-        //CustomPlacementRowsContainer.Children.Clear();
-        if (!CustomPlacement.CustomPlacementRules.TryGetValue(objectName, out var customPlacements))
-        {
-            return;
-        }
-        foreach (var pair in customPlacements)
-        {
-            //var row = CreateCustomPlacementRow(pair.Key);
-            //CustomPlacementRowsContainer.Children.Add(row);
-        }
-    }
-    
-    private void UpdateJsonTextBox()
-    {
-        var presetData = new CustomPlacementPreset(CustomPlacement.NotRandomized, CustomPlacement.Excluded, CustomPlacement.CustomPlacementRules, CustomPlacement.FrequencyAdjustments);
-        string json = JsonSerializer.Serialize(presetData, JsonSourceGenerationContextSerializationFactory.LazyJsonSourceGenerationContext.Value.CustomPlacementPreset);
-        Json = json;
-    }
-
-    
-}
-
-public partial class MenuItemViewModel : ObservableObject
-{
-    [ObservableProperty]
-    public partial string Name { get; set; }
-
-    [ObservableProperty]
-    public partial string FilePath { get; set; }
-
-    [ObservableProperty]
-    public partial Func<string, Task> LoadPresetAction { get; set; }
-    
-    [RelayCommand]
-    public async Task LoadPreset()
-    {
-        await LoadPresetAction(FilePath);
-    }
-
-    public MenuItemViewModel(string name, string filePath, Func<string, Task> loadPresetAction)
-    {
-        Name = name;
-        FilePath = filePath;
-        LoadPresetAction = loadPresetAction;
-    }
-}
-
-public partial class StringFloatKeyValuePairViewModel : ObservableObject
-{
-    [ObservableProperty]
-    public partial string Key { get; set; }
-
-    [ObservableProperty]
-    public partial float Value { get; set; }
-
-    public StringFloatKeyValuePairViewModel(string key, float value)
-    {
-        Key = key;
-        Value = value;
-    }
-
-    partial void OnKeyChanged(string value)
-    {
-        Console.WriteLine(value);
-    }
-}

@@ -1,6 +1,6 @@
 ﻿namespace E33Randomizer;
 
-public class CustomSkillPlacement: CustomPlacement
+public class CustomSkillPlacement: CustomPlacementWindowViewModel
 {
     public override void Init()
     {
@@ -48,7 +48,6 @@ public class CustomSkillPlacement: CustomPlacement
             { "Sciel's Gradient Skills", new Dictionary<string, float> { { "Sciel's Gradient Skills", 1 } } },
             { "Sciel's Non-gradient Skills", new Dictionary<string, float> { { "Sciel's Non-gradient Skills", 1 } } },
         };
-        FrequencyAdjustments = new Dictionary<string, float>();
         FinalReplacementFrequencies = new Dictionary<string, Dictionary<string, float>>();
     }
 }

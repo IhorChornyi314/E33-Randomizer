@@ -2,6 +2,7 @@
 
 using System.Collections.ObjectModel;
 using System.Text.Json;
+using Avalonia.Controls;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
@@ -12,7 +13,7 @@ public class CustomPlacementPreset
     public List<string> NotRandomized { get; set; }
     public List<string> Excluded  { get; set; }
     public Dictionary<string, Dictionary<string, float>> CustomPlacement  { get; set; }
-    public Dictionary<string, float> FrequencyAdjustments { get; set; }
+    public Dictionary<string, byte> FrequencyAdjustments { get; set; }
 
     [Obsolete("Only used for JSON Deserialization, not intended to be used directly.")]
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
@@ -25,16 +26,27 @@ public class CustomPlacementPreset
     public CustomPlacementPreset(List<string> n,
         List<string> e,
         Dictionary<string, Dictionary<string, float>> c,
-        Dictionary<string, float> f)
+        Dictionary<string, byte> f)
     {
         NotRandomized = n;
         Excluded = e;
         CustomPlacement = c;
         FrequencyAdjustments = f;
     }
+    
+    public CustomPlacementPreset(List<string> n,
+        List<string> e,
+        Dictionary<string, Dictionary<string, float>> c,
+        ObservableCollection<StringByteKeyValuePairViewModel> f)
+    {
+        NotRandomized = n;
+        Excluded = e;
+        CustomPlacement = c;
+        FrequencyAdjustments = f.Where(x => !x.HasErrors).ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+    }
 }
 
-public abstract partial class CustomPlacement : ObservableObject
+public abstract partial class CustomPlacementWindowViewModel : ObservableObject
 {
     public List<string> NotRandomized = [];
     public List<string> Excluded = [];
@@ -44,24 +56,70 @@ public abstract partial class CustomPlacement : ObservableObject
     public List<string> PlainNamesList = [];
     public Dictionary<string, List<string>> PlainNameToCodeNames = new();
     
-    public List<string> CustomCategories = new(); 
+    public List<string> CustomCategories { get; set; } = []; 
     public Dictionary<string, Dictionary<string, float>> CustomPlacementRules = new();
-    public Dictionary<string, float> FrequencyAdjustments { get; set; } = new();
-    public Dictionary<string, float> DefaultFrequencies = new();
+    
+    [ObservableProperty]
+    public partial ObservableCollectionWithChildListener<StringByteKeyValuePairViewModel> FrequencyAdjustments { get; set; } = [];
+    
+    [ObservableProperty] 
+    public partial bool SelectedPresetIsOops { get; set; } = false;
+
+    [ObservableProperty]
+    public partial ObservableCollectionWithChildListener<MenuItemViewModel> PresetFiles { get; set; }
+    
+    [ObservableProperty] 
+    public partial string Json { get; set; } = string.Empty;
+    
+    [ObservableProperty]
+    public partial string? OopsAllObjectsSelection { get; set; } = null;
+    
+    public Dictionary<string, byte> DefaultFrequencies = new();
     public Dictionary<string, Dictionary<string, float>> FinalReplacementFrequencies = new();
     public List<string> CategoryOrder = new();
-    public IEnumerable<ObjectData> AllObjects;
+    public IEnumerable<ObjectData> AllObjects = Array.Empty<ObjectData>();
     
-    public Dictionary<string, string> PresetFiles = new();
     protected string CatchAllName = "";
     
     public abstract void Init();
     public abstract void LoadDefaultPreset();
 
-    public CustomPlacement()
+    protected CustomPlacementWindowViewModel()
     {
         Init();
+        FrequencyAdjustments?.CollectionChanged += (_, _) => UpdateJsonTextBox();
     }
+    
+    [RelayCommand]
+    private void AddFrequencyRow()
+    {
+        FrequencyAdjustments.Add("SelectOne", 0);
+    }
+
+    [RelayCommand]
+    private void OopsAllButton()
+    {
+        SelectedPresetIsOops = true;
+    }
+
+    [RelayCommand]
+    private void RemoveFrequencyRow(StringByteKeyValuePairViewModel model)
+    {
+        if (string.IsNullOrEmpty(model.Key)) return;
+        
+        FrequencyAdjustments.Remove(model);
+    }
+
+    private bool FrequencyExists(string key)
+    {
+        return FrequencyAdjustments.Any(x => x.Key == key);
+    }
+    
+    private void UpdateJsonTextBox()
+    {
+        Json = JsonSerializer.Serialize(new CustomPlacementPreset(NotRandomized,Excluded, CustomPlacementRules, FrequencyAdjustments), JsonSourceGenerationContextSerializationFactory.LazyJsonSourceGenerationContext.Value.CustomPlacementPreset);
+    }
+
     
     public void LoadCategories(string categoriesJsonFile)
     {
@@ -117,12 +175,17 @@ public abstract partial class CustomPlacement : ObservableObject
             AddExcluded(excluded);
         }
         CustomPlacementRules = preset.CustomPlacement;
-        FrequencyAdjustments = preset.FrequencyAdjustments;
+        FrequencyAdjustments.Clear();
+        foreach (var kvp in preset.FrequencyAdjustments)
+        {
+            FrequencyAdjustments.Add(kvp.Key, kvp.Value);
+        }
     }
     
+    [RelayCommand]
     public void LoadFromJson(string pathToJson)
     {
-        using (StreamReader r = new StreamReader(pathToJson))
+        using (StreamReader r = new StreamReader(pathToJson.Replace("Data", RandomizerLogic.DataDirectory)))
         {
             string json = r.ReadToEnd();
             var presetData = JsonSerializer.Deserialize<CustomPlacementPreset>(json, JsonSourceGenerationContext.Default.CustomPlacementPreset);
@@ -216,6 +279,25 @@ public abstract partial class CustomPlacement : ObservableObject
 
         return result;
     }
+    
+    public Dictionary<string, byte> CustomCategoryDictionaryToCodeNames(ObservableCollection<StringByteKeyValuePairViewModel> from, bool adjustForCategorySize=false)
+    {
+        Dictionary<string, byte> result = new Dictionary<string, byte>();
+        foreach (var pair in from)
+        {
+            var translatedKey = PlainNameToCodeNames[pair.Key];
+            foreach (var codeName in translatedKey)
+            {
+                result[codeName] = pair.Value;
+                if (adjustForCategorySize)
+                {
+                    result[codeName] = (byte)((result[codeName] / translatedKey.Count) * 100);
+                }
+            }
+        }
+
+        return result;
+    }
 
     public void ResetRules()
     {
@@ -259,10 +341,10 @@ public abstract partial class CustomPlacement : ObservableObject
         UpdateDefaultFrequencies(translatedFrequencyAdjustments);
     }
 
-    public void UpdateDefaultFrequencies(Dictionary<string, float> translatedFrequencyAdjustments)
+    public void UpdateDefaultFrequencies(Dictionary<string, byte> translatedFrequencyAdjustments)
     {
-        DefaultFrequencies = AllObjects.Select(e => new KeyValuePair<string,float>(e.CodeName, translatedFrequencyAdjustments.ContainsKey(e.CodeName) ?  translatedFrequencyAdjustments[e.CodeName] : 1)).ToDictionary();
-        DefaultFrequencies = DefaultFrequencies.Where(kv => kv.Value > 0.0001).ToDictionary();
+        DefaultFrequencies = AllObjects.Select(e => new KeyValuePair<string,byte>(e.CodeName, translatedFrequencyAdjustments.ContainsKey(e.CodeName) ?  translatedFrequencyAdjustments[e.CodeName] : (byte)1)).ToDictionary();
+        DefaultFrequencies = DefaultFrequencies.Where(kv => kv.Value > 0).ToDictionary();
     }
 
     public string GetTrulyRandom()

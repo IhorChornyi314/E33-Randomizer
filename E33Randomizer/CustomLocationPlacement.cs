@@ -1,6 +1,8 @@
-﻿namespace E33Randomizer;
+﻿using System.Collections.ObjectModel;
 
-public class CustomLocationPlacement: CustomPlacement
+namespace E33Randomizer;
+
+public class CustomLocationPlacement: CustomPlacementWindowViewModel
 {
     public override void Init()
     {
@@ -36,7 +38,6 @@ public class CustomLocationPlacement: CustomPlacement
             { "Act II Locations", new Dictionary<string, float> { { "Act II Locations", 1 } } },
             { "Act III Locations", new Dictionary<string, float> { { "Act III Locations", 1 } } },
         };
-        FrequencyAdjustments = new Dictionary<string, float>();
         FinalReplacementFrequencies = new Dictionary<string, Dictionary<string, float>>();
     }
 }

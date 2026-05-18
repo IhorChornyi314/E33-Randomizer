@@ -30,14 +30,14 @@
         }
     },
     "FrequencyAdjustments": {
-    "Cut Content Items": 0.5,
-    "Revive Tint Shard (Upgrade Material)": 0.1,
-    "Energy Tint Shard (Upgrade Material)": 0.1,
-    "Healing Tint Shard (Upgrade Material)": 0.1,
-    "Shape of Health (Upgrade Material)": 0.1,
-    "Shape of Energy (Upgrade Material)": 0.1,
-    "Shape of Life (Upgrade Material)": 0.1,
-    "Chroma Elixir Shard (Upgrade Material)": 0.1,
-    "Perfect Chroma Catalyst (Upgrade Material)": 0.4
+    "Cut Content Items": 50,
+    "Revive Tint Shard (Upgrade Material)": 10,
+    "Energy Tint Shard (Upgrade Material)": 10,
+    "Healing Tint Shard (Upgrade Material)": 10,
+    "Shape of Health (Upgrade Material)": 10,
+    "Shape of Energy (Upgrade Material)": 10,
+    "Shape of Life (Upgrade Material)": 10,
+    "Chroma Elixir Shard (Upgrade Material)": 10,
+    "Perfect Chroma Catalyst (Upgrade Material)": 40
   }
 }
