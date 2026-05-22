@@ -51,6 +51,7 @@ public class SkillsController: Controller<SkillData>
 
     public override string ConvertToTxt()
     {
+        ApplyViewModel();
         return string.Join('\n', SkillGraphs.Select(sG => sG.EncodeTxt()));
     }
     
@@ -197,6 +198,7 @@ public class SkillsController: Controller<SkillData>
 
     public override void WriteAssets()
     {
+        ApplyViewModel();
         foreach (var skillGraph in SkillGraphs)
         {
             Utils.WriteAsset(skillGraph.ToAsset());

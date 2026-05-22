@@ -316,6 +316,7 @@ namespace Tests
                 new CustomSkillPlacement(),
                 new CustomLocationPlacement()
             );
+            config.CustomLocationPlacement.AddNotRandomized("Anything");
             
             var output = TestLogic.RunRandomizer(config);
 

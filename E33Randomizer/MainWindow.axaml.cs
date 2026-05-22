@@ -335,6 +335,9 @@ public class SettingsViewModel : ObservableObject
     
     public bool RandomizeCharacters { get; set; } = false;
     
+    public bool ScaleOptionalAreas { get; set; } = true;
+    public int ScaleModifierPercentage { get; set; } = 100;
+    
     [System.Text.Json.Serialization.JsonIgnore]
     public int SelectedIndex
     {
