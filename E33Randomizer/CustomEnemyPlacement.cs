@@ -55,7 +55,7 @@ public class CustomEnemyPlacement: CustomPlacementWindowViewModel
         
         LoadCategories($"{RandomizerLogic.DataDirectory}/enemy_categories.json");
         
-        PlainNamesList.InsertRange(PlainNamesList.IndexOf("All Regular Enemies") + 1, ArchetypeNames.Keys);
+        AddToAllSelectionLists(ArchetypeNames.Keys);
 
         foreach (var archetypeName in ArchetypeNames)
         {
@@ -71,17 +71,17 @@ public class CustomEnemyPlacement: CustomPlacementWindowViewModel
         ResetRules();
         AddExcluded("Gimmick/Tutorial Enemies");
         AddExcluded("Map Part Enemies");
-        CustomPlacementRules = new Dictionary<string, Dictionary<string, float>>
+        CustomPlacementRules.AddRange(new Dictionary<string, IEnumerable<KeyValuePair<string, byte>>>
         {
-            { "Regular", new Dictionary<string, float> { { "Regular", 1 } } },
-            { "Weak Regular", new Dictionary<string, float> { { "Weak Regular", 1 } } },
-            { "Elusive Regular", new Dictionary<string, float> { { "Elusive Regular", 1 } } },
-            { "Strong Regular", new Dictionary<string, float> { { "Strong Regular", 1 } } },
-            { "Minibosses", new Dictionary<string, float> { { "Minibosses", 1 } } },
-            { "Non-Chromatic Bosses", new Dictionary<string, float> { { "Non-Chromatic Bosses", 1 } } },
-            { "Chromatic Bosses", new Dictionary<string, float> { { "Chromatic Bosses", 1 } } },
-            { "Petanks", new Dictionary<string, float> { { "Petanks", 1 } } },
-        };
+            { "Regular", [new KeyValuePair<string, byte>("Regular", 1)] },
+            { "Weak Regular", [new KeyValuePair<string, byte>("Weak Regular", 1)] },
+            { "Elusive Regular", [new KeyValuePair<string, byte>("Elusive Regular", 1)] },
+            { "Strong Regular", [new KeyValuePair<string, byte>("Strong Regular", 1)] },
+            { "Minibosses", [new KeyValuePair<string, byte>("Minibosses", 1)] },
+            { "Non-Chromatic Bosses", [new KeyValuePair<string, byte>("Non-Chromatic Bosses", 1)] },
+            { "Chromatic Bosses", [new KeyValuePair<string, byte>("Chromatic Bosses", 1)] },
+            { "Petanks", [new KeyValuePair<string, byte>("Petanks", 1)] }
+        });
         FrequencyAdjustments.AddRange(new Dictionary<string, byte>
         {
             { "Cut Content Enemies", 20 },

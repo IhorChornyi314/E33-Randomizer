@@ -32,12 +32,12 @@ public class CustomLocationPlacement: CustomPlacementWindowViewModel
     public override void LoadDefaultPreset()
     {
         ResetRules();
-        CustomPlacementRules = new Dictionary<string, Dictionary<string, float>>
+        CustomPlacementRules.AddRange(new Dictionary<string, IEnumerable<KeyValuePair<string, byte>>>
         {
-            { "Act I Locations", new Dictionary<string, float> { { "Act I Locations", 1 } } },
-            { "Act II Locations", new Dictionary<string, float> { { "Act II Locations", 1 } } },
-            { "Act III Locations", new Dictionary<string, float> { { "Act III Locations", 1 } } },
-        };
+            { "Act I Locations", [new KeyValuePair<string, byte>("Act I Locations", 1)] },
+            { "Act II Locations", [new KeyValuePair<string, byte>("Act II Locations", 1)] },
+            { "Act III Locations", [new KeyValuePair<string, byte>("Act III Locations", 1)] }
+        });
         FinalReplacementFrequencies = new Dictionary<string, Dictionary<string, float>>();
     }
 }

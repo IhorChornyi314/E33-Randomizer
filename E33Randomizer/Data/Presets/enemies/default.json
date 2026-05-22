@@ -7,28 +7,28 @@
   ],
   "CustomPlacement": {
     "Regular": {
-      "Regular": 1.0
+      "Regular": 100
     },
     "Weak Regular": {
-      "Weak Regular": 1.0
+      "Weak Regular": 100
     },
     "Elusive Regular": {
-      "Elusive Regular": 1.0
+      "Elusive Regular": 100
     },
     "Strong Regular": {
-      "Strong Regular": 1.0
+      "Strong Regular": 100
     },
     "Minibosses": {
-      "Minibosses": 1.0
+      "Minibosses": 100
     },
     "Non-Chromatic Bosses": {
-      "Non-Chromatic Bosses": 1.0
+      "Non-Chromatic Bosses": 100
     },
     "Chromatic Bosses": {
-      "Chromatic Bosses": 1.0
+      "Chromatic Bosses": 100
     },
     "Petanks": {
-      "Petanks": 1.0
+      "Petanks": 100
     }
   },
   "FrequencyAdjustments": {

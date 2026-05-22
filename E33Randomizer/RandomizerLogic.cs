@@ -209,7 +209,7 @@ public static class RandomizerLogic
         using (StreamReader r = new StreamReader($"{DataDirectory}/StaticAssets/file_paths.json"))
         {
             string json = r.ReadToEnd();
-            filePaths = JsonSerializer.Deserialize<Dictionary<string, string>>(json, JsonSourceGenerationContext.Default.DictionaryStringString) ?? throw new InvalidOperationException();
+            filePaths = JsonSerializer.DeserializeThrowOnNull<Dictionary<string, string>>(json, JsonSourceGenerationContext.Default.DictionaryStringString);
         }
 
         foreach (var file in filenames)

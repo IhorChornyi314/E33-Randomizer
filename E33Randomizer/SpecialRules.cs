@@ -312,15 +312,18 @@ public static class SpecialRules
     {
         var replacedSkillName = replacedSkill.CodeName;
         var replacedSkillCategory = replacedSkillName;
-            
-        foreach (var categoryName in RandomizerLogic.CustomSkillPlacement.CustomPlacementRules[skillCategory].Keys)
+
+        if (RandomizerLogic.CustomSkillPlacement.CustomPlacementRules.TryGetValue(skillCategory, out var customRules))
         {
-            if (RandomizerLogic.CustomSkillPlacement.PlainNameToCodeNames[categoryName]
-                .Contains(replacedSkillName))
+            foreach (var categoryName in customRules.Select(x => x.Key))
             {
-                replacedSkillCategory = categoryName;
-                break;
-            }
+                if (RandomizerLogic.CustomSkillPlacement.PlainNameToCodeNames[categoryName]
+                    .Contains(replacedSkillName))
+                {
+                    replacedSkillCategory = categoryName;
+                    break;
+                }
+            }    
         }
             
         if (!_skillCategoryPools.ContainsKey(replacedSkillCategory))
@@ -346,7 +349,7 @@ public static class SpecialRules
         {
             var skillCategory = RandomizerLogic.CustomSkillPlacement.GetCategory(node.OriginalSkillCodeName);
 
-            if (!RandomizerLogic.CustomSkillPlacement.CustomPlacementRules.ContainsKey(skillCategory))
+            if (RandomizerLogic.CustomSkillPlacement.CustomPlacementRules.All(x => x.Key != skillCategory))
             {
                 if (!_skillCategoryPools.ContainsKey("Default"))
                 {

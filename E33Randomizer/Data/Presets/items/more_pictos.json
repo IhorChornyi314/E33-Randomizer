@@ -8,25 +8,25 @@
     ],
     "CustomPlacement": {
         "Pictos": {
-            "Pictos": 1.0
+            "Pictos": 100
         },
         "Weapon": {
-            "Weapon": 1.0
+            "Weapon": 100
         },
         "Key Item": {
-            "Key Item": 1.0
+            "Key Item": 100
         },
         "Cosmetic": {
-            "Cosmetic": 0.8,
-            "Pictos": 0.2
+            "Cosmetic": 80,
+            "Pictos": 20
         },
         "Upgrade Material": {
-            "Upgrade Material": 0.8,
-            "Pictos": 0.2
+            "Upgrade Material": 80,
+            "Pictos": 20
         },
         "Music Record": {
-            "Music Record": 0.8,
-            "Pictos": 0.2
+            "Music Record": 80,
+            "Pictos": 20
         }
     },
     "FrequencyAdjustments": {

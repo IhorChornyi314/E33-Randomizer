@@ -6,13 +6,13 @@
   ],
   "CustomPlacement": {
     "Act I Locations": {
-      "Act I Locations": 1.0
+      "Act I Locations": 100
     },
     "Act II Locations": {
-      "Act II Locations": 1.0
+      "Act II Locations": 100
     },
     "Act III Locations": {
-      "Act III Locations": 1.0
+      "Act III Locations": 100
     }
   },
   "FrequencyAdjustments": {}

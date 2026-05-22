@@ -34,15 +34,15 @@ public class CustomItemPlacement: CustomPlacementWindowViewModel
         AddNotRandomized("Skill Unlock");
         AddNotRandomized("Merchant Unlock");
         AddExcluded("Consumable");
-        CustomPlacementRules = new Dictionary<string, Dictionary<string, float>>
+        CustomPlacementRules.AddRange(new Dictionary<string, IEnumerable<KeyValuePair<string, byte>>>
         {
-            { "Pictos", new Dictionary<string, float> { { "Pictos", 1 } } },
-            { "Weapon", new Dictionary<string, float> { { "Weapon", 1 } } },
-            { "Key Item", new Dictionary<string, float> { { "Key Item", 1 } } },
-            { "Cosmetic", new Dictionary<string, float> { { "Cosmetic", 1 } } },
-            { "Upgrade Material", new Dictionary<string, float> { { "Upgrade Material", 1 } } },
-            { "Music Record", new Dictionary<string, float> { { "Music Record", 1 } } },
-        };
+            { "Pictos", [new KeyValuePair<string, byte>("Pictos", 1)] },
+            { "Weapon", [new KeyValuePair<string, byte>("Weapon", 1)] },
+            { "Key Item", [new KeyValuePair<string, byte>("Key Item", 1)] },
+            { "Cosmetic", [new KeyValuePair<string, byte>("Cosmetic", 1)] },
+            { "Upgrade Material", [new KeyValuePair<string, byte>("Upgrade Material", 1)] },
+            { "Music Record", [new KeyValuePair<string, byte>("Music Record", 1)] }
+        });
         FrequencyAdjustments.AddRange( new Dictionary<string, byte>{
             { "Cut Content Items", 50 },
             { "Revive Tint Shard (Upgrade Material)", 10 },

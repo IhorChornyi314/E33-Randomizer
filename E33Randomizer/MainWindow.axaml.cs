@@ -210,7 +210,7 @@ public partial class MainWindow : Window
             using (StreamReader r = new StreamReader(pathToJson))
             {
                 json = r.ReadToEnd();
-                var newSettingsData = JsonSerializer.Deserialize(json, JsonSourceGenerationContext.Default.SettingsViewModel) ?? throw new Exception("Invalid settings.");
+                var newSettingsData = JsonSerializer.DeserializeThrowOnNull(json, JsonSourceGenerationContext.Default.SettingsViewModel);
                 RandomizerLogic.Settings = newSettingsData;
                 DataContext = RandomizerLogic.Settings;
             }

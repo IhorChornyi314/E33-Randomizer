@@ -6,7 +6,7 @@
     ],
     "CustomPlacement": {
         "Anyone": {
-            "All Bosses": 1.0
+            "All Bosses": 100
         }
     },
     "FrequencyAdjustments": {
