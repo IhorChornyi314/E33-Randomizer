@@ -121,12 +121,15 @@ public abstract partial class CustomPlacementWindowViewModel : ObservableObject
         FrequencyAdjustments.ItemPropertyChanged += (_, _) => UpdateJsonTextBox();
         CustomPlacementRules.ItemPropertyChanged  += (_, _) =>
         {
+            //TODO: right now this is using Tuples, but those are immutable, which means they have to be replaced with a new version
+            // however this causes the item to become de-selected in the UI.  (it still functions, but looks odd)
             var temp = FilteredCustomPlacementOptions.SingleOrDefault(x => x.Item1 == SelectedCustomPlacementRuleName);
             if (temp != null)
             {
                 var hasRules = CustomPlacementRules.Any(y => y.Key == SelectedCustomPlacementRuleName && y.Value.Count > 0);
-                temp.Item2 = hasRules;   
-
+                var indexOfTemp = FilteredCustomPlacementOptions.IndexOf(temp);
+                FilteredCustomPlacementOptions.RemoveAt(indexOfTemp);
+                FilteredCustomPlacementOptions.Insert(indexOfTemp, new Tuple<string, bool>(temp.Item1, hasRules));
             }
             
             UpdateJsonTextBox();

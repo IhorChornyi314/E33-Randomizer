@@ -84,13 +84,12 @@
                                         <DataTemplate>
                                             <Grid ColumnDefinitions="*,auto">
                                                <TextBlock Grid.Column="0" Text="{Binding Item1}" />
-                                                <TextBlock Grid.Column="1" Text="*" IsVisible="{Binding Item2}" />
+                                               <TextBlock Grid.Column="1" Text="*" IsVisible="{Binding Item2}" />
                                             </Grid>
                                         </DataTemplate>
                                     </ListBox.ItemTemplate>
                                     <ListBox.SelectedItem>
-                                        <MultiBinding Converter="{StaticResource CustomPlacementValueConverter}"
-                                                      Mode="OneWay">
+                                        <MultiBinding Converter="{StaticResource CustomPlacementValueConverter}" Mode="OneWay">
                                             <Binding Path="#CustomPlacementObjectListBox.SelectedItem" />
                                             <Binding Path="#Root.((e33Randomizer:CustomPlacementWindowViewModel)DataContext)" />
                                         </MultiBinding>
