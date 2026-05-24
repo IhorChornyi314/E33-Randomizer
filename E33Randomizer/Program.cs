@@ -18,10 +18,7 @@ public sealed class Program
             .UsePlatformDetect()
             .ConfigureFonts(manager =>
             {
-                manager.AddFontCollection(new  FontCollection());
+                manager.AddFontCollection(new FontCollection());
             })
-            .WithInterFont()
-            .LogToTrace(LogEventLevel.Warning)
-            // Add binding-specific verbose logging:
-            .LogToTrace(LogEventLevel.Verbose, LogArea.Binding);
+            .WithInterFont(); //.LogToTextWriter(File.CreateText("log.txt"), LogEventLevel.Verbose);
 }

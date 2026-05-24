@@ -20,7 +20,10 @@ public class ObservableCollectionWithChildListener<T> : ObservableCollection<T> 
     }
 
     protected override void ClearItems() {
-        foreach (var item in Items) item.PropertyChanged -= OnItemPropertyChanged;
+        foreach (var item in Items)
+        {
+            item.PropertyChanged -= OnItemPropertyChanged;
+        }
         base.ClearItems();
     }
 
@@ -117,10 +120,10 @@ public static class ObservableCollectionWithChildListenerExtensions
         public void Add(string key, IEnumerable<KeyValuePair<string, byte>> value)
         {
             var subCollection = new ObservableCollectionWithChildListener<StringByteKeyValuePairViewModel>();
-            subCollection.AddRange(value);
-            
             var item = new StringDictionaryKeyValuePairViewModel<StringByteKeyValuePairViewModel>(key, subCollection, collection.ExistsCheck);
             collection.Add(item);
+            
+            subCollection.AddRange(value);
         }
 
         public void AddRange(IEnumerable<KeyValuePair<string, IEnumerable<KeyValuePair<string, byte>>>> items)

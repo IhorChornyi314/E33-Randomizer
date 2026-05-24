@@ -155,4 +155,9 @@ namespace E33Randomizer;
         {
             Close();
         }
+
+        private void OopsAllObjectComboBox_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
+        {
+            CustomPlacement.ApplyOopsAll();
+        }
     }

@@ -3,6 +3,9 @@
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Text.Json;
+using Avalonia;
+using Avalonia.Collections;
+using Avalonia.Data;
 using Avalonia.Data.Converters;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -42,7 +45,7 @@ public class CustomPlacementPreset
     {
         NotRandomized = n.ToList();
         Excluded = e.ToList();
-        CustomPlacement = c.ToDictionary(x => x.Key, y => y.Value.ToDictionary(z => z.Key, z => z.Value));
+        CustomPlacement = c.Where(x => !x.HasErrors && !x.Value.Any(z => z.HasErrors) && x.Value.Count > 0).ToDictionary(x => x.Key, y => y.Value.ToDictionary(z => z.Key, z => z.Value));
         FrequencyAdjustments = f.Where(x => !x.HasErrors).ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
     }
 }
@@ -54,9 +57,12 @@ public abstract partial class CustomPlacementWindowViewModel : ObservableObject
     
     public ObservableCollection<string> ExcludedOptions { get; } = [];
     public ObservableCollection<string> Excluded { get; } = [];
+
+    [ObservableProperty]
+    private string _customPlacementSearch = "";
     
     public ObservableCollection<string> CustomPlacementOptions { get; } = [];
-    public ObservableCollection<string> CustomPlacement { get; } = [];
+    public AvaloniaList<Tuple<string,bool>> FilteredCustomPlacementOptions { get; } = [];
     
     public List<string> NotRandomizedCodeNames = [];
     public List<string> ExcludedCodeNames = [];
@@ -72,6 +78,9 @@ public abstract partial class CustomPlacementWindowViewModel : ObservableObject
 
     [ObservableProperty]
     public partial ObservableCollectionWithChildListener<StringByteKeyValuePairViewModel>? SelectedCustomPlacementRule { get; set; } = [];
+    
+    [ObservableProperty]
+    public partial string SelectedCustomPlacementRuleName { get; set; }
     
     [ObservableProperty]
     public partial ObservableCollectionWithChildListener<StringByteKeyValuePairViewModel> FrequencyAdjustments { get; set; } = [];
@@ -97,27 +106,59 @@ public abstract partial class CustomPlacementWindowViewModel : ObservableObject
     
     public abstract void Init();
     public abstract void LoadDefaultPreset();
+    public string[] CategoryDisplayOrder { get; set; } = [];
+    public string[] AdditionalCategoriesToAdd { get; set; } = [];
+    
+    public virtual Func<string[], string, int> CategorySorter { get; } = (sortList, s) =>
+        sortList.IndexOf(s) >= 0 ? sortList.IndexOf(s) : int.MaxValue;
 
     protected CustomPlacementWindowViewModel()
     {
-        Init();
         FrequencyAdjustments.CollectionChanged += (_, _) => UpdateJsonTextBox();
         NotRandomized.CollectionChanged += (_, _) => UpdateJsonTextBox();
         Excluded.CollectionChanged += (_, _) => UpdateJsonTextBox();
-        CustomPlacement.CollectionChanged += (_, _) => UpdateJsonTextBox();
+        CustomPlacementRules.CollectionChanged += (_, _) => UpdateJsonTextBox();
+        FrequencyAdjustments.ItemPropertyChanged += (_, _) => UpdateJsonTextBox();
+        CustomPlacementRules.ItemPropertyChanged  += (_, _) =>
+        {
+            var temp = FilteredCustomPlacementOptions.SingleOrDefault(x => x.Item1 == SelectedCustomPlacementRuleName);
+            if (temp != null)
+            {
+                var hasRules = CustomPlacementRules.Any(y => y.Key == SelectedCustomPlacementRuleName && y.Value.Count > 0);
+                temp.Item2 = hasRules;   
+
+            }
+            
+            UpdateJsonTextBox();
+        };
+        Init();
+        ApplyCustomPlacementOptionFilter();
         
+        PresetFiles.Add("Oops All...", "OopsAll");
+    }
+
+    partial void OnCustomPlacementSearchChanged(string value)
+    {
+        ApplyCustomPlacementOptionFilter();
+    }
+
+    private void ApplyCustomPlacementOptionFilter()
+    {
+        FilteredCustomPlacementOptions.Clear();
+        var filtered = string.IsNullOrEmpty(CustomPlacementSearch)
+            ? CustomPlacementOptions
+            : CustomPlacementOptions.Where(o =>
+                o.Contains(CustomPlacementSearch, StringComparison.InvariantCultureIgnoreCase));
+
+        
+        
+        FilteredCustomPlacementOptions.AddRange(filtered.Select(x => new Tuple<string, bool>(x, CustomPlacementRules.Any(y => y.Key == x && y.Value.Count > 0))));
     }
     
     [RelayCommand]
     private void AddFrequencyRow()
     {
         FrequencyAdjustments.Add("SelectOne", 0);
-    }
-
-    [RelayCommand]
-    private void OopsAllButton()
-    {
-        SelectedPresetIsOops = true;
     }
 
     [RelayCommand]
@@ -161,27 +202,32 @@ public abstract partial class CustomPlacementWindowViewModel : ObservableObject
 
         void AddToLists(ObservableCollection<string> collection)
         {
+            var temp = new List<string> { CatchAllName };
+            temp.AddRange(CustomCategories);
+            temp.AddRange(AllObjects.Select(i => i.CustomName));
+            temp.AddRange(AdditionalCategoriesToAdd);
+
             collection.Clear();
-            collection.Add(CatchAllName);
-            collection.AddRange(CustomCategories);
-            collection.AddRange(AllObjects.Select(i => i.CustomName).Order());
+            collection.AddRange(temp.OrderBy(s => CategorySorter(CategoryDisplayOrder, s)).ThenBy(s => s));
         }
     }
 
     protected void AddToAllSelectionLists(IEnumerable<string> value)
     {
         var toAdd = value as string[] ?? value.ToArray();
-        NotRandomized.AddRange(toAdd);
-        Excluded.AddRange(toAdd);
+        NotRandomizedOptions.AddRange(toAdd);
+        ExcludedOptions.AddRange(toAdd);
         OopsAllObjects.AddRange(toAdd);
         CustomPlacementOptions.AddRange(toAdd);
 
     }
     
-    public void ApplyOopsAll(string objectCodeName)
+    public void ApplyOopsAll()
     {
+        if (OopsAllObjectsSelection == null) return;
+        
         CustomPlacementRules.Clear();
-        CustomPlacementRules.Add(CatchAllName, new List<KeyValuePair<string, byte>> { new(objectCodeName, 1) });
+        CustomPlacementRules.Add(CatchAllName, new List<KeyValuePair<string, byte>> { new(OopsAllObjectsSelection, 100) });
         
         FrequencyAdjustments.Clear();
         Excluded.Clear();
@@ -210,20 +256,30 @@ public abstract partial class CustomPlacementWindowViewModel : ObservableObject
         CustomPlacementRules.AddRange(preset.CustomPlacement.Select(kvp => new KeyValuePair<string, IEnumerable<KeyValuePair<string,byte>>>(kvp.Key, kvp.Value)));
         
         FrequencyAdjustments.Clear();
-        foreach (var kvp in preset.FrequencyAdjustments)
-        {
-            FrequencyAdjustments.Add(kvp.Key, kvp.Value);
-        }
+        FrequencyAdjustments.AddRange(preset.FrequencyAdjustments);
     }
     
     [RelayCommand]
     public void LoadFromJson(string pathToJson)
     {
-        using var r = new StreamReader(pathToJson.Replace("Data", RandomizerLogic.DataDirectory));
         
-        var json = r.ReadToEnd();
-        var presetData = JsonSerializer.DeserializeThrowOnNull(json, JsonSourceGenerationContext.Default.CustomPlacementPreset);
-        LoadFromPreset(presetData);
+        if (pathToJson == "OopsAll")
+        {
+            SelectedPresetIsOops = true;
+
+            // Effectively reset everything to "nothing configured"
+            LoadFromPreset(new CustomPlacementPreset([], [], new Dictionary<string, Dictionary<string, byte>>(), new Dictionary<string, byte>()));
+        }
+        else
+        {
+            using var r = new StreamReader(pathToJson.Replace("Data", RandomizerLogic.DataDirectory));
+        
+            var json = r.ReadToEnd();
+            var presetData = JsonSerializer.DeserializeThrowOnNull(json, JsonSourceGenerationContext.Default.CustomPlacementPreset);
+            LoadFromPreset(presetData);
+        }
+        
+     
     }
     
     public void SaveToJson(string pathToJson)
@@ -428,5 +484,87 @@ public abstract partial class CustomPlacementWindowViewModel : ObservableObject
         );
         
         return !string.IsNullOrEmpty(newItem) ? newItem : originalCodeName;
+    }
+
+    #region ExpanderControl
+
+    [ObservableProperty]
+    private int _openSection = 1;
+
+    public bool IsSpecialRulesOpen
+    {
+        get => OpenSection == 0;
+        set { if (value) OpenSection = 0; else if (OpenSection == 0) OpenSection = -1; }
+    }
+
+    public bool IsCustomPlacementOpen
+    {
+        get => OpenSection == 1;
+        set { if (value) OpenSection = 1; else if (OpenSection == 1) OpenSection = -1; }
+    }
+
+    public bool IsFrequencyAdjustmentOpen
+    {
+        get => OpenSection == 2;
+        set { if (value) OpenSection = 2; else if (OpenSection == 2) OpenSection = -1; }
+    }
+
+    partial void OnOpenSectionChanged(int value)
+    {
+        OnPropertyChanged(nameof(IsSpecialRulesOpen));
+        OnPropertyChanged(nameof(IsCustomPlacementOpen));
+        OnPropertyChanged(nameof(IsFrequencyAdjustmentOpen));
+    }
+
+    #endregion
+    
+}
+
+public class CustomPlacementValueConverter : IMultiValueConverter
+{
+    
+    public object? Convert(IList<object?> values, Type targetType, object? parameter, CultureInfo culture)
+    {
+        string? inputString = null;
+        CustomPlacementWindowViewModel? dataContext = null;
+
+        bool? isFound = null;
+        
+        foreach (var value in values)
+        {
+            if (value is Tuple<string, bool> tuple)
+            {
+                inputString = tuple.Item1;
+                isFound = tuple.Item2;
+            } 
+
+            if (value is CustomPlacementWindowViewModel vm)
+                dataContext = vm;
+        }
+
+        if (inputString is null && dataContext is not null)
+        {
+            return new Tuple<string, bool>(dataContext.SelectedCustomPlacementRuleName, isFound! ?? false);
+        }
+        
+        if (inputString is null || dataContext is null)
+        {
+            return AvaloniaProperty.UnsetValue;
+        }
+
+        if (!dataContext.CustomPlacementRules.TryGetValue(inputString, out var rule))
+        {
+            dataContext.CustomPlacementRules.Add(inputString, []);
+        }
+
+
+        if (dataContext.CustomPlacementRules.TryGetValue(inputString, out rule))
+        {
+            dataContext.SelectedCustomPlacementRule = rule;
+            dataContext.SelectedCustomPlacementRuleName = inputString;
+            return new Tuple<string, bool>(inputString, isFound!.Value);
+        }
+
+        return new BindingNotification(new InvalidCastException("Attempted to create empty rule but failed"));
     }
 }

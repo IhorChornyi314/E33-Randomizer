@@ -12,12 +12,19 @@ public class StringFloatKeyValuePairViewModel(string key, float value, Func<stri
 public class StringByteKeyValuePairViewModel(string key, byte value, Func<string, bool> existsCheck)
     : KeyValuePairViewModel<string, byte>(key, value, existsCheck);
 
-public class StringDictionaryKeyValuePairViewModel<TSubType>(
-    string key,
-    ObservableCollectionWithChildListener<TSubType> value,
-    Func<string, bool> existsCheck)
-    : KeyValuePairViewModel<string, ObservableCollectionWithChildListener<TSubType>>(key, value, existsCheck) 
-    where TSubType : INotifyPropertyChanged;
+public class StringDictionaryKeyValuePairViewModel<TSubType> : KeyValuePairViewModel<string, ObservableCollectionWithChildListener<TSubType>> 
+    where TSubType : INotifyPropertyChanged
+{
+    public StringDictionaryKeyValuePairViewModel(string key,
+        ObservableCollectionWithChildListener<TSubType> value,
+        Func<string, bool> existsCheck) : base(key, value, existsCheck)
+    {
+        value.ItemPropertyChanged += (sender, args) =>
+        {
+            this.OnPropertyChanged(nameof(Value));
+        };
+    }
+}
 
 public partial class KeyValuePairViewModel<TKey, TValue> : ObservableValidator, ISiblingCheck<string>
 {
