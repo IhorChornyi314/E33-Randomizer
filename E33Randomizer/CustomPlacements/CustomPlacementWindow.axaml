@@ -7,8 +7,12 @@
         SizeToContent="Width"
         xmlns:uiControls="clr-namespace:E33Randomizer.UIControls"
         xmlns:customPlacements="clr-namespace:E33Randomizer.CustomPlacements"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         x:DataType="customPlacements:CustomPlacementWindowViewModel"
-        x:Name="Root">
+        x:Name="Root"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        d:DesignHeight="850" d:DesignWidth="1300">
     <Window.Resources>
         <customPlacements:CustomPlacementValueConverter x:Key="CustomPlacementValueConverter" />
     </Window.Resources>
