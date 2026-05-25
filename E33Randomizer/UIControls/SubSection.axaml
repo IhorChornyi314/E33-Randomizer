@@ -51,7 +51,7 @@
               <ContentPresenter Name="PART_HeaderPresenter"
                                 Content="{TemplateBinding Header}"
                                 FontSize="30"
-                                Foreground="#d7bd94"
+                                Foreground="#DAAF7D"
                                 ContentTemplate="{TemplateBinding HeaderTemplate}"
                                 HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                                 VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />

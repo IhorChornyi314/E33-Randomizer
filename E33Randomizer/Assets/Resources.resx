@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+            
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="Terminology_Encounter" xml:space="preserve">
+        <value>Encounter: An encounter is any fight in the game. That includes gimmick fights such as Sophie’s dodge tutorial in Lumiere or helping the white Troubadour learn to play.</value>
+    </data>
+    <data name="Terminology_Encounter size" xml:space="preserve">
+        <value>Encounter size: The number of enemies in the encounter.</value>
+    </data>
+    <data name="Terminology_EnemyArchetype" xml:space="preserve">
+        <value>Enemy archetype: Internally, all enemies are divided into eight types called archetypes, which govern their stats. These archetypes include four regular enemy types - Elusive (flying), Weak, Strong, and Regular, as well as Elite (miniboss), Boss, Alpha (chromatic), and Petank.</value>
+    </data>
+    <data name="Terminology_EnemyCategory" xml:space="preserve">
+        <value>Enemy category: These were created by me to make it easier to work with the mod. You can find the full list in the mod.</value>
+    </data>
+    <data name="Terminology_EnemyLoot" xml:space="preserve">
+        <value>Enemy loot: All drops that are seen in the Victory screen are tied specifically to the enemies you’ve defeated in the fight, and not the encounter itself. Some of these drops are invisible, such as the item that any merchant drops after you defeat them in battle that allows you to buy the special inventory. Another notable example is Maelle’s paintress skills unlock, which is considered a loot drop from the Paintress enemy.</value>
+    </data>
+    <data name="Terminology_Check" xml:space="preserve">
+        <value>Check: Anything in the game that results in the player getting an item. Examples include enemy drops, map pick-ups, or items obtained in a dialogue, among others</value>
+    </data>
+    <data name="Terminology_CheckSizeNumber" xml:space="preserve">
+        <value>Check size/number of items: The number of individual items in the check.</value>
+    </data>
+    <data name="Terminology_ItemQuantity" xml:space="preserve">
+        <value>Item quantity: Some items, such as Chroma Catalysts or Recoat can have their quantities configured in the randomizer. An example for both of these concepts would be if a Lancelier got randomized to drop a Baguette, a Swimsuit, a Bald haircut, and 5 Perfect Chroma Catalysts - the check size is 4, and the quantities of the items are 1, 1, 1, and 5.</value>
+    </data>
+    <data name="Terminology_MerchantUnlocks" xml:space="preserve">
+        <value>Merchant unlocks: Most merchants in the game have some items they are only willing to sell after you’ve defeated them in battle. Internally, this works by checking whether you have a hidden item that drops from the merchant enemy. These items are called Merchant Unlocks and are a separate category, not randomized by default. </value>
+    </data>
+    <data name="Main_RandomizeEnemies" xml:space="preserve">
+        <value>Randomize enemies: Whether or not the enemies are randomized.</value>
+    </data>
+    <data name="Main_RandomizeEncounterSizes" xml:space="preserve">
+        <value>Randomize encounter sizes: This allows you to override whatever the base number of enemies in an encounter is. As an example, if you select 1 and 3 but not 2, it will make it so that regardless of initial encounter size, it will become either 1 or 3.</value>
+    </data>
+    <data name="Main_ChangeSizeOfEncounters" xml:space="preserve">
+        <value>Change size of encounters that don’t contain randomized enemies: If Randomize encounter sizes option is turned on, this will allow you to only change the size of the encounters that you want to randomize. For example, if you want to randomize most of the encounters, but don’t want to change the tutorial Maelle fight, keep this option unchecked to not add any more enemies to the encounter.</value>
+    </data>
+    <data name="Main_RandomizeMerchantFights" xml:space="preserve">
+        <value>Randomize merchant fights: This allows you to control whether the “Fight the Merchant” encounters are at all randomized. This affects the whole encounter, not just the merchant enemy itself.</value>
+    </data>
+    <data name="Main_IncludeCutContent" xml:space="preserve">
+        <value>Include cut content: The game files actually contain a lot of fully-functional cut content enemies, so turning this on will enable you to fight them. It should be noted that while I tried my best to exclude any enemies that completely break the game or make it crash, it is always a risk when dealing with cut content. If anything goes wrong, please use the “Edit Individual Encounter” window to replace them with something that works. Also, be careful when parrying any cut content enemies, but especially Gestral Bullies and Dragoons, as it may cause their AI to freeze.</value>
+    </data>
+    <data name="Main_EnableEnemyOnslaught" xml:space="preserve">
+        <value>Enable enemy onslaught: This option allows you to add up to 99 additional enemies to every encounter. The game actually has full support for 4-enemy encounters, but anything beyond that will just place all the other enemies in a single spot outside the fighting arena. They will still be able to deal and take damage, but their attacks will not be visible, and you won’t be able to shoot them in free aim. If you choose not to randomize additional enemies, they will just repeat until the set number is reached. Otherwise, they will get randomized after being copied, which makes it so that the new enemies use the same rules as the starting ones.</value>
+    </data>
+    <data name="Main_EnsureEncountersAtLeastOne" xml:space="preserve">
+        <value>Ensure that boss encounters have at least one boss: This option makes it so that the encounters that contained a boss enemy in the base game will still contain at least one boss enemy after randomizing. This rule is applied after the initial randomization and ignores Custom Enemy Placement rules.</value>
+    </data>
+    <data name="Main_ReduceBossRepetition" xml:space="preserve">
+        <value>Reduce boss repetition: This option makes it so that whenever a boss enemy is rolled, it is taken from a shuffled pool of bosses rather than completely randomly. This rule is applied after the initial randomization and ignores Custom Enemy Placement rules.</value>
+    </data>
+    <data name="Main_ReplacePhase2Simon" xml:space="preserve">
+        <value>Replace Phase 2 Simon with Phase 1 in mandatory fights until after the Lune tutorial fight: As Phase 2 Simon has a unique property of wiping your whole party with no counterplay, as well as six times more health than a regular boss would have in his place, this option ensures that you can theoretically beat the game in NG with 99 Simons in all encounters. Enemies like Clea or Bourgeon can also block your progress, so feel free to use the “Edit Individual Encounter” window to replace them.</value>
+    </data>
+    <data name="Main_RandomizeItems" xml:space="preserve">
+        <value>Randomize items: Whether or not the items are randomized.</value>
+    </data>
+    <data name="Main_MakeEveryItemShowNotification" xml:space="preserve">
+        <value>Make every item show a pick up notification: A lot of items are hidden by default, which could lead to confusion as to what the player actually gets if they are randomized. It is strongly recommended to keep this option on.</value>
+    </data>
+    <data name="Main_IncludeCutContentItems" xml:space="preserve">
+        <value>Include cut content items: There are about 20 cut content pictos and 14 cut content weapons with varying degrees of functionality, but none of them can break the game or anything. Still, if you do not wish to see them, turn this option off.</value>
+    </data>
+    <data name="Main_ReceivePaintedPowerActIII" xml:space="preserve">
+        <value>Receive Painted Power at the start of Act III: Since the enemies’ drops are now randomized, it is no longer guaranteed that the player will get Painted Power from the last fight of Act II. As such, this option ensures that the player gets it regardless.</value>
+    </data>
+    <data name="Main_RandomizeStartingWeaponsCosmetics" xml:space="preserve">
+        <value>Randomize starting weapons/cosmetics: Whether the starting equipment of your characters should be random too. This ignores custom item placement.</value>
+    </data>
+    <data name="Main_RandomizeEsquieRocksMapPickups" xml:space="preserve">
+        <value>Randomize Esquie’s rocks into map pickups: This option makes it so that you now need to find the rock items scattered on the map before Esquie can use his abilities. The rocks can only be found as a pickup wherever a unique item (weapon, pictos, etc) was originally present. You need to go to camp with the rock in your inventory to unlock them.</value>
+    </data>
+    <data name="Main_LimitEsquiesRocksOriginalAreas" xml:space="preserve">
+        <value>Limit Esquie’s rocks to only their original areas: With this off, the rocks can be found in the following areas: Florrie - Spring Meadows, Flying Waters, Ancient Sanctuary, Esquie’s Nest, Stone Wave Cliffs. Dorrie - Forgotten Battlefield, Old Lumiere. Soarrie - Visages, Sirene, Monolith. Otherwise, the rocks can only be found in the areas they were found in the original game - Stone Wave Cliffs, Old Lumiere, and Monolith, respectively.</value>
+    </data>
+    <data name="Main_RandomizeEnemyFeetDrops" xml:space="preserve">
+        <value>Randomize enemy feet drops: While the feet are their own items that can be encountered normally, the underlying game system guaranteed their drops from their respective owners. This setting mixes up the type of feet that the enemies drop - a Chalier can now give Monoco Lampmaster's Sword, for example.</value>
+    </data>
+    <data name="Main_EnableGearRollsInPrologue" xml:space="preserve">
+        <value>Enable gear rolls in prologue: Due to how the game areas work, the items in the prologue are considered level 16 internally, the same as Lumiere Act III. This option exists to prevent the balance of the game from being completely broken in case the player gets a level 16 weapon or pictos in the prologue. Internally, the mod checks whether the drop would have been a weapon/pictos, and then replaces it with a Chroma Catalyst.</value>
+    </data>
+    <data name="Main_RandomizeGestralBeachRewards" xml:space="preserve">
+        <value>Randomize gestral beach rewards: Some players understandably prefer not to engage with the gestral beaches, especially if the rewards are not guaranteed to be good. This option exists to prevent them from worrying about it (but not from being silently judged).</value>
+    </data>
+    <data name="Main_ChangeNumberItemsNonRandomizedChecks" xml:space="preserve">
+        <value>Change number of items in non-randomized checks: Similar to the option in the enemy randomizer, this option makes it so that the checks that were configured not to be changed don’t award multiple of the same item.</value>
+    </data>
+    <data name="Main_ReduceKeyItemRepetition" xml:space="preserve">
+        <value>Reduce key item repetition: This option makes it so that whenever a key item is rolled, it is taken from a shuffled pool of items rather than completely randomly. This rule is applied after the initial randomization and ignores Custom Item Placement rules.</value>
+    </data>
+    <data name="Main_MakeAnyMerchantWaresLocked" xml:space="preserve">
+        <value>Make any of the merchant wares locked: This option makes it so that instead of merchants using their base-game locked item statuses, they have them locked with a certain probability. For example, base game Noco has only his first inventory item locked, but if this option is set to 33%, one third of all his items will be locked on average.</value>
+    </data>
+    <data name="Main_RandomizeCheckSizes" xml:space="preserve">
+        <value>Randomize various check sizes: The set of options changes different checks’ sizes, such as the number of items in a merchant’s inventory or the number of items that are awarded on picking up a shiny on the map.</value>
+    </data>
+    <data name="Main_RandomizeQuantitiesUpgradeMaterials" xml:space="preserve">
+        <value>Randomize quantities of upgrade materials: If this option is on, any time the item is rolled to be an upgrade material, its quantity will be randomized. The only items whose quantity can be greater than 1 are: Chroma Catalysts, Color of Lumina, and Recoat.</value>
+    </data>
+    <data name="CustomPlacement_Enemy_NotRandomized" xml:space="preserve">
+        <value>This allows you to change which enemies aren’t randomized, meaning that they will stay in their respective encounters.</value>
+    </data>
+    <data name="CustomPlacement_Enemy_Excluded" xml:space="preserve">
+        <value>This allows you to change which enemies are excluded from the pool, meaning that they will not occur anywhere in the randomized game.</value>
+    </data>
+    <data name="CustomPlacement_Enemy_QuickPresets" xml:space="preserve">
+        <value>This allows you to select the Custom Enemy Placement rules from a list of quick presets. All presets are declared and can be configured in the Data/Presets/[preset name].json file. The Oops All preset replaces every enemy in the game with the chosen option, while the default Split Categories preset randomizes all regular enemies into other regular ones, all the bosses into other bosses, etc.</value>
+    </data>
+    <data name="CustomPlacement_Enemy_CustomPlacement" xml:space="preserve">
+        <value>In order to use this, you need to first select the enemy that is going to be replaced on the left, then select what it will be replaced by on the right. For example, the “10% of regular enemies are bosses” preset will give the Regular enemies category a 90% chance to become another Regular enemy and a 10% chance to become a Boss enemy. The numbers don’t have to add up to 100; they just represent the weights for different categories.</value>
+    </data>
+    <data name="CustomPlacement_Enemy_FrequencyAdjustment" xml:space="preserve">
+        <value>This allows you to tweak how often a specific enemy is encountered in the randomizer. For example, if you want to see fewer Bourgeons in the run but keep all the other settings the same, you can just adjust their frequency to 10% in this section, making them 10 times less likely to appear.</value>
+    </data>
+    <data name="CustomPlacement_Enemy_Title" xml:space="preserve">
+        <value>Custom Enemy Placement</value>
+    </data>
+    <data name="CustomPlacement_Item_NotRandomized" xml:space="preserve">
+        <value>This allows you to change which enemies aren’t randomized, meaning that they will stay in their respective encounters.</value>
+    </data>
+    <data name="CustomPlacement_Item_Excluded" xml:space="preserve">
+        <value>This allows you to change which enemies are excluded from the pool, meaning that they will not occur anywhere in the randomized game.</value>
+    </data>
+    <data name="CustomPlacement_Item_QuickPresets" xml:space="preserve">
+        <value>This allows you to select the Custom Item Placement rules from a list of quick presets. All presets are declared and can be configured in the Data/Presets/[preset name].json file. The Oops All preset replaces every Item in the game with the chosen option, while the default Split Categories preset randomizes all regular enemies into other regular ones, all the bosses into other bosses, etc.</value>
+    </data>
+    <data name="CustomPlacement_Item_CustomPlacement" xml:space="preserve">
+        <value>In order to use this, you need to first select the Item that is going to be replaced on the left, then select what it will be replaced by on the right. For example, the “10% of regular enemies are bosses” preset will give the Regular enemies category a 90% chance to become another Regular Item and a 10% chance to become a Boss Item. The numbers don’t have to add up to 100; they just represent the weights for different categories.</value>
+    </data>
+    <data name="CustomPlacement_Item_FrequencyAdjustment" xml:space="preserve">
+        <value>This allows you to tweak how often a specific Item is encountered in the randomizer. For example, if you want to see fewer Bourgeons in the run but keep all the other settings the same, you can just adjust their frequency to 10% in this section, making them 10 times less likely to appear.</value>
+    </data>
+    <data name="CustomPlacement_Item_Title" xml:space="preserve">
+        <value>Custom Item Placement</value>
+    </data>
+    <data name="CustomPlacement_Skill_NotRandomized" xml:space="preserve">
+        <value>This allows you to change which enemies aren’t randomized, meaning that they will stay in their respective encounters.</value>
+    </data>
+    <data name="CustomPlacement_Skill_Excluded" xml:space="preserve">
+        <value>This allows you to change which enemies are excluded from the pool, meaning that they will not occur anywhere in the randomized game.</value>
+    </data>
+    <data name="CustomPlacement_Skill_QuickPresets" xml:space="preserve">
+        <value>This allows you to select the Custom Skill Placement rules from a list of quick presets. All presets are declared and can be configured in the Data/Presets/[preset name].json file. The Oops All preset replaces every Skill in the game with the chosen option, while the default Split Categories preset randomizes all regular enemies into other regular ones, all the bosses into other bosses, etc.</value>
+    </data>
+    <data name="CustomPlacement_Skill_CustomPlacement" xml:space="preserve">
+        <value>In order to use this, you need to first select the Skill that is going to be replaced on the left, then select what it will be replaced by on the right. For example, the “10% of regular enemies are bosses” preset will give the Regular enemies category a 90% chance to become another Regular Skill and a 10% chance to become a Boss Skill. The numbers don’t have to add up to 100; they just represent the weights for different categories.</value>
+    </data>
+    <data name="CustomPlacement_Skill_FrequencyAdjustment" xml:space="preserve">
+        <value>This allows you to tweak how often a specific Skill is encountered in the randomizer. For example, if you want to see fewer Bourgeons in the run but keep all the other settings the same, you can just adjust their frequency to 10% in this section, making them 10 times less likely to appear.</value>
+    </data>
+    <data name="CustomPlacement_Skill_Title" xml:space="preserve">
+        <value>Custom Skill Placement</value>
+    </data>
+    <data name="CustomPlacement_Location_NotRandomized" xml:space="preserve">
+        <value>This allows you to change which enemies aren’t randomized, meaning that they will stay in their respective encounters.</value>
+    </data>
+    <data name="CustomPlacement_Location_Excluded" xml:space="preserve">
+        <value>This allows you to change which enemies are excluded from the pool, meaning that they will not occur anywhere in the randomized game.</value>
+    </data>
+    <data name="CustomPlacement_Location_QuickPresets" xml:space="preserve">
+        <value>This allows you to select the Custom Location Placement rules from a list of quick presets. All presets are declared and can be configured in the Data/Presets/[preset name].json file. The Oops All preset replaces every Location in the game with the chosen option, while the default Split Categories preset randomizes all regular enemies into other regular ones, all the bosses into other bosses, etc.</value>
+    </data>
+    <data name="CustomPlacement_Location_CustomPlacement" xml:space="preserve">
+        <value>In order to use this, you need to first select the Location that is going to be replaced on the left, then select what it will be replaced by on the right. For example, the “10% of regular enemies are bosses” preset will give the Regular enemies category a 90% chance to become another Regular Location and a 10% chance to become a Boss Location. The numbers don’t have to add up to 100; they just represent the weights for different categories.</value>
+    </data>
+    <data name="CustomPlacement_Location_FrequencyAdjustment" xml:space="preserve">
+        <value>This allows you to tweak how often a specific Location is encountered in the randomizer. For example, if you want to see fewer Bourgeons in the run but keep all the other settings the same, you can just adjust their frequency to 10% in this section, making them 10 times less likely to appear.</value>
+    </data>
+    <data name="CustomPlacement_Location_Title" xml:space="preserve">
+        <value>Custom Location Placement</value>
+    </data>
+    <data name="CustomPlacement_PresetJSON" xml:space="preserve">
+        <value>Preset JSON: This shows you the current configuration in brief and allows you to copy it if you want to.</value>
+    </data>
+    <data name="CustomPlacement_LoadSavePresetJSON" xml:space="preserve">
+        <value>Load/Save Preset JSON: These buttons allow you to load and save the current configuration as a .json file, making it easy to share and save your presets.</value>
+    </data>
+    <data name="ToolTip_Header_HowItWorks" xml:space="preserve">
+        <value>How It Works</value>
+    </data>
+    <data name="CustomPlacement_Header_NotRandomized" xml:space="preserve">
+        <value>Not Randomized</value>
+    </data>
+    <data name="CustomPlacement_Header_Excluded" xml:space="preserve">
+        <value>Excluded</value>
+    </data>
+    <data name="SearchPlaceholder" xml:space="preserve">
+        <value>Search...</value>
+    </data>
+    <data name="CustomPlacement_Header_SelectCategory" xml:space="preserve">
+        <value>Select Category</value>
+    </data>
+    <data name="CustomPlacement_Header_IsReplacedBy" xml:space="preserve">
+        <value>Is Replaced By</value>
+    </data>
+    <data name="NothingSelected" xml:space="preserve">
+        <value>Nothing Selected</value>
+    </data>
+    <data name="ToolTip_Remove" xml:space="preserve">
+        <value>Remove</value>
+    </data>
+    <data name="CustomPlacement_Button_AddPlacementRow" xml:space="preserve">
+        <value>Add Placement Row</value>
+    </data>
+    <data name="CustomPlacement_Button_AddFrequencyRow" xml:space="preserve">
+        <value>Add Frequency Row</value>
+    </data>
+    <data name="CustomPlacement_TabItem_AddCustomPlacements" xml:space="preserve">
+        <value>Add Custom Placements</value>
+    </data>
+    <data name="CustomPlacement_TabItem_SpecialRules" xml:space="preserve">
+        <value>Special Rules</value>
+    </data>
+    <data name="CustomPlacement_TabItem_FrequencyAdjustments" xml:space="preserve">
+        <value>Frequency Adjustments</value>
+    </data>
+    <data name="CustomPlacement_Header_Adjustments" xml:space="preserve">
+        <value>Adjustments</value>
+    </data>
+    <data name="CustomPlacement_Button_QuickPresets" xml:space="preserve">
+        <value>Quick Presets</value>
+    </data>
+    <data name="CustomPlacement_Button_LoadPresetJson" xml:space="preserve">
+        <value>Load Preset JSON</value>
+    </data>
+    <data name="CustomPlacement_Button_SavePresetJson" xml:space="preserve">
+        <value>Save Preset JSON</value>
+    </data>
+    <data name="Button_Close" xml:space="preserve">
+        <value>Close</value>
+    </data>
+
+</root>

@@ -17,9 +17,7 @@ namespace E33Randomizer.CustomPlacements;
 
 public class CustomEnemyPlacement : CustomPlacementWindowViewModel
 {
-    public override string Title => "Custom Enemy Placement";
     public override string EntityType => "Enemy";
-    public override string EntityTypePlural => "Enemies";
 
     private readonly Dictionary<string, string> _archetypeNames = new()
     {

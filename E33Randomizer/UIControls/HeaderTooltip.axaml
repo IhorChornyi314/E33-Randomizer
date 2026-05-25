@@ -36,7 +36,7 @@
                         FontFamily="fonts:E33Fonts#Cinzel"
                         FontSize="24"
                         Text="{TemplateBinding Header}"
-                        Foreground="#d7bd94"
+                        Foreground="#DAAF7D"
                         HorizontalAlignment="Left"
                         Margin="15 10 0 0"
                         

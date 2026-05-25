@@ -21,14 +21,14 @@ public class StringDictionaryKeyValuePairViewModel<TSubType> : KeyValuePairViewM
     {
         value.ItemPropertyChanged += (sender, args) =>
         {
-            this.OnPropertyChanged(nameof(Value));
+            OnPropertyChanged(nameof(Value));
         };
     }
 }
 
 public partial class KeyValuePairViewModel<TKey, TValue> : ObservableValidator, ISiblingCheck<string>
 {
-    [AotMinLength(1)]
+    [AotHasValue]
     [AotSiblingNotExistsValidator<string>]
     public TKey Key { get; 
         set

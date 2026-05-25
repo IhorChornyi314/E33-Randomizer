@@ -9,6 +9,8 @@
                 <TextBlock Classes="e33PageHeader">TextBlock (class "e33PageHeader")</TextBlock>
                 <TextBlock>This is a TextBlock</TextBlock>
                 <Button Classes="e33Button">A button with the e33Button class.</Button>
+                <Button Classes="e33Button Green">A button with the e33Button + Green class.</Button>
+                <Button Classes="e33DeleteButton" />
                 <CheckBox>This is a checkbox</CheckBox>
                 <Grid ColumnDefinitions="*,*" Margin="20" Width="300" HorizontalAlignment="Left">
                     <Label Grid.Column="0" >Numeric Up Down</Label>
@@ -45,24 +47,24 @@
     </Design.PreviewWith>
     <FluentTheme>
         <FluentTheme.Palettes>
-            <ColorPaletteResources x:Key="Light" Accent="#d7bd94" AltHigh="White" AltLow="White" AltMedium="White"
-                                   AltMediumHigh="White" AltMediumLow="White" BaseHigh="#11100f" BaseLow="#ffcccccc"
+            <ColorPaletteResources x:Key="Light" Accent="#DAAF7D" AltHigh="White" AltLow="White" AltMedium="White"
+                                   AltMediumHigh="White" AltMediumLow="White" BaseHigh="#080105" BaseLow="#ffcccccc"
                                    BaseMedium="#ff898989" BaseMediumHigh="#ff5d5d5d" BaseMediumLow="#ff737373"
-                                   ChromeAltLow="#ff5d5d5d" ChromeBlackHigh="#11100f" ChromeBlackLow="#ffcccccc"
+                                   ChromeAltLow="#ff5d5d5d" ChromeBlackHigh="#080105" ChromeBlackLow="#ffcccccc"
                                    ChromeBlackMedium="#ff5d5d5d" ChromeBlackMediumLow="#ff898989"
                                    ChromeDisabledHigh="#ffcccccc" ChromeDisabledLow="#ff898989" ChromeGray="#ff737373"
                                    ChromeHigh="#ffcccccc" ChromeLow="#ffececec" ChromeMedium="#ffe6e6e6"
                                    ChromeMediumLow="#ffececec" ChromeWhite="White" ListLow="#ffe6e6e6"
                                    ListMedium="#ffcccccc" RegionColor="White" />
-            <ColorPaletteResources x:Key="Dark" Accent="#d7bd94" AltHigh="#11100f" AltLow="#11100f" AltMedium="#11100f"
-                                   AltMediumHigh="#11100f" AltMediumLow="#11100f" BaseHigh="White" BaseLow="#ff333333"
+            <ColorPaletteResources x:Key="Dark" Accent="#DAAF7D" AltHigh="#080105" AltLow="#080105" AltMedium="#080105"
+                                   AltMediumHigh="#080105" AltMediumLow="#080105" BaseHigh="White" BaseLow="#ff333333"
                                    BaseMedium="#ff9a9a9a" BaseMediumHigh="#ffb4b4b4" BaseMediumLow="#ff676767"
-                                   ChromeAltLow="#ffb4b4b4" ChromeBlackHigh="#11100f" ChromeBlackLow="#ffb4b4b4"
-                                   ChromeBlackMedium="#11100f" ChromeBlackMediumLow="#11100f"
+                                   ChromeAltLow="#ffb4b4b4" ChromeBlackHigh="#080105" ChromeBlackLow="#ffb4b4b4"
+                                   ChromeBlackMedium="#080105" ChromeBlackMediumLow="#080105"
                                    ChromeDisabledHigh="#ff333333" ChromeDisabledLow="#ff9a9a9a" ChromeGray="Gray"
                                    ChromeHigh="Gray" ChromeLow="#ff151515" ChromeMedium="#ff1d1d1d"
                                    ChromeMediumLow="#ff2c2c2c" ChromeWhite="White" ListLow="#ff1d1d1d"
-                                   ListMedium="#ff333333" RegionColor="#11100f" />
+                                   ListMedium="#ff333333" RegionColor="#080105" />
         </FluentTheme.Palettes>
     </FluentTheme>
     <Style Selector=":is(TopLevel)">
@@ -76,9 +78,34 @@
     <Style Selector="Button.e33Button:pointerover Image#Right">
         <Setter Property="Source" Value="avares://E33Randomizer/Assets/Images/ButtonBaseHoverRight.png" />
     </Style>
+    <Style Selector="Button.e33Button.Green Image#Left">
+        <Setter Property="Source" Value="avares://E33Randomizer/Assets/Images/ButtonBaseLeftGreen.png" />
+    </Style>
+    <Style Selector="Button.e33Button.Green Image#Right">
+        <Setter Property="Source" Value="avares://E33Randomizer/Assets/Images/ButtonBaseRightGreen.png" />
+    </Style>
+    <Style Selector="Button.e33Button.Green Panel#Center">
+        <Setter Property="Background" Value="#0e1a18" />
+    </Style>
     <Style Selector="Button.e33Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
         <Setter Property="Background" Value="#1b1918" />
     </Style>
+    
+    <Style Selector="Button.e33Button.Green:pointerover Image#Left">
+        <Setter Property="Source" Value="avares://E33Randomizer/Assets/Images/ButtonBaseHoverLeftGreen.png" />
+    </Style>
+    <Style Selector="Button.e33Button.Green:pointerover Image#Right">
+        <Setter Property="Source" Value="avares://E33Randomizer/Assets/Images/ButtonBaseHoverRightGreen.png" />
+    </Style>
+    <Style Selector="Button.e33Button.Green:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="#122220" />
+    </Style>
+    <Style Selector="Button.e33Button.Green:pointerover Panel#Center">
+        <Setter Property="Background" Value="#122220" />
+    </Style>
+    
+
+
     <Style Selector="Button.e33Button">
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -95,7 +122,7 @@
                            Source="avares://E33Randomizer/Assets/Images/ButtonBaseLeft.png" Stretch="None" />
 
                     <!-- Middle transparent space (grows horizontally) -->
-                    <Panel Grid.Column="1" Background="#1b1918" />
+                    <Panel Grid.Column="1" Background="#1b1918" Name="Center" />
 
                     <!-- Right background image -->
                     <Image Grid.Column="2" Name="Right"
@@ -113,6 +140,19 @@
             </ControlTemplate>
         </Setter>
     </Style>
+    
+    <Style Selector="Button.e33DeleteButton">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="MaxHeight" Value="64" />
+        <Setter Property="MaxWidth" Value="64" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <!-- Right background image -->
+                <Image Source="avares://E33Randomizer/Assets/Images/DeleteButton.png" Stretch="Fill" />
+            </ControlTemplate>
+        </Setter>
+    </Style>
+    
 
     <!-- NumericUpDown -->
     <Style Selector="NumericUpDown /template/ TextBox#PART_TextBox">
@@ -136,7 +176,7 @@
 
     <!-- TextBlocks -->
     <Style Selector="TextBlock.note">
-        <Setter Property="Foreground" Value="#d7bd94" />
+        <Setter Property="Foreground" Value="#DAAF7D" />
         <Setter Property="FontWeight" Value="SemiBold" />
         <Setter Property="FontSize" Value="14" />
         <Setter Property="TextWrapping" Value="Wrap" />
@@ -144,7 +184,7 @@
     </Style>
     
     <Style Selector="TextBlock.e33PageHeader">
-        <Setter Property="Foreground" Value="#d7bd94" />
+        <Setter Property="Foreground" Value="#DAAF7D" />
         <Setter Property="FontWeight" Value="SemiBold" />
         <Setter Property="FontSize" Value="30" />
         <Setter Property="FontFamily" Value="fonts:E33Fonts#Cinzel" />

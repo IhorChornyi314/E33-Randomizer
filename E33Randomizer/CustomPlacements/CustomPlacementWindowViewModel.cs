@@ -11,9 +11,14 @@ namespace E33Randomizer.CustomPlacements;
 
 public abstract partial class CustomPlacementWindowViewModel : ObservableObject
 {
-    public abstract string Title { get; }
+    public const string CustomPlacementResxName = "CustomPlacement";
+    public const string FrequencyAdjustmentResxName = "FrequencyAdjustment";
+    public const string NotRandomizedResxName =  "NotRandomized";
+    public const string ExcludedResxName =  "Excluded";
+    public const string TitleResxName =  "Title";
+    
+    
     public abstract string EntityType { get; }
-    public abstract string EntityTypePlural { get; }
     
     public ObservableCollection<string> NotRandomizedOptions { get; } = [];
     public ObservableCollection<string> NotRandomized { get; } = [];
@@ -34,7 +39,8 @@ public abstract partial class CustomPlacementWindowViewModel : ObservableObject
     
     public Dictionary<string, List<string>> PlainNameToCodeNames = new();
     
-    public List<string> CustomCategories { get; set; } = []; 
+    [ObservableProperty]
+    public partial ObservableCollection<string> CustomCategories { get; set; } = []; 
     
     [ObservableProperty]
     public partial ObservableCollectionWithChildListener<StringDictionaryKeyValuePairViewModel<StringByteKeyValuePairViewModel>> CustomPlacementRules { get; set; } = [];
@@ -119,7 +125,7 @@ public abstract partial class CustomPlacementWindowViewModel : ObservableObject
         var filtered = string.IsNullOrEmpty(CustomPlacementSearch)
             ? CustomPlacementOptions
             : CustomPlacementOptions.Where(o =>
-                o.Contains((string)CustomPlacementSearch, StringComparison.InvariantCultureIgnoreCase));
+                o.Contains(CustomPlacementSearch, StringComparison.InvariantCultureIgnoreCase));
 
         
         
@@ -129,7 +135,7 @@ public abstract partial class CustomPlacementWindowViewModel : ObservableObject
     [RelayCommand]
     private void AddFrequencyRow()
     {
-        FrequencyAdjustments.Add("SelectOne", 0);
+        FrequencyAdjustments.Add("", 0);
     }
 
     [RelayCommand]
@@ -154,7 +160,8 @@ public abstract partial class CustomPlacementWindowViewModel : ObservableObject
             var customCategoryTranslationsString = JsonSerializer.Deserialize<Dictionary<string, List<string>>>(json, JsonSourceGenerationContext.Default.DictionaryStringListString) ?? [];
             
             PlainNameToCodeNames = customCategoryTranslationsString;
-            CustomCategories = customCategoryTranslationsString.Keys.ToList();
+            CustomCategories.Clear();
+            CustomCategories.AddRange(customCategoryTranslationsString.Keys.ToList());
         }
         
         PlainNameToCodeNames[CatchAllName] = AllObjects.Select(i => i.CodeName).ToList();
@@ -249,8 +256,6 @@ public abstract partial class CustomPlacementWindowViewModel : ObservableObject
             var presetData = JsonSerializer.DeserializeThrowOnNull(json, JsonSourceGenerationContext.Default.CustomPlacementPreset);
             LoadFromPreset(presetData);
         }
-        
-     
     }
     
     public void SaveToJson(string pathToJson)

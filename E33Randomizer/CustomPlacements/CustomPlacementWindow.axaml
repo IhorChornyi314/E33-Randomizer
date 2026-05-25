@@ -7,22 +7,84 @@
         SizeToContent="Width"
         xmlns:uiControls="clr-namespace:E33Randomizer.UIControls"
         xmlns:customPlacements="clr-namespace:E33Randomizer.CustomPlacements"
+        xmlns:lang="clr-namespace:E33Randomizer.Assets"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         x:DataType="customPlacements:CustomPlacementWindowViewModel"
         x:Name="Root"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        d:DesignHeight="850" d:DesignWidth="1300">
+        d:DesignHeight="900" d:DesignWidth="1300">
     <Window.Resources>
         <customPlacements:CustomPlacementValueConverter x:Key="CustomPlacementValueConverter" />
+        <customPlacements:CustomPlacementResourceLookupConverter x:Key="ResourceLookupConverter" />
     </Window.Resources>
+    <Window.Styles>
+        <Style Selector="ComboBox.category /template/ Popup#PART_Popup">
+            <Setter Property="Placement"
+                    Value="BottomEdgeAlignedLeft" />
+            <Setter Property="MinWidth" Value="300" />
+        </Style>
+        <Style Selector="ComboBox.category /template/ ScrollViewer">
+            <Setter Property="MinWidth" Value="400" />
+        </Style>
+        <Style Selector="ComboBox.category DataValidationErrors">
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <DockPanel LastChildFill="True">
+                        <ContentControl DockPanel.Dock="Right" Name="PART_ErrorContentControl"
+                                        ContentTemplate="{TemplateBinding ErrorTemplate}"
+                                        DataContext="{TemplateBinding Owner}"
+                                        Content="{Binding (DataValidationErrors.Errors)}"
+                                        IsVisible="{Binding (DataValidationErrors.HasErrors)}" />
+                        <ContentPresenter Name="PART_ContentPresenter"
+                                          Background="{TemplateBinding Background}"
+                                          BorderBrush="{TemplateBinding BorderBrush}"
+                                          BorderThickness="{TemplateBinding BorderThickness}"
+                                          CornerRadius="{TemplateBinding CornerRadius}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          Content="{TemplateBinding Content}"
+                                          Padding="{TemplateBinding Padding}" />
+                    </DockPanel>
+                </ControlTemplate>
+            </Setter>
+            <Setter Property="ErrorTemplate">
+                <DataTemplate x:DataType="{x:Type x:Object}">
+                    <Canvas Width="24" Height="24" Margin="4 0 1 0"
+                            Background="Transparent">
+                        <Canvas.Styles>
+                            <Style Selector="ToolTip">
+                                <Setter Property="Background" Value="Black" />
+                                <Setter Property="BorderBrush" Value="Red" />
+                            </Style>
+                        </Canvas.Styles>
+                        <ToolTip.Tip>
+                            <ItemsControl ItemsSource="{Binding}" />
+                        </ToolTip.Tip>
+                        <Path Data="{StaticResource error_circle_regular}"
+                              VerticalAlignment="Center"
+                              Stroke="Red"
+                              StrokeThickness="1" />
+                    </Canvas>
+                </DataTemplate>
+            </Setter>
+        </Style>
+    </Window.Styles>
     <DockPanel FlowDirection="LeftToRight">
+        <DockPanel.Background>
+            <ImageBrush Source="avares://E33Randomizer/Assets/Images/BackgroundOne.png" Stretch="Fill" Opacity="0.7" />
+        </DockPanel.Background>
         <DockPanel LastChildFill="False" DockPanel.Dock="Left" Width="900">
             <StackPanel Orientation="Vertical" MaxHeight="800" DockPanel.Dock="Top">
                 <TextBlock Classes="e33PageHeader"
-                           Text="{Binding Title}"
                            Margin="0 10"
-                           HorizontalAlignment="Center" />
+                           HorizontalAlignment="Center">
+                    <TextBlock.Text>
+                        <MultiBinding Converter="{StaticResource ResourceLookupConverter}">
+                            <Binding Path="EntityType" />
+                            <Binding Source="{x:Static customPlacements:CustomPlacementWindowViewModel.TitleResxName }" />
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
                 <TabControl>
                     <TabControl.Styles>
                         <Style Selector="TabControl /template/ ItemsPresenter#PART_ItemsPresenter">
@@ -32,18 +94,28 @@
                     <TabControl.PageTransition>
                         <CrossFade Duration="0:0:0.2" />
                     </TabControl.PageTransition>
-                    <TabItem Header="Special Rules">
+                    <TabItem Header="{x:Static lang:Resources.CustomPlacement_TabItem_SpecialRules}">
                         <Grid Margin="10" ColumnDefinitions="*,*">
 
                             <!-- Not Randomized Object Selection -->
-                            <uiControls:SubSection Grid.Column="0" Width="400" Header="Not Randomized">
+                            <uiControls:SubSection Grid.Column="0" Width="400" xml:space="preserve"
+                                                   Header="{x:Static lang:Resources.CustomPlacement_Header_NotRandomized}"
+                                                   ToolTipHeader="{x:Static lang:Resources.ToolTip_Header_HowItWorks}">
+                                <uiControls:SubSection.ToolTipContent>
+                                    <MultiBinding Converter="{StaticResource ResourceLookupConverter}">
+                                        <Binding Path="EntityType" />
+                                        <Binding
+                                            Source="{x:Static customPlacements:CustomPlacementWindowViewModel.NotRandomizedResxName }" />
+                                    </MultiBinding>
+                                </uiControls:SubSection.ToolTipContent>
                                 <StackPanel Margin="0 10 0 0">
                                     <AutoCompleteBox x:Name="NotRandomizedObjectsSelectionComboBox"
                                                      ItemsSource="{Binding NotRandomizedOptions}"
                                                      FilterMode="Contains"
                                                      MinimumPrefixLength="0"
                                                      SelectionChanged="NotRandomizedObjectsComboBox_SelectionChanged"
-                                                     Width="380" PlaceholderText="Search..." />
+                                                     Width="380"
+                                                     PlaceholderText="{x:Static lang:Resources.SearchPlaceholder}" />
 
 
                                     <ItemsControl ItemsSource="{Binding NotRandomized, Mode=TwoWay}" Margin="0 10 0 0">
@@ -51,9 +123,8 @@
                                             <DataTemplate>
                                                 <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
                                                     <Button x:Name="RemoveNotRandomizedObjectButton"
-                                                            Content="-" Width="30" Height="30" Margin="0 0 5 0"
-                                                            Background="Red"
-                                                            Foreground="White" FontWeight="Bold"
+                                                            Width="30" Height="30" Margin="0 0 5 0"
+                                                            Classes="e33DeleteButton"
                                                             HorizontalAlignment="Center"
                                                             Command="{Binding #Root.((customPlacements:CustomPlacementWindowViewModel)DataContext).RemoveNotRandomizedCommand}"
                                                             CommandParameter="{Binding .}" />
@@ -64,25 +135,27 @@
                                             </DataTemplate>
                                         </ItemsControl.ItemTemplate>
                                     </ItemsControl>
-
-
                                 </StackPanel>
                             </uiControls:SubSection>
 
                             <!-- Excluded Object Selection -->
-                            <uiControls:SubSection Grid.Column="1" Header="Excluded" Width="400" ToolTipHeader="How It Works" xml:space="preserve">
-                                <uiControls:SubSection.ToolTipContent >
-                                    <MultiBinding
-                                        StringFormat="{}{0} in this list are excluded from the pool of possible assignments during the randomization.&#x0a;&#x0a;This means that the {0} will not be used when randomizing {0}.">
-                                        <Binding Path="EntityTypePlural"/>
-                                        <Binding Path="EntityType"/>
+                            <uiControls:SubSection Grid.Column="1"
+                                                   Header="{x:Static lang:Resources.CustomPlacement_Header_Excluded}"
+                                                   Width="400"
+                                                   ToolTipHeader="{x:Static lang:Resources.ToolTip_Header_HowItWorks}"
+                                                   xml:space="preserve">
+                                <uiControls:SubSection.ToolTipContent>
+                                    <MultiBinding Converter="{StaticResource ResourceLookupConverter}">
+                                        <Binding Path="EntityType" />
+                                        <Binding
+                                            Source="{x:Static customPlacements:CustomPlacementWindowViewModel.ExcludedResxName }" />
                                     </MultiBinding>
                                 </uiControls:SubSection.ToolTipContent>
 
                                 <StackPanel Margin="0 10 0 0">
                                     <AutoCompleteBox x:Name="ExcludedObjectsSelectionComboBox"
                                                      ItemsSource="{Binding ExcludedOptions}"
-                                                     PlaceholderText="Search..."
+                                                     PlaceholderText="{x:Static lang:Resources.SearchPlaceholder}"
                                                      FilterMode="Contains"
                                                      MinimumPrefixLength="0"
                                                      Width="380"
@@ -93,9 +166,8 @@
                                             <DataTemplate>
                                                 <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
                                                     <Button x:Name="RemoveNotRandomizedObjectButton"
-                                                            Content="-" Width="30" Height="30" Margin="0 0 5 0"
-                                                            Background="Red"
-                                                            Foreground="White" FontWeight="Bold"
+                                                            Width="30" Height="30" Margin="0 0 5 0"
+                                                            Classes="e33DeleteButton"
                                                             HorizontalAlignment="Center"
                                                             Command="{Binding #Root.((customPlacements:CustomPlacementWindowViewModel)DataContext).RemoveExcludedCommand}"
                                                             CommandParameter="{Binding .}" />
@@ -111,14 +183,26 @@
                             </uiControls:SubSection>
                         </Grid>
                     </TabItem>
-                    <TabItem Header="Custom Placements">
+                    <TabItem Header="{x:Static lang:Resources.CustomPlacement_TabItem_AddCustomPlacements}">
                         <Grid Margin="10" ColumnDefinitions="*,*">
 
                             <!-- Left Column - Object Selection -->
-                            <uiControls:SubSection Grid.Column="0" Header="Select Category" Margin="0,0,5,0"
-                                                   Width="400">
+                            <uiControls:SubSection Grid.Column="0"
+                                                   Header="{x:Static lang:Resources.CustomPlacement_Header_SelectCategory}"
+                                                   Margin="0,0,5,0"
+                                                   Width="400"
+                                                   ToolTipHeader="{x:Static lang:Resources.ToolTip_Header_HowItWorks}">
+                                <uiControls:SubSection.ToolTipContent>
+
+                                    <MultiBinding Converter="{StaticResource ResourceLookupConverter}">
+                                        <Binding Path="EntityType" />
+                                        <Binding
+                                            Source="{x:Static customPlacements:CustomPlacementWindowViewModel.CustomPlacementResxName }" />
+                                    </MultiBinding>
+                                </uiControls:SubSection.ToolTipContent>
                                 <StackPanel Height="600">
-                                    <TextBox PlaceholderText="Search..." Text="{Binding CustomPlacementSearch}" />
+                                    <TextBox PlaceholderText="{x:Static lang:Resources.SearchPlaceholder}"
+                                             Text="{Binding CustomPlacementSearch}" />
                                     <ListBox x:Name="CustomPlacementObjectListBox"
                                              ItemsSource="{Binding FilteredCustomPlacementOptions }"
                                              SelectionMode="Single" Height="540">
@@ -144,12 +228,14 @@
                             </uiControls:SubSection>
 
                             <!-- Right Column - Frequency Adjustment for Selected Object -->
-                            <uiControls:SubSection Grid.Column="1" Header="Is Replaced By" Width="400">
+                            <uiControls:SubSection Grid.Column="1"
+                                                   Header="{x:Static lang:Resources.CustomPlacement_Header_IsReplacedBy}"
+                                                   Width="400">
                                 <Grid RowDefinitions="Auto,*,Auto" Height="600">
 
                                     <!-- Selected Object Display -->
                                     <TextBlock Grid.Row="0" x:Name="SelectedObjectDisplay"
-                                               Text="Nothing selected"
+                                               Text="{x:Static lang:Resources.NothingSelected}"
                                                Margin="0,0,0,10"
                                                HorizontalAlignment="Center"
                                                IsVisible="{Binding SelectedCustomPlacementRuleName, Converter={x:Static ObjectConverters.IsNull}, Mode=OneWay}" />
@@ -160,31 +246,19 @@
                                             <ItemsControl.ItemTemplate>
                                                 <DataTemplate>
                                                     <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                                                        <Button Width="30" Height="30" Margin="0 0 5 0"
+                                                                Classes="e33DeleteButton"
+                                                                Command="{Binding #Root.((customPlacements:CustomPlacementWindowViewModel)DataContext).RemoveCustomPlacementCommand}"
+                                                                CommandParameter="{Binding Key}"
+                                                                ToolTip.Tip="{x:Static lang:Resources.ToolTip_Remove}" />
                                                         <ComboBox Width="150" Height="30" Margin="0 0 10 0"
                                                                   VerticalAlignment="Center"
                                                                   ItemsSource="{Binding #Root.((customPlacements:CustomPlacementWindowViewModel)DataContext).CustomPlacementOptions}"
                                                                   SelectedItem="{Binding Key, Mode=TwoWay}"
-                                                                  Name="CategoryComboBox">
-                                                            <ComboBox.Styles>
-                                                                <Style Selector="ComboBox /template/ Popup#PART_Popup">
-                                                                    <Setter Property="Placement"
-                                                                            Value="BottomEdgeAlignedLeft" />
-                                                                    <Setter Property="MinWidth" Value="300" />
-                                                                </Style>
-                                                                <Style Selector="ComboBox /template/ ScrollViewer">
-                                                                    <Setter Property="MinWidth" Value="400" />
-                                                                </Style>
-                                                            </ComboBox.Styles>
-                                                        </ComboBox>
-                                                        <ItemsControl
-                                                            ItemsSource="{Binding #CategoryComboBox.(DataValidationErrors.Errors)}"
-                                                            Foreground="Red"
-                                                            FontSize="12" />
-                                                        <Button Content="-" Width="30" Height="30" Margin="0 0 5 0"
-                                                                Background="Red"
-                                                                Foreground="White" FontWeight="Bold"
-                                                                Command="{Binding #Root.((customPlacements:CustomPlacementWindowViewModel)DataContext).RemoveCustomPlacementCommand}"
-                                                                CommandParameter="{Binding Key}" />
+                                                                  Name="CustomPlacementCategoryComboBox"
+                                                                  Classes="category" />
+
+
                                                         <Slider Width="100"
                                                                 Height="30"
                                                                 Minimum="0"
@@ -211,40 +285,45 @@
 
                                     <!-- Add Row Button -->
                                     <Button Grid.Row="2" x:Name="AddCustomPlacementRowButton"
-                                            Content="+ Add Placement Row"
-                                            Height="35" Margin="0,10,0,0"
-                                            Background="#4CAF50" FontWeight="Bold"
+                                            Margin="0 0 0 20"
+                                            Content="{x:Static lang:Resources.CustomPlacement_Button_AddPlacementRow}"
+                                            Classes="e33Button Green"
+                                            HorizontalAlignment="Center"
                                             Command="{Binding AddCustomPlacementCommand}"
                                             IsVisible="{Binding SelectedCustomPlacementRuleName, Converter={x:Static ObjectConverters.IsNotNull}}" />
                                 </Grid>
                             </uiControls:SubSection>
                         </Grid>
                     </TabItem>
-                    <TabItem Header="Frequency Adjustments">
-                        <uiControls:SubSection Width="800" Header="Adjustments">
+                    <TabItem Header="{x:Static lang:Resources.CustomPlacement_TabItem_FrequencyAdjustments}">
+                        <uiControls:SubSection Width="500"
+                                               Header="{x:Static lang:Resources.CustomPlacement_Header_Adjustments}"
+                                               ToolTipHeader="{x:Static lang:Resources.ToolTip_Header_HowItWorks}">
+                            <uiControls:SubSection.ToolTipContent>
+                                <MultiBinding Converter="{StaticResource ResourceLookupConverter}">
+                                    <Binding Path="EntityType" />
+                                    <Binding
+                                        Source="{x:Static customPlacements:CustomPlacementWindowViewModel.FrequencyAdjustmentResxName }" />
+                                </MultiBinding>
+                            </uiControls:SubSection.ToolTipContent>
                             <Grid Margin="10" RowDefinitions="*,Auto">
-
-
                                 <!-- Scrollable Container for Frequency Rows -->
                                 <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
                                     <ItemsControl ItemsSource="{Binding FrequencyAdjustments, Mode=TwoWay}">
                                         <ItemsControl.ItemTemplate>
                                             <DataTemplate>
                                                 <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
-                                                    <ComboBox Width="150" Height="30" Margin="0 0 10 0"
-                                                              VerticalAlignment="Center"
-                                                              ItemsSource="{Binding $parent[ItemsControl].((customPlacements:CustomPlacementWindowViewModel)DataContext).CustomCategories}"
-                                                              SelectedValue="{Binding Key, Mode=TwoWay}"
-                                                              Name="CategoryComboBox" />
-                                                    <ItemsControl
-                                                        ItemsSource="{Binding #CategoryComboBox.(DataValidationErrors.Errors)}"
-                                                        Foreground="Red"
-                                                        FontSize="12" />
                                                     <Button Content="-" Width="30" Height="30" Margin="0 0 5 0"
-                                                            Background="Red"
-                                                            Foreground="White" FontWeight="Bold"
+                                                            Classes="e33DeleteButton"
                                                             Command="{Binding $parent[ItemsControl].((customPlacements:CustomPlacementWindowViewModel)DataContext).RemoveFrequencyRowCommand}"
                                                             CommandParameter="{Binding ., Mode=OneWay}" />
+
+                                                    <ComboBox Width="150" Height="30" Margin="0 0 10 0"
+                                                              VerticalAlignment="Center"
+                                                              ItemsSource="{Binding #Root.((customPlacements:CustomPlacementWindowViewModel)DataContext).CustomCategories}"
+                                                              SelectedValue="{Binding Key, Mode=TwoWay}"
+                                                              Name="FrequencyAdjustmentsCategoryComboBox"
+                                                              Classes="category" />
                                                     <Slider Width="100"
                                                             Height="30"
                                                             Minimum="0"
@@ -272,8 +351,8 @@
 
                                 <!-- Add Row Button -->
                                 <Button Grid.Row="1"
-                                        Content="Add Frequency Row"
-                                        Height="35" Margin="0,10,0,0"
+                                        Content="{x:Static lang:Resources.CustomPlacement_Button_AddFrequencyRow}"
+                                        Classes="e33Button Green"
                                         Command="{Binding AddFrequencyRowCommand}"
                                         CommandParameter="" />
                             </Grid>
@@ -282,15 +361,10 @@
                 </TabControl>
             </StackPanel>
 
-
-            <!-- Quick Presets Section -->
-            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
-
-            </StackPanel>
-            <Border DockPanel.Dock="Bottom" BorderBrush="White">
+            <Border DockPanel.Dock="Bottom" BorderBrush="White" Margin="0 0 0 20">
                 <!-- Close Button -->
                 <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center">
-                    <Button Content="Quick Presets" Classes="e33Button">
+                    <Button Content="{x:Static lang:Resources.CustomPlacement_Button_QuickPresets}" Classes="e33Button">
                         <Button.Flyout>
                             <MenuFlyout ItemsSource="{Binding PresetFiles}">
                                 <MenuFlyout.ItemContainerTheme>
@@ -314,16 +388,16 @@
                               SelectionChanged="OopsAllObjectComboBox_OnSelectionChanged" />
                     <Button Classes="e33Button"
                             x:Name="LoadPresetButton"
-                            Content="Load Preset JSON"
+                            Content="{x:Static lang:Resources.CustomPlacement_Button_LoadPresetJson}"
                             Click="LoadPresetButton_Click" />
 
                     <Button Classes="e33Button"
                             x:Name="SavePresetButton"
-                            Content="Save Preset JSON"
+                            Content="{x:Static lang:Resources.CustomPlacement_Button_SavePresetJson}"
                             Click="SavePresetButton_Click" />
                     <Button Classes="e33Button"
                             x:Name="CloseButton"
-                            Content="Close"
+                            Content="{x:Static lang:Resources.Button_Close}"
                             Click="CloseButton_Click" />
 
                 </StackPanel>
@@ -399,8 +473,11 @@
                 <Style Selector="Expander /template/ DockPanel">
                     <Setter Property="MaxWidth" Value="50" />
                 </Style>
-
             </Expander.Styles>
+            <Expander.Background>
+                <ImageBrush Source="avares://E33Randomizer/Assets/Images/JsonExportViewBackground.png" Stretch="Fill"
+                            Opacity="0.7" />
+            </Expander.Background>
             <TextBox
                 Text="{Binding Json}"
                 IsReadOnly="True"
@@ -409,6 +486,7 @@
                 Width="400"
                 FontFamily="TimesNewRoman"
                 Margin="5" />
+
         </Expander>
     </DockPanel>
 </Window>
