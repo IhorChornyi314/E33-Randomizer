@@ -2,6 +2,10 @@
 
 public class CustomSkillPlacement: CustomPlacementWindowViewModel
 {
+    public override string Title => "Custom Skill Placement";
+    public override string EntityType => "Skill";
+    public override string EntityTypePlural => "Skills";
+
     public override void Init()
     {
         AllObjects = Controllers.SkillsController.ObjectsData;

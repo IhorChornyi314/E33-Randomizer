@@ -4,6 +4,10 @@ namespace E33Randomizer;
 
 public class CustomItemPlacement: CustomPlacementWindowViewModel
 {
+    public override string Title => "Custom Item Placement";
+    public override string EntityType => "Item";
+    public override string EntityTypePlural => "Items";
+
     public override void Init()
     {
         AllObjects = Controllers.ItemsController.ObjectsData.Where(i => i.Type != "CustomSkillUnlocker");

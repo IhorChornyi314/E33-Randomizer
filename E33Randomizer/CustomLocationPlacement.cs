@@ -4,6 +4,10 @@ namespace E33Randomizer;
 
 public class CustomLocationPlacement: CustomPlacementWindowViewModel
 {
+    public override string Title => "Custom Location Placement";
+    public override string EntityType => "Location";
+    public override string EntityTypePlural => "Locations";
+
     public override void Init()
     {
         AllObjects = Controllers.LocationController.ObjectsData;

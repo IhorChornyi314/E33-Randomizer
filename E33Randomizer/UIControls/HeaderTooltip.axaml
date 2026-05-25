@@ -1,0 +1,59 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:uiControls="clr-namespace:E33Randomizer.UIControls">
+    <!-- Add Resources Here -->
+    <Design.PreviewWith>
+        <uiControls:HeaderToolTip Header="Helpful Tooltip" Content=" This is a tooltip about stuff&#x0a;&#x0a;An it has many lines, so many lines in fact that it just keeps going." />
+    </Design.PreviewWith>
+    <ControlTheme x:Key="{x:Type uiControls:HeaderToolTip}" TargetType="uiControls:HeaderToolTip">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid HorizontalAlignment="Center"
+                      VerticalAlignment="Top" ColumnDefinitions="Auto,*,Auto" RowDefinitions="Auto,*" Width="400" MinHeight="250" Background="#161516">
+
+                <!-- Left background image -->
+                <Image Grid.Row="0" Grid.Column="0" Name="Left"
+                       Source="avares://E33Randomizer/Assets/Images/ComponentBorderUpperLeft.png" Stretch="None" VerticalAlignment="Top" />
+
+                <!-- Middle transparent space (grows horizontally) -->
+                <Panel Grid.Row="0"  Grid.Column="1" />
+
+                <!-- Right background image -->
+                <Image Grid.Row="0"  Grid.Column="2" Name="Right"
+                       Source="avares://E33Randomizer/Assets/Images/ComponentBorderUpperRight.png" Stretch="None" VerticalAlignment="Top"/>
+
+                <!-- Left Bottom background image -->
+                <Image Grid.Row="0" Grid.Column="0" Name="LeftBottom"
+                       Source="avares://E33Randomizer/Assets/Images/ComponentBorderUpperLeft.png" Stretch="None" VerticalAlignment="Bottom">
+                    <Image.RenderTransform>
+                        <!-- <RotateTransform Angle="180" /> -->
+                        <ScaleTransform ScaleY="-1" />
+                    </Image.RenderTransform>
+                </Image>
+                
+                <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
+                    <TextBlock 
+                        FontFamily="fonts:E33Fonts#Cinzel"
+                        FontSize="24"
+                        Text="{TemplateBinding Header}"
+                        Foreground="#d7bd94"
+                        HorizontalAlignment="Left"
+                        Margin="15 10 0 0"
+                        
+                        />
+                    <TextBlock
+                        xml:space="preserve"
+                        Text="{TemplateBinding Content}"
+                        FontFamily="fonts:E33Fonts#IM FELL Double Pica"
+                        FontSize="19"
+                        Margin="25 0 10 0"
+                        TextWrapping="Wrap"
+                        LineSpacing="4"
+                        />
+                </StackPanel>
+                
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>

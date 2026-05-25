@@ -6,6 +6,7 @@
         CanResize="False"
         SizeToContent="Width"
         xmlns:e33Randomizer="clr-namespace:E33Randomizer"
+        xmlns:uiControls="clr-namespace:E33Randomizer.UIControls"
         x:DataType="e33Randomizer:CustomPlacementWindowViewModel"
         x:Name="Root">
     <Window.Resources>
@@ -13,124 +14,224 @@
     </Window.Resources>
     <DockPanel FlowDirection="LeftToRight">
         <DockPanel LastChildFill="False" DockPanel.Dock="Left" Width="900">
-            <StackPanel DockPanel.Dock="Top">
-                <StackPanel.Styles>
-                    <Style Selector="Expander">
-                        <Setter Property="Width" Value="900" />
-                    </Style>
-                </StackPanel.Styles>
-                <Expander Header="Special Rules" IsExpanded="{Binding IsSpecialRulesOpen}">
-                    <Expander.ContentTransition>
+            <StackPanel Orientation="Vertical" MaxHeight="800" DockPanel.Dock="Top">
+                <TextBlock Classes="e33PageHeader"
+                           Text="{Binding Title}"
+                           Margin="0 10"
+                           HorizontalAlignment="Center" />
+                <TabControl>
+                    <TabControl.Styles>
+                        <Style Selector="TabControl /template/ ItemsPresenter#PART_ItemsPresenter">
+                            <Setter Property="Margin" Value="20 0 0 0" />
+                        </Style>
+                    </TabControl.Styles>
+                    <TabControl.PageTransition>
                         <CrossFade Duration="0:0:0.2" />
-                    </Expander.ContentTransition>
-                    <Grid Margin="10" ColumnDefinitions="*,*">
+                    </TabControl.PageTransition>
+                    <TabItem Header="Special Rules">
+                        <Grid Margin="10" ColumnDefinitions="*,*">
 
-                        <!-- Not Randomized Object Selection -->
-                        <StackPanel Grid.Column="0" Margin="0,0,5,0">
-                            <Label Content="Not Randomized:" FontWeight="Bold" />
-                            <ComboBox x:Name="NotRandomizedObjectsSelectionComboBox"
-                                      ItemsSource="{Binding NotRandomizedOptions}"
-                                      SelectionChanged="NotRandomizedObjectsComboBox_SelectionChanged" />
-                            <ListBox x:Name="NotRandomizedObjectsListBox"
-                                     SelectionMode="Single"
-                                     Height="75"
-                                     ItemsSource="{Binding NotRandomized}" />
+                            <!-- Not Randomized Object Selection -->
+                            <uiControls:SubSection Grid.Column="0" Width="400" Header="Not Randomized">
+                                <StackPanel Margin="0 10 0 0">
+                                    <AutoCompleteBox x:Name="NotRandomizedObjectsSelectionComboBox"
+                                                     ItemsSource="{Binding NotRandomizedOptions}"
+                                                     FilterMode="Contains"
+                                                     MinimumPrefixLength="0"
+                                                     SelectionChanged="NotRandomizedObjectsComboBox_SelectionChanged"
+                                                     Width="380" PlaceholderText="Search..." />
 
-                            <Button x:Name="RemoveNotRandomizedObjectButton"
-                                    Content="Remove"
-                                    Width="100"
-                                    Height="25"
-                                    HorizontalAlignment="Center"
-                                    Margin="0,5,0,0"
-                                    Command="{Binding RemoveNotRandomizedCommand}"
-                                    CommandParameter="{Binding #NotRandomizedObjectsListBox.SelectedValue}"
-                                    IsEnabled="{Binding #NotRandomizedObjectsListBox.SelectedItem, Converter={x:Static ObjectConverters.IsNotNull}}" />
-                        </StackPanel>
 
-                        <!-- Excluded Object Selection -->
-                        <StackPanel Grid.Column="1" Margin="5,0,0,0">
-                            <Label Content="Excluded:" FontWeight="Bold" />
-                            <ComboBox x:Name="ExcludedObjectsSelectionComboBox"
-                                      ItemsSource="{Binding ExcludedOptions}"
-                                      SelectionChanged="NotExcludedObjectsComboBox_SelectionChanged" />
-                            <ListBox x:Name="ExcludedObjectsListBox"
-                                     SelectionMode="Single"
-                                     ItemsSource="{Binding Excluded}"
-                                     Height="75" />
+                                    <ItemsControl ItemsSource="{Binding NotRandomized, Mode=TwoWay}" Margin="0 10 0 0">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                                                    <Button x:Name="RemoveNotRandomizedObjectButton"
+                                                            Content="-" Width="30" Height="30" Margin="0 0 5 0"
+                                                            Background="Red"
+                                                            Foreground="White" FontWeight="Bold"
+                                                            HorizontalAlignment="Center"
+                                                            Command="{Binding #Root.((e33Randomizer:CustomPlacementWindowViewModel)DataContext).RemoveNotRandomizedCommand}"
+                                                            CommandParameter="{Binding .}" />
+                                                    <TextBlock Text="{Binding .}" Height="30"
+                                                               VerticalAlignment="Center" LineHeight="30" />
 
-                            <Button x:Name="RemoveExcludedObjectButton"
-                                    Content="Remove"
-                                    Width="100"
-                                    Height="25"
-                                    HorizontalAlignment="Center"
-                                    Margin="0,5,0,0"
-                                    Command="{Binding RemoveExcludedCommand}"
-                                    CommandParameter="{Binding #ExcludedObjectsListBox.SelectedValue}"
-                                    IsEnabled="{Binding #ExcludedObjectsListBox.SelectedItem, Converter={x:Static ObjectConverters.IsNotNull}}" />
-                        </StackPanel>
-                    </Grid>
-                </Expander>
-                <Expander Header="Custom Placements" IsExpanded="{Binding IsCustomPlacementOpen}"  MaxHeight="700">
-                    <Grid Margin="10" ColumnDefinitions="*,*">
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
 
-                        <!-- Left Column - Object Selection -->
-                        <GroupBox Grid.Column="0" Header="Selected" Margin="0,0,5,0">
-                            <StackPanel>
-                                <TextBox PlaceholderText="Search..." Text="{Binding CustomPlacementSearch}"/>
-                                <ListBox x:Name="CustomPlacementObjectListBox"
-                                         ItemsSource="{Binding FilteredCustomPlacementOptions }"
-                                         SelectionMode="Single" Height="540">
-                                    <ListBox.ItemTemplate>
-                                        <DataTemplate>
-                                            <Grid ColumnDefinitions="*,auto">
-                                               <TextBlock Grid.Column="0" Text="{Binding Item1}" />
-                                               <TextBlock Grid.Column="1" Text="*" IsVisible="{Binding Item2}" />
-                                            </Grid>
-                                        </DataTemplate>
-                                    </ListBox.ItemTemplate>
-                                    <ListBox.SelectedItem>
-                                        <MultiBinding Converter="{StaticResource CustomPlacementValueConverter}" Mode="OneWay">
-                                            <Binding Path="#CustomPlacementObjectListBox.SelectedItem" />
-                                            <Binding Path="#Root.((e33Randomizer:CustomPlacementWindowViewModel)DataContext)" />
-                                        </MultiBinding>
-                                    </ListBox.SelectedItem>
-                                </ListBox>
-                            </StackPanel>
-                         
-                        </GroupBox>
 
-                        <!-- Right Column - Frequency Adjustment for Selected Object -->
-                        <GroupBox Grid.Column="1" Header="Is Replaced By" Margin="5,0,0,0">
-                            <Grid Margin="5" RowDefinitions="Auto,*,Auto">
+                                </StackPanel>
+                            </uiControls:SubSection>
 
-                                <!-- Selected Object Display -->
-                                <TextBlock Grid.Row="0" x:Name="SelectedObjectDisplay"
-                                           Text="Nothing selected"
-                                           Margin="0,0,0,10"
-                                           HorizontalAlignment="Center"
-                                           IsVisible="{Binding SelectedCustomPlacementRuleName, Converter={x:Static ObjectConverters.IsNull}, Mode=OneWay}" />
+                            <!-- Excluded Object Selection -->
+                            <uiControls:SubSection Grid.Column="1" Header="Excluded" Width="400" ToolTipHeader="How It Works" xml:space="preserve">
+                                <uiControls:SubSection.ToolTipContent >
+                                    <MultiBinding
+                                        StringFormat="{}{0} in this list are excluded from the pool of possible assignments during the randomization.&#x0a;&#x0a;This means that the {0} will not be used when randomizing {0}.">
+                                        <Binding Path="EntityTypePlural"/>
+                                        <Binding Path="EntityType"/>
+                                    </MultiBinding>
+                                </uiControls:SubSection.ToolTipContent>
 
-                                <!-- Scrollable Container for Custom Placement Rows -->
-                                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
-                                    <ItemsControl ItemsSource="{Binding SelectedCustomPlacementRule, Mode=TwoWay}">
+                                <StackPanel Margin="0 10 0 0">
+                                    <AutoCompleteBox x:Name="ExcludedObjectsSelectionComboBox"
+                                                     ItemsSource="{Binding ExcludedOptions}"
+                                                     PlaceholderText="Search..."
+                                                     FilterMode="Contains"
+                                                     MinimumPrefixLength="0"
+                                                     Width="380"
+                                                     SelectionChanged="NotExcludedObjectsComboBox_SelectionChanged" />
+
+                                    <ItemsControl ItemsSource="{Binding Excluded, Mode=TwoWay}" Margin="0 10 0 0">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                                                    <Button x:Name="RemoveNotRandomizedObjectButton"
+                                                            Content="-" Width="30" Height="30" Margin="0 0 5 0"
+                                                            Background="Red"
+                                                            Foreground="White" FontWeight="Bold"
+                                                            HorizontalAlignment="Center"
+                                                            Command="{Binding #Root.((e33Randomizer:CustomPlacementWindowViewModel)DataContext).RemoveExcludedCommand}"
+                                                            CommandParameter="{Binding .}" />
+                                                    <TextBlock Text="{Binding .}" Height="30"
+                                                               VerticalAlignment="Center" LineHeight="30" />
+
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+
+                                </StackPanel>
+                            </uiControls:SubSection>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Custom Placements">
+                        <Grid Margin="10" ColumnDefinitions="*,*">
+
+                            <!-- Left Column - Object Selection -->
+                            <uiControls:SubSection Grid.Column="0" Header="Select Category" Margin="0,0,5,0"
+                                                   Width="400">
+                                <StackPanel Height="600">
+                                    <TextBox PlaceholderText="Search..." Text="{Binding CustomPlacementSearch}" />
+                                    <ListBox x:Name="CustomPlacementObjectListBox"
+                                             ItemsSource="{Binding FilteredCustomPlacementOptions }"
+                                             SelectionMode="Single" Height="540">
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid ColumnDefinitions="*,auto">
+                                                    <TextBlock Grid.Column="0" Text="{Binding Item1}" />
+                                                    <TextBlock Grid.Column="1" Text="*" IsVisible="{Binding Item2}" />
+                                                </Grid>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                        <ListBox.SelectedItem>
+                                            <MultiBinding Converter="{StaticResource CustomPlacementValueConverter}"
+                                                          Mode="OneWay">
+                                                <Binding Path="#CustomPlacementObjectListBox.SelectedItem" />
+                                                <Binding
+                                                    Path="#Root.((e33Randomizer:CustomPlacementWindowViewModel)DataContext)" />
+                                            </MultiBinding>
+                                        </ListBox.SelectedItem>
+                                    </ListBox>
+                                </StackPanel>
+
+                            </uiControls:SubSection>
+
+                            <!-- Right Column - Frequency Adjustment for Selected Object -->
+                            <uiControls:SubSection Grid.Column="1" Header="Is Replaced By" Width="400">
+                                <Grid RowDefinitions="Auto,*,Auto" Height="600">
+
+                                    <!-- Selected Object Display -->
+                                    <TextBlock Grid.Row="0" x:Name="SelectedObjectDisplay"
+                                               Text="Nothing selected"
+                                               Margin="0,0,0,10"
+                                               HorizontalAlignment="Center"
+                                               IsVisible="{Binding SelectedCustomPlacementRuleName, Converter={x:Static ObjectConverters.IsNull}, Mode=OneWay}" />
+
+                                    <!-- Scrollable Container for Custom Placement Rows -->
+                                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                                        <ItemsControl ItemsSource="{Binding SelectedCustomPlacementRule, Mode=TwoWay}">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                                                        <ComboBox Width="150" Height="30" Margin="0 0 10 0"
+                                                                  VerticalAlignment="Center"
+                                                                  ItemsSource="{Binding #Root.((e33Randomizer:CustomPlacementWindowViewModel)DataContext).CustomPlacementOptions}"
+                                                                  SelectedItem="{Binding Key, Mode=TwoWay}"
+                                                                  Name="CategoryComboBox">
+                                                            <ComboBox.Styles>
+                                                                <Style Selector="ComboBox /template/ Popup#PART_Popup">
+                                                                    <Setter Property="Placement"
+                                                                            Value="BottomEdgeAlignedLeft" />
+                                                                    <Setter Property="MinWidth" Value="300" />
+                                                                </Style>
+                                                                <Style Selector="ComboBox /template/ ScrollViewer">
+                                                                    <Setter Property="MinWidth" Value="400" />
+                                                                </Style>
+                                                            </ComboBox.Styles>
+                                                        </ComboBox>
+                                                        <ItemsControl
+                                                            ItemsSource="{Binding #CategoryComboBox.(DataValidationErrors.Errors)}"
+                                                            Foreground="Red"
+                                                            FontSize="12" />
+                                                        <Button Content="-" Width="30" Height="30" Margin="0 0 5 0"
+                                                                Background="Red"
+                                                                Foreground="White" FontWeight="Bold"
+                                                                Command="{Binding #Root.((e33Randomizer:CustomPlacementWindowViewModel)DataContext).RemoveCustomPlacementCommand}"
+                                                                CommandParameter="{Binding Key}" />
+                                                        <Slider Width="100"
+                                                                Height="30"
+                                                                Minimum="0"
+                                                                Maximum="100"
+                                                                Name="Slider"
+                                                                Value="{Binding Value, Mode=TwoWay, Delay=200}"
+                                                                Margin="0, 0, 10, 0"
+                                                                Padding="0 0 0 15"
+                                                                VerticalAlignment="Center" />
+                                                        <NumericUpDown
+                                                            Width="60" Height="30"
+                                                            Value="{Binding #Slider.Value, Mode=TwoWay}"
+                                                            FormatString="{}{0:N0}%"
+                                                            Minimum="0"
+                                                            Maximum="100"
+                                                            ShowButtonSpinner="False"
+                                                            VerticalAlignment="Center"
+                                                            VerticalContentAlignment="Center" />
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </ScrollViewer>
+
+                                    <!-- Add Row Button -->
+                                    <Button Grid.Row="2" x:Name="AddCustomPlacementRowButton"
+                                            Content="+ Add Placement Row"
+                                            Height="35" Margin="0,10,0,0"
+                                            Background="#4CAF50" FontWeight="Bold"
+                                            Command="{Binding AddCustomPlacementCommand}"
+                                            IsVisible="{Binding SelectedCustomPlacementRuleName, Converter={x:Static ObjectConverters.IsNotNull}}" />
+                                </Grid>
+                            </uiControls:SubSection>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Frequency Adjustments">
+                        <uiControls:SubSection Width="800" Header="Adjustments">
+                            <Grid Margin="10" RowDefinitions="*,Auto">
+
+
+                                <!-- Scrollable Container for Frequency Rows -->
+                                <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
+                                    <ItemsControl ItemsSource="{Binding FrequencyAdjustments, Mode=TwoWay}">
                                         <ItemsControl.ItemTemplate>
                                             <DataTemplate>
                                                 <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
                                                     <ComboBox Width="150" Height="30" Margin="0 0 10 0"
                                                               VerticalAlignment="Center"
-                                                              ItemsSource="{Binding #Root.((e33Randomizer:CustomPlacementWindowViewModel)DataContext).CustomPlacementOptions}"
-                                                              SelectedItem="{Binding Key, Mode=TwoWay}"
-                                                              Name="CategoryComboBox">
-                                                        <ComboBox.Styles>
-                                                            <Style Selector="ComboBox /template/ Popup#PART_Popup">
-                                                                <Setter Property="Placement" Value="BottomEdgeAlignedLeft" />
-                                                                <Setter Property="MinWidth" Value="300"/>
-                                                            </Style>
-                                                            <Style Selector="ComboBox /template/ ScrollViewer">
-                                                                <Setter Property="MinWidth" Value="400" />
-                                                            </Style>
-                                                        </ComboBox.Styles>
-                                                    </ComboBox>
+                                                              ItemsSource="{Binding $parent[ItemsControl].((e33Randomizer:CustomPlacementWindowViewModel)DataContext).CustomCategories}"
+                                                              SelectedValue="{Binding Key, Mode=TwoWay}"
+                                                              Name="CategoryComboBox" />
                                                     <ItemsControl
                                                         ItemsSource="{Binding #CategoryComboBox.(DataValidationErrors.Errors)}"
                                                         Foreground="Red"
@@ -138,8 +239,8 @@
                                                     <Button Content="-" Width="30" Height="30" Margin="0 0 5 0"
                                                             Background="Red"
                                                             Foreground="White" FontWeight="Bold"
-                                                            Command="{Binding #Root.((e33Randomizer:CustomPlacementWindowViewModel)DataContext).RemoveCustomPlacementCommand}"
-                                                            CommandParameter="{Binding Key}" />
+                                                            Command="{Binding $parent[ItemsControl].((e33Randomizer:CustomPlacementWindowViewModel)DataContext).RemoveFrequencyRowCommand}"
+                                                            CommandParameter="{Binding ., Mode=OneWay}" />
                                                     <Slider Width="100"
                                                             Height="30"
                                                             Minimum="0"
@@ -164,81 +265,27 @@
                                     </ItemsControl>
                                 </ScrollViewer>
 
+
                                 <!-- Add Row Button -->
-                                <Button Grid.Row="2" x:Name="AddCustomPlacementRowButton"
-                                        Content="+ Add Placement Row"
+                                <Button Grid.Row="1"
+                                        Content="Add Frequency Row"
                                         Height="35" Margin="0,10,0,0"
-                                        Background="#4CAF50" FontWeight="Bold"
-                                        Command="{Binding AddCustomPlacementCommand}"
-                                        IsVisible="{Binding SelectedCustomPlacementRuleName, Converter={x:Static ObjectConverters.IsNotNull}}" />
+                                        Command="{Binding AddFrequencyRowCommand}"
+                                        CommandParameter="" />
                             </Grid>
-                        </GroupBox>
-                    </Grid>
-                </Expander>
-                <Expander Header="Frequency Adjustments" IsExpanded="{Binding IsFrequencyAdjustmentOpen}" MaxHeight="800">
-                    <Grid Margin="10" RowDefinitions="*,Auto">
-
-
-                        <!-- Scrollable Container for Frequency Rows -->
-                        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
-                            <ItemsControl ItemsSource="{Binding FrequencyAdjustments, Mode=TwoWay}">
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
-                                            <ComboBox Width="150" Height="30" Margin="0 0 10 0"
-                                                      VerticalAlignment="Center"
-                                                      ItemsSource="{Binding $parent[ItemsControl].((e33Randomizer:CustomPlacementWindowViewModel)DataContext).CustomCategories}"
-                                                      SelectedValue="{Binding Key, Mode=TwoWay}"
-                                                      Name="CategoryComboBox" />
-                                            <ItemsControl
-                                                ItemsSource="{Binding #CategoryComboBox.(DataValidationErrors.Errors)}"
-                                                Foreground="Red"
-                                                FontSize="12" />
-                                            <Button Content="-" Width="30" Height="30" Margin="0 0 5 0"
-                                                    Background="Red"
-                                                    Foreground="White" FontWeight="Bold"
-                                                    Command="{Binding $parent[ItemsControl].((e33Randomizer:CustomPlacementWindowViewModel)DataContext).RemoveFrequencyRowCommand}"
-                                                    CommandParameter="{Binding ., Mode=OneWay}" />
-                                            <Slider Width="100"
-                                                    Height="30"
-                                                    Minimum="0"
-                                                    Maximum="100"
-                                                    Name="Slider"
-                                                    Value="{Binding Value, Mode=TwoWay, Delay=200}"
-                                                    Margin="0, 0, 10, 0"
-                                                    Padding="0 0 0 15"
-                                                    VerticalAlignment="Center" />
-                                            <NumericUpDown
-                                                Width="60" Height="30" Value="{Binding #Slider.Value, Mode=TwoWay}"
-                                                FormatString="{}{0:N0}%"
-                                                Minimum="0"
-                                                Maximum="100"
-                                                ShowButtonSpinner="False"
-                                                VerticalAlignment="Center"
-                                                VerticalContentAlignment="Center" />
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>
-                        </ScrollViewer>
-
-
-                        <!-- Add Row Button -->
-                        <Button Grid.Row="1"
-                                Content="Add Frequency Row"
-                                Height="35" Margin="0,10,0,0"
-                                Command="{Binding AddFrequencyRowCommand}"
-                                CommandParameter="" />
-                    </Grid>
-                </Expander>
+                        </uiControls:SubSection>
+                    </TabItem>
+                </TabControl>
             </StackPanel>
+
+
             <!-- Quick Presets Section -->
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
-                
+
             </StackPanel>
             <Border DockPanel.Dock="Bottom" BorderBrush="White">
                 <!-- Close Button -->
-                <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center" >
+                <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center">
                     <Button Content="Quick Presets" Classes="e33Button">
                         <Button.Flyout>
                             <MenuFlyout ItemsSource="{Binding PresetFiles}">
@@ -274,13 +321,13 @@
                             x:Name="CloseButton"
                             Content="Close"
                             Click="CloseButton_Click" />
-                   
+
                 </StackPanel>
             </Border>
         </DockPanel>
         <Expander DockPanel.Dock="Right" ExpandDirection="Right" Height="900" MinWidth="48">
             <Expander.Header>
-                
+
                 <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0 40 0 0">
                     <TextBlock Text="Json" VerticalAlignment="Center" />
                 </StackPanel>
@@ -297,7 +344,7 @@
                     <Setter Property="HorizontalContentAlignment" Value="Center" />
                     <Setter Property="Margin" Value="0 0 0 0" />
                     <Setter Property="Padding" Value="0 0 0 0" />
-                    
+
                     <Setter Property="VerticalContentAlignment" Value="Top" />
                     <Setter Property="Template">
                         <!-- Identical to https://github.com/AvaloniaUI/Avalonia/blob/3111696698e2c3d6fe9aace8cb954153ee16b3e4/src/Avalonia.Themes.Fluent/Controls/Expander.xaml#L77 
@@ -305,43 +352,43 @@
                         * Grid.Column is 0.  Because they directly set it, it wasn't overridable, so changing it was impossible.
                         * Margin was removed since it was now a higher priority than what we could set with the Style/Property Override. -->
                         <ControlTemplate>
-                        <Border x:Name="ToggleButtonBackground"
-                                CornerRadius="{TemplateBinding CornerRadius}"
-                                Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}">
-                          <Grid x:Name="ToggleButtonGrid"
-                                ColumnDefinitions="*,Auto">
-                            <ContentPresenter x:Name="PART_ContentPresenter"
-                                              Content="{TemplateBinding Content}"
-                                              ContentTemplate="{TemplateBinding ContentTemplate}"
-                                              HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                              VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                              Foreground="{TemplateBinding Foreground}"
-                                              Margin="{TemplateBinding Padding}"/>
-                            <Border x:Name="ExpandCollapseChevronBorder"
-                                    Grid.Column="0"
-                                    Width="{DynamicResource ExpanderChevronButtonSize}"
-                                    Height="{DynamicResource ExpanderChevronButtonSize}"
-                                    CornerRadius="{DynamicResource ControlCornerRadius}"
-                                    BorderBrush="{DynamicResource ExpanderChevronBorderBrush}"
-                                    BorderThickness="{DynamicResource ExpanderChevronBorderThickness}"
-                                    Background="{DynamicResource ExpanderChevronBackground}">
-                              <Path x:Name="ExpandCollapseChevron"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    RenderTransformOrigin="50%,50%"
-                                    Stretch="None"
-                                    Stroke="{DynamicResource ExpanderChevronForeground}"
-                                    StrokeThickness="1">
-                                <Path.RenderTransform>
-                                  <RotateTransform />
-                                </Path.RenderTransform>
-                              </Path>
+                            <Border x:Name="ToggleButtonBackground"
+                                    CornerRadius="{TemplateBinding CornerRadius}"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}">
+                                <Grid x:Name="ToggleButtonGrid"
+                                      ColumnDefinitions="*,Auto">
+                                    <ContentPresenter x:Name="PART_ContentPresenter"
+                                                      Content="{TemplateBinding Content}"
+                                                      ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                      HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                      VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                      Foreground="{TemplateBinding Foreground}"
+                                                      Margin="{TemplateBinding Padding}" />
+                                    <Border x:Name="ExpandCollapseChevronBorder"
+                                            Grid.Column="0"
+                                            Width="{DynamicResource ExpanderChevronButtonSize}"
+                                            Height="{DynamicResource ExpanderChevronButtonSize}"
+                                            CornerRadius="{DynamicResource ControlCornerRadius}"
+                                            BorderBrush="{DynamicResource ExpanderChevronBorderBrush}"
+                                            BorderThickness="{DynamicResource ExpanderChevronBorderThickness}"
+                                            Background="{DynamicResource ExpanderChevronBackground}">
+                                        <Path x:Name="ExpandCollapseChevron"
+                                              HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              RenderTransformOrigin="50%,50%"
+                                              Stretch="None"
+                                              Stroke="{DynamicResource ExpanderChevronForeground}"
+                                              StrokeThickness="1">
+                                            <Path.RenderTransform>
+                                                <RotateTransform />
+                                            </Path.RenderTransform>
+                                        </Path>
+                                    </Border>
+                                </Grid>
                             </Border>
-                          </Grid>
-                        </Border>
-                      </ControlTemplate>
+                        </ControlTemplate>
                     </Setter>
                 </Style>
 

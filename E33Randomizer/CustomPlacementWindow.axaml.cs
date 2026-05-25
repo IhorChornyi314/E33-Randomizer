@@ -29,20 +29,38 @@ namespace E33Randomizer;
                     {"Custom preset 2", "Data/Presets/enemies/custom_2.json"},
                 }
             };
-            //LoadCustomPlacementRows(_selectedObjectForCustomPlacement);
             InitializeComponent();
+            SetupAutoCompleteBehaviors();
         }
+
+      
 
         public CustomPlacementWindow(CustomPlacementWindowViewModel customPlacement)
         {
             DataContext = customPlacement;
             InitializeComponent();
+            SetupAutoCompleteBehaviors();
+        }
+        
+        private void SetupAutoCompleteBehaviors()
+        {
+            NotRandomizedObjectsSelectionComboBox.GotFocus += (_, _) =>
+            {
+                NotRandomizedObjectsSelectionComboBox.IsDropDownOpen = true;
+            };
+
+            ExcludedObjectsSelectionComboBox.GotFocus += (_, _) =>
+            {
+                ExcludedObjectsSelectionComboBox.IsDropDownOpen = true;
+            };
         }
         
         private void NotRandomizedObjectsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedItem = NotRandomizedObjectsSelectionComboBox.SelectedItem?.ToString();
             if (selectedItem == null) return;
+
+            NotRandomizedObjectsSelectionComboBox.SelectedItem = null;
             
             CustomPlacement.NotRandomized.Add(selectedItem);
             
@@ -58,6 +76,8 @@ namespace E33Randomizer;
         {
             var selectedItem = ExcludedObjectsSelectionComboBox.SelectedItem?.ToString();
             if (selectedItem == null) return;
+
+            ExcludedObjectsSelectionComboBox.SelectedItem = null;
             
             CustomPlacement.Excluded.Add(selectedItem);
             

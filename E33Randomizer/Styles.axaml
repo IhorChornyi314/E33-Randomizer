@@ -1,13 +1,17 @@
 <Styles xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:e33Randomizer="clr-namespace:E33Randomizer"
+        xmlns:uiControls="clr-namespace:E33Randomizer.UIControls">
     <Design.PreviewWith>
+        
         <Border Padding="20">
             <StackPanel Spacing="20">
+                <TextBlock Classes="e33PageHeader">TextBlock (class "e33PageHeader")</TextBlock>
                 <TextBlock>This is a TextBlock</TextBlock>
-                <Button Classes="e33Button">I'm a button with the e33Button class.</Button>
+                <Button Classes="e33Button">A button with the e33Button class.</Button>
                 <CheckBox>This is a checkbox</CheckBox>
-                <Grid ColumnDefinitions="*,*" Margin="20">
-                    <Label Grid.Column="0">Numeric Up Down</Label>
+                <Grid ColumnDefinitions="*,*" Margin="20" Width="300" HorizontalAlignment="Left">
+                    <Label Grid.Column="0" >Numeric Up Down</Label>
                     <NumericUpDown
                         Grid.Column="1"
                         ShowButtonSpinner="True"
@@ -21,6 +25,21 @@
                         Value="1234" FontSize="25" />
                 </Grid>
                 <TextBlock Classes="note">This is some warning/important info text.</TextBlock>
+                <Grid ColumnDefinitions="*,*" Margin="20" Width="200" HorizontalAlignment="Left">
+                
+                <Label Grid.Column="0" Content="This is a Slider" />
+                <Slider Grid.Column="1" Width="100"
+                        Height="30"
+                        Minimum="0"
+                        Maximum="100"
+                        Name="Slider"
+                        Margin="0, 0, 10, 0"
+                        Padding="0 0 0 15"
+                        VerticalAlignment="Center" />
+                </Grid>
+                <uiControls:SubSection Header="Test">
+                    <TextBlock Text="Value"/>
+                </uiControls:SubSection>
             </StackPanel>
         </Border>
     </Design.PreviewWith>
@@ -122,6 +141,13 @@
         <Setter Property="FontSize" Value="14" />
         <Setter Property="TextWrapping" Value="Wrap" />
         <Setter Property="Margin" Value="40,5,0,5" />
+    </Style>
+    
+    <Style Selector="TextBlock.e33PageHeader">
+        <Setter Property="Foreground" Value="#d7bd94" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="FontSize" Value="30" />
+        <Setter Property="FontFamily" Value="fonts:E33Fonts#Cinzel" />
     </Style>
 
     <!-- Add Styles Here -->

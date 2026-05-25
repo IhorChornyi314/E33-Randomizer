@@ -15,7 +15,11 @@
 
 public class CustomEnemyPlacement : CustomPlacementWindowViewModel
 {
-    public Dictionary<string, string> ArchetypeNames = new()
+    public override string Title => "Custom Enemy Placement";
+    public override string EntityType => "Enemy";
+    public override string EntityTypePlural => "Enemies";
+
+    private readonly Dictionary<string, string> _archetypeNames = new()
     {
         { "Regular", "Regular" },
         { "Weak Regular", "Weak" },
@@ -58,12 +62,12 @@ public class CustomEnemyPlacement : CustomPlacementWindowViewModel
             { "Custom preset 2", "Data/Presets/enemies/custom_2.json" },
         };
 
-        AdditionalCategoriesToAdd = ArchetypeNames.Keys.ToArray();
+        AdditionalCategoriesToAdd = _archetypeNames.Keys.ToArray();
         
         LoadCategories($"{RandomizerLogic.DataDirectory}/enemy_categories.json");
 
 
-        foreach (var archetypeName in ArchetypeNames)
+        foreach (var archetypeName in _archetypeNames)
         {
             var allByArchetype = Controllers.EnemiesController.GetAllByArchetype(archetypeName.Value);
             PlainNameToCodeNames[archetypeName.Key] = allByArchetype.Select(e => e.CodeName).ToList();

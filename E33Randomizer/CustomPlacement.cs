@@ -52,6 +52,10 @@ public class CustomPlacementPreset
 
 public abstract partial class CustomPlacementWindowViewModel : ObservableObject
 {
+    public abstract string Title { get; }
+    public abstract string EntityType { get; }
+    public abstract string EntityTypePlural { get; }
+    
     public ObservableCollection<string> NotRandomizedOptions { get; } = [];
     public ObservableCollection<string> NotRandomized { get; } = [];
     
@@ -488,39 +492,6 @@ public abstract partial class CustomPlacementWindowViewModel : ObservableObject
         
         return !string.IsNullOrEmpty(newItem) ? newItem : originalCodeName;
     }
-
-    #region ExpanderControl
-
-    [ObservableProperty]
-    private int _openSection = 1;
-
-    public bool IsSpecialRulesOpen
-    {
-        get => OpenSection == 0;
-        set { if (value) OpenSection = 0; else if (OpenSection == 0) OpenSection = -1; }
-    }
-
-    public bool IsCustomPlacementOpen
-    {
-        get => OpenSection == 1;
-        set { if (value) OpenSection = 1; else if (OpenSection == 1) OpenSection = -1; }
-    }
-
-    public bool IsFrequencyAdjustmentOpen
-    {
-        get => OpenSection == 2;
-        set { if (value) OpenSection = 2; else if (OpenSection == 2) OpenSection = -1; }
-    }
-
-    partial void OnOpenSectionChanged(int value)
-    {
-        OnPropertyChanged(nameof(IsSpecialRulesOpen));
-        OnPropertyChanged(nameof(IsCustomPlacementOpen));
-        OnPropertyChanged(nameof(IsFrequencyAdjustmentOpen));
-    }
-
-    #endregion
-    
 }
 
 public class CustomPlacementValueConverter : IMultiValueConverter

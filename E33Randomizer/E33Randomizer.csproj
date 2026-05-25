@@ -33,12 +33,10 @@
     <ItemGroup>
         <AvaloniaResource Include="Assets\Fonts\*" />
         <AvaloniaResource Include="Assets\Images\*" />
+        <AvaloniaResource Include="UIControls\*" />
     </ItemGroup>
     <ItemGroup>
         <Content Include="Data\**" CopyToPublishDirectory="PreserveNewest" />
-<!--        <Content Include="Assets\**">-->
-<!--            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>-->
-<!--        </Content>-->
     </ItemGroup>
 
 </Project>
