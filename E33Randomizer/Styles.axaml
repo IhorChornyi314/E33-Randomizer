@@ -103,8 +103,6 @@
     <Style Selector="Button.e33Button.Green:pointerover Panel#Center">
         <Setter Property="Background" Value="#122220" />
     </Style>
-    
-
 
     <Style Selector="Button.e33Button">
         <Setter Property="VerticalContentAlignment" Value="Center" />

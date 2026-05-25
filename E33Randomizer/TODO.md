@@ -15,10 +15,6 @@
 * Individual Containers Window
   * All the things
 * Custom Placements Window
-  * Continue to tweak the layout/etc (I'm still not completely happy with everything yet.) Including the JSON flyout colors/theming.
-  * Fix the weird thing when a new row is added to the Custom Placement section and it squishes the row.
-  * Re-skin the "delete/remove" button
-  * Re-skin the "add Placement row" button
   * Design something for the "oops all" section which presently doesn't exist.
   * Try to fix the issue with Select Category getting unselected when the replacements are changed. (I know why it's happening, but not sure how to fix it yet) 
 

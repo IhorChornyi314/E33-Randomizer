@@ -6,6 +6,9 @@
         MinHeight="850" MinWidth="1000">
     <DockPanel x:DataType="e33Randomizer:SettingsViewModel">
         <Border DockPanel.Dock="Left" Margin="5" BorderThickness="0 0 5 0">
+            <Border.Background>
+                <ImageBrush Source="avares://E33Randomizer/Assets/Images/MainBackgroundLeft.png" Stretch="Fill" Opacity="0.7" />
+            </Border.Background>
             <Border.BorderBrush>
                 <ImageBrush Source="avares://E33Randomizer/Assets/Images/TallBar.png" Stretch="Fill">
                     <ImageBrush.Transform>
