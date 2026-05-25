@@ -1,6 +1,6 @@
 using Avalonia.Controls;
 
-namespace E33Randomizer.UIControls;
+namespace E33Randomizer;
 
 public partial class MessageDialog : Window
 {

@@ -2,7 +2,7 @@ using Avalonia.Controls;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
-namespace E33Randomizer.UIControls;
+namespace E33Randomizer;
 
 public partial class MessageDialogViewModel : ObservableObject
 {
