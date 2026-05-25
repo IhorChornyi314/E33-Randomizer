@@ -1,5 +1,7 @@
 ﻿using AutoFixture;
 using E33Randomizer;
+using E33Randomizer.CustomPlacements;
+using E33Randomizer.RadomizationLogic;
 using FluentAssertions;
 using NUnit.Framework;
 using Tests.Rules;

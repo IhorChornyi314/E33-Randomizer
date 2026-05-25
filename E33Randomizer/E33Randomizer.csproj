@@ -38,5 +38,15 @@
     <ItemGroup>
         <Content Include="Data\**" CopyToPublishDirectory="PreserveNewest" />
     </ItemGroup>
+    <ItemGroup>
+      <Compile Update="CustomPlacements\CustomPlacementWindow.axaml.cs">
+        <DependentUpon>CustomPlacementWindow.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="UIControls\MessageDialog.axaml.cs">
+        <DependentUpon>MessageDialog.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+    </ItemGroup>
 
 </Project>

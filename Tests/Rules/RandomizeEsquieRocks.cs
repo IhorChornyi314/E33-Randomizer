@@ -1,4 +1,4 @@
-﻿using E33Randomizer;
+﻿using E33Randomizer.RadomizationLogic;
 using Newtonsoft.Json;
 
 namespace Tests.Rules;

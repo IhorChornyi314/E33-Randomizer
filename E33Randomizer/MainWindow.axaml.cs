@@ -7,6 +7,8 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Platform.Storage;
 using CommunityToolkit.Mvvm.ComponentModel;
+using E33Randomizer.RadomizationLogic;
+using E33Randomizer.UIControls;
 
 namespace E33Randomizer;
 
@@ -15,14 +17,14 @@ namespace E33Randomizer;
 /// </summary>
 public partial class MainWindow : Window
 {
-    private CustomPlacementWindow _customEnemyPlacementWindow;
+    private CustomPlacements.CustomPlacementWindow _customEnemyPlacementWindow;
     private EditIndividualContainersWindow _editIndividualEncountersWindow;
 
-    private CustomPlacementWindow _customItemPlacementWindow;
+    private CustomPlacements.CustomPlacementWindow _customItemPlacementWindow;
     private EditIndividualContainersWindow _editIndividualChecksWindow;
     
     private readonly Dictionary<string, EditIndividualContainersWindow?> _editIndividualContainersWindows = new ();
-    private readonly Dictionary<string, CustomPlacementWindow?> _customPlacementWindows = new ();
+    private readonly Dictionary<string, CustomPlacements.CustomPlacementWindow?> _customPlacementWindows = new ();
 
     public MainWindow()
     {
@@ -55,9 +57,9 @@ public partial class MainWindow : Window
             var objectType = (sender as Button)?.Tag?.ToString();
             if (objectType is null) return;
         
-            if (!_customPlacementWindows.TryGetValue(objectType, out CustomPlacementWindow? value) || value == null)
+            if (!_customPlacementWindows.TryGetValue(objectType, out CustomPlacements.CustomPlacementWindow? value) || value == null)
             {
-                value = new CustomPlacementWindow(RandomizerLogic.GetCustomPlacement(objectType));
+                value = new CustomPlacements.CustomPlacementWindow(RandomizerLogic.GetCustomPlacement(objectType));
                 _customPlacementWindows[objectType] = value;
             
                 _customPlacementWindows[objectType]!.Closed += (_, _) => _customPlacementWindows[objectType] = null;

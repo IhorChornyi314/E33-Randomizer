@@ -1,6 +1,8 @@
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using E33Randomizer.CustomPlacements;
+using E33Randomizer.ObjectDatum;
 
 namespace E33Randomizer;
 
@@ -23,7 +25,7 @@ namespace E33Randomizer;
 [JsonSerializable(typeof(List<SkillData>))]
 [JsonSerializable(typeof(List<SpawnPointData>))]
 [JsonSerializable(typeof(List<ObjectData>))]
-[JsonSerializable(typeof(CustomPlacementWindowViewModel))]
+[JsonSerializable(typeof(CustomPlacements.CustomPlacementWindowViewModel))]
 [JsonSerializable(typeof(Dictionary<string, List<string>>))]
 [JsonSerializable(typeof(Dictionary<string, Dictionary<string, List<int>>>))]
 [JsonSerializable(typeof(Dictionary<string, string>))]

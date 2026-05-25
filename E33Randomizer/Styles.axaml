@@ -37,7 +37,7 @@
                         Padding="0 0 0 15"
                         VerticalAlignment="Center" />
                 </Grid>
-                <uiControls:SubSection Header="Test">
+                <uiControls:SubSection Header="Test" ToolTipContent="This is a tooltip content block" ToolTipHeader="This is a tooltip">
                     <TextBlock Text="Value"/>
                 </uiControls:SubSection>
             </StackPanel>

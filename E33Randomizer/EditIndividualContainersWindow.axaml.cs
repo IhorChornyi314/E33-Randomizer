@@ -7,6 +7,9 @@ using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Platform.Storage;
 using Avalonia.VisualTree;
+using E33Randomizer.ObjectDatum;
+using E33Randomizer.RadomizationLogic;
+using E33Randomizer.UIControls;
 
 namespace E33Randomizer
 {

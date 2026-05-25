@@ -1,5 +1,5 @@
-﻿using E33Randomizer;
-using E33Randomizer.ItemSources;
+﻿using E33Randomizer.ItemSources;
+using E33Randomizer.RadomizationLogic;
 
 namespace Tests.Rules;
 

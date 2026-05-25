@@ -1,6 +1,4 @@
-﻿using FluentAssertions;
-
-namespace Tests;
+﻿namespace Tests;
 
 public static class CustomPlacementTestLogic
 {

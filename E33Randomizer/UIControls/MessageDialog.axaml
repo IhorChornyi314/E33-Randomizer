@@ -1,0 +1,20 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:uiControls="clr-namespace:E33Randomizer.UIControls"
+        x:Class="E33Randomizer.UIControls.MessageDialog"
+        Title="Confirm"
+        Width="400" Height="200"
+        WindowStartupLocation="CenterOwner"
+        CanResize="True"
+        ShowInTaskbar="False">
+    <Grid RowDefinitions="*,Auto" Margin="20" x:DataType="uiControls:MessageDialogViewModel">
+        <TextBlock Grid.Row="0" Text="{Binding Message, Mode=OneTime}"
+                   TextWrapping="Wrap" VerticalAlignment="Center" />
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal"
+                    HorizontalAlignment="Right" Spacing="8">
+            <Button Content="Cancel" Command="{Binding CancelCommand}" />
+            <Button Content="OK" Command="{Binding ConfirmCommand}" />
+        </StackPanel>
+    </Grid>
+</Window>

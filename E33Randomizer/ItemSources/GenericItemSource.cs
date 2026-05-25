@@ -1,4 +1,6 @@
-﻿using UAssetAPI;
+﻿using E33Randomizer.ObjectDatum;
+using E33Randomizer.RadomizationLogic;
+using UAssetAPI;
 using UAssetAPI.UnrealTypes;
 
 namespace E33Randomizer.ItemSources;
