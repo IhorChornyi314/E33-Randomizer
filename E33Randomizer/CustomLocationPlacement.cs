@@ -8,7 +8,8 @@ public class CustomLocationPlacement: CustomPlacement
         CatchAllName = "Anything";
         CategoryOrder = new List<string>
         {
-            "World Map Locations",  "Act I Locations",  "Act II Locations",  "Act III Locations",  "Side Locations",  
+            "World Map Locations", "Act I World Map Locations", "Act II World Map Locations", "Act III World Map Locations",  
+            "Act I Locations",  "Act II Locations",  "Act III Locations",  "Side Locations",  
             "Fixed-Camera Locations",  "Anything"
         };
         
@@ -35,6 +36,9 @@ public class CustomLocationPlacement: CustomPlacement
             { "Act I Locations", new Dictionary<string, float> { { "Act I Locations", 1 } } },
             { "Act II Locations", new Dictionary<string, float> { { "Act II Locations", 1 } } },
             { "Act III Locations", new Dictionary<string, float> { { "Act III Locations", 1 } } },
+            { "Act I World Map Locations", new Dictionary<string, float> { { "Act I World Map Locations", 1 } } },
+            { "Act II World Map Locations", new Dictionary<string, float> { { "Act II World Map Locations", 1 } } },
+            { "Act III World Map Locations", new Dictionary<string, float> { { "Act III World Map Locations", 1 } } },
         };
         FrequencyAdjustments = new Dictionary<string, float>();
         FinalReplacementFrequencies = new Dictionary<string, Dictionary<string, float>>();
