@@ -1700,14 +1700,16 @@
     "CustomName": "Monoco's Station - Old Lumiere Entrance",
     "LevelAsset": "Level_MonocoStation",
     "LevelScaling": 25,
-    "UnconditionalConnections": [
-      "Level.SpawnPoint.MonocoStation.EntryForgotten",
-      "Level.SpawnPoint.MonocoStation.EntryFrozenHearts",
-      "Level.SpawnPoint.MonocoStation.FrozenHearts",
-      "Level.SpawnPoint.MonocoStation.IceCorridor",
-      "Level.SpawnPoint.MonocoStation.InsideStation"
-    ],
-    "ConditionalConnections": {},
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.MonocoAcquired": [
+        "Level.SpawnPoint.MonocoStation.EntryForgotten",
+        "Level.SpawnPoint.MonocoStation.EntryFrozenHearts",
+        "Level.SpawnPoint.MonocoStation.FrozenHearts",
+        "Level.SpawnPoint.MonocoStation.IceCorridor",
+        "Level.SpawnPoint.MonocoStation.InsideStation"
+      ]
+    },
     "PortalConnection": "Level.SpawnPoint.WorldMap.MonocoStationEntryOldLumiere",
     "Keys": []
   },
@@ -2382,18 +2384,19 @@
     "UnconditionalConnections": [
       "Level.SpawnPoint.SeaCliff.Caves",
       "Level.SpawnPoint.SeaCliff.Entry",
-      "Level.SpawnPoint.SeaCliff.Exit",
       "Level.SpawnPoint.SeaCliff.FloodedBuildings",
       "Level.SpawnPoint.SeaCliff.ManorDoor",
       "Level.SpawnPoint.SeaCliff.PaintressShrine",
       "Level.SpawnPoint.SeaCliff.Village",
       "Level.SpawnPoint.SeaCliff.ZeppelinEntry"
     ],
-    "ConditionalConnections": {},
-    "PortalConnection": "",
-    "Keys": [
-      "EsquieAbility.Swim"
-    ]
+    "ConditionalConnections": {
+      "EsquieAbility.Swim": [
+        "Level.SpawnPoint.SeaCliff.Exit"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.WorldMap.PostSeaCliffForcedCamp",
+    "Keys": []
   },
   {
     "CodeName": "Level.SpawnPoint.SeaCliff.Caves",
@@ -2403,14 +2406,16 @@
     "UnconditionalConnections": [
       "Level.SpawnPoint.SeaCliff.BasaltWaves",
       "Level.SpawnPoint.SeaCliff.Entry",
-      "Level.SpawnPoint.SeaCliff.Exit",
       "Level.SpawnPoint.SeaCliff.FloodedBuildings",
       "Level.SpawnPoint.SeaCliff.ManorDoor",
       "Level.SpawnPoint.SeaCliff.PaintressShrine",
       "Level.SpawnPoint.SeaCliff.Village",
       "Level.SpawnPoint.SeaCliff.ZeppelinEntry"
     ],
-    "ConditionalConnections": {},
+    "ConditionalConnections": {
+      "EsquieAbility.Swim": [
+        "Level.SpawnPoint.SeaCliff.Exit"
+      ]},
     "PortalConnection": "",
     "Keys": []
   },
@@ -2422,14 +2427,16 @@
     "UnconditionalConnections": [
       "Level.SpawnPoint.SeaCliff.BasaltWaves",
       "Level.SpawnPoint.SeaCliff.Caves",
-      "Level.SpawnPoint.SeaCliff.Exit",
       "Level.SpawnPoint.SeaCliff.FloodedBuildings",
       "Level.SpawnPoint.SeaCliff.ManorDoor",
       "Level.SpawnPoint.SeaCliff.PaintressShrine",
       "Level.SpawnPoint.SeaCliff.Village",
       "Level.SpawnPoint.SeaCliff.ZeppelinEntry"
     ],
-    "ConditionalConnections": {},
+    "ConditionalConnections": {
+      "EsquieAbility.Swim": [
+        "Level.SpawnPoint.SeaCliff.Exit"
+      ]},
     "PortalConnection": "Level.SpawnPoint.WorldMap.SeaCliffEntry",
     "Keys": []
   },
@@ -2448,7 +2455,10 @@
       "Level.SpawnPoint.SeaCliff.Village",
       "Level.SpawnPoint.SeaCliff.ZeppelinEntry"
     ],
-    "ConditionalConnections": {},
+    "ConditionalConnections": {
+      "EsquieAbility.Swim": [
+        "Level.SpawnPoint.SeaCliff.Exit"
+      ]},
     "PortalConnection": "Level.SpawnPoint.WorldMap.SeaCliffExit",
     "Keys": []
   },
@@ -2461,13 +2471,15 @@
       "Level.SpawnPoint.SeaCliff.BasaltWaves",
       "Level.SpawnPoint.SeaCliff.Caves",
       "Level.SpawnPoint.SeaCliff.Entry",
-      "Level.SpawnPoint.SeaCliff.Exit",
       "Level.SpawnPoint.SeaCliff.ManorDoor",
       "Level.SpawnPoint.SeaCliff.PaintressShrine",
       "Level.SpawnPoint.SeaCliff.Village",
       "Level.SpawnPoint.SeaCliff.ZeppelinEntry"
     ],
-    "ConditionalConnections": {},
+    "ConditionalConnections": {
+      "EsquieAbility.Swim": [
+        "Level.SpawnPoint.SeaCliff.Exit"
+      ]},
     "PortalConnection": "",
     "Keys": []
   },
@@ -2480,13 +2492,15 @@
       "Level.SpawnPoint.SeaCliff.BasaltWaves",
       "Level.SpawnPoint.SeaCliff.Caves",
       "Level.SpawnPoint.SeaCliff.Entry",
-      "Level.SpawnPoint.SeaCliff.Exit",
       "Level.SpawnPoint.SeaCliff.FloodedBuildings",
       "Level.SpawnPoint.SeaCliff.PaintressShrine",
       "Level.SpawnPoint.SeaCliff.Village",
       "Level.SpawnPoint.SeaCliff.ZeppelinEntry"
     ],
-    "ConditionalConnections": {},
+    "ConditionalConnections": {
+      "EsquieAbility.Swim": [
+        "Level.SpawnPoint.SeaCliff.Exit"
+      ]},
     "PortalConnection": "",
     "Keys": []
   },
@@ -2499,13 +2513,15 @@
       "Level.SpawnPoint.SeaCliff.BasaltWaves",
       "Level.SpawnPoint.SeaCliff.Caves",
       "Level.SpawnPoint.SeaCliff.Entry",
-      "Level.SpawnPoint.SeaCliff.Exit",
       "Level.SpawnPoint.SeaCliff.FloodedBuildings",
       "Level.SpawnPoint.SeaCliff.ManorDoor",
       "Level.SpawnPoint.SeaCliff.Village",
       "Level.SpawnPoint.SeaCliff.ZeppelinEntry"
     ],
-    "ConditionalConnections": {},
+    "ConditionalConnections": {
+      "EsquieAbility.Swim": [
+        "Level.SpawnPoint.SeaCliff.Exit"
+      ]},
     "PortalConnection": "",
     "Keys": []
   },
@@ -2518,13 +2534,15 @@
       "Level.SpawnPoint.SeaCliff.BasaltWaves",
       "Level.SpawnPoint.SeaCliff.Caves",
       "Level.SpawnPoint.SeaCliff.Entry",
-      "Level.SpawnPoint.SeaCliff.Exit",
       "Level.SpawnPoint.SeaCliff.FloodedBuildings",
       "Level.SpawnPoint.SeaCliff.ManorDoor",
       "Level.SpawnPoint.SeaCliff.PaintressShrine",
       "Level.SpawnPoint.SeaCliff.ZeppelinEntry"
     ],
-    "ConditionalConnections": {},
+    "ConditionalConnections": {
+      "EsquieAbility.Swim": [
+        "Level.SpawnPoint.SeaCliff.Exit"
+      ]},
     "PortalConnection": "",
     "Keys": []
   },
@@ -2537,13 +2555,15 @@
       "Level.SpawnPoint.SeaCliff.BasaltWaves",
       "Level.SpawnPoint.SeaCliff.Caves",
       "Level.SpawnPoint.SeaCliff.Entry",
-      "Level.SpawnPoint.SeaCliff.Exit",
       "Level.SpawnPoint.SeaCliff.FloodedBuildings",
       "Level.SpawnPoint.SeaCliff.ManorDoor",
       "Level.SpawnPoint.SeaCliff.PaintressShrine",
       "Level.SpawnPoint.SeaCliff.Village"
     ],
-    "ConditionalConnections": {},
+    "ConditionalConnections": {
+      "EsquieAbility.Swim": [
+        "Level.SpawnPoint.SeaCliff.Exit"
+      ]},
     "PortalConnection": "",
     "Keys": []
   },
@@ -2762,7 +2782,9 @@
     ],
     "ConditionalConnections": {},
     "PortalConnection": "",
-    "Keys": []
+    "Keys": [
+      "Story.PostSpringMeadowsCamp"
+    ]
   },
   {
     "CodeName": "Level.SpawnPoint.SpringMeadows.Entry",
@@ -3357,10 +3379,12 @@
     "LevelAsset": "Level_WorldMap_Main_V2",
     "LevelScaling": 1,
     "UnconditionalConnections": [
-      "Level.SpawnPoint.WorldMap.SpringMeadowsEntry",
-      "Level.SpawnPoint.WorldMap.GobluEntry"
+      "Level.SpawnPoint.WorldMap.SpringMeadowsEntry"
     ],
     "ConditionalConnections": {
+      "Story.PostSpringMeadowsCamp": [
+        "Level.SpawnPoint.WorldMap.GobluEntry"
+      ],
       "Shortcut.PostGO": [
         "Special.WM.PostGO"
       ],
@@ -4238,17 +4262,22 @@
   },
   {
     "CodeName": "Level.SpawnPoint.WorldMap.PostSeaCliffForcedCamp",
-    "CustomName": "World Map - Post Sea Cliff Forced Camp Entry",
+    "CustomName": "World Map - Post Sea Cliff Forced Camp",
     "LevelAsset": "Level_WorldMap_Main_V2",
     "LevelScaling": 1,
     "UnconditionalConnections": [],
     "ConditionalConnections": {
+      "EsquieAbility.Swim": [
+        "Special.WM.SeaSouth"
+      ],
       "Story.Act3Reached": [
         "Special.WM.Fly"
       ]
     },
     "PortalConnection": "",
-    "Keys": []
+    "Keys": [
+      "EsquieAbility.Swim"
+    ]
   },
   {
     "CodeName": "Level.SpawnPoint.WorldMap.ReacherCliff",
@@ -4459,10 +4488,12 @@
     "LevelAsset": "Level_WorldMap_Main_V2",
     "LevelScaling": 1,
     "UnconditionalConnections": [
-      "Level.SpawnPoint.WorldMap.AbbestCaveEntry",
-      "Level.SpawnPoint.WorldMap.GobluEntry"
+      "Level.SpawnPoint.WorldMap.AbbestCaveEntry"
     ],
     "ConditionalConnections": {
+      "Story.PostSpringMeadowsCamp": [
+        "Level.SpawnPoint.WorldMap.GobluEntry"
+      ],
       "Story.Act3Reached": [
         "Special.WM.Fly"
       ]
