@@ -99,8 +99,7 @@
 
                             <!-- Not Randomized Object Selection -->
                             <uiControls:SubSection Grid.Column="0" Width="400" xml:space="preserve"
-                                                   Header="{x:Static lang:Resources.CustomPlacement_Header_NotRandomized}"
-                                                   ToolTipHeader="{x:Static lang:Resources.ToolTip_Header_HowItWorks}">
+                                                   Header="{x:Static lang:Resources.CustomPlacement_Header_NotRandomized}">
                                 <uiControls:SubSection.ToolTipContent>
                                     <MultiBinding Converter="{StaticResource ResourceLookupConverter}">
                                         <Binding Path="EntityType" />
@@ -142,7 +141,6 @@
                             <uiControls:SubSection Grid.Column="1"
                                                    Header="{x:Static lang:Resources.CustomPlacement_Header_Excluded}"
                                                    Width="400"
-                                                   ToolTipHeader="{x:Static lang:Resources.ToolTip_Header_HowItWorks}"
                                                    xml:space="preserve">
                                 <uiControls:SubSection.ToolTipContent>
                                     <MultiBinding Converter="{StaticResource ResourceLookupConverter}">
@@ -190,8 +188,7 @@
                             <uiControls:SubSection Grid.Column="0"
                                                    Header="{x:Static lang:Resources.CustomPlacement_Header_SelectCategory}"
                                                    Margin="0,0,5,0"
-                                                   Width="400"
-                                                   ToolTipHeader="{x:Static lang:Resources.ToolTip_Header_HowItWorks}">
+                                                   Width="400">
                                 <uiControls:SubSection.ToolTipContent>
 
                                     <MultiBinding Converter="{StaticResource ResourceLookupConverter}">
@@ -297,8 +294,7 @@
                     </TabItem>
                     <TabItem Header="{x:Static lang:Resources.CustomPlacement_TabItem_FrequencyAdjustments}">
                         <uiControls:SubSection Width="500"
-                                               Header="{x:Static lang:Resources.CustomPlacement_Header_Adjustments}"
-                                               ToolTipHeader="{x:Static lang:Resources.ToolTip_Header_HowItWorks}">
+                                               Header="{x:Static lang:Resources.CustomPlacement_Header_Adjustments}">
                             <uiControls:SubSection.ToolTipContent>
                                 <MultiBinding Converter="{StaticResource ResourceLookupConverter}">
                                     <Binding Path="EntityType" />

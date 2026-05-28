@@ -1,12 +1,15 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:uiControls="clr-namespace:E33Randomizer.UIControls">
+                    xmlns:uiControls="clr-namespace:E33Randomizer.UIControls"
+                    xmlns:lang="clr-namespace:E33Randomizer.Assets">
   <Design.PreviewWith>
     <uiControls:SubSection Header="Header!" Padding="10" Margin="10" Width="500" ToolTipContent="This is help!" ToolTipHeader="What Is This?">
       <TextBlock Text="Hello World" Height="500" />
     </uiControls:SubSection>
   </Design.PreviewWith>
   <ControlTheme x:Key="{x:Type uiControls:SubSection}" TargetType="uiControls:SubSection">
+    <Setter Property="ToolTipHeader" Value="{x:Static lang:Resources.ToolTip_Header_HowItWorks}" />
+    
     <Setter Property="Template">
       <ControlTemplate>
           <Grid HorizontalAlignment="Center"
@@ -56,11 +59,7 @@
                                 HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                                 VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
               <PathIcon 
-                Margin="10 0 0 0"
-                Width="13"
-                VerticalAlignment="Top"
-                Foreground="#a6c7fe"
-                Data="{StaticResource question_circle_regular}"
+                Classes="tooltip"
                 IsVisible="{TemplateBinding ToolTipContent, Converter={x:Static ObjectConverters.IsNotNull}}">
                 <ToolTip.Tip>
                   <uiControls:HeaderToolTip Header="{TemplateBinding ToolTipHeader}" Content="{TemplateBinding ToolTipContent}" />

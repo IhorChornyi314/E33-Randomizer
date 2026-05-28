@@ -45,33 +45,119 @@
     <data name="Terminology_MerchantUnlocks" xml:space="preserve">
         <value>Merchant unlocks: Most merchants in the game have some items they are only willing to sell after you’ve defeated them in battle. Internally, this works by checking whether you have a hidden item that drops from the merchant enemy. These items are called Merchant Unlocks and are a separate category, not randomized by default. </value>
     </data>
-    <data name="Main_RandomizeEnemies" xml:space="preserve">
-        <value>Randomize enemies: Whether or not the enemies are randomized.</value>
+    
+    <!-- RandomizeEnemiesTab -->
+    <data name="Randomize_Enemies_RandomizeEnemies" xml:space="preserve">
+        <value>Randomize enemies</value>
     </data>
-    <data name="Main_RandomizeEncounterSizes" xml:space="preserve">
-        <value>Randomize encounter sizes: This allows you to override whatever the base number of enemies in an encounter is. As an example, if you select 1 and 3 but not 2, it will make it so that regardless of initial encounter size, it will become either 1 or 3.</value>
+    <data name="Randomize_Enemies_Tooltip_RandomizeEnemies" xml:space="preserve">
+        <value>Whether or not the enemies are randomized.</value>
     </data>
-    <data name="Main_ChangeSizeOfEncounters" xml:space="preserve">
-        <value>Change size of encounters that don’t contain randomized enemies: If Randomize encounter sizes option is turned on, this will allow you to only change the size of the encounters that you want to randomize. For example, if you want to randomize most of the encounters, but don’t want to change the tutorial Maelle fight, keep this option unchecked to not add any more enemies to the encounter.</value>
+    
+    <data name="Randomize_Enemies_RandomizeEncounterSizes" xml:space="preserve">
+        <value>Randomize encounter sizes</value>
     </data>
-    <data name="Main_RandomizeMerchantFights" xml:space="preserve">
-        <value>Randomize merchant fights: This allows you to control whether the “Fight the Merchant” encounters are at all randomized. This affects the whole encounter, not just the merchant enemy itself.</value>
+    <data name="Randomize_Enemies_Tooltip_RandomizeEncounterSizes" xml:space="preserve">
+        <value>This allows you to override whatever the base number of enemies in an encounter is. As an example, if you select 1 and 3 but not 2, it will make it so that regardless of initial encounter size, it will become either 1 or 3.</value>
     </data>
-    <data name="Main_IncludeCutContent" xml:space="preserve">
-        <value>Include cut content: The game files actually contain a lot of fully-functional cut content enemies, so turning this on will enable you to fight them. It should be noted that while I tried my best to exclude any enemies that completely break the game or make it crash, it is always a risk when dealing with cut content. If anything goes wrong, please use the “Edit Individual Encounter” window to replace them with something that works. Also, be careful when parrying any cut content enemies, but especially Gestral Bullies and Dragoons, as it may cause their AI to freeze.</value>
+
+    <data name="Randomize_Enemies_ChangeSizeOfEncounters" xml:space="preserve">
+        <value>Randomize size of encounters that don't contain randomized enemies.</value>
     </data>
-    <data name="Main_EnableEnemyOnslaught" xml:space="preserve">
-        <value>Enable enemy onslaught: This option allows you to add up to 99 additional enemies to every encounter. The game actually has full support for 4-enemy encounters, but anything beyond that will just place all the other enemies in a single spot outside the fighting arena. They will still be able to deal and take damage, but their attacks will not be visible, and you won’t be able to shoot them in free aim. If you choose not to randomize additional enemies, they will just repeat until the set number is reached. Otherwise, they will get randomized after being copied, which makes it so that the new enemies use the same rules as the starting ones.</value>
+    <data name="Randomize_Enemies_Tooltip_ChangeSizeOfEncounters" xml:space="preserve">
+        <value>If Randomize encounter sizes option is turned on, this will allow you to only change the size of the encounters that you want to randomize. For example, if you want to randomize most of the encounters, but don’t want to change the tutorial Maelle fight, keep this option unchecked to not add any more enemies to the encounter.</value>
     </data>
-    <data name="Main_EnsureEncountersAtLeastOne" xml:space="preserve">
-        <value>Ensure that boss encounters have at least one boss: This option makes it so that the encounters that contained a boss enemy in the base game will still contain at least one boss enemy after randomizing. This rule is applied after the initial randomization and ignores Custom Enemy Placement rules.</value>
+
+
+    <data name="Randomize_Enemies_RandomizeMerchantFights" xml:space="preserve">
+        <value>Randomize merchant fights</value>
     </data>
-    <data name="Main_ReduceBossRepetition" xml:space="preserve">
-        <value>Reduce boss repetition: This option makes it so that whenever a boss enemy is rolled, it is taken from a shuffled pool of bosses rather than completely randomly. This rule is applied after the initial randomization and ignores Custom Enemy Placement rules.</value>
+    <data name="Randomize_Enemies_Tooltip_RandomizeMerchantFights" xml:space="preserve">
+        <value>This allows you to control whether the “Fight the Merchant” encounters are at all randomized. This affects the whole encounter, not just the merchant enemy itself.</value>
     </data>
-    <data name="Main_ReplacePhase2Simon" xml:space="preserve">
-        <value>Replace Phase 2 Simon with Phase 1 in mandatory fights until after the Lune tutorial fight: As Phase 2 Simon has a unique property of wiping your whole party with no counterplay, as well as six times more health than a regular boss would have in his place, this option ensures that you can theoretically beat the game in NG with 99 Simons in all encounters. Enemies like Clea or Bourgeon can also block your progress, so feel free to use the “Edit Individual Encounter” window to replace them.</value>
+    <data name="Randomize_Enemies_RandomizeMerchantFights_Note" xml:space="preserve">
+        <value>Merchants' special wares unlocks and Maelle's paintress skills are considered loot drops. It is recommended that you only disable this if you are also running an item randomizer.</value>
     </data>
+
+    <data name="Randomize_Enemies_IncludeCutContent" xml:space="preserve">
+        <value>Include cut content (gets overriden by custom placement)</value>
+    </data>
+    <data name="Randomize_Enemies_Tooltip_IncludeCutContent" xml:space="preserve">
+        <value>The game files actually contain a lot of fully-functional cut content enemies, so turning this on will enable you to fight them. It should be noted that while I tried my best to exclude any enemies that completely break the game or make it crash, it is always a risk when dealing with cut content. If anything goes wrong, please use the “Edit Individual Encounter” window to replace them with something that works. Also, be careful when parrying any cut content enemies, but especially Gestral Bullies and Dragoons, as it may cause their AI to freeze.</value>
+    </data>
+    <data name="Randomize_Enemies_IncludeCutContent_Note" xml:space="preserve">
+        <value>Be careful when parrying cut content enemies, as it can break their AI. You can replace broken enemies in Edit Encounters window.</value>
+    </data>
+
+    <data name="Randomize_Enemies_EnableEnemyOnslaught" xml:space="preserve">
+        <value>Enable enemy onslaught</value>
+    </data>
+    <data name="Randomize_Enemies_Tooltip_EnableEnemyOnslaught" xml:space="preserve">
+        <value>This option allows you to add up to 99 additional enemies to every encounter. The game actually has full support for 4-enemy encounters, but anything beyond that will just place all the other enemies in a single spot outside the fighting arena. They will still be able to deal and take damage, but their attacks will not be visible, and you won’t be able to shoot them in free aim. If you choose not to randomize additional enemies, they will just repeat until the set number is reached. Otherwise, they will get randomized after being copied, which makes it so that the new enemies use the same rules as the starting ones.</value>
+    </data>
+    <data name="Randomize_Enemies_EnableEnemyOnslaught_Note" xml:space="preserve">
+        <value>The game has full support for 4 enemies, but the 5th and beyond gets lumped into a single spot outside the fighting arena. They will still function properly except that you won't be able to see their attacks or shoot them.</value>
+    </data>
+    <data name="Randomize_Enemies_EnableEnemyOnslaught_RandomizeAddedEnemies" xml:space="preserve">
+        <value>Randomize added enemies</value>
+    </data>
+    <data name="Randomize_Enemies_EnableEnemyOnslaught_NumbeOfAdditionalEnemies" xml:space="preserve">
+        <value>Number of additional enemies:</value>
+    </data>
+    <data name="Randomize_Enemies_EnableEnemyOnslaught_CapEncounterSizesAt" xml:space="preserve">
+        <value>Cap encounter size at:</value>
+    </data>
+
+    <data name="Randomize_Enemies_EnsureEncountersAtLeastOne" xml:space="preserve">
+        <value>Ensure that boss encounters have at least one boss</value>
+    </data>
+    <data name="Randomize_Enemies_Tooltip_EnsureEncountersAtLeastOne" xml:space="preserve">
+        <value>This option makes it so that the encounters that contained a boss enemy in the base game will still contain at least one boss enemy after randomizing. This rule is applied after the initial randomization and ignores Custom Enemy Placement rules.</value>
+    </data>
+
+    <data name="Randomize_Enemies_ReduceBossRepetition" xml:space="preserve">
+        <value>Reduce boss repetition (ignores frequency adjustments)</value>
+    </data>
+    <data name="Randomize_Enemies_Tooltip_ReduceBossRepetition" xml:space="preserve">
+        <value>This option makes it so that whenever a boss enemy is rolled, it is taken from a shuffled pool of bosses rather than completely randomly. This rule is applied after the initial randomization and ignores Custom Enemy Placement rules.</value>
+    </data>
+
+    <data name="Randomize_Enemies_ReplacePhase2Simon" xml:space="preserve">
+        <value>Replace Phase 2 Simon with Phase 1 in mandatory fights until after the Lune tutorial fight</value>
+    </data>
+    <data name="Randomize_Enemies_Tooltip_ReplacePhase2Simon" xml:space="preserve">
+        <value>As Phase 2 Simon has a unique property of wiping your whole party with no counterplay, as well as six times more health than a regular boss would have in his place, this option ensures that you can theoretically beat the game in NG with 99 Simons in all encounters. Enemies like Clea or Bourgeon can also block your progress, so feel free to use the “Edit Individual Encounter” window to replace them.</value>
+    </data>
+    <data name="Randomize_Enemies_Tooltip_ReplacePhase2SimonUntilAfter" xml:space="preserve">
+        <value>Replace Phase 2 Simon with Phase 1 in mandatory fights until after:</value>
+    </data>
+    <data name="Randomize_Enemies_Tooltip_ReplacePhase2SimonUntilAfter_Lune" xml:space="preserve">
+        <value>Lune</value>
+    </data>
+    <data name="Randomize_Enemies_Tooltip_ReplacePhase2SimonUntilAfter_Eveque" xml:space="preserve">
+        <value>Eveque</value>
+    </data>
+    <data name="Randomize_Enemies_Tooltip_ReplacePhase2SimonUntilAfter_Goblu" xml:space="preserve">
+        <value>Goblu</value>
+    </data>
+    <data name="Randomize_Enemies_Tooltip_ReplacePhase2SimonUntilAfter_UltimateSakapatate" xml:space="preserve">
+        <value>Ultimate Sakapatate</value>
+    </data>
+    <data name="Randomize_Enemies_Tooltip_ReplacePhase2SimonUntilAfter_GestralTournament" xml:space="preserve">
+        <value>Gestral Tournament</value>
+    </data>
+    <data name="Randomize_Enemies_Tooltip_ReplacePhase2SimonUntilAfter_Never" xml:space="preserve">
+        <value>Never</value>
+    </data>
+
+    <data name="Randomize_Enemies_Button_EditEnemyPlacements" xml:space="preserve">
+        <value>Edit Enemy Placements</value>
+    </data>
+    <data name="Randomize_Enemies_Button_EditIndividualEncounters" xml:space="preserve">
+        <value>Edit Individual Encounters</value>
+    </data>
+    <!-- Main -->
+
     <data name="Main_RandomizeItems" xml:space="preserve">
         <value>Randomize items: Whether or not the items are randomized.</value>
     </data>

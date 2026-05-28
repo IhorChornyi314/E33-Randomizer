@@ -99,57 +99,201 @@ namespace E33Randomizer.Assets {
             }
         }
         
-        public static string Main_RandomizeEnemies {
+        public static string Randomize_Enemies_RandomizeEnemies {
             get {
-                return ResourceManager.GetString("Main_RandomizeEnemies", resourceCulture);
+                return ResourceManager.GetString("Randomize_Enemies_RandomizeEnemies", resourceCulture);
             }
         }
         
-        public static string Main_RandomizeEncounterSizes {
+        public static string Randomize_Enemies_Tooltip_RandomizeEnemies {
             get {
-                return ResourceManager.GetString("Main_RandomizeEncounterSizes", resourceCulture);
+                return ResourceManager.GetString("Randomize_Enemies_Tooltip_RandomizeEnemies", resourceCulture);
             }
         }
         
-        public static string Main_ChangeSizeOfEncounters {
+        public static string Randomize_Enemies_RandomizeEncounterSizes {
             get {
-                return ResourceManager.GetString("Main_ChangeSizeOfEncounters", resourceCulture);
+                return ResourceManager.GetString("Randomize_Enemies_RandomizeEncounterSizes", resourceCulture);
             }
         }
         
-        public static string Main_RandomizeMerchantFights {
+        public static string Randomize_Enemies_Tooltip_RandomizeEncounterSizes {
             get {
-                return ResourceManager.GetString("Main_RandomizeMerchantFights", resourceCulture);
+                return ResourceManager.GetString("Randomize_Enemies_Tooltip_RandomizeEncounterSizes", resourceCulture);
             }
         }
         
-        public static string Main_IncludeCutContent {
+        public static string Randomize_Enemies_ChangeSizeOfEncounters {
             get {
-                return ResourceManager.GetString("Main_IncludeCutContent", resourceCulture);
+                return ResourceManager.GetString("Randomize_Enemies_ChangeSizeOfEncounters", resourceCulture);
             }
         }
         
-        public static string Main_EnableEnemyOnslaught {
+        public static string Randomize_Enemies_Tooltip_ChangeSizeOfEncounters {
             get {
-                return ResourceManager.GetString("Main_EnableEnemyOnslaught", resourceCulture);
+                return ResourceManager.GetString("Randomize_Enemies_Tooltip_ChangeSizeOfEncounters", resourceCulture);
             }
         }
         
-        public static string Main_EnsureEncountersAtLeastOne {
+        public static string Randomize_Enemies_RandomizeMerchantFights {
             get {
-                return ResourceManager.GetString("Main_EnsureEncountersAtLeastOne", resourceCulture);
+                return ResourceManager.GetString("Randomize_Enemies_RandomizeMerchantFights", resourceCulture);
             }
         }
         
-        public static string Main_ReduceBossRepetition {
+        public static string Randomize_Enemies_Tooltip_RandomizeMerchantFights {
             get {
-                return ResourceManager.GetString("Main_ReduceBossRepetition", resourceCulture);
+                return ResourceManager.GetString("Randomize_Enemies_Tooltip_RandomizeMerchantFights", resourceCulture);
             }
         }
         
-        public static string Main_ReplacePhase2Simon {
+        public static string Randomize_Enemies_RandomizeMerchantFights_Note {
             get {
-                return ResourceManager.GetString("Main_ReplacePhase2Simon", resourceCulture);
+                return ResourceManager.GetString("Randomize_Enemies_RandomizeMerchantFights_Note", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Enemies_IncludeCutContent {
+            get {
+                return ResourceManager.GetString("Randomize_Enemies_IncludeCutContent", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Enemies_Tooltip_IncludeCutContent {
+            get {
+                return ResourceManager.GetString("Randomize_Enemies_Tooltip_IncludeCutContent", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Enemies_IncludeCutContent_Note {
+            get {
+                return ResourceManager.GetString("Randomize_Enemies_IncludeCutContent_Note", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Enemies_EnableEnemyOnslaught {
+            get {
+                return ResourceManager.GetString("Randomize_Enemies_EnableEnemyOnslaught", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Enemies_Tooltip_EnableEnemyOnslaught {
+            get {
+                return ResourceManager.GetString("Randomize_Enemies_Tooltip_EnableEnemyOnslaught", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Enemies_EnableEnemyOnslaught_Note {
+            get {
+                return ResourceManager.GetString("Randomize_Enemies_EnableEnemyOnslaught_Note", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Enemies_EnableEnemyOnslaught_RandomizeAddedEnemies {
+            get {
+                return ResourceManager.GetString("Randomize_Enemies_EnableEnemyOnslaught_RandomizeAddedEnemies", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Enemies_EnableEnemyOnslaught_NumbeOfAdditionalEnemies {
+            get {
+                return ResourceManager.GetString("Randomize_Enemies_EnableEnemyOnslaught_NumbeOfAdditionalEnemies", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Enemies_EnableEnemyOnslaught_CapEncounterSizesAt {
+            get {
+                return ResourceManager.GetString("Randomize_Enemies_EnableEnemyOnslaught_CapEncounterSizesAt", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Enemies_EnsureEncountersAtLeastOne {
+            get {
+                return ResourceManager.GetString("Randomize_Enemies_EnsureEncountersAtLeastOne", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Enemies_Tooltip_EnsureEncountersAtLeastOne {
+            get {
+                return ResourceManager.GetString("Randomize_Enemies_Tooltip_EnsureEncountersAtLeastOne", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Enemies_ReduceBossRepetition {
+            get {
+                return ResourceManager.GetString("Randomize_Enemies_ReduceBossRepetition", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Enemies_Tooltip_ReduceBossRepetition {
+            get {
+                return ResourceManager.GetString("Randomize_Enemies_Tooltip_ReduceBossRepetition", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Enemies_ReplacePhase2Simon {
+            get {
+                return ResourceManager.GetString("Randomize_Enemies_ReplacePhase2Simon", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Enemies_Tooltip_ReplacePhase2Simon {
+            get {
+                return ResourceManager.GetString("Randomize_Enemies_Tooltip_ReplacePhase2Simon", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Enemies_Tooltip_ReplacePhase2SimonUntilAfter {
+            get {
+                return ResourceManager.GetString("Randomize_Enemies_Tooltip_ReplacePhase2SimonUntilAfter", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Enemies_Tooltip_ReplacePhase2SimonUntilAfter_Lune {
+            get {
+                return ResourceManager.GetString("Randomize_Enemies_Tooltip_ReplacePhase2SimonUntilAfter_Lune", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Enemies_Tooltip_ReplacePhase2SimonUntilAfter_Eveque {
+            get {
+                return ResourceManager.GetString("Randomize_Enemies_Tooltip_ReplacePhase2SimonUntilAfter_Eveque", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Enemies_Tooltip_ReplacePhase2SimonUntilAfter_Goblu {
+            get {
+                return ResourceManager.GetString("Randomize_Enemies_Tooltip_ReplacePhase2SimonUntilAfter_Goblu", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Enemies_Tooltip_ReplacePhase2SimonUntilAfter_UltimateSakapatate {
+            get {
+                return ResourceManager.GetString("Randomize_Enemies_Tooltip_ReplacePhase2SimonUntilAfter_UltimateSakapatate", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Enemies_Tooltip_ReplacePhase2SimonUntilAfter_GestralTournament {
+            get {
+                return ResourceManager.GetString("Randomize_Enemies_Tooltip_ReplacePhase2SimonUntilAfter_GestralTournament", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Enemies_Tooltip_ReplacePhase2SimonUntilAfter_Never {
+            get {
+                return ResourceManager.GetString("Randomize_Enemies_Tooltip_ReplacePhase2SimonUntilAfter_Never", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Enemies_Button_EditEnemyPlacements {
+            get {
+                return ResourceManager.GetString("Randomize_Enemies_Button_EditEnemyPlacements", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Enemies_Button_EditIndividualEncounters {
+            get {
+                return ResourceManager.GetString("Randomize_Enemies_Button_EditIndividualEncounters", resourceCulture);
             }
         }
         

@@ -4,6 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:e33Randomizer="clr-namespace:E33Randomizer"
+             xmlns:uiControls="clr-namespace:E33Randomizer.UIControls"
+             xmlns:lang="clr-namespace:E33Randomizer.Assets"
              mc:Ignorable="d"
              d:DesignHeight="850" d:DesignWidth="675">
                 <Grid Margin="20" x:DataType="e33Randomizer:SettingsViewModel">
@@ -14,12 +16,28 @@
                     </Grid.RowDefinitions>
                     <!-- Randomize Encounter Sizes -->
                     <StackPanel Orientation="Vertical" Margin="0">
-                        <CheckBox Content="Randomize enemies"
-                                  IsChecked="{Binding RandomizeEnemies}"/>
+                        <CheckBox IsChecked="{Binding RandomizeEnemies}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{x:Static lang:Resources.Randomize_Enemies_RandomizeEnemies}"/>
+                                <PathIcon Classes="tooltip">
+                                    <ToolTip.Tip>
+                                        <uiControls:HeaderToolTip Content="{x:Static lang:Resources.Randomize_Enemies_Tooltip_RandomizeEnemies}" />    
+                                    </ToolTip.Tip>
+                                </PathIcon>
+                            </StackPanel>
+                        </CheckBox>
                         <Grid ColumnDefinitions="Auto,Auto,Auto,Auto">
                             <CheckBox Grid.Column="0" x:Name="RandomizeEncounterSizesCheckBox"
-                                      Content="Randomize encounter sizes"
-                                      IsChecked="{Binding RandomizeEncounterSizes}"/>
+                                      IsChecked="{Binding RandomizeEncounterSizes}">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{x:Static lang:Resources.Randomize_Enemies_RandomizeEncounterSizes}"/>
+                                    <PathIcon Classes="tooltip">
+                                        <ToolTip.Tip>
+                                            <uiControls:HeaderToolTip Content="{x:Static lang:Resources.Randomize_Enemies_Tooltip_RandomizeEncounterSizes}" />    
+                                        </ToolTip.Tip>
+                                    </PathIcon>
+                                </StackPanel>
+                            </CheckBox>
                             <CheckBox Grid.Column="1" x:Name="EncounterSize1CheckBox"
                                       Tag="1"
                                       Content="1"
@@ -38,26 +56,39 @@
                                       IsVisible="{Binding IsChecked, ElementName=RandomizeEncounterSizesCheckBox}" />
                         </Grid>
 
-                        <!-- Randomize Merchant Fights -->
                         <StackPanel Orientation="Vertical" Margin="0">
                             <CheckBox x:Name="ChangeSizeOfNonRandomEncountersCheckBox"
-                                      Content="Randomize size of encounters that don't contain randomized enemies"
                                       IsChecked="{Binding ChangeSizeOfNonRandomizedEncounters}"
-                                      IsVisible="{Binding IsChecked, ElementName=RandomizeEncounterSizesCheckBox}" />
+                                      IsVisible="{Binding IsChecked, ElementName=RandomizeEncounterSizesCheckBox}" >
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{x:Static lang:Resources.Randomize_Enemies_ChangeSizeOfEncounters}"/>
+                                    <PathIcon Classes="tooltip">
+                                        <ToolTip.Tip>
+                                            <uiControls:HeaderToolTip Content="{x:Static lang:Resources.Randomize_Enemies_Tooltip_ChangeSizeOfEncounters}" />    
+                                        </ToolTip.Tip>
+                                    </PathIcon>
+                                </StackPanel>
+                            </CheckBox>
                         </StackPanel>
 
-                        <CheckBox x:Name="RandomizeMerchantFightsCheckBox"
-                                  Content="Randomize merchant fights"
-                                  IsChecked="{Binding RandomizeMerchantFights}"/>
+                        <!-- Randomize Merchant Fights -->
+                        <CheckBox x:Name="RandomizeMerchantFightsCheckBox" IsChecked="{Binding RandomizeMerchantFights}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{x:Static lang:Resources.Randomize_Enemies_RandomizeMerchantFights}"/>
+                                <PathIcon Classes="tooltip">
+                                    <ToolTip.Tip>
+                                        <uiControls:HeaderToolTip Content="{x:Static lang:Resources.Randomize_Enemies_Tooltip_RandomizeMerchantFights}" />    
+                                    </ToolTip.Tip>
+                                </PathIcon>
+                            </StackPanel>
+                        </CheckBox>
                         <StackPanel Orientation="Vertical" Margin="0">
                             <!-- <CheckBox x:Name="TieLootToEncountersButton" -->
                             <!--           Content="Tie loot drops to encounters instead of enemies" -->
                             <!--           IsChecked="True" -->
                             <!--           Margin="0" -->
                             <!--           FontSize="14"/> -->
-                            <TextBlock
-                                Text="Merchants' special wares unlocks and Maelle's paintress skills are considered loot drops. It is recommended that you only disable this if you are also running an item randomizer."
-                                Classes="note" />
+                            <TextBlock Text="{x:Static lang:Resources.Randomize_Enemies_RandomizeMerchantFights_Note}" Classes="note" />
                         </StackPanel>
                         <!-- Include Cut Content -->
                         <StackPanel Orientation="Vertical" Margin="0">
