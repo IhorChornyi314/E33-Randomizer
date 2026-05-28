@@ -8,4 +8,9 @@ public class LocationData: ObjectData
     public Dictionary<string, List<string>> ConditionalConnections;
     public string PortalConnection;
     public List<string> Keys;
+
+    public List<string> AllConditionalConnections
+    {
+        get { return ConditionalConnections.SelectMany(kv => kv.Value).ToList(); }
+    }
 }

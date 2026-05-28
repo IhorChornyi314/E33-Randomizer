@@ -177,7 +177,7 @@ public class LocationController: Controller<LocationData>
         ).ToDictionary();
 
         if (criticalPathLine != "")
-            criticalPath = criticalPathLine.Split('>').Select(cN => ObjectsData.Find(lD => lD.CustomName == cN)).ToList();
+            criticalPath = criticalPathLine.Replace("~", "").Split(" > ").Select(cN => ObjectsData.Find(lD => lD.CustomName == cN)).ToList();
         UpdateViewModel();
     }
 
@@ -257,7 +257,20 @@ public class LocationController: Controller<LocationData>
 
     public override string ConvertToTxt()
     {
-        var result = "CRITICAL PATH:\t" + string.Join('>', criticalPath.Select(c => c.CustomName)) + '\n';
+        var result = "";
+        if (criticalPath.Count > 0)
+        {
+            var criticalPathString = "CRITICAL PATH:\t";
+            for (int i = 0; i < criticalPath.Count - 1; i++)
+            {
+                var transition = criticalPath[i].UnconditionalConnections.Contains(criticalPath[i + 1].CodeName) ? " > " : " ~> ";
+                transition = criticalPath[i].AllConditionalConnections.Contains(criticalPath[i + 1].CodeName) ? " > " : transition;
+                criticalPathString += criticalPath[i].CustomName + transition;
+            }
+            criticalPathString += criticalPath[^1].CustomName;
+            result += criticalPathString + '\n';
+        }
+        
         result += string.Join('\n', DestinationChanges.Select(kvp => $"{kvp.Key}|{kvp.Value}"));
         result += "SCALING:\n";
         result += string.Join('\n', LevelScaling.Select(kvp => $"{kvp.Key}|{kvp.Value.Item1}-{kvp.Value.Item2}"));
