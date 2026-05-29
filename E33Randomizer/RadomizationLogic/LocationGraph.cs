@@ -201,7 +201,7 @@ public class LocationGraph
             {
                 var (i, keysStr, trace) = visitedOrder.Pop();
 
-                if (currentPath.Contains(i) || Nodes[i].PortalConnection == -1)
+                if (currentPath.Contains(i) || Nodes[i].PortalConnection == -1 || currentPath.Contains(Nodes[i].PortalConnection))
                 {
                     visited.Remove((i, keysStr));
                     Nodes[i].Depth = Int16.MaxValue;

@@ -23,8 +23,8 @@ public class LocationController: Controller<LocationData>
     public override void Initialize()
     {
         ReadObjectsData($"{RandomizerLogic.DataDirectory}/location_data.json");
-
-        DestinationChanges = ObjectsData.Select(o => new KeyValuePair<string, string>(o.CodeName, o.CodeName)).ToDictionary();
+        var portalDestinations = ObjectsData.Where(o => o.PortalConnection != "").Select(o => o.PortalConnection);
+        DestinationChanges = portalDestinations.Distinct().ToDictionary(pD => pD);
         _locationGraph.Init();
         ViewModel.ContainerName = "Original Destination";
         ViewModel.ObjectName = "New Destination";
@@ -40,9 +40,15 @@ public class LocationController: Controller<LocationData>
         _locationGraph.Reset();
         RandomizerLogic.CustomLocationPlacement.Update();
         foreach (var originalLocation in DestinationChanges.Keys)
-        {
+        { 
             DestinationChanges[originalLocation] = RandomizerLogic.CustomLocationPlacement.Replace(originalLocation);
         }
+
+        if (RandomizerLogic.Settings.RandomizeStartingLocation)
+        {
+            _currentConstraints[0] =  RandomizerLogic.CustomLocationPlacement.Replace("Level.SpawnPoint.LumiereAct01.Entry");
+        }
+        
         _locationGraph.ApplyDestinationChanges(DestinationChanges);
         var criticalPathChanges = _locationGraph.ConstructGoldenPath(_currentConstraints, out criticalPath);
         _locationGraph.ConstructDepths(_currentConstraints[0]);
@@ -132,6 +138,7 @@ public class LocationController: Controller<LocationData>
         
         foreach (var destinationChange in DestinationChanges)
         {
+            if (destinationChange.Key == destinationChange.Value) continue;
             var originalData = GetObject(destinationChange.Key);
             var original = $"{originalData.LevelAsset}:{originalData.CodeName}";
             
@@ -170,7 +177,7 @@ public class LocationController: Controller<LocationData>
         ).ToDictionary();
 
         if (criticalPathLine != "")
-            criticalPath = criticalPathLine.Split('>').Select(cN => ObjectsData.Find(lD => lD.CustomName == cN)).ToList();
+            criticalPath = criticalPathLine.Replace("~", "").Split(" > ").Select(cN => ObjectsData.Find(lD => lD.CustomName == cN)).ToList();
         UpdateViewModel();
     }
 
@@ -250,7 +257,20 @@ public class LocationController: Controller<LocationData>
 
     public override string ConvertToTxt()
     {
-        var result = "CRITICAL PATH:\t" + string.Join('>', criticalPath.Select(c => c.CustomName)) + '\n';
+        var result = "";
+        if (criticalPath.Count > 0)
+        {
+            var criticalPathString = "CRITICAL PATH:\t";
+            for (int i = 0; i < criticalPath.Count - 1; i++)
+            {
+                var transition = criticalPath[i].UnconditionalConnections.Contains(criticalPath[i + 1].CodeName) ? " > " : " ~> ";
+                transition = criticalPath[i].AllConditionalConnections.Contains(criticalPath[i + 1].CodeName) ? " > " : transition;
+                criticalPathString += criticalPath[i].CustomName + transition;
+            }
+            criticalPathString += criticalPath[^1].CustomName;
+            result += criticalPathString + '\n';
+        }
+        
         result += string.Join('\n', DestinationChanges.Select(kvp => $"{kvp.Key}|{kvp.Value}"));
         result += "SCALING:\n";
         result += string.Join('\n', LevelScaling.Select(kvp => $"{kvp.Key}|{kvp.Value.Item1}-{kvp.Value.Item2}"));

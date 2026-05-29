@@ -334,6 +334,7 @@ public class SettingsViewModel : ObservableObject
     
     public bool RandomizeLocations { get; set; } = true;
     public bool ReduceLocationRepetition { get; set; } = false;
+    public bool RandomizeStartingLocation { get; set; } = false;
     
     public bool RandomizeCharacters { get; set; } = false;
     

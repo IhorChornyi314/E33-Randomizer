@@ -11,6 +11,15 @@
     },
     "Act III Locations": {
       "Act III Locations": 100
+    },
+    "Act I World Map Locations": {
+      "Act I World Map Locations": 100
+    },
+    "Act II World Map Locations": {
+      "Act II World Map Locations": 100
+    },
+    "Act III World Map Locations": {
+      "Act III World Map Locations": 100
     }
   },
   "FrequencyAdjustments": {}
