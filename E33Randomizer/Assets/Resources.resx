@@ -191,7 +191,7 @@
     <data name="Randomize_Items_RandomizeGestralBeachRewards" xml:space="preserve">
         <value>Randomize gestral beach rewards</value>
     </data>
-    <data name="Randomize_Items_ChangeNumberOfItemsInNon-randomizedChecks" xml:space="preserve">
+    <data name="Randomize_Items_ChangeNumberOfItemsInNonRandomizedChecks" xml:space="preserve">
         <value>Change number of items in non-randomized checks</value>
     </data>
     <data name="Randomize_Items_ReduceKeyItemRepetition" xml:space="preserve">
@@ -221,11 +221,60 @@
     <data name="Randomize_Items_RandomizeQuantitiesOfUpgradeMaterialsBetween" xml:space="preserve">
         <value>Randomize quantities of upgrade materials between </value>
     </data>
-    <data name="Randomize_Items_CustomizeItemPlacements" xml:space="preserve">
+    <data name="Randomize_Items_Button_CustomizeItemPlacements" xml:space="preserve">
         <value>Customize Item Placements</value>
     </data>
-    <data name="Randomize_Items_EditIndividualChecks" xml:space="preserve">
+    <data name="Randomize_Items_Button_EditIndividualChecks" xml:space="preserve">
         <value>Edit Individual Checks</value>
+    </data>
+
+    <data name="Randomize_Items_Tooltip_RandomizeItems" xml:space="preserve">
+        <value>Whether or not the items are randomized.</value>
+    </data>
+    <data name="Randomize_Items_Tooltip_MakeEveryItemShowAPickUpNotification" xml:space="preserve">
+        <value>A lot of items are hidden by default, which could lead to confusion as to what the player actually gets if they are randomized. It is strongly recommended to keep this option on.</value>
+    </data>
+    <data name="Randomize_Items_Tooltip_IncludeCutContentItems" xml:space="preserve">
+        <value>There are about 20 cut content pictos and 14 cut content weapons with varying degrees of functionality, but none of them can break the game or anything. Still, if you do not wish to see them, turn this option off.</value>
+    </data>
+    <data name="Randomize_Items_Tooltip_ReceivePaintedPowerAtTheStartOfActIII" xml:space="preserve">
+        <value>Since the enemies’ drops are now randomized, it is no longer guaranteed that the player will get Painted Power from the last fight of Act II. As such, this option ensures that the player gets it regardless.</value>
+    </data>
+    <data name="Randomize_Items_Tooltip_RandomizeStartingWeapons" xml:space="preserve">
+        <value>Whether the starting equipment of your characters should be random too. This ignores custom item placement.</value>
+    </data>
+    <data name="Randomize_Items_Tooltip_RandomizeStartingCosmetics" xml:space="preserve">
+        <value>Whether the starting equipment of your characters should be random too. This ignores custom item placement.</value>
+    </data>
+    <data name="Randomize_Items_Tooltip_RandomizeEsquiesRocksIntoMapPickups" xml:space="preserve">
+        <value>This option makes it so that you now need to find the rock items scattered on the map before Esquie can use his abilities. The rocks can only be found as a pickup wherever a unique item (weapon, pictos, etc) was originally present. You need to go to camp with the rock in your inventory to unlock them.</value>
+    </data>
+    <data name="Randomize_Items_Tooltip_LimitEsquiesRocksToOnlyTheirOriginalArea" xml:space="preserve">
+        <value>Florrie - Spring Meadows, Flying Waters, Ancient Sanctuary, Esquie’s Nest, Stone Wave Cliffs. Dorrie - Forgotten Battlefield, Old Lumiere. Soarrie - Visages, Sirene, Monolith. Otherwise, the rocks can only be found in the areas they were found in the original game - Stone Wave Cliffs, Old Lumiere, and Monolith, respectively.</value>
+    </data>
+    <data name="Randomize_Items_Tooltip_RandomizeEnemyFeetDrops" xml:space="preserve">
+        <value>While the feet are their own items that can be encountered normally, the underlying game system guaranteed their drops from their respective owners. This setting mixes up the type of feet that the enemies drop - a Chalier can now give Monoco Lampmaster's Sword, for example.</value>
+    </data>
+    <data name="Randomize_Items_Tooltip_EnableGearRollsInPrologue" xml:space="preserve">
+        <value>Due to how the game areas work, the items in the prologue are considered level 16 internally, the same as Lumiere Act III. This option exists to prevent the balance of the game from being completely broken in case the player gets a level 16 weapon or pictos in the prologue. Internally, the mod checks whether the drop would have been a weapon/pictos, and then replaces it with a Chroma Catalyst.</value>
+    </data>
+    <data name="Randomize_Items_Tooltip_RandomizeGestralBeachRewards" xml:space="preserve">
+        <value>Some players understandably prefer not to engage with the gestral beaches, especially if the rewards are not guaranteed to be good. This option exists to prevent them from worrying about it (but not from being silently judged).</value>
+    </data>
+    <data name="Randomize_Items_Tooltip_ChangeNumberOfItemsInNonRandomizedChecks" xml:space="preserve">
+        <value>Similar to the option in the enemy randomizer, this option makes it so that the checks that were configured not to be changed don’t award multiple of the same item.</value>
+    </data>
+    <data name="Randomize_Items_Tooltip_ReduceKeyItemRepetition" xml:space="preserve">
+        <value>This option makes it so that whenever a key item is rolled, it is taken from a shuffled pool of items rather than completely randomly. This rule is applied after the initial randomization and ignores Custom Item Placement rules.</value>
+    </data>
+    <data name="Randomize_Items_Tooltip_MakeAnyOfTheMerchantWaresLocked" xml:space="preserve">
+        <value>This option makes it so that instead of merchants using their base-game locked item statuses, they have them locked with a certain probability. For example, base game Noco has only his first inventory item locked, but if this option is set to 33%, one third of all his items will be locked on average.</value>
+    </data>
+    <data name="Randomize_Items_Tooltip_RandomizeVariousCheckSizes" xml:space="preserve">
+        <value>The set of options changes different checks’ sizes, such as the number of items in a merchant’s inventory or the number of items that are awarded on picking up a shiny on the map.</value>
+    </data>
+    <data name="Randomize_Items_Tooltip_RandomizeQuantitiesOfUpgradeMaterials" xml:space="preserve">
+        <value>Chroma Catalysts, Color of Lumina, and Recoat.</value>
     </data>
     <!-- Main -->
 
@@ -405,6 +454,10 @@
     </data>
     <data name="Button_Close" xml:space="preserve">
         <value>Close</value>
+    </data>
+
+    <data name="And" xml:space="preserve">
+        <value> and </value>
     </data>
 
 </root>

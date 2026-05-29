@@ -363,9 +363,9 @@ namespace E33Randomizer.Assets {
             }
         }
         
-        public static string Randomize_Items_ChangeNumberOfItemsInNon_randomizedChecks {
+        public static string Randomize_Items_ChangeNumberOfItemsInNonRandomizedChecks {
             get {
-                return ResourceManager.GetString("Randomize_Items_ChangeNumberOfItemsInNon-randomizedChecks", resourceCulture);
+                return ResourceManager.GetString("Randomize_Items_ChangeNumberOfItemsInNonRandomizedChecks", resourceCulture);
             }
         }
         
@@ -423,15 +423,111 @@ namespace E33Randomizer.Assets {
             }
         }
         
-        public static string Randomize_Items_CustomizeItemPlacements {
+        public static string Randomize_Items_Button_CustomizeItemPlacements {
             get {
-                return ResourceManager.GetString("Randomize_Items_CustomizeItemPlacements", resourceCulture);
+                return ResourceManager.GetString("Randomize_Items_Button_CustomizeItemPlacements", resourceCulture);
             }
         }
         
-        public static string Randomize_Items_EditIndividualChecks {
+        public static string Randomize_Items_Button_EditIndividualChecks {
             get {
-                return ResourceManager.GetString("Randomize_Items_EditIndividualChecks", resourceCulture);
+                return ResourceManager.GetString("Randomize_Items_Button_EditIndividualChecks", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Items_Tooltip_RandomizeItems {
+            get {
+                return ResourceManager.GetString("Randomize_Items_Tooltip_RandomizeItems", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Items_Tooltip_MakeEveryItemShowAPickUpNotification {
+            get {
+                return ResourceManager.GetString("Randomize_Items_Tooltip_MakeEveryItemShowAPickUpNotification", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Items_Tooltip_IncludeCutContentItems {
+            get {
+                return ResourceManager.GetString("Randomize_Items_Tooltip_IncludeCutContentItems", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Items_Tooltip_ReceivePaintedPowerAtTheStartOfActIII {
+            get {
+                return ResourceManager.GetString("Randomize_Items_Tooltip_ReceivePaintedPowerAtTheStartOfActIII", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Items_Tooltip_RandomizeStartingWeapons {
+            get {
+                return ResourceManager.GetString("Randomize_Items_Tooltip_RandomizeStartingWeapons", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Items_Tooltip_RandomizeStartingCosmetics {
+            get {
+                return ResourceManager.GetString("Randomize_Items_Tooltip_RandomizeStartingCosmetics", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Items_Tooltip_RandomizeEsquiesRocksIntoMapPickups {
+            get {
+                return ResourceManager.GetString("Randomize_Items_Tooltip_RandomizeEsquiesRocksIntoMapPickups", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Items_Tooltip_LimitEsquiesRocksToOnlyTheirOriginalArea {
+            get {
+                return ResourceManager.GetString("Randomize_Items_Tooltip_LimitEsquiesRocksToOnlyTheirOriginalArea", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Items_Tooltip_RandomizeEnemyFeetDrops {
+            get {
+                return ResourceManager.GetString("Randomize_Items_Tooltip_RandomizeEnemyFeetDrops", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Items_Tooltip_EnableGearRollsInPrologue {
+            get {
+                return ResourceManager.GetString("Randomize_Items_Tooltip_EnableGearRollsInPrologue", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Items_Tooltip_RandomizeGestralBeachRewards {
+            get {
+                return ResourceManager.GetString("Randomize_Items_Tooltip_RandomizeGestralBeachRewards", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Items_Tooltip_ChangeNumberOfItemsInNonRandomizedChecks {
+            get {
+                return ResourceManager.GetString("Randomize_Items_Tooltip_ChangeNumberOfItemsInNonRandomizedChecks", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Items_Tooltip_ReduceKeyItemRepetition {
+            get {
+                return ResourceManager.GetString("Randomize_Items_Tooltip_ReduceKeyItemRepetition", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Items_Tooltip_MakeAnyOfTheMerchantWaresLocked {
+            get {
+                return ResourceManager.GetString("Randomize_Items_Tooltip_MakeAnyOfTheMerchantWaresLocked", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Items_Tooltip_RandomizeVariousCheckSizes {
+            get {
+                return ResourceManager.GetString("Randomize_Items_Tooltip_RandomizeVariousCheckSizes", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Items_Tooltip_RandomizeQuantitiesOfUpgradeMaterials {
+            get {
+                return ResourceManager.GetString("Randomize_Items_Tooltip_RandomizeQuantitiesOfUpgradeMaterials", resourceCulture);
             }
         }
         
@@ -786,6 +882,12 @@ namespace E33Randomizer.Assets {
         public static string Button_Close {
             get {
                 return ResourceManager.GetString("Button_Close", resourceCulture);
+            }
+        }
+        
+        public static string And {
+            get {
+                return ResourceManager.GetString("And", resourceCulture);
             }
         }
     }
