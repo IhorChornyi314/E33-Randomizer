@@ -171,6 +171,13 @@
     <Style Selector="CheckBox:checked /template/ Border#NormalRectangle">
         <Setter Property="Background" Value="black" />
     </Style>
+    
+    <Style Selector="uiControls|CheckboxToolTip">
+        <Setter Property="FontSize" Value="18" />
+    </Style>
+    <Style Selector="uiControls|CheckboxToolTip:checked /template/ Border#NormalRectangle">
+        <Setter Property="Background" Value="black" />
+    </Style>
 
     <!-- TextBlocks -->
     <Style Selector="TextBlock.note">

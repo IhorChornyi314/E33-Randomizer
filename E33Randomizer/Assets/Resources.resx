@@ -101,7 +101,7 @@
     <data name="Randomize_Enemies_EnableEnemyOnslaught_RandomizeAddedEnemies" xml:space="preserve">
         <value>Randomize added enemies</value>
     </data>
-    <data name="Randomize_Enemies_EnableEnemyOnslaught_NumbeOfAdditionalEnemies" xml:space="preserve">
+    <data name="Randomize_Enemies_EnableEnemyOnslaught_NumberOfAdditionalEnemies" xml:space="preserve">
         <value>Number of additional enemies:</value>
     </data>
     <data name="Randomize_Enemies_EnableEnemyOnslaught_CapEncounterSizesAt" xml:space="preserve">
@@ -132,7 +132,7 @@
         <value>Replace Phase 2 Simon with Phase 1 in mandatory fights until after:</value>
     </data>
     <data name="Randomize_Enemies_Tooltip_ReplacePhase2SimonUntilAfter_Lune" xml:space="preserve">
-        <value>Lune</value>
+        <value>Lune Tutorial</value>
     </data>
     <data name="Randomize_Enemies_Tooltip_ReplacePhase2SimonUntilAfter_Eveque" xml:space="preserve">
         <value>Eveque</value>

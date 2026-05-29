@@ -195,9 +195,9 @@ namespace E33Randomizer.Assets {
             }
         }
         
-        public static string Randomize_Enemies_EnableEnemyOnslaught_NumbeOfAdditionalEnemies {
+        public static string Randomize_Enemies_EnableEnemyOnslaught_NumberOfAdditionalEnemies {
             get {
-                return ResourceManager.GetString("Randomize_Enemies_EnableEnemyOnslaught_NumbeOfAdditionalEnemies", resourceCulture);
+                return ResourceManager.GetString("Randomize_Enemies_EnableEnemyOnslaught_NumberOfAdditionalEnemies", resourceCulture);
             }
         }
         
