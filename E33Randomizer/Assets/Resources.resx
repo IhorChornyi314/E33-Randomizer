@@ -156,6 +156,77 @@
     <data name="Randomize_Enemies_Button_EditIndividualEncounters" xml:space="preserve">
         <value>Edit Individual Encounters</value>
     </data>
+    
+    <!-- RandomizeItemsTab -->
+    <data name="Randomize_Items_RandomizeItems" xml:space="preserve">
+        <value>Randomize items</value>
+    </data>
+    <data name="Randomize_Items_MakeEveryItemShowAPickUpNotification" xml:space="preserve">
+        <value>Make every item show a pick up notification</value>
+    </data>
+    <data name="Randomize_Items_IncludeCutContentItems" xml:space="preserve">
+        <value>Include cut content items</value>
+    </data>
+    <data name="Randomize_Items_ReceivePaintedPowerAtTheStartOfActIII" xml:space="preserve">
+        <value>Receive Painted Power at the start of Act III</value>
+    </data>
+    <data name="Randomize_Items_RandomizeStartingWeapons" xml:space="preserve">
+        <value>Randomize starting weapons</value>
+    </data>
+    <data name="Randomize_Items_RandomizeStartingCosmetics" xml:space="preserve">
+        <value>Randomize starting cosmetics</value>
+    </data>
+    <data name="Randomize_Items_RandomizeEsquiesRocksIntoMapPickups" xml:space="preserve">
+        <value>Randomize Esquie's rocks into map pickups</value>
+    </data>
+    <data name="Randomize_Items_LimitEsquiesRocksToOnlyTheirOriginalAreas" xml:space="preserve">
+        <value>Limit Esquie's rocks to only their original areas</value>
+    </data>
+    <data name="Randomize_Items_RandomizeEnemyFeetDrops" xml:space="preserve">
+        <value>Randomize enemy feet drops</value>
+    </data>
+    <data name="Randomize_Items_EnableGearRollsInPrologue" xml:space="preserve">
+        <value>Enable gear rolls in prologue (they will be level 16 and can drastically alter the difficulty)</value>
+    </data>
+    <data name="Randomize_Items_RandomizeGestralBeachRewards" xml:space="preserve">
+        <value>Randomize gestral beach rewards</value>
+    </data>
+    <data name="Randomize_Items_ChangeNumberOfItemsInNon-randomizedChecks" xml:space="preserve">
+        <value>Change number of items in non-randomized checks</value>
+    </data>
+    <data name="Randomize_Items_ReduceKeyItemRepetition" xml:space="preserve">
+        <value>Reduce key item repetition</value>
+    </data>
+    <data name="Randomize_Items_ReduceGearRepetition" xml:space="preserve">
+        <value>Reduce gear repetition</value>
+    </data>
+    <data name="Randomize_Items_MakeAnyOfTheMerchantWaresLockedWithProbability" xml:space="preserve">
+        <value>Make any of the merchant wares locked with probability</value>
+    </data>
+    <data name="Randomize_Items_RandomizeMerchantInventorySizesBetween" xml:space="preserve">
+        <value>Randomize merchant inventory sizes between </value>
+    </data>
+    <data name="Randomize_Items_RandomizeNumberOfLootDropsBetween" xml:space="preserve">
+        <value>Randomize number of loot drops between </value>
+    </data>
+    <data name="Randomize_Items_RandomizeNumberOfTheEndlessTowerRewardsBetween" xml:space="preserve">
+        <value>Randomize number of the Endless Tower rewards between </value>
+    </data>
+    <data name="Randomize_Items_RandomizeNumberOfItemsPerMapPickupBetween" xml:space="preserve">
+        <value>Randomize number of items per map pickup between </value>
+    </data>
+    <data name="Randomize_Items_RandomizeNumberOfCutsceneRewardsBetween" xml:space="preserve">
+        <value>Randomize number of cutscene rewards between </value>
+    </data>
+    <data name="Randomize_Items_RandomizeQuantitiesOfUpgradeMaterialsBetween" xml:space="preserve">
+        <value>Randomize quantities of upgrade materials between </value>
+    </data>
+    <data name="Randomize_Items_CustomizeItemPlacements" xml:space="preserve">
+        <value>Customize Item Placements</value>
+    </data>
+    <data name="Randomize_Items_EditIndividualChecks" xml:space="preserve">
+        <value>Edit Individual Checks</value>
+    </data>
     <!-- Main -->
 
     <data name="Main_RandomizeItems" xml:space="preserve">

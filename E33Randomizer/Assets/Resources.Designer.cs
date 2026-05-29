@@ -297,6 +297,144 @@ namespace E33Randomizer.Assets {
             }
         }
         
+        public static string Randomize_Items_RandomizeItems {
+            get {
+                return ResourceManager.GetString("Randomize_Items_RandomizeItems", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Items_MakeEveryItemShowAPickUpNotification {
+            get {
+                return ResourceManager.GetString("Randomize_Items_MakeEveryItemShowAPickUpNotification", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Items_IncludeCutContentItems {
+            get {
+                return ResourceManager.GetString("Randomize_Items_IncludeCutContentItems", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Items_ReceivePaintedPowerAtTheStartOfActIII {
+            get {
+                return ResourceManager.GetString("Randomize_Items_ReceivePaintedPowerAtTheStartOfActIII", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Items_RandomizeStartingWeapons {
+            get {
+                return ResourceManager.GetString("Randomize_Items_RandomizeStartingWeapons", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Items_RandomizeStartingCosmetics {
+            get {
+                return ResourceManager.GetString("Randomize_Items_RandomizeStartingCosmetics", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Items_RandomizeEsquiesRocksIntoMapPickups {
+            get {
+                return ResourceManager.GetString("Randomize_Items_RandomizeEsquiesRocksIntoMapPickups", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Items_LimitEsquiesRocksToOnlyTheirOriginalAreas {
+            get {
+                return ResourceManager.GetString("Randomize_Items_LimitEsquiesRocksToOnlyTheirOriginalAreas", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Items_RandomizeEnemyFeetDrops {
+            get {
+                return ResourceManager.GetString("Randomize_Items_RandomizeEnemyFeetDrops", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Items_EnableGearRollsInPrologue {
+            get {
+                return ResourceManager.GetString("Randomize_Items_EnableGearRollsInPrologue", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Items_RandomizeGestralBeachRewards {
+            get {
+                return ResourceManager.GetString("Randomize_Items_RandomizeGestralBeachRewards", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Items_ChangeNumberOfItemsInNon_randomizedChecks {
+            get {
+                return ResourceManager.GetString("Randomize_Items_ChangeNumberOfItemsInNon-randomizedChecks", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Items_ReduceKeyItemRepetition {
+            get {
+                return ResourceManager.GetString("Randomize_Items_ReduceKeyItemRepetition", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Items_ReduceGearRepetition {
+            get {
+                return ResourceManager.GetString("Randomize_Items_ReduceGearRepetition", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Items_MakeAnyOfTheMerchantWaresLockedWithProbability {
+            get {
+                return ResourceManager.GetString("Randomize_Items_MakeAnyOfTheMerchantWaresLockedWithProbability", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Items_RandomizeMerchantInventorySizesBetween {
+            get {
+                return ResourceManager.GetString("Randomize_Items_RandomizeMerchantInventorySizesBetween", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Items_RandomizeNumberOfLootDropsBetween {
+            get {
+                return ResourceManager.GetString("Randomize_Items_RandomizeNumberOfLootDropsBetween", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Items_RandomizeNumberOfTheEndlessTowerRewardsBetween {
+            get {
+                return ResourceManager.GetString("Randomize_Items_RandomizeNumberOfTheEndlessTowerRewardsBetween", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Items_RandomizeNumberOfItemsPerMapPickupBetween {
+            get {
+                return ResourceManager.GetString("Randomize_Items_RandomizeNumberOfItemsPerMapPickupBetween", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Items_RandomizeNumberOfCutsceneRewardsBetween {
+            get {
+                return ResourceManager.GetString("Randomize_Items_RandomizeNumberOfCutsceneRewardsBetween", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Items_RandomizeQuantitiesOfUpgradeMaterialsBetween {
+            get {
+                return ResourceManager.GetString("Randomize_Items_RandomizeQuantitiesOfUpgradeMaterialsBetween", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Items_CustomizeItemPlacements {
+            get {
+                return ResourceManager.GetString("Randomize_Items_CustomizeItemPlacements", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Items_EditIndividualChecks {
+            get {
+                return ResourceManager.GetString("Randomize_Items_EditIndividualChecks", resourceCulture);
+            }
+        }
+        
         public static string Main_RandomizeItems {
             get {
                 return ResourceManager.GetString("Main_RandomizeItems", resourceCulture);

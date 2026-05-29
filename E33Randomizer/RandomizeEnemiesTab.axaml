@@ -9,7 +9,7 @@
     xmlns:lang="clr-namespace:E33Randomizer.Assets"
     mc:Ignorable="d"
     d:DataContext="{x:Static e33Randomizer:DesignEnemiesSettingsViewModel.SettingsViewModel}"
-    d:DesignHeight="850" d:DesignWidth="675">
+    d:DesignHeight="850" d:DesignWidth="700">
     <Grid Margin="20" x:DataType="e33Randomizer:SettingsViewModel" RowDefinitions="Auto,*,Auto">
         <!-- Randomize Encounter Sizes -->
         <StackPanel Orientation="Vertical" Margin="0">

@@ -2,7 +2,7 @@
         xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:e33Randomizer="clr-namespace:E33Randomizer"
-        Title="Expedition 33 Randomizer" Height="800" Width="1000"
+        Title="Expedition 33 Randomizer" Height="850" Width="1050"
         MinHeight="850" MinWidth="1000">
     <DockPanel x:DataType="e33Randomizer:SettingsViewModel">
         <Border DockPanel.Dock="Left" Margin="5" BorderThickness="0 0 5 0">
