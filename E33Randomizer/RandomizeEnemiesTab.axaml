@@ -9,7 +9,8 @@
     xmlns:lang="clr-namespace:E33Randomizer.Assets"
     mc:Ignorable="d"
     d:DataContext="{x:Static e33Randomizer:DesignEnemiesSettingsViewModel.SettingsViewModel}"
-    d:DesignHeight="850" d:DesignWidth="700">
+    d:DesignHeight="{x:Static e33Randomizer:MainWindow.TabContainerHeight}" 
+    d:DesignWidth="{x:Static e33Randomizer:MainWindow.TabContainerWidth}">
     <Grid Margin="20" x:DataType="e33Randomizer:SettingsViewModel" RowDefinitions="Auto,*,Auto">
         <!-- Randomize Encounter Sizes -->
         <StackPanel Orientation="Vertical" Margin="0">
@@ -178,12 +179,12 @@
             </StackPanel>
         </StackPanel>
         <Grid Grid.Row="2" ColumnDefinitions="*,*">
-            <Button Grid.Column="0" x:Name="CustomEnemyPlacementButton"
+            <Button Grid.Column="0"
                     Content="{x:Static lang:Resources.Randomize_Enemies_Button_EditEnemyPlacements}"
                     Click="CustomPlacementButton_Click"
                     Tag="Enemy"
                     Classes="e33Button" />
-            <Button Grid.Column="1" x:Name="EditEncountersButton"
+            <Button Grid.Column="1"
                     Content="{x:Static lang:Resources.Randomize_Enemies_Button_EditIndividualEncounters}"
                     Click="EditButton_Click"
                     Classes="e33Button"

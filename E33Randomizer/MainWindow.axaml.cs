@@ -1,14 +1,12 @@
 ﻿using System.Text;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
-
-using Newtonsoft.Json.Linq;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Platform.Storage;
 using CommunityToolkit.Mvvm.ComponentModel;
 using E33Randomizer.RadomizationLogic;
-using E33Randomizer.UIControls;
 
 namespace E33Randomizer;
 
@@ -17,18 +15,25 @@ namespace E33Randomizer;
 /// </summary>
 public partial class MainWindow : Window
 {
-    private CustomPlacements.CustomPlacementWindow _customEnemyPlacementWindow;
-    private EditIndividualContainersWindow _editIndividualEncountersWindow;
-
-    private CustomPlacements.CustomPlacementWindow _customItemPlacementWindow;
-    private EditIndividualContainersWindow _editIndividualChecksWindow;
+    public const double TabStripWidth = 325;
+    public const double TabStripHeight = 850;
+    public const double TabContainerWidth = 700;
+    public const double TabContainerHeight = 850;
     
     private readonly Dictionary<string, EditIndividualContainersWindow?> _editIndividualContainersWindows = new ();
     private readonly Dictionary<string, CustomPlacements.CustomPlacementWindow?> _customPlacementWindows = new ();
 
     public MainWindow()
     {
+        Loaded += OnLoaded;
         InitializeComponent();
+        Width = TabStripWidth +  TabContainerWidth + 20;
+        Height = TabContainerHeight;
+        
+    }
+
+    private async void OnLoaded(object? sender, RoutedEventArgs e)
+    {
         try
         {
             RandomizerLogic.Init();
@@ -36,17 +41,17 @@ public partial class MainWindow : Window
         }
         catch (Exception ex)
         {
-            MessageDialog.Show(this, $"Error starting: {ex.Message}",
+            await MessageDialog.ShowAsync(this, $"Error starting: {ex.Message}",
                 "Loading Error", nameof(DialogBoxButton.OK), MessageBoxIcons.Error);
-            File.WriteAllText("crash_log.txt", ex.ToString(), Encoding.UTF8);
+            await File.WriteAllTextAsync("crash_log.txt", ex.ToString(), Encoding.UTF8);
         }
         if (File.Exists("default_settings.json"))
         {
-            LoadSettings("default_settings.json");
+            await LoadSettingsAsync("default_settings.json");
         }
         else
         {
-            SaveSettings("default_settings.json");
+            await SaveSettingsAsync("default_settings.json");
         }
     }
 
@@ -59,7 +64,13 @@ public partial class MainWindow : Window
         
             if (!_customPlacementWindows.TryGetValue(objectType, out CustomPlacements.CustomPlacementWindow? value) || value == null)
             {
-                value = new CustomPlacements.CustomPlacementWindow(RandomizerLogic.GetCustomPlacement(objectType));
+                var customPlacement = RandomizerLogic.GetCustomPlacement(objectType);
+                if (customPlacement is null)
+                {
+                    throw new Exception($"Unable  to find Custom Placement Window for {objectType}");
+                }
+                
+                value = new CustomPlacements.CustomPlacementWindow(customPlacement);
                 _customPlacementWindows[objectType] = value;
             
                 _customPlacementWindows[objectType]!.Closed += (_, _) => _customPlacementWindows[objectType] = null;
@@ -82,7 +93,12 @@ public partial class MainWindow : Window
             
             if (!_editIndividualContainersWindows.TryGetValue(objectType, out EditIndividualContainersWindow? value) || value == null)
             {
-                value = new EditIndividualContainersWindow(Controllers.GetController(objectType), this);
+                var controller = Controllers.GetController(objectType);
+                if (controller is null)
+                {
+                    throw new Exception($"Unable to find Edit Object Controller for {objectType}");
+                }
+                value = new EditIndividualContainersWindow(controller, this);
                 _editIndividualContainersWindows[objectType] = value;
                 _editIndividualContainersWindows[objectType]!.Closed += (_, _) => _editIndividualContainersWindows[objectType] = null;
             }
@@ -97,7 +113,6 @@ public partial class MainWindow : Window
 
     private async void GenerateButton_Click(object sender, RoutedEventArgs e)
     {
-        
         try
         {
             RandomizerLogic.Randomize();
@@ -138,7 +153,7 @@ public partial class MainWindow : Window
             {
                 try
                 {
-                    LoadSettings(files[0].Path.LocalPath);
+                    await LoadSettingsAsync(files[0].Path.LocalPath);
                 }
                 catch (Exception ex)
                 {
@@ -177,7 +192,7 @@ public partial class MainWindow : Window
             {
                 try
                 {
-                    SaveSettings(file.Path.LocalPath);
+                    await SaveSettingsAsync(file.Path.LocalPath);
                     await MessageDialog.ShowAsync(this, "Preset saved successfully!", 
                         "Save Complete", nameof(DialogBoxButton.OK), MessageBoxIcons.Information);
                 }
@@ -197,21 +212,23 @@ public partial class MainWindow : Window
 
     private bool AllSettingsInJson(string json)
     {
-        JObject obj = JObject.Parse(json);
-        var jsonProps = obj.Properties().Select(p => p.Name).ToHashSet();
+        JsonNode? obj = JsonNode.Parse(json);
+        if (obj is null) return false;
+        
+        var jsonProps = obj.AsObject().Select(p => p.Key).ToHashSet();
         var classProps = typeof(SettingsViewModel).GetProperties().Select(p => p.Name).ToHashSet();
 
-        return classProps.All(p => jsonProps.Contains(p));
+        return classProps.All(jsonProps.Contains);
     }
 
-    private void LoadSettings(string pathToJson)
+    private async Task LoadSettingsAsync(string pathToJson)
     {
         try
         {
             string json;
             using (StreamReader r = new StreamReader(pathToJson))
             {
-                json = r.ReadToEnd();
+                json = await r.ReadToEndAsync();
                 var newSettingsData = JsonSerializer.DeserializeThrowOnNull(json, JsonSourceGenerationContext.Default.SettingsViewModel);
                 RandomizerLogic.Settings = newSettingsData;
                 DataContext = RandomizerLogic.Settings;
@@ -219,30 +236,30 @@ public partial class MainWindow : Window
             
             if (!AllSettingsInJson(json))
             {
-                SaveSettings(pathToJson);
+                await SaveSettingsAsync(pathToJson);
             }
         }
         catch (Exception ex)
         {
-            MessageDialog.Show(this, $"Error loading: {ex.Message}",
+            await MessageDialog.ShowAsync(this, $"Error loading: {ex.Message}",
                 "Loading Error", nameof(DialogBoxButton.OK), MessageBoxIcons.Error);
-            File.WriteAllText("crash_log.txt", ex.ToString(), Encoding.UTF8);
+            await File.WriteAllTextAsync("crash_log.txt", ex.ToString(), Encoding.UTF8);
         }
     }
 
-    private void SaveSettings(string pathToJson)
+    private async Task SaveSettingsAsync(string pathToJson)
     {
         try
         {
-            using StreamWriter r = new StreamWriter(pathToJson);
+            await using StreamWriter r = new StreamWriter(pathToJson);
             string json = JsonSerializer.Serialize(RandomizerLogic.Settings, JsonSourceGenerationContextSerializationFactory.LazyJsonSourceGenerationContext.Value.SettingsViewModel);
-            r.Write(json);
+            await r.WriteAsync(json);
         }
         catch (Exception ex)
         {
-            MessageDialog.Show(this, $"Error saving: {ex.Message}",
+            await MessageDialog.ShowAsync(this, $"Error saving: {ex.Message}",
                 "Saving Error", nameof(DialogBoxButton.OK), MessageBoxIcons.Error);
-            File.WriteAllText("crash_log.txt", ex.ToString(), Encoding.UTF8);
+            await File.WriteAllTextAsync("crash_log.txt", ex.ToString(), Encoding.UTF8);
         }
     }
 }
@@ -254,94 +271,94 @@ public class SettingsViewModel : ObservableObject
     
     public bool RandomizeEnemies { get; set; } = true;
     
-    public bool RandomizeEncounterSizes { get; set; } = false;
-    public bool ChangeSizeOfNonRandomizedEncounters { get; set; } = false;
-    public bool EncounterSizeOne { get; set; } = false;
-    public bool EncounterSizeTwo { get; set; } = false;
-    public bool EncounterSizeThree { get; set; } = false;
+    public bool RandomizeEncounterSizes { get; set; } 
+    public bool ChangeSizeOfNonRandomizedEncounters { get; set; } 
+    public bool EncounterSizeOne { get; set; } 
+    public bool EncounterSizeTwo { get; set; } 
+    public bool EncounterSizeThree { get; set; } 
     public bool NoSimonP2BeforeLune { get; set; } = true;
     public bool RandomizeMerchantFights { get; set; } = true;
-    public bool EnableEnemyOnslaught { get; set; } = false;
+    public bool EnableEnemyOnslaught { get; set; } 
     public int EnemyOnslaughtAdditionalEnemies { get; set; } = 1;
     public int EnemyOnslaughtEnemyCap { get; set; } = 4;
     public bool IncludeCutContentEnemies { get; set; } = true;
 
-    public bool RandomizeAddedEnemies { get; set; } = false;
-    public bool EnsureBossesInBossEncounters { get; set; } = false;
-    public bool ReduceBossRepetition { get; set; } = false;
-    // public bool TieDropsToEncounters { get; set; } = false; 
+    public bool RandomizeAddedEnemies { get; set; } 
+    public bool EnsureBossesInBossEncounters { get; set; } 
+    public bool ReduceBossRepetition { get; set; } 
+    // public bool TieDropsToEncounters { get; set; }  
     
 
     public bool RandomizeItems { get; set; } = true;
-    public bool ChangeSizesOfNonRandomizedChecks { get; set; } = false;
+    public bool ChangeSizesOfNonRandomizedChecks { get; set; } 
     
     public bool ReduceKeyItemRepetition { get; set; } = true;
     public bool ReduceGearRepetition { get; set; } = true;
-    public bool RandomizeEsquieRocks { get; set; } = false;
+    public bool RandomizeEsquieRocks { get; set; } 
     public bool LimitEsquieRandomization { get; set; } = true;
 
-    public bool ChangeMerchantInventorySize { get; set; } = false;
+    public bool ChangeMerchantInventorySize { get; set; } 
     public int MerchantInventorySizeMax { get; set; } = 15;
     public int MerchantInventorySizeMin { get; set; } = 1;
     
-    public bool ChangeItemQuantity { get; set; } = false;
+    public bool ChangeItemQuantity { get; set; } 
     public int ItemQuantityMax { get; set; } = 10;
     public int ItemQuantityMin { get; set; } = 1;
     
-    public bool ChangeMerchantInventoryLocked { get; set; } = false;
+    public bool ChangeMerchantInventoryLocked { get; set; } 
     public int MerchantInventoryLockedChancePercent { get; set; } = 10;
     
-    public bool ChangeNumberOfLootDrops { get; set; } = false;
+    public bool ChangeNumberOfLootDrops { get; set; } 
     public int LootDropsNumberMax { get; set; } = 3;
-    public int LootDropsNumberMin { get; set; } = 0;
-    
-    public bool ChangeNumberOfTowerRewards { get; set; } = false;
+    public int LootDropsNumberMin { get; set; }
+
+    public bool ChangeNumberOfTowerRewards { get; set; } 
     public int TowerRewardsNumberMax { get; set; } = 3;
     public int TowerRewardsNumberMin { get; set; } = 1;
     
-    public bool ChangeNumberOfChestContents { get; set; } = false;
+    public bool ChangeNumberOfChestContents { get; set; } 
     public int ChestContentsNumberMax { get; set; } = 2;
     public int ChestContentsNumberMin { get; set; } = 1;
     
-    public bool ChangeNumberOfActionRewards { get; set; } = false;
+    public bool ChangeNumberOfActionRewards { get; set; } 
     public int ActionRewardsNumberMax { get; set; } = 3;
     public int ActionRewardsNumberMin { get; set; } = 1;
     
     public bool MakeEveryItemVisible { get; set; } = true;
     
     public bool EnsurePaintedPowerFromPaintress { get; set; } = true;
-    public bool IncludeGearInPrologue { get; set; } = false;
-    public bool RandomizeStartingWeapons { get; set; } = false;
-    public bool RandomizeStartingCosmetics { get; set; } = false;
+    public bool IncludeGearInPrologue { get; set; } 
+    public bool RandomizeStartingWeapons { get; set; } 
+    public bool RandomizeStartingCosmetics { get; set; } 
     public bool RandomizeGestralBeachRewards { get; set; } = true;
     public bool RandomizeMonocoFeet { get; set; } = true;
     public bool IncludeCutContentItems { get; set; } = true;
     
     public bool RandomizeSkills { get; set; } = true;
     public bool ReduceSkillRepetition { get; set; } = true;
-    public bool IncludeCutContentSkills { get; set; } = false;
-    public bool UnlockGustaveSkills { get; set; } = false;
+    public bool IncludeCutContentSkills { get; set; } 
+    public bool UnlockGustaveSkills { get; set; } 
     public bool GuaranteeGustaveOvercharge { get; set; } = true;
-    public bool RandomizeSkillUnlockCosts { get; set; } = false;
+    public bool RandomizeSkillUnlockCosts { get; set; } 
     public bool RandomizeTreeEdges { get; set; } = true;
     //TODO: Add dummy edge structs to Monoco's asset
-    public bool GiveMonocoTreeEdges { get; set; } = false;
+    public bool GiveMonocoTreeEdges { get; set; } 
     public int MinTreeEdges { get; set; } = 2;
     public int MaxTreeEdges { get; set; } = 4;
-    public bool FullyRandomEdges { get; set; } = false;
+    public bool FullyRandomEdges { get; set; } 
     public int RandomEdgeChancePercent { get; set; } = 60;
-    public bool MakeSkillsIntoItems { get; set; } = false;
+    public bool MakeSkillsIntoItems { get; set; } 
     
     public bool RandomizeLocations { get; set; } = true;
-    public bool ReduceLocationRepetition { get; set; } = false;
-    public bool RandomizeStartingLocation { get; set; } = false;
+    public bool ReduceLocationRepetition { get; set; } 
+    public bool RandomizeStartingLocation { get; set; } 
     
-    public bool RandomizeCharacters { get; set; } = false;
+    public bool RandomizeCharacters { get; set; } 
     
     public bool ScaleOptionalAreas { get; set; } = true;
     public int ScaleModifierPercentage { get; set; } = 100;
     
-    [System.Text.Json.Serialization.JsonIgnore]
+    [JsonIgnore]
     public int SelectedIndex
     {
         get;

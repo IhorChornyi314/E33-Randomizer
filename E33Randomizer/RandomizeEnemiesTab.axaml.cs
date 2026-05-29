@@ -42,5 +42,4 @@ public static class DesignEnemiesSettingsViewModel
         NoSimonP2BeforeLune = true,
         RandomizeAddedEnemies = true
     };
-        
 }

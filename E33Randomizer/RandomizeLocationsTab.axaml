@@ -3,38 +3,31 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:E33Randomizer"
+             xmlns:e33Randomizer="clr-namespace:E33Randomizer"
+             xmlns:uiControls="clr-namespace:E33Randomizer.UIControls"
+             xmlns:lang="clr-namespace:E33Randomizer.Assets"
              mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid x:DataType="local:SettingsViewModel">
-        <Grid Margin="20">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <StackPanel>
-                        <CheckBox Content="Randomize locations"
-                                  IsChecked="{Binding RandomizeLocations}"/>
-                    </StackPanel>
-                    <StackPanel Grid.Row="2">
-                        <Button x:Name="CustomLocationPlacementButton"
-                                Content="Customize Location Placements"
-                                Width="500"
-                                Height="50"
-                                FontSize="20"
-                                HorizontalAlignment="Center"
-                                Click="CustomPlacementButton_Click" 
-                                Tag="Location" />
-                        <Button x:Name="EditLocationsButton"
-                                Content="Edit Individual Locations"
-                                Width="500"
-                                Height="50"
-                                FontSize="20"
-                                HorizontalAlignment="Center"
-                                Click="EditButton_Click" 
-                                Tag="Location" />
-                    </StackPanel>
-                </Grid>
+             d:DesignHeight="{x:Static e33Randomizer:MainWindow.TabContainerHeight}"
+             d:DesignWidth="{x:Static e33Randomizer:MainWindow.TabContainerWidth}">
+    <Grid x:DataType="e33Randomizer:SettingsViewModel">
+        <Grid Margin="20" RowDefinitions="Auto,*,Auto">
+            <StackPanel>
+                <uiControls:CheckboxToolTip
+                    Content="Randomize locations"
+                    IsChecked="{Binding RandomizeLocations}" />
+            </StackPanel>
+            <Grid Grid.Row="2" ColumnDefinitions="*,*">
+                <Button Grid.Column="0"
+                        Classes="e33Button"
+                        Content="{x:Static lang:Resources.Randomize_Locations_Button_CustomizeLocationPlacements}"
+                        Click="CustomPlacementButton_Click"
+                        Tag="Location" />
+                <Button Grid.Column="1"
+                        Classes="e33Button"
+                        Content="{x:Static lang:Resources.Randomize_Locations_Button_EditIndividualLocations}"
+                        Click="EditButton_Click"
+                        Tag="Location" />
+            </Grid>
+        </Grid>
     </Grid>
 </UserControl>

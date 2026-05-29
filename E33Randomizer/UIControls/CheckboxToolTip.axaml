@@ -4,14 +4,16 @@
                     xmlns:lang="clr-namespace:E33Randomizer.Assets">
     <!-- Add Resources Here -->
     <Design.PreviewWith>
-        
+
         <StackPanel Width="400" Height="500">
-            <uiControls:CheckboxToolTip Content="This is a checkbox. super duper long will it wrap or will " ToolTipHeader="This is the header for the tooltip"
-                                        ToolTipContent=" This is a tooltip about stuff&#x0a;&#x0a;And it has many lines, so many lines in fact that it just keeps going." />    
+            <uiControls:CheckboxToolTip Content="This is a checkbox. super duper long will it wrap or will "
+                                        ToolTipHeader="This is the header for the tooltip"
+                                        ToolTipContent=" This is a tooltip about stuff&#x0a;&#x0a;And it has many lines, so many lines in fact that it just keeps going." />
         </StackPanel>
-        
+
     </Design.PreviewWith>
-    <ControlTheme x:Key="{x:Type uiControls:CheckboxToolTip}" TargetType="uiControls:CheckboxToolTip" BasedOn="{StaticResource { x:Type CheckBox}}">
+    <ControlTheme x:Key="{x:Type uiControls:CheckboxToolTip}" TargetType="uiControls:CheckboxToolTip"
+                  BasedOn="{StaticResource { x:Type CheckBox}}">
         <Setter Property="ToolTipHeader" Value="{x:Static lang:Resources.ToolTip_Header_HowItWorks}" />
         <Setter Property="Template">
             <ControlTemplate>
@@ -47,11 +49,12 @@
                     </Grid>
 
 
-                    <Grid ColumnDefinitions="*,Auto" Grid.Column="1" 
-                                Margin="{TemplateBinding Padding}"
-                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
-                        <TextBlock Grid.Column="0" Text="{TemplateBinding Content}" TextWrapping="Wrap" Width="{Binding $parent.Width}" />
+                    <Grid ColumnDefinitions="*,Auto" Grid.Column="1"
+                          Margin="{TemplateBinding Padding}"
+                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                        <TextBlock Grid.Column="0" Text="{TemplateBinding Content}" TextWrapping="Wrap"
+                                   Width="{Binding $parent.Width}" />
                         <PathIcon Grid.Column="1" Classes="tooltip">
                             <ToolTip.Tip>
                                 <uiControls:HeaderToolTip Content="{TemplateBinding ToolTipContent}"

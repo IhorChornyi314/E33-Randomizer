@@ -276,53 +276,123 @@
     <data name="Randomize_Items_Tooltip_RandomizeQuantitiesOfUpgradeMaterials" xml:space="preserve">
         <value>Chroma Catalysts, Color of Lumina, and Recoat.</value>
     </data>
+    
+    <!-- Randomize Skills Tab -->
+    <data name="Randomize_Skills_RandomizeSkills" xml:space="preserve">
+        <value>Randomize skills</value>
+    </data>
+    <data name="Randomize_Skills_ReduceSkillDuplication" xml:space="preserve">
+        <value>Reduce skill duplication</value>
+    </data>
+    <data name="Randomize_Skills_RandomizeSkillUnlockCosts" xml:space="preserve">
+        <value>Randomize skill unlock costs</value>
+    </data>
+    <data name="Randomize_Skills_UnlockFullGustaveSkillTree" xml:space="preserve">
+        <value>Unlock full Gustave skill tree</value>
+    </data>
+    <data name="Randomize_Skills_GuaranteeThatGustaveStartsWithOvercharge" xml:space="preserve">
+        <value>Guarantee that Gustave starts with Overcharge</value>
+    </data>
+    <data name="Randomize_Skills_MakeAllSkillsUnlockedByItemsInsteadOfSkillPoints" xml:space="preserve">
+        <value>Make all skills unlocked by items instead of skill points</value>
+    </data>
+    <data name="Randomize_Skills_RandomizeSkillTreeLinks" xml:space="preserve">
+        <value>Randomize skill tree links</value>
+    </data>
+    <data name="Randomize_Skills_UseFullyRandomNodeLinks" xml:space="preserve">
+        <value>Use fully random node links</value>
+    </data>
+    <data name="Randomize_Skills_ChangeTheNumberOfLinks" xml:space="preserve">
+        <value>Change the number of links</value>
+    </data>
+    <data name="Randomize_Skills_SetTheLinkDensity" xml:space="preserve">
+        <value>Set the link density to</value>
+    </data>
+    <data name="Randomize_Skills_LinksNode" xml:space="preserve">
+        <value>links per node</value>
+    </data>
+
+    <data name="Randomize_Skills_ToolTip_RandomizeSkills" xml:space="preserve">
+        <value>Whether or not the skills are randomized.</value>
+    </data>
+    <data name="Randomize_Skills_ToolTip_ReduceSkillDuplication" xml:space="preserve">
+        <value>Highly recommended. Due to how the rando is designed, the underlying randomization algorithm often creates duplicates. While this is fine for enemy and item randomizers, reducing the skill duplication in the skill tree leads to a much more enjoyable experience.</value>
+    </data>
+    <data name="Randomize_Skills_ToolTip_RandomizeSkillUnlockCosts" xml:space="preserve">
+        <value>Sets the unlock costs of the skill nodes to random values. They are set between 1 and 10 points and always add up to 99.</value>
+    </data>
+    <data name="Randomize_Skills_ToolTip_UnlockFullGustaveSkillTree" xml:space="preserve">
+        <value>This makes all of Gustave’s previously locked skills accessible, although it does not rework them to use Overcharge instead of Perfection.</value>
+    </data>
+    <data name="Randomize_Skills_ToolTip_GuaranteeThatGustaveStartsWithOvercharge" xml:space="preserve">
+        <value>Due to his whole mechanic being reliant on using the Overcharge skill, this option was implemented to make sure that he always has access to it.</value>
+    </data>
+    <data name="Randomize_Skills_ToolTip_MakeAllSkillsUnlockedByItemsInsteadOfSkillPoints" xml:space="preserve">
+        <value>Overhauls the skill tree system to function similarly to base game Monoco’s. Instead of using your skill points to unlock the skills, you will now have to find their corresponding items that are scattered all across the game. Every non-dialogue check has a chance of containing an additional item, which will unlock its respective skill in the skill tree.</value>
+    </data>
+    <data name="Randomize_Skills_ToolTip_RandomizeSkillTreeLinks" xml:space="preserve">
+        <value>Changes the default skill tree layout to a random one. It is guaranteed that you can unlock every skill in the tree.</value>
+    </data>
+    <data name="Randomize_Skills_ToolTip_UseFullyRandomNodeLinks" xml:space="preserve">
+        <value>By default, the randomizer chooses from a curated list of links to avoid clutter and maintain readability of the trees. This option removes the restrictions (but still preserves the fact that every node is reachable).</value>
+    </data>
+    <data name="Randomize_Skills_ToolTip_ChangeTheNumberOfLinks" xml:space="preserve">
+        <value>The randomizer will do its best to make sure that the number of links from each node will be within these parameters, but that is not always possible.</value>
+    </data>
+    <data name="Randomize_Skills_ToolTip_SetTheLinkDensity" xml:space="preserve">
+        <value>This parameter controls how many links will be in the tree overall, where 0 means that there will be just enough for the whole tree to be unlockable, and 100 means that every node will have the maximum amount of links specified in the setting above.</value>
+    </data>
+
+    <data name="Randomize_Skills_Button_CustomizeItemPlacements" xml:space="preserve">
+        <value>Customize Skills Placements</value>
+    </data>
+    <data name="Randomize_Skills_Button_EditIndividualSkillTrees" xml:space="preserve">
+        <value>Edit Individual Skill Trees</value>
+    </data>
+    
+    <!-- Randomize Locations -->
+
+    <data name="Randomize_Locations_Button_CustomizeLocationPlacements" xml:space="preserve">
+        <value>Customize Location Placements</value>
+    </data>
+    <data name="Randomize_Locations_Button_EditIndividualLocations" xml:space="preserve">
+        <value>Edit Individual Locations</value>
+    </data>
+    
     <!-- Main -->
 
-    <data name="Main_RandomizeItems" xml:space="preserve">
-        <value>Randomize items: Whether or not the items are randomized.</value>
+
+    <data name="Main_Tab_EnemyRandomizer" xml:space="preserve">
+        <value>Enemy Randomizer</value>
     </data>
-    <data name="Main_MakeEveryItemShowNotification" xml:space="preserve">
-        <value>Make every item show a pick up notification: A lot of items are hidden by default, which could lead to confusion as to what the player actually gets if they are randomized. It is strongly recommended to keep this option on.</value>
+    <data name="Main_Tab_ItemRandomizer" xml:space="preserve">
+        <value>Item Randomizer</value>
     </data>
-    <data name="Main_IncludeCutContentItems" xml:space="preserve">
-        <value>Include cut content items: There are about 20 cut content pictos and 14 cut content weapons with varying degrees of functionality, but none of them can break the game or anything. Still, if you do not wish to see them, turn this option off.</value>
+    <data name="Main_Tab_SkillRandomizer" xml:space="preserve">
+        <value>Skill Randomizer</value>
     </data>
-    <data name="Main_ReceivePaintedPowerActIII" xml:space="preserve">
-        <value>Receive Painted Power at the start of Act III: Since the enemies’ drops are now randomized, it is no longer guaranteed that the player will get Painted Power from the last fight of Act II. As such, this option ensures that the player gets it regardless.</value>
+    <data name="Main_Tab_LocationRandomizer" xml:space="preserve">
+        <value>Location Randomizer</value>
     </data>
-    <data name="Main_RandomizeStartingWeaponsCosmetics" xml:space="preserve">
-        <value>Randomize starting weapons/cosmetics: Whether the starting equipment of your characters should be random too. This ignores custom item placement.</value>
+    <data name="Main_Tab_Misc" xml:space="preserve">
+        <value>Misc</value>
     </data>
-    <data name="Main_RandomizeEsquieRocksMapPickups" xml:space="preserve">
-        <value>Randomize Esquie’s rocks into map pickups: This option makes it so that you now need to find the rock items scattered on the map before Esquie can use his abilities. The rocks can only be found as a pickup wherever a unique item (weapon, pictos, etc) was originally present. You need to go to camp with the rock in your inventory to unlock them.</value>
+
+    <data name="Main_Button_Save" xml:space="preserve">
+        <value>Save Settings</value>
     </data>
-    <data name="Main_LimitEsquiesRocksOriginalAreas" xml:space="preserve">
-        <value>Limit Esquie’s rocks to only their original areas: With this off, the rocks can be found in the following areas: Florrie - Spring Meadows, Flying Waters, Ancient Sanctuary, Esquie’s Nest, Stone Wave Cliffs. Dorrie - Forgotten Battlefield, Old Lumiere. Soarrie - Visages, Sirene, Monolith. Otherwise, the rocks can only be found in the areas they were found in the original game - Stone Wave Cliffs, Old Lumiere, and Monolith, respectively.</value>
+    <data name="Main_Button_Load" xml:space="preserve">
+        <value>Load Settings</value>
     </data>
-    <data name="Main_RandomizeEnemyFeetDrops" xml:space="preserve">
-        <value>Randomize enemy feet drops: While the feet are their own items that can be encountered normally, the underlying game system guaranteed their drops from their respective owners. This setting mixes up the type of feet that the enemies drop - a Chalier can now give Monoco Lampmaster's Sword, for example.</value>
+    <data name="Main_Button_GenerateAndPack" xml:space="preserve">
+        <value>Generate and Pack</value>
     </data>
-    <data name="Main_EnableGearRollsInPrologue" xml:space="preserve">
-        <value>Enable gear rolls in prologue: Due to how the game areas work, the items in the prologue are considered level 16 internally, the same as Lumiere Act III. This option exists to prevent the balance of the game from being completely broken in case the player gets a level 16 weapon or pictos in the prologue. Internally, the mod checks whether the drop would have been a weapon/pictos, and then replaces it with a Chroma Catalyst.</value>
+    <data name="Main_Seed" xml:space="preserve">
+        <value>Seed:</value>
     </data>
-    <data name="Main_RandomizeGestralBeachRewards" xml:space="preserve">
-        <value>Randomize gestral beach rewards: Some players understandably prefer not to engage with the gestral beaches, especially if the rewards are not guaranteed to be good. This option exists to prevent them from worrying about it (but not from being silently judged).</value>
-    </data>
-    <data name="Main_ChangeNumberItemsNonRandomizedChecks" xml:space="preserve">
-        <value>Change number of items in non-randomized checks: Similar to the option in the enemy randomizer, this option makes it so that the checks that were configured not to be changed don’t award multiple of the same item.</value>
-    </data>
-    <data name="Main_ReduceKeyItemRepetition" xml:space="preserve">
-        <value>Reduce key item repetition: This option makes it so that whenever a key item is rolled, it is taken from a shuffled pool of items rather than completely randomly. This rule is applied after the initial randomization and ignores Custom Item Placement rules.</value>
-    </data>
-    <data name="Main_MakeAnyMerchantWaresLocked" xml:space="preserve">
-        <value>Make any of the merchant wares locked: This option makes it so that instead of merchants using their base-game locked item statuses, they have them locked with a certain probability. For example, base game Noco has only his first inventory item locked, but if this option is set to 33%, one third of all his items will be locked on average.</value>
-    </data>
-    <data name="Main_RandomizeCheckSizes" xml:space="preserve">
-        <value>Randomize various check sizes: The set of options changes different checks’ sizes, such as the number of items in a merchant’s inventory or the number of items that are awarded on picking up a shiny on the map.</value>
-    </data>
-    <data name="Main_RandomizeQuantitiesUpgradeMaterials" xml:space="preserve">
-        <value>Randomize quantities of upgrade materials: If this option is on, any time the item is rolled to be an upgrade material, its quantity will be randomized. The only items whose quantity can be greater than 1 are: Chroma Catalysts, Color of Lumina, and Recoat.</value>
-    </data>
+    
+    <!-- Custom Placements -->
+    
     <data name="CustomPlacement_Enemy_NotRandomized" xml:space="preserve">
         <value>This allows you to change which enemies aren’t randomized, meaning that they will stay in their respective encounters.</value>
     </data>

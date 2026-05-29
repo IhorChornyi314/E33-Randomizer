@@ -3,104 +3,119 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:E33Randomizer"
+             xmlns:e33Randomizer="clr-namespace:E33Randomizer"
+             xmlns:lang="clr-namespace:E33Randomizer.Assets"
+             xmlns:uiControls="clr-namespace:E33Randomizer.UIControls"
              mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid x:DataType="local:SettingsViewModel">
-        <Grid Margin="20">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <StackPanel>
-                        <CheckBox Content="Randomize skills"
-                                  IsChecked="{Binding RandomizeSkills}"/>
-                        
-                        <CheckBox Content="Reduce skill duplication"
-                                  IsChecked="{Binding ReduceSkillRepetition}"/>
-                        <CheckBox x:Name="RandomizeSkillUnlockCostsCheckBox"
-                                  Content="Randomize skill unlock costs"
-                                  IsChecked="{Binding RandomizeSkillUnlockCosts}"
-                                  Margin="0,6,0,0"/>
-                        <CheckBox Content="Unlock full Gustave skill tree"
-                                  IsChecked="{Binding UnlockGustaveSkills}"
-                                  Margin="0,6,0,0"/>
-                        <CheckBox x:Name="GuaranteeGustaveOverchargeCheckBox"
-                                  Content="Guarantee that Gustave starts with Overcharge"
-                                  IsChecked="{Binding GuaranteeGustaveOvercharge}"
-                                  Margin="0,6,0,0"/>
-                        <CheckBox x:Name="MakeSkillsIntoItemsCheckBox"
-                                  Content="Make all skills unlocked by items instead of skill points"
-                                  IsChecked="{Binding MakeSkillsIntoItems}"
-                                  Margin="0,6,0,0"/>
-                        <CheckBox x:Name="RandomizeSkillTreeEdgesCheckBox"
-                                  Content="Randomize skill tree links"
-                                  IsChecked="{Binding RandomizeTreeEdges}"
-                                  Margin="0,6,0,0"/>
-                                
-                        <StackPanel Orientation="Vertical"
-                                    IsVisible="{Binding IsChecked, ElementName=RandomizeSkillTreeEdgesCheckBox}">
-                            <CheckBox Content="Use fully random node links (will reduce readability)"
-                                      IsChecked="{Binding FullyRandomEdges}"
-                                      Margin="0,6,0,0"/>
-                            <!-- <CheckBox Content="Add links to Monoco's skill tree" -->
-                            <!--           IsChecked="{Binding GiveMonocoTreeEdges}" -->
-                            <!--           Margin="0,6,0,0" -->
-                            <!--           FontSize="14" /> -->
-                            <StackPanel Orientation="Horizontal">
-                                <Label Content="Change number of links to between"/>
-                                <NumericUpDown Text="{Binding MinTreeEdges}"
-                                                    Margin="5,0,0,0"
-                                                    VerticalAlignment="Center"
-                                                    Maximum="99"
-                                                    Minimum="2"
-                                                    Height="20"
-                                                    Width="50"/>
-                                <Label Content="and"/>
-                                <NumericUpDown Text="{Binding MaxTreeEdges}"
-                                                    Margin="5,0,0,0"
-                                                    VerticalAlignment="Center"
-                                                    Maximum="99"
-                                                    Minimum="2"
-                                                    Height="20"
-                                                    Width="50"/>
-                                <Label Content="links per node"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                    <Label Content="Set the link density to"/>
-                                    <NumericUpDown Text="{Binding RandomEdgeChancePercent}"
-                                                        Margin="5,0,0,0"
-                                                        VerticalAlignment="Center"
-                                                        Maximum="100"
-                                                        Minimum="0"
-                                                        Height="20"
-                                                        Width="50"/>
-                                    <Label Content="%"/>
-                            </StackPanel>
-                        </StackPanel>
-                        
+             d:DataContext="{x:Static e33Randomizer:DesignSkillsSettingsViewModel.SettingsViewModel}"
+             d:DesignHeight="{x:Static e33Randomizer:MainWindow.TabContainerHeight}" 
+             d:DesignWidth="{x:Static e33Randomizer:MainWindow.TabContainerWidth}">
+    <Grid x:DataType="e33Randomizer:SettingsViewModel">
+        <Grid Margin="20" RowDefinitions="Auto,*,Auto">
+            <StackPanel>
+                <uiControls:CheckboxToolTip
+                    Content="{x:Static lang:Resources.Randomize_Skills_RandomizeSkills}"
+                    ToolTipContent="{x:Static lang:Resources.Randomize_Skills_ToolTip_RandomizeSkills}"
+                    IsChecked="{Binding RandomizeSkills}" />
+                <uiControls:CheckboxToolTip
+                    Content="{x:Static lang:Resources.Randomize_Skills_ReduceSkillDuplication}"
+                    ToolTipContent="{x:Static lang:Resources.Randomize_Skills_ToolTip_ReduceSkillDuplication}"
+                    IsChecked="{Binding ReduceSkillRepetition}" />
+                <uiControls:CheckboxToolTip
+                    x:Name="RandomizeSkillUnlockCostsCheckBox"
+                    Content="{x:Static lang:Resources.Randomize_Skills_RandomizeSkillUnlockCosts}"
+                    ToolTipContent="{x:Static lang:Resources.Randomize_Skills_ToolTip_RandomizeSkillUnlockCosts}"
+                    IsChecked="{Binding RandomizeSkillUnlockCosts}" />
+                <uiControls:CheckboxToolTip
+                    Content="{x:Static lang:Resources.Randomize_Skills_UnlockFullGustaveSkillTree}"
+                    ToolTipContent="{x:Static lang:Resources.Randomize_Skills_ToolTip_UnlockFullGustaveSkillTree}"
+                    IsChecked="{Binding UnlockGustaveSkills}" />
+                <uiControls:CheckboxToolTip
+                    x:Name="GuaranteeGustaveOverchargeCheckBox"
+                    Content="{x:Static lang:Resources.Randomize_Skills_GuaranteeThatGustaveStartsWithOvercharge}"
+                    ToolTipContent="{x:Static lang:Resources.Randomize_Skills_ToolTip_GuaranteeThatGustaveStartsWithOvercharge}"
+                    IsChecked="{Binding GuaranteeGustaveOvercharge}" />
+                <uiControls:CheckboxToolTip
+                    x:Name="MakeSkillsIntoItemsCheckBox"
+                    Content="{x:Static lang:Resources.Randomize_Skills_MakeAllSkillsUnlockedByItemsInsteadOfSkillPoints}"
+                    ToolTipContent="{x:Static lang:Resources.Randomize_Skills_ToolTip_MakeAllSkillsUnlockedByItemsInsteadOfSkillPoints}"
+                    IsChecked="{Binding MakeSkillsIntoItems}" />
+                <uiControls:CheckboxToolTip
+                    x:Name="RandomizeSkillTreeEdgesCheckBox"
+                    Content="{x:Static lang:Resources.Randomize_Skills_RandomizeSkillTreeLinks}"
+                    ToolTipContent="{x:Static lang:Resources.Randomize_Skills_ToolTip_RandomizeSkillTreeLinks}"
+                    IsChecked="{Binding RandomizeTreeEdges}" />
+
+                <StackPanel
+                    Orientation="Vertical"
+                    IsVisible="{Binding IsChecked, ElementName=RandomizeSkillTreeEdgesCheckBox}">
+                    <uiControls:CheckboxToolTip
+                        Content="{x:Static lang:Resources.Randomize_Skills_UseFullyRandomNodeLinks}"
+                        ToolTipContent="{x:Static lang:Resources.Randomize_Skills_ToolTip_UseFullyRandomNodeLinks}"
+                        IsChecked="{Binding FullyRandomEdges}"
+                        Margin="0 6 0 0" />
+                    <!-- <uiControls:CheckboxToolTip Content="{x:Static lang:Resources.Randomize_Skills_Add links to Monoco's skill tree}"
+                ToolTipContent="{x:Static lang:Resources.Randomize_Skills_ToolTip_Add links to Monoco's skill tree}" -->
+                    <!--           IsChecked="{Binding GiveMonocoTreeEdges}" -->
+                    <!--           Margin="0 6 0 0" -->
+                    <!--           FontSize="14" /> -->
+                    <StackPanel Orientation="Horizontal" Margin="25 0 0 0">
+                        <TextBlock Text="{x:Static lang:Resources.Randomize_Skills_ChangeTheNumberOfLinks}" VerticalAlignment="Center"/>
+                        <NumericUpDown
+                            Text="{Binding MinTreeEdges, Mode=OneWay}"
+                            Value="{Binding MinTreeEdges}"
+                            VerticalAlignment="Center"
+                            Maximum="99"
+                            Minimum="2" />
+                        <TextBlock Text="{x:Static lang:Resources.And}" VerticalAlignment="Center"/>
+                        <NumericUpDown
+                            Text="{Binding MaxTreeEdges}"
+                            Value="{Binding MaxTreeEdges}"
+                            VerticalAlignment="Center"
+                            Maximum="99"
+                            Minimum="2" />
+                        <TextBlock Text="{x:Static lang:Resources.Randomize_Skills_LinksNode}" VerticalAlignment="Center" Margin="5 0 0 0" />
+                        <PathIcon Classes="tooltip">
+                            <ToolTip.Tip>
+                                <uiControls:HeaderToolTip
+                                    Content="{x:Static lang:Resources.Randomize_Skills_ToolTip_ChangeTheNumberOfLinks}" />
+                            </ToolTip.Tip>
+                        </PathIcon>
                     </StackPanel>
-                    <StackPanel Grid.Row="2">
-                        <Button x:Name="CustomSkillPlacementButton"
-                                Content="Customize Skill Placements"
-                                Width="500"
-                                Height="50"
-                                FontSize="20"
-                                HorizontalAlignment="Center"
-                                Margin="0,10,0,20"
-                                Click="CustomPlacementButton_Click" 
-                                Tag="Skill" />
-                        <Button x:Name="EditGraphsButton"
-                                Content="Edit Individual Skill Trees"
-                                Width="500"
-                                Height="50"
-                                FontSize="20"
-                                HorizontalAlignment="Center"
-                                Margin="0,10,0,20"
-                                Click="EditButton_Click" 
-                                Tag="Skill" />
+                    <StackPanel Orientation="Horizontal" Margin="25 10 0 0">
+                        <Label Content="{x:Static lang:Resources.Randomize_Skills_SetTheLinkDensity}" />
+                        <NumericUpDown
+                            Text="{Binding RandomEdgeChancePercent}"
+                            Value="{Binding RandomEdgeChancePercent}"
+                            Margin="5 0 0 0"
+                            VerticalAlignment="Center"
+                            Maximum="100"
+                            Minimum="0" />
+                        <Label Content="%" />
+                        <PathIcon Classes="tooltip">
+                            <ToolTip.Tip>
+                                <uiControls:HeaderToolTip
+                                    Content="{x:Static lang:Resources.Randomize_Skills_ToolTip_SetTheLinkDensity}" />
+                            </ToolTip.Tip>
+                        </PathIcon>
                     </StackPanel>
-                </Grid>
+                </StackPanel>
+
+            </StackPanel>
+            <Grid Grid.Row="2" ColumnDefinitions="*,*">
+                <Button
+                    Grid.Column="0"
+                    Classes="e33Button"
+                    Content="{x:Static lang:Resources.Randomize_Skills_Button_CustomizeItemPlacements}"
+                    Click="CustomPlacementButton_Click"
+                    Tag="Skill" />
+                <Button
+                    Grid.Column="1"
+                    Classes="e33Button"
+                    Content="{x:Static lang:Resources.Randomize_Skills_Button_EditIndividualSkillTrees}"
+                    Click="EditButton_Click"
+                    Tag="Skill" />
+            </Grid>
+        </Grid>
     </Grid>
 </UserControl>

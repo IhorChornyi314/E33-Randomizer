@@ -2,17 +2,26 @@
         xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:e33Randomizer="clr-namespace:E33Randomizer"
-        Title="Expedition 33 Randomizer" Height="850" Width="1050"
-        MinHeight="850" MinWidth="1000">
-    <DockPanel x:DataType="e33Randomizer:SettingsViewModel">
-        <Border DockPanel.Dock="Left" Margin="5" BorderThickness="0 0 5 0">
+        Title="Expedition 33 Randomizer"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:lang="clr-namespace:E33Randomizer.Assets"
+        mc:Ignorable="d"
+        d:DataContext="{x:Static e33Randomizer:DesignSkillsSettingsViewModel.SettingsViewModel}"
+        x:DataType="e33Randomizer:SettingsViewModel">
+    <DockPanel>
+        <Border DockPanel.Dock="Left" Margin="5"
+                BorderThickness="0 0 5 0"
+                Width="{x:Static e33Randomizer:MainWindow.TabStripWidth}"
+                Height="{x:Static e33Randomizer:MainWindow.TabStripHeight}">
             <Border.Background>
-                <ImageBrush Source="avares://E33Randomizer/Assets/Images/MainBackgroundLeft.png" Stretch="Fill" Opacity="0.7" />
+                <ImageBrush Source="avares://E33Randomizer/Assets/Images/MainBackgroundLeft.png" Stretch="Fill"
+                            Opacity="0.7" />
             </Border.Background>
             <Border.BorderBrush>
                 <ImageBrush Source="avares://E33Randomizer/Assets/Images/TallBar.png" Stretch="Fill">
                     <ImageBrush.Transform>
-                        <ScaleTransform ScaleX="1.4" ScaleY="1"/>
+                        <ScaleTransform ScaleX="1.4" ScaleY="1" />
                     </ImageBrush.Transform>
                 </ImageBrush>
             </Border.BorderBrush>
@@ -32,7 +41,7 @@
                                 <Setter.Value>
                                     <ImageBrush Source="avares://E33Randomizer/Assets/Images/Bar.png" Stretch="Fill">
                                         <ImageBrush.Transform>
-                                            <ScaleTransform ScaleX="1.4" ScaleY="1"/>
+                                            <ScaleTransform ScaleX="1.4" ScaleY="1" />
                                         </ImageBrush.Transform>
                                     </ImageBrush>
                                 </Setter.Value>
@@ -42,23 +51,22 @@
                             <Setter Property="FontFamily" Value="fonts:E33Fonts#Cinzel"></Setter>
                         </Style>
                     </TabStrip.Styles>
-                    <TabStripItem>Enemy Randomizer</TabStripItem>
-                    <TabStripItem>Item Randomizer</TabStripItem>
-                    <TabStripItem>Skill Randomizer</TabStripItem>
-                    <TabStripItem>Location Randomizer</TabStripItem>
-                    <TabStripItem>Misc</TabStripItem>
+                    <TabStripItem Content="{x:Static lang:Resources.Main_Tab_EnemyRandomizer}" />
+                    <TabStripItem Content="{x:Static lang:Resources.Main_Tab_ItemRandomizer}" />
+                    <TabStripItem Content="{x:Static lang:Resources.Main_Tab_SkillRandomizer}" />
+                    <TabStripItem Content="{x:Static lang:Resources.Main_Tab_LocationRandomizer}" />
+                    <TabStripItem Content="{x:Static lang:Resources.Main_Tab_Misc}" />
                 </TabStrip>
 
                 <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center" Spacing="10">
                     <Button x:Name="SavePresetButton"
                             Classes="e33Button"
-                            Content="Save settings"
+                            Content="{x:Static lang:Resources.Main_Button_Save}"
                             Width="230"
-                            Click="SavePresetButton_Click"
-                            />
+                            Click="SavePresetButton_Click" />
 
                     <Button x:Name="LoadPresetButton"
-                            Content="Load Settings"
+                            Content="{x:Static lang:Resources.Main_Button_Load}"
                             Classes="e33Button"
                             Width="230"
                             Click="LoadPresetButton_Click" />
@@ -66,7 +74,7 @@
                     <!-- Generate Button -->
                     <Button x:Name="GenerateButton"
                             Classes="e33Button"
-                            Content="Generate and pack"
+                            Content="{x:Static lang:Resources.Main_Button_GenerateAndPack}"
                             Width="230"
                             Click="GenerateButton_Click" />
 
@@ -89,6 +97,9 @@
                 </StackPanel>
             </Panel>
         </Border>
-        <ContentControl Content="{Binding CurrentPage}" />
+        <ContentControl
+            Content="{Binding CurrentPage}"
+            Width="{x:Static e33Randomizer:MainWindow.TabContainerWidth}"
+            Height="{x:Static e33Randomizer:MainWindow.TabContainerHeight}" />
     </DockPanel>
 </Window>

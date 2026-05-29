@@ -21,3 +21,13 @@ public partial class RandomizeSkillsTab : UserControl
         App.GetMainWindow().OpenEditObjectsButton_Click(sender, e);
     }
 }
+
+// Design Time Settings DataContext
+public static class DesignSkillsSettingsViewModel
+{
+    public static SettingsViewModel SettingsViewModel => new()
+    {
+        
+    };
+        
+}

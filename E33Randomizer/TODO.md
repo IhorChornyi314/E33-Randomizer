@@ -2,9 +2,6 @@
 ## TODO
 * General
   * Finish moving the existing text over to the Resx File.  Need to figure out how to deal with the presets, etc.
-  * Finish updating the Items Tab
-  * Finish updating the Location Tab
-  * Finish updating the Skill Tab
   * Finish updating the Misc Tab
   * Add help tooltips throughout
   * Finish incorporating the background assets
@@ -33,6 +30,9 @@
   * Remove / Fix most non-AOT compatible code (sadly not sure that we can fully get to AOT yet for the time being due to the UAssetsAPI)
   * Fixed pathing issues between Windows and Linux
   * Redesigned the "main" screen's layout with the new core theme/design principals
+  * Finish updating the Items Tab
+  * Finish updating the Location Tab
+  * Finish updating the Skill Tab
 * Custom Placements
   * Completely redesigned UX
     * Now uses tabs and makes the sub sections much less compressed so it's easier to see what is configured.

@@ -3,13 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:E33Randomizer"
+             xmlns:e33Randomizer="clr-namespace:E33Randomizer"
              xmlns:lang="clr-namespace:E33Randomizer.Assets"
              xmlns:uiControls="clr-namespace:E33Randomizer.UIControls"
              mc:Ignorable="d"
-             d:DataContext="{x:Static local:DesignItemsSettingsViewModel.SettingsViewModel}"
-             d:DesignHeight="850" d:DesignWidth="700">
-    <Grid x:DataType="local:SettingsViewModel">
+             d:DataContext="{x:Static e33Randomizer:DesignItemsSettingsViewModel.SettingsViewModel}"
+             d:DesignHeight="{x:Static e33Randomizer:MainWindow.TabContainerHeight}"
+             d:DesignWidth="{x:Static e33Randomizer:MainWindow.TabContainerWidth}">
+    <Grid x:DataType="e33Randomizer:SettingsViewModel">
         <Grid.Styles>
             <Style Selector="CheckBox.hasNumeric[IsChecked=True]">
                 <Setter Property="MinHeight" Value="40" />
@@ -81,7 +82,7 @@
                     ToolTipContent="{x:Static lang:Resources.Randomize_Items_Tooltip_ReduceKeyItemRepetition}"
                     IsChecked="{Binding ReduceKeyItemRepetition}" />
                 <CheckBox Content="{x:Static lang:Resources.Randomize_Items_ReduceGearRepetition}"
-                                            IsChecked="{Binding ReduceGearRepetition}" />
+                          IsChecked="{Binding ReduceGearRepetition}" />
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <CheckBox
@@ -288,20 +289,16 @@
             </StackPanel>
             <StackPanel Grid.Row="2">
                 <Grid ColumnDefinitions="Auto,Auto" HorizontalAlignment="Center" ColumnSpacing="10">
-                    <Button Classes="e33Button"
-                            x:Name="CustomItemPlacementButton"
+                    <Button Grid.Column="0"
+                            Classes="e33Button"
                             Content="{x:Static lang:Resources.Randomize_Items_Button_CustomizeItemPlacements}"
-                            HorizontalAlignment="Center"
                             Click="CustomPlacementButton_Click"
-                            Tag="Item"
-                            Grid.Column="0" />
-                    <Button Classes="e33Button"
-                            x:Name="EditChecksButton"
+                            Tag="Item" />
+                    <Button Grid.Column="1"
+                            Classes="e33Button"
                             Content="{x:Static lang:Resources.Randomize_Items_Button_EditIndividualChecks}"
-                            HorizontalAlignment="Center"
                             Click="EditButton_Click"
-                            Tag="Item"
-                            Grid.Column="1" />
+                            Tag="Item" />
                 </Grid>
 
             </StackPanel>

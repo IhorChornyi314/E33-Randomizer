@@ -531,93 +531,207 @@ namespace E33Randomizer.Assets {
             }
         }
         
-        public static string Main_RandomizeItems {
+        public static string Randomize_Skills_RandomizeSkills {
             get {
-                return ResourceManager.GetString("Main_RandomizeItems", resourceCulture);
+                return ResourceManager.GetString("Randomize_Skills_RandomizeSkills", resourceCulture);
             }
         }
         
-        public static string Main_MakeEveryItemShowNotification {
+        public static string Randomize_Skills_ReduceSkillDuplication {
             get {
-                return ResourceManager.GetString("Main_MakeEveryItemShowNotification", resourceCulture);
+                return ResourceManager.GetString("Randomize_Skills_ReduceSkillDuplication", resourceCulture);
             }
         }
         
-        public static string Main_IncludeCutContentItems {
+        public static string Randomize_Skills_RandomizeSkillUnlockCosts {
             get {
-                return ResourceManager.GetString("Main_IncludeCutContentItems", resourceCulture);
+                return ResourceManager.GetString("Randomize_Skills_RandomizeSkillUnlockCosts", resourceCulture);
             }
         }
         
-        public static string Main_ReceivePaintedPowerActIII {
+        public static string Randomize_Skills_UnlockFullGustaveSkillTree {
             get {
-                return ResourceManager.GetString("Main_ReceivePaintedPowerActIII", resourceCulture);
+                return ResourceManager.GetString("Randomize_Skills_UnlockFullGustaveSkillTree", resourceCulture);
             }
         }
         
-        public static string Main_RandomizeStartingWeaponsCosmetics {
+        public static string Randomize_Skills_GuaranteeThatGustaveStartsWithOvercharge {
             get {
-                return ResourceManager.GetString("Main_RandomizeStartingWeaponsCosmetics", resourceCulture);
+                return ResourceManager.GetString("Randomize_Skills_GuaranteeThatGustaveStartsWithOvercharge", resourceCulture);
             }
         }
         
-        public static string Main_RandomizeEsquieRocksMapPickups {
+        public static string Randomize_Skills_MakeAllSkillsUnlockedByItemsInsteadOfSkillPoints {
             get {
-                return ResourceManager.GetString("Main_RandomizeEsquieRocksMapPickups", resourceCulture);
+                return ResourceManager.GetString("Randomize_Skills_MakeAllSkillsUnlockedByItemsInsteadOfSkillPoints", resourceCulture);
             }
         }
         
-        public static string Main_LimitEsquiesRocksOriginalAreas {
+        public static string Randomize_Skills_RandomizeSkillTreeLinks {
             get {
-                return ResourceManager.GetString("Main_LimitEsquiesRocksOriginalAreas", resourceCulture);
+                return ResourceManager.GetString("Randomize_Skills_RandomizeSkillTreeLinks", resourceCulture);
             }
         }
         
-        public static string Main_RandomizeEnemyFeetDrops {
+        public static string Randomize_Skills_UseFullyRandomNodeLinks {
             get {
-                return ResourceManager.GetString("Main_RandomizeEnemyFeetDrops", resourceCulture);
+                return ResourceManager.GetString("Randomize_Skills_UseFullyRandomNodeLinks", resourceCulture);
             }
         }
         
-        public static string Main_EnableGearRollsInPrologue {
+        public static string Randomize_Skills_ChangeTheNumberOfLinks {
             get {
-                return ResourceManager.GetString("Main_EnableGearRollsInPrologue", resourceCulture);
+                return ResourceManager.GetString("Randomize_Skills_ChangeTheNumberOfLinks", resourceCulture);
             }
         }
         
-        public static string Main_RandomizeGestralBeachRewards {
+        public static string Randomize_Skills_SetTheLinkDensity {
             get {
-                return ResourceManager.GetString("Main_RandomizeGestralBeachRewards", resourceCulture);
+                return ResourceManager.GetString("Randomize_Skills_SetTheLinkDensity", resourceCulture);
             }
         }
         
-        public static string Main_ChangeNumberItemsNonRandomizedChecks {
+        public static string Randomize_Skills_LinksNode {
             get {
-                return ResourceManager.GetString("Main_ChangeNumberItemsNonRandomizedChecks", resourceCulture);
+                return ResourceManager.GetString("Randomize_Skills_LinksNode", resourceCulture);
             }
         }
         
-        public static string Main_ReduceKeyItemRepetition {
+        public static string Randomize_Skills_ToolTip_RandomizeSkills {
             get {
-                return ResourceManager.GetString("Main_ReduceKeyItemRepetition", resourceCulture);
+                return ResourceManager.GetString("Randomize_Skills_ToolTip_RandomizeSkills", resourceCulture);
             }
         }
         
-        public static string Main_MakeAnyMerchantWaresLocked {
+        public static string Randomize_Skills_ToolTip_ReduceSkillDuplication {
             get {
-                return ResourceManager.GetString("Main_MakeAnyMerchantWaresLocked", resourceCulture);
+                return ResourceManager.GetString("Randomize_Skills_ToolTip_ReduceSkillDuplication", resourceCulture);
             }
         }
         
-        public static string Main_RandomizeCheckSizes {
+        public static string Randomize_Skills_ToolTip_RandomizeSkillUnlockCosts {
             get {
-                return ResourceManager.GetString("Main_RandomizeCheckSizes", resourceCulture);
+                return ResourceManager.GetString("Randomize_Skills_ToolTip_RandomizeSkillUnlockCosts", resourceCulture);
             }
         }
         
-        public static string Main_RandomizeQuantitiesUpgradeMaterials {
+        public static string Randomize_Skills_ToolTip_UnlockFullGustaveSkillTree {
             get {
-                return ResourceManager.GetString("Main_RandomizeQuantitiesUpgradeMaterials", resourceCulture);
+                return ResourceManager.GetString("Randomize_Skills_ToolTip_UnlockFullGustaveSkillTree", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Skills_ToolTip_GuaranteeThatGustaveStartsWithOvercharge {
+            get {
+                return ResourceManager.GetString("Randomize_Skills_ToolTip_GuaranteeThatGustaveStartsWithOvercharge", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Skills_ToolTip_MakeAllSkillsUnlockedByItemsInsteadOfSkillPoints {
+            get {
+                return ResourceManager.GetString("Randomize_Skills_ToolTip_MakeAllSkillsUnlockedByItemsInsteadOfSkillPoints", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Skills_ToolTip_RandomizeSkillTreeLinks {
+            get {
+                return ResourceManager.GetString("Randomize_Skills_ToolTip_RandomizeSkillTreeLinks", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Skills_ToolTip_UseFullyRandomNodeLinks {
+            get {
+                return ResourceManager.GetString("Randomize_Skills_ToolTip_UseFullyRandomNodeLinks", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Skills_ToolTip_ChangeTheNumberOfLinks {
+            get {
+                return ResourceManager.GetString("Randomize_Skills_ToolTip_ChangeTheNumberOfLinks", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Skills_ToolTip_SetTheLinkDensity {
+            get {
+                return ResourceManager.GetString("Randomize_Skills_ToolTip_SetTheLinkDensity", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Skills_Button_CustomizeItemPlacements {
+            get {
+                return ResourceManager.GetString("Randomize_Skills_Button_CustomizeItemPlacements", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Skills_Button_EditIndividualSkillTrees {
+            get {
+                return ResourceManager.GetString("Randomize_Skills_Button_EditIndividualSkillTrees", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Locations_Button_CustomizeLocationPlacements {
+            get {
+                return ResourceManager.GetString("Randomize_Locations_Button_CustomizeLocationPlacements", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Locations_Button_EditIndividualLocations {
+            get {
+                return ResourceManager.GetString("Randomize_Locations_Button_EditIndividualLocations", resourceCulture);
+            }
+        }
+        
+        public static string Main_Tab_EnemyRandomizer {
+            get {
+                return ResourceManager.GetString("Main_Tab_EnemyRandomizer", resourceCulture);
+            }
+        }
+        
+        public static string Main_Tab_ItemRandomizer {
+            get {
+                return ResourceManager.GetString("Main_Tab_ItemRandomizer", resourceCulture);
+            }
+        }
+        
+        public static string Main_Tab_SkillRandomizer {
+            get {
+                return ResourceManager.GetString("Main_Tab_SkillRandomizer", resourceCulture);
+            }
+        }
+        
+        public static string Main_Tab_LocationRandomizer {
+            get {
+                return ResourceManager.GetString("Main_Tab_LocationRandomizer", resourceCulture);
+            }
+        }
+        
+        public static string Main_Tab_Misc {
+            get {
+                return ResourceManager.GetString("Main_Tab_Misc", resourceCulture);
+            }
+        }
+        
+        public static string Main_Button_Save {
+            get {
+                return ResourceManager.GetString("Main_Button_Save", resourceCulture);
+            }
+        }
+        
+        public static string Main_Button_Load {
+            get {
+                return ResourceManager.GetString("Main_Button_Load", resourceCulture);
+            }
+        }
+        
+        public static string Main_Button_GenerateAndPack {
+            get {
+                return ResourceManager.GetString("Main_Button_GenerateAndPack", resourceCulture);
+            }
+        }
+        
+        public static string Main_Seed {
+            get {
+                return ResourceManager.GetString("Main_Seed", resourceCulture);
             }
         }
         
