@@ -3,7 +3,6 @@
 * General
   * Finish moving the existing text over to the Resx File.  Need to figure out how to deal with the presets, etc.
     * Including warnings and error messages
-  * Finish updating the Misc Tab
   * Add help tooltips throughout
   * Create better cross-platform build (to fetch the both the linux and windows `retoc` and `uesave`)
   * Investigate switching to `AvaloniaDictionary<T,TV>` over the custom `ObeservableCollectionWithChildListener<T>` 
@@ -44,6 +43,7 @@
   * Finish updating the Items Tab
   * Finish updating the Location Tab
   * Finish updating the Skill Tab
+  * Finish updating the Misc Tab
 * Custom Placements
   * Completely redesigned UX
     * Now uses tabs and makes the sub sections much less compressed so it's easier to see what is configured.

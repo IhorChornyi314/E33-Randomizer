@@ -25,7 +25,7 @@
         </Style>
     </Window.Styles>
 
-    <Grid ColumnDefinitions="*,5,Auto" RowDefinitions="Auto,Auto,Auto,*" Margin="0 0 15 0">
+    <Grid ColumnDefinitions="*,5,Auto" RowDefinitions="Auto,Auto,Auto,*">
         <Grid.Background>
             <ImageBrush Source="avares://E33Randomizer/Assets/Images/BackgroundOne.png" Stretch="Fill" Opacity="0.7" />
         </Grid.Background>
@@ -99,7 +99,7 @@
 
         <uiControls:SubSection Grid.Row="2" Grid.Column="2"
                                Width="700"
-                               Padding="10 0"
+                               Margin="0 0 15 0"
                                xml:space="preserve"
                                Height="600">
             <uiControls:SubSection.Header>

@@ -372,6 +372,33 @@
         <value>Edit Individual Locations</value>
     </data>
     
+    <!-- Misc Tab -->
+
+    <data name="Misc_SaveFile_Header">
+        <value>Save File Patching</value>
+    </data>
+
+
+    <data name="Misc_SaveFile_AddCounters_Description" xml:space="preserve">
+        <value>It is recommended that you patch your save file to gain access to Jump and Gradient Counters if you don't have those already.
+
+
+They are located in {0} and are named {1}.
+
+There's also a Backup folder that contains all of your "Load Previous Saves" saves.
+Simply press the button and choose the save file that you want to patch.</value>
+    </data>
+    <data name="Misc_SaveFile_Button_AddCounters">
+        <value>Add counters to save file</value>
+    </data>
+    <data name="Misc_SaveFile_FixCurtain_Description" xml:space="preserve">
+        <value>If you have triggered the second phase of Act III Renoir, then the curtain in Lumiere's Opera House will be closed, preventing you from finishing the game.
+
+Use this button to fix that.</value>
+    </data>
+    <data name="Misc_SaveFile_Button_FixCurtains">
+        <value>Fix curtains in save file</value>
+    </data>
     <!-- Main -->
 
 
@@ -662,5 +689,6 @@
     <data name="IndividualContainers_Location_Search" xml:space="preserve">
         <value>Search by Original Destination or Location names:</value>
     </data>
+    
     
 </root>

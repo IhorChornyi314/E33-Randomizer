@@ -99,4 +99,5 @@ public partial class MiscTab : UserControl
 public class MiscTabViewModel : ObservableObject
 {
     public string DefaultSaveFilePath { get; set; }
+    public string SaveFileName => "EXPEDITION_[save slot id]";
 }

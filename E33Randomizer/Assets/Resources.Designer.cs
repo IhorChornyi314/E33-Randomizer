@@ -699,6 +699,36 @@ namespace E33Randomizer.Assets {
             }
         }
         
+        public static string Misc_SaveFile_Header {
+            get {
+                return ResourceManager.GetString("Misc_SaveFile_Header", resourceCulture);
+            }
+        }
+        
+        public static string Misc_SaveFile_AddCounters_Description {
+            get {
+                return ResourceManager.GetString("Misc_SaveFile_AddCounters_Description", resourceCulture);
+            }
+        }
+        
+        public static string Misc_SaveFile_Button_AddCounters {
+            get {
+                return ResourceManager.GetString("Misc_SaveFile_Button_AddCounters", resourceCulture);
+            }
+        }
+        
+        public static string Misc_SaveFile_FixCurtain_Description {
+            get {
+                return ResourceManager.GetString("Misc_SaveFile_FixCurtain_Description", resourceCulture);
+            }
+        }
+        
+        public static string Misc_SaveFile_Button_FixCurtains {
+            get {
+                return ResourceManager.GetString("Misc_SaveFile_Button_FixCurtains", resourceCulture);
+            }
+        }
+        
         public static string Main_Tab_EnemyRandomizer {
             get {
                 return ResourceManager.GetString("Main_Tab_EnemyRandomizer", resourceCulture);
