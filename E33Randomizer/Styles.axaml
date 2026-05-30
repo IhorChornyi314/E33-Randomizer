@@ -1,6 +1,5 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:e33Randomizer="clr-namespace:E33Randomizer"
         xmlns:uiControls="clr-namespace:E33Randomizer.UIControls">
     <Design.PreviewWith>
         
@@ -116,20 +115,10 @@
     </Style>
     
     <Style Selector="Button.e33Button.Green.Small Image#Left">
-        <Setter Property="RenderTransform">
-            <TransformGroup>
-                <ScaleTransform  ScaleY=".5" ScaleX="0.75" />
-                <TranslateTransform X="13" />
-            </TransformGroup>
-        </Setter>
+        <Setter Property="RenderTransform" Value="scale(0.75,0.5) translate(13px,0)" />
     </Style>
     <Style Selector="Button.e33Button.Green.Small Image#Right">
-        <Setter Property="RenderTransform">
-            <TransformGroup>
-                <ScaleTransform  ScaleY=".5" ScaleX="0.75" />
-                <TranslateTransform X="-13" />
-            </TransformGroup>
-        </Setter>
+        <Setter Property="RenderTransform" Value="scale(0.75,0.5) translate(-13px,0)" />
     </Style>
     <Style Selector="Button.e33Button.Green.Small /template/ ContentPresenter#PART_ContentPresenter">
         <Setter Property="Margin" Value="0 0" />
@@ -183,6 +172,7 @@
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="MaxHeight" Value="64" />
         <Setter Property="MaxWidth" Value="64" />
+        <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Template">
             <ControlTemplate>
                 <!-- Right background image -->

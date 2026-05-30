@@ -578,5 +578,89 @@
     <data name="IndividualContainers_Enemy_Search" xml:space="preserve">
         <value>Search by Encounter or Enemy names:</value>
     </data>
+
+    <data name="IndividualContainers_Item_Title" xml:space="preserve">
+        <value>Edit individual Items</value>
+    </data>
+    <data name="IndividualContainers_Item_Containers" xml:space="preserve">
+        <value>Checks</value>
+    </data>
+    <data name="IndividualContainers_Item_Tooltip_Containers" xml:space="preserve">
+        <value>This is the list of Checks using the names the game uses internally and are usually self-descriptive.  Find the Check you want to change on this side.  Then edit the Check on the other.</value>
+    </data>
+    <data name="IndividualContainers_Item_AddObject" xml:space="preserve">
+        <value>Add Item</value>
+    </data>
+    <data name="IndividualContainers_Item_Objects" xml:space="preserve">
+        <value>Items in the Check</value>
+    </data>
+    <data name="IndividualContainers_Item_Tooltip_Objects" xml:space="preserve">
+        <value>These are the Items that are in the selected Check.  You can change, add, or remove Items from this list. &#xD;&#xD; The game actually has full support for 4-Item Checks, but anything beyond that will just place all the other Items in a single spot outside the fighting arena. They will still be able to deal and take damage, but their attacks will not be visible, and you won’t be able to shoot them in free aim. </value>
+    </data>
+    <data name="IndividualContainers_Item_LoadTxt" xml:space="preserve">
+        <value>Load Items from .txt file</value>
+    </data>
+    <data name="IndividualContainers_Item_SaveTxt" xml:space="preserve">
+        <value>Save Items to .txt file</value>
+    </data>
+    <data name="IndividualContainers_Item_Search" xml:space="preserve">
+        <value>Search by Check or Item names:</value>
+    </data>
+
+    <data name="IndividualContainers_Skill_Title" xml:space="preserve">
+        <value>Edit individual Skills</value>
+    </data>
+    <data name="IndividualContainers_Skill_Containers" xml:space="preserve">
+        <value>Skill Trees</value>
+    </data>
+    <data name="IndividualContainers_Skill_Tooltip_Containers" xml:space="preserve">
+        <value>This is the list of Skill Trees using the names the game uses internally and are usually self-descriptive.  Find the Skill Tree you want to change on this side.  Then edit the Skill Tree on the other.</value>
+    </data>
+    <data name="IndividualContainers_Skill_AddObject" xml:space="preserve">
+        <value>Add Skill</value>
+    </data>
+    <data name="IndividualContainers_Skill_Objects" xml:space="preserve">
+        <value>Skills in the Skill Tree</value>
+    </data>
+    <data name="IndividualContainers_Skill_Tooltip_Objects" xml:space="preserve">
+        <value>These are the Skills that are in the selected Skill Tree.  You can change, add, or remove Skills from this list. &#xD;&#xD; The game actually has full support for 4-Skill Skill Trees, but anything beyond that will just place all the other Skills in a single spot outside the fighting arena. They will still be able to deal and take damage, but their attacks will not be visible, and you won’t be able to shoot them in free aim. </value>
+    </data>
+    <data name="IndividualContainers_Skill_LoadTxt" xml:space="preserve">
+        <value>Load Skills from .txt file</value>
+    </data>
+    <data name="IndividualContainers_Skill_SaveTxt" xml:space="preserve">
+        <value>Save Skills to .txt file</value>
+    </data>
+    <data name="IndividualContainers_Skill_Search" xml:space="preserve">
+        <value>Search by Skill Tree or Skill names:</value>
+    </data>
+
+    <data name="IndividualContainers_Location_Title" xml:space="preserve">
+        <value>Edit individual Locations</value>
+    </data>
+    <data name="IndividualContainers_Location_Containers" xml:space="preserve">
+        <value>Original Destinations</value>
+    </data>
+    <data name="IndividualContainers_Location_Tooltip_Containers" xml:space="preserve">
+        <value>This is the list of Original Destinations using the names the game uses internally and are usually self-descriptive.  Find the Original Destination you want to change on this side.  Then edit the Original Destination on the other.</value>
+    </data>
+    <data name="IndividualContainers_Location_AddObject" xml:space="preserve">
+        <value>Add Location</value>
+    </data>
+    <data name="IndividualContainers_Location_Objects" xml:space="preserve">
+        <value>New Destination</value>
+    </data>
+    <data name="IndividualContainers_Location_Tooltip_Objects" xml:space="preserve">
+        <value>These are the Locations that are in the selected Original Destination.  You can change, add, or remove Locations from this list. &#xD;&#xD; The game actually has full support for 4-Location Original Destinations, but anything beyond that will just place all the other Locations in a single spot outside the fighting arena. They will still be able to deal and take damage, but their attacks will not be visible, and you won’t be able to shoot them in free aim. </value>
+    </data>
+    <data name="IndividualContainers_Location_LoadTxt" xml:space="preserve">
+        <value>Load Locations from .txt file</value>
+    </data>
+    <data name="IndividualContainers_Location_SaveTxt" xml:space="preserve">
+        <value>Save Locations to .txt file</value>
+    </data>
+    <data name="IndividualContainers_Location_Search" xml:space="preserve">
+        <value>Search by Original Destination or Location names:</value>
+    </data>
     
 </root>

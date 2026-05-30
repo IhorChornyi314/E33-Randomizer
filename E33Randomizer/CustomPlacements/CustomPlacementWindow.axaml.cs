@@ -45,15 +45,8 @@ namespace E33Randomizer.CustomPlacements;
         
         private void SetupAutoCompleteBehaviors()
         {
-            NotRandomizedObjectsSelectionComboBox.GotFocus += (_, _) =>
-            {
-                NotRandomizedObjectsSelectionComboBox.IsDropDownOpen = true;
-            };
-
-            ExcludedObjectsSelectionComboBox.GotFocus += (_, _) =>
-            {
-                ExcludedObjectsSelectionComboBox.IsDropDownOpen = true;
-            };
+            NotRandomizedObjectsSelectionComboBox.AddAutoDropDownOnFocusAndClickHandler();
+            ExcludedObjectsSelectionComboBox.AddAutoDropDownOnFocusAndClickHandler();
         }
         
         private void NotRandomizedObjectsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

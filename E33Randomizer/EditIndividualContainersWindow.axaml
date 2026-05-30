@@ -26,6 +26,9 @@
     </Window.Styles>
 
     <Grid ColumnDefinitions="*,5,Auto" RowDefinitions="Auto,Auto,Auto,*" Margin="0 0 15 0">
+        <Grid.Background>
+            <ImageBrush Source="avares://E33Randomizer/Assets/Images/BackgroundOne.png" Stretch="Fill" Opacity="0.7" />
+        </Grid.Background>
         <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Classes="e33PageHeader"
                    Margin="0 10"
                    HorizontalAlignment="Center">
@@ -37,7 +40,7 @@
             </TextBlock.Text>
         </TextBlock>
         <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" Grid.ColumnSpan="3" Margin="0 0 0 20">
-            <Label VerticalAlignment="Center" Margin="10" FontSize="15">
+            <Label VerticalAlignment="Center" Margin="10">
                 <Label.Content>
                     <MultiBinding Converter="{StaticResource ResourceLookupConverter}">
                         <Binding Path="ObjectName" />
@@ -55,7 +58,7 @@
         </StackPanel>
         <uiControls:SubSection Grid.Row="2" Grid.Column="0"
                                Width="400"
-                               MaxHeight="600"
+                               Height="600"
                                xml:space="preserve">
             <uiControls:SubSection.Header>
                  <MultiBinding Converter="{StaticResource ResourceLookupConverter}">
@@ -75,6 +78,7 @@
             <TreeView x:Name="LocationTreeView"
                       SelectionChanged="CategoryTreeView_SelectedItemChanged"
                       SelectionMode="Single"
+                      Height="550"
                       ItemsSource="{Binding FilteredCategories}">
                 <TreeView.DataTemplates>
 
@@ -96,7 +100,8 @@
         <uiControls:SubSection Grid.Row="2" Grid.Column="2"
                                Width="700"
                                Padding="10 0"
-                               xml:space="preserve">
+                               xml:space="preserve"
+                               Height="600">
             <uiControls:SubSection.Header>
                  <MultiBinding Converter="{StaticResource ResourceLookupConverter}">
                     <Binding Path="ObjectName" />
@@ -111,21 +116,11 @@
                     <Binding Source="{x:Static e33Randomizer:EditIndividualObjectsWindowViewModel.ObjectsResxName }" />
                 </MultiBinding>
             </uiControls:SubSection.ToolTipContent>
-        <DockPanel Width="680">
-            <TextBlock FontWeight="Bold" FontSize="14"
-                       DockPanel.Dock="Top" Margin="0 0 0 10">
-                <TextBlock.Text>
-                    <MultiBinding Converter="{StaticResource ResourceLookupConverter}">
-                        <Binding Path="ObjectName" />
-                        <Binding
-                                Source="{x:Static e33Randomizer:EditIndividualObjectsWindowViewModel.ObjectsResxName }" />
-                    </MultiBinding>
-                </TextBlock.Text>
-            </TextBlock>
-
-            <ListBox DockPanel.Dock="Top" Height="432" x:Name="SelectedEnemiesListBox"
+        <DockPanel Width="680" Height="560">
+            <ListBox DockPanel.Dock="Top" Height="460" x:Name="SelectedEnemiesListBox"
                      x:DataType="e33Randomizer:EditIndividualObjectsWindowViewModel"
                      ItemsSource="{Binding DisplayedObjects}"
+                     Background="Transparent"
                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                      Margin="0 0 0 10">
                 <ListBox.Styles>
@@ -136,14 +131,17 @@
                             Selector="ListBoxItem:selected:pointerover /template/ ContentPresenter#PART_ContentPresenter">
                         <Setter Property="Background" Value="Transparent" />
                     </Style>
+                    <Style Selector="ListBoxItem:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+                        <Setter Property="Background" Value="Transparent" />
+                    </Style>
                     <Style Selector="ListBoxItem:selected /template/ ContentPresenter#PART_ContentPresenter">
                         <Setter Property="Background" Value="Transparent" />
                     </Style>
 
                 </ListBox.Styles>
                 <ListBox.ItemTemplate>
-                    <DataTemplate DataType="{x:Type e33Randomizer:ObjectViewModel}">
-                        <Grid Margin="2" ColumnDefinitions="*,Auto,Auto,Auto">
+                    <DataTemplate>
+                        <Grid Margin="2" ColumnDefinitions="*,*,Auto,Auto">
 
                             <ComboBox Grid.Column="0"
                                       ItemsSource="{Binding AllObjects}"
@@ -159,18 +157,16 @@
                             </ComboBox>
 
                             <NumericUpDown Grid.Column="1" x:Name="NumberOfAdditionalEnemiesTextBox"
-                                           Text="{Binding IntProperty}"
+                                           Value="{Binding IntProperty}"
+                                           FormatString="0"
                                            Margin="5 0 0 0"
                                            VerticalAlignment="Center"
                                            Height="25"
-                                           Width="50"
+                                           Width="100"
                                            Minimum="0"
                                            Maximum="99"
                                            IsVisible="{Binding HasIntPropertyControl}" />
-                            <LayoutTransformControl Grid.Column="2">
-                                <LayoutTransformControl.LayoutTransform>
-                                    <ScaleTransform ScaleX="1.2" ScaleY="1.2" />
-                                </LayoutTransformControl.LayoutTransform>
+                            <LayoutTransformControl Grid.Column="2" LayoutTransform="scale(1.2,1.2)">
                                 <CheckBox
                                         VerticalAlignment="Center"
                                         VerticalContentAlignment="Center"
@@ -193,54 +189,40 @@
             </ListBox>
 
 
-            <StackPanel DockPanel.Dock="Bottom">
-                <TextBlock Margin="0 0 0 5" FontWeight="SemiBold">
-                    <TextBlock.Text>
-                        <MultiBinding Converter="{StaticResource ResourceLookupConverter}">
-                            <Binding Path="ObjectName" />
-                            <Binding
-                                    Source="{x:Static e33Randomizer:EditIndividualObjectsWindowViewModel.AddObjectResxName }" />
-                        </MultiBinding>
-                    </TextBlock.Text>
-                </TextBlock>
-                <Grid Margin="0 0 0 10" ColumnDefinitions="*,Auto">
-
-                    <AutoCompleteBox x:Name="AddObjectComboBox"
-                                     x:DataType="e33Randomizer:EditIndividualObjectsWindowViewModel"
-                                     Grid.Column="0"
-                                     ItemsSource="{Binding AddObjectsView}"
-                                     SelectedItem="{Binding SelectedAddObject, Mode=TwoWay}"
-                                     IsEnabled="{Binding CanAddObjects}"
-                                     FilterMode="Contains"
-                                     MinimumPrefixLength="0"
-                                     Text="{Binding AddObjectFilterTerm, UpdateSourceTrigger=PropertyChanged}"
-                                     MinWidth="200"
-                                     Margin="0 0 10 0"
-                                     PlaceholderText="{x:Static lang:Resources.SearchPlaceholder}" />
-
-                    <Button x:Name="AddObjectButton"
-                            x:DataType="e33Randomizer:EditIndividualObjectsWindowViewModel"
-                            Classes="e33Button Green Small"
-                            Grid.Column="1"
-                            Content="Add"
-                            Click="AddObjectButton_Click"
-                            IsEnabled="{Binding CanAddObjects}"
-                            VerticalAlignment="Top" />
-                </Grid>
-
-              
-
-            </StackPanel>
+            <Border DockPanel.Dock="Bottom" IsVisible="{Binding CanAddObjects}" BorderThickness="0 5 0 0" >
+                <Border.BorderBrush>
+                    <ImageBrush Source="avares://E33Randomizer/Assets/Images/Line.png" TransformOrigin="50%,50%" Transform="rotate(180deg)" />
+                </Border.BorderBrush>
+                <StackPanel>
+                    <TextBlock Margin="0 10 0 5" FontSize="16">
+                        <TextBlock.Text>
+                            <MultiBinding Converter="{StaticResource ResourceLookupConverter}">
+                                <Binding Path="ObjectName" />
+                                <Binding Source="{x:Static e33Randomizer:EditIndividualObjectsWindowViewModel.AddObjectResxName }" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                        <AutoCompleteBox x:Name="AddObjectComboBox"
+                                         x:DataType="e33Randomizer:EditIndividualObjectsWindowViewModel"
+                                         ItemsSource="{Binding AllObjects}"
+                                         ItemFilter="{Binding FilterAddObjects }"
+                                         FilterMode="Contains"
+                                         MinimumPrefixLength="0"
+                                         MinWidth="200"
+                                         Margin="0 0 10 0"
+                                         PlaceholderText="{x:Static lang:Resources.SearchPlaceholder}"
+                                         SelectionChanged="AddObjectComboBox_OnSelectionChanged" />
+                </StackPanel>
+        </Border>
         </DockPanel>
         </uiControls:SubSection>
-        <Grid Row="3" Column="0" ColumnSpan="3" 
-              RowDefinitions="Auto,Auto" 
+        <Grid Row="3" Column="0" ColumnSpan="3"
+              RowDefinitions="Auto,Auto"
               ColumnDefinitions="Auto,Auto"
               HorizontalAlignment="Center"
               RowSpacing="15"
               Margin="0 20 0 0">
-            <Button Grid.Row="0" Grid.Column="0" Classes="e33Button"
-                    Click="ReadDataFromTxt">
+            <Button Grid.Row="0" Grid.Column="0" Classes="e33Button" Click="ReadDataFromTxt">
                 <Button.Content>
                     <MultiBinding Converter="{StaticResource ResourceLookupConverter}">
                         <Binding Path="ObjectName" />
@@ -249,9 +231,7 @@
                     </MultiBinding>
                 </Button.Content>
             </Button>
-            <Button Grid.Row="0" Grid.Column="1"
-                    Classes="e33Button"
-                    Click="SaveDataAsTxt">
+            <Button Grid.Row="0" Grid.Column="1" Classes="e33Button" Click="SaveDataAsTxt">
                 <Button.Content>
                     <MultiBinding Converter="{StaticResource ResourceLookupConverter}">
                         <Binding Path="ObjectName" />

@@ -1088,5 +1088,167 @@ namespace E33Randomizer.Assets {
                 return ResourceManager.GetString("IndividualContainers_Enemy_Search", resourceCulture);
             }
         }
+        
+        public static string IndividualContainers_Item_Title {
+            get {
+                return ResourceManager.GetString("IndividualContainers_Item_Title", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_Item_Containers {
+            get {
+                return ResourceManager.GetString("IndividualContainers_Item_Containers", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_Item_Tooltip_Containers {
+            get {
+                return ResourceManager.GetString("IndividualContainers_Item_Tooltip_Containers", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_Item_AddObject {
+            get {
+                return ResourceManager.GetString("IndividualContainers_Item_AddObject", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_Item_Objects {
+            get {
+                return ResourceManager.GetString("IndividualContainers_Item_Objects", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_Item_Tooltip_Objects {
+            get {
+                return ResourceManager.GetString("IndividualContainers_Item_Tooltip_Objects", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_Item_LoadTxt {
+            get {
+                return ResourceManager.GetString("IndividualContainers_Item_LoadTxt", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_Item_SaveTxt {
+            get {
+                return ResourceManager.GetString("IndividualContainers_Item_SaveTxt", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_Item_Search {
+            get {
+                return ResourceManager.GetString("IndividualContainers_Item_Search", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_Skill_Title {
+            get {
+                return ResourceManager.GetString("IndividualContainers_Skill_Title", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_Skill_Containers {
+            get {
+                return ResourceManager.GetString("IndividualContainers_Skill_Containers", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_Skill_Tooltip_Containers {
+            get {
+                return ResourceManager.GetString("IndividualContainers_Skill_Tooltip_Containers", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_Skill_AddObject {
+            get {
+                return ResourceManager.GetString("IndividualContainers_Skill_AddObject", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_Skill_Objects {
+            get {
+                return ResourceManager.GetString("IndividualContainers_Skill_Objects", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_Skill_Tooltip_Objects {
+            get {
+                return ResourceManager.GetString("IndividualContainers_Skill_Tooltip_Objects", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_Skill_LoadTxt {
+            get {
+                return ResourceManager.GetString("IndividualContainers_Skill_LoadTxt", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_Skill_SaveTxt {
+            get {
+                return ResourceManager.GetString("IndividualContainers_Skill_SaveTxt", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_Skill_Search {
+            get {
+                return ResourceManager.GetString("IndividualContainers_Skill_Search", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_Location_Title {
+            get {
+                return ResourceManager.GetString("IndividualContainers_Location_Title", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_Location_Containers {
+            get {
+                return ResourceManager.GetString("IndividualContainers_Location_Containers", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_Location_Tooltip_Containers {
+            get {
+                return ResourceManager.GetString("IndividualContainers_Location_Tooltip_Containers", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_Location_AddObject {
+            get {
+                return ResourceManager.GetString("IndividualContainers_Location_AddObject", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_Location_Objects {
+            get {
+                return ResourceManager.GetString("IndividualContainers_Location_Objects", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_Location_Tooltip_Objects {
+            get {
+                return ResourceManager.GetString("IndividualContainers_Location_Tooltip_Objects", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_Location_LoadTxt {
+            get {
+                return ResourceManager.GetString("IndividualContainers_Location_LoadTxt", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_Location_SaveTxt {
+            get {
+                return ResourceManager.GetString("IndividualContainers_Location_SaveTxt", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_Location_Search {
+            get {
+                return ResourceManager.GetString("IndividualContainers_Location_Search", resourceCulture);
+            }
+        }
     }
 }

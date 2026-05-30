@@ -70,10 +70,11 @@
         </Style>
     </Window.Styles>
     <DockPanel FlowDirection="LeftToRight">
-        <DockPanel.Background>
-            <ImageBrush Source="avares://E33Randomizer/Assets/Images/BackgroundOne.png" Stretch="Fill" Opacity="0.7" />
-        </DockPanel.Background>
+
         <DockPanel LastChildFill="False" DockPanel.Dock="Left" Width="900">
+            <DockPanel.Background>
+                <ImageBrush Source="avares://E33Randomizer/Assets/Images/BackgroundOne.png" Stretch="Fill" Opacity="0.7" />
+            </DockPanel.Background>
             <StackPanel Orientation="Vertical" MaxHeight="800" DockPanel.Dock="Top">
                 <TextBlock Classes="e33PageHeader"
                            Margin="0 10"

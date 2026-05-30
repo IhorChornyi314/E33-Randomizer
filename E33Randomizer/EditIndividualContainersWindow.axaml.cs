@@ -1,34 +1,36 @@
 ﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Text;
-using Avalonia;
 using Avalonia.Collections;
 using Avalonia.Controls;
-using Avalonia.Input;
 using Avalonia.Interactivity;
+using Avalonia.LogicalTree;
 using Avalonia.Platform.Storage;
 using Avalonia.Threading;
-using Avalonia.VisualTree;
 using CommunityToolkit.Mvvm.ComponentModel;
 using E33Randomizer.ObjectDatum;
 using E33Randomizer.RadomizationLogic;
+using E33Randomizer.UIControls;
 using UAssetAPI.Unversioned;
 
 namespace E33Randomizer;
 
 public partial class EditIndividualContainersWindow : Window
 {
-    public EditIndividualObjectsWindowViewModel ViewModel { get; set; }
-    public BaseController Controller { get; set; }
-    private TextBox? _addComboTextBox;
+    private EditIndividualObjectsWindowViewModel ViewModel { get; }
+    private BaseController Controller { get; }
 
     // Used by Design Time
+    // If you want a different entity type (ex: Enemy, Item, Skill, Location), just swap out the controller setup below.  (note: SkillsController depends on ItemsController.)
+    // TODO: Would be nice at some point to not need to do the full initialization here and instead setup some static dummy data for design time instead.  But for now, that's a bit too much overhead.
+    //  It makes designtime generation slower since it has to go load all the json files, but it's better than nothing
     public EditIndividualContainersWindow()
     {
         RandomizerLogic.mappings = new Usmap($"{RandomizerLogic.DataDirectory}/Mappings.usmap");
         Owner = null!;
-        Controller = new EnemiesController();
-        Controller.Initialize();
+        // Controllers.ItemsController.Initialize();
+        // Controllers.SkillsController.Initialize();
+        Controllers.EnemiesController.Initialize();
+        Controller = Controllers.EnemiesController;
         InitializeComponent();
         SetupAutoCompleteBehaviors();
         ViewModel = Controller.ViewModel;
@@ -47,13 +49,7 @@ public partial class EditIndividualContainersWindow : Window
 
     private void SetupAutoCompleteBehaviors()
     {
-        AddObjectComboBox.GotFocus += (_, _) =>
-        {
-            Dispatcher.UIThread.Post(() =>
-            {
-                AddObjectComboBox.IsDropDownOpen = true;
-            });
-        };
+        AddObjectComboBox.AddAutoDropDownOnFocusAndClickHandler();
     }
 
     
@@ -65,18 +61,27 @@ public partial class EditIndividualContainersWindow : Window
         }
     }
 
-    private void AddObjectButton_Click(object sender, RoutedEventArgs e)
+    private void AddObjectComboBox_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
     {
         var container = ViewModel.CurrentContainer;
         if (container == null) return;
 
-        var selected = ViewModel.SelectedAddObject;
-        if (selected == null) return;
+        if (e.AddedItems.Count == 0 || e.AddedItems[0] is not ObjectViewModel selected) return;
 
         Controller.AddObjectToContainer(selected.CodeName, container.CodeName);
-
-        ViewModel.SelectedAddObject = null;
-        ViewModel.AddObjectFilterTerm = string.Empty;
+        Dispatcher.UIThread.Post(() =>
+        {
+            if (SelectedEnemiesListBox.GetLogicalChildren().Last() is ListBoxItem i)
+            {
+                i.Focus();  // Switch to something else for focus so that the autocomplete window doesn't immediately pop back up
+            }
+        });
+            
+        Dispatcher.UIThread.Post(() =>
+        {
+            AddObjectComboBox.Text = string.Empty;
+        });
+        
     }
 
 
@@ -210,6 +215,8 @@ public partial class EditIndividualContainersWindow : Window
             await File.WriteAllTextAsync("crash_log.txt", ex.ToString(), Encoding.UTF8);
         }
     }
+
+
 }
 
 public partial class EditIndividualObjectsWindowViewModel : ObservableObject
@@ -224,60 +231,20 @@ public partial class EditIndividualObjectsWindowViewModel : ObservableObject
     
     // --- Add-object filtering ---
 
-    public string AddObjectFilterTerm
-    {
-        get;
-        set
-        {
-            if (field == value) return;
-            field = value;
-            OnPropertyChanged();
-            RefreshAddObjectsFilter();
-        }
-    } = string.Empty;
-
     [ObservableProperty]
-    public partial ObjectViewModel? SelectedAddObject { get; set; }
+    public partial ObservableCollection<ObjectViewModel> AllObjects { get; set; } = [];
 
-    public ObservableCollection<ObjectViewModel> AllObjects
+    public Func<string?, object?, bool> FilterAddObjects { get; } = (search, item) =>
     {
-        get;
-        set
-        {
-            if (ReferenceEquals(field, value)) return;
-            field = value;
-            OnPropertyChanged();
+        if (item is not ObjectViewModel o) return false;
 
-            // Rebuild the independent view when the collection instance changes
-            AddObjectsView = new DataGridCollectionView(field);
-            AddObjectsView.Filter = AddObjectsFilter;
-            OnPropertyChanged(nameof(AddObjectsView));
-
-            RefreshAddObjectsFilter();
-        }
-    } = [];
-
-    // This is what the Add ComboBox binds to
-    public IDataGridCollectionView AddObjectsView { get; private set; }
-
-    private bool AddObjectsFilter(object obj)
-    {
-        if (obj is not ObjectViewModel o) return false;
-
-        if (string.IsNullOrWhiteSpace(AddObjectFilterTerm))
+        if (string.IsNullOrWhiteSpace(search))
             return true;
 
-        var term = AddObjectFilterTerm.Trim().ToLowerInvariant();
+        var term = search.Trim().ToLowerInvariant();
         return o.Name.Contains(term, StringComparison.InvariantCultureIgnoreCase)
                || o.CodeName.Contains(term, StringComparison.InvariantCultureIgnoreCase);
-    }
-
-    private void RefreshAddObjectsFilter()
-    {
-        AddObjectsView.Refresh();
-    }
-
-    // --- Existing stuff you already had ---
+    };
 
     public string ContainerName { get; set; } = string.Empty;
     public string ObjectName { get; set; } = string.Empty;
@@ -293,16 +260,10 @@ public partial class EditIndividualObjectsWindowViewModel : ObservableObject
 
     [ObservableProperty]
     public partial bool CanAddObjects { get; set; } 
-
-    public EditIndividualObjectsWindowViewModel()
-    {
-        // Create a default view over the default AllObjects instance
-        AddObjectsView = new DataGridCollectionView(AllObjects);
-        AddObjectsView.Filter = AddObjectsFilter;
-    }
     
     public void UpdateFilteredCategories() => OnSearchTermChanged(string.Empty);
 
+    // ReSharper disable once UnusedParameterInPartialMethod
     partial void OnSearchTermChanged(string value)
     {
         FilteredCategories.Clear();
@@ -355,9 +316,8 @@ public partial class EditIndividualObjectsWindowViewModel : ObservableObject
 }
 
 
-public partial class CategoryViewModel :ObservableObject
+public partial class CategoryViewModel : ObservableObject
 {
-    
     [ObservableProperty]
     public partial string CategoryName { get; set; } = string.Empty;
     

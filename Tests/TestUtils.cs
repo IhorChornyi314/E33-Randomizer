@@ -2,7 +2,7 @@
 
 public static class TestUtils
 {
-    public static Dictionary<T, float> CalculateFrequencies<T>(List<T> values)
+    public static Dictionary<T, float> CalculateFrequencies<T>(List<T> values) where T : notnull
     {
         var counts = new Dictionary<T, int>();
         var totalCount = 0;
@@ -16,7 +16,7 @@ public static class TestUtils
         return frequencies;
     }
     
-    public static float CalculateMaxFrequency<T>(List<T> values)
+    public static float CalculateMaxFrequency<T>(List<T> values) where T : notnull
     {
         return CalculateFrequencies(values).Values.Max();
     }

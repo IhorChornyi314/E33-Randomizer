@@ -26,12 +26,7 @@
 
                 <!-- Left Bottom background image -->
                 <Image Grid.Row="0" Grid.Column="0" Name="LeftBottom"
-                       Source="avares://E33Randomizer/Assets/Images/ComponentBorderUpperLeft.png" Stretch="None" VerticalAlignment="Bottom">
-                    <Image.RenderTransform>
-                        <!-- <RotateTransform Angle="180" /> -->
-                        <ScaleTransform ScaleY="-1" />
-                    </Image.RenderTransform>
-                </Image>
+                       Source="avares://E33Randomizer/Assets/Images/ComponentBorderUpperLeft.png" Stretch="None" VerticalAlignment="Bottom" RenderTransform="scale(1,-1)" />
                 
                 <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
                     <TextBlock 
@@ -40,9 +35,7 @@
                         Text="{TemplateBinding Header}"
                         Foreground="#DAAF7D"
                         HorizontalAlignment="Left"
-                        Margin="15 10 0 0"
-                        
-                        />
+                        Margin="15 10 0 0" />
                     <TextBlock
                         xml:space="preserve"
                         Text="{TemplateBinding Content}"
@@ -50,8 +43,7 @@
                         FontSize="19"
                         Margin="25 0 10 0"
                         TextWrapping="Wrap"
-                        LineSpacing="4"
-                        />
+                        LineSpacing="4" />
                 </StackPanel>
                 
                 </Grid>

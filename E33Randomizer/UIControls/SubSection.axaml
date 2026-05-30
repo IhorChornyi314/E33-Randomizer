@@ -29,19 +29,12 @@
             <!-- Left Bottom background image -->
             <Image Grid.Row="1"  Grid.Column="0" Name="LeftBottom"
                    Source="avares://E33Randomizer/Assets/Images/ComponentBorderUpperRight.png" Stretch="None" VerticalAlignment="Bottom"
-                   IsVisible="{TemplateBinding IsBottomImageVisible}">
-              <Image.RenderTransform>
-                <RotateTransform Angle="180" />
-              </Image.RenderTransform>
-            </Image>
+                   IsVisible="{TemplateBinding IsBottomImageVisible}"  RenderTransform="rotate(180deg)"/>
             
             <!-- Right Bottom background image -->
             <Image Grid.Row="1" Grid.Column="2" Name="RightBottom"
                    Source="avares://E33Randomizer/Assets/Images/ComponentBorderUpperLeft.png" Stretch="None" VerticalAlignment="Bottom" 
-                   IsVisible="{TemplateBinding IsBottomImageVisible}">
-              <Image.RenderTransform>
-                <RotateTransform Angle="180" />
-              </Image.RenderTransform>
+                   IsVisible="{TemplateBinding IsBottomImageVisible}" RenderTransform="rotate(180deg)">
             </Image>
           
             <StackPanel Orientation="Horizontal" 
