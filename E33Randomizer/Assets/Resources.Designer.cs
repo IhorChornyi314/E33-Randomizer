@@ -99,6 +99,24 @@ namespace E33Randomizer.Assets {
             }
         }
         
+        public static string Button_Close {
+            get {
+                return ResourceManager.GetString("Button_Close", resourceCulture);
+            }
+        }
+        
+        public static string And {
+            get {
+                return ResourceManager.GetString("And", resourceCulture);
+            }
+        }
+        
+        public static string Remove {
+            get {
+                return ResourceManager.GetString("Remove", resourceCulture);
+            }
+        }
+        
         public static string Randomize_Enemies_RandomizeEnemies {
             get {
                 return ResourceManager.GetString("Randomize_Enemies_RandomizeEnemies", resourceCulture);
@@ -735,6 +753,18 @@ namespace E33Randomizer.Assets {
             }
         }
         
+        public static string Main_Title {
+            get {
+                return ResourceManager.GetString("Main_Title", resourceCulture);
+            }
+        }
+        
+        public static string CustomPlacement_Title {
+            get {
+                return ResourceManager.GetString("CustomPlacement_Title", resourceCulture);
+            }
+        }
+        
         public static string CustomPlacement_Enemy_NotRandomized {
             get {
                 return ResourceManager.GetString("CustomPlacement_Enemy_NotRandomized", resourceCulture);
@@ -993,15 +1023,69 @@ namespace E33Randomizer.Assets {
             }
         }
         
-        public static string Button_Close {
+        public static string IndividualContainers_Button_Reroll {
             get {
-                return ResourceManager.GetString("Button_Close", resourceCulture);
+                return ResourceManager.GetString("IndividualContainers_Button_Reroll", resourceCulture);
             }
         }
         
-        public static string And {
+        public static string IndividualContainers_Button_GenerateModFiles {
             get {
-                return ResourceManager.GetString("And", resourceCulture);
+                return ResourceManager.GetString("IndividualContainers_Button_GenerateModFiles", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_Enemy_Title {
+            get {
+                return ResourceManager.GetString("IndividualContainers_Enemy_Title", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_Enemy_Containers {
+            get {
+                return ResourceManager.GetString("IndividualContainers_Enemy_Containers", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_Enemy_Tooltip_Containers {
+            get {
+                return ResourceManager.GetString("IndividualContainers_Enemy_Tooltip_Containers", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_Enemy_AddObject {
+            get {
+                return ResourceManager.GetString("IndividualContainers_Enemy_AddObject", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_Enemy_Objects {
+            get {
+                return ResourceManager.GetString("IndividualContainers_Enemy_Objects", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_Enemy_Tooltip_Objects {
+            get {
+                return ResourceManager.GetString("IndividualContainers_Enemy_Tooltip_Objects", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_Enemy_LoadTxt {
+            get {
+                return ResourceManager.GetString("IndividualContainers_Enemy_LoadTxt", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_Enemy_SaveTxt {
+            get {
+                return ResourceManager.GetString("IndividualContainers_Enemy_SaveTxt", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_Enemy_Search {
+            get {
+                return ResourceManager.GetString("IndividualContainers_Enemy_Search", resourceCulture);
             }
         }
     }

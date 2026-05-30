@@ -223,28 +223,34 @@ public class LocationController: Controller<LocationData>
             var categoryName = originalNode.CustomName.Split(" - ")[0];
             if (!categoryViewModels.ContainsKey(categoryName))
             {
-                categoryViewModels[categoryName] = new CategoryViewModel();
-                categoryViewModels[categoryName].CategoryName = originalNode.CustomName.Split(" - ")[0];
-                categoryViewModels[categoryName].Containers = new ObservableCollection<ContainerViewModel>();
+                categoryViewModels[categoryName] = new CategoryViewModel
+                {
+                    CategoryName = originalNode.CustomName.Split(" - ")[0],
+                    Containers = []
+                };
                 ViewModel.Categories.Add(categoryViewModels[categoryName]);
             }
-            var newContainer = new ContainerViewModel(originalNode.CodeName, originalNode.CustomName);
-            newContainer.Objects = new ObservableCollection<ObjectViewModel>();
-            newContainer.Objects.Add(new ObjectViewModel(newNode));
-            newContainer.Objects[0].CanDelete = false;
-            newContainer.Objects[0].Index = 0;
-                
-            // Whether the change is active
-            newContainer.Objects[0].BoolProperty = true;
-            newContainer.Objects[0].HasBoolPropertyControl = true;
-
+            
             var scalingLevel = newNodeDepth == Int16.MaxValue
                 ? newNode.LevelScaling : (int)Math.Round(newNodeDepth * 0.9);
             
-            newContainer.Objects[0].IntProperty = scalingLevel;
-                
-            newContainer.CanAddObjects = false;
-                
+            var newContainer = new ContainerViewModel(originalNode.CodeName, originalNode.CustomName)
+            {
+                Objects =
+                [
+                    new ObjectViewModel(newNode)
+                    {
+                        CanDelete = false,
+                        Index = 0,
+                        // Whether the change is active
+                        BoolProperty = true,
+                        HasBoolPropertyControl = true,
+                        IntProperty = scalingLevel
+                    }
+                ],
+                CanAddObjects = false
+            };
+
             categoryViewModels[categoryName].Containers.Add(newContainer);
             if (ViewModel.CurrentContainer != null && originalNode.CodeName == ViewModel.CurrentContainer.CodeName)
             { 

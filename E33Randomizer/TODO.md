@@ -2,6 +2,7 @@
 ## TODO
 * General
   * Finish moving the existing text over to the Resx File.  Need to figure out how to deal with the presets, etc.
+    * Including warnings and error messages
   * Finish updating the Misc Tab
   * Add help tooltips throughout
   * Finish incorporating the background assets
@@ -12,6 +13,7 @@
 * Individual Containers Window
   * All the things
 * Custom Placements Window
+  * Update the Resources.resx entries for the different object types 
   * Design something for the "oops all" section which presently doesn't exist.
   * Try to fix the issue with Select Category getting unselected when the replacements are changed. (I know why it's happening, but not sure how to fix it yet) 
 

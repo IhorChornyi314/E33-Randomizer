@@ -132,7 +132,7 @@ public static class RandomizerLogic
                     return envPath;
 
                 // Navigate up from bin/Debug/net9.0-windows to the E33Randomizer project root
-                var baseDir = AppDomain.CurrentDomain.BaseDirectory;
+                var baseDir = AppDomain.CurrentDomain.BaseDirectory; // /home/iamwyza/Source/E33-Randomizer/E33Randomizer/bin/Debug/net10.0/
                 var projectDir = Path.Combine(baseDir, "..", "..", "..");
                 var dataDir = Path.Combine(projectDir, "Data");
                 var fullPath = Path.GetFullPath(dataDir);

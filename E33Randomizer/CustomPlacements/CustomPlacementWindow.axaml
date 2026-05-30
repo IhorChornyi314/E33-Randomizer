@@ -1,7 +1,7 @@
 <Window x:Class="E33Randomizer.CustomPlacements.CustomPlacementWindow"
         xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Custom Placement" Height="900"
+        Title="{x:Static lang:Resources.CustomPlacement_Title}" Height="900"
         WindowStartupLocation="CenterOwner"
         CanResize="False"
         SizeToContent="Width"

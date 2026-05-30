@@ -45,6 +45,19 @@
     <data name="Terminology_MerchantUnlocks" xml:space="preserve">
         <value>Merchant unlocks: Most merchants in the game have some items they are only willing to sell after you’ve defeated them in battle. Internally, this works by checking whether you have a hidden item that drops from the merchant enemy. These items are called Merchant Unlocks and are a separate category, not randomized by default. </value>
     </data>
+
+    <!-- General -->
+    <data name="Button_Close" xml:space="preserve">
+        <value>Close</value>
+    </data>
+
+    <data name="And" xml:space="preserve">
+        <value> and </value>
+    </data>
+
+    <data name="Remove" xml:space="preserve">
+        <value>Remove</value>
+    </data>
     
     <!-- RandomizeEnemiesTab -->
     <data name="Randomize_Enemies_RandomizeEnemies" xml:space="preserve">
@@ -390,8 +403,14 @@
     <data name="Main_Seed" xml:space="preserve">
         <value>Seed:</value>
     </data>
+    <data name="Main_Title">
+        <value>Expedition 33 Randomizer</value>
+    </data>
     
     <!-- Custom Placements -->
+    <data name="CustomPlacement_Title" xml:space="preserve">
+        <value>Custom Placements</value>
+    </data>
     
     <data name="CustomPlacement_Enemy_NotRandomized" xml:space="preserve">
         <value>This allows you to change which enemies aren’t randomized, meaning that they will stay in their respective encounters.</value>
@@ -522,12 +541,42 @@
     <data name="CustomPlacement_Button_SavePresetJson" xml:space="preserve">
         <value>Save Preset JSON</value>
     </data>
-    <data name="Button_Close" xml:space="preserve">
-        <value>Close</value>
-    </data>
 
-    <data name="And" xml:space="preserve">
-        <value> and </value>
-    </data>
+    <!-- Individual Containers -->
 
+    <data name="IndividualContainers_Button_Reroll" xml:space="preserve">
+        <value>Reroll with current settings</value>
+    </data>
+    <data name="IndividualContainers_Button_GenerateModFiles" xml:space="preserve">
+        <value>Generate mod files from current</value>
+    </data>
+    
+    <data name="IndividualContainers_Enemy_Title" xml:space="preserve">
+        <value>Edit individual Enemies</value>
+    </data>
+    <data name="IndividualContainers_Enemy_Containers" xml:space="preserve">
+        <value>Encounters</value>
+    </data>
+    <data name="IndividualContainers_Enemy_Tooltip_Containers" xml:space="preserve">
+        <value>This is the list of encounters using the names the game uses internally and are usually self-descriptive.  Find the encounter you want to change on this side.  Then edit the encounter on the other.</value>
+    </data>
+    <data name="IndividualContainers_Enemy_AddObject" xml:space="preserve">
+        <value>Add Enemy</value>
+    </data>
+    <data name="IndividualContainers_Enemy_Objects" xml:space="preserve">
+        <value>Enemies in the Encounter</value>
+    </data>
+    <data name="IndividualContainers_Enemy_Tooltip_Objects" xml:space="preserve">
+        <value>These are the enemies that are in the selected encounter.  You can change, add, or remove enemies from this list. &#xD;&#xD; The game actually has full support for 4-enemy encounters, but anything beyond that will just place all the other enemies in a single spot outside the fighting arena. They will still be able to deal and take damage, but their attacks will not be visible, and you won’t be able to shoot them in free aim. </value>
+    </data>
+    <data name="IndividualContainers_Enemy_LoadTxt" xml:space="preserve">
+        <value>Load Enemies from .txt file</value>
+    </data>
+    <data name="IndividualContainers_Enemy_SaveTxt" xml:space="preserve">
+        <value>Save Enemies to .txt file</value>
+    </data>
+    <data name="IndividualContainers_Enemy_Search" xml:space="preserve">
+        <value>Search by Encounter or Enemy names:</value>
+    </data>
+    
 </root>

@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using Avalonia.Collections;
 using E33Randomizer.ObjectDatum;
 using UAssetAPI;
 using UAssetAPI.UnrealTypes;
@@ -95,25 +96,31 @@ public class SkillsController: Controller<SkillData>
 
         foreach (var characterGraph in SkillGraphs)
         {
-            var newTypeViewModel = new CategoryViewModel();
-            newTypeViewModel.CategoryName = characterGraph.CharacterName;
-            newTypeViewModel.Containers = new ObservableCollection<ContainerViewModel>();
+            var newTypeViewModel = new CategoryViewModel
+            {
+                CategoryName = characterGraph.CharacterName,
+                Containers = []
+            };
 
             foreach (var node in characterGraph.Nodes)
             {
                 var originalCustomName = GetObject(node.OriginalSkillCodeName).CustomName;
                 
-                var newContainer = new ContainerViewModel($"{characterGraph.CharacterName}#{node.OriginalSkillCodeName}", originalCustomName);
-                newContainer.Objects = new ObservableCollection<ObjectViewModel>();
-                newContainer.Objects.Add(new ObjectViewModel(node.SkillData));
-                newContainer.Objects[0].CanDelete = false;
-                newContainer.Objects[0].Index = 0;
-                
-                newContainer.Objects[0].IntProperty = node.UnlockCost;
-                newContainer.Objects[0].BoolProperty = node.IsStarting;
-                newContainer.Objects[0].HasBoolPropertyControl = true;
-                
-                newContainer.CanAddObjects = false;
+                var newContainer = new ContainerViewModel($"{characterGraph.CharacterName}#{node.OriginalSkillCodeName}", originalCustomName)
+                {
+                    Objects =
+                    [
+                        new ObjectViewModel(node.SkillData)
+                        {
+                            CanDelete = false,
+                            Index = 0,
+                            IntProperty = node.UnlockCost,
+                            BoolProperty = node.IsStarting,
+                            HasBoolPropertyControl = true
+                        }
+                    ],
+                    CanAddObjects = false
+                };
                 
                 newTypeViewModel.Containers.Add(newContainer);
                 if (ViewModel.CurrentContainer != null && $"{characterGraph.CharacterName}#{node.OriginalSkillCodeName}" == ViewModel.CurrentContainer.CodeName)

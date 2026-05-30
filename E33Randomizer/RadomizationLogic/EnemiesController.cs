@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json;
+using Avalonia.Collections;
 using E33Randomizer.ObjectDatum;
 using UAssetAPI;
 using UAssetAPI.ExportTypes;
@@ -284,12 +285,12 @@ public class EnemiesController: Controller<EnemyData>
         {
             var newLocationViewModel = new CategoryViewModel();
             newLocationViewModel.CategoryName = locationEncounterPair.Key;
-            newLocationViewModel.Containers = new ObservableCollection<ContainerViewModel>();
+            newLocationViewModel.Containers = new AvaloniaList<ContainerViewModel>();
             foreach (var encounterIndex in locationEncounterPair.Value)
             {
                 var encounterData = Encounters[encounterIndex];
                 var newContainer = new ContainerViewModel(encounterData.Name);
-                newContainer.Objects = new ObservableCollection<ObjectViewModel>(encounterData.Enemies.Select(e => new ObjectViewModel(e)));
+                newContainer.Objects = new AvaloniaList<ObjectViewModel>(encounterData.Enemies.Select(e => new ObjectViewModel(e)));
                 newLocationViewModel.Containers.Add(newContainer);
                 if (ViewModel.CurrentContainer != null && encounterData.Name == ViewModel.CurrentContainer.Name)
                 {

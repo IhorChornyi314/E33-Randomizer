@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json;
+using Avalonia.Collections;
 using E33Randomizer.ItemSources;
 using E33Randomizer.ObjectDatum;
 using UAssetAPI;
@@ -694,16 +695,18 @@ public class ItemsController: Controller<ItemData>
 
         foreach (var checkCategory in CheckTypes)
         {
-            var newTypeViewModel = new CategoryViewModel();
-            newTypeViewModel.CategoryName = checkCategory.Key;
-            newTypeViewModel.Containers = new ObservableCollection<ContainerViewModel>();
+            var newTypeViewModel = new CategoryViewModel
+            {
+                CategoryName = checkCategory.Key,
+                Containers = []
+            };
 
             foreach (var check in checkCategory.Value)
             {
                 var newContainer = new ContainerViewModel($"{check.ItemSource.FileName}#{check.Key}", check.CustomName);
                 var itemSource = check.ItemSource;
                 var items = itemSource.GetCheckItems(check.Key);
-                newContainer.Objects = new ObservableCollection<ObjectViewModel>(items.Select(i => new ObjectViewModel(i)));
+                newContainer.Objects = new AvaloniaList<ObjectViewModel>(items.Select(i => new ObjectViewModel(i)));
                 newContainer.CanAddObjects = checkCategory.Key != "Dialogue rewards";
 
                 for (int i = 0; i < newContainer.Objects.Count; i++)

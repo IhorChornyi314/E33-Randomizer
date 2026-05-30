@@ -2,7 +2,7 @@
         xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:e33Randomizer="clr-namespace:E33Randomizer"
-        Title="Expedition 33 Randomizer"
+        Title="{x:Static lang:Resources.Main_Title}"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:lang="clr-namespace:E33Randomizer.Assets"
