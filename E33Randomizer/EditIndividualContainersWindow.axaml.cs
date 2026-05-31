@@ -110,7 +110,7 @@ public partial class EditIndividualContainersWindow : Window
         catch (Exception ex)
         {
             await MessageDialog.ShowAsync(this, $"Error generating: {ex.Message}", 
-                "Reroll Error", nameof(DialogBoxButton.OK), MessageBoxIcons.Error);
+                "Reroll Error", MessageBoxButtons.Ok, MessageBoxIcons.Error);
             await File.WriteAllTextAsync("crash_log.txt", ex.ToString(), Encoding.UTF8);
         }
     }
@@ -123,12 +123,12 @@ public partial class EditIndividualContainersWindow : Window
             RandomizerLogic.PackAndConvertData();
             await MessageDialog.ShowAsync(this, $"Generation done! You can find the mod in the rand_{RandomizerLogic.usedSeed} folder.\n\n" +
                                                 $"Used Seed: {RandomizerLogic.usedSeed}\n",
-                "Generation Summary", nameof(DialogBoxButton.OK), MessageBoxIcons.Information);
+                "Generation Summary", MessageBoxButtons.Ok, MessageBoxIcons.Information);
         }
         catch (Exception ex)
         {
             await MessageDialog.ShowAsync(this, $"Error packing: {ex.Message}", 
-                "Packing Error", nameof(DialogBoxButton.OK), MessageBoxIcons.Error);
+                "Packing Error", MessageBoxButtons.Ok, MessageBoxIcons.Error);
             await File.WriteAllTextAsync("crash_log.txt", ex.ToString(), Encoding.UTF8);
         }
     }
@@ -162,13 +162,13 @@ public partial class EditIndividualContainersWindow : Window
             catch (Exception ex)
             {
                 await MessageDialog.ShowAsync(this, $"Error loading TXT: {ex.Message}", 
-                    "Load Error", nameof(DialogBoxButton.OK), MessageBoxIcons.Error);
+                    "Load Error", MessageBoxButtons.Ok, MessageBoxIcons.Error);
                 await File.WriteAllTextAsync("crash_log.txt", ex.ToString(), Encoding.UTF8);
             }
         }
         catch (Exception ex)
         {
-            await MessageDialog.ShowAsync(this, $"Error Loading txt", "Error", nameof(DialogBoxButton.OK),  MessageBoxIcons.Error);
+            await MessageDialog.ShowAsync(this, $"Error Loading txt", "Error", MessageBoxButtons.Ok,  MessageBoxIcons.Error);
             await File.WriteAllTextAsync("crash_log.txt", ex.ToString(), Encoding.UTF8);
         }
     }
@@ -199,19 +199,19 @@ public partial class EditIndividualContainersWindow : Window
                 {
                     Controller.WriteTxt(file.Path.LocalPath);
                     await MessageDialog.ShowAsync(this, "TXT saved successfully!", 
-                        "Save Complete", nameof(DialogBoxButton.OK), MessageBoxIcons.Information);
+                        "Save Complete", MessageBoxButtons.Ok, MessageBoxIcons.Information);
                 }
                 catch (Exception ex)
                 {
                     await MessageDialog.ShowAsync(this, $"Error saving TXT: {ex.Message}", 
-                        "Save Error", nameof(DialogBoxButton.OK), MessageBoxIcons.Error);
+                        "Save Error", MessageBoxButtons.Ok, MessageBoxIcons.Error);
                     await File.WriteAllTextAsync("crash_log.txt", ex.ToString(), Encoding.UTF8);
                 }
             }
         }
         catch (Exception ex)
         {
-            await MessageDialog.ShowAsync(this, $"Error Saving txt", "Error", nameof(DialogBoxButton.OK),  MessageBoxIcons.Error);
+            await MessageDialog.ShowAsync(this, $"Error Saving txt", "Error", MessageBoxButtons.Ok,  MessageBoxIcons.Error);
             await File.WriteAllTextAsync("crash_log.txt", ex.ToString(), Encoding.UTF8);
         }
     }

@@ -78,19 +78,19 @@ public partial class MiscTab : UserControl
                     }
                 
                     await MessageDialog.ShowAsync(topLevel, $"Save File Patched!",
-                        "Patched", nameof(DialogBoxButton.OK), MessageBoxIcons.Information);
+                        "Patched", MessageBoxButtons.Ok, MessageBoxIcons.Information);
                 }
                 catch (Exception ex)
                 {
                     await MessageDialog.ShowAsync(topLevel, $"Error patching: {ex.Message}",
-                        "Patching Error", nameof(DialogBoxButton.OK), MessageBoxIcons.Error);
+                        "Patching Error", MessageBoxButtons.Ok, MessageBoxIcons.Error);
                     await File.WriteAllTextAsync("crash_log.txt", ex.ToString(), Encoding.UTF8);
                 }
             }
         }
         catch (Exception ex)
         {
-            await MessageDialog.ShowAsync(topLevel, $"Error patching: {ex.Message}", "Error", nameof(DialogBoxButton.OK),  MessageBoxIcons.Error);
+            await MessageDialog.ShowAsync(topLevel, $"Error patching: {ex.Message}", "Error", MessageBoxButtons.Ok,  MessageBoxIcons.Error);
         }
     }
 }

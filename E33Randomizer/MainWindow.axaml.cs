@@ -29,7 +29,11 @@ public partial class MainWindow : Window
         InitializeComponent();
         Width = TabStripWidth +  TabContainerWidth + 20;
         Height = TabContainerHeight;
-        
+        Opened += (sender, args) =>
+        {
+            MessageDialog.ShowAsyncWithResult(this, "Testing", "testing", MessageBoxButtons.Ok, MessageBoxButtons.Cancel, MessageBoxIcons.Error);
+        };
+
     }
 
     private async void OnLoaded(object? sender, RoutedEventArgs e)
@@ -42,7 +46,7 @@ public partial class MainWindow : Window
         catch (Exception ex)
         {
             await MessageDialog.ShowAsync(this, $"Error starting: {ex.Message}",
-                "Loading Error", nameof(DialogBoxButton.OK), MessageBoxIcons.Error);
+                "Loading Error", MessageBoxButtons.Ok, MessageBoxIcons.Error);
             await File.WriteAllTextAsync("crash_log.txt", ex.ToString(), Encoding.UTF8);
         }
         if (File.Exists("default_settings.json"))
@@ -80,7 +84,7 @@ public partial class MainWindow : Window
         }
         catch (Exception ex)
         {
-            await MessageDialog.ShowAsync(this, $"Error Loading Custom Placement Window: {ex.Message}", "Error", nameof(DialogBoxButton.OK),  MessageBoxIcons.Error);
+            await MessageDialog.ShowAsync(this, $"Error Loading Custom Placement Window: {ex.Message}", "Error", MessageBoxButtons.Ok,  MessageBoxIcons.Error);
         }
     }
 
@@ -107,7 +111,7 @@ public partial class MainWindow : Window
         }
         catch (Exception ex)
         {
-            await MessageDialog.ShowAsync(this, $"Error Loading Edit Objects Window: {ex.Message}", "Error", nameof(DialogBoxButton.OK),  MessageBoxIcons.Error);
+            await MessageDialog.ShowAsync(this, $"Error Loading Edit Objects Window: {ex.Message}", "Error", MessageBoxButtons.Ok,  MessageBoxIcons.Error);
         }
     }
 
@@ -118,12 +122,12 @@ public partial class MainWindow : Window
             RandomizerLogic.Randomize();
             await MessageDialog.ShowAsync(this, $"Generation done! You can find the mod in the rand_{RandomizerLogic.usedSeed} folder.\n\n" +
                                                 $"Used Seed: {RandomizerLogic.usedSeed}\n",
-                "Generation Summary", nameof(DialogBoxButton.OK), MessageBoxIcons.Information);
+                "Generation Summary", MessageBoxButtons.Ok, MessageBoxIcons.Information);
         }
         catch (Exception ex)
         {
             await MessageDialog.ShowAsync(this, $"Error generating: {ex.Message}",
-                "Generating Error", nameof(DialogBoxButton.OK), MessageBoxIcons.Error);
+                "Generating Error", MessageBoxButtons.Ok, MessageBoxIcons.Error);
             await File.WriteAllTextAsync("crash_log.txt", ex.ToString(), Encoding.UTF8);
         }
     }
@@ -158,13 +162,13 @@ public partial class MainWindow : Window
                 catch (Exception ex)
                 {
                     await MessageDialog.ShowAsync(this, $"Error loading preset: {ex.Message}", 
-                        "Load Error", nameof(DialogBoxButton.OK), MessageBoxIcons.Error);
+                        "Load Error", MessageBoxButtons.Ok, MessageBoxIcons.Error);
                 }
             }
         }
         catch (Exception ex)
         {
-            await MessageDialog.ShowAsync(this, $"Error Loading JSON: {ex.Message}", "Error", nameof(DialogBoxButton.OK),  MessageBoxIcons.Error);
+            await MessageDialog.ShowAsync(this, $"Error Loading JSON: {ex.Message}", "Error", MessageBoxButtons.Ok,  MessageBoxIcons.Error);
         }
     }
 
@@ -194,18 +198,18 @@ public partial class MainWindow : Window
                 {
                     await SaveSettingsAsync(file.Path.LocalPath);
                     await MessageDialog.ShowAsync(this, "Preset saved successfully!", 
-                        "Save Complete", nameof(DialogBoxButton.OK), MessageBoxIcons.Information);
+                        "Save Complete", MessageBoxButtons.Ok, MessageBoxIcons.Information);
                 }
                 catch (Exception ex)
                 {
                     await MessageDialog.ShowAsync(this, $"Error saving preset: {ex.Message}", 
-                        "Save Error", nameof(DialogBoxButton.OK), MessageBoxIcons.Error);
+                        "Save Error", MessageBoxButtons.Ok, MessageBoxIcons.Error);
                 }
             }
         }
         catch (Exception ex)
         {
-            await MessageDialog.ShowAsync(this, $"Error Saving JSON: {ex.Message}", "Error", nameof(DialogBoxButton.OK),  MessageBoxIcons.Error);
+            await MessageDialog.ShowAsync(this, $"Error Saving JSON: {ex.Message}", "Error", MessageBoxButtons.Ok,  MessageBoxIcons.Error);
             await File.WriteAllTextAsync("crash_log.txt", ex.ToString(), Encoding.UTF8);
         }
     }
@@ -242,7 +246,7 @@ public partial class MainWindow : Window
         catch (Exception ex)
         {
             await MessageDialog.ShowAsync(this, $"Error loading: {ex.Message}",
-                "Loading Error", nameof(DialogBoxButton.OK), MessageBoxIcons.Error);
+                "Loading Error", MessageBoxButtons.Ok, MessageBoxIcons.Error);
             await File.WriteAllTextAsync("crash_log.txt", ex.ToString(), Encoding.UTF8);
         }
     }
@@ -258,7 +262,7 @@ public partial class MainWindow : Window
         catch (Exception ex)
         {
             await MessageDialog.ShowAsync(this, $"Error saving: {ex.Message}",
-                "Saving Error", nameof(DialogBoxButton.OK), MessageBoxIcons.Error);
+                "Saving Error", MessageBoxButtons.Ok, MessageBoxIcons.Error);
             await File.WriteAllTextAsync("crash_log.txt", ex.ToString(), Encoding.UTF8);
         }
     }

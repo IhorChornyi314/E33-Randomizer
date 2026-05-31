@@ -112,13 +112,13 @@ namespace E33Randomizer.CustomPlacements;
                     catch (Exception ex)
                     {
                         await MessageDialog.ShowAsync(this, $"Error loading preset: {ex.Message}", 
-                            "Load Error", nameof(DialogBoxButton.OK), MessageBoxIcons.Error);
+                            "Load Error", MessageBoxButtons.Ok, MessageBoxIcons.Error);
                     }
                 }
             }
             catch (Exception ex)
             {
-                await MessageDialog.ShowAsync(this, $"Error Loading preset: {ex.Message}", "Load Error", nameof(DialogBoxButton.OK),  MessageBoxIcons.Error);
+                await MessageDialog.ShowAsync(this, $"Error Loading preset: {ex.Message}", "Load Error", MessageBoxButtons.Ok,  MessageBoxIcons.Error);
             }
         }
 
@@ -148,19 +148,19 @@ namespace E33Randomizer.CustomPlacements;
                     {
                         CustomPlacement.SaveToJson(file.Path.LocalPath);
                         await MessageDialog.ShowAsync(this, "Preset saved successfully!", 
-                            "Save Complete", nameof(DialogBoxButton.OK), MessageBoxIcons.Information);
+                            "Save Complete", MessageBoxButtons.Ok, MessageBoxIcons.Information);
                     }
                     catch (Exception ex)
                     {
                         await MessageDialog.ShowAsync
                         (this, $"Error saving preset: {ex.Message}", 
-                            "Save Error", nameof(DialogBoxButton.OK), MessageBoxIcons.Error);
+                            "Save Error", MessageBoxButtons.Ok, MessageBoxIcons.Error);
                     }
                 }
             }
             catch (Exception ex)
             {
-                await MessageDialog.ShowAsync(this, $"Error Saving JSON: {ex.Message}", "Error", nameof(DialogBoxButton.OK),  MessageBoxIcons.Error);
+                await MessageDialog.ShowAsync(this, $"Error Saving JSON: {ex.Message}", "Error", MessageBoxButtons.Ok,  MessageBoxIcons.Error);
                 await File.WriteAllTextAsync("crash_log.txt", ex.ToString(), Encoding.UTF8);
             }
         }

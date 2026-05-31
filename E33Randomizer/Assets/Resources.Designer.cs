@@ -105,6 +105,24 @@ namespace E33Randomizer.Assets {
             }
         }
         
+        public static string Button_Ok {
+            get {
+                return ResourceManager.GetString("Button_Ok", resourceCulture);
+            }
+        }
+        
+        public static string Button_Cancel {
+            get {
+                return ResourceManager.GetString("Button_Cancel", resourceCulture);
+            }
+        }
+        
+        public static string Button_Tooltip_CopyToClipboard {
+            get {
+                return ResourceManager.GetString("Button_Tooltip_CopyToClipboard", resourceCulture);
+            }
+        }
+        
         public static string And {
             get {
                 return ResourceManager.GetString("And", resourceCulture);
