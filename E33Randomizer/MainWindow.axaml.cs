@@ -29,11 +29,6 @@ public partial class MainWindow : Window
         InitializeComponent();
         Width = TabStripWidth +  TabContainerWidth + 20;
         Height = TabContainerHeight;
-        Opened += (sender, args) =>
-        {
-            MessageDialog.ShowAsyncWithResult(this, "Testing", "testing", MessageBoxButtons.Ok, MessageBoxButtons.Cancel, MessageBoxIcons.Error);
-        };
-
     }
 
     private async void OnLoaded(object? sender, RoutedEventArgs e)
@@ -71,7 +66,7 @@ public partial class MainWindow : Window
                 var customPlacement = RandomizerLogic.GetCustomPlacement(objectType);
                 if (customPlacement is null)
                 {
-                    throw new Exception($"Unable  to find Custom Placement Window for {objectType}");
+                    throw new Exception($"Unable to find Custom Placement Window for {objectType}");
                 }
                 
                 value = new CustomPlacements.CustomPlacementWindow(customPlacement);
@@ -120,8 +115,7 @@ public partial class MainWindow : Window
         try
         {
             RandomizerLogic.Randomize();
-            await MessageDialog.ShowAsync(this, $"Generation done! You can find the mod in the rand_{RandomizerLogic.usedSeed} folder.\n\n" +
-                                                $"Used Seed: {RandomizerLogic.usedSeed}\n",
+            await MessageDialog.ShowAsync(this, $"Generation done! You can find the mod in the rand_{RandomizerLogic.usedSeed} folder.\n\nUsed Seed: {RandomizerLogic.usedSeed}\n",
                 "Generation Summary", MessageBoxButtons.Ok, MessageBoxIcons.Information);
         }
         catch (Exception ex)
