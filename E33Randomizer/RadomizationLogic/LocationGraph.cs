@@ -43,6 +43,7 @@ public class LocationNode
             result.Add(PortalConnection);
         foreach (var (key, connection) in ConditionalConnections)
         {
+            if (key.Contains("EsquieAbility") && !unlockedKeys.Contains("EsquieAbility.Car")) continue;
             if (unlockedKeys.Contains(key)) result.AddRange(connection);
         }
 
@@ -109,11 +110,11 @@ public class LocationGraph
         }
     }
 
-    public Dictionary<string, string> ConstructGoldenPath(List<string> constraintStrings, out List<LocationData> criticalPath)
+    public bool ConstructGoldenPath(List<string> constraintStrings, out List<LocationData> criticalPath, out Dictionary<string, string> destinationChanges)
     {
         criticalPath = new();
         var constraints = constraintStrings.Select(c => Nodes[nodeIndexes[c]]).ToList();
-        var destinationChanges = new Dictionary<string, string>();
+        destinationChanges = new Dictionary<string, string>();
         var currentPath = new List<int>();
 
         int startNode = nodeIndexes[constraints[0].CodeName];
@@ -124,6 +125,10 @@ public class LocationGraph
 
         string initialKeys = "";
         var initialTrace = new PathTrace { Node = startNode, Parent = null };
+
+        int currentSearchStartNode = startNode;
+        string currentSearchStartKeys = initialKeys;
+        PathTrace currentSearchStartTrace = initialTrace;
 
         queue.Enqueue((startNode, initialKeys, 1, initialTrace));
         visited.Add((startNode, initialKeys));
@@ -143,6 +148,10 @@ public class LocationGraph
 
                     if (constraints.Count == 0) break;
 
+                    currentSearchStartNode = currentNode;
+                    currentSearchStartKeys = currentKeysStr;
+                    currentSearchStartTrace = trace;
+
                     queue.Clear();
                     visited.Clear();
                     visitedOrder.Clear();
@@ -155,8 +164,7 @@ public class LocationGraph
                 node.Depth = Math.Min(node.Depth, distance);
 
                 List<string> currentKeysList = string.IsNullOrEmpty(currentKeysStr)
-                    ? new List<string>()
-                    : currentKeysStr.Split(',').ToList();
+                    ? new List<string>() : currentKeysStr.Split(',').ToList();
 
                 bool pickedUpNewKey = false;
                 foreach (var key in node.Keys)
@@ -179,11 +187,7 @@ public class LocationGraph
 
                 foreach (int nextNode in connections)
                 {
-                    // Enforce strict order
-                    if (nextNode != constraints[0].ID && constraints.Any(c => c.ID == nextNode))
-                    {
-                        continue;
-                    }
+                    if (nextNode != constraints[0].ID && constraints.Any(c => c.ID == nextNode)) continue;
 
                     var nextState = (nextNode, nextKeysStr);
                     if (!visited.Add(nextState)) continue;
@@ -197,34 +201,42 @@ public class LocationGraph
 
             if (constraints.Count == 0) break;
 
+            bool foundValidChange = false;
+
             while (visitedOrder.Count > 0)
             {
                 var (i, keysStr, trace) = visitedOrder.Pop();
+                var traceList = trace.ToList();
 
-                if (currentPath.Contains(i) || Nodes[i].PortalConnection == -1 || currentPath.Contains(Nodes[i].PortalConnection))
+                if (currentPath.Contains(i) || 
+                    Nodes[i].PortalConnection == -1 || 
+                    traceList.Contains(Nodes[i].PortalConnection))
                 {
-                    visited.Remove((i, keysStr));
-                    Nodes[i].Depth = Int16.MaxValue;
                     continue;
                 }
 
                 destinationChanges[Nodes[Nodes[i].PortalConnection].CodeName] = constraints[0].CodeName;
                 Nodes[i].PortalConnection = constraints[0].ID;
                 
-                var nextTrace = new PathTrace { Node = constraints[0].ID, Parent = trace };
-                queue.Enqueue((constraints[0].ID, keysStr, Nodes[i].Depth + 1, nextTrace));
+                queue.Clear();
+                visited.Clear();
+                visitedOrder.Clear();
+
+                queue.Enqueue((currentSearchStartNode, currentSearchStartKeys, 1, currentSearchStartTrace));
+                visited.Add((currentSearchStartNode, currentSearchStartKeys));
+
+                foundValidChange = true;
                 break;
             }
 
-            if (visitedOrder.Count == 0)
+            if (!foundValidChange)
             {
-                throw new Exception(
-                    "Could not construct critical path, aborting randomization. Please change generation settings if this problem persists.");
+                return false;
             }
         }
 
         criticalPath = currentPath.Select(i => Controllers.LocationController.GetObject(Nodes[i].CodeName)).ToList();
-        return destinationChanges;
+        return true;
     }
 
     public void ConstructDepths(string startNodeName)

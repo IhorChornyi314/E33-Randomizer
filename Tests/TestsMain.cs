@@ -78,6 +78,7 @@ namespace Tests
                 settings.RandomizeEnemies = true;
                 settings.RandomizeItems = true;
                 settings.RandomizeSkills = true;
+                settings.RandomizeLocations = false;
                 
                 var config = new Config(
                     settings,
