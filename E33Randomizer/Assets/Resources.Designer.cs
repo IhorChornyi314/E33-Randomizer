@@ -51,9 +51,9 @@ namespace E33Randomizer.Assets {
             }
         }
         
-        public static string Terminology_Encounter_size {
+        public static string Terminology_EncounterSize {
             get {
-                return ResourceManager.GetString("Terminology_Encounter size", resourceCulture);
+                return ResourceManager.GetString("Terminology_EncounterSize", resourceCulture);
             }
         }
         
@@ -132,6 +132,60 @@ namespace E33Randomizer.Assets {
         public static string Remove {
             get {
                 return ResourceManager.GetString("Remove", resourceCulture);
+            }
+        }
+        
+        public static string UnableToParseJson_Exception {
+            get {
+                return ResourceManager.GetString("UnableToParseJson_Exception", resourceCulture);
+            }
+        }
+        
+        public static string OnlyDesktopModeSupported_Exception {
+            get {
+                return ResourceManager.GetString("OnlyDesktopModeSupported_Exception", resourceCulture);
+            }
+        }
+        
+        public static string Dialog_WindowNotVisibleException {
+            get {
+                return ResourceManager.GetString("Dialog_WindowNotVisibleException", resourceCulture);
+            }
+        }
+        
+        public static string Validation_Required {
+            get {
+                return ResourceManager.GetString("Validation_Required", resourceCulture);
+            }
+        }
+        
+        public static string Validation_Null {
+            get {
+                return ResourceManager.GetString("Validation_Null", resourceCulture);
+            }
+        }
+        
+        public static string Validation_NotString {
+            get {
+                return ResourceManager.GetString("Validation_NotString", resourceCulture);
+            }
+        }
+        
+        public static string Validation_MinLength_Length {
+            get {
+                return ResourceManager.GetString("Validation_MinLength_Length", resourceCulture);
+            }
+        }
+        
+        public static string Validation_Sibling_NotISibling {
+            get {
+                return ResourceManager.GetString("Validation_Sibling_NotISibling", resourceCulture);
+            }
+        }
+        
+        public static string Validation_Sibling_AlreadyExists {
+            get {
+                return ResourceManager.GetString("Validation_Sibling_AlreadyExists", resourceCulture);
             }
         }
         
@@ -747,6 +801,54 @@ namespace E33Randomizer.Assets {
             }
         }
         
+        public static string Misc_ErrorPatching {
+            get {
+                return ResourceManager.GetString("Misc_ErrorPatching", resourceCulture);
+            }
+        }
+        
+        public static string Misc_PatchingError {
+            get {
+                return ResourceManager.GetString("Misc_PatchingError", resourceCulture);
+            }
+        }
+        
+        public static string Misc_SelectAFile {
+            get {
+                return ResourceManager.GetString("Misc_SelectAFile", resourceCulture);
+            }
+        }
+        
+        public static string Misc_SAVFilesSav {
+            get {
+                return ResourceManager.GetString("Misc_SAVFilesSav", resourceCulture);
+            }
+        }
+        
+        public static string Misc_AllFiles {
+            get {
+                return ResourceManager.GetString("Misc_AllFiles", resourceCulture);
+            }
+        }
+        
+        public static string Misc_SaveFilePatched {
+            get {
+                return ResourceManager.GetString("Misc_SaveFilePatched", resourceCulture);
+            }
+        }
+        
+        public static string Misc_Patched {
+            get {
+                return ResourceManager.GetString("Misc_Patched", resourceCulture);
+            }
+        }
+        
+        public static string Misc_Error {
+            get {
+                return ResourceManager.GetString("Misc_Error", resourceCulture);
+            }
+        }
+        
         public static string Main_Tab_EnemyRandomizer {
             get {
                 return ResourceManager.GetString("Main_Tab_EnemyRandomizer", resourceCulture);
@@ -804,6 +906,132 @@ namespace E33Randomizer.Assets {
         public static string Main_Title {
             get {
                 return ResourceManager.GetString("Main_Title", resourceCulture);
+            }
+        }
+        
+        public static string MainWindow_ErrorStarting {
+            get {
+                return ResourceManager.GetString("MainWindow_ErrorStarting", resourceCulture);
+            }
+        }
+        
+        public static string MainWindow_UnableToFindCustomPlacementWindow {
+            get {
+                return ResourceManager.GetString("MainWindow_UnableToFindCustomPlacementWindow", resourceCulture);
+            }
+        }
+        
+        public static string MainWindow_ErrorLoadingCustomPlacementWindow {
+            get {
+                return ResourceManager.GetString("MainWindow_ErrorLoadingCustomPlacementWindow", resourceCulture);
+            }
+        }
+        
+        public static string MainWindow_Error {
+            get {
+                return ResourceManager.GetString("MainWindow_Error", resourceCulture);
+            }
+        }
+        
+        public static string MainWindow_UnableToFindEditObjectController {
+            get {
+                return ResourceManager.GetString("MainWindow_UnableToFindEditObjectController", resourceCulture);
+            }
+        }
+        
+        public static string MainWindow_ErrorLoadingEditObjectsWindow {
+            get {
+                return ResourceManager.GetString("MainWindow_ErrorLoadingEditObjectsWindow", resourceCulture);
+            }
+        }
+        
+        public static string MainWindow_GenerationDone {
+            get {
+                return ResourceManager.GetString("MainWindow_GenerationDone", resourceCulture);
+            }
+        }
+        
+        public static string MainWindow_GenerationSummary {
+            get {
+                return ResourceManager.GetString("MainWindow_GenerationSummary", resourceCulture);
+            }
+        }
+        
+        public static string MainWindow_ErrorGenerating {
+            get {
+                return ResourceManager.GetString("MainWindow_ErrorGenerating", resourceCulture);
+            }
+        }
+        
+        public static string MainWindow_GeneratingError {
+            get {
+                return ResourceManager.GetString("MainWindow_GeneratingError", resourceCulture);
+            }
+        }
+        
+        public static string MainWindow_SelectAFile {
+            get {
+                return ResourceManager.GetString("MainWindow_SelectAFile", resourceCulture);
+            }
+        }
+        
+        public static string MainWindow_FileFilterDescriptionJson {
+            get {
+                return ResourceManager.GetString("MainWindow_FileFilterDescriptionJson", resourceCulture);
+            }
+        }
+        
+        public static string MainWindow_AllFiles {
+            get {
+                return ResourceManager.GetString("MainWindow_AllFiles", resourceCulture);
+            }
+        }
+        
+        public static string MainWindow_ErrorLoadingPreset {
+            get {
+                return ResourceManager.GetString("MainWindow_ErrorLoadingPreset", resourceCulture);
+            }
+        }
+        
+        public static string MainWindow_LoadError {
+            get {
+                return ResourceManager.GetString("MainWindow_LoadError", resourceCulture);
+            }
+        }
+        
+        public static string MainWindow_SavePreset {
+            get {
+                return ResourceManager.GetString("MainWindow_SavePreset", resourceCulture);
+            }
+        }
+        
+        public static string MainWindow_PresetSavedSuccessfully {
+            get {
+                return ResourceManager.GetString("MainWindow_PresetSavedSuccessfully", resourceCulture);
+            }
+        }
+        
+        public static string MainWindow_SaveComplete {
+            get {
+                return ResourceManager.GetString("MainWindow_SaveComplete", resourceCulture);
+            }
+        }
+        
+        public static string MainWindow_ErrorSavingPreset {
+            get {
+                return ResourceManager.GetString("MainWindow_ErrorSavingPreset", resourceCulture);
+            }
+        }
+        
+        public static string MainWindow_ErrorLoading {
+            get {
+                return ResourceManager.GetString("MainWindow_ErrorLoading", resourceCulture);
+            }
+        }
+        
+        public static string MainWindow_ErrorSaving {
+            get {
+                return ResourceManager.GetString("MainWindow_ErrorSaving", resourceCulture);
             }
         }
         
@@ -1296,6 +1524,192 @@ namespace E33Randomizer.Assets {
         public static string IndividualContainers_Location_Search {
             get {
                 return ResourceManager.GetString("IndividualContainers_Location_Search", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_ErrorGenerating {
+            get {
+                return ResourceManager.GetString("IndividualContainers_ErrorGenerating", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_RerollError {
+            get {
+                return ResourceManager.GetString("IndividualContainers_RerollError", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_GenerationDone {
+            get {
+                return ResourceManager.GetString("IndividualContainers_GenerationDone", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_GenerationSummary {
+            get {
+                return ResourceManager.GetString("IndividualContainers_GenerationSummary", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_ErrorPacking {
+            get {
+                return ResourceManager.GetString("IndividualContainers_ErrorPacking", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_PackingError {
+            get {
+                return ResourceManager.GetString("IndividualContainers_PackingError", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_LoadTXT {
+            get {
+                return ResourceManager.GetString("IndividualContainers_LoadTXT", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_TXTFilesTxt {
+            get {
+                return ResourceManager.GetString("IndividualContainers_TXTFilesTxt", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_AllFiles {
+            get {
+                return ResourceManager.GetString("IndividualContainers_AllFiles", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_ErrorLoadingTXT {
+            get {
+                return ResourceManager.GetString("IndividualContainers_ErrorLoadingTXT", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_LoadError {
+            get {
+                return ResourceManager.GetString("IndividualContainers_LoadError", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_ErrorLoadingTxt2 {
+            get {
+                return ResourceManager.GetString("IndividualContainers_ErrorLoadingTxt2", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_Error {
+            get {
+                return ResourceManager.GetString("IndividualContainers_Error", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_SaveTXT {
+            get {
+                return ResourceManager.GetString("IndividualContainers_SaveTXT", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_Txt2 {
+            get {
+                return ResourceManager.GetString("IndividualContainers_Txt2", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_TXTSavedSuccessfully {
+            get {
+                return ResourceManager.GetString("IndividualContainers_TXTSavedSuccessfully", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_SaveComplete {
+            get {
+                return ResourceManager.GetString("IndividualContainers_SaveComplete", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_ErrorSavingTXT {
+            get {
+                return ResourceManager.GetString("IndividualContainers_ErrorSavingTXT", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_SaveError {
+            get {
+                return ResourceManager.GetString("IndividualContainers_SaveError", resourceCulture);
+            }
+        }
+        
+        public static string IndividualContainers_ErrorSavingTxt2 {
+            get {
+                return ResourceManager.GetString("IndividualContainers_ErrorSavingTxt2", resourceCulture);
+            }
+        }
+        
+        public static string CharacterController_MultipleCharacterError_Exception {
+            get {
+                return ResourceManager.GetString("CharacterController_MultipleCharacterError_Exception", resourceCulture);
+            }
+        }
+        
+        public static string CharacterController_MultipleSkillsError_Exception {
+            get {
+                return ResourceManager.GetString("CharacterController_MultipleSkillsError_Exception", resourceCulture);
+            }
+        }
+        
+        public static string EnemiesController_ErrorReadingEncountersEncounterName_Exception {
+            get {
+                return ResourceManager.GetString("EnemiesController_ErrorReadingEncountersEncounterName_Exception", resourceCulture);
+            }
+        }
+        
+        public static string EnemiesController_ErrorReadingEncountersEnemy_Exception {
+            get {
+                return ResourceManager.GetString("EnemiesController_ErrorReadingEncountersEnemy_Exception", resourceCulture);
+            }
+        }
+        
+        public static string ItemsController_DirectoryNotFound_Exception {
+            get {
+                return ResourceManager.GetString("ItemsController_DirectoryNotFound_Exception", resourceCulture);
+            }
+        }
+        
+        public static string ItemsController_UnrecognizedCheckId_Exception {
+            get {
+                return ResourceManager.GetString("ItemsController_UnrecognizedCheckId_Exception", resourceCulture);
+            }
+        }
+        
+        public static string ItemsController_UnrecognizedCheckFoot_Exception {
+            get {
+                return ResourceManager.GetString("ItemsController_UnrecognizedCheckFoot_Exception", resourceCulture);
+            }
+        }
+        
+        public static string LocationController_CriticalPath_Exception {
+            get {
+                return ResourceManager.GetString("LocationController_CriticalPath_Exception", resourceCulture);
+            }
+        }
+        
+        public static string LocationController_OnlyOne_Exception {
+            get {
+                return ResourceManager.GetString("LocationController_OnlyOne_Exception", resourceCulture);
+            }
+        }
+        
+        public static string SkillsGraph_ErrorReadingSkills_Exception {
+            get {
+                return ResourceManager.GetString("SkillsGraph_ErrorReadingSkills_Exception", resourceCulture);
+            }
+        }
+        
+        public static string SkillsController_UnrecognizedCharacter_Exception {
+            get {
+                return ResourceManager.GetString("SkillsController_UnrecognizedCharacter_Exception", resourceCulture);
             }
         }
     }

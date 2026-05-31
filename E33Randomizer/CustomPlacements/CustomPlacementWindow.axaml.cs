@@ -161,7 +161,7 @@ namespace E33Randomizer.CustomPlacements;
             catch (Exception ex)
             {
                 await MessageDialog.ShowAsync(this, $"Error Saving JSON: {ex.Message}", "Error", MessageBoxButtons.Ok,  MessageBoxIcons.Error);
-                await File.WriteAllTextAsync("crash_log.txt", ex.ToString(), Encoding.UTF8);
+                await File.WriteAllTextAsync(Program.CrashLogFileName, ex.ToString(), Encoding.UTF8);
             }
         }
 

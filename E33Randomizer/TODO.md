@@ -1,9 +1,6 @@
 # Work to be done
 ## TODO
 * General
-  * Finish moving the existing text over to the Resx File.  Need to figure out how to deal with the presets, etc.
-    * Including warnings and error messages
-  * Add help tooltips throughout
   * Create better cross-platform build (to fetch the both the linux and windows `retoc` and `uesave`)
   * Investigate switching to `AvaloniaDictionary<T,TV>` over the custom `ObeservableCollectionWithChildListener<T>` 
   * Continue to iterate on theme designs
@@ -11,7 +8,8 @@
   * I think a quick little console app that would initialize the full data set then generating a set of classes that had all of it hard coded would work pretty well.  It'd only need to be run when you wanted to regenerate that data if changes were made.
   * Applies to individual Containers, custom placements, and the main window.
 * Individual Containers Window
-  * Maybe a little tweaking in the styles, not settled on the button layout at the bottom yet.
+    * Update the Resources.resx entries for the different object types
+    * Maybe a little tweaking in the styles, not settled on the button layout at the bottom yet.
 * Custom Placements Window
   * Update the Resources.resx entries for the different object types 
   * Design something for the "oops all" section which presently doesn't exist.
@@ -31,6 +29,7 @@
     * Popups / Tooltips
     * Backgrounds for windows to give them some contrast and differentiation.
     * Custom Scrollbars
+  * Add help tooltips throughout
   * Convert to Cross-Platform builds
   * Convert from Newtonsoft.Json to System.Text.Json with source generators
   * Remove / Fix most non-AOT compatible code (sadly not sure that we can fully get to AOT yet for the time being due to the UAssetsAPI)
@@ -41,6 +40,8 @@
   * Finish updating the Skill Tab
   * Finish updating the Misc Tab
   * Create themed Message Dialog box that can be used for both errors and confirmations.
+  * Moved everything other than data driven values like presets/names of things into Localizable Resource file.
+    * Including warnings and error messages
 * Custom Placements
   * Completely redesigned UX
     * Now uses tabs and makes the sub sections much less compressed so it's easier to see what is configured.

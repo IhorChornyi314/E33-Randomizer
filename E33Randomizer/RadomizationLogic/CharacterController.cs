@@ -138,12 +138,12 @@ public class CharacterController: Controller<CharacterData>
 
     public override void AddObjectToContainer(string objectCodeName, string containerCodeName)
     {
-        throw new NotSupportedException("Adding multiple characters at a time is not supported yet.");
+        throw new NotSupportedException(ResourceHelper.GetString(nameof(Assets.Resources.CharacterController_MultipleCharacterError_Exception)));
     }
 
     public override void RemoveObjectFromContainer(int objectIndex, string containerCodeName)
     {
-        throw new NotSupportedException("Adding multiple characters at a time is not supported yet.");
+        throw new NotSupportedException(ResourceHelper.GetString(nameof(Assets.Resources.CharacterController_MultipleCharacterError_Exception)));
     }
 
     public override void InitFromTxt(string text)
@@ -155,12 +155,12 @@ public class CharacterController: Controller<CharacterData>
 
     public override void ApplyViewModel()
     {
-        throw new NotSupportedException("Skill nodes must have exactly one skill in them.");
+        throw new NotSupportedException(ResourceHelper.GetString(nameof(Assets.Resources.CharacterController_MultipleSkillsError_Exception)));
     }
 
     public override void UpdateViewModel()
     {
-        throw new NotSupportedException("Skill nodes must have exactly one skill in them.");
+        throw new NotSupportedException(ResourceHelper.GetString(nameof(Assets.Resources.CharacterController_MultipleSkillsError_Exception)));
     }
 
     public override string ConvertToTxt()

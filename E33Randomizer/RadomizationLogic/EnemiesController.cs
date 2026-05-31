@@ -96,14 +96,14 @@ public class EnemiesController: Controller<EnemyData>
             var encounterIndex = Encounters.FindIndex(e => e.Name == encounterName);
             if (encounterIndex == -1)
             {
-                throw new Exception($"Error reading encounters txt: Unrecognized encounter name {encounterName}! Delete or fix its line.");
+                throw new Exception(ResourceHelper.GetStringFormatted(nameof(Assets.Resources.EnemiesController_ErrorReadingEncountersEncounterName_Exception), encounterName));
             }
             Encounters[encounterIndex].Enemies.Clear();
             foreach (var enemyCodeName in line.Split('|')[1].Split(','))
             {
                 if (!Controllers.EnemiesController.IsObject(enemyCodeName))
                 {
-                    throw new Exception($"Error reading encounters txt: Unrecognized enemy {enemyCodeName}! Delete or fix its line.");
+                    throw new Exception(ResourceHelper.GetStringFormatted(nameof(Assets.Resources.EnemiesController_ErrorReadingEncountersEnemy_Exception), enemyCodeName));
                 }
                 Encounters[encounterIndex].Enemies.Add(GetObject(enemyCodeName));
             }

@@ -20,7 +20,6 @@ public partial class MiscTab : UserControl
                 PlatformID.Unix => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Steam/steamapps/compatdata/1903340/pfx/drive_c/users/steamuser/AppData/Local/Sandfall/Saved/SaveGames/"),
                 _ => throw new NotSupportedException()
             }
-            
         };
 
         DataContext = _viewModel;
@@ -35,13 +34,13 @@ public partial class MiscTab : UserControl
         
         try
         {
-            string targetFolder = "";
+            string targetFolder = string.Empty;
             try
             {
                 string saveGamesBase = _viewModel.DefaultSaveFilePath;
                 string[] subdirectories = Directory.GetDirectories(saveGamesBase);
 
-                targetFolder = subdirectories.Length is 0 or > 1 ? saveGamesBase : $"{subdirectories[0]}";
+                targetFolder = subdirectories.Length is 0 or > 1 ? saveGamesBase : subdirectories[0];
             }
             catch (DirectoryNotFoundException exception)
             {
@@ -53,13 +52,13 @@ public partial class MiscTab : UserControl
         
             var files = await storage.OpenFilePickerAsync(new FilePickerOpenOptions
             {
-                Title = "Select a File",
+                Title = ResourceHelper.GetString(nameof(Assets.Resources.Misc_SelectAFile)),
                 AllowMultiple = false,
                 SuggestedStartLocation = suggestedStartLocation,
                 FileTypeFilter =
                 [
-                    new FilePickerFileType("SAV files (*.sav)") { Patterns = ["*.sav"] },
-                    new FilePickerFileType("All Files") { Patterns = ["*"] }
+                    new FilePickerFileType(ResourceHelper.GetString(nameof(Assets.Resources.Misc_SAVFilesSav))) { Patterns = ["*.sav"] },
+                    new FilePickerFileType(ResourceHelper.GetString(nameof(Assets.Resources.Misc_AllFiles))) { Patterns = ["*"] }
                 ]
             });
 
@@ -77,20 +76,21 @@ public partial class MiscTab : UserControl
                             break;
                     }
                 
-                    await MessageDialog.ShowAsync(topLevel, $"Save File Patched!",
-                        "Patched", MessageBoxButtons.Ok, MessageBoxIcons.Information);
+                    await MessageDialog.ShowAsync(topLevel, ResourceHelper.GetString(nameof(Assets.Resources.Misc_SaveFilePatched)),
+                        ResourceHelper.GetString(nameof(Assets.Resources.Misc_Patched)), MessageBoxButtons.Ok, MessageBoxIcons.Information);
                 }
                 catch (Exception ex)
                 {
-                    await MessageDialog.ShowAsync(topLevel, $"Error patching: {ex.Message}",
-                        "Patching Error", MessageBoxButtons.Ok, MessageBoxIcons.Error);
-                    await File.WriteAllTextAsync("crash_log.txt", ex.ToString(), Encoding.UTF8);
+                    await MessageDialog.ShowAsync(topLevel, ResourceHelper.GetStringFormatted(nameof(Assets.Resources.Misc_ErrorPatching),ex.Message),
+                        ResourceHelper.GetString(nameof(Assets.Resources.Misc_PatchingError)), MessageBoxButtons.Ok, MessageBoxIcons.Error);
+                    await File.WriteAllTextAsync(Program.CrashLogFileName, ex.ToString(), Encoding.UTF8);
                 }
             }
         }
         catch (Exception ex)
         {
-            await MessageDialog.ShowAsync(topLevel, $"Error patching: {ex.Message}", "Error", MessageBoxButtons.Ok,  MessageBoxIcons.Error);
+            await MessageDialog.ShowAsync(topLevel, ResourceHelper.GetStringFormatted(nameof(Assets.Resources.Misc_ErrorPatching),ex.Message), 
+                ResourceHelper.GetString(nameof(Assets.Resources.Misc_Error)), MessageBoxButtons.Ok,  MessageBoxIcons.Error);
         }
     }
 }

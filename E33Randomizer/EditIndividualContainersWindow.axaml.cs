@@ -109,9 +109,9 @@ public partial class EditIndividualContainersWindow : Window
         }
         catch (Exception ex)
         {
-            await MessageDialog.ShowAsync(this, $"Error generating: {ex.Message}", 
-                "Reroll Error", MessageBoxButtons.Ok, MessageBoxIcons.Error);
-            await File.WriteAllTextAsync("crash_log.txt", ex.ToString(), Encoding.UTF8);
+            await MessageDialog.ShowAsync(this, ResourceHelper.GetStringFormatted(nameof(Assets.Resources.IndividualContainers_ErrorGenerating),ex.Message), 
+                ResourceHelper.GetString(nameof(Assets.Resources.IndividualContainers_RerollError)), MessageBoxButtons.Ok, MessageBoxIcons.Error);
+            await File.WriteAllTextAsync(Program.CrashLogFileName, ex.ToString(), Encoding.UTF8);
         }
     }
         
@@ -121,15 +121,14 @@ public partial class EditIndividualContainersWindow : Window
         {
             RandomizerLogic.usedSeed = RandomizerLogic.Settings.Seed != -1 ? RandomizerLogic.Settings.Seed : Environment.TickCount; 
             RandomizerLogic.PackAndConvertData();
-            await MessageDialog.ShowAsync(this, $"Generation done! You can find the mod in the rand_{RandomizerLogic.usedSeed} folder.\n\n" +
-                                                $"Used Seed: {RandomizerLogic.usedSeed}\n",
-                "Generation Summary", MessageBoxButtons.Ok, MessageBoxIcons.Information);
+            await MessageDialog.ShowAsync(this, ResourceHelper.GetStringFormatted(nameof(Assets.Resources.IndividualContainers_GenerationDone),RandomizerLogic.usedSeed),
+                ResourceHelper.GetString(nameof(Assets.Resources.IndividualContainers_GenerationSummary)), MessageBoxButtons.Ok, MessageBoxIcons.Information);
         }
         catch (Exception ex)
         {
-            await MessageDialog.ShowAsync(this, $"Error packing: {ex.Message}", 
-                "Packing Error", MessageBoxButtons.Ok, MessageBoxIcons.Error);
-            await File.WriteAllTextAsync("crash_log.txt", ex.ToString(), Encoding.UTF8);
+            await MessageDialog.ShowAsync(this, ResourceHelper.GetStringFormatted(nameof(Assets.Resources.IndividualContainers_ErrorPacking),ex.Message), 
+                ResourceHelper.GetString(nameof(Assets.Resources.IndividualContainers_PackingError)), MessageBoxButtons.Ok, MessageBoxIcons.Error);
+            await File.WriteAllTextAsync(Program.CrashLogFileName, ex.ToString(), Encoding.UTF8);
         }
     }
 
@@ -144,12 +143,12 @@ public partial class EditIndividualContainersWindow : Window
 
             var files = await storage.OpenFilePickerAsync(new FilePickerOpenOptions
             {
-                Title = "Load TXT",
+                Title = ResourceHelper.GetString(nameof(Assets.Resources.IndividualContainers_LoadTXT)),
                 AllowMultiple = false,
                 FileTypeFilter =
                 [
-                    new FilePickerFileType("TXT files (*.txt)") { Patterns = ["*.txt"] },
-                    new FilePickerFileType("All Files") { Patterns = ["*"] }
+                    new FilePickerFileType(ResourceHelper.GetString(nameof(Assets.Resources.IndividualContainers_TXTFilesTxt))) { Patterns = ["*.txt"] },
+                    new FilePickerFileType(ResourceHelper.GetString(nameof(Assets.Resources.IndividualContainers_AllFiles))) { Patterns = ["*"] }
                 ]
             });
 
@@ -161,15 +160,16 @@ public partial class EditIndividualContainersWindow : Window
             }
             catch (Exception ex)
             {
-                await MessageDialog.ShowAsync(this, $"Error loading TXT: {ex.Message}", 
-                    "Load Error", MessageBoxButtons.Ok, MessageBoxIcons.Error);
-                await File.WriteAllTextAsync("crash_log.txt", ex.ToString(), Encoding.UTF8);
+                await MessageDialog.ShowAsync(this, ResourceHelper.GetStringFormatted(nameof(Assets.Resources.IndividualContainers_ErrorLoadingTXT),ex.Message), 
+                    ResourceHelper.GetString(nameof(Assets.Resources.IndividualContainers_LoadError)), MessageBoxButtons.Ok, MessageBoxIcons.Error);
+                await File.WriteAllTextAsync(Program.CrashLogFileName, ex.ToString(), Encoding.UTF8);
             }
         }
         catch (Exception ex)
         {
-            await MessageDialog.ShowAsync(this, $"Error Loading txt", "Error", MessageBoxButtons.Ok,  MessageBoxIcons.Error);
-            await File.WriteAllTextAsync("crash_log.txt", ex.ToString(), Encoding.UTF8);
+            await MessageDialog.ShowAsync(this, ResourceHelper.GetString(nameof(Assets.Resources.IndividualContainers_ErrorLoadingTxt2)), 
+                ResourceHelper.GetString(nameof(Assets.Resources.IndividualContainers_Error)), MessageBoxButtons.Ok,  MessageBoxIcons.Error);
+            await File.WriteAllTextAsync(Program.CrashLogFileName, ex.ToString(), Encoding.UTF8);
         }
     }
 
@@ -182,14 +182,14 @@ public partial class EditIndividualContainersWindow : Window
 
             var storage = topLevel.StorageProvider;
 
-            var file = await storage.SaveFilePickerAsync(new FilePickerSaveOptions()
+            var file = await storage.SaveFilePickerAsync(new FilePickerSaveOptions
             {
-                Title = "Save TXT",
-                DefaultExtension = ".txt",
+                Title = ResourceHelper.GetString(nameof(Assets.Resources.IndividualContainers_SaveTXT)),
+                DefaultExtension = ResourceHelper.GetString(nameof(Assets.Resources.IndividualContainers_Txt2)),
                 FileTypeChoices = 
                 [
-                    new FilePickerFileType("TXT files (*.txt)") { Patterns = ["*.txt"] },
-                    new FilePickerFileType("All Files") { Patterns = ["*"] }
+                    new FilePickerFileType(ResourceHelper.GetString(nameof(Assets.Resources.IndividualContainers_TXTFilesTxt))) { Patterns = ["*.txt"] },
+                    new FilePickerFileType(ResourceHelper.GetString(nameof(Assets.Resources.IndividualContainers_AllFiles))) { Patterns = ["*"] }
                 ]
             });
 
@@ -198,25 +198,24 @@ public partial class EditIndividualContainersWindow : Window
                 try
                 {
                     Controller.WriteTxt(file.Path.LocalPath);
-                    await MessageDialog.ShowAsync(this, "TXT saved successfully!", 
-                        "Save Complete", MessageBoxButtons.Ok, MessageBoxIcons.Information);
+                    await MessageDialog.ShowAsync(this, ResourceHelper.GetString(nameof(Assets.Resources.IndividualContainers_TXTSavedSuccessfully)), 
+                        ResourceHelper.GetString(nameof(Assets.Resources.IndividualContainers_SaveComplete)), MessageBoxButtons.Ok, MessageBoxIcons.Information);
                 }
                 catch (Exception ex)
                 {
-                    await MessageDialog.ShowAsync(this, $"Error saving TXT: {ex.Message}", 
-                        "Save Error", MessageBoxButtons.Ok, MessageBoxIcons.Error);
-                    await File.WriteAllTextAsync("crash_log.txt", ex.ToString(), Encoding.UTF8);
+                    await MessageDialog.ShowAsync(this, ResourceHelper.GetStringFormatted(nameof(Assets.Resources.IndividualContainers_ErrorSavingTXT),ex.Message), 
+                        ResourceHelper.GetString(nameof(Assets.Resources.IndividualContainers_SaveError)), MessageBoxButtons.Ok, MessageBoxIcons.Error);
+                    await File.WriteAllTextAsync(Program.CrashLogFileName, ex.ToString(), Encoding.UTF8);
                 }
             }
         }
         catch (Exception ex)
         {
-            await MessageDialog.ShowAsync(this, $"Error Saving txt", "Error", MessageBoxButtons.Ok,  MessageBoxIcons.Error);
-            await File.WriteAllTextAsync("crash_log.txt", ex.ToString(), Encoding.UTF8);
+            await MessageDialog.ShowAsync(this, ResourceHelper.GetString(nameof(Assets.Resources.IndividualContainers_ErrorSavingTxt2)), 
+                ResourceHelper.GetString(nameof(Assets.Resources.IndividualContainers_Error)), MessageBoxButtons.Ok,  MessageBoxIcons.Error);
+            await File.WriteAllTextAsync(Program.CrashLogFileName, ex.ToString(), Encoding.UTF8);
         }
     }
-
-
 }
 
 public partial class EditIndividualObjectsWindowViewModel : ObservableObject
@@ -406,7 +405,7 @@ public partial class ObjectViewModel : ObservableObject
     }
 }
 
-public class InvidiualContainersResourceLookupConverter : ResourceLookupConverter
+public class IndividualContainersResourceLookupConverter : ResourceLookupConverter
 {
     protected override string Prefix => "IndividualContainers_";
 }

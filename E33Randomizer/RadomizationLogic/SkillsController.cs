@@ -43,7 +43,7 @@ public class SkillsController: Controller<SkillData>
             var skillGraph = SkillGraphs.Find(sG => sG.CharacterName == characterName);
             if (skillGraph == null)
             {
-                throw new Exception($"Error reading skills txt: Unrecognized character name {characterName}! Delete or fix its line.");
+                throw new Exception(ResourceHelper.GetStringFormatted(nameof(Assets.Resources.SkillsController_UnrecognizedCharacter_Exception), characterName));
             }
             skillGraph.DecodeTxt(line);
         }
@@ -195,12 +195,12 @@ public class SkillsController: Controller<SkillData>
 
     public override void AddObjectToContainer(string objectCodeName, string containerCodeName)
     {
-        throw new NotSupportedException("Skill nodes must have exactly one skill in them.");
+        throw new NotSupportedException(ResourceHelper.GetString(nameof(Assets.Resources.CharacterController_MultipleSkillsError_Exception)));
     }
 
     public override void RemoveObjectFromContainer(int objectIndex, string containerCodeName)
     {
-        throw new NotSupportedException("Skill nodes must have exactly one skill in them.");
+        throw new NotSupportedException(ResourceHelper.GetString(nameof(Assets.Resources.CharacterController_MultipleSkillsError_Exception)));
     }
 
     public override void WriteAssets()

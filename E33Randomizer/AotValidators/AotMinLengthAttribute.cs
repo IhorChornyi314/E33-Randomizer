@@ -9,13 +9,13 @@ public class AotMinLengthAttribute : ValidationAttribute
 
     protected override ValidationResult? IsValid(object? value, ValidationContext context)
     {
-        if (value is null) return new ValidationResult("Value is null");
-        if (value is not string s) return new ValidationResult("Value is not string");
+        if (value is null) return new ValidationResult(ResourceHelper.GetString(nameof(Assets.Resources.Validation_Null)));
+        if (value is not string s) return new ValidationResult(ResourceHelper.GetString(nameof(Assets.Resources.Validation_NotString)));
 
 
         if (s.Length < Min)
         {
-            return new ValidationResult($"Length must be at least {Min}.");
+            return new ValidationResult(ResourceHelper.GetStringFormatted(nameof(Assets.Resources.Validation_MinLength_Length), Min));
         }
 
         return ValidationResult.Success;

@@ -53,7 +53,7 @@ public class LocationController: Controller<LocationData>
 
         if (!_locationGraph.ConstructGoldenPath(_currentConstraints, out criticalPath, out var criticalPathChanges))
         {
-            throw new Exception("Location randomizer could not construct critical path, please try a different seed. Please change generation settings if this problem persists.");
+            throw new Exception(ResourceHelper.GetString(nameof(Assets.Resources.LocationController_CriticalPath_Exception)));
         }
         
         _locationGraph.ConstructDepths(_currentConstraints[0]);
@@ -156,12 +156,12 @@ public class LocationController: Controller<LocationData>
 
     public override void AddObjectToContainer(string objectCodeName, string containerCodeName)
     {
-        throw new NotSupportedException("A location can only have one corresponding replacement.");
+        throw new NotSupportedException(ResourceHelper.GetString(Assets.Resources.LocationController_OnlyOne_Exception));
     }
 
     public override void RemoveObjectFromContainer(int objectIndex, string containerCodeName)
     {
-        throw new NotSupportedException("A location can only have one corresponding replacement.");
+        throw new NotSupportedException(ResourceHelper.GetString(Assets.Resources.LocationController_OnlyOne_Exception));
     }
 
     public override void InitFromTxt(string text)

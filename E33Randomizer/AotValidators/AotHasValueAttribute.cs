@@ -6,11 +6,11 @@ public class AotHasValueAttribute : ValidationAttribute
 {
     protected override ValidationResult? IsValid(object? value, ValidationContext context)
     {
-        if (value is null) return new ValidationResult("Value is Required");
-        if (value is not string s) return new ValidationResult("Value is not string");
+        if (value is null) return new ValidationResult(ResourceHelper.GetString(nameof(Assets.Resources.Validation_Required)));
+        if (value is not string s) return new ValidationResult(ResourceHelper.GetString(nameof(Assets.Resources.Validation_Required)));
 
 
-        if (s.Length == 0) return new ValidationResult("Value is Required");
+        if (s.Length == 0) return new ValidationResult(ResourceHelper.GetString(nameof(Assets.Resources.Validation_Required)));
 
         return ValidationResult.Success;
     }

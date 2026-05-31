@@ -162,7 +162,7 @@ public class ItemsController: Controller<ItemData>
     {
         if(!Directory.Exists(filesDirectory))
         {
-            throw new DirectoryNotFoundException($"Items data directory {filesDirectory} not found");
+            throw new DirectoryNotFoundException(ResourceHelper.GetStringFormatted(nameof(Assets.Resources.ItemsController_DirectoryNotFound_Exception), "ItemData", filesDirectory));
         }
         ItemsSources.Clear();
         CheckTypes.Clear();
@@ -213,7 +213,7 @@ public class ItemsController: Controller<ItemData>
     {
         if(!Directory.Exists(tablesDirectory))
         {
-            throw new DirectoryNotFoundException("ItemTables directory not found");
+            throw new DirectoryNotFoundException(ResourceHelper.GetStringFormatted(nameof(Assets.Resources.ItemsController_DirectoryNotFound_Exception), "ItemTables", tablesDirectory));
         }
         var fileEntries = new List<string> (Directory.GetFiles(tablesDirectory));
         fileEntries = fileEntries.Where(x => Path.GetExtension(x) == ".uasset").ToList();
@@ -501,7 +501,7 @@ public class ItemsController: Controller<ItemData>
             var source = ItemsSources.Find(i => i.FileName == itemSourceName);
             if (source == null || !source.SourceSections.ContainsKey(sectionKey))
             {
-                throw new Exception($"Error reading checks txt: Unrecognized check id {itemSourceName}#{sectionKey}! Delete or fix its line.");
+                throw new Exception(ResourceHelper.GetStringFormatted(nameof(Assets.Resources.ItemsController_UnrecognizedCheckId_Exception), itemSourceName, sectionKey));
             }
             source.SourceSections[sectionKey] = particles;
             if (line.Contains('?'))
@@ -509,7 +509,7 @@ public class ItemsController: Controller<ItemData>
                 var leg = line.Split('?')[1];
                 if (!Controllers.ItemsController.IsObject(leg) && leg != "None")
                 {
-                    throw new Exception($"Error reading checks txt: Unrecognized foot {leg}! Delete or fix its line.");
+                    throw new Exception(ResourceHelper.GetStringFormatted(nameof(Assets.Resources.ItemsController_UnrecognizedCheckFoot_Exception), leg));
                 }
                 ShapeshiftCaptureLootItems[sectionKey] = leg;
             }

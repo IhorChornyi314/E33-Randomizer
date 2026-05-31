@@ -32,11 +32,11 @@ public class SkillNode
         
         if (!Controllers.SkillsController.IsObject(OriginalSkillCodeName))
         {
-            throw new Exception($"Error reading skills txt: Unrecognized skill name {OriginalSkillCodeName}! Delete or fix its line.");
+            throw new Exception(ResourceHelper.GetStringFormatted(nameof(Assets.Resources.SkillsGraph_ErrorReadingSkills_Exception), OriginalSkillCodeName));
         }
         if (!Controllers.SkillsController.IsObject(stringParts[0]))
         {
-            throw new Exception($"Error reading skills txt: Unrecognized skill name {stringParts[0]}! Delete or fix its line.");
+            throw new Exception(ResourceHelper.GetStringFormatted(nameof(Assets.Resources.SkillsGraph_ErrorReadingSkills_Exception), stringParts[0]));
         }
         
         UnlockCost = int.Parse(stringParts[2]);

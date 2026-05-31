@@ -21,7 +21,7 @@
     <data name="Terminology_Encounter" xml:space="preserve">
         <value>Encounter: An encounter is any fight in the game. That includes gimmick fights such as Sophie’s dodge tutorial in Lumiere or helping the white Troubadour learn to play.</value>
     </data>
-    <data name="Terminology_Encounter size" xml:space="preserve">
+    <data name="Terminology_EncounterSize" xml:space="preserve">
         <value>Encounter size: The number of enemies in the encounter.</value>
     </data>
     <data name="Terminology_EnemyArchetype" xml:space="preserve">
@@ -67,6 +67,36 @@
 
     <data name="Remove" xml:space="preserve">
         <value>Remove</value>
+    </data>
+    <data name="UnableToParseJson_Exception" xml:space="preserve">
+        <value>Unable to parse json.</value>
+    </data>
+    <data name="OnlyDesktopModeSupported_Exception" xml:space="preserve">
+        <value>Only desktop mode is supported</value>
+    </data>
+
+    <data name="Dialog_WindowNotVisibleException" xml:space="preserve">
+        <value>Window must be visible.</value>
+    </data>
+    
+    <!-- Validation -->
+    <data name="Validation_Required" xml:space="preserve">
+        <value>Value is Required</value>
+    </data>
+    <data name="Validation_Null" xml:space="preserve">
+        <value>Value is null</value>
+    </data>
+    <data name="Validation_NotString" xml:space="preserve">
+        <value>Value is not string</value>
+    </data>
+    <data name="Validation_MinLength_Length" xml:space="preserve">
+        <value>Length must be at least {Min}.</value>
+    </data>
+    <data name="Validation_Sibling_NotISibling" xml:space="preserve">
+        <value>Object is not ISiblingCheck</value>
+    </data>
+    <data name="Validation_Sibling_AlreadyExists" xml:space="preserve">
+        <value>Value already exists</value>
     </data>
     
     <!-- RandomizeEnemiesTab -->
@@ -409,6 +439,30 @@ Use this button to fix that.</value>
     <data name="Misc_SaveFile_Button_FixCurtains">
         <value>Fix curtains in save file</value>
     </data>
+    <data name="Misc_ErrorPatching">
+        <value>Error patching: {0}</value>
+    </data>
+    <data name="Misc_PatchingError">
+        <value>Patching Error</value>
+    </data>
+    <data name="Misc_SelectAFile">
+        <value>Select a File</value>
+    </data>
+    <data name="Misc_SAVFilesSav">
+        <value>SAV files (*.sav)</value>
+    </data>
+    <data name="Misc_AllFiles">
+        <value>All Files</value>
+    </data>
+    <data name="Misc_SaveFilePatched">
+        <value>Save File Patched!</value>
+    </data>
+    <data name="Misc_Patched">
+        <value>Patched</value>
+    </data>
+    <data name="Misc_Error">
+        <value>Error</value>
+    </data>
     <!-- Main -->
 
 
@@ -443,6 +497,71 @@ Use this button to fix that.</value>
     <data name="Main_Title">
         <value>Expedition 33 Randomizer</value>
     </data>
+
+    <data name="MainWindow_ErrorStarting" xml:space="preserve">
+        <value>Error starting: {0}</value>
+    </data>
+    <data name="MainWindow_UnableToFindCustomPlacementWindow" xml:space="preserve">
+        <value>Unable to find Custom Placement Window for {0}</value>
+    </data>
+    <data name="MainWindow_ErrorLoadingCustomPlacementWindow" xml:space="preserve">
+        <value>Error Loading Custom Placement Window: {0}</value>
+    </data>
+    <data name="MainWindow_Error" xml:space="preserve">
+        <value>Error</value>
+    </data>
+    <data name="MainWindow_UnableToFindEditObjectController" xml:space="preserve">
+        <value>Unable to find Edit Object Controller for {0}</value>
+    </data>
+    <data name="MainWindow_ErrorLoadingEditObjectsWindow" xml:space="preserve">
+        <value>Error Loading Edit Objects Window: {0}</value>
+    </data>
+    <data name="MainWindow_GenerationDone" xml:space="preserve">
+        <value>Generation done! You can find the mod in the rand_{0} folder.&#xD;&#xD;Used Seed: {0}</value>
+    </data>
+    <data name="MainWindow_GenerationSummary" xml:space="preserve">
+        <value>Generation Summary</value>
+    </data>
+    <data name="MainWindow_ErrorGenerating" xml:space="preserve">
+        <value>Error generating: {0}</value>
+    </data>
+    <data name="MainWindow_GeneratingError" xml:space="preserve">
+        <value>Generating Error</value>
+    </data>
+    <data name="MainWindow_SelectAFile" xml:space="preserve">
+        <value>Select a File</value>
+    </data>
+    <data name="MainWindow_FileFilterDescriptionJson" xml:space="preserve">
+        <value>JSON files (*.json)</value>
+    </data>
+    <data name="MainWindow_AllFiles" xml:space="preserve">
+        <value>All Files</value>
+    </data>
+    <data name="MainWindow_ErrorLoadingPreset" xml:space="preserve">
+        <value>Error loading preset: {0}</value>
+    </data>
+    <data name="MainWindow_LoadError" xml:space="preserve">
+        <value>Load Error</value>
+    </data>
+    <data name="MainWindow_SavePreset" xml:space="preserve">
+        <value>Save Preset</value>
+    </data>
+    <data name="MainWindow_PresetSavedSuccessfully" xml:space="preserve">
+        <value>Preset saved successfully!</value>
+    </data>
+    <data name="MainWindow_SaveComplete" xml:space="preserve">
+        <value>Save Complete</value>
+    </data>
+    <data name="MainWindow_ErrorSavingPreset" xml:space="preserve">
+        <value>Error saving preset: {0}</value>
+    </data>
+    <data name="MainWindow_ErrorLoading" xml:space="preserve">
+        <value>Error loading{0}: {1}</value>
+    </data>
+    <data name="MainWindow_ErrorSaving" xml:space="preserve">
+        <value>Error saving{0}: {1}</value>
+    </data>
+    
     
     <!-- Custom Placements -->
     <data name="CustomPlacement_Title" xml:space="preserve">
@@ -699,6 +818,110 @@ Use this button to fix that.</value>
     <data name="IndividualContainers_Location_Search" xml:space="preserve">
         <value>Search by Original Destination or Location names:</value>
     </data>
+
+    <data name="IndividualContainers_ErrorGenerating" xml:space="preserve">
+        <value>Error generating: {0}</value>
+    </data>
+    <data name="IndividualContainers_RerollError" xml:space="preserve">
+        <value>Reroll Error</value>
+    </data>
+    <data name="IndividualContainers_GenerationDone" xml:space="preserve">
+        <value>Generation done! You can find the mod in the rand_{0} folder.&#xD;&#xD;Used Seed: {0}</value>
+    </data>
+    <data name="IndividualContainers_GenerationSummary" xml:space="preserve">
+        <value>Generation Summary</value>
+    </data>
+    <data name="IndividualContainers_ErrorPacking" xml:space="preserve">
+        <value>Error packing: {0}</value>
+    </data>
+    <data name="IndividualContainers_PackingError" xml:space="preserve">
+        <value>Packing Error</value>
+    </data>
+    <data name="IndividualContainers_LoadTXT" xml:space="preserve">
+        <value>Load TXT</value>
+    </data>
+    <data name="IndividualContainers_TXTFilesTxt" xml:space="preserve">
+        <value>TXT files (*.txt)</value>
+    </data>
+    <data name="IndividualContainers_AllFiles" xml:space="preserve">
+        <value>All Files</value>
+    </data>
+    <data name="IndividualContainers_ErrorLoadingTXT" xml:space="preserve">
+        <value>Error loading TXT: {0}</value>
+    </data>
+    <data name="IndividualContainers_LoadError" xml:space="preserve">
+        <value>Load Error</value>
+    </data>
+    <data name="IndividualContainers_ErrorLoadingTxt2" xml:space="preserve">
+        <value>Error Loading txt</value>
+    </data>
+    <data name="IndividualContainers_Error" xml:space="preserve">
+        <value>Error</value>
+    </data>
+    <data name="IndividualContainers_SaveTXT" xml:space="preserve">
+        <value>Save TXT</value>
+    </data>
+    <data name="IndividualContainers_Txt2" xml:space="preserve">
+        <value>.txt</value>
+    </data>
+    <data name="IndividualContainers_TXTSavedSuccessfully" xml:space="preserve">
+        <value>TXT saved successfully!</value>
+    </data>
+    <data name="IndividualContainers_SaveComplete" xml:space="preserve">
+        <value>Save Complete</value>
+    </data>
+    <data name="IndividualContainers_ErrorSavingTXT" xml:space="preserve">
+        <value>Error saving TXT: {0}</value>
+    </data>
+    <data name="IndividualContainers_SaveError" xml:space="preserve">
+        <value>Save Error</value>
+    </data>
+    <data name="IndividualContainers_ErrorSavingTxt2" xml:space="preserve">
+        <value>Error Saving txt</value>
+    </data>   
     
+    <!-- Character Controller -->
+    <data name="CharacterController_MultipleCharacterError_Exception" xml:space="preserve">
+        <value>Adding multiple characters at a time is not supported yet.</value>
+    </data>
+    <data name="CharacterController_MultipleSkillsError_Exception" xml:space="preserve">
+        <value>Skill nodes must have exactly one skill in them.</value>
+    </data>
     
+    <!-- Enemies Controller -->
+    <data name="EnemiesController_ErrorReadingEncountersEncounterName_Exception" xml:space="preserve">
+        <value>Error reading encounters txt: Unrecognized encounter name {0}! Delete or fix its line.</value>
+    </data>
+    <data name="EnemiesController_ErrorReadingEncountersEnemy_Exception" xml:space="preserve">
+        <value>Error reading encounters txt: Unrecognized encounter name {0}! Delete or fix its line.</value>
+    </data>
+    
+    <!-- Items Controller -->
+    <data name="ItemsController_DirectoryNotFound_Exception" xml:space="preserve">
+        <value>{0} directory {1} not found</value>
+    </data>
+    <data name="ItemsController_UnrecognizedCheckId_Exception" xml:space="preserve">
+        <value>Error reading checks txt: Unrecognized check id {0}#{1}! Delete or fix its line.</value>
+    </data>
+    <data name="ItemsController_UnrecognizedCheckFoot_Exception" xml:space="preserve">
+        <value>Error reading checks txt: Unrecognized foot {0}! Delete or fix its line.</value>
+    </data>
+    
+    <!-- Location Controller -->
+    <data name="LocationController_CriticalPath_Exception" xml:space="preserve">
+        <value>Location randomizer could not construct critical path, please try a different seed. Please change generation settings if this problem persists.</value>
+    </data>
+    <data name="LocationController_OnlyOne_Exception" xml:space="preserve">
+        <value>A location can only have one corresponding replacement.</value>
+    </data>
+    
+    <!-- Skills Graph -->
+    <data name="SkillsGraph_ErrorReadingSkills_Exception" xml:space="preserve">
+        <value>Error reading skills txt: Unrecognized skill name {0}! Delete or fix its line.</value>
+    </data>
+    
+    <!-- Skills Controller -->
+    <data name="SkillsController_UnrecognizedCharacter_Exception" xml:space="preserve">
+        <value>Error reading skills txt: Unrecognized character name {0}! Delete or fix its line.</value>
+    </data>
 </root>

@@ -20,7 +20,7 @@ public static class JsonSerializerExtensions
             JsonTypeInfo<TValue> jsonTypeInfo)
         {
             var value = JsonSerializer.Deserialize(json, jsonTypeInfo);
-            return value ?? throw new JsonException("Unable to parse json.");
+            return value ?? throw new JsonException(ResourceHelper.GetString(nameof(Assets.Resources.UnableToParseJson_Exception)));
         }
     }
 }

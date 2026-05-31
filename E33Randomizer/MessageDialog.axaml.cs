@@ -75,7 +75,7 @@ public partial class MessageDialog : Window
     {
         if (!owner.IsVisible)
         {
-            throw new Exception("Window must be visible.");
+            throw new Exception(ResourceHelper.GetString(nameof(Assets.Resources.Dialog_WindowNotVisibleException)));
         }
         var dialog = new MessageDialog();
         dialog.DataContext = new MessageDialogViewModel(dialog,message,title,buttonConfirmText,buttonCancelText, icon);
@@ -121,7 +121,7 @@ public partial class MessageDialog : Window
         }
         catch (Exception ex)
         {
-            await File.WriteAllTextAsync("crash_log.txt", ex.ToString(), Encoding.UTF8);
+            await File.WriteAllTextAsync(Program.CrashLogFileName, ex.ToString(), Encoding.UTF8);
         }
     }
 }

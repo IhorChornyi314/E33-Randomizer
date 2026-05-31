@@ -9,7 +9,7 @@
         WindowStartupLocation="CenterScreen"
         x:DataType="e33Randomizer:EditIndividualObjectsWindowViewModel">
     <Window.Resources>
-        <e33Randomizer:InvidiualContainersResourceLookupConverter x:Key="ResourceLookupConverter" />
+        <e33Randomizer:IndividualContainersResourceLookupConverter x:Key="ResourceLookupConverter" />
     </Window.Resources>
     <Window.Title>
         <MultiBinding Converter="{StaticResource ResourceLookupConverter}">

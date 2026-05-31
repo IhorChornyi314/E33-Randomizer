@@ -35,8 +35,8 @@ public partial class App : Application
     public static MainWindow GetMainWindow()
     {
         if (_applicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
-            return desktop.MainWindow as MainWindow ?? throw new Exception("Only desktop mode is supported");
+            return desktop.MainWindow as MainWindow ?? throw new Exception(ResourceHelper.GetString(nameof(Assets.Resources.OnlyDesktopModeSupported_Exception)));
         
-        throw new  Exception("Only desktop mode is supported");
+        throw new  Exception(ResourceHelper.GetString(nameof(Assets.Resources.OnlyDesktopModeSupported_Exception)));
     }
 }

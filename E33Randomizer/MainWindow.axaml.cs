@@ -40,9 +40,9 @@ public partial class MainWindow : Window
         }
         catch (Exception ex)
         {
-            await MessageDialog.ShowAsync(this, $"Error starting: {ex.Message}",
-                "Loading Error", MessageBoxButtons.Ok, MessageBoxIcons.Error);
-            await File.WriteAllTextAsync("crash_log.txt", ex.ToString(), Encoding.UTF8);
+            await MessageDialog.ShowAsync(this, ResourceHelper.GetStringFormatted(nameof(Assets.Resources.MainWindow_ErrorStarting),ex.Message),
+                ResourceHelper.GetStringFormatted(nameof(Assets.Resources.MainWindow_ErrorLoading),null,null), MessageBoxButtons.Ok, MessageBoxIcons.Error);
+            await File.WriteAllTextAsync(Program.CrashLogFileName, ex.ToString(), Encoding.UTF8);
         }
         if (File.Exists("default_settings.json"))
         {
@@ -66,7 +66,7 @@ public partial class MainWindow : Window
                 var customPlacement = RandomizerLogic.GetCustomPlacement(objectType);
                 if (customPlacement is null)
                 {
-                    throw new Exception($"Unable to find Custom Placement Window for {objectType}");
+                    throw new Exception(ResourceHelper.GetStringFormatted(nameof(Assets.Resources.MainWindow_UnableToFindCustomPlacementWindow),objectType));
                 }
                 
                 value = new CustomPlacements.CustomPlacementWindow(customPlacement);
@@ -79,7 +79,7 @@ public partial class MainWindow : Window
         }
         catch (Exception ex)
         {
-            await MessageDialog.ShowAsync(this, $"Error Loading Custom Placement Window: {ex.Message}", "Error", MessageBoxButtons.Ok,  MessageBoxIcons.Error);
+            await MessageDialog.ShowAsync(this, ResourceHelper.GetStringFormatted(nameof(Assets.Resources.MainWindow_ErrorLoadingCustomPlacementWindow),ex.Message), ResourceHelper.GetString(nameof(Assets.Resources.MainWindow_Error)), MessageBoxButtons.Ok,  MessageBoxIcons.Error);
         }
     }
 
@@ -95,7 +95,7 @@ public partial class MainWindow : Window
                 var controller = Controllers.GetController(objectType);
                 if (controller is null)
                 {
-                    throw new Exception($"Unable to find Edit Object Controller for {objectType}");
+                    throw new Exception(ResourceHelper.GetStringFormatted(nameof(Assets.Resources.MainWindow_UnableToFindEditObjectController),objectType));
                 }
                 value = new EditIndividualContainersWindow(controller, this);
                 _editIndividualContainersWindows[objectType] = value;
@@ -106,7 +106,7 @@ public partial class MainWindow : Window
         }
         catch (Exception ex)
         {
-            await MessageDialog.ShowAsync(this, $"Error Loading Edit Objects Window: {ex.Message}", "Error", MessageBoxButtons.Ok,  MessageBoxIcons.Error);
+            await MessageDialog.ShowAsync(this, ResourceHelper.GetStringFormatted(nameof(Assets.Resources.MainWindow_ErrorLoadingEditObjectsWindow),ex.Message), ResourceHelper.GetString(nameof(Assets.Resources.MainWindow_Error)), MessageBoxButtons.Ok,  MessageBoxIcons.Error);
         }
     }
 
@@ -115,14 +115,14 @@ public partial class MainWindow : Window
         try
         {
             RandomizerLogic.Randomize();
-            await MessageDialog.ShowAsync(this, $"Generation done! You can find the mod in the rand_{RandomizerLogic.usedSeed} folder.\n\nUsed Seed: {RandomizerLogic.usedSeed}\n",
-                "Generation Summary", MessageBoxButtons.Ok, MessageBoxIcons.Information);
+            await MessageDialog.ShowAsync(this, ResourceHelper.GetStringFormatted(nameof(Assets.Resources.MainWindow_GenerationDone),RandomizerLogic.usedSeed),
+                ResourceHelper.GetString(nameof(Assets.Resources.MainWindow_GenerationSummary)), MessageBoxButtons.Ok, MessageBoxIcons.Information);
         }
         catch (Exception ex)
         {
-            await MessageDialog.ShowAsync(this, $"Error generating: {ex.Message}",
-                "Generating Error", MessageBoxButtons.Ok, MessageBoxIcons.Error);
-            await File.WriteAllTextAsync("crash_log.txt", ex.ToString(), Encoding.UTF8);
+            await MessageDialog.ShowAsync(this, ResourceHelper.GetStringFormatted(nameof(Assets.Resources.MainWindow_ErrorGenerating),ex.Message),
+                ResourceHelper.GetString(nameof(Assets.Resources.MainWindow_GeneratingError)), MessageBoxButtons.Ok, MessageBoxIcons.Error);
+            await File.WriteAllTextAsync(Program.CrashLogFileName, ex.ToString(), Encoding.UTF8);
         }
     }
 
@@ -138,12 +138,12 @@ public partial class MainWindow : Window
 
             var files = await storage.OpenFilePickerAsync(new FilePickerOpenOptions
             {
-                Title = "Select a File",
+                Title = ResourceHelper.GetString(nameof(Assets.Resources.MainWindow_SelectAFile)),
                 AllowMultiple = false,
                 FileTypeFilter =
                 [
-                    new FilePickerFileType("JSON files (*.json)") { Patterns = ["*.json"] },
-                    new FilePickerFileType("All Files") { Patterns = ["*"] }
+                    new FilePickerFileType(ResourceHelper.GetString(nameof(Assets.Resources.MainWindow_FileFilterDescriptionJson))) { Patterns = ["*.json"] },
+                    new FilePickerFileType(ResourceHelper.GetString(nameof(Assets.Resources.MainWindow_AllFiles))) { Patterns = ["*"] }
                 ]
             });
 
@@ -155,14 +155,14 @@ public partial class MainWindow : Window
                 }
                 catch (Exception ex)
                 {
-                    await MessageDialog.ShowAsync(this, $"Error loading preset: {ex.Message}", 
-                        "Load Error", MessageBoxButtons.Ok, MessageBoxIcons.Error);
+                    await MessageDialog.ShowAsync(this, ResourceHelper.GetStringFormatted(nameof(Assets.Resources.MainWindow_ErrorLoadingPreset),ex.Message), 
+                        ResourceHelper.GetString(nameof(Assets.Resources.MainWindow_LoadError)), MessageBoxButtons.Ok, MessageBoxIcons.Error);
                 }
             }
         }
         catch (Exception ex)
         {
-            await MessageDialog.ShowAsync(this, $"Error Loading JSON: {ex.Message}", "Error", MessageBoxButtons.Ok,  MessageBoxIcons.Error);
+            await MessageDialog.ShowAsync(this, ResourceHelper.GetStringFormatted(nameof(Assets.Resources.MainWindow_ErrorLoading)," JSON",ex.Message), ResourceHelper.GetString(nameof(Assets.Resources.MainWindow_Error)), MessageBoxButtons.Ok,  MessageBoxIcons.Error);
         }
     }
 
@@ -177,12 +177,12 @@ public partial class MainWindow : Window
 
             var file = await storage.SaveFilePickerAsync(new FilePickerSaveOptions()
             {
-                Title = "Save Preset",
+                Title = ResourceHelper.GetString(nameof(Assets.Resources.MainWindow_SavePreset)),
                 DefaultExtension =  ".json",
                 FileTypeChoices = 
                 [
-                    new FilePickerFileType("JSON files (*.json)") { Patterns = ["*.json"] },
-                    new FilePickerFileType("All Files") { Patterns = ["*"] }
+                    new FilePickerFileType(ResourceHelper.GetString(nameof(Assets.Resources.MainWindow_FileFilterDescriptionJson))) { Patterns = ["*.json"] },
+                    new FilePickerFileType(ResourceHelper.GetString(nameof(Assets.Resources.MainWindow_AllFiles))) { Patterns = ["*"] }
                 ]
             });
 
@@ -191,20 +191,20 @@ public partial class MainWindow : Window
                 try
                 {
                     await SaveSettingsAsync(file.Path.LocalPath);
-                    await MessageDialog.ShowAsync(this, "Preset saved successfully!", 
-                        "Save Complete", MessageBoxButtons.Ok, MessageBoxIcons.Information);
+                    await MessageDialog.ShowAsync(this, ResourceHelper.GetString(nameof(Assets.Resources.MainWindow_PresetSavedSuccessfully)), 
+                        ResourceHelper.GetString(nameof(Assets.Resources.MainWindow_SaveComplete)), MessageBoxButtons.Ok, MessageBoxIcons.Information);
                 }
                 catch (Exception ex)
                 {
-                    await MessageDialog.ShowAsync(this, $"Error saving preset: {ex.Message}", 
-                        "Save Error", MessageBoxButtons.Ok, MessageBoxIcons.Error);
+                    await MessageDialog.ShowAsync(this, ResourceHelper.GetStringFormatted(nameof(Assets.Resources.MainWindow_ErrorSavingPreset),ex.Message), 
+                        ResourceHelper.GetStringFormatted(nameof(Assets.Resources.MainWindow_ErrorSaving),null,null), MessageBoxButtons.Ok, MessageBoxIcons.Error);
                 }
             }
         }
         catch (Exception ex)
         {
-            await MessageDialog.ShowAsync(this, $"Error Saving JSON: {ex.Message}", "Error", MessageBoxButtons.Ok,  MessageBoxIcons.Error);
-            await File.WriteAllTextAsync("crash_log.txt", ex.ToString(), Encoding.UTF8);
+            await MessageDialog.ShowAsync(this, ResourceHelper.GetStringFormatted(nameof(Assets.Resources.MainWindow_ErrorSaving),"JSON",ex.Message), ResourceHelper.GetString(nameof(Assets.Resources.MainWindow_Error)), MessageBoxButtons.Ok,  MessageBoxIcons.Error);
+            await File.WriteAllTextAsync(Program.CrashLogFileName, ex.ToString(), Encoding.UTF8);
         }
     }
 
@@ -239,9 +239,9 @@ public partial class MainWindow : Window
         }
         catch (Exception ex)
         {
-            await MessageDialog.ShowAsync(this, $"Error loading: {ex.Message}",
-                "Loading Error", MessageBoxButtons.Ok, MessageBoxIcons.Error);
-            await File.WriteAllTextAsync("crash_log.txt", ex.ToString(), Encoding.UTF8);
+            await MessageDialog.ShowAsync(this, ResourceHelper.GetStringFormatted(nameof(Assets.Resources.MainWindow_ErrorLoading),null,ex.Message),
+                ResourceHelper.GetStringFormatted(nameof(Assets.Resources.MainWindow_ErrorLoading),null,null), MessageBoxButtons.Ok, MessageBoxIcons.Error);
+            await File.WriteAllTextAsync(Program.CrashLogFileName, ex.ToString(), Encoding.UTF8);
         }
     }
 
@@ -255,9 +255,9 @@ public partial class MainWindow : Window
         }
         catch (Exception ex)
         {
-            await MessageDialog.ShowAsync(this, $"Error saving: {ex.Message}",
-                "Saving Error", MessageBoxButtons.Ok, MessageBoxIcons.Error);
-            await File.WriteAllTextAsync("crash_log.txt", ex.ToString(), Encoding.UTF8);
+            await MessageDialog.ShowAsync(this, ResourceHelper.GetStringFormatted(nameof(Assets.Resources.MainWindow_ErrorSaving),null,ex.Message),
+                ResourceHelper.GetStringFormatted(nameof(Assets.Resources.MainWindow_ErrorSaving),null,null), MessageBoxButtons.Ok, MessageBoxIcons.Error);
+            await File.WriteAllTextAsync(Program.CrashLogFileName, ex.ToString(), Encoding.UTF8);
         }
     }
 }
