@@ -94,7 +94,7 @@ public static class TestLogic
         RandomizerLogic.CustomItemPlacement = config.CustomItemPlacement;
         RandomizerLogic.CustomSkillPlacement = config.CustomSkillPlacement;
         RandomizerLogic.CustomLocationPlacement = config.CustomLocationPlacement;
-        RandomizerLogic.Randomize();
+        RandomizerLogic.Randomize(false);
         return CollectState(config);
     }
 }

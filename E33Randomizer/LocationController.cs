@@ -50,7 +50,12 @@ public class LocationController: Controller<LocationData>
         }
         
         _locationGraph.ApplyDestinationChanges(DestinationChanges);
-        var criticalPathChanges = _locationGraph.ConstructGoldenPath(_currentConstraints, out criticalPath);
+
+        if (!_locationGraph.ConstructGoldenPath(_currentConstraints, out criticalPath, out var criticalPathChanges))
+        {
+            throw new Exception("Location randomizer could not construct critical path, please try a different seed. Please change generation settings if this problem persists.");
+        }
+        
         _locationGraph.ConstructDepths(_currentConstraints[0]);
         ConstructLevelScaling();
         foreach (var (originalDestination, newDestination) in DestinationChanges)
