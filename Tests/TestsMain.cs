@@ -18,6 +18,7 @@ namespace Tests
         [SetUp]
         public void SetUp()
         {
+            //TODO Fix this to be better.
             Environment.SetEnvironmentVariable("E33RandoDataPath", "/home/iamwyza/Source/E33-Randomizer/E33Randomizer/Data");
             _fixture = new Fixture();
             _fixture.Customize<int>(c => c.FromFactory(() => new Random().Next(1, 100)));
