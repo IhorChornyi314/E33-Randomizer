@@ -79,7 +79,7 @@
                             Click="GenerateButton_Click" />
 
                     <!-- Seed Input -->
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal" Margin="0 0 0 20">
                         <Label Content="Seed:" VerticalAlignment="Center" FontWeight="Bold" />
                         <NumericUpDown x:DataType="e33Randomizer:SettingsViewModel" x:Name="SeedTextBox"
                                        Text="{Binding Seed}"

@@ -19,5 +19,6 @@ public sealed class Program
             {
                 manager.AddFontCollection(new FontCollection());
             })
-            .WithInterFont(); //.LogToTextWriter(File.CreateText("log.txt"), LogEventLevel.Verbose);
+           // .LogToTextWriter(File.CreateText("log.txt"), LogEventLevel.Verbose)
+            .WithInterFont(); 
 }

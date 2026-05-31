@@ -1,0 +1,309 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:e33Randomizer="clr-namespace:E33Randomizer"
+        xmlns:system="clr-namespace:System;assembly=System.Runtime">
+  
+  <!-- https://github.com/AvaloniaUI/Avalonia/blob/master/src/Avalonia.Themes.Fluent/Controls/ScrollBar.xaml -->
+    
+  <Design.PreviewWith>
+    <Border Padding="20">
+      <StackPanel Orientation="Horizontal" Spacing="20">
+        <StackPanel Spacing="20">
+          <ScrollBar Orientation="Horizontal" AllowAutoHide="False" VerticalAlignment="Center" Width="100"/>
+          <ScrollBar Orientation="Horizontal" AllowAutoHide="False" VerticalAlignment="Center" Width="100" IsEnabled="False"/>
+          <ScrollBar Orientation="Horizontal" AllowAutoHide="True" VerticalAlignment="Center" Width="100"/>
+          <ScrollBar Orientation="Horizontal" AllowAutoHide="True" VerticalAlignment="Center" Width="100" IsEnabled="False"/>
+        </StackPanel>
+        <ScrollBar Orientation="Vertical" AllowAutoHide="False" HorizontalAlignment="Center" Height="100"/>
+        <ScrollBar Orientation="Vertical" AllowAutoHide="False" HorizontalAlignment="Center" Height="100" IsEnabled="False"/>
+        <ScrollBar Orientation="Vertical" AllowAutoHide="True" HorizontalAlignment="Center" Height="100"/>
+        <ScrollBar Orientation="Vertical" AllowAutoHide="True" HorizontalAlignment="Center" Height="100" IsEnabled="False"/>
+        
+        <ScrollViewer Width="200" Height="200" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" AllowAutoHide="False">
+          <Border Height="500" Width="500"></Border>
+          
+        </ScrollViewer>
+      </StackPanel>
+    </Border>
+  </Design.PreviewWith>
+
+  <ControlTheme x:Key="FluentScrollBarThumb" TargetType="Thumb">
+    <Setter Property="Transitions">
+      <Transitions>
+        <CornerRadiusTransition Property="CornerRadius" Duration="0:0:0.1" />
+        <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.1" />
+      </Transitions>
+    </Setter>
+
+    <Style Selector="^:pointerover /template/ Border">
+      <Setter Property="Background" Value="{DynamicResource ScrollBarThumbFillPointerOver}" />
+    </Style>
+    <Style Selector="^:pressed  /template/ Border">
+      <Setter Property="Background" Value="{DynamicResource ScrollBarThumbFillPressed}" />
+    </Style>
+    <Style Selector="^:disabled  /template/ Border">
+      <Setter Property="Background" Value="{DynamicResource ScrollBarThumbFillDisabled}" />
+    </Style>
+  </ControlTheme>
+
+  <ControlTheme x:Key="FluentScrollBarPageButton" TargetType="RepeatButton">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="Opacity" Value="0" />
+    <Setter Property="Width" Value="12" />
+    <Setter Property="Height" Value="8" />
+  </ControlTheme>
+  
+
+  <ControlTheme x:Key="FluentScrollBarLineButton" TargetType="RepeatButton">
+    <Setter Property="Opacity" Value="0" />
+    <Setter Property="TextElement.Foreground" Value="{DynamicResource ScrollBarButtonArrowForeground}"/>
+    <Setter Property="Template">
+      <ControlTemplate>
+        <ContentPresenter x:Name="PART_ContentPresenter"
+                          Background="{DynamicResource ScrollBarButtonBackground}"
+                          BorderBrush="{DynamicResource ScrollBarButtonBorderBrush}"
+                          Content="{TemplateBinding Content}"/>
+      </ControlTemplate>
+    </Setter>
+
+    <Setter Property="Transitions">
+      <Transitions>
+        <DoubleTransition Property="Opacity" Duration="0:0:0.1" />
+      </Transitions>
+    </Setter>
+
+    <Style Selector="^:pointerover">
+      <Style Selector="^ /template/ ContentPresenter" >
+        <Setter Property="BorderBrush" Value="{DynamicResource ScrollBarButtonBorderBrushPointerOver}" />
+      </Style>
+    </Style>
+
+    <Style Selector="^:pressed">
+      <Style Selector="^ /template/ ContentPresenter" >
+        <Setter Property="BorderBrush" Value="{DynamicResource ScrollBarButtonBorderBrushPressed}" />
+      </Style>
+    </Style>
+
+    <Style Selector="^:disabled">
+      <Setter Property="TextElement.Foreground" Value="{DynamicResource ScrollBarButtonArrowForegroundDisabled}"/>
+
+      <Style Selector="^ /template/ ContentPresenter" >
+        <Setter Property="Background" Value="{DynamicResource ScrollBarButtonBackgroundDisabled}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ScrollBarButtonBorderBrushDisabled}" />
+      </Style>
+    </Style>
+  </ControlTheme>
+  <ControlTheme x:Key="{x:Type ScrollBar}" TargetType="ScrollBar">
+    <Setter Property="MinWidth" Value="{DynamicResource ScrollBarSize}" />
+    <Setter Property="MinHeight" Value="{DynamicResource ScrollBarSize}" />
+    <Setter Property="Background" Value="{DynamicResource ScrollBarBackground}" />
+    <Setter Property="Foreground" Value="{DynamicResource ScrollBarForeground}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource ScrollBarBorderBrush}" />
+    <Setter Property="AllowAutoHide" Value="False" />
+    
+    <Style Selector="^ /template/ Thumb">
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate>
+            <Grid Width="12" RowDefinitions="8,*,8" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+              <Image Grid.Row="0" Source="avares://E33Randomizer/Assets/Images/ScrollBarThumbTop.png" Stretch="None" RenderTransform="rotate(180deg) scale(-1,1)"/>
+              <Image Grid.Row="1"  Source="avares://E33Randomizer/Assets/Images/ScrollBarThumbFill.png" Stretch="Fill" Name="CenterBar" />
+              <Image Grid.Row="2" Source="avares://E33Randomizer/Assets/Images/ScrollBarThumbTop.png" Stretch="None"/>
+            </Grid>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>  
+    </Style>
+    
+    <Style Selector="^:horizontal /template/ Thumb">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid Height="12" ColumnDefinitions="8,*,8" Margin="0" >
+                        <LayoutTransformControl Grid.Column="0" VerticalAlignment="Center" LayoutTransform="rotate(90deg)">
+                            <Image Source="avares://E33Randomizer/Assets/Images/ScrollBarThumbTop.png" Stretch="None"/>
+                        </LayoutTransformControl>
+                        <LayoutTransformControl Grid.Column="1" VerticalAlignment="Center" LayoutTransform="rotate(90deg)" Name="CenterBar">
+                            <Image Source="avares://E33Randomizer/Assets/Images/ScrollBarThumbFill.png" Stretch="Fill"  />
+                        </LayoutTransformControl>
+                        <LayoutTransformControl Grid.Column="2" VerticalAlignment="Center" LayoutTransform="rotate(270deg) scale(1,-1)">
+                            <Image Source="avares://E33Randomizer/Assets/Images/ScrollBarThumbTop.png" Stretch="None" RenderTransform=""/>
+                        </LayoutTransformControl>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>  
+    </Style>
+    
+
+    <Style Selector="^:vertical">
+      <Setter Property="Template">
+        <ControlTemplate>
+          <Grid x:Name="Root">
+            <Border x:Name="VerticalRoot"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}">
+              <Grid RowDefinitions="Auto,*,Auto">
+                <Panel Grid.RowSpan="3" Margin="0 8">
+                  <Panel.Background>
+                    <ImageBrush Source="avares://E33Randomizer/Assets/Images/ScrollBarBar.png" TileMode="Tile" Stretch="Fill"/>
+                  </Panel.Background>
+                </Panel>
+                <RepeatButton Name="PART_LineUpButton"
+                              HorizontalAlignment="Center"
+                              Theme="{StaticResource FluentScrollBarLineButton}"
+                              Grid.Row="0"
+                              Focusable="False"
+                              Width="12"
+                              Height="11"
+                              AutomationProperties.Name="Line up">
+                  <Image Source="avares://E33Randomizer/Assets/Images/ScrollBarTopButton.png"  />
+                </RepeatButton>
+
+                <Track Grid.Row="1"
+                       Name="PART_Track"
+                       Minimum="{TemplateBinding Minimum}"
+                       Maximum="{TemplateBinding Maximum}"
+                       Value="{TemplateBinding Value, Mode=TwoWay}"
+                       DeferThumbDrag="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}"
+                       ViewportSize="{TemplateBinding ViewportSize}"
+                       Orientation="{TemplateBinding Orientation}"
+                       IsDirectionReversed="True">
+                  <Track.DecreaseButton>
+                    <RepeatButton Name="PART_PageUpButton"
+                                  Classes="largeIncrease"
+                                  Theme="{StaticResource FluentScrollBarPageButton}"
+                                  Focusable="False"
+                                  AutomationProperties.Name="Page up"/>
+                  </Track.DecreaseButton>
+                  <Track.IncreaseButton>
+                    <RepeatButton Name="PART_PageDownButton"
+                                  Classes="largeIncrease"
+                                  Theme="{StaticResource FluentScrollBarPageButton}"
+                                  Focusable="False"
+                                  AutomationProperties.Name="Page down"/>
+                  </Track.IncreaseButton>
+                  <Thumb Theme="{StaticResource FluentScrollBarThumb}"
+                         Width="{DynamicResource ScrollBarSize}"
+                         MinHeight="{DynamicResource ScrollBarSize}"
+                         RenderTransform="{DynamicResource VerticalSmallScrollThumbScaleTransform}"
+                         RenderTransformOrigin="100%,50%"
+                         Name="PART_Thumb"
+                         AutomationProperties.Name="Position"/>
+                </Track>
+
+                <RepeatButton Name="PART_LineDownButton"
+                              HorizontalAlignment="Center"
+                              Theme="{StaticResource FluentScrollBarLineButton}"
+                              Grid.Row="2"
+                              Focusable="False"
+                              Width="12"
+                              Height="11"
+                              AutomationProperties.Name="Line down">
+                  <Image Source="avares://E33Randomizer/Assets/Images/ScrollBarBottomButton.png"  />
+
+                </RepeatButton>
+              </Grid>
+            </Border>
+            <Grid.Styles>
+              <Style Selector="Thumb /template/ Image#CenterBar">
+                <Setter Property="Height" Value="{Binding #PART_Thumb.Bounds.Height, Converter={x:Static e33Randomizer:Converters.ScrollBarInnerHeightConverter}}" />
+              </Style>
+            </Grid.Styles>
+          </Grid>
+          
+        </ControlTemplate>
+      </Setter>
+    </Style>
+
+    <Style Selector="^:horizontal">
+      <Setter Property="Template">
+        <ControlTemplate>
+          <Grid x:Name="Root">
+            <Border x:Name="HorizontalRoot"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}">
+              <Grid ColumnDefinitions="Auto,*,Auto">
+                  <Panel Grid.Column="0" Grid.ColumnSpan="3" Margin="7 0">
+                      <Panel.Background>
+                          <ImageBrush Source="avares://E33Randomizer/Assets/Images/ScrollBarBarHorizontal.png" TileMode="Tile" Stretch="Fill" />
+                      </Panel.Background>
+                  </Panel>
+
+                <RepeatButton Name="PART_LineUpButton"
+                              Theme="{StaticResource FluentScrollBarLineButton}"
+                              VerticalAlignment="Center"
+                              Grid.Column="0"
+                              Focusable="False"
+                              Width="11"
+                              Height="12"
+                              MinHeight="{DynamicResource ScrollBarSize}"
+                              AutomationProperties.Name="Column left">
+                    <Image Source="avares://E33Randomizer/Assets/Images/ScrollBarTopButton.png" RenderTransform="rotate(270deg)" />
+                </RepeatButton>
+
+                <Track Grid.Column="1"
+                       Minimum="{TemplateBinding Minimum}"
+                       Maximum="{TemplateBinding Maximum}"
+                       Value="{TemplateBinding Value, Mode=TwoWay}"
+                       DeferThumbDrag="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}"
+                       ViewportSize="{TemplateBinding ViewportSize}"
+                       Orientation="{TemplateBinding Orientation}">
+                  <Track.DecreaseButton>
+                    <RepeatButton Name="PART_PageUpButton"
+                                  Classes="largeIncrease"
+                                  Theme="{StaticResource FluentScrollBarPageButton}"
+                                  Focusable="False"
+                                  AutomationProperties.Name="Page left"/>
+                  </Track.DecreaseButton>
+                  <Track.IncreaseButton>
+                    <RepeatButton Name="PART_PageDownButton"
+                                  Classes="largeIncrease"
+                                  Theme="{StaticResource FluentScrollBarPageButton}"
+                                  Focusable="False"
+                                  AutomationProperties.Name="Page right"/>
+                  </Track.IncreaseButton>
+                  <Thumb Theme="{StaticResource FluentScrollBarThumb}"
+                         Height="{DynamicResource ScrollBarSize}"
+                         MinWidth="{DynamicResource ScrollBarSize}"
+                         RenderTransform="{DynamicResource HorizontalSmallScrollThumbScaleTransform}"
+                         RenderTransformOrigin="50%,100%"
+                         Name="PART_Thumb"
+                         AutomationProperties.Name="Position"/>
+                </Track>
+
+                <RepeatButton Name="PART_LineDownButton"
+                              Theme="{StaticResource FluentScrollBarLineButton}"
+                              VerticalAlignment="Center"
+                              Grid.Column="2"
+                              Focusable="False"
+                              Width="11"
+                              Height="12"
+                              AutomationProperties.Name="Column right">
+                    <Image Source="avares://E33Randomizer/Assets/Images/ScrollBarTopButton.png" RenderTransform="rotate(90deg)" />
+
+                </RepeatButton>
+                  <Grid.Styles>
+                      <Style Selector="Thumb /template/ LayoutTransformControl#CenterBar">
+                          <Setter Property="Width" Value="{Binding #PART_Thumb.Bounds.Width, Converter={x:Static e33Randomizer:Converters.ScrollBarInnerHeightConverter}}" />
+                      </Style>
+                  </Grid.Styles>
+              </Grid>
+            </Border>
+          </Grid>
+        </ControlTemplate>
+      </Setter>
+    </Style>
+
+    <Style Selector="^[IsExpanded=true]">
+      <Style Selector="^ /template/ Grid#Root">
+      </Style>
+      <Style Selector="^ /template/ Thumb">
+        <Setter Property="RenderTransform" Value="none" />
+      </Style>
+      <Style Selector="^ /template/ RepeatButton">
+        <Setter Property="Opacity" Value="1" />
+      </Style>
+    </Style>
+  </ControlTheme>
+</ResourceDictionary>

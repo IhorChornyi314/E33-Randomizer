@@ -7,7 +7,8 @@ public static class Converters
     public static readonly IMultiValueConverter MultiBindingToEnumerableConverter =
         new FuncMultiValueConverter<string, IEnumerable<string?>>((inputs) => inputs);
 
-
+    public static readonly IValueConverter ScrollBarInnerHeightConverter = new FuncValueConverter<double,double>((x) => x-16);
+    
     public static IValueConverter HasAny { get; } =
         new FuncValueConverter<object, bool>(x =>
         {

@@ -94,7 +94,7 @@
                     </DataTemplate>
                 </TreeView.DataTemplates>
             </TreeView>
-            </uiControls:SubSection>
+        </uiControls:SubSection>
 
 
         <uiControls:SubSection Grid.Row="2" Grid.Column="2"
@@ -189,16 +189,18 @@
             </ListBox>
 
 
-            <Border DockPanel.Dock="Bottom" IsVisible="{Binding CanAddObjects}" BorderThickness="0 5 0 0" >
+            <Border DockPanel.Dock="Bottom" IsVisible="{Binding CanAddObjects}" BorderThickness="0 5 0 0">
                 <Border.BorderBrush>
-                    <ImageBrush Source="avares://E33Randomizer/Assets/Images/Line.png" TransformOrigin="50%,50%" Transform="rotate(180deg)" />
+                    <ImageBrush Source="avares://E33Randomizer/Assets/Images/Line.png" TransformOrigin="50%,50%"
+                                Transform="rotate(180deg)" />
                 </Border.BorderBrush>
                 <StackPanel>
                     <TextBlock Margin="0 10 0 5" FontSize="16">
                         <TextBlock.Text>
                             <MultiBinding Converter="{StaticResource ResourceLookupConverter}">
                                 <Binding Path="ObjectName" />
-                                <Binding Source="{x:Static e33Randomizer:EditIndividualObjectsWindowViewModel.AddObjectResxName }" />
+                                <Binding
+                                        Source="{x:Static e33Randomizer:EditIndividualObjectsWindowViewModel.AddObjectResxName }" />
                             </MultiBinding>
                         </TextBlock.Text>
                     </TextBlock>
