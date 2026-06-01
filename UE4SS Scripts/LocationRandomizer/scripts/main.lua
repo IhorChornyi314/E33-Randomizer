@@ -20,7 +20,7 @@ local function hookCallback(Context, LevelDestination, SpawnPointTag)
     print("[LocationRandomizer] Loading Map: " .. lookupKey .. "\n")
 
     local newDest = mappingData[lookupKey]
-    if not newDest then return end
+    if not newDest or newDest == lookupKey then return end
 
     print("[LocationRandomizer] Found override: " .. newDest .. "\n")
 

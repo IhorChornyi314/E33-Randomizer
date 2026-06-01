@@ -10,7 +10,7 @@ public class CustomLocationPlacement: CustomPlacement
         {
             "World Map Locations", "Act I World Map Locations", "Act II World Map Locations", "Act III World Map Locations",  
             "Act I Locations",  "Act II Locations",  "Act III Locations",  "Side Locations",  
-            "Fixed-Camera Locations",  "Anything"
+            "Fixed-Camera Locations", "Non-portal Locations",  "Anything"
         };
         
         PresetFiles = new()

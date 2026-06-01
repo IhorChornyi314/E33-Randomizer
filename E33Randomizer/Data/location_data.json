@@ -275,7 +275,7 @@
       "Level.SpawnPoint.ChromaZoneEntrance.Portal"
     ],
     "ConditionalConnections": {},
-    "PortalConnection": "",
+    "PortalConnection": "Level.SpawnPoint.WorldMap.ChromaZoneEntrance",
     "Keys": []
   },
   {
@@ -466,7 +466,7 @@
       "Level.SpawnPoint.CleasTower.GroundEntrance"
     ],
     "ConditionalConnections": {},
-    "PortalConnection": "",
+    "PortalConnection": "Level.SpawnPoint.WorldMap.CleasTowerEntrance",
     "Keys": []
   },
   {
@@ -3584,7 +3584,7 @@
         "Special.WM.Fly"
       ]
     },
-    "PortalConnection": "Level.SpawnPoint.ChromaZoneEntrance.Portal",
+    "PortalConnection": "Level.SpawnPoint.ChromaZoneEntrance.Entry",
     "Keys": []
   },
   {
@@ -3675,7 +3675,7 @@
         "Special.WM.Fly"
       ]
     },
-    "PortalConnection": "",
+    "PortalConnection": "Level.SpawnPoint.CleasTower.GroundEntranceTower",
     "Keys": []
   },
   {
@@ -3710,20 +3710,6 @@
     "Keys": []
   },
   {
-    "CodeName": "Level.SpawnPoint.WorldMap.DarkShores",
-    "CustomName": "World Map - Dark Shores Entry",
-    "LevelAsset": "Level_WorldMap_Main_V2",
-    "LevelScaling": 1,
-    "UnconditionalConnections": [],
-    "ConditionalConnections": {
-      "Story.Act3Reached": [
-        "Special.WM.Fly"
-      ]
-    },
-    "PortalConnection": "",
-    "Keys": []
-  },
-  {
     "CodeName": "Level.SpawnPoint.WorldMap.DarkShoresEntrance",
     "CustomName": "World Map - Dark Shores Entrance",
     "LevelAsset": "Level_WorldMap_Main_V2",
@@ -3738,20 +3724,6 @@
       ]
     },
     "PortalConnection": "Level.SpawnPoint.DarkShores.Entry",
-    "Keys": []
-  },
-  {
-    "CodeName": "Level.SpawnPoint.WorldMap.DarkShoresExit",
-    "CustomName": "World Map - Dark Shores Exit",
-    "LevelAsset": "Level_WorldMap_Main_V2",
-    "LevelScaling": 1,
-    "UnconditionalConnections": [],
-    "ConditionalConnections": {
-      "Story.Act3Reached": [
-        "Special.WM.Fly"
-      ]
-    },
-    "PortalConnection": "",
     "Keys": []
   },
   {
@@ -4286,11 +4258,8 @@
     "LevelScaling": 1,
     "UnconditionalConnections": [],
     "ConditionalConnections": {
-      "Story.Act3Reached": [
-        "Level.SpawnPoint.Reacher.Entry"
-      ]
     },
-    "PortalConnection": "",
+    "PortalConnection": "Level.SpawnPoint.Reacher.Entry",
     "Keys": []
   },
   {
@@ -4486,7 +4455,7 @@
         "Level.SpawnPoint.WorldMap.GobluEntry"
       ]
     },
-    "PortalConnection": "Level.SpawnPoint.SpringMeadows.Entry",
+    "PortalConnection": "Level.SpawnPoint.SpringMeadows.TreeExit",
     "Keys": []
   },
   {
@@ -5064,9 +5033,7 @@
       "Level.SpawnPoint.WorldMap.CleasTowerEntrance",
       "Level.SpawnPoint.WorldMap.CoastalCaveEntry",
       "Level.SpawnPoint.WorldMap.DarkGestralArenaEntry",
-      "Level.SpawnPoint.WorldMap.DarkShores",
       "Level.SpawnPoint.WorldMap.DarkShoresEntrance",
-      "Level.SpawnPoint.WorldMap.DarkShoresExit",
       "Level.SpawnPoint.WorldMap.DoorMazeEntry",
       "Level.SpawnPoint.WorldMap.EsquieNest",
       "Level.SpawnPoint.WorldMap.FloatingCemeteryEntry",

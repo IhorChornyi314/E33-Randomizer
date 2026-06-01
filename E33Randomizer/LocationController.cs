@@ -38,10 +38,12 @@ public class LocationController: Controller<LocationData>
     public override void Randomize()
     {
         _locationGraph.Reset();
+        Reset();
         RandomizerLogic.CustomLocationPlacement.Update();
         foreach (var originalLocation in DestinationChanges.Keys)
         { 
-            DestinationChanges[originalLocation] = RandomizerLogic.CustomLocationPlacement.Replace(originalLocation);
+            var newDestination = RandomizerLogic.CustomLocationPlacement.Replace(originalLocation);
+            DestinationChanges[originalLocation] = newDestination;
         }
 
         if (RandomizerLogic.Settings.RandomizeStartingLocation)
@@ -169,8 +171,8 @@ public class LocationController: Controller<LocationData>
         text = text.ReplaceLineEndings("\n");
 
         var criticalPathLine = text.Split('\n').FirstOrDefault(line => line.StartsWith("CRITICAL PATH"), "");
-        var destinationLines = text.Split("SCALING:\n")[0].Split('\n').Where(line => !line.StartsWith("CRITICAL PATH"));
-        var scalingLines = text.Split("SCALING:\n")[1].Split('\n');
+        var destinationLines = text.Split("SCALING:\n")[0].Split('\n').Where(line => !line.StartsWith("CRITICAL PATH")).Where(l => l.Length != 0);
+        var scalingLines = text.Split("SCALING:\n")[1].Split('\n').Where(l => l.Length != 0);
         
         DestinationChanges = destinationLines
             .Select(l => (l.Split('|')[0], l.Split('|')[1])).ToDictionary();
