@@ -11,8 +11,29 @@ namespace E33Randomizer;
 
 public class LocationController: Controller<LocationData>
 {
+    static private Dictionary<string, List<string>> _specialDestinations = new()
+    {
+        {"ManorDoors", ["Level.SpawnPoint.Manor.AlineWorkshop", "Level.SpawnPoint.Manor.Bathroom", "Level.SpawnPoint.Manor.CleaBedroom", "Level.SpawnPoint.Manor.Entrance", "Level.SpawnPoint.Manor.CleaBedroom", "Level.SpawnPoint.Manor.Kitchen", "Level.SpawnPoint.Manor.Library", "Level.SpawnPoint.Manor.ParentsBedroom", "Level.SpawnPoint.Manor.Room01", "Level.SpawnPoint.Manor.Room02", "Level.SpawnPoint.Manor.Room03", "Level.SpawnPoint.Manor.VersoBedroom"]},
+        {"GestralBeaches", ["Level.SpawnPoint.GestralBeach.WipeOut", "Level.SpawnPoint.GestralBeach.VolleyBall", "Level.SpawnPoint.GestralBeach.Race", "Level.SpawnPoint.GestralBeach.OnlyUp", "Level.SpawnPoint.GestralBeach.Climb"]},
+        {"PaintingWorkshops", ["Level.SpawnPoint.CleaWorkshop.Path1", "Level.SpawnPoint.CleaWorkshop.Path2", "Level.SpawnPoint.CleaWorkshop.Path3"]},
+        {"Cutscenes", ["Level.SpawnPoint.SpringMeadows.Entry", "Level.SpawnPoint.WorldMap.PostSeaCliffForcedCamp", "Level.SpawnPoint.MonolithInterior.Climb.Entry", "Level.SpawnPoint.WorldMap.TheGreatestExpedition", "Level.SpawnPoint.LumiereAct03.Act02RedAndWhite", "Level.SpawnPoint.Manor.AliciaRoomAct3"]}
+    };
+
+    static private string _startingLocation = "Level.SpawnPoint.LumiereAct01.Entry";
+
+    static public Dictionary<string, string> CharacterJoinLocations = new()
+    {
+        {"Level.SpawnPoint.LumiereAct01.Entry", "Gustave"},
+        {"Level.SpawnPoint.SpringMeadows.MeadowsCorridor", "Lune"},
+        {"Level.SpawnPoint.Goblu.LimonsolHome", "Maelle"},
+        {"Level.SpawnPoint.GestralVillage.VillageEntry", "Sciel"},
+        {"Level.SpawnPoint.SeaCliff.BasaltWaves", "Verso"},
+        {"Level.SpawnPoint.MonocoStation.InsideStation", "Monoco"}
+    };
+    
     private LocationGraph _locationGraph = new LocationGraph();
     private UAsset _levelScalingTableAsset;
+    
     public Dictionary<string, string> DestinationChanges = new();
     public Dictionary<string, (int, int)> LevelScaling = new();
     
@@ -23,8 +44,7 @@ public class LocationController: Controller<LocationData>
     public override void Initialize()
     {
         ReadObjectsData($"{RandomizerLogic.DataDirectory}/location_data.json");
-        var portalDestinations = ObjectsData.Where(o => o.PortalConnection != "").Select(o => o.PortalConnection);
-        DestinationChanges = portalDestinations.Distinct().ToDictionary(pD => pD);
+        
         _locationGraph.Init();
         ViewModel.ContainerName = "Original Destination";
         ViewModel.ObjectName = "New Destination";
@@ -48,7 +68,7 @@ public class LocationController: Controller<LocationData>
 
         if (RandomizerLogic.Settings.RandomizeStartingLocation)
         {
-            _currentConstraints[0] =  RandomizerLogic.CustomLocationPlacement.Replace("Level.SpawnPoint.LumiereAct01.Entry");
+            _currentConstraints[0] = DestinationChanges[_startingLocation];
         }
         
         _locationGraph.ApplyDestinationChanges(DestinationChanges);
@@ -58,7 +78,6 @@ public class LocationController: Controller<LocationData>
             throw new Exception("Location randomizer could not construct critical path, please try a different seed. Please change generation settings if this problem persists.");
         }
         
-        _locationGraph.ConstructDepths(_currentConstraints[0]);
         ConstructLevelScaling();
         foreach (var (originalDestination, newDestination) in DestinationChanges)
         {
@@ -83,7 +102,26 @@ public class LocationController: Controller<LocationData>
     {
         var levelScalingTable = (_levelScalingTableAsset.Exports[0] as DataTableExport).Table;
 
-        var scalingModifier = (float)RandomizerLogic.Settings.ScaleModifierPercentage / 100 * 0.9f;
+        var scalingModifier = (float)RandomizerLogic.Settings.ScaleModifierPercentage;
+        var levelScaling = new Dictionary<string, (int, int)>();
+        
+        foreach (var node in _locationGraph.Nodes)
+        {
+            var originalScaling = GetObject(node.CodeName).LevelScaling;
+            var levelName = GetObject(node.CodeName).LevelAsset;
+            var scaling = node.Depth > 1e4 ? originalScaling : (int)(scalingModifier / 100f * node.Depth);
+            scaling = Math.Min(scaling, 99);
+            if (RandomizerLogic.Settings.RescaleCharacters && CharacterJoinLocations.TryGetValue(node.CodeName, out var characterName))
+            {
+                CharacterStartingStateManager.SetStartingLevel(characterName, scaling);
+            }
+
+            if (!levelScaling.ContainsKey(levelName))
+            {
+                levelScaling.Add(levelName, (1000, -1));
+            }
+            levelScaling[levelName] = (Math.Min(levelScaling[levelName].Item1, scaling), Math.Max(levelScaling[levelName].Item2, scaling));
+        }
 
         var criticalLevels = criticalPath.Select(n => n.LevelAsset).Distinct();
         
@@ -95,21 +133,16 @@ public class LocationController: Controller<LocationData>
             
             if (!locationNodes.Any()) continue;
             
-            var minDepth = _locationGraph.Nodes.Where(n => locationNodes.Contains(n.CodeName)).Min(n => n.Depth);
-            var maxDepth = _locationGraph.Nodes.Where(n => locationNodes.Contains(n.CodeName)).Max(n => n.Depth);
-            
-            minDepth = (int)(minDepth * scalingModifier);
-            maxDepth = (int)(maxDepth * scalingModifier);
+            var minDepth = levelScaling[levelName].Item1;
+            var maxDepth = levelScaling[levelName].Item2;
 
             if (levelName == "Level_Lumiere_Main_V2") minDepth = maxDepth;
             
-            minDepth = Math.Min(minDepth, 99);
-            maxDepth = Math.Min(maxDepth, 99);
             maxDepth = Math.Min(maxDepth, minDepth + 3);
 
             var areaOptional = !criticalLevels.Contains(levelName);
 
-            if (areaOptional && !RandomizerLogic.Settings.ScaleOptionalAreas)
+            if ((areaOptional && !RandomizerLogic.Settings.ScaleOptionalAreas) || !RandomizerLogic.Settings.RescaleLocations)
             {
                 LevelScaling[levelName] = (
                     (levelData.Value[8] as IntPropertyData).Value,
@@ -120,7 +153,6 @@ public class LocationController: Controller<LocationData>
 
             LevelScaling[levelName] = (minDepth, maxDepth);
         }
-        Utils.WriteAsset(_levelScalingTableAsset);
     }
     
     public void WriteScalingTable()
@@ -288,12 +320,62 @@ public class LocationController: Controller<LocationData>
     public override void Reset()
     {
         InitFromTxt(_cleanSnapshot);
+        var portalDestinations = ObjectsData.Where(o => o.PortalConnection != "").Select(o => o.PortalConnection);
+        DestinationChanges = portalDestinations.Distinct().ToDictionary(pD => pD);
+
+        if (RandomizerLogic.Settings.RandomizeManorDoors)
+        {
+            _specialDestinations["ManorDoors"].ForEach(d => DestinationChanges[d] = d);
+        }
+        else
+        {
+            _specialDestinations["ManorDoors"].ForEach(d => DestinationChanges.Remove(d));
+        }
+        
+        if (RandomizerLogic.Settings.RandomizeWorkshopEntries)
+        {
+            _specialDestinations["PaintingWorkshops"].ForEach(d => DestinationChanges[d] = d);
+        }
+        else
+        {
+            _specialDestinations["PaintingWorkshops"].ForEach(d => DestinationChanges.Remove(d));
+        }
+        
+        if (RandomizerLogic.Settings.RandomizeGestralBeachPortals)
+        {
+            _specialDestinations["GestralBeaches"].ForEach(d => DestinationChanges[d] = d);
+        }
+        else
+        {
+            _specialDestinations["GestralBeaches"].ForEach(d => DestinationChanges.Remove(d));
+        }
+        
+        if (RandomizerLogic.Settings.RandomizeCutsceneTeleports)
+        {
+            _specialDestinations["Cutscenes"].ForEach(d => DestinationChanges[d] = d);
+        }
+        else
+        {
+            _specialDestinations["Cutscenes"].ForEach(d => DestinationChanges.Remove(d));
+        }
+        
+        if (RandomizerLogic.Settings.RandomizeStartingLocation)
+        {
+            DestinationChanges[_startingLocation] = _startingLocation;
+        }
+        else
+        {
+            DestinationChanges.Remove(_startingLocation);
+        }
     }
 
     public override void WriteAssets()
     {
         ConstructReplacementStringTableAsset();
-        WriteScalingTable();
+        if (RandomizerLogic.Settings.RescaleLocations)
+        {
+            WriteScalingTable();
+        }
         Utils.WriteAsset(_stringTableAsset);
     }
 }

@@ -336,7 +336,15 @@ public class SettingsViewModel : INotifyPropertyChanged
     
     public bool RandomizeLocations { get; set; } = true;
     public bool ReduceLocationRepetition { get; set; } = false;
+    public bool RescaleLocations { get; set; } = true;
+    public bool RescaleCharacters { get; set; } = true;
+    
     public bool RandomizeStartingLocation { get; set; } = false;
+    public bool RandomizeManorDoors { get; set; } = true;
+    public bool RandomizeWorkshopEntries { get; set; } = true;
+    public bool RandomizeCutsceneTeleports { get; set; } = true;
+    public bool RandomizeGestralBeachPortals { get; set; } = true;
+
     public bool ScaleOptionalAreas { get; set; } = true;
     public int ScaleModifierPercentage { get; set; } = 100;
     public bool RandomizeCharacters { get; set; } = false;
