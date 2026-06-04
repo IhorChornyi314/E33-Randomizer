@@ -587,55 +587,55 @@ Use this button to fix that.</value>
         <value>Custom Enemy Placement</value>
     </data>
     <data name="CustomPlacement_Item_NotRandomized" xml:space="preserve">
-        <value>This allows you to change which enemies aren’t randomized, meaning that they will stay in their respective encounters.</value>
+        <value>This allows you to change which items aren’t randomized, meaning that they will be found where they would in vanilla.</value>
     </data>
     <data name="CustomPlacement_Item_Excluded" xml:space="preserve">
-        <value>This allows you to change which enemies are excluded from the pool, meaning that they will not occur anywhere in the randomized game.</value>
+        <value>This allows you to change which items are excluded from the pool, meaning that they will not occur anywhere in the randomized game.</value>
     </data>
     <data name="CustomPlacement_Item_QuickPresets" xml:space="preserve">
-        <value>This allows you to select the Custom Item Placement rules from a list of quick presets. All presets are declared and can be configured in the Data/Presets/[preset name].json file. The Oops All preset replaces every Item in the game with the chosen option, while the default Split Categories preset randomizes all regular enemies into other regular ones, all the bosses into other bosses, etc.</value>
+        <value>This allows you to select the Custom Item Placement rules from a list of quick presets. All presets are declared and can be configured in the Data/Presets/[preset name].json file. The Oops All preset replaces every Item in the game with the chosen option, while the default Split Categories preset randomizes pictos, shards, shapes, chroma elixers, weapons, key items, cosmetics and music records.</value>
     </data>
     <data name="CustomPlacement_Item_CustomPlacement" xml:space="preserve">
-        <value>In order to use this, you need to first select the Item that is going to be replaced on the left, then select what it will be replaced by on the right. For example, the “10% of regular enemies are bosses” preset will give the Regular enemies category a 90% chance to become another Regular Item and a 10% chance to become a Boss Item. The numbers don’t have to add up to 100; they just represent the weights for different categories.</value>
+        <value>In order to use this, you need to first select the Item that is going to be replaced on the left, then select what it will be replaced by on the right. For example, the “Add More Pictos” preset will give Upgrade Materials a 80% chance to be an upgrade material and a 20% chance to be a picto. The numbers don’t have to add up to 100; they just represent the weights for different categories.</value>
     </data>
     <data name="CustomPlacement_Item_FrequencyAdjustment" xml:space="preserve">
-        <value>This allows you to tweak how often a specific Item is encountered in the randomizer. For example, if you want to see fewer Bourgeons in the run but keep all the other settings the same, you can just adjust their frequency to 10% in this section, making them 10 times less likely to appear.</value>
+        <value>This allows you to tweak how often a specific Item is encountered in the randomizer. For example, if you want to see fewer cosmetics in the run but keep all the other settings the same, you can just adjust their frequency to 10% in this section, making them 10 times less likely to appear.</value>
     </data>
     <data name="CustomPlacement_Item_Title" xml:space="preserve">
         <value>Custom Item Placement</value>
     </data>
     <data name="CustomPlacement_Skill_NotRandomized" xml:space="preserve">
-        <value>This allows you to change which enemies aren’t randomized, meaning that they will stay in their respective encounters.</value>
+        <value>This allows you to change which skills aren’t randomized, meaning that they will stay in their respective locations.</value>
     </data>
     <data name="CustomPlacement_Skill_Excluded" xml:space="preserve">
-        <value>This allows you to change which enemies are excluded from the pool, meaning that they will not occur anywhere in the randomized game.</value>
+        <value>This allows you to change which skills are excluded from the pool, meaning that they will not occur anywhere in the randomized game.</value>
     </data>
     <data name="CustomPlacement_Skill_QuickPresets" xml:space="preserve">
-        <value>This allows you to select the Custom Skill Placement rules from a list of quick presets. All presets are declared and can be configured in the Data/Presets/[preset name].json file. The Oops All preset replaces every Skill in the game with the chosen option, while the default Split Categories preset randomizes all regular enemies into other regular ones, all the bosses into other bosses, etc.</value>
+        <value>This allows you to select the Custom Skill Placement rules from a list of quick presets. All presets are declared and can be configured in the Data/Presets/[preset name].json file.</value>
     </data>
     <data name="CustomPlacement_Skill_CustomPlacement" xml:space="preserve">
-        <value>In order to use this, you need to first select the Skill that is going to be replaced on the left, then select what it will be replaced by on the right. For example, the “10% of regular enemies are bosses” preset will give the Regular enemies category a 90% chance to become another Regular Skill and a 10% chance to become a Boss Skill. The numbers don’t have to add up to 100; they just represent the weights for different categories.</value>
+        <value>In order to use this, you need to first select the Skill that is going to be replaced on the left, then select what it will be replaced by on the right. For example, you could set Lune's Thermal Transfer skill to have a 20% chance of being replaced with Thunderfall.</value>
     </data>
     <data name="CustomPlacement_Skill_FrequencyAdjustment" xml:space="preserve">
-        <value>This allows you to tweak how often a specific Skill is encountered in the randomizer. For example, if you want to see fewer Bourgeons in the run but keep all the other settings the same, you can just adjust their frequency to 10% in this section, making them 10 times less likely to appear.</value>
+        <value>This allows you to tweak how often a specific Skill is encountered in the randomizer. For example, if you want to reduce the chance of all gradient skills from appearing in the run but keep all the other settings the same, you can just adjust their frequency to 10% in this section, making them 10 times less likely to appear.</value>
     </data>
     <data name="CustomPlacement_Skill_Title" xml:space="preserve">
         <value>Custom Skill Placement</value>
     </data>
     <data name="CustomPlacement_Location_NotRandomized" xml:space="preserve">
-        <value>This allows you to change which enemies aren’t randomized, meaning that they will stay in their respective encounters.</value>
+        <value>This allows you to change which locations aren’t randomized, meaning that they will stay in their vanilla locations.</value>
     </data>
     <data name="CustomPlacement_Location_Excluded" xml:space="preserve">
-        <value>This allows you to change which enemies are excluded from the pool, meaning that they will not occur anywhere in the randomized game.</value>
+        <value>This allows you to change which locations are excluded from the pool, meaning that they will not occur anywhere in the randomized game.</value>
     </data>
     <data name="CustomPlacement_Location_QuickPresets" xml:space="preserve">
-        <value>This allows you to select the Custom Location Placement rules from a list of quick presets. All presets are declared and can be configured in the Data/Presets/[preset name].json file. The Oops All preset replaces every Location in the game with the chosen option, while the default Split Categories preset randomizes all regular enemies into other regular ones, all the bosses into other bosses, etc.</value>
+        <value>This allows you to select the Custom Location Placement rules from a list of quick presets. All presets are declared and can be configured in the Data/Presets/[preset name].json file.</value>
     </data>
     <data name="CustomPlacement_Location_CustomPlacement" xml:space="preserve">
-        <value>In order to use this, you need to first select the Location that is going to be replaced on the left, then select what it will be replaced by on the right. For example, the “10% of regular enemies are bosses” preset will give the Regular enemies category a 90% chance to become another Regular Location and a 10% chance to become a Boss Location. The numbers don’t have to add up to 100; they just represent the weights for different categories.</value>
+        <value>In order to use this, you need to first select the Location that is going to be replaced on the left, then select what the chances are of what it will be replaced with on the right.</value>
     </data>
     <data name="CustomPlacement_Location_FrequencyAdjustment" xml:space="preserve">
-        <value>This allows you to tweak how often a specific Location is encountered in the randomizer. For example, if you want to see fewer Bourgeons in the run but keep all the other settings the same, you can just adjust their frequency to 10% in this section, making them 10 times less likely to appear.</value>
+        <value>????</value>
     </data>
     <data name="CustomPlacement_Location_Title" xml:space="preserve">
         <value>Custom Location Placement</value>
@@ -698,7 +698,7 @@ Use this button to fix that.</value>
         <value>Save Preset JSON</value>
     </data>
 
-    <!-- Individual Containers -->
+    <!-- IndividualContainers -->
 
     <data name="IndividualContainers_Button_Reroll" xml:space="preserve">
         <value>Reroll with current settings</value>
@@ -751,7 +751,9 @@ Use this button to fix that.</value>
         <value>Items in the Check</value>
     </data>
     <data name="IndividualContainers_Item_Tooltip_Objects" xml:space="preserve">
-        <value>These are the Items that are in the selected Check.  You can change, add, or remove Items from this list. &#xD;&#xD; The game actually has full support for 4-Item Checks, but anything beyond that will just place all the other Items in a single spot outside the fighting arena. They will still be able to deal and take damage, but their attacks will not be visible, and you won’t be able to shoot them in free aim. </value>
+        <value>These are the Items that are in the selected Check.  You can change, add, or remove Items from this list. 
+
+</value>
     </data>
     <data name="IndividualContainers_Item_LoadTxt" xml:space="preserve">
         <value>Load Items from .txt file</value>
@@ -779,7 +781,8 @@ Use this button to fix that.</value>
         <value>Skills in the Skill Tree</value>
     </data>
     <data name="IndividualContainers_Skill_Tooltip_Objects" xml:space="preserve">
-        <value>These are the Skills that are in the selected Skill Tree.  You can change, add, or remove Skills from this list. &#xD;&#xD; The game actually has full support for 4-Skill Skill Trees, but anything beyond that will just place all the other Skills in a single spot outside the fighting arena. They will still be able to deal and take damage, but their attacks will not be visible, and you won’t be able to shoot them in free aim. </value>
+        <value>These are the Skills that are in the selected Skill Tree.  You can change, add, or remove Skills from this list. 
+</value>
     </data>
     <data name="IndividualContainers_Skill_LoadTxt" xml:space="preserve">
         <value>Load Skills from .txt file</value>
@@ -807,7 +810,7 @@ Use this button to fix that.</value>
         <value>New Destination</value>
     </data>
     <data name="IndividualContainers_Location_Tooltip_Objects" xml:space="preserve">
-        <value>These are the Locations that are in the selected Original Destination.  You can change, add, or remove Locations from this list. &#xD;&#xD; The game actually has full support for 4-Location Original Destinations, but anything beyond that will just place all the other Locations in a single spot outside the fighting arena. They will still be able to deal and take damage, but their attacks will not be visible, and you won’t be able to shoot them in free aim. </value>
+        <value>These are the Locations that are in the selected Original Destination.  You can change, add, or remove Locations from this list. </value>
     </data>
     <data name="IndividualContainers_Location_LoadTxt" xml:space="preserve">
         <value>Load Locations from .txt file</value>

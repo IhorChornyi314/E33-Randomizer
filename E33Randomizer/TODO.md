@@ -8,14 +8,22 @@
   * I think a quick little console app that would initialize the full data set then generating a set of classes that had all of it hard coded would work pretty well.  It'd only need to be run when you wanted to regenerate that data if changes were made.
   * Applies to individual Containers, custom placements, and the main window.
 * Individual Containers Window
-    * Update the Resources.resx entries for the different object types
     * Maybe a little tweaking in the styles, not settled on the button layout at the bottom yet.
 * Custom Placements Window
-  * Update the Resources.resx entries for the different object types 
   * Design something for the "oops all" section which presently doesn't exist.
   * Try to fix the issue with Select Category getting unselected when the replacements are changed. (I know why it's happening, but not sure how to fix it yet.  It's due to the use of tuples, there is a comment around that logic that explains more.)
   * Figure out why `FrequencyAdjustmentsCategoryComboBox` doesn't show the error icon even when it's selected item has an error.
+  * Fix the frequency adjustments dropdown not showing correctly for items 
+  * Fix a bug when you use a preset, that the "Select Category" doesn't update the list of items that have overrides set.
 * Consider a Help Page baked right into it? or just link to the help docs on the mod site?...not sure.
+
+
+## General Notes:
+
+* There will be a 1 time, 1 way migration of existing settings jsons from 0.0 to 1.0 for percentages to 0-100.
+* The location custom placement is currently.....Hard to say what it's supposed to do since the main app doesn't have them enabled I don't think.  So I'm not really sure how it's supposed function tbh. 
+* 
+
 
 ## Done
 * General
