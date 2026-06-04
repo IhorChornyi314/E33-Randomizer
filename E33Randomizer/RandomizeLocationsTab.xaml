@@ -22,12 +22,39 @@
                                   IsChecked="{Binding RandomizeLocations}"
                                   Margin="0,0,0,0"
                                   FontSize="14" />
-                        <CheckBox Content="Re-scale locations"
+                        <CheckBox Name="RescaleLocationsCheckBox"
+                            Content="Re-scale locations"
                                   IsChecked="{Binding RescaleLocations}"
                                   Margin="0,0,0,0"
-                                  FontSize="14" />
+                                  FontSize="14" /><StackPanel Orientation="Horizontal" Margin="0,0,0,0"
+                                                              Visibility="{Binding IsChecked, ElementName=RescaleLocationsCheckBox, Converter={StaticResource BooleanToVisibilityConverter}}">
+                            <Label Content="Set the scaling modifier to"
+                                   
+                                   FontSize="14" />
+                            <xctk:IntegerUpDown Text="{Binding ScaleModifierPercentage}"
+                                                Margin="5,0,0,0"
+                                                VerticalAlignment="Center"
+                                                Maximum="9999"
+                                                Minimum="0"
+                                                Height="20"
+                                                Width="50"
+                                                FontSize="14"
+                                                MaxLength="3" />
+                            <Label Content="%"
+                                   FontSize="14" />
+                        </StackPanel>
+                        <CheckBox Name="ScaleOptionalAreasCheckBox"
+                                  Content="Re-scale optional areas"
+                                  IsChecked="{Binding ScaleOptionalAreas}"
+                                  Margin="0,0,0,0"
+                                  FontSize="14" 
+                                  Visibility="{Binding IsChecked, ElementName=RescaleLocationsCheckBox, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                         <CheckBox Content="Re-scale characters"
                                   IsChecked="{Binding RescaleCharacters}"
+                                  Margin="0,0,0,0"
+                                  FontSize="14" />
+                        <CheckBox Content="Randomize starting location"
+                                  IsChecked="{Binding RandomizeStartingLocation}"
                                   Margin="0,0,0,0"
                                   FontSize="14" />
                         <CheckBox Content="Randomize manor doors"
@@ -46,28 +73,7 @@
                                   IsChecked="{Binding RandomizeGestralBeachPortals}"
                                   Margin="0,0,0,0"
                                   FontSize="14" />
-                        <CheckBox Name="ScaleOptionalAreasCheckBox"
-                                  Content="Re-scale optional areas"
-                                  IsChecked="{Binding ScaleOptionalAreas}"
-                                  Margin="0,0,0,0"
-                                  FontSize="14" />
-                        <StackPanel Orientation="Horizontal" Margin="0,0,0,0"
-                                    Visibility="{Binding IsChecked, ElementName=ScaleOptionalAreasCheckBox, Converter={StaticResource BooleanToVisibilityConverter}}">
-                            <Label Content="Set the scaling modifier to"
-                                   
-                                   FontSize="14" />
-                            <xctk:IntegerUpDown Text="{Binding ScaleModifierPercentage}"
-                                                Margin="5,0,0,0"
-                                                VerticalAlignment="Center"
-                                                Maximum="9999"
-                                                Minimum="0"
-                                                Height="20"
-                                                Width="50"
-                                                FontSize="14"
-                                                MaxLength="3" />
-                            <Label Content="%"
-                                   FontSize="14" />
-                        </StackPanel>
+                        
                     </StackPanel>
                     <StackPanel Grid.Row="2">
                         <Button Name="CustomLocationPlacementButton"
