@@ -4,7 +4,7 @@
         xmlns:e33Randomizer="clr-namespace:E33Randomizer"
         xmlns:lang="clr-namespace:E33Randomizer.Assets"
         xmlns:uiControls="clr-namespace:E33Randomizer.UIControls"
-        Height="900" Width="1150"
+        Height="900" Width="1200"
         CanResize="False"
         WindowStartupLocation="CenterScreen"
         x:DataType="e33Randomizer:EditIndividualObjectsWindowViewModel">
@@ -57,7 +57,7 @@
                      PlaceholderText="{x:Static lang:Resources.SearchPlaceholder}" />
         </StackPanel>
         <uiControls:SubSection Grid.Row="2" Grid.Column="0"
-                               Width="400"
+                               Width="450"
                                Height="600"
                                xml:space="preserve">
             <uiControls:SubSection.Header>
@@ -75,8 +75,7 @@
                 </MultiBinding>
             </uiControls:SubSection.ToolTipContent>
            
-            <TreeView x:Name="LocationTreeView"
-                      SelectionChanged="CategoryTreeView_SelectedItemChanged"
+            <TreeView SelectionChanged="CategoryTreeView_SelectedItemChanged"
                       SelectionMode="Single"
                       Height="550"
                       ItemsSource="{Binding FilteredCategories}">

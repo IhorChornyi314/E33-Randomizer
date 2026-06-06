@@ -1,23 +1,10 @@
-﻿using Avalonia.Controls;
-using Avalonia.Interactivity;
+﻿namespace E33Randomizer;
 
-namespace E33Randomizer;
-
-public partial class RandomizeEnemiesTab : UserControl
+public partial class RandomizeEnemiesTab : TabBase
 {
     public RandomizeEnemiesTab()
     {
         InitializeComponent();
-    }
-    
-    private void CustomPlacementButton_Click(object sender, RoutedEventArgs e)
-    {
-        App.GetMainWindow().OpenCustomPlacementButton_Click(sender, e);
-    }
-
-    private void EditButton_Click(object sender, RoutedEventArgs e)
-    {
-        App.GetMainWindow().OpenEditObjectsButton_Click(sender, e);
     }
 }
 

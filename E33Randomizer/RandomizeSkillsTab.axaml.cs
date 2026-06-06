@@ -1,24 +1,11 @@
-﻿using Avalonia.Controls;
-using Avalonia.Interactivity;
+﻿namespace E33Randomizer;
 
-namespace E33Randomizer;
-
-public partial class RandomizeSkillsTab : UserControl
+public partial class RandomizeSkillsTab : TabBase
 {
 
     public RandomizeSkillsTab()
     {
         InitializeComponent();
-    }
-    
-    private void CustomPlacementButton_Click(object sender, RoutedEventArgs e)
-    {
-        App.GetMainWindow().OpenCustomPlacementButton_Click(sender, e);
-    }
-
-    private void EditButton_Click(object sender, RoutedEventArgs e)
-    {
-        App.GetMainWindow().OpenEditObjectsButton_Click(sender, e);
     }
 }
 
@@ -27,7 +14,16 @@ public static class DesignSkillsSettingsViewModel
 {
     public static SettingsViewModel SettingsViewModel => new()
     {
-        
+        RandomizeSkills = true,
+        ReduceSkillRepetition = true,
+        RandomizeSkillUnlockCosts = true,
+        UnlockGustaveSkills = true,
+        GuaranteeGustaveOvercharge = true,
+        MakeSkillsIntoItems = true,
+        RandomizeTreeEdges = true,
+        FullyRandomEdges = true,
+        MinTreeEdges = 2,
+        MaxTreeEdges = 2,
+        RandomEdgeChancePercent = 60
     };
-        
 }

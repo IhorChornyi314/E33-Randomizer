@@ -813,9 +813,7 @@ Use this button to fix that.</value>
         <value>Items in the Check</value>
     </data>
     <data name="IndividualContainers_Item_Tooltip_Objects" xml:space="preserve">
-        <value>These are the Items that are in the selected Check.  You can change, add, or remove Items from this list. 
-
-</value>
+        <value>These are the Items that are in the selected Check.  You can change, add, or remove Items from this list.</value>
     </data>
     <data name="IndividualContainers_Item_LoadTxt" xml:space="preserve">
         <value>Load Items from .txt file</value>

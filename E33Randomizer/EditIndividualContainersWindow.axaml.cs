@@ -30,6 +30,7 @@ public partial class EditIndividualContainersWindow : Window
         // Controllers.ItemsController.Initialize();
         // Controllers.SkillsController.Initialize();
         Controllers.EnemiesController.Initialize();
+        //Controllers.LocationController.Initialize();
         Controller = Controllers.EnemiesController;
         InitializeComponent();
         SetupAutoCompleteBehaviors();

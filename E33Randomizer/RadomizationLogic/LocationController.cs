@@ -47,7 +47,7 @@ public class LocationController: Controller<LocationData>
         
         _locationGraph.Init();
         ViewModel.ContainerName = "Original Destination";
-        ViewModel.ObjectName = "New Destination";
+        ViewModel.ObjectName = "Location"; // New Destination
         ReadConstraintFile();
         _levelScalingTableAsset = new UAsset($"{RandomizerLogic.DataDirectory}/LocationData/DT_LevelData.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
         _cleanSnapshot = ConvertToTxt();
