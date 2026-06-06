@@ -33,6 +33,14 @@
     <ItemGroup>
         <ProjectReference Include="..\external\UAssetAPI\UAssetAPI\UAssetAPI.csproj" />
     </ItemGroup>
+    <ItemGroup Condition="'$(RuntimeIdentifier)' == 'linux-x64'">
+        <Content Include="..\external\retoc" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest"/>
+        <Content Include="..\external\uesave" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    </ItemGroup>
+    <ItemGroup Condition="'$(RuntimeIdentifier)' == 'win-x64'">
+        <Content Include="..\external\retoc.exe" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest"/>
+        <Content Include="..\external\uesave.exe" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    </ItemGroup>
     <ItemGroup>
         <AvaloniaResource Include="Assets\Fonts\*" />
         <AvaloniaResource Include="Assets\Images\*" />
