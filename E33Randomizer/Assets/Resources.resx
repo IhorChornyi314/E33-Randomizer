@@ -629,6 +629,46 @@ Use this button to fix that.</value>
     <data name="CustomPlacement_Title" xml:space="preserve">
         <value>Custom Placements</value>
     </data>
+
+    <data name="CustomPlacement_LoadCustomPreset" xml:space="preserve">
+        <value>Load Custom Preset</value>
+    </data>
+    <data name="CustomPlacement_JSONFilesJson" xml:space="preserve">
+        <value>JSON files (*.json)</value>
+    </data>
+    <data name="CustomPlacement_AllFiles" xml:space="preserve">
+        <value>All Files</value>
+    </data>
+    <data name="CustomPlacement_ErrorLoadingPreset" xml:space="preserve">
+        <value>Error loading preset: {0}</value>
+    </data>
+    <data name="CustomPlacement_LoadError" xml:space="preserve">
+        <value>Load Error</value>
+    </data>
+    <data name="CustomPlacement_ErrorLoadingPreset2" xml:space="preserve">
+        <value>Error Loading preset: {0}</value>
+    </data>
+    <data name="CustomPlacement_SaveCustomPreset" xml:space="preserve">
+        <value>Save Custom Preset</value>
+    </data>
+    <data name="CustomPlacement_PresetSavedSuccessfully" xml:space="preserve">
+        <value>Preset saved successfully!</value>
+    </data>
+    <data name="CustomPlacement_SaveComplete" xml:space="preserve">
+        <value>Save Complete</value>
+    </data>
+    <data name="CustomPlacement_ErrorSavingPreset" xml:space="preserve">
+        <value>Error saving preset: {0}</value>
+    </data>
+    <data name="CustomPlacement_SaveError" xml:space="preserve">
+        <value>Save Error</value>
+    </data>
+    <data name="CustomPlacement_ErrorSavingJSON" xml:space="preserve">
+        <value>Error Saving JSON: {0}</value>
+    </data>
+    <data name="CustomPlacement_Error" xml:space="preserve">
+        <value>Error</value>
+    </data>
     
     <data name="CustomPlacement_Enemy_NotRandomized" xml:space="preserve">
         <value>This allows you to change which enemies aren’t randomized, meaning that they will stay in their respective encounters.</value>

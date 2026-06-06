@@ -93,12 +93,12 @@ namespace E33Randomizer.CustomPlacements;
 
                 var files = await storage.OpenFilePickerAsync(new FilePickerOpenOptions
                 {
-                    Title = "Load Custom Preset",
+                    Title = ResourceHelper.GetString(nameof(Assets.Resources.CustomPlacement_LoadCustomPreset)),
                     AllowMultiple = false,
                     FileTypeFilter =
                     [
-                        new FilePickerFileType("JSON files (*.json)") { Patterns = ["*.json"] },
-                        new FilePickerFileType("All Files") { Patterns = ["*"] }
+                        new FilePickerFileType(ResourceHelper.GetString(nameof(Assets.Resources.CustomPlacement_JSONFilesJson))) { Patterns = ["*.json"] },
+                        new FilePickerFileType(ResourceHelper.GetString(nameof(Assets.Resources.CustomPlacement_AllFiles))) { Patterns = ["*"] }
                     ]
                 });
 
@@ -107,18 +107,17 @@ namespace E33Randomizer.CustomPlacements;
                     try
                     {
                         CustomPlacement.LoadFromJson(files[0].Path.LocalPath);
-                        //LoadCustomPlacementRows(_selectedObjectForCustomPlacement);
                     }
                     catch (Exception ex)
                     {
-                        await MessageDialog.ShowAsync(this, $"Error loading preset: {ex.Message}", 
-                            "Load Error", MessageBoxButtons.Ok, MessageBoxIcons.Error);
+                        await MessageDialog.ShowAsync(this, ResourceHelper.GetStringFormatted(nameof(Assets.Resources.CustomPlacement_ErrorLoadingPreset),ex.Message), 
+                            ResourceHelper.GetString(nameof(Assets.Resources.CustomPlacement_LoadError)), MessageBoxButtons.Ok, MessageBoxIcons.Error);
                     }
                 }
             }
             catch (Exception ex)
             {
-                await MessageDialog.ShowAsync(this, $"Error Loading preset: {ex.Message}", "Load Error", MessageBoxButtons.Ok,  MessageBoxIcons.Error);
+                await MessageDialog.ShowAsync(this, ResourceHelper.GetStringFormatted(nameof(Assets.Resources.CustomPlacement_ErrorLoadingPreset),ex.Message), ResourceHelper.GetString(nameof(Assets.Resources.CustomPlacement_LoadError)), MessageBoxButtons.Ok,  MessageBoxIcons.Error);
             }
         }
 
@@ -133,12 +132,12 @@ namespace E33Randomizer.CustomPlacements;
 
                 var file = await storage.SaveFilePickerAsync(new FilePickerSaveOptions()
                 {
-                    Title = "Save Custom Preset",
+                    Title = ResourceHelper.GetString(nameof(Assets.Resources.CustomPlacement_SaveCustomPreset)),
                     DefaultExtension =  ".json",
                     FileTypeChoices = 
                     [
-                        new FilePickerFileType("JSON files (*.json)") { Patterns = ["*.json"] },
-                        new FilePickerFileType("All Files") { Patterns = ["*"] }
+                        new FilePickerFileType(ResourceHelper.GetString(nameof(Assets.Resources.CustomPlacement_JSONFilesJson))) { Patterns = ["*.json"] },
+                        new FilePickerFileType(ResourceHelper.GetString(nameof(Assets.Resources.CustomPlacement_AllFiles))) { Patterns = ["*"] }
                     ]
                 });
 
@@ -147,20 +146,20 @@ namespace E33Randomizer.CustomPlacements;
                     try
                     {
                         CustomPlacement.SaveToJson(file.Path.LocalPath);
-                        await MessageDialog.ShowAsync(this, "Preset saved successfully!", 
-                            "Save Complete", MessageBoxButtons.Ok, MessageBoxIcons.Information);
+                        await MessageDialog.ShowAsync(this, ResourceHelper.GetString(nameof(Assets.Resources.CustomPlacement_PresetSavedSuccessfully)), 
+                            ResourceHelper.GetString(nameof(Assets.Resources.CustomPlacement_SaveComplete)), MessageBoxButtons.Ok, MessageBoxIcons.Information);
                     }
                     catch (Exception ex)
                     {
                         await MessageDialog.ShowAsync
-                        (this, $"Error saving preset: {ex.Message}", 
-                            "Save Error", MessageBoxButtons.Ok, MessageBoxIcons.Error);
+                        (this, ResourceHelper.GetStringFormatted(nameof(Assets.Resources.CustomPlacement_ErrorSavingPreset),ex.Message), 
+                            ResourceHelper.GetString(nameof(Assets.Resources.CustomPlacement_SaveError)), MessageBoxButtons.Ok, MessageBoxIcons.Error);
                     }
                 }
             }
             catch (Exception ex)
             {
-                await MessageDialog.ShowAsync(this, $"Error Saving JSON: {ex.Message}", "Error", MessageBoxButtons.Ok,  MessageBoxIcons.Error);
+                await MessageDialog.ShowAsync(this, ResourceHelper.GetStringFormatted(nameof(Assets.Resources.CustomPlacement_ErrorSavingJSON),ex.Message), ResourceHelper.GetString(nameof(Assets.Resources.CustomPlacement_Error)), MessageBoxButtons.Ok,  MessageBoxIcons.Error);
                 await File.WriteAllTextAsync(Program.CrashLogFileName, ex.ToString(), Encoding.UTF8);
             }
         }

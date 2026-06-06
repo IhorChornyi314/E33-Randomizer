@@ -1161,6 +1161,84 @@ namespace E33Randomizer.Assets {
             }
         }
         
+        public static string CustomPlacement_LoadCustomPreset {
+            get {
+                return ResourceManager.GetString("CustomPlacement_LoadCustomPreset", resourceCulture);
+            }
+        }
+        
+        public static string CustomPlacement_JSONFilesJson {
+            get {
+                return ResourceManager.GetString("CustomPlacement_JSONFilesJson", resourceCulture);
+            }
+        }
+        
+        public static string CustomPlacement_AllFiles {
+            get {
+                return ResourceManager.GetString("CustomPlacement_AllFiles", resourceCulture);
+            }
+        }
+        
+        public static string CustomPlacement_ErrorLoadingPreset {
+            get {
+                return ResourceManager.GetString("CustomPlacement_ErrorLoadingPreset", resourceCulture);
+            }
+        }
+        
+        public static string CustomPlacement_LoadError {
+            get {
+                return ResourceManager.GetString("CustomPlacement_LoadError", resourceCulture);
+            }
+        }
+        
+        public static string CustomPlacement_ErrorLoadingPreset2 {
+            get {
+                return ResourceManager.GetString("CustomPlacement_ErrorLoadingPreset2", resourceCulture);
+            }
+        }
+        
+        public static string CustomPlacement_SaveCustomPreset {
+            get {
+                return ResourceManager.GetString("CustomPlacement_SaveCustomPreset", resourceCulture);
+            }
+        }
+        
+        public static string CustomPlacement_PresetSavedSuccessfully {
+            get {
+                return ResourceManager.GetString("CustomPlacement_PresetSavedSuccessfully", resourceCulture);
+            }
+        }
+        
+        public static string CustomPlacement_SaveComplete {
+            get {
+                return ResourceManager.GetString("CustomPlacement_SaveComplete", resourceCulture);
+            }
+        }
+        
+        public static string CustomPlacement_ErrorSavingPreset {
+            get {
+                return ResourceManager.GetString("CustomPlacement_ErrorSavingPreset", resourceCulture);
+            }
+        }
+        
+        public static string CustomPlacement_SaveError {
+            get {
+                return ResourceManager.GetString("CustomPlacement_SaveError", resourceCulture);
+            }
+        }
+        
+        public static string CustomPlacement_ErrorSavingJSON {
+            get {
+                return ResourceManager.GetString("CustomPlacement_ErrorSavingJSON", resourceCulture);
+            }
+        }
+        
+        public static string CustomPlacement_Error {
+            get {
+                return ResourceManager.GetString("CustomPlacement_Error", resourceCulture);
+            }
+        }
+        
         public static string CustomPlacement_Enemy_NotRandomized {
             get {
                 return ResourceManager.GetString("CustomPlacement_Enemy_NotRandomized", resourceCulture);

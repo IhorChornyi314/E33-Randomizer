@@ -4,7 +4,7 @@ namespace E33Randomizer;
 
 public static class ResourceHelper
 {
-    public static readonly ResourceManager ResourceManager = new (typeof(Assets.Resources));
+    private static readonly ResourceManager ResourceManager = new (typeof(Assets.Resources));
 
     /// <summary>
     /// Gets the given <paramref name="key" /> from Resources, then runs <see cref="System.String.Format(string, object[])"/> on it using the given <paramref name="args"/> 
