@@ -294,7 +294,7 @@
                         </Grid>
                     </TabItem>
                     <TabItem Header="{x:Static lang:Resources.CustomPlacement_TabItem_FrequencyAdjustments}">
-                        <uiControls:SubSection Width="500"
+                        <uiControls:SubSection 
                                                Header="{x:Static lang:Resources.CustomPlacement_Header_Adjustments}">
                             <uiControls:SubSection.ToolTipContent>
                                 <MultiBinding Converter="{StaticResource ResourceLookupConverter}">
@@ -315,9 +315,9 @@
                                                             Command="{Binding $parent[ItemsControl].((customPlacements:CustomPlacementWindowViewModel)DataContext).RemoveFrequencyRowCommand}"
                                                             CommandParameter="{Binding ., Mode=OneWay}" />
 
-                                                    <ComboBox Width="150" Height="30" Margin="0 0 10 0"
+                                                    <ComboBox Width="300" Height="30" Margin="0 0 10 0"
                                                               VerticalAlignment="Center"
-                                                              ItemsSource="{Binding #Root.((customPlacements:CustomPlacementWindowViewModel)DataContext).CustomCategories}"
+                                                              ItemsSource="{Binding #Root.((customPlacements:CustomPlacementWindowViewModel)DataContext).CustomPlacementOptions}"
                                                               SelectedValue="{Binding Key, Mode=TwoWay}"
                                                               Name="FrequencyAdjustmentsCategoryComboBox"
                                                               Classes="category" />

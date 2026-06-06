@@ -13,8 +13,6 @@
   * Design something for the "oops all" section which presently doesn't exist.
   * Try to fix the issue with Select Category getting unselected when the replacements are changed. (I know why it's happening, but not sure how to fix it yet.  It's due to the use of tuples, there is a comment around that logic that explains more.)
   * Figure out why `FrequencyAdjustmentsCategoryComboBox` doesn't show the error icon even when it's selected item has an error.
-  * Fix the frequency adjustments dropdown not showing correctly for items 
-  * Fix a bug when you use a preset, that the "Select Category" doesn't update the list of items that have overrides set.
 * Consider a Help Page baked right into it? or just link to the help docs on the mod site?...not sure.
 
 

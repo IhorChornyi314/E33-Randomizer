@@ -126,8 +126,6 @@ public abstract partial class CustomPlacementWindowViewModel : ObservableObject
             ? CustomPlacementOptions
             : CustomPlacementOptions.Where(o =>
                 o.Contains(CustomPlacementSearch, StringComparison.InvariantCultureIgnoreCase));
-
-        
         
         FilteredCustomPlacementOptions.AddRange(filtered.Select(x => new Tuple<string, bool>(x, CustomPlacementRules.Any(y => y.Key == x && y.Value.Count > 0))));
     }
@@ -235,6 +233,7 @@ public abstract partial class CustomPlacementWindowViewModel : ObservableObject
         
         FrequencyAdjustments.Clear();
         FrequencyAdjustments.AddRange(preset.FrequencyAdjustments);
+        ApplyCustomPlacementOptionFilter();
     }
     
     [RelayCommand]
