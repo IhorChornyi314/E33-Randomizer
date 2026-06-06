@@ -32,6 +32,7 @@ public class LocationNode
     public int PortalConnection = -1;
 
     public int Depth = Int16.MaxValue;
+    public int DepthIncrement = 1;
 
     //TODO: Rework to bitset
     public List<string> Keys;
@@ -63,6 +64,8 @@ public class LocationNode
         OriginalPortalConnection =
             locationData.PortalConnection != "" ? nodeIndexes[locationData.PortalConnection] : -1;
         Keys = new List<string>(locationData.Keys);
+        DepthIncrement = CodeName.Contains("Special") || CodeName.Contains("World") ? 0 : 1;
+        DepthIncrement = locationData.LevelScaling == 1 ? 0 : DepthIncrement;
     }
 
     public override string ToString()
@@ -135,18 +138,20 @@ public class LocationGraph
 
         while (constraints.Count > 0)
         {
-            while (constraints.Count > 0 && queue.Count > 0)
+            while (queue.Count > 0)
             {
                 var (currentNode, currentKeysStr, distance, trace) = queue.Dequeue();
                 var node = Nodes[currentNode];
+                
+                node.Depth = Math.Min(node.Depth, distance);
 
-                if (node.CodeName == constraints[0].CodeName)
+                if (constraints.Count > 0 && node.CodeName == constraints[0].CodeName)
                 {
                     constraints.RemoveAt(0);
 
                     currentPath = trace.ToList();
 
-                    if (constraints.Count == 0) break;
+                    if (constraints.Count == 0) continue;
 
                     currentSearchStartNode = currentNode;
                     currentSearchStartKeys = currentKeysStr;
@@ -160,8 +165,6 @@ public class LocationGraph
                     visited.Add((currentNode, currentKeysStr));
                     continue;
                 }
-
-                node.Depth = Math.Min(node.Depth, distance);
 
                 List<string> currentKeysList = string.IsNullOrEmpty(currentKeysStr)
                     ? new List<string>() : currentKeysStr.Split(',').ToList();
@@ -187,15 +190,15 @@ public class LocationGraph
 
                 foreach (int nextNode in connections)
                 {
-                    if (nextNode != constraints[0].ID && constraints.Any(c => c.ID == nextNode)) continue;
+                    if (constraints.Count > 0 && nextNode != constraints[0].ID && constraints.Any(c => c.ID == nextNode)) continue;
 
                     var nextState = (nextNode, nextKeysStr);
                     if (!visited.Add(nextState)) continue;
 
                     var nextTrace = new PathTrace { Node = nextNode, Parent = trace };
                     visitedOrder.Push((nextNode, nextKeysStr, nextTrace));
-
-                    queue.Enqueue((nextNode, nextKeysStr, distance + 1, nextTrace));
+                    
+                    queue.Enqueue((nextNode, nextKeysStr, distance + node.DepthIncrement, nextTrace));
                 }
             }
 
@@ -222,7 +225,7 @@ public class LocationGraph
                 visited.Clear();
                 visitedOrder.Clear();
 
-                queue.Enqueue((currentSearchStartNode, currentSearchStartKeys, 1, currentSearchStartTrace));
+                queue.Enqueue((currentSearchStartNode, currentSearchStartKeys, Nodes[i].Depth + Nodes[i].DepthIncrement, currentSearchStartTrace));
                 visited.Add((currentSearchStartNode, currentSearchStartKeys));
 
                 foundValidChange = true;
@@ -237,57 +240,5 @@ public class LocationGraph
 
         criticalPath = currentPath.Select(i => Controllers.LocationController.GetObject(Nodes[i].CodeName)).ToList();
         return true;
-    }
-
-    public void ConstructDepths(string startNodeName)
-    {
-        int startNode = nodeIndexes[startNodeName];
-
-        var queue = new Queue<(int Node, string Keys, int Distance)>();
-        var visited = new HashSet<(int, string)>();
-
-        string initialKeys = "";
-
-        queue.Enqueue((startNode, initialKeys, 1));
-        visited.Add((startNode, initialKeys));
-
-        while (queue.Count > 0)
-        {
-            var (currentNode, currentKeysStr, distance) = queue.Dequeue();
-            var node = Nodes[currentNode];
-
-            node.Depth = node.Depth == Int16.MaxValue ? Math.Min(node.Depth, distance) : node.Depth;
-
-            List<string> currentKeysList = string.IsNullOrEmpty(currentKeysStr)
-                ? new List<string>()
-                : currentKeysStr.Split(',').ToList();
-
-            bool pickedUpNewKey = false;
-            foreach (var key in node.Keys)
-            {
-                if (!currentKeysList.Contains(key))
-                {
-                    currentKeysList.Add(key);
-                    pickedUpNewKey = true;
-                }
-            }
-
-            string nextKeysStr = currentKeysStr;
-            if (pickedUpNewKey)
-            {
-                currentKeysList.Sort();
-                nextKeysStr = string.Join(',', currentKeysList);
-            }
-
-            var connections = node.GetConnections(currentKeysList);
-
-            foreach (int nextNode in connections)
-            {
-                var nextState = (nextNode, nextKeysStr);
-                if (!visited.Add(nextState)) continue;
-
-                queue.Enqueue((nextNode, nextKeysStr, distance + 1));
-            }
-        }
     }
 }

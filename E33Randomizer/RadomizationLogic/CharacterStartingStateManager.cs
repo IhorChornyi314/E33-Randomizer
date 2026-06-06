@@ -86,6 +86,19 @@ public static class CharacterStartingStateManager
         }
     }
     
+    public static void SetStartingLevel(string characterName, int level)
+    {
+        _wasModified = true;
+        characterName = characterName == "Gustave" ? "Frey" : characterName;
+        var tableData = (_characterSaveStatesAsset.Exports[0] as DataTableExport).Table.Data;
+
+        foreach (var propertyData in tableData)
+        {
+            if (propertyData.Name.ToString() != characterName) continue;
+            (propertyData.Value[1] as IntPropertyData).Value = level;
+        }
+    }
+    
     public static void SaveAssets()
     {
         if (!_wasModified) return;

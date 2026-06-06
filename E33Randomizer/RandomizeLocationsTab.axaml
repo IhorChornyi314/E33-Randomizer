@@ -15,6 +15,58 @@
                 <uiControls:CheckboxToolTip
                     Content="Randomize locations"
                     IsChecked="{Binding RandomizeLocations}" />
+                <CheckBox Name="RescaleLocationsCheckBox"
+                            Content="Re-scale locations"
+                                  IsChecked="{Binding RescaleLocations}"
+                                  Margin="0,0,0,0"
+                                  FontSize="14" /><StackPanel Orientation="Horizontal" Margin="0,0,0,0"
+                                                              Visibility="{Binding IsChecked, ElementName=RescaleLocationsCheckBox, Converter={StaticResource BooleanToVisibilityConverter}}">
+                            <Label Content="Set the scaling modifier to"
+                                   
+                                   FontSize="14" />
+                            <xctk:IntegerUpDown Text="{Binding ScaleModifierPercentage}"
+                                                Margin="5,0,0,0"
+                                                VerticalAlignment="Center"
+                                                Maximum="9999"
+                                                Minimum="0"
+                                                Height="20"
+                                                Width="50"
+                                                FontSize="14"
+                                                MaxLength="3" />
+                            <Label Content="%"
+                                   FontSize="14" />
+                        </StackPanel>
+                        <CheckBox Name="ScaleOptionalAreasCheckBox"
+                                  Content="Re-scale optional areas"
+                                  IsChecked="{Binding ScaleOptionalAreas}"
+                                  Margin="0,0,0,0"
+                                  FontSize="14" 
+                                  Visibility="{Binding IsChecked, ElementName=RescaleLocationsCheckBox, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                        <CheckBox Content="Re-scale characters"
+                                  IsChecked="{Binding RescaleCharacters}"
+                                  Margin="0,0,0,0"
+                                  FontSize="14" />
+                        <CheckBox Content="Randomize starting location"
+                                  IsChecked="{Binding RandomizeStartingLocation}"
+                                  Margin="0,0,0,0"
+                                  FontSize="14" />
+                        <CheckBox Content="Randomize manor doors"
+                                  IsChecked="{Binding RandomizeManorDoors}"
+                                  Margin="0,0,0,0"
+                                  FontSize="14" />
+                        <CheckBox Content="Randomize painting workshop entrances"
+                                  IsChecked="{Binding RandomizeWorkshopEntries}"
+                                  Margin="0,0,0,0"
+                                  FontSize="14" />
+                        <CheckBox Content="Randomize cutscene teleports"
+                                  IsChecked="{Binding RandomizeCutsceneTeleports}"
+                                  Margin="0,0,0,0"
+                                  FontSize="14" />
+                        <CheckBox Content="Randomize gestral beaches"
+                                  IsChecked="{Binding RandomizeGestralBeachPortals}"
+                                  Margin="0,0,0,0"
+                                  FontSize="14" />
+                        
             </StackPanel>
             <Grid Grid.Row="2" ColumnDefinitions="*,*">
                 <Button Grid.Column="0"

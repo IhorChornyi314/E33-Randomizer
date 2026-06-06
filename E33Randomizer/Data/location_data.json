@@ -275,7 +275,7 @@
       "Level.SpawnPoint.ChromaZoneEntrance.Portal"
     ],
     "ConditionalConnections": {},
-    "PortalConnection": "",
+    "PortalConnection": "Level.SpawnPoint.WorldMap.ChromaZoneEntrance",
     "Keys": []
   },
   {
@@ -356,7 +356,7 @@
   },
   {
     "CodeName": "Level.SpawnPoint.CleaWorkshop.Path1",
-    "CustomName": "Painting Workshop - Path1",
+    "CustomName": "Painting Workshop - Path From South Sea Island",
     "LevelAsset": "Level_Side_CleasWorkShop_V2",
     "LevelScaling": 90,
     "UnconditionalConnections": [
@@ -370,7 +370,7 @@
   },
   {
     "CodeName": "Level.SpawnPoint.CleaWorkshop.Path2",
-    "CustomName": "Painting Workshop - Path2",
+    "CustomName": "Painting Workshop - Path From Post Forgotten Battlefield",
     "LevelAsset": "Level_Side_CleasWorkShop_V2",
     "LevelScaling": 90,
     "UnconditionalConnections": [
@@ -384,7 +384,7 @@
   },
   {
     "CodeName": "Level.SpawnPoint.CleaWorkshop.Path3",
-    "CustomName": "Painting Workshop - Path3",
+    "CustomName": "Painting Workshop - Path From Flying Island",
     "LevelAsset": "Level_Side_CleasWorkShop_V2",
     "LevelScaling": 90,
     "UnconditionalConnections": [
@@ -466,7 +466,7 @@
       "Level.SpawnPoint.CleasTower.GroundEntrance"
     ],
     "ConditionalConnections": {},
-    "PortalConnection": "",
+    "PortalConnection": "Level.SpawnPoint.WorldMap.CleasTowerEntrance",
     "Keys": []
   },
   {
@@ -857,7 +857,7 @@
       "Level.SpawnPoint.FrozenHearts.TrainStation"
     ],
     "ConditionalConnections": {},
-    "PortalConnection": "",
+    "PortalConnection": "Level.SpawnPoint.Manor.Entrance",
     "Keys": []
   },
   {
@@ -879,7 +879,7 @@
   },
   {
     "CodeName": "Level.SpawnPoint.GestralBeach.Climb",
-    "CustomName": "Gestral Beach - Entrance",
+    "CustomName": "Gestral Beach - The Climb",
     "LevelAsset": "Level_GestralBeach_Day",
     "LevelScaling": 1,
     "UnconditionalConnections": [],
@@ -889,7 +889,7 @@
   },
   {
     "CodeName": "Level.SpawnPoint.GestralBeach.OnlyUp",
-    "CustomName": "Gestral Beach - Only Up",
+    "CustomName": "Gestral Beach - Gestral Acsention",
     "LevelAsset": "Level_GestralBeach_Day",
     "LevelScaling": 1,
     "UnconditionalConnections": [],
@@ -899,7 +899,7 @@
   },
   {
     "CodeName": "Level.SpawnPoint.GestralBeach.Race",
-    "CustomName": "Gestral Beach - Race",
+    "CustomName": "Gestral Beach - Gestral Race",
     "LevelAsset": "Level_GestralBeach_Day",
     "LevelScaling": 1,
     "UnconditionalConnections": [],
@@ -939,7 +939,7 @@
   },
   {
     "CodeName": "Level.SpawnPoint.GestralBeach.VolleyBall",
-    "CustomName": "Gestral Beach - Volley Ball",
+    "CustomName": "Gestral Beach - Gestral Volley Ball",
     "LevelAsset": "Level_GestralBeach_Day",
     "LevelScaling": 1,
     "UnconditionalConnections": [],
@@ -979,7 +979,7 @@
   },
   {
     "CodeName": "Level.SpawnPoint.GestralBeach.WipeOut",
-    "CustomName": "Gestral Beach - Wipe Out",
+    "CustomName": "Gestral Beach - Parkour",
     "LevelAsset": "Level_GestralBeach_Day",
     "LevelScaling": 1,
     "UnconditionalConnections": [],
@@ -989,7 +989,7 @@
   },
   {
     "CodeName": "Level.SpawnPoint.GestralBeach.WipeoutRespawnPoint",
-    "CustomName": "Gestral Beach - Wipeout Respawn Point",
+    "CustomName": "Gestral Beach - Parkour Respawn Point",
     "LevelAsset": "Level_GestralBeach_Day",
     "LevelScaling": 1,
     "UnconditionalConnections": [],
@@ -1074,7 +1074,7 @@
       "Level.SpawnPoint.GestralVillage.VillageEntry"
     ],
     "ConditionalConnections": {},
-    "PortalConnection": "",
+    "PortalConnection": "Level.SpawnPoint.Manor.Entrance",
     "Keys": []
   },
   {
@@ -1224,8 +1224,8 @@
       "Level.SpawnPoint.Goblu.LumiereStreet"
     ],
     "ConditionalConnections": {},
-    "PortalConnection": "",
-    "Keys": ["Story.MaelleJoined"]
+    "PortalConnection": "Level.SpawnPoint.Manor.Entrance",
+    "Keys": []
   },
   {
     "CodeName": "Level.SpawnPoint.GobluLairs_X_AncientSanctuary.CasinoEntrance",
@@ -1278,7 +1278,6 @@
     "LevelAsset": "Level_Lumiere_Main_V2",
     "LevelScaling": 48,
     "UnconditionalConnections": [
-      "Level.SpawnPoint.LumiereAct03.Act02RedAndWhite",
       "Level.SpawnPoint.LumiereAct03.BigPlazza",
       "Level.SpawnPoint.LumiereAct03.CrumblingBuildings",
       "Level.SpawnPoint.LumiereAct03.Curator",
@@ -1298,20 +1297,9 @@
     "CustomName": "Lumiere - Act02 Red And White",
     "LevelAsset": "Level_Lumiere_Main_V2",
     "LevelScaling": 48,
-    "UnconditionalConnections": [
-      "Level.SpawnPoint.LumiereAct03.Act02",
-      "Level.SpawnPoint.LumiereAct03.BigPlazza",
-      "Level.SpawnPoint.LumiereAct03.CrumblingBuildings",
-      "Level.SpawnPoint.LumiereAct03.Curator",
-      "Level.SpawnPoint.LumiereAct03.Dock",
-      "Level.SpawnPoint.LumiereAct03.Entry",
-      "Level.SpawnPoint.LumiereAct03.FloatingBuildings",
-      "Level.SpawnPoint.LumiereAct03.Gardens",
-      "Level.SpawnPoint.LumiereAct03.Opera",
-      "Level.SpawnPoint.LumiereAct03.PostEnding"
-    ],
+    "UnconditionalConnections": [],
     "ConditionalConnections": {},
-    "PortalConnection": "",
+    "PortalConnection": "Level.SpawnPoint.WorldMap.TheGreatestExpedition",
     "Keys": []
   },
   {
@@ -1321,7 +1309,6 @@
     "LevelScaling": 48,
     "UnconditionalConnections": [
       "Level.SpawnPoint.LumiereAct03.Act02",
-      "Level.SpawnPoint.LumiereAct03.Act02RedAndWhite",
       "Level.SpawnPoint.LumiereAct03.CrumblingBuildings",
       "Level.SpawnPoint.LumiereAct03.Curator",
       "Level.SpawnPoint.LumiereAct03.Dock",
@@ -1342,7 +1329,6 @@
     "LevelScaling": 48,
     "UnconditionalConnections": [
       "Level.SpawnPoint.LumiereAct03.Act02",
-      "Level.SpawnPoint.LumiereAct03.Act02RedAndWhite",
       "Level.SpawnPoint.LumiereAct03.BigPlazza",
       "Level.SpawnPoint.LumiereAct03.Curator",
       "Level.SpawnPoint.LumiereAct03.Dock",
@@ -1363,7 +1349,6 @@
     "LevelScaling": 48,
     "UnconditionalConnections": [
       "Level.SpawnPoint.LumiereAct03.Act02",
-      "Level.SpawnPoint.LumiereAct03.Act02RedAndWhite",
       "Level.SpawnPoint.LumiereAct03.BigPlazza",
       "Level.SpawnPoint.LumiereAct03.CrumblingBuildings",
       "Level.SpawnPoint.LumiereAct03.Dock",
@@ -1384,7 +1369,6 @@
     "LevelScaling": 48,
     "UnconditionalConnections": [
       "Level.SpawnPoint.LumiereAct03.Act02",
-      "Level.SpawnPoint.LumiereAct03.Act02RedAndWhite",
       "Level.SpawnPoint.LumiereAct03.BigPlazza",
       "Level.SpawnPoint.LumiereAct03.CrumblingBuildings",
       "Level.SpawnPoint.LumiereAct03.Curator",
@@ -1409,7 +1393,6 @@
     "LevelScaling": 48,
     "UnconditionalConnections": [
       "Level.SpawnPoint.LumiereAct03.Act02",
-      "Level.SpawnPoint.LumiereAct03.Act02RedAndWhite",
       "Level.SpawnPoint.LumiereAct03.BigPlazza",
       "Level.SpawnPoint.LumiereAct03.CrumblingBuildings",
       "Level.SpawnPoint.LumiereAct03.Curator",
@@ -1434,7 +1417,6 @@
     "LevelScaling": 48,
     "UnconditionalConnections": [
       "Level.SpawnPoint.LumiereAct03.Act02",
-      "Level.SpawnPoint.LumiereAct03.Act02RedAndWhite",
       "Level.SpawnPoint.LumiereAct03.BigPlazza",
       "Level.SpawnPoint.LumiereAct03.CrumblingBuildings",
       "Level.SpawnPoint.LumiereAct03.Curator",
@@ -1455,7 +1437,6 @@
     "LevelScaling": 48,
     "UnconditionalConnections": [
       "Level.SpawnPoint.LumiereAct03.Act02",
-      "Level.SpawnPoint.LumiereAct03.Act02RedAndWhite",
       "Level.SpawnPoint.LumiereAct03.BigPlazza",
       "Level.SpawnPoint.LumiereAct03.CrumblingBuildings",
       "Level.SpawnPoint.LumiereAct03.Curator",
@@ -1476,7 +1457,6 @@
     "LevelScaling": 48,
     "UnconditionalConnections": [
       "Level.SpawnPoint.LumiereAct03.Act02",
-      "Level.SpawnPoint.LumiereAct03.Act02RedAndWhite",
       "Level.SpawnPoint.LumiereAct03.BigPlazza",
       "Level.SpawnPoint.LumiereAct03.CrumblingBuildings",
       "Level.SpawnPoint.LumiereAct03.Curator",
@@ -1497,7 +1477,6 @@
     "LevelScaling": 48,
     "UnconditionalConnections": [
       "Level.SpawnPoint.LumiereAct03.Act02",
-      "Level.SpawnPoint.LumiereAct03.Act02RedAndWhite",
       "Level.SpawnPoint.LumiereAct03.BigPlazza",
       "Level.SpawnPoint.LumiereAct03.CrumblingBuildings",
       "Level.SpawnPoint.LumiereAct03.Curator",
@@ -1526,11 +1505,9 @@
     "CustomName": "The Manor - Alicia Room Act3",
     "LevelAsset": "Manor_Main_WP",
     "LevelScaling": 1,
-    "UnconditionalConnections": [
-      "Level.SpawnPoint.WorldMap.TheGreatestExpedition"
-    ],
+    "UnconditionalConnections": [],
     "ConditionalConnections": {},
-    "PortalConnection": "",
+    "PortalConnection": "Level.SpawnPoint.LumiereAct03.Act02RedAndWhite",
     "Keys": []
   },
   {
@@ -1571,7 +1548,7 @@
     "UnconditionalConnections": [],
     "ConditionalConnections": {},
     "PortalConnection": "",
-    "Keys": []
+    "Keys": ["Story.MaelleJoined"]
   },
   {
     "CodeName": "Level.SpawnPoint.Manor.Kitchen",
@@ -1781,10 +1758,10 @@
     "LevelAsset": "Level_Monolith_Exterior_Peak_Main",
     "LevelScaling": 43,
     "UnconditionalConnections": [
-      "Level.SpawnPoint.Manor.AliciaRoomAct3"
+      
     ],
     "ConditionalConnections": {},
-    "PortalConnection": "",
+    "PortalConnection": "Level.SpawnPoint.Manor.AliciaRoomAct3",
     "Keys": [
       "Story.Act3Reached"
     ]
@@ -1933,7 +1910,7 @@
       "Level.SpawnPoint.MonolithInterior.Climb.SpringMeadows"
     ],
     "ConditionalConnections": {},
-    "PortalConnection": "",
+    "PortalConnection": "Level.SpawnPoint.Manor.Entrance",
     "Keys": []
   },
   {
@@ -2195,7 +2172,7 @@
       "Level.SpawnPoint.OldLumiere.ManorArena"
     ],
     "ConditionalConnections": {},
-    "PortalConnection": "",
+    "PortalConnection": "Level.SpawnPoint.Manor.Entrance",
     "Keys": []
   },
   {
@@ -2281,7 +2258,7 @@
       "Level.SpawnPoint.Reacher.MountainTop"
     ],
     "ConditionalConnections": {},
-    "PortalConnection": "",
+    "PortalConnection": "Level.SpawnPoint.Manor.Entrance",
     "Keys": []
   },
   {
@@ -2510,7 +2487,7 @@
       "EsquieAbility.Swim": [
         "Level.SpawnPoint.SeaCliff.Exit"
       ]},
-    "PortalConnection": "",
+    "PortalConnection": "Level.SpawnPoint.Manor.Entrance",
     "Keys": []
   },
   {
@@ -2689,7 +2666,7 @@
       "Level.SpawnPoint.Sirene.SirenArena"
     ],
     "ConditionalConnections": {},
-    "PortalConnection": "",
+    "PortalConnection": "Level.SpawnPoint.Manor.Entrance",
     "Keys": []
   },
   {
@@ -3316,7 +3293,7 @@
       "Level.SpawnPoint.Visages.VisagesArena"
     ],
     "ConditionalConnections": {},
-    "PortalConnection": "",
+    "PortalConnection": "Level.SpawnPoint.Manor.Entrance",
     "Keys": []
   },
   {
@@ -3584,7 +3561,7 @@
         "Special.WM.Fly"
       ]
     },
-    "PortalConnection": "Level.SpawnPoint.ChromaZoneEntrance.Portal",
+    "PortalConnection": "Level.SpawnPoint.ChromaZoneEntrance.Entry",
     "Keys": []
   },
   {
@@ -3607,7 +3584,7 @@
   },
   {
     "CodeName": "Level.SpawnPoint.WorldMap.CleaWorkshop1Entry",
-    "CustomName": "World Map - Clea Workshop1 Entry",
+    "CustomName": "World Map - Clea Workshop Entry (South Sea)",
     "LevelAsset": "Level_WorldMap_Main_V2",
     "LevelScaling": 1,
     "UnconditionalConnections": [],
@@ -3619,12 +3596,12 @@
         "Special.WM.Fly"
       ]
     },
-    "PortalConnection": "",
+    "PortalConnection": "Level.SpawnPoint.CleaWorkshop.Path1",
     "Keys": []
   },
   {
     "CodeName": "Level.SpawnPoint.WorldMap.CleaWorkshop2Entry",
-    "CustomName": "World Map - Clea Workshop Entry 2",
+    "CustomName": "World Map - Clea Workshop Entry (Post Forgotten Battlefield)",
     "LevelAsset": "Level_WorldMap_Main_V2",
     "LevelScaling": 1,
     "UnconditionalConnections": [],
@@ -3633,12 +3610,12 @@
         "Special.WM.Fly"
       ]
     },
-    "PortalConnection": "",
+    "PortalConnection": "Level.SpawnPoint.CleaWorkshop.Path2",
     "Keys": []
   },
   {
     "CodeName": "Level.SpawnPoint.WorldMap.CleaWorkshop3Entry",
-    "CustomName": "World Map - Clea Workshop Entry 3",
+    "CustomName": "World Map - Clea Workshop Entry (Flying Island)",
     "LevelAsset": "Level_WorldMap_Main_V2",
     "LevelScaling": 1,
     "UnconditionalConnections": [],
@@ -3647,7 +3624,7 @@
         "Special.WM.Fly"
       ]
     },
-    "PortalConnection": "",
+    "PortalConnection": "Level.SpawnPoint.CleaWorkshop.Path3",
     "Keys": []
   },
   {
@@ -3675,7 +3652,7 @@
         "Special.WM.Fly"
       ]
     },
-    "PortalConnection": "",
+    "PortalConnection": "Level.SpawnPoint.CleasTower.GroundEntranceTower",
     "Keys": []
   },
   {
@@ -3710,20 +3687,6 @@
     "Keys": []
   },
   {
-    "CodeName": "Level.SpawnPoint.WorldMap.DarkShores",
-    "CustomName": "World Map - Dark Shores Entry",
-    "LevelAsset": "Level_WorldMap_Main_V2",
-    "LevelScaling": 1,
-    "UnconditionalConnections": [],
-    "ConditionalConnections": {
-      "Story.Act3Reached": [
-        "Special.WM.Fly"
-      ]
-    },
-    "PortalConnection": "",
-    "Keys": []
-  },
-  {
     "CodeName": "Level.SpawnPoint.WorldMap.DarkShoresEntrance",
     "CustomName": "World Map - Dark Shores Entrance",
     "LevelAsset": "Level_WorldMap_Main_V2",
@@ -3738,20 +3701,6 @@
       ]
     },
     "PortalConnection": "Level.SpawnPoint.DarkShores.Entry",
-    "Keys": []
-  },
-  {
-    "CodeName": "Level.SpawnPoint.WorldMap.DarkShoresExit",
-    "CustomName": "World Map - Dark Shores Exit",
-    "LevelAsset": "Level_WorldMap_Main_V2",
-    "LevelScaling": 1,
-    "UnconditionalConnections": [],
-    "ConditionalConnections": {
-      "Story.Act3Reached": [
-        "Special.WM.Fly"
-      ]
-    },
-    "PortalConnection": "",
     "Keys": []
   },
   {
@@ -4065,7 +4014,7 @@
         "Special.WM.Fly"
       ]
     },
-    "PortalConnection": "",
+    "PortalConnection": "Level.SpawnPoint.Manor.Entrance",
     "Keys": []
   },
   {
@@ -4079,7 +4028,7 @@
         "Special.WM.Fly"
       ]
     },
-    "PortalConnection": "",
+    "PortalConnection": "Level.SpawnPoint.Manor.Entrance",
     "Keys": []
   },
   {
@@ -4286,11 +4235,8 @@
     "LevelScaling": 1,
     "UnconditionalConnections": [],
     "ConditionalConnections": {
-      "Story.Act3Reached": [
-        "Level.SpawnPoint.Reacher.Entry"
-      ]
     },
-    "PortalConnection": "",
+    "PortalConnection": "Level.SpawnPoint.Reacher.Entry",
     "Keys": []
   },
   {
@@ -4486,7 +4432,7 @@
         "Level.SpawnPoint.WorldMap.GobluEntry"
       ]
     },
-    "PortalConnection": "Level.SpawnPoint.SpringMeadows.Entry",
+    "PortalConnection": "Level.SpawnPoint.SpringMeadows.TreeExit",
     "Keys": []
   },
   {
@@ -5064,9 +5010,7 @@
       "Level.SpawnPoint.WorldMap.CleasTowerEntrance",
       "Level.SpawnPoint.WorldMap.CoastalCaveEntry",
       "Level.SpawnPoint.WorldMap.DarkGestralArenaEntry",
-      "Level.SpawnPoint.WorldMap.DarkShores",
       "Level.SpawnPoint.WorldMap.DarkShoresEntrance",
-      "Level.SpawnPoint.WorldMap.DarkShoresExit",
       "Level.SpawnPoint.WorldMap.DoorMazeEntry",
       "Level.SpawnPoint.WorldMap.EsquieNest",
       "Level.SpawnPoint.WorldMap.FloatingCemeteryEntry",
