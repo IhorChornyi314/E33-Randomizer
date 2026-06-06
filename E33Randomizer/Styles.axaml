@@ -67,6 +67,7 @@
                                    ListMedium="#ff333333" RegionColor="#080105" />
         </FluentTheme.Palettes>
     </FluentTheme>
+    <StyleInclude Source="avares://AvaloniaEdit/Themes/Fluent/AvaloniaEdit.xaml" />
     <Style Selector=":is(TopLevel)">
         <Setter Property="FontFamily" Value="fonts:E33Fonts#IM FELL Double Pica" />
     </Style>

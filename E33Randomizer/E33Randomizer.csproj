@@ -26,6 +26,9 @@
         <PackageReference Include="Avalonia.Fonts.Inter" Version="12.0.3" />
         <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="AvaloniaUI.DiagnosticsSupport" Version="2.2.1" />
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+        <PackageReference Include="Avalonia.AvaloniaEdit" Version="12.0.0" />
+        <PackageReference Include="AvaloniaEdit.TextMate" Version="12.0.0" />
+        <PackageReference Include="TextMateSharp.Grammars" Version="2.0.3" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\external\UAssetAPI\UAssetAPI\UAssetAPI.csproj" />
@@ -36,7 +39,7 @@
         <AvaloniaResource Include="UIControls\*" />
     </ItemGroup>
     <ItemGroup>
-        <Content Include="Data\**" CopyToPublishDirectory="PreserveNewest" />
+        <Content Include="Data\**" CopyToPublishDirectory="PreserveNewest" CopyToOutputDirectory="PreserveNewest"/>
     </ItemGroup>
     <ItemGroup>
       <Compile Update="MessageDialog.axaml.cs">

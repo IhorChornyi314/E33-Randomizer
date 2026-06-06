@@ -12,11 +12,13 @@
         x:DataType="customPlacements:CustomPlacementWindowViewModel"
         x:Name="Root"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:avaloniaEdit="https://github.com/avaloniaui/avaloniaedit"
         mc:Ignorable="d"
         d:DesignHeight="900" d:DesignWidth="1300">
     <Window.Resources>
         <customPlacements:CustomPlacementValueConverter x:Key="CustomPlacementValueConverter" />
         <customPlacements:CustomPlacementResourceLookupConverter x:Key="ResourceLookupConverter" />
+        <uiControls:AvaloniaEditDocumentStringConverter x:Key="AvaloniaEditDocumentStringConverter" />
     </Window.Resources>
     <Window.Styles>
         <Style Selector="ComboBox.category /template/ Popup#PART_Popup">
@@ -86,7 +88,7 @@
                         </MultiBinding>
                     </TextBlock.Text>
                 </TextBlock>
-                <TabControl>
+                <TabControl Height="730">
                     <TabControl.Styles>
                         <Style Selector="TabControl /template/ ItemsPresenter#PART_ItemsPresenter">
                             <Setter Property="Margin" Value="20 0 0 0" />
@@ -199,25 +201,28 @@
                                     </MultiBinding>
                                 </uiControls:SubSection.ToolTipContent>
                                 <StackPanel Height="600">
-                                    <TextBox PlaceholderText="{x:Static lang:Resources.SearchPlaceholder}"
-                                             Text="{Binding CustomPlacementSearch}" />
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBox PlaceholderText="{x:Static lang:Resources.SearchPlaceholder}"
+                                                         Text="{Binding CustomPlacementSearch}" 
+                                                         Width="240" Margin="0 0 5 0"/>
+                                        <CheckBox Content="{x:Static lang:Resources.CustomPlacement_ShowOnlyOverridden}" FontSize="12" IsChecked="{Binding ShowOnlyOverridenCategories}" />
+                                    </StackPanel>
+                                    
                                     <ListBox x:Name="CustomPlacementObjectListBox"
                                              ItemsSource="{Binding FilteredCustomPlacementOptions }"
                                              SelectionMode="Single" Height="540">
                                         <ListBox.ItemTemplate>
                                             <DataTemplate>
                                                 <Grid ColumnDefinitions="*,auto">
-                                                    <TextBlock Grid.Column="0" Text="{Binding Item1}" />
-                                                    <TextBlock Grid.Column="1" Text="*" IsVisible="{Binding Item2}" />
+                                                    <TextBlock Grid.Column="0" Text="{Binding Option }" />
+                                                    <Image Source="avares://E33Randomizer/Assets/Images/Currency.png" Width="20" Grid.Column="1" IsVisible="{Binding HasRules}" Margin="0 0 10 0 " />
                                                 </Grid>
                                             </DataTemplate>
                                         </ListBox.ItemTemplate>
                                         <ListBox.SelectedItem>
-                                            <MultiBinding Converter="{StaticResource CustomPlacementValueConverter}"
-                                                          Mode="OneWay">
+                                            <MultiBinding Converter="{StaticResource CustomPlacementValueConverter}" Mode="OneWay">
                                                 <Binding Path="#CustomPlacementObjectListBox.SelectedItem" />
-                                                <Binding
-                                                    Path="#Root.((customPlacements:CustomPlacementWindowViewModel)DataContext)" />
+                                                <Binding Path="#Root.((customPlacements:CustomPlacementWindowViewModel)DataContext)" />
                                             </MultiBinding>
                                         </ListBox.SelectedItem>
                                     </ListBox>
@@ -294,8 +299,7 @@
                         </Grid>
                     </TabItem>
                     <TabItem Header="{x:Static lang:Resources.CustomPlacement_TabItem_FrequencyAdjustments}">
-                        <uiControls:SubSection 
-                                               Header="{x:Static lang:Resources.CustomPlacement_Header_Adjustments}">
+                        <uiControls:SubSection Header="{x:Static lang:Resources.CustomPlacement_Header_Adjustments}">
                             <uiControls:SubSection.ToolTipContent>
                                 <MultiBinding Converter="{StaticResource ResourceLookupConverter}">
                                     <Binding Path="EntityType" />
@@ -356,6 +360,13 @@
                         </uiControls:SubSection>
                     </TabItem>
                 </TabControl>
+                <StackPanel Orientation="Horizontal" IsVisible="{Binding SelectedPresetIsOops}">
+                    <TextBlock Text="Oops All" Margin="20 0 10 0" VerticalAlignment="Center" FontSize="20" />
+                    <ComboBox x:Name="OopsAllObjectComboBox" Height="30"
+                              Width="200"
+                              ItemsSource="{Binding OopsAllObjects}"
+                              SelectedItem="{Binding OopsAllObjectsSelection}" />
+                </StackPanel>
             </StackPanel>
 
             <Border DockPanel.Dock="Bottom" BorderBrush="White" Margin="0 0 0 20">
@@ -378,11 +389,7 @@
                             </MenuFlyout>
                         </Button.Flyout>
                     </Button>
-                    <ComboBox x:Name="OopsAllObjectComboBox" Height="30"
-                              IsVisible="{Binding SelectedPresetIsOops}"
-                              ItemsSource="{Binding OopsAllObjects}"
-                              SelectedItem="{Binding OopsAllObjectsSelection}"
-                              SelectionChanged="OopsAllObjectComboBox_OnSelectionChanged" />
+                    
                     <Button Classes="e33Button"
                             x:Name="LoadPresetButton"
                             Content="{x:Static lang:Resources.CustomPlacement_Button_LoadPresetJson}"
@@ -400,7 +407,7 @@
                 </StackPanel>
             </Border>
         </DockPanel>
-        <Expander DockPanel.Dock="Right" ExpandDirection="Right" Height="900" MinWidth="48">
+        <Expander DockPanel.Dock="Right" ExpandDirection="Right" Height="900" MinWidth="48" Name="JsonExpander">
             <Expander.Header>
 
                 <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0 40 0 0">
@@ -475,15 +482,28 @@
                 <ImageBrush Source="avares://E33Randomizer/Assets/Images/JsonExportViewBackground.png" Stretch="Fill"
                             Opacity="0.7" />
             </Expander.Background>
-            <TextBox
-                Text="{Binding Json}"
-                IsReadOnly="True"
-                TextWrapping="Wrap"
-                AcceptsReturn="True"
-                Width="400"
-                FontFamily="TimesNewRoman"
-                Margin="5" />
-
+            <StackPanel>
+                <ToggleSwitch
+                    IsChecked="{Binding JsonSyntaxHighlighting}"
+                    IsCheckedChanged="ToggleButton_OnIsCheckedChanged"
+                    OnContent="{x:Static lang:Resources.CustomPlacement_DisableColors}"
+                    OffContent="{x:Static lang:Resources.CustomPlacement_EnableColors}"
+                    />
+                <avaloniaEdit:TextEditor
+                    Name="JsonText"
+                    Document="{Binding Json, Converter={StaticResource AvaloniaEditDocumentStringConverter}, ConverterParameter=CustomPlacementJson}"
+                    ShowLineNumbers="False"
+                    Width="400"
+                    IsReadOnly="True"
+                    WordWrap="True"
+                    FontFamily="Cascadia Code,Consolas,Menlo,Monospace"
+                    Height="845"
+                    Padding="5"
+                    BorderBrush="#a4a4a4" BorderThickness="1" 
+                    Background="Black"/>    
+            </StackPanel>
+        
+            
         </Expander>
     </DockPanel>
 </Window>

@@ -1233,6 +1233,24 @@ namespace E33Randomizer.Assets {
             }
         }
         
+        public static string CustomPlacement_EnableColors {
+            get {
+                return ResourceManager.GetString("CustomPlacement_EnableColors", resourceCulture);
+            }
+        }
+        
+        public static string CustomPlacement_DisableColors {
+            get {
+                return ResourceManager.GetString("CustomPlacement_DisableColors", resourceCulture);
+            }
+        }
+        
+        public static string CustomPlacement_ShowOnlyOverridden {
+            get {
+                return ResourceManager.GetString("CustomPlacement_ShowOnlyOverridden", resourceCulture);
+            }
+        }
+        
         public static string CustomPlacement_Error {
             get {
                 return ResourceManager.GetString("CustomPlacement_Error", resourceCulture);

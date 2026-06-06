@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Text.Json;
 using Avalonia.Collections;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -30,11 +31,15 @@ public abstract partial class CustomPlacementWindowViewModel : ObservableObject
     private string _customPlacementSearch = "";
     
     public ObservableCollection<string> CustomPlacementOptions { get; } = [];
-    public AvaloniaList<Tuple<string,bool>> FilteredCustomPlacementOptions { get; } = [];
+    public AvaloniaList<CustomPlacementOption> FilteredCustomPlacementOptions { get; } = [];
+    
+    [ObservableProperty]
+    public partial bool ShowOnlyOverridenCategories { get; set; }
     
     public List<string> NotRandomizedCodeNames = [];
     public List<string> ExcludedCodeNames = [];
 
+    public bool JsonSyntaxHighlighting { get; set; } = true;
     public ObservableCollection<string> OopsAllObjects { get; set; } = [];
     
     public Dictionary<string, List<string>> PlainNameToCodeNames = new();
@@ -93,28 +98,31 @@ public abstract partial class CustomPlacementWindowViewModel : ObservableObject
         Excluded.CollectionChanged += (_, _) => UpdateJsonTextBox();
         CustomPlacementRules.CollectionChanged += (_, _) => UpdateJsonTextBox();
         FrequencyAdjustments.ItemPropertyChanged += (_, _) => UpdateJsonTextBox();
-        CustomPlacementRules.ItemPropertyChanged  += (_, _) =>
-        {
-            //TODO: right now this is using Tuples, but those are immutable, which means they have to be replaced with a new version
-            // however this causes the item to become de-selected in the UI.  (it still functions, but looks odd)
-            var temp = FilteredCustomPlacementOptions.SingleOrDefault(x => x.Item1 == SelectedCustomPlacementRuleName);
-            if (temp != null)
-            {
-                var hasRules = CustomPlacementRules.Any(y => y.Key == SelectedCustomPlacementRuleName && y.Value.Count > 0);
-                var indexOfTemp = FilteredCustomPlacementOptions.IndexOf(temp);
-                FilteredCustomPlacementOptions.RemoveAt(indexOfTemp);
-                FilteredCustomPlacementOptions.Insert(indexOfTemp, new Tuple<string, bool>(temp.Item1, hasRules));
-            }
-            
-            UpdateJsonTextBox();
-        };
+        CustomPlacementRules.ItemPropertyChanged  += OnCustomPlacementRulesOnItemPropertyChanged;
         Init();
         ApplyCustomPlacementOptionFilter();
         
         PresetFiles.Add("Oops All...", "OopsAll");
     }
 
+    private void OnCustomPlacementRulesOnItemPropertyChanged(object? o, PropertyChangedEventArgs propertyChangedEventArgs)
+    {
+        var temp = FilteredCustomPlacementOptions.SingleOrDefault(x => x.Option == SelectedCustomPlacementRuleName);
+        if (temp != null)
+        {
+            var hasRules = CustomPlacementRules.Any(y => y.Key == SelectedCustomPlacementRuleName && y.Value.Count > 0);
+            temp.HasRules = hasRules;
+        }
+
+        UpdateJsonTextBox();
+    }
+
     partial void OnCustomPlacementSearchChanged(string value)
+    {
+        ApplyCustomPlacementOptionFilter();
+    }
+
+    partial void OnShowOnlyOverridenCategoriesChanged(bool value)
     {
         ApplyCustomPlacementOptionFilter();
     }
@@ -127,7 +135,9 @@ public abstract partial class CustomPlacementWindowViewModel : ObservableObject
             : CustomPlacementOptions.Where(o =>
                 o.Contains(CustomPlacementSearch, StringComparison.InvariantCultureIgnoreCase));
         
-        FilteredCustomPlacementOptions.AddRange(filtered.Select(x => new Tuple<string, bool>(x, CustomPlacementRules.Any(y => y.Key == x && y.Value.Count > 0))));
+        FilteredCustomPlacementOptions.AddRange(filtered
+            .Select(x => new CustomPlacementOption(x,CustomPlacementRules.Any(y => y.Key == x && y.Value.Count > 0)))
+            .Where(x => !ShowOnlyOverridenCategories || x.HasRules));
     }
     
     [RelayCommand]
@@ -197,7 +207,12 @@ public abstract partial class CustomPlacementWindowViewModel : ObservableObject
         CustomPlacementOptions.AddRange(toAdd);
 
     }
-    
+
+    partial void OnOopsAllObjectsSelectionChanged(string? value)
+    {
+        ApplyOopsAll();
+    }
+
     public void ApplyOopsAll()
     {
         if (OopsAllObjectsSelection == null) return;
@@ -208,9 +223,11 @@ public abstract partial class CustomPlacementWindowViewModel : ObservableObject
         FrequencyAdjustments.Clear();
         Excluded.Clear();
         ExcludedCodeNames.Clear();
-                
+
         NotRandomized.Clear();
         NotRandomizedCodeNames.Clear();
+        SelectedCustomPlacementRule = null;
+        ApplyCustomPlacementOptionFilter();
     }
 
     public void LoadFromPreset(CustomPlacementPreset preset)
@@ -233,6 +250,7 @@ public abstract partial class CustomPlacementWindowViewModel : ObservableObject
         
         FrequencyAdjustments.Clear();
         FrequencyAdjustments.AddRange(preset.FrequencyAdjustments);
+        SelectedCustomPlacementRule = null;
         ApplyCustomPlacementOptionFilter();
     }
     
@@ -249,6 +267,7 @@ public abstract partial class CustomPlacementWindowViewModel : ObservableObject
         }
         else
         {
+            SelectedPresetIsOops = false;
             using var r = new StreamReader(pathToJson.Replace("Data", RandomizerLogic.DataDirectory));
         
             var json = r.ReadToEnd();
@@ -459,5 +478,25 @@ public abstract partial class CustomPlacementWindowViewModel : ObservableObject
         );
         
         return !string.IsNullOrEmpty(newItem) ? newItem : originalCodeName;
+    }
+
+
+    public partial class CustomPlacementOption : ObservableObject
+    {
+        public CustomPlacementOption()
+        {
+            Option = string.Empty;
+        }
+
+        public CustomPlacementOption(string option, bool hasRules)
+        {
+            Option = option;
+            HasRules = hasRules;
+        }
+        
+        public string Option { get; set; }
+
+        [ObservableProperty]
+        public partial bool HasRules { get; set; }
     }
 }

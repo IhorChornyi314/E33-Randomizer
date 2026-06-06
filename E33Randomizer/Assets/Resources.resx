@@ -666,6 +666,16 @@ Use this button to fix that.</value>
     <data name="CustomPlacement_ErrorSavingJSON" xml:space="preserve">
         <value>Error Saving JSON: {0}</value>
     </data>
+    <data name="CustomPlacement_EnableColors" xml:space="preserve">
+        <value>Enable Colors</value>
+    </data>
+    <data name="CustomPlacement_DisableColors" xml:space="preserve">
+        <value>Disable Colors</value>
+    </data>
+    <data name="CustomPlacement_ShowOnlyOverridden" xml:space="preserve">
+        <value>Show Only Overriden</value>
+    </data>
+
     <data name="CustomPlacement_Error" xml:space="preserve">
         <value>Error</value>
     </data>

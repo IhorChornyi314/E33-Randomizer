@@ -1,20 +1,28 @@
-﻿using System.Text;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Text;
 using Avalonia.Controls;
+using Avalonia.Controls.Primitives;
 using Avalonia.Interactivity;
 using Avalonia.Platform.Storage;
 using Avalonia.Threading;
+using AvaloniaEdit.TextMate;
 using E33Randomizer.ObjectDatum;
 using E33Randomizer.UIControls;
+using TextMateSharp.Grammars;
 
 namespace E33Randomizer.CustomPlacements;
     public partial class CustomPlacementWindow : Window
     {
         private CustomPlacementWindowViewModel CustomPlacement => (DataContext as CustomPlacementWindowViewModel)!;
 
+        private TextMate.Installation _textMateInstallation;
+        private static readonly RegistryOptions TextMateOptions = new RegistryOptions(ThemeName.DarkPlus);
+        private static readonly string JsonLanguageId = TextMateOptions.GetScopeByLanguageId(TextMateOptions.GetLanguageByExtension(".json").Id);
+        
         // Allowing for Design-Time viewer
         public CustomPlacementWindow()
         {
-            DataContext = new CustomItemPlacement()
+            DataContext = new CustomEnemyPlacement()
             {
                 AllObjects = new List<ObjectData>()
                 {
@@ -28,9 +36,11 @@ namespace E33Randomizer.CustomPlacements;
                     {"Make every enemy a boss", "Data/Presets/enemies/everyone_is_a_boss.json"},
                     {"Custom preset 1", "Data/Presets/enemies/custom_1.json"},
                     {"Custom preset 2", "Data/Presets/enemies/custom_2.json"},
+                    {"Oops All...", "OopsAll"}
                 }
             };
             InitializeComponent();
+            SetupTextMateTheme();
             SetupAutoCompleteBehaviors();
         }
 
@@ -40,9 +50,23 @@ namespace E33Randomizer.CustomPlacements;
         {
             DataContext = customPlacement;
             InitializeComponent();
+            SetupTextMateTheme();
             SetupAutoCompleteBehaviors();
         }
-        
+
+        [MemberNotNull(nameof(_textMateInstallation))]
+        private void SetupTextMateTheme()
+        {
+            _textMateInstallation = JsonText.InstallTextMate(TextMateOptions);
+            _textMateInstallation.SetTheme(TextMateOptions.LoadTheme(ThemeName.DarkPlus));
+            SetSyntaxHighlighting(CustomPlacement.JsonSyntaxHighlighting);
+        }
+
+        private void SetSyntaxHighlighting(bool isEnabled)
+        {
+            _textMateInstallation.SetGrammar(isEnabled && JsonExpander.IsExpanded ? JsonLanguageId : null);
+        }
+
         private void SetupAutoCompleteBehaviors()
         {
             NotRandomizedObjectsSelectionComboBox.AddAutoDropDownOnFocusAndClickHandler();
@@ -168,9 +192,12 @@ namespace E33Randomizer.CustomPlacements;
         {
             Close();
         }
-
-        private void OopsAllObjectComboBox_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
+        
+        private void ToggleButton_OnIsCheckedChanged(object? sender, RoutedEventArgs e)
         {
-            CustomPlacement.ApplyOopsAll();
+            if (sender is ToggleButton toggleButton)
+            {
+                SetSyntaxHighlighting(toggleButton.IsChecked ?? false);
+            }
         }
     }

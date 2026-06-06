@@ -10,8 +10,6 @@
 * Individual Containers Window
     * Maybe a little tweaking in the styles, not settled on the button layout at the bottom yet.
 * Custom Placements Window
-  * Design something for the "oops all" section which presently doesn't exist.
-  * Try to fix the issue with Select Category getting unselected when the replacements are changed. (I know why it's happening, but not sure how to fix it yet.  It's due to the use of tuples, there is a comment around that logic that explains more.)
   * Figure out why `FrequencyAdjustmentsCategoryComboBox` doesn't show the error icon even when it's selected item has an error.
 * Consider a Help Page baked right into it? or just link to the help docs on the mod site?...not sure.
 

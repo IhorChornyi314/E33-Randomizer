@@ -14,13 +14,15 @@ public class CustomPlacementValueConverter : IMultiValueConverter
         CustomPlacementWindowViewModel? dataContext = null;
 
         bool? isFound = null;
+        CustomPlacementWindowViewModel.CustomPlacementOption? option = null;
         
         foreach (var value in values)
         {
-            if (value is Tuple<string, bool> tuple)
+            if (value is CustomPlacementWindowViewModel.CustomPlacementOption o)
             {
-                inputString = tuple.Item1;
-                isFound = tuple.Item2;
+                option = o;
+                inputString = option.Option;
+                isFound = option.HasRules;
             } 
 
             if (value is CustomPlacementWindowViewModel vm)
@@ -29,7 +31,7 @@ public class CustomPlacementValueConverter : IMultiValueConverter
 
         if (inputString is null && dataContext is not null)
         {
-            return new Tuple<string, bool>(dataContext.SelectedCustomPlacementRuleName, isFound! ?? false);
+            return new CustomPlacementWindowViewModel.CustomPlacementOption(dataContext.SelectedCustomPlacementRuleName, isFound! ?? false);
         }
         
         if (inputString is null || dataContext is null)
@@ -47,7 +49,7 @@ public class CustomPlacementValueConverter : IMultiValueConverter
         {
             dataContext.SelectedCustomPlacementRule = rule;
             dataContext.SelectedCustomPlacementRuleName = inputString;
-            return new Tuple<string, bool>(inputString, isFound!.Value);
+            return option;
         }
 
         return new BindingNotification(new InvalidCastException("Attempted to create empty rule but failed"));

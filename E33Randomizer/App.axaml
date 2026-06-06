@@ -4,7 +4,6 @@
              RequestedThemeVariant="Dark">
    
     <Application.Styles>
-        
         <StyleInclude Source="avares://E33Randomizer/Styles.axaml"/>
     </Application.Styles>
     <Application.Resources>
