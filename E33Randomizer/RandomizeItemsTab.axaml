@@ -129,13 +129,13 @@
                                 FormatString="0"
                                 Maximum="99"
                                 Minimum="1" />
-                            <PathIcon Classes="tooltip">
-                                <ToolTip.Tip>
-                                    <uiControls:HeaderToolTip
-                                        Content="{x:Static lang:Resources.Randomize_Items_Tooltip_RandomizeVariousCheckSizes}" />
-                                </ToolTip.Tip>
-                            </PathIcon>
                         </StackPanel>
+                        <PathIcon Classes="tooltip">
+                            <ToolTip.Tip>
+                                <uiControls:HeaderToolTip
+                                    Content="{x:Static lang:Resources.Randomize_Items_Tooltip_RandomizeVariousCheckSizes}" />
+                            </ToolTip.Tip>
+                        </PathIcon>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <CheckBox
@@ -160,14 +160,14 @@
                                 FormatString="0"
                                 Maximum="99"
                                 Minimum="0" />
-                            <PathIcon Classes="tooltip">
-                                <ToolTip.Tip>
-                                    <uiControls:HeaderToolTip
-                                        Content="{x:Static lang:Resources.Randomize_Items_Tooltip_RandomizeVariousCheckSizes}" />
-                                </ToolTip.Tip>
-                            </PathIcon>
-                        </StackPanel>
 
+                        </StackPanel>
+                        <PathIcon Classes="tooltip">
+                            <ToolTip.Tip>
+                                <uiControls:HeaderToolTip
+                                    Content="{x:Static lang:Resources.Randomize_Items_Tooltip_RandomizeVariousCheckSizes}" />
+                            </ToolTip.Tip>
+                        </PathIcon>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <CheckBox
@@ -190,13 +190,13 @@
                                 FormatString="0"
                                 Maximum="99"
                                 Minimum="1" />
-                            <PathIcon Classes="tooltip">
-                                <ToolTip.Tip>
-                                    <uiControls:HeaderToolTip
-                                        Content="{x:Static lang:Resources.Randomize_Items_Tooltip_RandomizeVariousCheckSizes}" />
-                                </ToolTip.Tip>
-                            </PathIcon>
                         </StackPanel>
+                        <PathIcon Classes="tooltip">
+                            <ToolTip.Tip>
+                                <uiControls:HeaderToolTip
+                                    Content="{x:Static lang:Resources.Randomize_Items_Tooltip_RandomizeVariousCheckSizes}" />
+                            </ToolTip.Tip>
+                        </PathIcon>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <CheckBox
@@ -219,13 +219,13 @@
                                 FormatString="0"
                                 Maximum="99"
                                 Minimum="1" />
-                            <PathIcon Classes="tooltip">
-                                <ToolTip.Tip>
-                                    <uiControls:HeaderToolTip
-                                        Content="{x:Static lang:Resources.Randomize_Items_Tooltip_RandomizeVariousCheckSizes}" />
-                                </ToolTip.Tip>
-                            </PathIcon>
                         </StackPanel>
+                        <PathIcon Classes="tooltip">
+                            <ToolTip.Tip>
+                                <uiControls:HeaderToolTip
+                                    Content="{x:Static lang:Resources.Randomize_Items_Tooltip_RandomizeVariousCheckSizes}" />
+                            </ToolTip.Tip>
+                        </PathIcon>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <CheckBox
@@ -248,13 +248,13 @@
                                 FormatString="0"
                                 Maximum="99"
                                 Minimum="1" />
-                            <PathIcon Classes="tooltip">
-                                <ToolTip.Tip>
-                                    <uiControls:HeaderToolTip
-                                        Content="{x:Static lang:Resources.Randomize_Items_Tooltip_RandomizeVariousCheckSizes}" />
-                                </ToolTip.Tip>
-                            </PathIcon>
                         </StackPanel>
+                        <PathIcon Classes="tooltip">
+                            <ToolTip.Tip>
+                                <uiControls:HeaderToolTip
+                                    Content="{x:Static lang:Resources.Randomize_Items_Tooltip_RandomizeVariousCheckSizes}" />
+                            </ToolTip.Tip>
+                        </PathIcon>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <CheckBox
@@ -277,13 +277,13 @@
                                 FormatString="0"
                                 Maximum="99"
                                 Minimum="1" />
-                            <PathIcon Classes="tooltip">
-                                <ToolTip.Tip>
-                                    <uiControls:HeaderToolTip
-                                        Content="{x:Static lang:Resources.Randomize_Items_Tooltip_RandomizeVariousCheckSizes}" />
-                                </ToolTip.Tip>
-                            </PathIcon>
                         </StackPanel>
+                        <PathIcon Classes="tooltip">
+                            <ToolTip.Tip>
+                                <uiControls:HeaderToolTip
+                                    Content="{x:Static lang:Resources.Randomize_Items_Tooltip_RandomizeVariousCheckSizes}" />
+                            </ToolTip.Tip>
+                        </PathIcon>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>

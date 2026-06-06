@@ -6,6 +6,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:lang="clr-namespace:E33Randomizer.Assets"
+        CanResize="False"
+        CanMaximize="False"
         mc:Ignorable="d"
         d:DataContext="{x:Static e33Randomizer:DesignSkillsSettingsViewModel.SettingsViewModel}"
         x:DataType="e33Randomizer:SettingsViewModel">

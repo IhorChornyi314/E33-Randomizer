@@ -50,6 +50,7 @@
                     Orientation="Vertical"
                     IsVisible="{Binding IsChecked, ElementName=RandomizeSkillTreeEdgesCheckBox}">
                     <uiControls:CheckboxToolTip
+                        Name="UseFullyRandomNodeLinksCheckbox"
                         Content="{x:Static lang:Resources.Randomize_Skills_UseFullyRandomNodeLinks}"
                         ToolTipContent="{x:Static lang:Resources.Randomize_Skills_ToolTip_UseFullyRandomNodeLinks}"
                         IsChecked="{Binding FullyRandomEdges}"
@@ -59,7 +60,7 @@
                     <!--           IsChecked="{Binding GiveMonocoTreeEdges}" -->
                     <!--           Margin="0 6 0 0" -->
                     <!--           FontSize="14" /> -->
-                    <StackPanel Orientation="Horizontal" Margin="25 0 0 0">
+                    <StackPanel Orientation="Horizontal" Margin="25 0 0 0" IsVisible="{Binding IsChecked, ElementName=UseFullyRandomNodeLinksCheckbox}">
                         <TextBlock Text="{x:Static lang:Resources.Randomize_Skills_ChangeTheNumberOfLinks}" VerticalAlignment="Center"/>
                         <NumericUpDown
                             Text="{Binding MinTreeEdges, Mode=OneWay}"
@@ -82,7 +83,7 @@
                             </ToolTip.Tip>
                         </PathIcon>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="25 10 0 0">
+                    <StackPanel Orientation="Horizontal" Margin="25 10 0 0"  IsVisible="{Binding IsChecked, ElementName=UseFullyRandomNodeLinksCheckbox}">
                         <Label Content="{x:Static lang:Resources.Randomize_Skills_SetTheLinkDensity}" />
                         <NumericUpDown
                             Text="{Binding RandomEdgeChancePercent}"
