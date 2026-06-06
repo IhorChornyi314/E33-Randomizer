@@ -403,13 +403,75 @@
         <value>Edit Individual Skill Trees</value>
     </data>
     
-    <!-- Randomize Locations -->
+    <!-- RandomizeLocationsTab -->
 
+    
     <data name="Randomize_Locations_Button_CustomizeLocationPlacements" xml:space="preserve">
         <value>Customize Location Placements</value>
     </data>
     <data name="Randomize_Locations_Button_EditIndividualLocations" xml:space="preserve">
         <value>Edit Individual Locations</value>
+    </data>
+    <data name="Randomize_Locations_RandomizeLocations" xml:space="preserve">
+        <value>Randomize Locations</value>
+    </data>
+    <data name="Randomize_Locations_RescaleLocations" xml:space="preserve">
+        <value>Re-scale locations</value>
+    </data>
+    <data name="Randomize_Locations_SetScaleModifier" xml:space="preserve">
+        <value>Set the scaling modifier to</value>
+    </data>
+    <data name="Randomize_Locations_RescaleOptionalAreas" xml:space="preserve">
+        <value>Re-scale optional areas</value>
+    </data>
+    <data name="Randomize_Locations_RescaleCharacters" xml:space="preserve">
+        <value>Re-scale characters</value>
+    </data>
+    <data name="Randomize_Locations_RandomizeStartingLocation" xml:space="preserve">
+        <value>Randomize starting location</value>
+    </data>
+    <data name="Randomize_Locations_RandomizeManorDoors" xml:space="preserve">
+        <value>Randomize manor doors</value>
+    </data>
+    <data name="Randomize_Locations_RandomizePaintingWorkshopEntrances" xml:space="preserve">
+        <value>SRandomize painting workshop entrances</value>
+    </data>
+    <data name="Randomize_Locations_RandomizeCutsceneTeleports" xml:space="preserve">
+        <value>Randomize cutscene teleports</value>
+    </data>
+    <data name="Randomize_Locations_RandomizeGestralBeaches" xml:space="preserve">
+        <value>Randomize gestral beaches</value>
+    </data>
+
+    <data name="Randomize_Locations_Tooltip_RandomizeLocations" xml:space="preserve">
+        <value>TRANSLATION_MISSING</value>
+    </data>
+    <data name="Randomize_Locations_Tooltip_RescaleLocations" xml:space="preserve">
+         <value>TRANSLATION_MISSING</value>
+    </data>
+    <data name="Randomize_Locations_Tooltip_SetScaleModifier" xml:space="preserve">
+         <value>TRANSLATION_MISSING</value>
+    </data>
+    <data name="Randomize_Locations_Tooltip_RescaleOptionalAreas" xml:space="preserve">
+         <value>TRANSLATION_MISSING</value>
+    </data>
+    <data name="Randomize_Locations_Tooltip_RescaleCharacters" xml:space="preserve">
+         <value>TRANSLATION_MISSING</value>
+    </data>
+    <data name="Randomize_Locations_Tooltip_RandomizeStartingLocation" xml:space="preserve">
+         <value>TRANSLATION_MISSING</value>
+    </data>
+    <data name="Randomize_Locations_Tooltip_RandomizeManorDoors" xml:space="preserve">
+         <value>TRANSLATION_MISSING</value>
+    </data>
+    <data name="Randomize_Locations_Tooltip_RandomizePaintingWorkshopEntrances" xml:space="preserve">
+         <value>TRANSLATION_MISSING</value>
+    </data>
+    <data name="Randomize_Locations_Tooltip_RandomizeCutsceneTeleports" xml:space="preserve">
+         <value>TRANSLATION_MISSING</value>
+    </data>
+    <data name="Randomize_Locations_Tooltip_RandomizeGestralBeaches" xml:space="preserve">
+         <value>TRANSLATION_MISSING</value>
     </data>
     
     <!-- Misc Tab -->

@@ -21,3 +21,21 @@ public partial class RandomizeLocationsTab : UserControl
         App.GetMainWindow().OpenEditObjectsButton_Click(sender, e);
     }
 }
+
+public static class DesignLocationSettingsViewModel
+{
+    public static SettingsViewModel SettingsViewModel => new()
+    {
+        RandomizeLocations = true,
+        RescaleLocations = true,
+        ScaleModifierPercentage = 50,
+        ScaleOptionalAreas = true,
+        RescaleCharacters = true,
+        RandomizeStartingLocation = true,
+        RandomizeManorDoors = true,
+        RandomizeWorkshopEntries = true,
+        RandomizeCutsceneTeleports = true,
+        RandomizeGestralBeachPortals = true
+    };
+
+}

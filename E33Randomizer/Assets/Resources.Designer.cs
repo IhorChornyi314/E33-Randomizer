@@ -771,6 +771,126 @@ namespace E33Randomizer.Assets {
             }
         }
         
+        public static string Randomize_Locations_RandomizeLocations {
+            get {
+                return ResourceManager.GetString("Randomize_Locations_RandomizeLocations", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Locations_RescaleLocations {
+            get {
+                return ResourceManager.GetString("Randomize_Locations_RescaleLocations", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Locations_SetScaleModifier {
+            get {
+                return ResourceManager.GetString("Randomize_Locations_SetScaleModifier", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Locations_RescaleOptionalAreas {
+            get {
+                return ResourceManager.GetString("Randomize_Locations_RescaleOptionalAreas", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Locations_RescaleCharacters {
+            get {
+                return ResourceManager.GetString("Randomize_Locations_RescaleCharacters", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Locations_RandomizeStartingLocation {
+            get {
+                return ResourceManager.GetString("Randomize_Locations_RandomizeStartingLocation", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Locations_RandomizeManorDoors {
+            get {
+                return ResourceManager.GetString("Randomize_Locations_RandomizeManorDoors", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Locations_RandomizePaintingWorkshopEntrances {
+            get {
+                return ResourceManager.GetString("Randomize_Locations_RandomizePaintingWorkshopEntrances", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Locations_RandomizeCutsceneTeleports {
+            get {
+                return ResourceManager.GetString("Randomize_Locations_RandomizeCutsceneTeleports", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Locations_RandomizeGestralBeaches {
+            get {
+                return ResourceManager.GetString("Randomize_Locations_RandomizeGestralBeaches", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Locations_Tooltip_RandomizeLocations {
+            get {
+                return ResourceManager.GetString("Randomize_Locations_Tooltip_RandomizeLocations", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Locations_Tooltip_RescaleLocations {
+            get {
+                return ResourceManager.GetString("Randomize_Locations_Tooltip_RescaleLocations", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Locations_Tooltip_SetScaleModifier {
+            get {
+                return ResourceManager.GetString("Randomize_Locations_Tooltip_SetScaleModifier", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Locations_Tooltip_RescaleOptionalAreas {
+            get {
+                return ResourceManager.GetString("Randomize_Locations_Tooltip_RescaleOptionalAreas", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Locations_Tooltip_RescaleCharacters {
+            get {
+                return ResourceManager.GetString("Randomize_Locations_Tooltip_RescaleCharacters", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Locations_Tooltip_RandomizeStartingLocation {
+            get {
+                return ResourceManager.GetString("Randomize_Locations_Tooltip_RandomizeStartingLocation", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Locations_Tooltip_RandomizeManorDoors {
+            get {
+                return ResourceManager.GetString("Randomize_Locations_Tooltip_RandomizeManorDoors", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Locations_Tooltip_RandomizePaintingWorkshopEntrances {
+            get {
+                return ResourceManager.GetString("Randomize_Locations_Tooltip_RandomizePaintingWorkshopEntrances", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Locations_Tooltip_RandomizeCutsceneTeleports {
+            get {
+                return ResourceManager.GetString("Randomize_Locations_Tooltip_RandomizeCutsceneTeleports", resourceCulture);
+            }
+        }
+        
+        public static string Randomize_Locations_Tooltip_RandomizeGestralBeaches {
+            get {
+                return ResourceManager.GetString("Randomize_Locations_Tooltip_RandomizeGestralBeaches", resourceCulture);
+            }
+        }
+        
         public static string Misc_SaveFile_Header {
             get {
                 return ResourceManager.GetString("Misc_SaveFile_Header", resourceCulture);
