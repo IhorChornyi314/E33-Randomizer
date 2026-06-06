@@ -1,7 +1,6 @@
 # Work to be done
 ## TODO
 * General
-  * Create better cross-platform build (to fetch the both the linux and windows `retoc` and `uesave`)
   * Investigate switching to `AvaloniaDictionary<T,TV>` over the custom `ObeservableCollectionWithChildListener<T>` 
   * Continue to iterate on theme designs
 * Look into creating better design time data sets that don't require the full controller initializations to function.  (would be much faster)
@@ -46,6 +45,8 @@
   * Create themed Message Dialog box that can be used for both errors and confirmations.
   * Moved everything other than data driven values like presets/names of things into Localizable Resource file.
     * Including warnings and error messages
+  * Created a script that will fetch retoc and uesave 
+  * Created publish scripts that will handle creating the release zip/tar.gz files for both platforms.
 * Custom Placements
   * Completely redesigned UX
     * Now uses tabs and makes the sub sections much less compressed so it's easier to see what is configured.
