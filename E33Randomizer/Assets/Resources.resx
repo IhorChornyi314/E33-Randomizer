@@ -1037,4 +1037,7 @@ Use this button to fix that.</value>
     <data name="SkillsController_UnrecognizedCharacter_Exception" xml:space="preserve">
         <value>Error reading skills txt: Unrecognized character name {0}! Delete or fix its line.</value>
     </data>
+    <data name="MainWindow_Version" xml:space="preserve">
+        <value>Version: </value>
+    </data>
 </root>

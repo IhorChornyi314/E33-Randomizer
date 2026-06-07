@@ -6,7 +6,7 @@ using E33Randomizer.ObjectDatum;
 
 namespace E33Randomizer;
 
-[JsonSourceGenerationOptions(WriteIndented = true)]
+[JsonSourceGenerationOptions(WriteIndented = true, Converters = [typeof(UpgradeFloatToByteConverter), typeof(UpgradeFloatToIntConverter)])]
 [JsonSerializable(typeof(SettingsViewModel))]
 [JsonSerializable(typeof(CharacterData))]
 [JsonSerializable(typeof(CheckData))]
@@ -25,7 +25,7 @@ namespace E33Randomizer;
 [JsonSerializable(typeof(List<SkillData>))]
 [JsonSerializable(typeof(List<SpawnPointData>))]
 [JsonSerializable(typeof(List<ObjectData>))]
-[JsonSerializable(typeof(CustomPlacements.CustomPlacementWindowViewModel))]
+[JsonSerializable(typeof(CustomPlacementWindowViewModel))]
 [JsonSerializable(typeof(Dictionary<string, List<string>>))]
 [JsonSerializable(typeof(Dictionary<string, Dictionary<string, List<int>>>))]
 [JsonSerializable(typeof(Dictionary<string, string>))]
@@ -47,4 +47,62 @@ public static class JsonSourceGenerationContextSerializationFactory
         };
         return new JsonSourceGenerationContext(options);
     });
+}
+
+/// <summary>
+///  Handles upgrading from v3 of the Json format where everything was doubles/floats between 0.0 and 1.0, to v4 of the Json format where it's all values between 0 and 100.  
+/// </summary>
+public class UpgradeFloatToByteConverter : JsonConverter<byte>
+{
+    public override byte Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        string temp;
+        
+        using (JsonDocument jsonDoc = JsonDocument.ParseValue(ref reader))
+        {
+            temp = jsonDoc.RootElement.GetRawText();
+        }
+        
+        if (temp.Contains('.'))
+        {
+            var doubleValue = reader.GetDouble();
+            return Convert.ToByte(doubleValue * 100);
+        }
+
+        return reader.GetByte();
+    }
+
+    public override void Write(Utf8JsonWriter writer, byte value, JsonSerializerOptions options)
+    {
+        writer.WriteNumberValue(value);
+    }
+}
+
+/// <summary>
+///  Handles upgrading from v3 of the Json format where everything was doubles/floats between 0.0 and 1.0, to v4 of the Json format where it's all values between 0 and 100.  
+/// </summary>
+public class UpgradeFloatToIntConverter : JsonConverter<int>
+{
+    public override int Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        string temp;
+        
+        using (JsonDocument jsonDoc = JsonDocument.ParseValue(ref reader))
+        {
+            temp = jsonDoc.RootElement.GetRawText();
+        }
+        
+        if (temp.Contains('.'))
+        {
+            var doubleValue = reader.GetDouble();
+            return Convert.ToInt32(doubleValue * 100);
+        }
+
+        return reader.GetInt32();
+    }
+
+    public override void Write(Utf8JsonWriter writer, int value, JsonSerializerOptions options)
+    {
+        writer.WriteNumberValue(value);
+    }
 }

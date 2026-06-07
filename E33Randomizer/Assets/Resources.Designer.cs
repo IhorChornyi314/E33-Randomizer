@@ -1928,5 +1928,11 @@ namespace E33Randomizer.Assets {
                 return ResourceManager.GetString("SkillsController_UnrecognizedCharacter_Exception", resourceCulture);
             }
         }
+        
+        public static string MainWindow_Version {
+            get {
+                return ResourceManager.GetString("MainWindow_Version", resourceCulture);
+            }
+        }
     }
 }

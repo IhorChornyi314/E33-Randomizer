@@ -9,8 +9,19 @@ if [[ "$version" == "" ]]; then
 fi
 
 cd ../E33Randomizer
-dotnet publish E33Randomizer.csproj --runtime=win-x64
-dotnet publish E33Randomizer.csproj --runtime=linux-x64
+dotnet publish E33Randomizer.csproj --runtime=win-x64 /p:Version=$version
+if [ $? -ne 0 ]; then
+    echo "Failed to publish"
+    cd ../
+    exit $?
+fi
+
+dotnet publish E33Randomizer.csproj --runtime=linux-x64  /p:Version=$version
+if [ $? -ne 0 ]; then
+    echo "Failed to publish"
+    cd ../
+    exit $?
+fi
 cd ../
 
 WINFILE="e33.randomizer.x86_x64.windows.$version.zip"

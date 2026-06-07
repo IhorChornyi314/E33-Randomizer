@@ -15,6 +15,7 @@ namespace E33Randomizer;
 /// </summary>
 public partial class MainWindow : Window
 {
+    public static readonly string Version = ThisAssembly.Info.InformationalVersion.Split('+')[0];
     public const double TabStripWidth = 325;
     public const double TabStripHeight = 850;
     public const double TabContainerWidth = 700;

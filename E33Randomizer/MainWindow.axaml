@@ -81,8 +81,8 @@
                             Click="GenerateButton_Click" />
 
                     <!-- Seed Input -->
-                    <StackPanel Orientation="Horizontal" Margin="0 0 0 20">
-                        <Label Content="Seed:" VerticalAlignment="Center" FontWeight="Bold" />
+                    <StackPanel Orientation="Horizontal" Margin="0 0 0 0">
+                        <Label Content="{x:Static lang:Resources.Main_Seed}" VerticalAlignment="Center" FontWeight="Bold" />
                         <NumericUpDown x:DataType="e33Randomizer:SettingsViewModel" x:Name="SeedTextBox"
                                        Text="{Binding Seed}"
                                        ShowButtonSpinner="False"
@@ -95,6 +95,10 @@
                                        FontSize="25"
                                        Width="150">
                         </NumericUpDown>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{x:Static lang:Resources.MainWindow_Version}"  Margin="-30 0 0 0"/>
+                        <TextBlock Text="{x:Static e33Randomizer:MainWindow.Version}" FontSize="14"/>
                     </StackPanel>
                 </StackPanel>
             </Panel>
