@@ -6,7 +6,7 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Platform.Storage;
 using CommunityToolkit.Mvvm.ComponentModel;
-using E33Randomizer.RadomizationLogic;
+using E33Randomizer.RandomizationLogic;
 
 namespace E33Randomizer;
 

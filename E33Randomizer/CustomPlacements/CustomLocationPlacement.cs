@@ -1,4 +1,4 @@
-﻿using E33Randomizer.RadomizationLogic;
+﻿using E33Randomizer.RandomizationLogic;
 
 namespace E33Randomizer.CustomPlacements;
 
@@ -39,7 +39,10 @@ public class CustomLocationPlacement: CustomPlacementWindowViewModel
         {
             { "Act I Locations", [new KeyValuePair<string, byte>("Act I Locations", 1)] },
             { "Act II Locations", [new KeyValuePair<string, byte>("Act II Locations", 1)] },
-            { "Act III Locations", [new KeyValuePair<string, byte>("Act III Locations", 1)] }
+            { "Act III Locations", [new KeyValuePair<string, byte>("Act III Locations", 1)] },
+            { "Act I World Map Locations", [new KeyValuePair<string, byte>( "Act I World Map Locations", 1)] },
+            { "Act II World Map Locations", [new KeyValuePair<string, byte>( "Act II World Map Locations", 1 )] },
+            { "Act III World Map Locations", [new KeyValuePair<string, byte>( "Act III World Map Locations", 1 )] },
         });
         FinalReplacementFrequencies = new Dictionary<string, Dictionary<string, float>>();
     }

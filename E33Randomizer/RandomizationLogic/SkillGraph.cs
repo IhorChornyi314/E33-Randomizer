@@ -6,7 +6,7 @@ using UAssetAPI.PropertyTypes.Objects;
 using UAssetAPI.PropertyTypes.Structs;
 using UAssetAPI.UnrealTypes;
 
-namespace E33Randomizer.RadomizationLogic;
+namespace E33Randomizer.RandomizationLogic;
 
 public class SkillNode
 {
@@ -319,7 +319,7 @@ public class SkillGraph
         
         using var r = new StreamReader($"{RandomizerLogic.DataDirectory}/SkillsData/CustomGraphs/{fileName}.json");
         var json = r.ReadToEnd();
-        return JsonSerializer.Deserialize<Dictionary<int, List<int>>>(json, JsonSourceGenerationContext.Default.DictionaryInt32ListInt32) ?? [];
+        return JsonSerializer.Deserialize<Dictionary<int, List<int>>>(json, JsonSourceGenerationContextNoUpgrade.Default.DictionaryInt32ListInt32) ?? [];
     }
 
     public int PickNextTreeNode(List<int> currentTreeNodes, int minEdges, int maxEdges,

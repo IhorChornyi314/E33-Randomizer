@@ -1,5 +1,5 @@
 ﻿using E33Randomizer.ObjectDatum;
-using E33Randomizer.RadomizationLogic;
+using E33Randomizer.RandomizationLogic;
 using UAssetAPI;
 using UAssetAPI.UnrealTypes;
 

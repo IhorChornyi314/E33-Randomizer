@@ -1,4 +1,4 @@
-﻿namespace E33Randomizer.RadomizationLogic;
+﻿namespace E33Randomizer.RandomizationLogic;
 
 public static class Controllers
 {

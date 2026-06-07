@@ -1,4 +1,4 @@
-﻿using E33Randomizer.RadomizationLogic;
+﻿using E33Randomizer.RandomizationLogic;
 using UAssetAPI.PropertyTypes.Structs;
 
 namespace E33Randomizer.ObjectDatum;

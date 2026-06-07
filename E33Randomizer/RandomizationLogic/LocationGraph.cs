@@ -1,6 +1,6 @@
 ﻿using E33Randomizer.ObjectDatum;
 
-namespace E33Randomizer.RadomizationLogic;
+namespace E33Randomizer.RandomizationLogic;
 
 public class PathTrace
 {
@@ -81,6 +81,9 @@ public class LocationGraph
 
     public void Init()
     {
+        // Already Inited.
+        if (Nodes.Count > 0) return;
+        
         var nodeData = Controllers.LocationController.ObjectsData;
         nodeIndexes = nodeData.Select((n, i) => new KeyValuePair<string, int>(n.CodeName, i)).ToDictionary();
         Nodes = nodeData.Select(n => new LocationNode(n, nodeIndexes)).ToList();

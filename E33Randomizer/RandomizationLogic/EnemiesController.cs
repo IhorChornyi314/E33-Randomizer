@@ -6,7 +6,7 @@ using UAssetAPI;
 using UAssetAPI.ExportTypes;
 using UAssetAPI.UnrealTypes;
 
-namespace E33Randomizer.RadomizationLogic;
+namespace E33Randomizer.RandomizationLogic;
 
 public class EnemiesController: Controller<EnemyData>
 {
@@ -58,7 +58,11 @@ public class EnemiesController: Controller<EnemyData>
     
     public void ReadEncounterAsset(string assetPath)
     {
-        var asset = new UAsset(assetPath, EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+        if (!_assetCache.TryGetValue(assetPath, out UAsset? asset))
+        {
+            asset = new UAsset(assetPath, EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+            _assetCache.Add(assetPath, asset);
+        }
         
         var dataTable = asset.Exports[0] as DataTableExport;
         var encountersTable = dataTable.Table.Data;

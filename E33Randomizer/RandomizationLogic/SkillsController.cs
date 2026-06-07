@@ -3,7 +3,7 @@ using E33Randomizer.ObjectDatum;
 using UAssetAPI;
 using UAssetAPI.UnrealTypes;
 
-namespace E33Randomizer.RadomizationLogic;
+namespace E33Randomizer.RandomizationLogic;
 
 public class SkillsController: Controller<SkillData>
 {

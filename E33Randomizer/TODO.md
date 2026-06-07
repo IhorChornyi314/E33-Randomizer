@@ -2,6 +2,7 @@
 ## TODO
 * General
   * Full test of application 
+  * Fix the data directory issue for tests.  (has my home path currently hard coded)
 * Look into creating better design time data sets that don't require the full controller initializations to function.  (would be much faster)
   * I think a quick little console app that would initialize the full data set then generating a set of classes that had all of it hard coded would work pretty well.  It'd only need to be run when you wanted to regenerate that data if changes were made.
   * Applies to individual Containers, custom placements, and the main window.
@@ -15,8 +16,7 @@
 ## General Notes:
 
 * There will be a 1 time, 1 way migration of existing settings jsons from 0.0 to 1.0 for percentages to 0-100.
-* The location custom placement is currently.....Hard to say what it's supposed to do since the main app doesn't have them enabled I don't think.  So I'm not really sure how it's supposed function tbh. 
-* 
+* The location custom placement is currently.....Hard to say what it's supposed to do since the main app doesn't have them enabled I don't think.  So I'm not really sure how it's supposed function tbh
 
 
 ## Done

@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -29,8 +30,12 @@ namespace E33Randomizer;
 [JsonSerializable(typeof(Dictionary<string, List<string>>))]
 [JsonSerializable(typeof(Dictionary<string, Dictionary<string, List<int>>>))]
 [JsonSerializable(typeof(Dictionary<string, string>))]
-[JsonSerializable(typeof(Dictionary<int, List<int>>))]
 public partial class JsonSourceGenerationContext : JsonSerializerContext;
+
+// Only needed until we decide that the backwards compatability converters aren't needed anymore. (probably in v6 whenever that is).  
+[JsonSourceGenerationOptions]
+[JsonSerializable(typeof(Dictionary<int, List<int>>))]
+public partial class JsonSourceGenerationContextNoUpgrade : JsonSerializerContext;
 
 /// <summary>
 /// Factory for creating a <see cref="JsonSourceGenerationContext"/> that includes the relaxed <see cref="JavaScriptEncoder.UnsafeRelaxedJsonEscaping"/> which doesn't encode things into UTF-16 characters.
@@ -57,19 +62,18 @@ public class UpgradeFloatToByteConverter : JsonConverter<byte>
     public override byte Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
         string temp;
+
+        using JsonDocument jsonDoc = JsonDocument.ParseValue(ref reader);
         
-        using (JsonDocument jsonDoc = JsonDocument.ParseValue(ref reader))
-        {
-            temp = jsonDoc.RootElement.GetRawText();
-        }
-        
+        temp = jsonDoc.RootElement.GetRawText();
+
         if (temp.Contains('.'))
         {
-            var doubleValue = reader.GetDouble();
+            var doubleValue = Convert.ToDouble(temp);
             return Convert.ToByte(doubleValue * 100);
         }
 
-        return reader.GetByte();
+        return Convert.ToByte(temp);
     }
 
     public override void Write(Utf8JsonWriter writer, byte value, JsonSerializerOptions options)
@@ -85,20 +89,20 @@ public class UpgradeFloatToIntConverter : JsonConverter<int>
 {
     public override int Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
+     
         string temp;
+
+        using JsonDocument jsonDoc = JsonDocument.ParseValue(ref reader);
         
-        using (JsonDocument jsonDoc = JsonDocument.ParseValue(ref reader))
-        {
-            temp = jsonDoc.RootElement.GetRawText();
-        }
-        
+        temp = jsonDoc.RootElement.GetRawText();
+
         if (temp.Contains('.'))
         {
-            var doubleValue = reader.GetDouble();
+            var doubleValue = Convert.ToDouble(temp);
             return Convert.ToInt32(doubleValue * 100);
         }
-
-        return reader.GetInt32();
+        
+        return Convert.ToInt32(temp);
     }
 
     public override void Write(Utf8JsonWriter writer, int value, JsonSerializerOptions options)

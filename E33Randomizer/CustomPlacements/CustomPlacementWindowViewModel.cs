@@ -1,11 +1,13 @@
+using System.Collections.Frozen;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text.Json;
 using Avalonia.Collections;
+using AvaloniaEdit.Utils;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using E33Randomizer.ObjectDatum;
-using E33Randomizer.RadomizationLogic;
+using E33Randomizer.RandomizationLogic;
 using E33Randomizer.UIControls;
 
 namespace E33Randomizer.CustomPlacements;
@@ -37,7 +39,7 @@ public abstract partial class CustomPlacementWindowViewModel : ObservableObject
     public partial bool ShowOnlyOverridenCategories { get; set; }
     
     public List<string> NotRandomizedCodeNames = [];
-    public List<string> ExcludedCodeNames = [];
+    public FrozenSet<string> ExcludedCodeNames = [];
 
     public bool JsonSyntaxHighlighting { get; set; } = true;
     public ObservableCollection<string> OopsAllObjects { get; set; } = [];
@@ -222,7 +224,7 @@ public abstract partial class CustomPlacementWindowViewModel : ObservableObject
         
         FrequencyAdjustments.Clear();
         Excluded.Clear();
-        ExcludedCodeNames.Clear();
+        ExcludedCodeNames = [];
 
         NotRandomized.Clear();
         NotRandomizedCodeNames.Clear();
@@ -235,7 +237,7 @@ public abstract partial class CustomPlacementWindowViewModel : ObservableObject
         NotRandomized.Clear();
         NotRandomizedCodeNames.Clear();
         Excluded.Clear();
-        ExcludedCodeNames.Clear();
+        ExcludedCodeNames = [];
             
         foreach (var notRandomized in preset.NotRandomized)
         {
@@ -289,13 +291,13 @@ public abstract partial class CustomPlacementWindowViewModel : ObservableObject
     {
         Excluded.Remove(plainName);
         ExcludedOptions.Add(plainName);
-        ExcludedCodeNames = ExcludedCodeNames.Except(PlainNameToCodeNames[plainName]).ToList();
+        ExcludedCodeNames = ExcludedCodeNames.Except(PlainNameToCodeNames[plainName]).ToFrozenSet();
     }
 
     public void AddExcluded(string plainName)
     {
         Excluded.Add(plainName);
-        ExcludedCodeNames.AddRange(PlainNameToCodeNames[plainName]);
+        ExcludedCodeNames = [..ExcludedCodeNames, ..PlainNameToCodeNames[plainName]];
     }
     
     public void AddNotRandomized(string plainName)
@@ -351,7 +353,7 @@ public abstract partial class CustomPlacementWindowViewModel : ObservableObject
                 result[codeName] = pair.Value;
                 if (adjustForCategorySize)
                 {
-                    result[codeName] = (byte)(result[codeName]/ translatedKey.Count);
+                    result[codeName] = (byte)(100*(result[codeName]/ (float)translatedKey.Count));
                 }
             }
         }
@@ -381,7 +383,7 @@ public abstract partial class CustomPlacementWindowViewModel : ObservableObject
     public void ResetRules()
     {
         Excluded.Clear();
-        ExcludedCodeNames.Clear();
+        ExcludedCodeNames = [];
         NotRandomized.Clear();
         NotRandomizedCodeNames.Clear();
         CustomPlacementRules.Clear();

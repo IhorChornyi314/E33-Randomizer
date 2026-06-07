@@ -1,7 +1,8 @@
 ﻿using System.Text.Json;
 using E33Randomizer.ObjectDatum;
+using UAssetAPI;
 
-namespace E33Randomizer.RadomizationLogic;
+namespace E33Randomizer.RandomizationLogic;
 
 public abstract class Controller<T>: BaseController where T: ObjectData, new()
 {
@@ -10,6 +11,7 @@ public abstract class Controller<T>: BaseController where T: ObjectData, new()
     public ObjectPool<T> RandomObjectPool;
     public Dictionary<string, T> ObjectsByName = new();
     protected string _cleanSnapshot;
+    protected static Dictionary<string, UAsset> _assetCache = new();
 
     public void ResetRandomObjectPool(List<T> excluded=null)
     {

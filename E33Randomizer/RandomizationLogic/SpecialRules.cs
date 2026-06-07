@@ -1,7 +1,7 @@
 ﻿using E33Randomizer.ItemSources;
 using E33Randomizer.ObjectDatum;
 
-namespace E33Randomizer.RadomizationLogic;
+namespace E33Randomizer.RandomizationLogic;
 
 public static class SpecialRules
 {

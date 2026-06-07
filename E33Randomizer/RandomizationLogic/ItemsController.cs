@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Text;
 using System.Text.Json;
 using Avalonia.Collections;
 using E33Randomizer.ItemSources;
@@ -9,7 +10,7 @@ using UAssetAPI.PropertyTypes.Objects;
 using UAssetAPI.PropertyTypes.Structs;
 using UAssetAPI.UnrealTypes;
 
-namespace E33Randomizer.RadomizationLogic;
+namespace E33Randomizer.RandomizationLogic;
 
 
 public class ItemsController: Controller<ItemData>
@@ -89,7 +90,12 @@ public class ItemsController: Controller<ItemData>
         {
             return;
         }
-        var asset = new UAsset(fileName, EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+
+        if (!_assetCache.TryGetValue(fileName, out UAsset? asset))
+        {
+            asset = new UAsset(fileName, EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+            _assetCache.Add(fileName, asset);
+        }
         
         using StreamReader DialogueRewardPathsReader = new StreamReader($"{RandomizerLogic.DataDirectory}/dialogue_reward_paths.json");
         string DialogueRewardPathsJson = DialogueRewardPathsReader.ReadToEnd();
@@ -178,8 +184,13 @@ public class ItemsController: Controller<ItemData>
 
     public void ReadCompositeTableAsset(string assetPath)
     {
-        _compositeTableAsset = new UAsset(assetPath, EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
-        itemsCompositeTable = (_compositeTableAsset.Exports[0] as DataTableExport).Table;
+        if (!_assetCache.TryGetValue(assetPath, out var tableAsset))
+        {
+            _compositeTableAsset = new UAsset(assetPath, EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+            _assetCache.Add(assetPath, _compositeTableAsset);
+            tableAsset = _compositeTableAsset;
+        }
+        itemsCompositeTable = (tableAsset.Exports[0] as DataTableExport).Table;
 
         foreach (StructPropertyData itemData in itemsCompositeTable.Data)
         {
@@ -196,7 +207,11 @@ public class ItemsController: Controller<ItemData>
 
     public void ReadOtherTableAsset(string assetPath)
     {
-        var tableAsset = new UAsset(assetPath, EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+        if (!_assetCache.TryGetValue(assetPath, out UAsset? tableAsset))
+        {
+            tableAsset = new UAsset(assetPath, EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+            _assetCache.Add(assetPath, tableAsset);
+        }
 
         _itemsDataTables[tableAsset.FolderName.ToString().Split('/').Last()] = tableAsset;
         
@@ -520,25 +535,25 @@ public class ItemsController: Controller<ItemData>
     public override string ConvertToTxt()
     {
         ApplyViewModel();
-        var result = "";
-        result += "weapons|" + string.Join(',', RandomizedStartingWeapons.Select(kvp => $"{kvp.Key}:{kvp.Value.CodeName}")) + '\n';
-        result += "equipment|" + string.Join(',', 
+        var result = new StringBuilder();
+        result.Append("weapons|" + string.Join(',', RandomizedStartingWeapons.Select(kvp => $"{kvp.Key}:{kvp.Value.CodeName}")) + '\n');
+        result.Append("equipment|" + string.Join(',', 
             RandomizedStartingOutfits.Select(kvp => $"{kvp.Key}:{kvp.Value.Item1.CodeName}:{kvp.Value.Item2.CodeName}")
-            ) + '\n';
+            ) + '\n');
         foreach (var itemsSource in ItemsSources)
         {
             foreach (var section in itemsSource.SourceSections)
             {
-                result += $"{itemsSource.FileName}#{section.Key}|" + string.Join(',', section.Value);
+                result.Append($"{itemsSource.FileName}#{section.Key}|" + string.Join(',', section.Value));
                 if (itemsSource.FileName == "DT_jRPG_Enemies")
                 {
                     var leg = ShapeshiftCaptureLootItems.GetValueOrDefault(section.Key, "None");
-                    result += $"?{leg}";
+                    result.Append($"?{leg}");
                 }
-                result += Environment.NewLine;
+                result.Append(Environment.NewLine);
             }
         }
-        return result;
+        return result.ToString();
     }
 
     public void ResetStartingEquipment()

@@ -1,4 +1,4 @@
-﻿namespace E33Randomizer.RadomizationLogic;
+﻿namespace E33Randomizer.RandomizationLogic;
 
 public class ObjectPool<T>(List<T> startingPool, List<T> excludedPool)
 {

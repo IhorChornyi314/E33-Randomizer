@@ -8,7 +8,7 @@ using Avalonia.Platform.Storage;
 using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 using E33Randomizer.ObjectDatum;
-using E33Randomizer.RadomizationLogic;
+using E33Randomizer.RandomizationLogic;
 using E33Randomizer.UIControls;
 using UAssetAPI.Unversioned;
 

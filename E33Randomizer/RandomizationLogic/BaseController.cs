@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace E33Randomizer.RadomizationLogic;
+namespace E33Randomizer.RandomizationLogic;
 
 public abstract class BaseController
 {

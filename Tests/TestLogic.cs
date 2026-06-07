@@ -1,4 +1,4 @@
-﻿using E33Randomizer.RadomizationLogic;
+﻿using E33Randomizer.RandomizationLogic;
 using Tests.Rules;
 
 namespace Tests;

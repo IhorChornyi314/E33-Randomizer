@@ -4,7 +4,7 @@ using E33Randomizer.CustomPlacements;
 using E33Randomizer.ObjectDatum;
 using UAssetAPI.Unversioned;
 
-namespace E33Randomizer.RadomizationLogic;
+namespace E33Randomizer.RandomizationLogic;
 
 
 public static class RandomizerLogic

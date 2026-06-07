@@ -1,57 +1,65 @@
-﻿using E33Randomizer.ObjectDatum;
+﻿using System.Collections.Frozen;
+using E33Randomizer.ObjectDatum;
 using UAssetAPI;
 using UAssetAPI.UnrealTypes;
 
-namespace E33Randomizer.RadomizationLogic;
+namespace E33Randomizer.RandomizationLogic;
 
 public static class Utils
 {
-    public static string GetRandomWeighted(Dictionary<string, float> weights, List<string>? banned = null)
+    public static string GetRandomWeighted(Dictionary<string, float> weights, FrozenSet<string>? banned = null)
     {
-        banned ??= [];
+        
         float total = 0;
-        foreach (var weight in weights)
+
+        if (banned != null)
         {
-            if (!banned.Contains(weight.Key))
-                total += weight.Value;
+            foreach (var weight in weights)
+            {
+                if (!banned.Contains(weight.Key))
+                    total += weight.Value;
+            }
         }
+       
 
         var chance = RandomizerLogic.rand.NextSingle() * total;
         float running = 0;
         foreach (var weight in weights)
         {
-            if (banned.Contains(weight.Key)) continue;
+            if (banned?.Contains(weight.Key) ?? false) continue;
             running += weight.Value;
             if (running >= chance && weight.Value > 0.00001)
             {
                 return weight.Key;
             }
         }
-        return weights.Keys.LastOrDefault(k => !banned.Contains(k)) ?? string.Empty;
+        return weights.Keys.LastOrDefault(k => !banned?.Contains(k) ?? true) ?? string.Empty;
     }
     
-    public static string GetRandomWeighted(Dictionary<string, byte> weights, List<string>? banned = null)
+    public static string GetRandomWeighted(Dictionary<string, byte> weights, FrozenSet<string>? banned = null)
     {
-        banned ??= [];
         float total = 0;
-        foreach (var weight in weights)
+        if (banned != null)
         {
-            if (!banned.Contains(weight.Key))
-                total += weight.Value / 100f;
+            foreach (var weight in weights)
+            {
+                if (!banned.Contains(weight.Key))
+                    total += weight.Value;
+            }
         }
 
         var chance = RandomizerLogic.rand.NextSingle() * total;
         float running = 0;
         foreach (var weight in weights)
         {
-            if (banned.Contains(weight.Key)) continue;
+            if (banned?.Contains(weight.Key) ?? false) continue;
             running += weight.Value;
             if (running >= chance && weight.Value > 0.00001)
             {
                 return weight.Key;
             }
         }
-        return weights.Keys.LastOrDefault(k => !banned.Contains(k)) ?? string.Empty;
+        return weights.Keys.LastOrDefault(k => !banned?.Contains(k) ?? true) ?? string.Empty;
     }
     
     public static T Pick<T>(List<T> from)

@@ -1,11 +1,14 @@
-﻿using AutoFixture;
+﻿using System.Collections.Frozen;
+using System.Diagnostics;
+using AutoFixture;
 using E33Randomizer;
 using E33Randomizer.CustomPlacements;
-using E33Randomizer.RadomizationLogic;
+using E33Randomizer.RandomizationLogic;
 using FluentAssertions;
 using NUnit.Framework;
 using Tests.Rules;
 using Tests.RuleTests;
+using TestContext = NUnit.Framework.TestContext;
 
 namespace Tests
 {
@@ -22,6 +25,7 @@ namespace Tests
             Environment.SetEnvironmentVariable("E33RandoDataPath", "/home/iamwyza/Source/E33-Randomizer/E33Randomizer/Data");
             _fixture = new Fixture();
             _fixture.Customize<int>(c => c.FromFactory(() => new Random().Next(1, 100)));
+            _fixture.Customize<SettingsViewModel>(c => c.Without(x => x.CurrentPage).Without(x => x.SelectedIndex));
 
             _rules = new List<OutputRuleBase>
             {
@@ -88,10 +92,12 @@ namespace Tests
                     new CustomSkillPlacement(),
                     new CustomLocationPlacement()
                     );
-                
-                
-                var output = TestLogic.RunRandomizer(config);
 
+                var sw = Stopwatch.StartNew();
+                TestContext.Out.WriteLine($"Starting Run {i}");
+                var output = TestLogic.RunRandomizer(config);
+                TestContext.Out.WriteLine($"Run took {sw.ElapsedMilliseconds} ms");
+                
                 foreach (var rule in _rules)
                 {
                     if (!rule.IsSatisfied(output, config))
@@ -208,7 +214,7 @@ namespace Tests
                 ["d"] = 0.35f
             };
 
-            List<string> banned = ["b"];
+            FrozenSet<string> banned = ["b"];
             
             var pickedCount = new Dictionary<string, int>
             {
