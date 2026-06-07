@@ -1,8 +1,8 @@
 # Work to be done
 ## TODO
 * General
-  * Investigate switching to `AvaloniaDictionary<T,TV>` over the custom `ObeservableCollectionWithChildListener<T>` 
   * Continue to iterate on theme designs
+  * Build the deserializing interceptor to convert the float to byte so that it will convert the file.
 * Look into creating better design time data sets that don't require the full controller initializations to function.  (would be much faster)
   * I think a quick little console app that would initialize the full data set then generating a set of classes that had all of it hard coded would work pretty well.  It'd only need to be run when you wanted to regenerate that data if changes were made.
   * Applies to individual Containers, custom placements, and the main window.

@@ -67,5 +67,10 @@
       </EmbeddedResource>
     </ItemGroup>
 
-
+    <Target Name="ExcludeNuGetPDBs" AfterTargets="ComputeFilesToPublish">
+        <ItemGroup>
+            <ResolvedFileToPublish Remove="@(ResolvedFileToPublish)"
+                                   Condition="'%(Extension)' == '.pdb' And '%(FileName)' != '$(AssemblyName)'" />
+        </ItemGroup>
+    </Target>
 </Project>
