@@ -141,7 +141,7 @@ public class SkillsController: Controller<SkillData>
     public void ReadAssets(string filesDirectory)
     {
         SkillGraphs.Clear();
-        var fileEntries = new List<string> (Directory.GetFiles(filesDirectory));
+        var fileEntries = new List<string> (GetFilesSorted(filesDirectory));
         foreach (var fileEntry in fileEntries.Where(f => f.Contains("DA_SkillGraph") && f.EndsWith(".uasset")))
         {
             var graphAsset = new UAsset(fileEntry, EngineVersion.VER_UE5_4, RandomizerLogic.mappings);

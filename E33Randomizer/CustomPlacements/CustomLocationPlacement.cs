@@ -37,12 +37,12 @@ public class CustomLocationPlacement: CustomPlacementWindowViewModel
         ResetRules();
         CustomPlacementRules.AddRange(new Dictionary<string, IEnumerable<KeyValuePair<string, byte>>>
         {
-            { "Act I Locations", [new KeyValuePair<string, byte>("Act I Locations", 1)] },
-            { "Act II Locations", [new KeyValuePair<string, byte>("Act II Locations", 1)] },
-            { "Act III Locations", [new KeyValuePair<string, byte>("Act III Locations", 1)] },
-            { "Act I World Map Locations", [new KeyValuePair<string, byte>( "Act I World Map Locations", 1)] },
-            { "Act II World Map Locations", [new KeyValuePair<string, byte>( "Act II World Map Locations", 1 )] },
-            { "Act III World Map Locations", [new KeyValuePair<string, byte>( "Act III World Map Locations", 1 )] },
+            { "Act I Locations", [new KeyValuePair<string, byte>("Act I Locations", 100)] },
+            { "Act II Locations", [new KeyValuePair<string, byte>("Act II Locations", 100)] },
+            { "Act III Locations", [new KeyValuePair<string, byte>("Act III Locations", 100)] },
+            { "Act I World Map Locations", [new KeyValuePair<string, byte>( "Act I World Map Locations", 100)] },
+            { "Act II World Map Locations", [new KeyValuePair<string, byte>( "Act II World Map Locations", 100 )] },
+            { "Act III World Map Locations", [new KeyValuePair<string, byte>( "Act III World Map Locations", 100 )] },
         });
         FinalReplacementFrequencies = new Dictionary<string, Dictionary<string, float>>();
     }

@@ -82,7 +82,7 @@ public abstract class Controller<T>: BaseController where T: ObjectData, new()
     
     public T GetObject(string objectCodeName)
     {
-        return ObjectsByName.TryGetValue(objectCodeName, out var obj) ? obj : DefaultObject;
+        return ObjectsByName.GetValueOrDefault(objectCodeName, DefaultObject);
     }
 
     public List<T> GetObjects(IEnumerable<string> objectCodeNames)

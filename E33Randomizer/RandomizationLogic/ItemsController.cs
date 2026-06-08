@@ -1,14 +1,16 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections;
+using System.Collections.ObjectModel;
 using System.Text;
-using System.Text.Json;
 using Avalonia.Collections;
 using E33Randomizer.ItemSources;
 using E33Randomizer.ObjectDatum;
+using Newtonsoft.Json;
 using UAssetAPI;
 using UAssetAPI.ExportTypes;
 using UAssetAPI.PropertyTypes.Objects;
 using UAssetAPI.PropertyTypes.Structs;
 using UAssetAPI.UnrealTypes;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace E33Randomizer.RandomizationLogic;
 
@@ -172,10 +174,11 @@ public class ItemsController: Controller<ItemData>
         }
         ItemsSources.Clear();
         CheckTypes.Clear();
-        var fileEntries = new List<string> (Directory.GetFiles(filesDirectory));
-        fileEntries.AddRange(Directory.GetFiles(filesDirectory + "/DialoguesData"));
-        fileEntries.AddRange(Directory.GetFiles(filesDirectory + "/GameActionsData"));
-        fileEntries.AddRange(Directory.GetFiles(filesDirectory + "/MerchantsData"));
+       
+        var fileEntries = GetFilesSorted(filesDirectory).ToList();
+        fileEntries.AddRange(GetFilesSorted(filesDirectory + "/DialoguesData"));
+        fileEntries.AddRange(GetFilesSorted(filesDirectory + "/GameActionsData"));
+        fileEntries.AddRange(GetFilesSorted(filesDirectory + "/MerchantsData"));
         fileEntries = fileEntries.Where(x => Path.GetExtension(x) == ".uasset").ToList();
         foreach(string fileName in fileEntries)
             ProcessFile(fileName);
@@ -230,7 +233,7 @@ public class ItemsController: Controller<ItemData>
         {
             throw new DirectoryNotFoundException(ResourceHelper.GetStringFormatted(nameof(Assets.Resources.ItemsController_DirectoryNotFound_Exception), "ItemTables", tablesDirectory));
         }
-        var fileEntries = new List<string> (Directory.GetFiles(tablesDirectory));
+        var fileEntries = new List<string> (GetFilesSorted(tablesDirectory));
         fileEntries = fileEntries.Where(x => Path.GetExtension(x) == ".uasset").ToList();
         foreach (var fileEntry in fileEntries)
         {

@@ -39,7 +39,7 @@ public abstract partial class CustomPlacementWindowViewModel : ObservableObject
     public partial bool ShowOnlyOverridenCategories { get; set; }
     
     public List<string> NotRandomizedCodeNames = [];
-    public FrozenSet<string> ExcludedCodeNames = [];
+    public List<string> ExcludedCodeNames = [];
 
     public bool JsonSyntaxHighlighting { get; set; } = true;
     public ObservableCollection<string> OopsAllObjects { get; set; } = [];
@@ -73,7 +73,7 @@ public abstract partial class CustomPlacementWindowViewModel : ObservableObject
     [ObservableProperty]
     public partial string? OopsAllObjectsSelection { get; set; } = null;
     
-    public Dictionary<string, byte> DefaultFrequencies = new();
+    public Dictionary<string, float> DefaultFrequencies = new();
     public Dictionary<string, Dictionary<string, float>> FinalReplacementFrequencies = new();
     public List<string> CategoryOrder = new();
     public IEnumerable<ObjectData> AllObjects = [];
@@ -291,7 +291,7 @@ public abstract partial class CustomPlacementWindowViewModel : ObservableObject
     {
         Excluded.Remove(plainName);
         ExcludedOptions.Add(plainName);
-        ExcludedCodeNames = ExcludedCodeNames.Except(PlainNameToCodeNames[plainName]).ToFrozenSet();
+        ExcludedCodeNames = ExcludedCodeNames.Except(PlainNameToCodeNames[plainName]).ToList();
     }
 
     public void AddExcluded(string plainName)
@@ -342,9 +342,9 @@ public abstract partial class CustomPlacementWindowViewModel : ObservableObject
         return result;
     }
     
-    private Dictionary<string, byte> CustomCategoryDictionaryToCodeNames(Dictionary<string, byte> from, bool adjustForCategorySize=false)
+    private Dictionary<string, float> CustomCategoryDictionaryToCodeNames(Dictionary<string, float> from, bool adjustForCategorySize=false)
     {
-        Dictionary<string, byte> result = new Dictionary<string, byte>();
+        Dictionary<string, float> result = new Dictionary<string, float>();
         foreach (var pair in from)
         {
             var translatedKey = PlainNameToCodeNames[pair.Key];
@@ -353,7 +353,7 @@ public abstract partial class CustomPlacementWindowViewModel : ObservableObject
                 result[codeName] = pair.Value;
                 if (adjustForCategorySize)
                 {
-                    result[codeName] = (byte)(100*(result[codeName]/ (float)translatedKey.Count));
+                    result[codeName] /= translatedKey.Count;
                 }
             }
         }
@@ -361,18 +361,18 @@ public abstract partial class CustomPlacementWindowViewModel : ObservableObject
         return result;
     }
     
-    public Dictionary<string, byte> CustomCategoryDictionaryToCodeNames(ObservableCollection<StringByteKeyValuePairViewModel> from, bool adjustForCategorySize=false)
+    public Dictionary<string, float> CustomCategoryDictionaryToCodeNames(ObservableCollection<StringByteKeyValuePairViewModel> from, bool adjustForCategorySize=false)
     {
-        Dictionary<string, byte> result = new Dictionary<string, byte>();
+        Dictionary<string, float> result = new Dictionary<string, float>();
         foreach (var pair in from)
         {
             var translatedKey = PlainNameToCodeNames[pair.Key];
             foreach (var codeName in translatedKey)
             {
-                result[codeName] = pair.Value;
+                result[codeName] = pair.Value / 100f;
                 if (adjustForCategorySize)
                 {
-                    result[codeName] = (byte)((result[codeName] / translatedKey.Count) * 100);
+                    result[codeName] /=  translatedKey.Count;
                 }
             }
         }
@@ -410,7 +410,7 @@ public abstract partial class CustomPlacementWindowViewModel : ObservableObject
                     continue;
                 }
                 
-                var unadjustedFrequencies = CustomCategoryDictionaryToCodeNames(customPlacementRule.ToDictionary(x => x.Key, x=> x.Value), true);
+                var unadjustedFrequencies = CustomCategoryDictionaryToCodeNames(customPlacementRule.ToDictionary(x => x.Key, x=> x.Value / 100f), true);
                 foreach (var frequency in unadjustedFrequencies)
                 {
                     if (translatedFrequencyAdjustments.TryGetValue(frequency.Key, out var adjustment))  
@@ -421,17 +421,17 @@ public abstract partial class CustomPlacementWindowViewModel : ObservableObject
 
                 if (unadjustedFrequencies.Count != 0)
                 {
-                    FinalReplacementFrequencies[codeName] = unadjustedFrequencies.ToDictionary(x => x.Key, x => x.Value / 100f);
+                    FinalReplacementFrequencies[codeName] = unadjustedFrequencies.ToDictionary(x => x.Key, x => x.Value);
                 }
             }
         }
         UpdateDefaultFrequencies(translatedFrequencyAdjustments);
     }
 
-    public void UpdateDefaultFrequencies(Dictionary<string, byte> translatedFrequencyAdjustments)
+    public void UpdateDefaultFrequencies(Dictionary<string, float> translatedFrequencyAdjustments)
     {
-        DefaultFrequencies = AllObjects.Select(e => new KeyValuePair<string,byte>(e.CodeName, translatedFrequencyAdjustments.ContainsKey(e.CodeName) ?  translatedFrequencyAdjustments[e.CodeName] : (byte)1)).ToDictionary();
-        DefaultFrequencies = DefaultFrequencies.Where(kv => kv.Value > 0).ToDictionary();
+        DefaultFrequencies = AllObjects.Select(e => new KeyValuePair<string,float>(e.CodeName, translatedFrequencyAdjustments.GetValueOrDefault(e.CodeName, 0.1f))).ToDictionary();
+        DefaultFrequencies = DefaultFrequencies.Where(kv => kv.Value > 0.00001).ToDictionary();
     }
 
     public string GetTrulyRandom()
@@ -458,7 +458,7 @@ public abstract partial class CustomPlacementWindowViewModel : ObservableObject
         if (CustomPlacementRules.Any(x => x.Key == replacementCategory)
             && CustomPlacementRules.TryGetValue(replacementCategory, out var replacements))
         {
-            var plainReplacementNames = replacements.Where(k => replacements.Any(x => x.Key == k.Key && x.Value > 0.0001)).Select(x => x.Key).ToList();
+            var plainReplacementNames = replacements.Where(k => replacements.Any(x => x.Key == k.Key && x.Value > 0)).Select(x => x.Key).ToList();
             if (allowExcluded)
                 return PlainNamesToCodeNames(plainReplacementNames);
             return PlainNamesToCodeNames(plainReplacementNames.Where(n => !Excluded.Contains(n)));

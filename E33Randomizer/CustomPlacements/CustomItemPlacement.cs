@@ -38,12 +38,12 @@ public class CustomItemPlacement: CustomPlacementWindowViewModel
         AddExcluded("Consumable");
         CustomPlacementRules.AddRange(new Dictionary<string, IEnumerable<KeyValuePair<string, byte>>>
         {
-            { "Pictos", [new KeyValuePair<string, byte>("Pictos", 1)] },
-            { "Weapon", [new KeyValuePair<string, byte>("Weapon", 1)] },
-            { "Key Item", [new KeyValuePair<string, byte>("Key Item", 1)] },
-            { "Cosmetic", [new KeyValuePair<string, byte>("Cosmetic", 1)] },
-            { "Upgrade Material", [new KeyValuePair<string, byte>("Upgrade Material", 1)] },
-            { "Music Record", [new KeyValuePair<string, byte>("Music Record", 1)] }
+            { "Pictos", [new KeyValuePair<string, byte>("Pictos", 100)] },
+            { "Weapon", [new KeyValuePair<string, byte>("Weapon", 100)] },
+            { "Key Item", [new KeyValuePair<string, byte>("Key Item", 100)] },
+            { "Cosmetic", [new KeyValuePair<string, byte>("Cosmetic", 100)] },
+            { "Upgrade Material", [new KeyValuePair<string, byte>("Upgrade Material", 100)] },
+            { "Music Record", [new KeyValuePair<string, byte>("Music Record", 100)] }
         });
         FrequencyAdjustments.AddRange( new Dictionary<string, byte>{
             { "Cut Content Items", 50 },

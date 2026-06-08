@@ -214,7 +214,7 @@ namespace Tests
                 ["d"] = 0.35f
             };
 
-            FrozenSet<string> banned = ["b"];
+            List<string> banned = ["b"];
             
             var pickedCount = new Dictionary<string, int>
             {

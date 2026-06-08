@@ -40,17 +40,17 @@ public class CustomSkillPlacement: CustomPlacementWindowViewModel
         AddNotRandomized("Consumables");
         CustomPlacementRules.AddRange(new Dictionary<string, IEnumerable<KeyValuePair<string, byte>>>
         {
-            { "Gustave's Skills", [new KeyValuePair<string, byte>("Gustave's Skills", 1)] },
-            { "Lune's Gradient Skills", [new KeyValuePair<string, byte>("Lune's Gradient Skills", 1)] },
-            { "Lune's Non-gradient Skills", [new KeyValuePair<string, byte>("Lune's Non-gradient Skills", 1)] },
-            { "Maelle's Gradient Skills", [new KeyValuePair<string, byte>("Maelle's Gradient Skills", 1)] },
-            { "Maelle's Non-gradient Skills", [new KeyValuePair<string, byte>("Maelle's Non-gradient Skills", 1)] },
-            { "Monoco's Gradient Skills", [new KeyValuePair<string, byte>("Monoco's Gradient Skills", 1)] },
-            { "Monoco's Non-gradient Skills", [new KeyValuePair<string, byte>("Monoco's Non-gradient Skills", 1)] },
-            { "Verso's Gradient Skills", [new KeyValuePair<string, byte>("Verso's Gradient Skills", 1)] },
-            { "Verso's Non-gradient Skills", [new KeyValuePair<string, byte>("Verso's Non-gradient Skills", 1)] },
-            { "Sciel's Gradient Skills", [new KeyValuePair<string, byte>("Sciel's Gradient Skills", 1)] },
-            { "Sciel's Non-gradient Skills", [new KeyValuePair<string, byte>("Sciel's Non-gradient Skills", 1)] }
+            { "Gustave's Skills", [new KeyValuePair<string, byte>("Gustave's Skills", 100)] },
+            { "Lune's Gradient Skills", [new KeyValuePair<string, byte>("Lune's Gradient Skills", 100)] },
+            { "Lune's Non-gradient Skills", [new KeyValuePair<string, byte>("Lune's Non-gradient Skills", 100)] },
+            { "Maelle's Gradient Skills", [new KeyValuePair<string, byte>("Maelle's Gradient Skills", 100)] },
+            { "Maelle's Non-gradient Skills", [new KeyValuePair<string, byte>("Maelle's Non-gradient Skills", 100)] },
+            { "Monoco's Gradient Skills", [new KeyValuePair<string, byte>("Monoco's Gradient Skills", 100)] },
+            { "Monoco's Non-gradient Skills", [new KeyValuePair<string, byte>("Monoco's Non-gradient Skills", 100)] },
+            { "Verso's Gradient Skills", [new KeyValuePair<string, byte>("Verso's Gradient Skills", 100)] },
+            { "Verso's Non-gradient Skills", [new KeyValuePair<string, byte>("Verso's Non-gradient Skills", 100)] },
+            { "Sciel's Gradient Skills", [new KeyValuePair<string, byte>("Sciel's Gradient Skills", 100)] },
+            { "Sciel's Non-gradient Skills", [new KeyValuePair<string, byte>("Sciel's Non-gradient Skills", 100)] }
         });
         FinalReplacementFrequencies = new Dictionary<string, Dictionary<string, float>>();
     }

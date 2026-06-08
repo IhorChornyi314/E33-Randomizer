@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Collections;
+using System.Text;
 
 namespace E33Randomizer.RandomizationLogic;
 
@@ -15,6 +16,8 @@ public abstract class BaseController
     public abstract string ConvertToTxt();
     public abstract void Reset();
     
+    private static readonly IComparer Comparer = new CaseInsensitiveComparer();
+    
     public void ReadTxt(string filename)
     {
         InitFromTxt(File.ReadAllText(filename));
@@ -24,5 +27,12 @@ public abstract class BaseController
     {
         var result = ConvertToTxt();
         File.WriteAllText(filename, result, Encoding.UTF8);
+    }
+   
+    protected static string[] GetFilesSorted(string path)
+    {
+        var files = Directory.GetFiles(path);
+        files.Sort(Comparer.Compare);
+        return files;
     }
 }

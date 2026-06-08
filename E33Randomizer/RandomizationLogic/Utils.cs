@@ -1,5 +1,4 @@
-﻿using System.Collections.Frozen;
-using E33Randomizer.ObjectDatum;
+﻿using E33Randomizer.ObjectDatum;
 using UAssetAPI;
 using UAssetAPI.UnrealTypes;
 
@@ -7,7 +6,7 @@ namespace E33Randomizer.RandomizationLogic;
 
 public static class Utils
 {
-    public static string GetRandomWeighted(Dictionary<string, float> weights, FrozenSet<string>? banned = null)
+    public static string GetRandomWeighted(Dictionary<string, float> weights, List<string>? banned = null)
     {
         
         float total = 0;
@@ -36,7 +35,7 @@ public static class Utils
         return weights.Keys.LastOrDefault(k => !banned?.Contains(k) ?? true) ?? string.Empty;
     }
     
-    public static string GetRandomWeighted(Dictionary<string, byte> weights, FrozenSet<string>? banned = null)
+    public static string GetRandomWeighted(Dictionary<string, byte> weights, List<string>? banned = null)
     {
         float total = 0;
         if (banned != null)
