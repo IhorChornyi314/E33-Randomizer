@@ -13,10 +13,18 @@
         <IsAotCompatible>false</IsAotCompatible>
         <JsonSerializerIsReflectionEnabledByDefault>false</JsonSerializerIsReflectionEnabledByDefault>
         <Version>0.0.0-local</Version>
-        <!-- Sadly right now, AoT won't work because the  UAssetAPI is still using Newtonsoft.Json -->
+        <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+        <!-- Sadly right now, AoT won't work because the  UAssetAPI is still using Newtonsoft.Json and ObservableValidator is not Ao -->
 <!--        <PublishAot>true</PublishAot>-->
     </PropertyGroup>
+    <PropertyGroup Condition=" $([MSBuild]::IsOSPlatform('Linux'))">
+        <RuntimeIdentifier>linux-x64</RuntimeIdentifier>
+    </PropertyGroup>
 
+    <PropertyGroup Condition=" $([MSBuild]::IsOSPlatform('Windows'))">
+        <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    </PropertyGroup>
+    
     <ItemGroup>
       <PackageReference Include="GenericReader" Version="2.3.0" />
         <PackageReference Include="Avalonia" Version="12.0.3" />
@@ -37,13 +45,13 @@
     <ItemGroup>
         <ProjectReference Include="..\external\UAssetAPI\UAssetAPI\UAssetAPI.csproj" />
     </ItemGroup>
-    <ItemGroup Condition="'$(RuntimeIdentifier)' == 'linux-x64'">
-        <Content Include="..\external\retoc" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
-        <Content Include="..\external\uesave" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    <ItemGroup Condition="'$(RuntimeIdentifier)' == 'linux-x64' Or ('$(RuntimeIdentifier)' == '' And $([MSBuild]::IsOSPlatform('Linux')))">
+        <Content Include="..\external\retoc" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" Visible="false" />
+        <Content Include="..\external\uesave" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" Visible="false" />
     </ItemGroup>
-    <ItemGroup Condition="'$(RuntimeIdentifier)' == 'win-x64'">
-        <Content Include="..\external\retoc.exe" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
-        <Content Include="..\external\uesave.exe" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    <ItemGroup Condition="'$(RuntimeIdentifier)' == 'win-x64'Or ('$(RuntimeIdentifier)' == '' And $([MSBuild]::IsOSPlatform('Windows')))">
+        <Content Include="..\external\retoc.exe" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" Visible="false" />
+        <Content Include="..\external\uesave.exe" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" Visible="false" />
     </ItemGroup>
     <ItemGroup>
         <AvaloniaResource Include="Assets\Fonts\*" />
@@ -74,6 +82,6 @@
     </Target>
     
     <Target Name="EnsureRetocAndUesave" BeforeTargets="Build">
-        <Exec Condition="!Exists('..\external\retoc') Or !Exists('..\external\retoc.exe') Or !Exists('..\external\uesave') Or !Exists('..\external\uesave.exe')" Command="cd ../ScriptsAndHelpers; dotnet FetchExternalApplications.cs" />
+        <Exec Condition="!Exists('..\external\retoc') Or !Exists('..\external\retoc.exe') Or !Exists('..\external\uesave') Or !Exists('..\external\uesave.exe')" WorkingDirectory="$(SolutionDir)ScriptsAndHelpers" Command="dotnet FetchExternalApplications.cs" />
     </Target>
 </Project>

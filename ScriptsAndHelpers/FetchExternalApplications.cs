@@ -40,9 +40,13 @@ foreach (var externalAssembly in externalItems)
         await File.WriteAllBytesAsync(outputPath, bytes);
         
         Console.WriteLine("Verifying checksum");
-        byte[] hashBytes = SHA256.HashData(File.OpenRead(outputPath));
+        string checksum;
+        await using (var stream = File.OpenRead(outputPath))
+        {
+            byte[] hashBytes = SHA256.HashData(stream);
+            checksum = Convert.ToHexString(hashBytes).ToLowerInvariant();
+        }
 
-        string checksum = Convert.ToHexString(hashBytes).ToLowerInvariant();
 
         if (checksum != externalAssemblyDownloadPath.Sha256)
         {
@@ -55,13 +59,14 @@ foreach (var externalAssembly in externalItems)
         Console.WriteLine($"Extracting {externalAssemblyDownloadPath.FileToExtract} from {outputPath}");
 
         await ExtractSingleFile(outputPath, externalAssemblyDownloadPath.FileToExtract, Path.Combine("..", "external", externalAssemblyDownloadPath.FileToExtract));
+        Thread.Sleep(1000);
         File.Delete(outputPath);
     }
 }
 
 static async Task ExtractSingleFile(string path, string targetEntryName, string destinationPath)
 {
-    using Stream stream = File.OpenRead(path);
+    await using Stream stream = File.OpenRead(path);
     await using var reader = await ReaderFactory.OpenAsyncReader(stream);
     while (await reader.MoveToNextEntryAsync())
     {
@@ -70,7 +75,7 @@ static async Task ExtractSingleFile(string path, string targetEntryName, string 
         var keyWithoutPath = reader.Entry.Key.Split('/').Last();
         if (keyWithoutPath == targetEntryName)
         {
-            using var outputStream = File.Create(destinationPath);
+            await using var outputStream = File.Create(destinationPath);
             await reader.WriteEntryToAsync(outputStream);
         }
     }

@@ -29,7 +29,25 @@ Enemy rando overrides `DT_jRPG_Encounters`, `DT_jRPG_Encounters_CleaTower`, `DT_
 
 ## Building Locally
 
-Building the application locally is as simple as cloning this repo, opening up the `E33Randomizer.sln`, and building.  The external tools are automatically downloaded from their respective sources with known valid versions.
+* Building the application locally is as simple as cloning this repo, opening up the `E33Randomizer.sln`, and building.  The external tools are automatically downloaded from their respective sources with known valid versions.
+* [Optional] The [Avalonia Extensions](https://docs.avaloniaui.net/tools/ide/) for your IDE so that Control/Window previews work without running the app.
+* [Optional] The [AvaloniaUI Developer Tools](https://docs.avaloniaui.net/tools/developer-tools/installation) are also useful to be able to inspect the UI during runtime.
+
+### Developer Guidlines
+
+* All user displayed strings (other than the presets and item/skill/character/location data) are found in the `Resources.resx` file.  While this application is not currently localized, due to the international love of the game, this keeps that door open for the future.  Please do not embed user displayed strings directly into the code or axaml files. 
+* All the Json handling is done via `System.Text.Json` within the main `E33Randomizer` project, do not use Newtonsoft.Json.  If UAssetAPI ever moves to being AotCompatible, It'd e nice to do that here too and NewtonsoftJson is never going to be AoT Compatible.
+* When possible avoid locally styling single items and rely on setting the styles in [Styles.axaml](E33Randomizer/Styles.axaml) or [UIControls](E33Randomizer/UIControls).  This ensures that the app remains visually consistent.
+* In general, prefer to use ViewModels for binding rather than binding interactions in the code behinds for the `Windows` or `UserControls`
+* 
+
+## Publishing a Build Locally
+
+* Open the terminal
+* Navigate to the [ScriptsAndHelpers](./ScriptsAndHelpers/) folder
+* Run `./publish.bat versionNumber` (or `./publish.sh versionNumber` when on linux)
+  * This will create both the Windows (.zip) and Linux (tar.gz) archives for the release in the repository root folder.  It will publish both regardless of if you're building in Windows or Linux.
+  * Note that the `versionNumber` must be a validate .Net version such as `1.2.3` or `1.2.3-alpha`.  `1.2.3a` is not valid. 
 
 ## Other Notices
 

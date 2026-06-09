@@ -204,7 +204,7 @@
     </data>
 
     <data name="Randomize_Enemies_Button_EditEnemyPlacements" xml:space="preserve">
-        <value>Edit Enemy Placements</value>
+        <value>Customize Enemy Placements</value>
     </data>
     <data name="Randomize_Enemies_Button_EditIndividualEncounters" xml:space="preserve">
         <value>Edit Individual Encounters</value>

@@ -29,7 +29,7 @@ set "lastDir=%cd%"
 
 cd E33Randomizer\bin\Release\net10.0\win-x64\publish
 echo "Creating $lastDir/%WINFILE%"
-zip -r %lastDir%/%WINFILE% *
+tar.exe -acf %lastDir%/%WINFILE% *
 cd %lastDir%
 
 cd E33Randomizer\bin\Release\net10.0\linux-x64\publish
