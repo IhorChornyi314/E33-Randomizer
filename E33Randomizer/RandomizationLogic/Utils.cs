@@ -34,33 +34,7 @@ public static class Utils
         }
         return weights.Keys.LastOrDefault(k => !banned?.Contains(k) ?? true) ?? string.Empty;
     }
-    
-    public static string GetRandomWeighted(Dictionary<string, byte> weights, List<string>? banned = null)
-    {
-        float total = 0;
-        if (banned != null)
-        {
-            foreach (var weight in weights)
-            {
-                if (!banned.Contains(weight.Key))
-                    total += weight.Value;
-            }
-        }
 
-        var chance = RandomizerLogic.rand.NextSingle() * total;
-        float running = 0;
-        foreach (var weight in weights)
-        {
-            if (banned?.Contains(weight.Key) ?? false) continue;
-            running += weight.Value;
-            if (running >= chance && weight.Value > 0.00001)
-            {
-                return weight.Key;
-            }
-        }
-        return weights.Keys.LastOrDefault(k => !banned?.Contains(k) ?? true) ?? string.Empty;
-    }
-    
     public static T Pick<T>(List<T> from)
     {
         return from[RandomizerLogic.rand.Next(from.Count)];
