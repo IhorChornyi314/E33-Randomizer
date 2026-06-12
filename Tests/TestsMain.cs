@@ -1,5 +1,4 @@
-﻿using System.Collections.Frozen;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using AutoFixture;
 using E33Randomizer;
 using E33Randomizer.CustomPlacements;
@@ -21,8 +20,10 @@ namespace Tests
         [SetUp]
         public void SetUp()
         {
-            //TODO Fix this to be better.
-            Environment.SetEnvironmentVariable("E33RandoDataPath", "/home/iamwyza/Source/E33-Randomizer/E33Randomizer/Data");
+            if (string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("E33RandoDataPath")))
+            {
+                Environment.SetEnvironmentVariable("E33RandoDataPath", Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location)!, "../../../../E33Randomizer/Data"));
+            }
             _fixture = new Fixture();
             _fixture.Customize<int>(c => c.FromFactory(() => new Random().Next(1, 100)));
             _fixture.Customize<SettingsViewModel>(c => c.Without(x => x.CurrentPage).Without(x => x.SelectedIndex));

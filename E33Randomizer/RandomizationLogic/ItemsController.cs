@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Text;
 using Avalonia.Collections;
 using E33Randomizer.ItemSources;
 using E33Randomizer.ObjectDatum;
-using Newtonsoft.Json;
 using UAssetAPI;
 using UAssetAPI.ExportTypes;
 using UAssetAPI.PropertyTypes.Objects;

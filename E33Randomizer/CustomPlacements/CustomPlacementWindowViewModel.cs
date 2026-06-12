@@ -1,9 +1,7 @@
-using System.Collections.Frozen;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text.Json;
 using Avalonia.Collections;
-using AvaloniaEdit.Utils;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using E33Randomizer.ObjectDatum;
