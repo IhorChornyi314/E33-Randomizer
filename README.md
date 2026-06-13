@@ -35,7 +35,7 @@ Enemy rando overrides `DT_jRPG_Encounters`, `DT_jRPG_Encounters_CleaTower`, `DT_
 
 ### Developer Guidlines
 
-- All user displayed strings (other than the presets and item/skill/character/location data) are found in the `Resources.resx` file.  While this application is not currently localized, due to the international love of the game, this keeps that door open for the future.  Please do not embed user displayed strings directly into the code or axaml files. 
+- All user displayed strings (other than the presets and item/skill/character/location data) are found in the `Resources.resx` file.  While this application is not currently localized, due to the international love of the game, this keeps that door open for the future.  Please do not embed user displayed strings directly into the code or axaml files.
 - All the Json handling is done via `System.Text.Json` within the main `E33Randomizer` project, do not use Newtonsoft.Json.  If UAssetAPI ever moves to being AotCompatible, It'd e nice to do that here too and NewtonsoftJson is never going to be AoT Compatible.
 - When possible avoid locally styling single items and rely on setting the styles in [Styles.axaml](E33Randomizer/Styles.axaml) or [UIControls](E33Randomizer/UIControls).  This ensures that the app remains visually consistent.
 - In general, prefer to use ViewModels for binding rather than binding interactions in the code behinds for the `Windows` or `UserControls`
