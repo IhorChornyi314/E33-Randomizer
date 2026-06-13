@@ -8,36 +8,36 @@
     ],
     "CustomPlacement": {
         "Pictos": {
-            "Pictos": 1.0
+            "Pictos": 100
         },
         "Weapon": {
-            "Weapon": 1.0
+            "Weapon": 100
         },
         "Key Item": {
-            "Key Item": 1.0
+            "Key Item": 100
         },
         "Cosmetic": {
-            "Cosmetic": 0.8,
-            "Pictos": 0.2
+            "Cosmetic": 80,
+            "Pictos": 20
         },
         "Upgrade Material": {
-            "Upgrade Material": 0.8,
-            "Pictos": 0.2
+            "Upgrade Material": 80,
+            "Pictos": 20
         },
         "Music Record": {
-            "Music Record": 0.8,
-            "Pictos": 0.2
+            "Music Record": 80,
+            "Pictos": 20
         }
     },
     "FrequencyAdjustments": {
-    "Cut Content Items": 0.5,
-    "Revive Tint Shard (Upgrade Material)": 0.1,
-    "Energy Tint Shard (Upgrade Material)": 0.1,
-    "Healing Tint Shard (Upgrade Material)": 0.1,
-    "Shape of Health (Upgrade Material)": 0.1,
-    "Shape of Energy (Upgrade Material)": 0.1,
-    "Shape of Life (Upgrade Material)": 0.1,
-    "Chroma Elixir Shard (Upgrade Material)": 0.1,
-    "Perfect Chroma Catalyst (Upgrade Material)": 0.4
+    "Cut Content Items": 50,
+    "Revive Tint Shard (Upgrade Material)": 10,
+    "Energy Tint Shard (Upgrade Material)": 10,
+    "Healing Tint Shard (Upgrade Material)": 10,
+    "Shape of Health (Upgrade Material)": 10,
+    "Shape of Energy (Upgrade Material)": 10,
+    "Shape of Life (Upgrade Material)": 10,
+    "Chroma Elixir Shard (Upgrade Material)": 10,
+    "Perfect Chroma Catalyst (Upgrade Material)": 40
   }
 }

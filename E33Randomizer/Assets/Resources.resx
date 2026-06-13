@@ -1,0 +1,1043 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+            
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="Terminology_Encounter" xml:space="preserve">
+        <value>Encounter: An encounter is any fight in the game. That includes gimmick fights such as Sophie’s dodge tutorial in Lumiere or helping the white Troubadour learn to play.</value>
+    </data>
+    <data name="Terminology_EncounterSize" xml:space="preserve">
+        <value>Encounter size: The number of enemies in the encounter.</value>
+    </data>
+    <data name="Terminology_EnemyArchetype" xml:space="preserve">
+        <value>Enemy archetype: Internally, all enemies are divided into eight types called archetypes, which govern their stats. These archetypes include four regular enemy types - Elusive (flying), Weak, Strong, and Regular, as well as Elite (miniboss), Boss, Alpha (chromatic), and Petank.</value>
+    </data>
+    <data name="Terminology_EnemyCategory" xml:space="preserve">
+        <value>Enemy category: These were created by me to make it easier to work with the mod. You can find the full list in the mod.</value>
+    </data>
+    <data name="Terminology_EnemyLoot" xml:space="preserve">
+        <value>Enemy loot: All drops that are seen in the Victory screen are tied specifically to the enemies you’ve defeated in the fight, and not the encounter itself. Some of these drops are invisible, such as the item that any merchant drops after you defeat them in battle that allows you to buy the special inventory. Another notable example is Maelle’s paintress skills unlock, which is considered a loot drop from the Paintress enemy.</value>
+    </data>
+    <data name="Terminology_Check" xml:space="preserve">
+        <value>Check: Anything in the game that results in the player getting an item. Examples include enemy drops, map pick-ups, or items obtained in a dialogue, among others</value>
+    </data>
+    <data name="Terminology_CheckSizeNumber" xml:space="preserve">
+        <value>Check size/number of items: The number of individual items in the check.</value>
+    </data>
+    <data name="Terminology_ItemQuantity" xml:space="preserve">
+        <value>Item quantity: Some items, such as Chroma Catalysts or Recoat can have their quantities configured in the randomizer. An example for both of these concepts would be if a Lancelier got randomized to drop a Baguette, a Swimsuit, a Bald haircut, and 5 Perfect Chroma Catalysts - the check size is 4, and the quantities of the items are 1, 1, 1, and 5.</value>
+    </data>
+    <data name="Terminology_MerchantUnlocks" xml:space="preserve">
+        <value>Merchant unlocks: Most merchants in the game have some items they are only willing to sell after you’ve defeated them in battle. Internally, this works by checking whether you have a hidden item that drops from the merchant enemy. These items are called Merchant Unlocks and are a separate category, not randomized by default. </value>
+    </data>
+
+    <!-- General -->
+    <data name="Button_Close" xml:space="preserve">
+        <value>Close</value>
+    </data>
+    <data name="Button_Ok" xml:space="preserve">
+        <value>Ok</value>
+    </data>
+    <data name="Button_Cancel" xml:space="preserve">
+        <value>Cancel</value>
+    </data>
+    <data name="Button_Tooltip_CopyToClipboard">
+        <value>Copy to Clipboard</value>
+    </data>
+    
+
+    <data name="And" xml:space="preserve">
+        <value> and </value>
+    </data>
+
+    <data name="Remove" xml:space="preserve">
+        <value>Remove</value>
+    </data>
+    <data name="UnableToParseJson_Exception" xml:space="preserve">
+        <value>Unable to parse json.</value>
+    </data>
+    <data name="OnlyDesktopModeSupported_Exception" xml:space="preserve">
+        <value>Only desktop mode is supported</value>
+    </data>
+
+    <data name="Dialog_WindowNotVisibleException" xml:space="preserve">
+        <value>Window must be visible.</value>
+    </data>
+    
+    <!-- Validation -->
+    <data name="Validation_Required" xml:space="preserve">
+        <value>Value is Required</value>
+    </data>
+    <data name="Validation_Null" xml:space="preserve">
+        <value>Value is null</value>
+    </data>
+    <data name="Validation_NotString" xml:space="preserve">
+        <value>Value is not string</value>
+    </data>
+    <data name="Validation_MinLength_Length" xml:space="preserve">
+        <value>Length must be at least {Min}.</value>
+    </data>
+    <data name="Validation_Sibling_NotISibling" xml:space="preserve">
+        <value>Object is not ISiblingCheck</value>
+    </data>
+    <data name="Validation_Sibling_AlreadyExists" xml:space="preserve">
+        <value>Value already exists</value>
+    </data>
+    
+    <!-- RandomizeEnemiesTab -->
+    <data name="Randomize_Enemies_RandomizeEnemies" xml:space="preserve">
+        <value>Randomize enemies</value>
+    </data>
+    <data name="Randomize_Enemies_Tooltip_RandomizeEnemies" xml:space="preserve">
+        <value>Whether or not the enemies are randomized.</value>
+    </data>
+    
+    <data name="Randomize_Enemies_RandomizeEncounterSizes" xml:space="preserve">
+        <value>Randomize encounter sizes</value>
+    </data>
+    <data name="Randomize_Enemies_Tooltip_RandomizeEncounterSizes" xml:space="preserve">
+        <value>This allows you to override whatever the base number of enemies in an encounter is. As an example, if you select 1 and 3 but not 2, it will make it so that regardless of initial encounter size, it will become either 1 or 3.</value>
+    </data>
+
+    <data name="Randomize_Enemies_ChangeSizeOfEncounters" xml:space="preserve">
+        <value>Randomize size of encounters that don't contain randomized enemies.</value>
+    </data>
+    <data name="Randomize_Enemies_Tooltip_ChangeSizeOfEncounters" xml:space="preserve">
+        <value>If Randomize encounter sizes option is turned on, this will allow you to only change the size of the encounters that you want to randomize. For example, if you want to randomize most of the encounters, but don’t want to change the tutorial Maelle fight, keep this option unchecked to not add any more enemies to the encounter.</value>
+    </data>
+
+
+    <data name="Randomize_Enemies_RandomizeMerchantFights" xml:space="preserve">
+        <value>Randomize merchant fights</value>
+    </data>
+    <data name="Randomize_Enemies_Tooltip_RandomizeMerchantFights" xml:space="preserve">
+        <value>This allows you to control whether the “Fight the Merchant” encounters are at all randomized. This affects the whole encounter, not just the merchant enemy itself.</value>
+    </data>
+    <data name="Randomize_Enemies_RandomizeMerchantFights_Note" xml:space="preserve">
+        <value>Merchants' special wares unlocks and Maelle's paintress skills are considered loot drops. It is recommended that you only disable this if you are also running an item randomizer.</value>
+    </data>
+
+    <data name="Randomize_Enemies_IncludeCutContent" xml:space="preserve">
+        <value>Include cut content (gets overriden by custom placement)</value>
+    </data>
+    <data name="Randomize_Enemies_Tooltip_IncludeCutContent" xml:space="preserve">
+        <value>The game files actually contain a lot of fully-functional cut content enemies, so turning this on will enable you to fight them. It should be noted that while I tried my best to exclude any enemies that completely break the game or make it crash, it is always a risk when dealing with cut content. If anything goes wrong, please use the “Edit Individual Encounter” window to replace them with something that works. Also, be careful when parrying any cut content enemies, but especially Gestral Bullies and Dragoons, as it may cause their AI to freeze.</value>
+    </data>
+    <data name="Randomize_Enemies_IncludeCutContent_Note" xml:space="preserve">
+        <value>Be careful when parrying cut content enemies, as it can break their AI. You can replace broken enemies in Edit Encounters window.</value>
+    </data>
+
+    <data name="Randomize_Enemies_EnableEnemyOnslaught" xml:space="preserve">
+        <value>Enable enemy onslaught</value>
+    </data>
+    <data name="Randomize_Enemies_Tooltip_EnableEnemyOnslaught" xml:space="preserve">
+        <value>This option allows you to add up to 99 additional enemies to every encounter. The game actually has full support for 4-enemy encounters, but anything beyond that will just place all the other enemies in a single spot outside the fighting arena. They will still be able to deal and take damage, but their attacks will not be visible, and you won’t be able to shoot them in free aim. If you choose not to randomize additional enemies, they will just repeat until the set number is reached. Otherwise, they will get randomized after being copied, which makes it so that the new enemies use the same rules as the starting ones.</value>
+    </data>
+    <data name="Randomize_Enemies_EnableEnemyOnslaught_Note" xml:space="preserve">
+        <value>The game has full support for 4 enemies, but the 5th and beyond gets lumped into a single spot outside the fighting arena. They will still function properly except that you won't be able to see their attacks or shoot them.</value>
+    </data>
+    <data name="Randomize_Enemies_EnableEnemyOnslaught_RandomizeAddedEnemies" xml:space="preserve">
+        <value>Randomize added enemies</value>
+    </data>
+    <data name="Randomize_Enemies_EnableEnemyOnslaught_NumberOfAdditionalEnemies" xml:space="preserve">
+        <value>Number of additional enemies:</value>
+    </data>
+    <data name="Randomize_Enemies_EnableEnemyOnslaught_CapEncounterSizesAt" xml:space="preserve">
+        <value>Cap encounter size at:</value>
+    </data>
+
+    <data name="Randomize_Enemies_EnsureEncountersAtLeastOne" xml:space="preserve">
+        <value>Ensure that boss encounters have at least one boss</value>
+    </data>
+    <data name="Randomize_Enemies_Tooltip_EnsureEncountersAtLeastOne" xml:space="preserve">
+        <value>This option makes it so that the encounters that contained a boss enemy in the base game will still contain at least one boss enemy after randomizing. This rule is applied after the initial randomization and ignores Custom Enemy Placement rules.</value>
+    </data>
+
+    <data name="Randomize_Enemies_ReduceBossRepetition" xml:space="preserve">
+        <value>Reduce boss repetition (ignores frequency adjustments)</value>
+    </data>
+    <data name="Randomize_Enemies_Tooltip_ReduceBossRepetition" xml:space="preserve">
+        <value>This option makes it so that whenever a boss enemy is rolled, it is taken from a shuffled pool of bosses rather than completely randomly. This rule is applied after the initial randomization and ignores Custom Enemy Placement rules.</value>
+    </data>
+
+    <data name="Randomize_Enemies_ReplacePhase2Simon" xml:space="preserve">
+        <value>Replace Phase 2 Simon with Phase 1 in mandatory fights until after the Lune tutorial fight</value>
+    </data>
+    <data name="Randomize_Enemies_Tooltip_ReplacePhase2Simon" xml:space="preserve">
+        <value>As Phase 2 Simon has a unique property of wiping your whole party with no counterplay, as well as six times more health than a regular boss would have in his place, this option ensures that you can theoretically beat the game in NG with 99 Simons in all encounters. Enemies like Clea or Bourgeon can also block your progress, so feel free to use the “Edit Individual Encounter” window to replace them.</value>
+    </data>
+    <data name="Randomize_Enemies_Tooltip_ReplacePhase2SimonUntilAfter" xml:space="preserve">
+        <value>Replace Phase 2 Simon with Phase 1 in mandatory fights until after:</value>
+    </data>
+    <data name="Randomize_Enemies_Tooltip_ReplacePhase2SimonUntilAfter_Lune" xml:space="preserve">
+        <value>Lune Tutorial</value>
+    </data>
+    <data name="Randomize_Enemies_Tooltip_ReplacePhase2SimonUntilAfter_Eveque" xml:space="preserve">
+        <value>Eveque</value>
+    </data>
+    <data name="Randomize_Enemies_Tooltip_ReplacePhase2SimonUntilAfter_Goblu" xml:space="preserve">
+        <value>Goblu</value>
+    </data>
+    <data name="Randomize_Enemies_Tooltip_ReplacePhase2SimonUntilAfter_UltimateSakapatate" xml:space="preserve">
+        <value>Ultimate Sakapatate</value>
+    </data>
+    <data name="Randomize_Enemies_Tooltip_ReplacePhase2SimonUntilAfter_GestralTournament" xml:space="preserve">
+        <value>Gestral Tournament</value>
+    </data>
+    <data name="Randomize_Enemies_Tooltip_ReplacePhase2SimonUntilAfter_Never" xml:space="preserve">
+        <value>Never</value>
+    </data>
+
+    <data name="Randomize_Enemies_Button_EditEnemyPlacements" xml:space="preserve">
+        <value>Customize Enemy Placements</value>
+    </data>
+    <data name="Randomize_Enemies_Button_EditIndividualEncounters" xml:space="preserve">
+        <value>Edit Individual Encounters</value>
+    </data>
+    
+    <!-- RandomizeItemsTab -->
+    <data name="Randomize_Items_RandomizeItems" xml:space="preserve">
+        <value>Randomize items</value>
+    </data>
+    <data name="Randomize_Items_MakeEveryItemShowAPickUpNotification" xml:space="preserve">
+        <value>Make every item show a pick up notification</value>
+    </data>
+    <data name="Randomize_Items_IncludeCutContentItems" xml:space="preserve">
+        <value>Include cut content items</value>
+    </data>
+    <data name="Randomize_Items_ReceivePaintedPowerAtTheStartOfActIII" xml:space="preserve">
+        <value>Receive Painted Power at the start of Act III</value>
+    </data>
+    <data name="Randomize_Items_RandomizeStartingWeapons" xml:space="preserve">
+        <value>Randomize starting weapons</value>
+    </data>
+    <data name="Randomize_Items_RandomizeStartingCosmetics" xml:space="preserve">
+        <value>Randomize starting cosmetics</value>
+    </data>
+    <data name="Randomize_Items_RandomizeEsquiesRocksIntoMapPickups" xml:space="preserve">
+        <value>Randomize Esquie's rocks into map pickups</value>
+    </data>
+    <data name="Randomize_Items_LimitEsquiesRocksToOnlyTheirOriginalAreas" xml:space="preserve">
+        <value>Limit Esquie's rocks to only their original areas</value>
+    </data>
+    <data name="Randomize_Items_RandomizeEnemyFeetDrops" xml:space="preserve">
+        <value>Randomize enemy feet drops</value>
+    </data>
+    <data name="Randomize_Items_EnableGearRollsInPrologue" xml:space="preserve">
+        <value>Enable gear rolls in prologue (they will be level 16 and can drastically alter the difficulty)</value>
+    </data>
+    <data name="Randomize_Items_RandomizeGestralBeachRewards" xml:space="preserve">
+        <value>Randomize gestral beach rewards</value>
+    </data>
+    <data name="Randomize_Items_ChangeNumberOfItemsInNonRandomizedChecks" xml:space="preserve">
+        <value>Change number of items in non-randomized checks</value>
+    </data>
+    <data name="Randomize_Items_ReduceKeyItemRepetition" xml:space="preserve">
+        <value>Reduce key item repetition</value>
+    </data>
+    <data name="Randomize_Items_ReduceGearRepetition" xml:space="preserve">
+        <value>Reduce gear repetition</value>
+    </data>
+    <data name="Randomize_Items_MakeAnyOfTheMerchantWaresLockedWithProbability" xml:space="preserve">
+        <value>Make any of the merchant wares locked with probability</value>
+    </data>
+    <data name="Randomize_Items_RandomizeMerchantInventorySizesBetween" xml:space="preserve">
+        <value>Randomize merchant inventory sizes between </value>
+    </data>
+    <data name="Randomize_Items_RandomizeNumberOfLootDropsBetween" xml:space="preserve">
+        <value>Randomize number of loot drops between </value>
+    </data>
+    <data name="Randomize_Items_RandomizeNumberOfTheEndlessTowerRewardsBetween" xml:space="preserve">
+        <value>Randomize number of the Endless Tower rewards between </value>
+    </data>
+    <data name="Randomize_Items_RandomizeNumberOfItemsPerMapPickupBetween" xml:space="preserve">
+        <value>Randomize number of items per map pickup between </value>
+    </data>
+    <data name="Randomize_Items_RandomizeNumberOfCutsceneRewardsBetween" xml:space="preserve">
+        <value>Randomize number of cutscene rewards between </value>
+    </data>
+    <data name="Randomize_Items_RandomizeQuantitiesOfUpgradeMaterialsBetween" xml:space="preserve">
+        <value>Randomize quantities of upgrade materials between </value>
+    </data>
+    <data name="Randomize_Items_Button_CustomizeItemPlacements" xml:space="preserve">
+        <value>Customize Item Placements</value>
+    </data>
+    <data name="Randomize_Items_Button_EditIndividualChecks" xml:space="preserve">
+        <value>Edit Individual Checks</value>
+    </data>
+
+    <data name="Randomize_Items_Tooltip_RandomizeItems" xml:space="preserve">
+        <value>Whether or not the items are randomized.</value>
+    </data>
+    <data name="Randomize_Items_Tooltip_MakeEveryItemShowAPickUpNotification" xml:space="preserve">
+        <value>A lot of items are hidden by default, which could lead to confusion as to what the player actually gets if they are randomized. It is strongly recommended to keep this option on.</value>
+    </data>
+    <data name="Randomize_Items_Tooltip_IncludeCutContentItems" xml:space="preserve">
+        <value>There are about 20 cut content pictos and 14 cut content weapons with varying degrees of functionality, but none of them can break the game or anything. Still, if you do not wish to see them, turn this option off.</value>
+    </data>
+    <data name="Randomize_Items_Tooltip_ReceivePaintedPowerAtTheStartOfActIII" xml:space="preserve">
+        <value>Since the enemies’ drops are now randomized, it is no longer guaranteed that the player will get Painted Power from the last fight of Act II. As such, this option ensures that the player gets it regardless.</value>
+    </data>
+    <data name="Randomize_Items_Tooltip_RandomizeStartingWeapons" xml:space="preserve">
+        <value>Whether the starting equipment of your characters should be random too. This ignores custom item placement.</value>
+    </data>
+    <data name="Randomize_Items_Tooltip_RandomizeStartingCosmetics" xml:space="preserve">
+        <value>Whether the starting equipment of your characters should be random too. This ignores custom item placement.</value>
+    </data>
+    <data name="Randomize_Items_Tooltip_RandomizeEsquiesRocksIntoMapPickups" xml:space="preserve">
+        <value>This option makes it so that you now need to find the rock items scattered on the map before Esquie can use his abilities. The rocks can only be found as a pickup wherever a unique item (weapon, pictos, etc) was originally present. You need to go to camp with the rock in your inventory to unlock them.</value>
+    </data>
+    <data name="Randomize_Items_Tooltip_LimitEsquiesRocksToOnlyTheirOriginalArea" xml:space="preserve">
+        <value>Florrie - Spring Meadows, Flying Waters, Ancient Sanctuary, Esquie’s Nest, Stone Wave Cliffs. Dorrie - Forgotten Battlefield, Old Lumiere. Soarrie - Visages, Sirene, Monolith. Otherwise, the rocks can only be found in the areas they were found in the original game - Stone Wave Cliffs, Old Lumiere, and Monolith, respectively.</value>
+    </data>
+    <data name="Randomize_Items_Tooltip_RandomizeEnemyFeetDrops" xml:space="preserve">
+        <value>While the feet are their own items that can be encountered normally, the underlying game system guaranteed their drops from their respective owners. This setting mixes up the type of feet that the enemies drop - a Chalier can now give Monoco Lampmaster's Sword, for example.</value>
+    </data>
+    <data name="Randomize_Items_Tooltip_EnableGearRollsInPrologue" xml:space="preserve">
+        <value>Due to how the game areas work, the items in the prologue are considered level 16 internally, the same as Lumiere Act III. This option exists to prevent the balance of the game from being completely broken in case the player gets a level 16 weapon or pictos in the prologue. Internally, the mod checks whether the drop would have been a weapon/pictos, and then replaces it with a Chroma Catalyst.</value>
+    </data>
+    <data name="Randomize_Items_Tooltip_RandomizeGestralBeachRewards" xml:space="preserve">
+        <value>Some players understandably prefer not to engage with the gestral beaches, especially if the rewards are not guaranteed to be good. This option exists to prevent them from worrying about it (but not from being silently judged).</value>
+    </data>
+    <data name="Randomize_Items_Tooltip_ChangeNumberOfItemsInNonRandomizedChecks" xml:space="preserve">
+        <value>Similar to the option in the enemy randomizer, this option makes it so that the checks that were configured not to be changed don’t award multiple of the same item.</value>
+    </data>
+    <data name="Randomize_Items_Tooltip_ReduceKeyItemRepetition" xml:space="preserve">
+        <value>This option makes it so that whenever a key item is rolled, it is taken from a shuffled pool of items rather than completely randomly. This rule is applied after the initial randomization and ignores Custom Item Placement rules.</value>
+    </data>
+    <data name="Randomize_Items_Tooltip_MakeAnyOfTheMerchantWaresLocked" xml:space="preserve">
+        <value>This option makes it so that instead of merchants using their base-game locked item statuses, they have them locked with a certain probability. For example, base game Noco has only his first inventory item locked, but if this option is set to 33%, one third of all his items will be locked on average.</value>
+    </data>
+    <data name="Randomize_Items_Tooltip_RandomizeVariousCheckSizes" xml:space="preserve">
+        <value>The set of options changes different checks’ sizes, such as the number of items in a merchant’s inventory or the number of items that are awarded on picking up a shiny on the map.</value>
+    </data>
+    <data name="Randomize_Items_Tooltip_RandomizeQuantitiesOfUpgradeMaterials" xml:space="preserve">
+        <value>Chroma Catalysts, Color of Lumina, and Recoat.</value>
+    </data>
+    
+    <!-- Randomize Skills Tab -->
+    <data name="Randomize_Skills_RandomizeSkills" xml:space="preserve">
+        <value>Randomize skills</value>
+    </data>
+    <data name="Randomize_Skills_ReduceSkillDuplication" xml:space="preserve">
+        <value>Reduce skill duplication</value>
+    </data>
+    <data name="Randomize_Skills_RandomizeSkillUnlockCosts" xml:space="preserve">
+        <value>Randomize skill unlock costs</value>
+    </data>
+    <data name="Randomize_Skills_UnlockFullGustaveSkillTree" xml:space="preserve">
+        <value>Unlock full Gustave skill tree</value>
+    </data>
+    <data name="Randomize_Skills_GuaranteeThatGustaveStartsWithOvercharge" xml:space="preserve">
+        <value>Guarantee that Gustave starts with Overcharge</value>
+    </data>
+    <data name="Randomize_Skills_MakeAllSkillsUnlockedByItemsInsteadOfSkillPoints" xml:space="preserve">
+        <value>Make all skills unlocked by items instead of skill points</value>
+    </data>
+    <data name="Randomize_Skills_RandomizeSkillTreeLinks" xml:space="preserve">
+        <value>Randomize skill tree links</value>
+    </data>
+    <data name="Randomize_Skills_UseFullyRandomNodeLinks" xml:space="preserve">
+        <value>Use fully random node links</value>
+    </data>
+    <data name="Randomize_Skills_ChangeTheNumberOfLinks" xml:space="preserve">
+        <value>Change the number of links</value>
+    </data>
+    <data name="Randomize_Skills_SetTheLinkDensity" xml:space="preserve">
+        <value>Set the link density to</value>
+    </data>
+    <data name="Randomize_Skills_LinksNode" xml:space="preserve">
+        <value>links per node</value>
+    </data>
+
+    <data name="Randomize_Skills_ToolTip_RandomizeSkills" xml:space="preserve">
+        <value>Whether or not the skills are randomized.</value>
+    </data>
+    <data name="Randomize_Skills_ToolTip_ReduceSkillDuplication" xml:space="preserve">
+        <value>Highly recommended. Due to how the rando is designed, the underlying randomization algorithm often creates duplicates. While this is fine for enemy and item randomizers, reducing the skill duplication in the skill tree leads to a much more enjoyable experience.</value>
+    </data>
+    <data name="Randomize_Skills_ToolTip_RandomizeSkillUnlockCosts" xml:space="preserve">
+        <value>Sets the unlock costs of the skill nodes to random values. They are set between 1 and 10 points and always add up to 99.</value>
+    </data>
+    <data name="Randomize_Skills_ToolTip_UnlockFullGustaveSkillTree" xml:space="preserve">
+        <value>This makes all of Gustave’s previously locked skills accessible, although it does not rework them to use Overcharge instead of Perfection.</value>
+    </data>
+    <data name="Randomize_Skills_ToolTip_GuaranteeThatGustaveStartsWithOvercharge" xml:space="preserve">
+        <value>Due to his whole mechanic being reliant on using the Overcharge skill, this option was implemented to make sure that he always has access to it.</value>
+    </data>
+    <data name="Randomize_Skills_ToolTip_MakeAllSkillsUnlockedByItemsInsteadOfSkillPoints" xml:space="preserve">
+        <value>Overhauls the skill tree system to function similarly to base game Monoco’s. Instead of using your skill points to unlock the skills, you will now have to find their corresponding items that are scattered all across the game. Every non-dialogue check has a chance of containing an additional item, which will unlock its respective skill in the skill tree.</value>
+    </data>
+    <data name="Randomize_Skills_ToolTip_RandomizeSkillTreeLinks" xml:space="preserve">
+        <value>Changes the default skill tree layout to a random one. It is guaranteed that you can unlock every skill in the tree.</value>
+    </data>
+    <data name="Randomize_Skills_ToolTip_UseFullyRandomNodeLinks" xml:space="preserve">
+        <value>By default, the randomizer chooses from a curated list of links to avoid clutter and maintain readability of the trees. This option removes the restrictions (but still preserves the fact that every node is reachable).</value>
+    </data>
+    <data name="Randomize_Skills_ToolTip_ChangeTheNumberOfLinks" xml:space="preserve">
+        <value>The randomizer will do its best to make sure that the number of links from each node will be within these parameters, but that is not always possible.</value>
+    </data>
+    <data name="Randomize_Skills_ToolTip_SetTheLinkDensity" xml:space="preserve">
+        <value>This parameter controls how many links will be in the tree overall, where 0 means that there will be just enough for the whole tree to be unlockable, and 100 means that every node will have the maximum amount of links specified in the setting above.</value>
+    </data>
+
+    <data name="Randomize_Skills_Button_CustomizeItemPlacements" xml:space="preserve">
+        <value>Customize Skills Placements</value>
+    </data>
+    <data name="Randomize_Skills_Button_EditIndividualSkillTrees" xml:space="preserve">
+        <value>Edit Individual Skill Trees</value>
+    </data>
+    
+    <!-- RandomizeLocationsTab -->
+
+    
+    <data name="Randomize_Locations_Button_CustomizeLocationPlacements" xml:space="preserve">
+        <value>Customize Location Placements</value>
+    </data>
+    <data name="Randomize_Locations_Button_EditIndividualLocations" xml:space="preserve">
+        <value>Edit Individual Locations</value>
+    </data>
+    <data name="Randomize_Locations_RandomizeLocations" xml:space="preserve">
+        <value>Randomize Locations</value>
+    </data>
+    <data name="Randomize_Locations_RescaleLocations" xml:space="preserve">
+        <value>Re-scale locations</value>
+    </data>
+    <data name="Randomize_Locations_SetScaleModifier" xml:space="preserve">
+        <value>Set the scaling modifier to</value>
+    </data>
+    <data name="Randomize_Locations_RescaleOptionalAreas" xml:space="preserve">
+        <value>Re-scale optional areas</value>
+    </data>
+    <data name="Randomize_Locations_RescaleCharacters" xml:space="preserve">
+        <value>Re-scale characters</value>
+    </data>
+    <data name="Randomize_Locations_RandomizeStartingLocation" xml:space="preserve">
+        <value>Randomize starting location</value>
+    </data>
+    <data name="Randomize_Locations_RandomizeManorDoors" xml:space="preserve">
+        <value>Randomize manor doors</value>
+    </data>
+    <data name="Randomize_Locations_RandomizePaintingWorkshopEntrances" xml:space="preserve">
+        <value>SRandomize painting workshop entrances</value>
+    </data>
+    <data name="Randomize_Locations_RandomizeCutsceneTeleports" xml:space="preserve">
+        <value>Randomize cutscene teleports</value>
+    </data>
+    <data name="Randomize_Locations_RandomizeGestralBeaches" xml:space="preserve">
+        <value>Randomize gestral beaches</value>
+    </data>
+
+    <data name="Randomize_Locations_Tooltip_RandomizeLocations" xml:space="preserve">
+        <value>TRANSLATION_MISSING</value>
+    </data>
+    <data name="Randomize_Locations_Tooltip_RescaleLocations" xml:space="preserve">
+         <value>TRANSLATION_MISSING</value>
+    </data>
+    <data name="Randomize_Locations_Tooltip_SetScaleModifier" xml:space="preserve">
+         <value>TRANSLATION_MISSING</value>
+    </data>
+    <data name="Randomize_Locations_Tooltip_RescaleOptionalAreas" xml:space="preserve">
+         <value>TRANSLATION_MISSING</value>
+    </data>
+    <data name="Randomize_Locations_Tooltip_RescaleCharacters" xml:space="preserve">
+         <value>TRANSLATION_MISSING</value>
+    </data>
+    <data name="Randomize_Locations_Tooltip_RandomizeStartingLocation" xml:space="preserve">
+         <value>TRANSLATION_MISSING</value>
+    </data>
+    <data name="Randomize_Locations_Tooltip_RandomizeManorDoors" xml:space="preserve">
+         <value>TRANSLATION_MISSING</value>
+    </data>
+    <data name="Randomize_Locations_Tooltip_RandomizePaintingWorkshopEntrances" xml:space="preserve">
+         <value>TRANSLATION_MISSING</value>
+    </data>
+    <data name="Randomize_Locations_Tooltip_RandomizeCutsceneTeleports" xml:space="preserve">
+         <value>TRANSLATION_MISSING</value>
+    </data>
+    <data name="Randomize_Locations_Tooltip_RandomizeGestralBeaches" xml:space="preserve">
+         <value>TRANSLATION_MISSING</value>
+    </data>
+    
+    <!-- Misc Tab -->
+
+    <data name="Misc_SaveFile_Header">
+        <value>Save File Patching</value>
+    </data>
+
+
+    <data name="Misc_SaveFile_AddCounters_Description" xml:space="preserve">
+        <value>It is recommended that you patch your save file to gain access to Jump and Gradient Counters if you don't have those already.
+
+
+They are located in {0} and are named {1}.
+
+There's also a Backup folder that contains all of your "Load Previous Saves" saves.
+Simply press the button and choose the save file that you want to patch.</value>
+    </data>
+    <data name="Misc_SaveFile_Button_AddCounters">
+        <value>Add counters to save file</value>
+    </data>
+    <data name="Misc_SaveFile_FixCurtain_Description" xml:space="preserve">
+        <value>If you have triggered the second phase of Act III Renoir, then the curtain in Lumiere's Opera House will be closed, preventing you from finishing the game.
+
+Use this button to fix that.</value>
+    </data>
+    <data name="Misc_SaveFile_Button_FixCurtains">
+        <value>Fix curtains in save file</value>
+    </data>
+    <data name="Misc_ErrorPatching">
+        <value>Error patching: {0}</value>
+    </data>
+    <data name="Misc_PatchingError">
+        <value>Patching Error</value>
+    </data>
+    <data name="Misc_SelectAFile">
+        <value>Select a File</value>
+    </data>
+    <data name="Misc_SAVFilesSav">
+        <value>SAV files (*.sav)</value>
+    </data>
+    <data name="Misc_AllFiles">
+        <value>All Files</value>
+    </data>
+    <data name="Misc_SaveFilePatched">
+        <value>Save File Patched!</value>
+    </data>
+    <data name="Misc_Patched">
+        <value>Patched</value>
+    </data>
+    <data name="Misc_Error">
+        <value>Error</value>
+    </data>
+    <!-- Main -->
+
+
+    <data name="Main_Tab_EnemyRandomizer" xml:space="preserve">
+        <value>Enemy Randomizer</value>
+    </data>
+    <data name="Main_Tab_ItemRandomizer" xml:space="preserve">
+        <value>Item Randomizer</value>
+    </data>
+    <data name="Main_Tab_SkillRandomizer" xml:space="preserve">
+        <value>Skill Randomizer</value>
+    </data>
+    <data name="Main_Tab_LocationRandomizer" xml:space="preserve">
+        <value>Location Randomizer</value>
+    </data>
+    <data name="Main_Tab_Misc" xml:space="preserve">
+        <value>Misc</value>
+    </data>
+
+    <data name="Main_Button_Save" xml:space="preserve">
+        <value>Save Settings</value>
+    </data>
+    <data name="Main_Button_Load" xml:space="preserve">
+        <value>Load Settings</value>
+    </data>
+    <data name="Main_Button_GenerateAndPack" xml:space="preserve">
+        <value>Generate and Pack</value>
+    </data>
+    <data name="Main_Seed" xml:space="preserve">
+        <value>Seed:</value>
+    </data>
+    <data name="Main_Title">
+        <value>Expedition 33 Randomizer</value>
+    </data>
+
+    <data name="MainWindow_ErrorStarting" xml:space="preserve">
+        <value>Error starting: {0}</value>
+    </data>
+    <data name="MainWindow_UnableToFindCustomPlacementWindow" xml:space="preserve">
+        <value>Unable to find Custom Placement Window for {0}</value>
+    </data>
+    <data name="MainWindow_ErrorLoadingCustomPlacementWindow" xml:space="preserve">
+        <value>Error Loading Custom Placement Window: {0}</value>
+    </data>
+    <data name="MainWindow_Error" xml:space="preserve">
+        <value>Error</value>
+    </data>
+    <data name="MainWindow_UnableToFindEditObjectController" xml:space="preserve">
+        <value>Unable to find Edit Object Controller for {0}</value>
+    </data>
+    <data name="MainWindow_ErrorLoadingEditObjectsWindow" xml:space="preserve">
+        <value>Error Loading Edit Objects Window: {0}</value>
+    </data>
+    <data name="MainWindow_GenerationDone" xml:space="preserve">
+        <value>Generation done! You can find the mod in the rand_{0} folder.&#xD;&#xD;Used Seed: {0}</value>
+    </data>
+    <data name="MainWindow_GenerationSummary" xml:space="preserve">
+        <value>Generation Summary</value>
+    </data>
+    <data name="MainWindow_ErrorGenerating" xml:space="preserve">
+        <value>Error generating: {0}</value>
+    </data>
+    <data name="MainWindow_GeneratingError" xml:space="preserve">
+        <value>Generating Error</value>
+    </data>
+    <data name="MainWindow_SelectAFile" xml:space="preserve">
+        <value>Select a File</value>
+    </data>
+    <data name="MainWindow_FileFilterDescriptionJson" xml:space="preserve">
+        <value>JSON files (*.json)</value>
+    </data>
+    <data name="MainWindow_AllFiles" xml:space="preserve">
+        <value>All Files</value>
+    </data>
+    <data name="MainWindow_ErrorLoadingPreset" xml:space="preserve">
+        <value>Error loading preset: {0}</value>
+    </data>
+    <data name="MainWindow_LoadError" xml:space="preserve">
+        <value>Load Error</value>
+    </data>
+    <data name="MainWindow_SavePreset" xml:space="preserve">
+        <value>Save Preset</value>
+    </data>
+    <data name="MainWindow_PresetSavedSuccessfully" xml:space="preserve">
+        <value>Preset saved successfully!</value>
+    </data>
+    <data name="MainWindow_SaveComplete" xml:space="preserve">
+        <value>Save Complete</value>
+    </data>
+    <data name="MainWindow_ErrorSavingPreset" xml:space="preserve">
+        <value>Error saving preset: {0}</value>
+    </data>
+    <data name="MainWindow_ErrorLoading" xml:space="preserve">
+        <value>Error loading{0}: {1}</value>
+    </data>
+    <data name="MainWindow_ErrorSaving" xml:space="preserve">
+        <value>Error saving{0}: {1}</value>
+    </data>
+    
+    
+    <!-- Custom Placements -->
+    <data name="CustomPlacement_Title" xml:space="preserve">
+        <value>Custom Placements</value>
+    </data>
+
+    <data name="CustomPlacement_LoadCustomPreset" xml:space="preserve">
+        <value>Load Custom Preset</value>
+    </data>
+    <data name="CustomPlacement_JSONFilesJson" xml:space="preserve">
+        <value>JSON files (*.json)</value>
+    </data>
+    <data name="CustomPlacement_AllFiles" xml:space="preserve">
+        <value>All Files</value>
+    </data>
+    <data name="CustomPlacement_ErrorLoadingPreset" xml:space="preserve">
+        <value>Error loading preset: {0}</value>
+    </data>
+    <data name="CustomPlacement_LoadError" xml:space="preserve">
+        <value>Load Error</value>
+    </data>
+    <data name="CustomPlacement_ErrorLoadingPreset2" xml:space="preserve">
+        <value>Error Loading preset: {0}</value>
+    </data>
+    <data name="CustomPlacement_SaveCustomPreset" xml:space="preserve">
+        <value>Save Custom Preset</value>
+    </data>
+    <data name="CustomPlacement_PresetSavedSuccessfully" xml:space="preserve">
+        <value>Preset saved successfully!</value>
+    </data>
+    <data name="CustomPlacement_SaveComplete" xml:space="preserve">
+        <value>Save Complete</value>
+    </data>
+    <data name="CustomPlacement_ErrorSavingPreset" xml:space="preserve">
+        <value>Error saving preset: {0}</value>
+    </data>
+    <data name="CustomPlacement_SaveError" xml:space="preserve">
+        <value>Save Error</value>
+    </data>
+    <data name="CustomPlacement_ErrorSavingJSON" xml:space="preserve">
+        <value>Error Saving JSON: {0}</value>
+    </data>
+    <data name="CustomPlacement_EnableColors" xml:space="preserve">
+        <value>Enable Colors</value>
+    </data>
+    <data name="CustomPlacement_DisableColors" xml:space="preserve">
+        <value>Disable Colors</value>
+    </data>
+    <data name="CustomPlacement_ShowOnlyOverridden" xml:space="preserve">
+        <value>Show Only Overriden</value>
+    </data>
+
+    <data name="CustomPlacement_Error" xml:space="preserve">
+        <value>Error</value>
+    </data>
+    
+    <data name="CustomPlacement_Enemy_NotRandomized" xml:space="preserve">
+        <value>This allows you to change which enemies aren’t randomized, meaning that they will stay in their respective encounters.</value>
+    </data>
+    <data name="CustomPlacement_Enemy_Excluded" xml:space="preserve">
+        <value>This allows you to change which enemies are excluded from the pool, meaning that they will not occur anywhere in the randomized game.</value>
+    </data>
+    <data name="CustomPlacement_Enemy_QuickPresets" xml:space="preserve">
+        <value>This allows you to select the Custom Enemy Placement rules from a list of quick presets. All presets are declared and can be configured in the Data/Presets/[preset name].json file. The Oops All preset replaces every enemy in the game with the chosen option, while the default Split Categories preset randomizes all regular enemies into other regular ones, all the bosses into other bosses, etc.</value>
+    </data>
+    <data name="CustomPlacement_Enemy_CustomPlacement" xml:space="preserve">
+        <value>In order to use this, you need to first select the enemy that is going to be replaced on the left, then select what it will be replaced by on the right. For example, the “10% of regular enemies are bosses” preset will give the Regular enemies category a 90% chance to become another Regular enemy and a 10% chance to become a Boss enemy. The numbers don’t have to add up to 100; they just represent the weights for different categories.</value>
+    </data>
+    <data name="CustomPlacement_Enemy_FrequencyAdjustment" xml:space="preserve">
+        <value>This allows you to tweak how often a specific enemy is encountered in the randomizer. For example, if you want to see fewer Bourgeons in the run but keep all the other settings the same, you can just adjust their frequency to 10% in this section, making them 10 times less likely to appear.</value>
+    </data>
+    <data name="CustomPlacement_Enemy_Title" xml:space="preserve">
+        <value>Custom Enemy Placement</value>
+    </data>
+    <data name="CustomPlacement_Item_NotRandomized" xml:space="preserve">
+        <value>This allows you to change which items aren’t randomized, meaning that they will be found where they would in vanilla.</value>
+    </data>
+    <data name="CustomPlacement_Item_Excluded" xml:space="preserve">
+        <value>This allows you to change which items are excluded from the pool, meaning that they will not occur anywhere in the randomized game.</value>
+    </data>
+    <data name="CustomPlacement_Item_QuickPresets" xml:space="preserve">
+        <value>This allows you to select the Custom Item Placement rules from a list of quick presets. All presets are declared and can be configured in the Data/Presets/[preset name].json file. The Oops All preset replaces every Item in the game with the chosen option, while the default Split Categories preset randomizes pictos, shards, shapes, chroma elixers, weapons, key items, cosmetics and music records.</value>
+    </data>
+    <data name="CustomPlacement_Item_CustomPlacement" xml:space="preserve">
+        <value>In order to use this, you need to first select the Item that is going to be replaced on the left, then select what it will be replaced by on the right. For example, the “Add More Pictos” preset will give Upgrade Materials a 80% chance to be an upgrade material and a 20% chance to be a picto. The numbers don’t have to add up to 100; they just represent the weights for different categories.</value>
+    </data>
+    <data name="CustomPlacement_Item_FrequencyAdjustment" xml:space="preserve">
+        <value>This allows you to tweak how often a specific Item is encountered in the randomizer. For example, if you want to see fewer cosmetics in the run but keep all the other settings the same, you can just adjust their frequency to 10% in this section, making them 10 times less likely to appear.</value>
+    </data>
+    <data name="CustomPlacement_Item_Title" xml:space="preserve">
+        <value>Custom Item Placement</value>
+    </data>
+    <data name="CustomPlacement_Skill_NotRandomized" xml:space="preserve">
+        <value>This allows you to change which skills aren’t randomized, meaning that they will stay in their respective locations.</value>
+    </data>
+    <data name="CustomPlacement_Skill_Excluded" xml:space="preserve">
+        <value>This allows you to change which skills are excluded from the pool, meaning that they will not occur anywhere in the randomized game.</value>
+    </data>
+    <data name="CustomPlacement_Skill_QuickPresets" xml:space="preserve">
+        <value>This allows you to select the Custom Skill Placement rules from a list of quick presets. All presets are declared and can be configured in the Data/Presets/[preset name].json file.</value>
+    </data>
+    <data name="CustomPlacement_Skill_CustomPlacement" xml:space="preserve">
+        <value>In order to use this, you need to first select the Skill that is going to be replaced on the left, then select what it will be replaced by on the right. For example, you could set Lune's Thermal Transfer skill to have a 20% chance of being replaced with Thunderfall.</value>
+    </data>
+    <data name="CustomPlacement_Skill_FrequencyAdjustment" xml:space="preserve">
+        <value>This allows you to tweak how often a specific Skill is encountered in the randomizer. For example, if you want to reduce the chance of all gradient skills from appearing in the run but keep all the other settings the same, you can just adjust their frequency to 10% in this section, making them 10 times less likely to appear.</value>
+    </data>
+    <data name="CustomPlacement_Skill_Title" xml:space="preserve">
+        <value>Custom Skill Placement</value>
+    </data>
+    <data name="CustomPlacement_Location_NotRandomized" xml:space="preserve">
+        <value>This allows you to change which locations aren’t randomized, meaning that they will stay in their vanilla locations.</value>
+    </data>
+    <data name="CustomPlacement_Location_Excluded" xml:space="preserve">
+        <value>This allows you to change which locations are excluded from the pool, meaning that they will not occur anywhere in the randomized game.</value>
+    </data>
+    <data name="CustomPlacement_Location_QuickPresets" xml:space="preserve">
+        <value>This allows you to select the Custom Location Placement rules from a list of quick presets. All presets are declared and can be configured in the Data/Presets/[preset name].json file.</value>
+    </data>
+    <data name="CustomPlacement_Location_CustomPlacement" xml:space="preserve">
+        <value>In order to use this, you need to first select the Location that is going to be replaced on the left, then select what the chances are of what it will be replaced with on the right.</value>
+    </data>
+    <data name="CustomPlacement_Location_FrequencyAdjustment" xml:space="preserve">
+        <value>????</value>
+    </data>
+    <data name="CustomPlacement_Location_Title" xml:space="preserve">
+        <value>Custom Location Placement</value>
+    </data>
+    <data name="CustomPlacement_PresetJSON" xml:space="preserve">
+        <value>Preset JSON: This shows you the current configuration in brief and allows you to copy it if you want to.</value>
+    </data>
+    <data name="CustomPlacement_LoadSavePresetJSON" xml:space="preserve">
+        <value>Load/Save Preset JSON: These buttons allow you to load and save the current configuration as a .json file, making it easy to share and save your presets.</value>
+    </data>
+    <data name="ToolTip_Header_HowItWorks" xml:space="preserve">
+        <value>How It Works</value>
+    </data>
+    <data name="CustomPlacement_Header_NotRandomized" xml:space="preserve">
+        <value>Not Randomized</value>
+    </data>
+    <data name="CustomPlacement_Header_Excluded" xml:space="preserve">
+        <value>Excluded</value>
+    </data>
+    <data name="SearchPlaceholder" xml:space="preserve">
+        <value>Search...</value>
+    </data>
+    <data name="CustomPlacement_Header_SelectCategory" xml:space="preserve">
+        <value>Select Category</value>
+    </data>
+    <data name="CustomPlacement_Header_IsReplacedBy" xml:space="preserve">
+        <value>Is Replaced By</value>
+    </data>
+    <data name="NothingSelected" xml:space="preserve">
+        <value>Nothing Selected</value>
+    </data>
+    <data name="ToolTip_Remove" xml:space="preserve">
+        <value>Remove</value>
+    </data>
+    <data name="CustomPlacement_Button_AddPlacementRow" xml:space="preserve">
+        <value>Add Placement Row</value>
+    </data>
+    <data name="CustomPlacement_Button_AddFrequencyRow" xml:space="preserve">
+        <value>Add Frequency Row</value>
+    </data>
+    <data name="CustomPlacement_TabItem_AddCustomPlacements" xml:space="preserve">
+        <value>Add Custom Placements</value>
+    </data>
+    <data name="CustomPlacement_TabItem_SpecialRules" xml:space="preserve">
+        <value>Special Rules</value>
+    </data>
+    <data name="CustomPlacement_TabItem_FrequencyAdjustments" xml:space="preserve">
+        <value>Frequency Adjustments</value>
+    </data>
+    <data name="CustomPlacement_Header_Adjustments" xml:space="preserve">
+        <value>Adjustments</value>
+    </data>
+    <data name="CustomPlacement_Button_QuickPresets" xml:space="preserve">
+        <value>Quick Presets</value>
+    </data>
+    <data name="CustomPlacement_Button_LoadPresetJson" xml:space="preserve">
+        <value>Load Preset JSON</value>
+    </data>
+    <data name="CustomPlacement_Button_SavePresetJson" xml:space="preserve">
+        <value>Save Preset JSON</value>
+    </data>
+
+    <!-- IndividualContainers -->
+
+    <data name="IndividualContainers_Button_Reroll" xml:space="preserve">
+        <value>Reroll with current settings</value>
+    </data>
+    <data name="IndividualContainers_Button_GenerateModFiles" xml:space="preserve">
+        <value>Generate mod files from current</value>
+    </data>
+    
+    <data name="IndividualContainers_Enemy_Title" xml:space="preserve">
+        <value>Edit individual Enemies</value>
+    </data>
+    <data name="IndividualContainers_Enemy_Containers" xml:space="preserve">
+        <value>Encounters</value>
+    </data>
+    <data name="IndividualContainers_Enemy_Tooltip_Containers" xml:space="preserve">
+        <value>This is the list of encounters using the names the game uses internally and are usually self-descriptive.  Find the encounter you want to change on this side.  Then edit the encounter on the other.</value>
+    </data>
+    <data name="IndividualContainers_Enemy_AddObject" xml:space="preserve">
+        <value>Add Enemy</value>
+    </data>
+    <data name="IndividualContainers_Enemy_Objects" xml:space="preserve">
+        <value>Enemies in the Encounter</value>
+    </data>
+    <data name="IndividualContainers_Enemy_Tooltip_Objects" xml:space="preserve">
+        <value>These are the enemies that are in the selected encounter.  You can change, add, or remove enemies from this list. &#xD;&#xD; The game actually has full support for 4-enemy encounters, but anything beyond that will just place all the other enemies in a single spot outside the fighting arena. They will still be able to deal and take damage, but their attacks will not be visible, and you won’t be able to shoot them in free aim. </value>
+    </data>
+    <data name="IndividualContainers_Enemy_LoadTxt" xml:space="preserve">
+        <value>Load Enemies from .txt file</value>
+    </data>
+    <data name="IndividualContainers_Enemy_SaveTxt" xml:space="preserve">
+        <value>Save Enemies to .txt file</value>
+    </data>
+    <data name="IndividualContainers_Enemy_Search" xml:space="preserve">
+        <value>Search by Encounter or Enemy names:</value>
+    </data>
+
+    <data name="IndividualContainers_Item_Title" xml:space="preserve">
+        <value>Edit individual Items</value>
+    </data>
+    <data name="IndividualContainers_Item_Containers" xml:space="preserve">
+        <value>Checks</value>
+    </data>
+    <data name="IndividualContainers_Item_Tooltip_Containers" xml:space="preserve">
+        <value>This is the list of Checks using the names the game uses internally and are usually self-descriptive.  Find the Check you want to change on this side.  Then edit the Check on the other.</value>
+    </data>
+    <data name="IndividualContainers_Item_AddObject" xml:space="preserve">
+        <value>Add Item</value>
+    </data>
+    <data name="IndividualContainers_Item_Objects" xml:space="preserve">
+        <value>Items in the Check</value>
+    </data>
+    <data name="IndividualContainers_Item_Tooltip_Objects" xml:space="preserve">
+        <value>These are the Items that are in the selected Check.  You can change, add, or remove Items from this list.</value>
+    </data>
+    <data name="IndividualContainers_Item_LoadTxt" xml:space="preserve">
+        <value>Load Items from .txt file</value>
+    </data>
+    <data name="IndividualContainers_Item_SaveTxt" xml:space="preserve">
+        <value>Save Items to .txt file</value>
+    </data>
+    <data name="IndividualContainers_Item_Search" xml:space="preserve">
+        <value>Search by Check or Item names:</value>
+    </data>
+
+    <data name="IndividualContainers_Skill_Title" xml:space="preserve">
+        <value>Edit individual Skills</value>
+    </data>
+    <data name="IndividualContainers_Skill_Containers" xml:space="preserve">
+        <value>Skill Trees</value>
+    </data>
+    <data name="IndividualContainers_Skill_Tooltip_Containers" xml:space="preserve">
+        <value>This is the list of Skill Trees using the names the game uses internally and are usually self-descriptive.  Find the Skill Tree you want to change on this side.  Then edit the Skill Tree on the other.</value>
+    </data>
+    <data name="IndividualContainers_Skill_AddObject" xml:space="preserve">
+        <value>Add Skill</value>
+    </data>
+    <data name="IndividualContainers_Skill_Objects" xml:space="preserve">
+        <value>Skills in the Skill Tree</value>
+    </data>
+    <data name="IndividualContainers_Skill_Tooltip_Objects" xml:space="preserve">
+        <value>These are the Skills that are in the selected Skill Tree.  You can change, add, or remove Skills from this list. 
+</value>
+    </data>
+    <data name="IndividualContainers_Skill_LoadTxt" xml:space="preserve">
+        <value>Load Skills from .txt file</value>
+    </data>
+    <data name="IndividualContainers_Skill_SaveTxt" xml:space="preserve">
+        <value>Save Skills to .txt file</value>
+    </data>
+    <data name="IndividualContainers_Skill_Search" xml:space="preserve">
+        <value>Search by Skill Tree or Skill names:</value>
+    </data>
+
+    <data name="IndividualContainers_Location_Title" xml:space="preserve">
+        <value>Edit individual Locations</value>
+    </data>
+    <data name="IndividualContainers_Location_Containers" xml:space="preserve">
+        <value>Original Destinations</value>
+    </data>
+    <data name="IndividualContainers_Location_Tooltip_Containers" xml:space="preserve">
+        <value>This is the list of Original Destinations using the names the game uses internally and are usually self-descriptive.  Find the Original Destination you want to change on this side.  Then edit the Original Destination on the other.</value>
+    </data>
+    <data name="IndividualContainers_Location_AddObject" xml:space="preserve">
+        <value>Add Location</value>
+    </data>
+    <data name="IndividualContainers_Location_Objects" xml:space="preserve">
+        <value>New Destination</value>
+    </data>
+    <data name="IndividualContainers_Location_Tooltip_Objects" xml:space="preserve">
+        <value>These are the Locations that are in the selected Original Destination.  You can change, add, or remove Locations from this list. </value>
+    </data>
+    <data name="IndividualContainers_Location_LoadTxt" xml:space="preserve">
+        <value>Load Locations from .txt file</value>
+    </data>
+    <data name="IndividualContainers_Location_SaveTxt" xml:space="preserve">
+        <value>Save Locations to .txt file</value>
+    </data>
+    <data name="IndividualContainers_Location_Search" xml:space="preserve">
+        <value>Search by Original Destination or Location names:</value>
+    </data>
+
+    <data name="IndividualContainers_ErrorGenerating" xml:space="preserve">
+        <value>Error generating: {0}</value>
+    </data>
+    <data name="IndividualContainers_RerollError" xml:space="preserve">
+        <value>Reroll Error</value>
+    </data>
+    <data name="IndividualContainers_GenerationDone" xml:space="preserve">
+        <value>Generation done! You can find the mod in the rand_{0} folder.&#xD;&#xD;Used Seed: {0}</value>
+    </data>
+    <data name="IndividualContainers_GenerationSummary" xml:space="preserve">
+        <value>Generation Summary</value>
+    </data>
+    <data name="IndividualContainers_ErrorPacking" xml:space="preserve">
+        <value>Error packing: {0}</value>
+    </data>
+    <data name="IndividualContainers_PackingError" xml:space="preserve">
+        <value>Packing Error</value>
+    </data>
+    <data name="IndividualContainers_LoadTXT" xml:space="preserve">
+        <value>Load TXT</value>
+    </data>
+    <data name="IndividualContainers_TXTFilesTxt" xml:space="preserve">
+        <value>TXT files (*.txt)</value>
+    </data>
+    <data name="IndividualContainers_AllFiles" xml:space="preserve">
+        <value>All Files</value>
+    </data>
+    <data name="IndividualContainers_ErrorLoadingTXT" xml:space="preserve">
+        <value>Error loading TXT: {0}</value>
+    </data>
+    <data name="IndividualContainers_LoadError" xml:space="preserve">
+        <value>Load Error</value>
+    </data>
+    <data name="IndividualContainers_ErrorLoadingTxt2" xml:space="preserve">
+        <value>Error Loading txt</value>
+    </data>
+    <data name="IndividualContainers_Error" xml:space="preserve">
+        <value>Error</value>
+    </data>
+    <data name="IndividualContainers_SaveTXT" xml:space="preserve">
+        <value>Save TXT</value>
+    </data>
+    <data name="IndividualContainers_Txt2" xml:space="preserve">
+        <value>.txt</value>
+    </data>
+    <data name="IndividualContainers_TXTSavedSuccessfully" xml:space="preserve">
+        <value>TXT saved successfully!</value>
+    </data>
+    <data name="IndividualContainers_SaveComplete" xml:space="preserve">
+        <value>Save Complete</value>
+    </data>
+    <data name="IndividualContainers_ErrorSavingTXT" xml:space="preserve">
+        <value>Error saving TXT: {0}</value>
+    </data>
+    <data name="IndividualContainers_SaveError" xml:space="preserve">
+        <value>Save Error</value>
+    </data>
+    <data name="IndividualContainers_ErrorSavingTxt2" xml:space="preserve">
+        <value>Error Saving txt</value>
+    </data>   
+    
+    <!-- Character Controller -->
+    <data name="CharacterController_MultipleCharacterError_Exception" xml:space="preserve">
+        <value>Adding multiple characters at a time is not supported yet.</value>
+    </data>
+    <data name="CharacterController_MultipleSkillsError_Exception" xml:space="preserve">
+        <value>Skill nodes must have exactly one skill in them.</value>
+    </data>
+    
+    <!-- Enemies Controller -->
+    <data name="EnemiesController_ErrorReadingEncountersEncounterName_Exception" xml:space="preserve">
+        <value>Error reading encounters txt: Unrecognized encounter name {0}! Delete or fix its line.</value>
+    </data>
+    <data name="EnemiesController_ErrorReadingEncountersEnemy_Exception" xml:space="preserve">
+        <value>Error reading encounters txt: Unrecognized encounter name {0}! Delete or fix its line.</value>
+    </data>
+    
+    <!-- Items Controller -->
+    <data name="ItemsController_DirectoryNotFound_Exception" xml:space="preserve">
+        <value>{0} directory {1} not found</value>
+    </data>
+    <data name="ItemsController_UnrecognizedCheckId_Exception" xml:space="preserve">
+        <value>Error reading checks txt: Unrecognized check id {0}#{1}! Delete or fix its line.</value>
+    </data>
+    <data name="ItemsController_UnrecognizedCheckFoot_Exception" xml:space="preserve">
+        <value>Error reading checks txt: Unrecognized foot {0}! Delete or fix its line.</value>
+    </data>
+    
+    <!-- Location Controller -->
+    <data name="LocationController_CriticalPath_Exception" xml:space="preserve">
+        <value>Location randomizer could not construct critical path, please try a different seed. Please change generation settings if this problem persists.</value>
+    </data>
+    <data name="LocationController_OnlyOne_Exception" xml:space="preserve">
+        <value>A location can only have one corresponding replacement.</value>
+    </data>
+    
+    <!-- Skills Graph -->
+    <data name="SkillsGraph_ErrorReadingSkills_Exception" xml:space="preserve">
+        <value>Error reading skills txt: Unrecognized skill name {0}! Delete or fix its line.</value>
+    </data>
+    
+    <!-- Skills Controller -->
+    <data name="SkillsController_UnrecognizedCharacter_Exception" xml:space="preserve">
+        <value>Error reading skills txt: Unrecognized character name {0}! Delete or fix its line.</value>
+    </data>
+    <data name="MainWindow_Version" xml:space="preserve">
+        <value>Version: </value>
+    </data>
+</root>

@@ -1,6 +1,4 @@
-﻿using FluentAssertions;
-
-namespace Tests;
+﻿namespace Tests;
 
 public static class CustomPlacementTestLogic
 {
@@ -23,6 +21,7 @@ public static class CustomPlacementTestLogic
             var generatedEncounter = output.Encounters[i];
             for (int j = 0; j < generatedEncounter.Size; j++)
             {
+                if (originalEncounter.Size == 0) continue;
                 if (!notRandomizedEnemies.Contains(originalEncounter.Enemies[j % originalEncounter.Size].CodeName)) continue;
                 if (originalEncounter.Enemies[j % originalEncounter.Size].CodeName !=
                     generatedEncounter.Enemies[j].CodeName)
@@ -37,7 +36,7 @@ public static class CustomPlacementTestLogic
 
     public static bool TestFrequencyAdjustment(Output outputNotAdjusted, Output outputAdjusted, Config config)
     {
-        var adjustedEnemyPlainNames = config.CustomEnemyPlacement.FrequencyAdjustments.Keys;
+        var adjustedEnemyPlainNames = config.CustomEnemyPlacement.FrequencyAdjustments.ToList().Select(x => x.Key);
         var adjustedEnemyCodeNames = config.CustomEnemyPlacement.PlainNamesToCodeNames(adjustedEnemyPlainNames);
 
         adjustedEnemyCodeNames = adjustedEnemyCodeNames.Where(cN =>
@@ -82,7 +81,7 @@ public static class CustomPlacementTestLogic
             if (originalEnemyCategories[i] != generatedEnemyCategories[i])
             {
                 wrongEnemies.Add(originalEnemies[i]);
-                Console.WriteLine($"Enemy {originalEnemies[i]} has been replaced by {generatedEnemies[i]}");
+                Console.WriteLine($"Enemy {originalEnemies[i]} ({originalEnemyCategories[i]}) has been replaced by {generatedEnemies[i]} ({generatedEnemyCategories[i]})");
             }
         }
         

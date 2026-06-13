@@ -12,10 +12,10 @@
     ],
     "CustomPlacement": {
         "Pictos": {
-            "Pictos": 1.0
+            "Pictos": 100
         },
         "Weapon": {
-            "Weapon": 1.0
+            "Weapon": 100
         }
     },
     "FrequencyAdjustments": {}

@@ -1,0 +1,774 @@
+﻿using System.Collections.ObjectModel;
+using System.Text;
+using Avalonia.Collections;
+using E33Randomizer.ItemSources;
+using E33Randomizer.ObjectDatum;
+using UAssetAPI;
+using UAssetAPI.ExportTypes;
+using UAssetAPI.PropertyTypes.Objects;
+using UAssetAPI.PropertyTypes.Structs;
+using UAssetAPI.UnrealTypes;
+using JsonSerializer = System.Text.Json.JsonSerializer;
+
+namespace E33Randomizer.RandomizationLogic;
+
+
+public class ItemsController: Controller<ItemData>
+{
+    private static List<string> _ignoredFiles = [];
+    private static List<string> _defaultWeapons = ["Noahram", "Lunerim", "Maellum", "Scieleson", "Monocaro"];
+    private static Dictionary<string, List<string>> _rockChests = new();
+    
+    public List<ItemSource> ItemsSources = new();
+
+    public Dictionary<string, List<CheckData>> CheckTypes = new();
+
+    public List<string> ItemsWithQuantities = [
+        "ChromaPack_Regular",
+        "ChromaPack_Large",
+        "ChromaPack_ExtraLarge",
+        "UpgradeMaterial_Level1",
+        "UpgradeMaterial_Level2",
+        "UpgradeMaterial_Level3",
+        "UpgradeMaterial_Level4",
+        "UpgradeMaterial_Level5",
+        "Consumable_Respec",
+        "Consumable_LuminaPoint",
+    ];
+    
+    public Dictionary<string, ItemData?> RandomizedStartingWeapons = new()
+    {
+        {"Gustave", null},
+        {"Lune", null},
+        {"Maelle", null},
+        {"Sciel", null},
+        {"Verso", null},
+        {"Monoco", null},
+    };
+    
+    public Dictionary<string, Tuple<ItemData, ItemData>?> RandomizedStartingOutfits = new()
+    {
+        {"Gustave", null},
+        {"Lune", null},
+        {"Maelle", null},
+        {"Sciel", null},
+        {"Verso", null},
+        {"Monoco", null},
+    };
+
+    public ObjectPool<string> ShapeshiftCaptureLootItemsPool;
+    public Dictionary<string, string> ShapeshiftCaptureLootItems = new();
+    
+    private UAsset _compositeTableAsset;
+    private UDataTable itemsCompositeTable;
+    private Dictionary<string, UAsset> _itemsDataTables = new();
+    private List<ItemData> _rockItems;
+
+    public bool IsGearItem(ItemData item)
+    {
+        return item.CustomName.EndsWith("Weapon)") || item.CustomName.EndsWith("Pictos)");
+    }
+
+    public ItemData GetRandomWeapon(string characterName)
+    {
+        var allCharacterWeapons = ObjectsData.Where(i => i.CustomName.Contains($"{characterName} Weapon")).ToList();
+        var filteredWeapons = allCharacterWeapons.Where(w => !RandomizerLogic.CustomItemPlacement.Excluded.Contains(w.CodeName)).ToList();
+        if (!RandomizerLogic.Settings.IncludeCutContentItems) filteredWeapons = filteredWeapons.Where(w => !w.IsCutContent).ToList();
+        filteredWeapons = filteredWeapons.Where(w => !_defaultWeapons.Contains(w.CodeName)).ToList();
+        
+        if (filteredWeapons.Any()) allCharacterWeapons = filteredWeapons;
+        
+        return Utils.Pick(allCharacterWeapons);
+    }
+    
+    public void ProcessFile(string fileName)
+    {
+        if (_ignoredFiles.Contains(fileName.Split('\\')[^1])) return;
+        if (fileName.Contains("GameActionsData") && !fileName.Contains("_GA_")) return;
+        
+        if (fileName.Contains("S_ItemOperationData") || fileName.Contains("S_TriggerCinematicVariables") || fileName.Contains("E_GestralFightClub_Fighters") || fileName.Contains("BP_GameAction"))
+        {
+            return;
+        }
+
+        if (!_assetCache.TryGetValue(fileName, out UAsset? asset))
+        {
+            asset = new UAsset(fileName, EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+            _assetCache.Add(fileName, asset);
+        }
+        
+        using StreamReader DialogueRewardPathsReader = new StreamReader($"{RandomizerLogic.DataDirectory}/dialogue_reward_paths.json");
+        string DialogueRewardPathsJson = DialogueRewardPathsReader.ReadToEnd();
+        DialogueItemSource.DialogueRewardPaths = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, List<int>>>>(DialogueRewardPathsJson, JsonSourceGenerationContext.Default.DictionaryStringDictionaryStringListInt32) ?? [];
+        
+        using StreamReader DialogueRewardQuantitiesPathsReader = new StreamReader($"{RandomizerLogic.DataDirectory}/dialogue_quantity_paths.json");
+        string DialogueRewardQuantitiesPathsJson = DialogueRewardQuantitiesPathsReader.ReadToEnd();
+        DialogueItemSource.DialogueRewardQuantitiesPaths = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, List<int>>>>(DialogueRewardQuantitiesPathsJson, JsonSourceGenerationContext.Default.DictionaryStringDictionaryStringListInt32) ?? [];
+        
+        ItemSource newSource;
+        string checkType;
+        if (fileName.Contains("DT_Merchant"))
+        {
+            newSource = new MerchantInventoryItemSource();
+            checkType = "Merchant inventories";
+        }
+        else if (fileName.Contains("GA_"))
+        {
+            newSource = new GameActionItemSource();
+            checkType = "Cutscene rewards";
+        }
+        else if (fileName.Contains("DT_ChestsContent"))
+        {
+            newSource = new ChestsContentItemSource();
+            checkType = "Map pickups";
+        }
+        else if (fileName.Contains("DT_jRPG_Enemies"))
+        {
+            newSource = new EnemyLootDropsItemSource();
+            checkType = "Enemy drops";
+        }
+        else if (fileName.Contains("DT_BattleTowerStages"))
+        {
+            newSource = new BattleTowerItemSource();
+            checkType = "Endless tower rewards";
+        }
+        else if (fileName.Contains("DT_LootTable_UpgradeItems"))
+        {
+            newSource = new LootTableItemSource();
+            checkType = fileName.Contains("DT_LootTable_UpgradeItems_Exploration") ? "Map pickups" : "Enemy drops";
+        }
+        else if (fileName.Contains("DT_LootTable_SkinGustave_Visage"))
+        {
+            newSource = new LootTableItemSource();
+            checkType = "Map pickups";
+        }
+        else if (DialogueItemSource.DialogueRewardPaths.ContainsKey(asset.FolderName.ToString().Split('/').Last()))
+        {
+            newSource = new DialogueItemSource();
+            checkType = "Dialogue rewards";
+        }
+        else
+        {
+            newSource = new GenericItemSource();
+            checkType = "Dialogue rewards";
+        }
+
+        newSource.LoadFromAsset(asset);
+        ItemsSources.Add(newSource);
+        
+        if (!CheckTypes.ContainsKey(checkType))
+        {
+            CheckTypes[checkType] = [];
+        }
+        
+        CheckTypes[checkType].AddRange(newSource.Checks);
+    }
+    
+    public void BuildItemSources(string filesDirectory)
+    {
+        if(!Directory.Exists(filesDirectory))
+        {
+            throw new DirectoryNotFoundException(ResourceHelper.GetStringFormatted(nameof(Assets.Resources.ItemsController_DirectoryNotFound_Exception), "ItemData", filesDirectory));
+        }
+        ItemsSources.Clear();
+        CheckTypes.Clear();
+       
+        var fileEntries = GetFilesSorted(filesDirectory).ToList();
+        fileEntries.AddRange(GetFilesSorted(filesDirectory + "/DialoguesData"));
+        fileEntries.AddRange(GetFilesSorted(filesDirectory + "/GameActionsData"));
+        fileEntries.AddRange(GetFilesSorted(filesDirectory + "/MerchantsData"));
+        fileEntries = fileEntries.Where(x => Path.GetExtension(x) == ".uasset").ToList();
+        foreach(string fileName in fileEntries)
+            ProcessFile(fileName);
+        UpdateViewModel();
+    }
+
+    public void ReadCompositeTableAsset(string assetPath)
+    {
+        if (!_assetCache.TryGetValue(assetPath, out var tableAsset))
+        {
+            _compositeTableAsset = new UAsset(assetPath, EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+            _assetCache.Add(assetPath, _compositeTableAsset);
+            tableAsset = _compositeTableAsset;
+        }
+        itemsCompositeTable = (tableAsset.Exports[0] as DataTableExport).Table;
+
+        foreach (StructPropertyData itemData in itemsCompositeTable.Data)
+        {
+            (itemData.Value[18] as BoolPropertyData).Value = false;
+            (itemData.Value[19] as BoolPropertyData).Value = false;
+        }
+        
+        // ItemsData = itemsCompositeTable.Data.Select(e => new ItemData(e)).ToList();
+        // ObjectsData = ObjectsData.Where(e => !e.IsBroken).ToList();
+        // ObjectsData = ObjectsData.OrderBy(e => e.CustomName).ToList();
+        // ItemsByName = ObjectsData.Select(e => new KeyValuePair<string, ItemData>(e.CodeName, e)).ToDictionary();
+        // ItemCodeNames = ObjectsData.Select(e => e.CodeName).ToList();
+    }
+
+    public void ReadOtherTableAsset(string assetPath)
+    {
+        if (!_assetCache.TryGetValue(assetPath, out UAsset? tableAsset))
+        {
+            tableAsset = new UAsset(assetPath, EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+            _assetCache.Add(assetPath, tableAsset);
+        }
+
+        _itemsDataTables[tableAsset.FolderName.ToString().Split('/').Last()] = tableAsset;
+        
+        foreach (StructPropertyData itemData in (tableAsset.Exports[0] as DataTableExport).Table.Data)
+        {
+            var itemName = itemData.Name.ToString();
+            if (itemName.Contains("Consumable_") || itemName == "PartyHealConsumable") continue;
+            (itemData.Value[18] as BoolPropertyData).Value = false;
+            (itemData.Value[19] as BoolPropertyData).Value = false;
+        }
+    }
+    
+    public void ReadTableAssets(string tablesDirectory)
+    {
+        if(!Directory.Exists(tablesDirectory))
+        {
+            throw new DirectoryNotFoundException(ResourceHelper.GetStringFormatted(nameof(Assets.Resources.ItemsController_DirectoryNotFound_Exception), "ItemTables", tablesDirectory));
+        }
+        var fileEntries = new List<string> (GetFilesSorted(tablesDirectory));
+        fileEntries = fileEntries.Where(x => Path.GetExtension(x) == ".uasset").ToList();
+        foreach (var fileEntry in fileEntries)
+        {
+            if (fileEntry.Contains("DT_jRPG_Items_Composite"))
+            {
+                ReadCompositeTableAsset(fileEntry);
+                continue;
+            }
+            ReadOtherTableAsset(fileEntry);
+        }
+    }
+
+    public void WriteTableAssets()
+    {
+        foreach (var tableAsset in _itemsDataTables.Values)
+        {
+            Utils.WriteAsset(tableAsset);
+        }
+        Utils.WriteAsset(_compositeTableAsset);
+    }
+
+    public void WriteEsquieRockReplacementAssets()
+    {
+        List<string> files =
+        [
+            "DA_GA_NOTIF_CustomEsquieFly",
+            "DA_GA_NOTIF_CustomEsquieSwim",
+            "DA_GA_NOTIF_CustomEsquieSwimBoost",
+            "DA_GA_SQT_BeatingMirrorRenoirRound2",
+            "DA_GA_SQT_BossPaintress",
+            "DA_GA_SQT_COND_EsquieRocks",
+            "DA_GA_SQT_COND_RelationshipQuests",
+            "DA_GA_SQT_GiveDorrieToEsquie",
+            "DA_GA_SQT_GiveFlorrieToEsquie",
+            "DA_GA_SQT_GiveSoarrieToEsquie",
+            "DA_GA_SQT_GustaveDieEndLevel",
+            "DA_GA_SQT_Tuto_EsquieBoat",
+            "DA_GA_SQT_Tuto_EsquieBoatPlus",
+            "DA_GA_SQT_Tuto_EsquiePlaneAndBoatPlus"
+        ];
+        RandomizerLogic.WriteReplacementAssets(files);
+    }
+
+    public override void WriteAssets()
+    {
+        ApplyViewModel();
+        
+        foreach (var itemsSource in ItemsSources)
+        {
+            var itemsSourceAsset = itemsSource.SaveToAsset();
+            Utils.WriteAsset(itemsSourceAsset);
+        }
+
+        if (RandomizerLogic.Settings.MakeEveryItemVisible)
+        {
+            WriteTableAssets();
+        }
+
+        if (RandomizerLogic.Settings.RandomizeEsquieRocks)
+        {
+            WriteEsquieRockReplacementAssets();
+        }
+    }
+
+    public void AddSkillItemsToChecks(List<CheckData> randomizableChecks)
+    {
+        randomizableChecks = Utils.ShuffleList(randomizableChecks).Where(c => !c.IsFixedSize).ToList();
+        if (randomizableChecks.Count == 0) return;
+        
+        for (int i = 0; i < Controllers.SkillsController.SkillItems.Count; i++)
+        {
+            var firstIndex = i % randomizableChecks.Count;
+            randomizableChecks[firstIndex].ItemSource.AddItem(randomizableChecks[firstIndex].Key, Controllers.SkillsController.SkillItems[i]);
+            // One more for good measure
+            var secondIndex = RandomizerLogic.rand.Next(randomizableChecks.Count);
+            randomizableChecks[secondIndex].ItemSource.AddItem(randomizableChecks[secondIndex].Key, Controllers.SkillsController.SkillItems[i]);
+        }
+    }
+    
+    public void AddRocksToChecks(List<CheckData> randomizableChecks)
+    {
+        List<string> rockNames = ["Florrie", "Dorrie", "Soarrie"];
+
+        foreach (var rockName in rockNames)
+        {
+            var rockChests = new List<string>();
+            if (RandomizerLogic.Settings.LimitEsquieRandomization)
+            {
+                rockChests = _rockChests[$"{rockName}LimitedLocations"];
+            }
+            else
+            {
+                rockChests = _rockChests[$"{rockName}AllLocations"];
+            }
+
+            var checkName = Utils.Pick(rockChests);
+            var rockCheck = randomizableChecks.Find(c => c.Key == checkName);
+            rockCheck.ItemSource.AddItem(rockCheck.Key, GetObject($"QUEST_EsquieRock{rockName}"));
+        }
+    }
+
+    public void AddSkillItemsToTables()
+    {
+        _itemsDataTables["DT_Items_GradientAttackUnlocks"].AddNameReference(FString.FromString("/Game/StringTables/ST_MainCharacters_Skills.ST_MainCharacters_Skills"));
+        
+        foreach (var skillItem in Controllers.SkillsController.SkillItems)
+        {
+            var skillData = SkillsController.GetSkillFromUnlockItem(skillItem.CodeName);
+            AddItemToTable(_compositeTableAsset, "Quest_MaellePainterSkillsUnlock", skillItem, skillData.IconPath, skillData.StringPath);
+            AddItemToTable(_itemsDataTables["DT_Items_GradientAttackUnlocks"], "Quest_MaellePainterSkillsUnlock", skillItem, skillData.IconPath, skillData.StringPath);
+        }
+    }
+
+    public List<ItemData> AddRockItems()
+    {
+        var rockItems = new List<ItemData>();
+        List<string> rockNames = ["Florrie", "Dorrie", "Soarrie"];
+
+        var iconPath = "/Game/UI/Resources/Textures/Icons/Items/T_UI_Icon_Item_ChromaticInk";
+        
+        foreach (var rockName in rockNames)
+        {
+            var rockItem = new  ItemData
+            {
+                CustomName = rockName + " (Esquie's Rock)",
+                CodeName = $"QUEST_EsquieRock{rockName}",
+                Type = "Key"
+            };
+            
+            rockItems.Add(rockItem);
+            
+            AddItem(rockItem);
+            AddItemToTable(_compositeTableAsset, "LostGestral", rockItem, iconPath);
+            AddItemToTable(_itemsDataTables["DT_QuestItems"], "LostGestral", rockItem, iconPath);
+        }
+        return rockItems;
+    }
+
+    public void AddItemToTable(UAsset tableAsset, string dummyItemName, ItemData itemData, string iconPath = "",
+        string stringPath = "", string descriptionPath="")
+    {
+        var table = (tableAsset.Exports[0] as DataTableExport).Table.Data;
+        var dummyItem = table.Find(s => s.Name.ToString() == dummyItemName).Clone() as StructPropertyData;
+            
+        tableAsset.AddNameReference(FString.FromString(itemData.CodeName));
+        var newItem = dummyItem.Clone() as StructPropertyData;
+            
+        newItem.Name = FName.FromString(tableAsset, itemData.CodeName);
+        (newItem.Value[0] as NamePropertyData).Value = FName.FromString(tableAsset, itemData.CodeName);
+
+        if (stringPath.Length > 0)
+        {
+            var itemNameString = stringPath.Split(':').Last();
+            var itemNameSTPath = stringPath.Split(':')[0];
+            Utils.AddImportToUAsset(tableAsset, "StringTable", itemNameSTPath);
+            tableAsset.AddNameReference(FString.FromString(itemNameString));
+            tableAsset.AddNameReference(FString.FromString(itemNameSTPath));
+            newItem.Value[1] = table[0].Value[1].Clone() as TextPropertyData;
+            (newItem.Value[1] as TextPropertyData).Value = FString.FromString(itemNameString);
+            (newItem.Value[1] as TextPropertyData).TableId = FName.FromString(tableAsset, itemNameSTPath);
+            (newItem.Value[1] as TextPropertyData).Flags = 0;
+            (newItem.Value[1] as TextPropertyData).HistoryType = TextHistoryType.StringTableEntry;
+        }
+        else
+        {
+            newItem.Value[1] = table[0].Value[1].Clone() as TextPropertyData;
+            (newItem.Value[1] as TextPropertyData).Value = FString.FromString(itemData.CustomName.Split(" (")[0]);
+            (newItem.Value[1] as TextPropertyData).CultureInvariantString = FString.FromString(itemData.CustomName.Split(" (")[0]);
+            (newItem.Value[1] as TextPropertyData).TableId = null;
+            (newItem.Value[1] as TextPropertyData).Flags = ETextFlag.CultureInvariant;
+            (newItem.Value[1] as TextPropertyData).HistoryType = TextHistoryType.None;
+        }
+        
+        if (iconPath.Length > 0)
+        {
+            tableAsset.AddNameReference(FString.FromString(iconPath));
+            tableAsset.AddNameReference(FString.FromString(iconPath.Split('/').Last()));
+            (newItem.Value[5] as SoftObjectPropertyData).FromString([iconPath, iconPath.Split('/').Last(), ""], tableAsset);
+        }
+
+        if (descriptionPath.Length > 0)
+        {
+            var itemDescriptionString = stringPath.Split(':').Last();
+            var itemDescriptionSTPath = stringPath.Split(':')[0];
+            Utils.AddImportToUAsset(tableAsset, "StringTable", itemDescriptionSTPath);
+            tableAsset.AddNameReference(FString.FromString(itemDescriptionString));
+            tableAsset.AddNameReference(FString.FromString(itemDescriptionSTPath));
+            newItem.Value[6] = table[0].Value[6].Clone() as TextPropertyData;
+            (newItem.Value[6] as TextPropertyData).Value = FString.FromString(itemDescriptionString);
+            (newItem.Value[6] as TextPropertyData).TableId = FName.FromString(tableAsset, itemDescriptionSTPath);
+            (newItem.Value[6] as TextPropertyData).Flags = 0;
+            (newItem.Value[6] as TextPropertyData).HistoryType = TextHistoryType.StringTableEntry;
+        }
+        else
+        {
+            newItem.Value[6] = table[0].Value[6].Clone() as TextPropertyData;
+            (newItem.Value[6] as TextPropertyData).Value = FString.FromString("");
+            (newItem.Value[6] as TextPropertyData).CultureInvariantString = FString.FromString("");
+            (newItem.Value[6] as TextPropertyData).TableId = null;
+            (newItem.Value[6] as TextPropertyData).Flags = ETextFlag.CultureInvariant;
+            (newItem.Value[6] as TextPropertyData).HistoryType = TextHistoryType.None;
+        }
+        
+        table.Add(newItem);
+    }
+
+    public void AddItem(ItemData newItem)
+    {
+        if (ObjectsData.Contains(newItem)) return;
+        
+        ObjectsData.Add(newItem);
+        ObjectsByName[newItem.CodeName] = newItem;
+    }
+
+    public override void Randomize()
+    {
+        SpecialRules.Reset();
+        Reset();
+        var cutContentAlreadyExcluded = RandomizerLogic.CustomItemPlacement.Excluded.Contains("Cut Content Items");
+        if (!RandomizerLogic.Settings.IncludeCutContentItems)
+        {
+            RandomizerLogic.CustomItemPlacement.AddExcluded("Cut Content Items");
+        }
+        RandomizerLogic.CustomItemPlacement.Update();
+        var excludedItems = RandomizerLogic.CustomItemPlacement.ExcludedCodeNames.Select(GetObject);
+        excludedItems = excludedItems.Concat(_rockItems);
+        excludedItems = excludedItems.Concat(Controllers.SkillsController.SkillItems);
+        ResetRandomObjectPool(excludedItems.ToList());
+        RandomizeStartingEquipment();
+        RandomizeFeet();
+        
+        var randomizableSources = ItemsSources.Where(SpecialRules.Randomizable).ToList();
+        randomizableSources.ForEach(i => i.Randomize());
+        ItemsSources.ForEach(i => i.Checks.ForEach(SpecialRules.ApplySpecialRulesToCheck));
+        
+        if (RandomizerLogic.Settings.MakeSkillsIntoItems)
+        {
+            AddSkillItemsToChecks(randomizableSources.SelectMany(iS => iS.Checks).ToList());
+        }
+
+        if (RandomizerLogic.Settings.RandomizeEsquieRocks)
+        {
+            AddRocksToChecks(ItemsSources.SelectMany(iS => iS.Checks).ToList());
+        }
+        
+        if (!RandomizerLogic.Settings.IncludeCutContentItems && !cutContentAlreadyExcluded)
+        {
+            RandomizerLogic.CustomItemPlacement.RemoveExcluded("Cut Content Items");
+        }
+        UpdateViewModel();
+    }
+
+    public override void InitFromTxt(string text)
+    {
+        ResetStartingEquipment();
+        text = text.ReplaceLineEndings("\n");
+        var lines = text.Split('\n');
+        foreach (var line in lines)
+        {
+            if (line == "") continue;
+            if (line.StartsWith("weapons"))
+            {
+                var weapons = line.Split('|')[1];
+                foreach (var weapon in weapons.Split(','))
+                {
+                    RandomizedStartingWeapons[weapon.Split(':')[0]] = GetObject(weapon.Split(':')[1]);
+                }
+                continue;
+            }
+            if (line.StartsWith("equipment"))
+            {
+                var equipment = line.Split('|')[1];
+                foreach (var equip in equipment.Split(','))
+                {
+                    RandomizedStartingOutfits[equip.Split(':')[0]] = new Tuple<ItemData, ItemData>(GetObject(equip.Split(':')[1]), GetObject(equip.Split(':')[2]));
+                }
+                continue;
+            }
+            var itemSourceName = line.Split('#')[0];
+            var sectionKey = line.Split('#')[1].Split('|')[0];
+            var particlesString = line.Split('|')[1].Split('?')[0];
+            var particles = particlesString.Length != 0 ? particlesString.Split(',').Select(ItemSourceParticle.FromString).ToList() : [];
+            var source = ItemsSources.Find(i => i.FileName == itemSourceName);
+            if (source == null || !source.SourceSections.ContainsKey(sectionKey))
+            {
+                throw new Exception(ResourceHelper.GetStringFormatted(nameof(Assets.Resources.ItemsController_UnrecognizedCheckId_Exception), itemSourceName, sectionKey));
+            }
+            source.SourceSections[sectionKey] = particles;
+            if (line.Contains('?'))
+            {
+                var leg = line.Split('?')[1];
+                if (!Controllers.ItemsController.IsObject(leg) && leg != "None")
+                {
+                    throw new Exception(ResourceHelper.GetStringFormatted(nameof(Assets.Resources.ItemsController_UnrecognizedCheckFoot_Exception), leg));
+                }
+                ShapeshiftCaptureLootItems[sectionKey] = leg;
+            }
+        }
+        UpdateViewModel();
+    }
+
+    public override string ConvertToTxt()
+    {
+        ApplyViewModel();
+        var result = new StringBuilder();
+        result.Append("weapons|" + string.Join(',', RandomizedStartingWeapons.Select(kvp => $"{kvp.Key}:{kvp.Value.CodeName}")) + '\n');
+        result.Append("equipment|" + string.Join(',', 
+            RandomizedStartingOutfits.Select(kvp => $"{kvp.Key}:{kvp.Value.Item1.CodeName}:{kvp.Value.Item2.CodeName}")
+            ) + '\n');
+        foreach (var itemsSource in ItemsSources)
+        {
+            foreach (var section in itemsSource.SourceSections)
+            {
+                result.Append($"{itemsSource.FileName}#{section.Key}|" + string.Join(',', section.Value));
+                if (itemsSource.FileName == "DT_jRPG_Enemies")
+                {
+                    var leg = ShapeshiftCaptureLootItems.GetValueOrDefault(section.Key, "None");
+                    result.Append($"?{leg}");
+                }
+                result.Append(Environment.NewLine);
+            }
+        }
+        return result.ToString();
+    }
+
+    public void ResetStartingEquipment()
+    {
+        RandomizedStartingWeapons = new()
+        {
+            {"Gustave", GetObject("Noahram")},
+            {"Lune", GetObject("Lunerim")},
+            {"Maelle", GetObject("Maellum")},
+            {"Sciel", GetObject("Scieleson")},
+            {"Verso", GetObject("Verleso")},
+            {"Monoco", GetObject("Monocaro")},
+        };
+        RandomizedStartingOutfits = new()
+        {
+            {"Gustave", new Tuple<ItemData, ItemData>(GetObject("SkinGustave_Default"), GetObject("FaceGustave_Default"))},
+            {"Lune", new Tuple<ItemData, ItemData>(GetObject("SkinLune_Default"), GetObject("FaceLune_Default"))},
+            {"Maelle", new Tuple<ItemData, ItemData>(GetObject("SkinMaelle_Default"), GetObject("FaceMaelle_Default"))},
+            {"Sciel", new Tuple<ItemData, ItemData>(GetObject("SkinSciel_Default"), GetObject("FaceSciel_Default"))},
+            {"Verso", new Tuple<ItemData, ItemData>(GetObject("SkinVerso_Default"), GetObject("FaceVerso_Default"))},
+            {"Monoco", new Tuple<ItemData, ItemData>(GetObject("SkinMonoco_Default"), GetObject("FaceMonoco_Default"))},
+        };
+    }
+
+    public void ReadRockChests()
+    {
+        using (StreamReader r = new StreamReader($"{RandomizerLogic.DataDirectory}/rock_chests.json"))
+        {
+            string json = r.ReadToEnd();
+            _rockChests = JsonSerializer.Deserialize<Dictionary<string, List<string>>>(json, JsonSourceGenerationContext.Default.DictionaryStringListString) ?? [];
+        }
+    }
+
+    public override void Initialize()
+    {
+        using (StreamReader r = new StreamReader($"{RandomizerLogic.DataDirectory}/broken_files.txt"))
+        {
+            string text = r.ReadToEnd();
+            text = text.ReplaceLineEndings("\n");
+            _ignoredFiles = text.Split('\n').ToList();
+        }
+        
+        ReadRockChests();
+        
+        ReadObjectsData($"{RandomizerLogic.DataDirectory}/item_data.json");
+        ReadTableAssets($"{RandomizerLogic.DataDirectory}/Originals/ItemTables");
+        BuildItemSources($"{RandomizerLogic.DataDirectory}/ItemData");
+        ViewModel.ContainerName = "Check";
+        ViewModel.ObjectName = "Item";
+        _rockItems = AddRockItems();
+        ResetRandomObjectPool();
+        ResetStartingEquipment();
+        _cleanSnapshot = ConvertToTxt();
+        ShapeshiftCaptureLootItemsPool = new ObjectPool<string>(ShapeshiftCaptureLootItems.Values.ToList(), []);
+    }
+
+    public override void Reset()
+    {
+        InitFromTxt(_cleanSnapshot);
+        ShapeshiftCaptureLootItemsPool = new ObjectPool<string>(ShapeshiftCaptureLootItems.Values.ToList(), []);
+    }
+
+    public void RandomizeStartingEquipment()
+    {
+        List<string> characterNames = ["Gustave", "Lune", "Maelle", "Sciel", "Verso", "Monoco"];
+        if (RandomizerLogic.Settings.RandomizeStartingWeapons)
+        {
+            foreach (var characterName in characterNames)
+            {
+                RandomizedStartingWeapons[characterName] = GetRandomWeapon(characterName);
+            }
+        }
+        if (RandomizerLogic.Settings.RandomizeStartingCosmetics)
+        {
+            foreach (var characterName in characterNames)
+            {
+                var characterOutfits = ObjectsData.Where(i => i.CustomName.Contains($"{characterName} Outfit")).ToList();
+                var randomOutfit = Utils.Pick(characterOutfits);
+                var characterHaircuts = ObjectsData.Where(i => i.CustomName.Contains($"{characterName} Haircut")).ToList();
+                var randomHaircut = Utils.Pick(characterHaircuts);
+                RandomizedStartingOutfits[characterName] = new Tuple<ItemData, ItemData>(randomOutfit, randomHaircut);
+            }
+        }
+    }
+
+    public void RandomizeFeet()
+    {
+        if (!RandomizerLogic.Settings.RandomizeMonocoFeet) return;
+        foreach (var leg in ShapeshiftCaptureLootItems)
+        {
+            ShapeshiftCaptureLootItems[leg.Key] = ShapeshiftCaptureLootItemsPool.GetObject();
+        }
+    }
+    
+    public override void AddObjectToContainer(string itemCodeName, string checkViewModelCodeName)
+    {
+        var itemData = GetObject(itemCodeName);
+        var itemSourceFileName = checkViewModelCodeName.Split("#")[0];
+        var checkKey = checkViewModelCodeName.Split("#")[1];
+        var itemSource = ItemsSources.FirstOrDefault(i => i.FileName == itemSourceFileName);
+        var check = itemSource?.Checks.FirstOrDefault(c => c.Key == checkKey);
+        itemSource.AddItem(check.Key, itemData);
+        AddObjectToContainerVM(itemData, checkViewModelCodeName);
+    }
+    
+    public override void RemoveObjectFromContainer(int itemIndex, string checkViewModelCodeName)
+    {
+        if (itemIndex < 0) return;
+        
+        var itemSourceFileName = checkViewModelCodeName.Split("#")[0];
+        var checkKey = checkViewModelCodeName.Split("#")[1];
+        var itemSource = ItemsSources.FirstOrDefault(i => i.FileName == itemSourceFileName);
+        var check = itemSource.Checks.FirstOrDefault(c => c.Key == checkKey);
+        itemSource.RemoveItem(check.Key, itemIndex);
+        RemoveObjectFromContainerVM(itemIndex, checkViewModelCodeName);
+    }
+
+    public override void ApplyViewModel()
+    {
+        foreach (var categoryViewModel in ViewModel.Categories)
+        {
+            foreach (var checkViewModel in categoryViewModel.Containers)
+            {
+                var checkViewModelCodeName = checkViewModel.CodeName;
+                var itemSourceFileName = checkViewModelCodeName.Split("#")[0];
+                var checkKey = checkViewModelCodeName.Split("#")[1];
+                var itemSource = ItemsSources.FirstOrDefault(i => i.FileName == itemSourceFileName);
+                var check = itemSource.Checks.FirstOrDefault(c => c.Key == checkKey);
+                var checkItemViewModels = checkViewModel.Objects;
+                for (int i = 0; i < checkItemViewModels.Count; i++)
+                {
+                    var itemViewModel = checkItemViewModels[i];
+                    itemSource.SourceSections[check.Key][i].Item = GetObject(itemViewModel.CodeName);
+                    itemSource.SourceSections[check.Key][i].Quantity = Math.Abs(itemViewModel.IntProperty);
+                    itemSource.SourceSections[check.Key][i].MerchantInventoryLocked = itemViewModel.BoolProperty;
+                }
+            }
+        }
+    }
+    
+    public override void UpdateViewModel()
+    {
+        ViewModel.FilteredCategories.Clear();
+        ViewModel.Categories.Clear();
+        
+        if (ViewModel.AllObjects.Count != ObjectsData.Count)
+        {
+            ViewModel.AllObjects = new ObservableCollection<ObjectViewModel>(ObjectsData.Select(i => new ObjectViewModel(i)).OrderBy(ovm => ovm.Name));
+            foreach (var objectViewModel in ViewModel.AllObjects)
+            {
+                objectViewModel.IntProperty = ItemsWithQuantities.Contains(objectViewModel.CodeName) ? 1 : -1;
+            }
+        }
+
+        foreach (var checkCategory in CheckTypes)
+        {
+            var newTypeViewModel = new CategoryViewModel
+            {
+                CategoryName = checkCategory.Key,
+                Containers = []
+            };
+
+            foreach (var check in checkCategory.Value)
+            {
+                var newContainer = new ContainerViewModel($"{check.ItemSource.FileName}#{check.Key}", check.CustomName);
+                var itemSource = check.ItemSource;
+                var items = itemSource.GetCheckItems(check.Key);
+                newContainer.Objects = new AvaloniaList<ObjectViewModel>(items.Select(i => new ObjectViewModel(i)));
+                newContainer.CanAddObjects = checkCategory.Key != "Dialogue rewards";
+
+                for (int i = 0; i < newContainer.Objects.Count; i++)
+                {
+                    newContainer.Objects[i].Index = i;
+                    if (itemSource.HasItemQuantities)
+                    {
+                        var itemParticle = itemSource.SourceSections[check.Key][i];
+                        newContainer.Objects[i].IntProperty = itemParticle.Item.HasQuantities ? itemParticle.Quantity : -1;
+                    }
+                    if (checkCategory.Key == "Merchant inventories")
+                    {
+                        newContainer.Objects[i].HasBoolPropertyControl = true;
+                        newContainer.Objects[i].BoolProperty =
+                            itemSource.SourceSections[check.Key][i].MerchantInventoryLocked;
+                    }
+
+                    if (checkCategory.Key == "Dialogue rewards")
+                    {
+                        newContainer.Objects[i].CanDelete = false;
+                    }
+                }
+                
+                newTypeViewModel.Containers.Add(newContainer);
+                if (ViewModel.CurrentContainer != null && $"{check.ItemSource.FileName}#{check.Key}" == ViewModel.CurrentContainer.CodeName)
+                { 
+                    ViewModel.CurrentContainer = newContainer;
+                    ViewModel.UpdateDisplayedObjects();
+                }
+            }
+            
+            if (newTypeViewModel.Containers.Count > 0)
+            {
+                ViewModel.Categories.Add(newTypeViewModel);
+            }
+        }
+
+        ViewModel.UpdateFilteredCategories();
+    }
+}
+
+
+
+
+
+
+
+
+

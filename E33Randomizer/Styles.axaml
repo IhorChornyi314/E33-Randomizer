@@ -1,0 +1,245 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:uiControls="clr-namespace:E33Randomizer.UIControls">
+    <Design.PreviewWith>
+        
+        <Border Padding="20">
+            <StackPanel Spacing="20">
+                <TextBlock Classes="e33PageHeader">TextBlock (class "e33PageHeader")</TextBlock>
+                <TextBlock>This is a TextBlock</TextBlock>
+                <Button Classes="e33Button">A button with the e33Button class.</Button>
+                <Button Classes="e33Button Green">A button with the e33Button + Green class.</Button>
+                <Button Classes="e33Button Green Small">Green</Button>
+                <Button Classes="e33DeleteButton" />
+                <CheckBox>This is a checkbox</CheckBox>
+                <Grid ColumnDefinitions="*,*" Margin="20" Width="300" HorizontalAlignment="Left">
+                    <Label Grid.Column="0" >Numeric Up Down</Label>
+                    <NumericUpDown
+                        Grid.Column="1"
+                        ShowButtonSpinner="True"
+                        ButtonSpinnerLocation="Right"
+                        Text="1234"
+                        FormatString="0"
+                        Minimum="0"
+                        Width="200"
+                        Maximum="2000"
+                        Increment="1"
+                        Value="1234" FontSize="25" />
+                </Grid>
+                <TextBlock Classes="note">This is some warning/important info text.</TextBlock>
+                <Grid ColumnDefinitions="*,*" Margin="20" Width="200" HorizontalAlignment="Left">
+                
+                <Label Grid.Column="0" Content="This is a Slider" />
+                <Slider Grid.Column="1" Width="100"
+                        Height="30"
+                        Minimum="0"
+                        Maximum="100"
+                        Name="Slider"
+                        Margin="0, 0, 10, 0"
+                        Padding="0 0 0 15"
+                        VerticalAlignment="Center" />
+                </Grid>
+                <uiControls:SubSection Header="Test" ToolTipContent="This is a tooltip content block" ToolTipHeader="This is a tooltip">
+                    <TextBlock Text="Value"/>
+                </uiControls:SubSection>
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+    <FluentTheme>
+        <FluentTheme.Palettes>
+            <ColorPaletteResources x:Key="Light" Accent="#DAAF7D" AltHigh="White" AltLow="White" AltMedium="White"
+                                   AltMediumHigh="White" AltMediumLow="White" BaseHigh="#080105" BaseLow="#ffcccccc"
+                                   BaseMedium="#ff898989" BaseMediumHigh="#ff5d5d5d" BaseMediumLow="#ff737373"
+                                   ChromeAltLow="#ff5d5d5d" ChromeBlackHigh="#080105" ChromeBlackLow="#ffcccccc"
+                                   ChromeBlackMedium="#ff5d5d5d" ChromeBlackMediumLow="#ff898989"
+                                   ChromeDisabledHigh="#ffcccccc" ChromeDisabledLow="#ff898989" ChromeGray="#ff737373"
+                                   ChromeHigh="#ffcccccc" ChromeLow="#ffececec" ChromeMedium="#ffe6e6e6"
+                                   ChromeMediumLow="#ffececec" ChromeWhite="White" ListLow="#ffe6e6e6"
+                                   ListMedium="#ffcccccc" RegionColor="White" />
+            <ColorPaletteResources x:Key="Dark" Accent="#DAAF7D" AltHigh="#080105" AltLow="#080105" AltMedium="#080105"
+                                   AltMediumHigh="#080105" AltMediumLow="#080105" BaseHigh="White" BaseLow="#ff333333"
+                                   BaseMedium="#ff9a9a9a" BaseMediumHigh="#ffb4b4b4" BaseMediumLow="#ff676767"
+                                   ChromeAltLow="#ffb4b4b4" ChromeBlackHigh="#080105" ChromeBlackLow="#ffb4b4b4"
+                                   ChromeBlackMedium="#080105" ChromeBlackMediumLow="#080105"
+                                   ChromeDisabledHigh="#ff333333" ChromeDisabledLow="#ff9a9a9a" ChromeGray="Gray"
+                                   ChromeHigh="Gray" ChromeLow="#ff151515" ChromeMedium="#ff1d1d1d"
+                                   ChromeMediumLow="#ff2c2c2c" ChromeWhite="White" ListLow="#ff1d1d1d"
+                                   ListMedium="#ff333333" RegionColor="#080105" />
+        </FluentTheme.Palettes>
+    </FluentTheme>
+    <StyleInclude Source="avares://AvaloniaEdit/Themes/Fluent/AvaloniaEdit.xaml" />
+    <Style Selector=":is(TopLevel)">
+        <Setter Property="FontFamily" Value="fonts:E33Fonts#IM FELL Double Pica" />
+    </Style>
+
+    <!-- Buttons -->
+    <Style Selector="Button.e33Button:pointerover Image#Left">
+        <Setter Property="Source" Value="avares://E33Randomizer/Assets/Images/ButtonBaseHoverLeft.png" />
+    </Style>
+    <Style Selector="Button.e33Button:pointerover Image#Right">
+        <Setter Property="Source" Value="avares://E33Randomizer/Assets/Images/ButtonBaseHoverRight.png" />
+    </Style>
+    <Style Selector="Button.e33Button.Green Image#Left">
+        <Setter Property="Source" Value="avares://E33Randomizer/Assets/Images/ButtonBaseLeftGreen.png" />
+    </Style>
+    <Style Selector="Button.e33Button.Green Image#Right">
+        <Setter Property="Source" Value="avares://E33Randomizer/Assets/Images/ButtonBaseRightGreen.png" />
+    </Style>
+    
+  
+    
+    <Style Selector="Button.e33Button.Green Image#Right">
+        <Setter Property="Source" Value="avares://E33Randomizer/Assets/Images/ButtonBaseRightGreen.png" />
+    </Style>
+    <Style Selector="Button.e33Button.Green Panel#Center">
+        <Setter Property="Background" Value="#0e1a18" />
+    </Style>
+    <Style Selector="Button.e33Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="#1b1918" />
+    </Style>
+    
+    <Style Selector="Button.e33Button.Green:disabled /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="#0e1a18" />
+    </Style>
+    
+    <Style Selector="Button.e33Button.Green:pointerover Image#Left">
+        <Setter Property="Source" Value="avares://E33Randomizer/Assets/Images/ButtonBaseHoverLeftGreen.png" />
+    </Style>
+    <Style Selector="Button.e33Button.Green:pointerover Image#Right">
+        <Setter Property="Source" Value="avares://E33Randomizer/Assets/Images/ButtonBaseHoverRightGreen.png" />
+    </Style>
+    <Style Selector="Button.e33Button.Green:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="#122220" />
+    </Style>
+    <Style Selector="Button.e33Button.Green:pointerover Panel#Center">
+        <Setter Property="Background" Value="#122220" />
+    </Style>
+    
+    <Style Selector="Button.e33Button.Green.Small Image#Left">
+        <Setter Property="RenderTransform" Value="scale(0.75,0.5) translate(13px,0)" />
+    </Style>
+    <Style Selector="Button.e33Button.Green.Small Image#Right">
+        <Setter Property="RenderTransform" Value="scale(0.75,0.5) translate(-13px,0)" />
+    </Style>
+    <Style Selector="Button.e33Button.Green.Small /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Margin" Value="0 0" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="FontSize" Value="14" />
+    </Style>
+    <Style Selector="Button.e33Button.Green.Small Panel#Center">
+        <Setter Property="IsVisible" Value="False"/>
+        <Setter Property="Width" Value="0" />
+        <Setter Property="Margin" Value="0" />
+    </Style>
+    
+
+
+    <Style Selector="Button.e33Button">
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="FontFamily" Value="fonts:E33Fonts#Cinzel" />
+        <Setter Property="Background" Value="#1b1918" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid HorizontalAlignment="Center"
+                      VerticalAlignment="Top" ColumnDefinitions="Auto,*,Auto">
+
+                    <!-- Left background image -->
+                    <Image Grid.Column="0" Name="Left"
+                           Source="avares://E33Randomizer/Assets/Images/ButtonBaseLeft.png" Stretch="None" />
+
+                    <!-- Middle transparent space (grows horizontally) -->
+                    <Panel Grid.Column="1" Background="#1b1918" Name="Center" />
+
+                    <!-- Right background image -->
+                    <Image Grid.Column="2" Name="Right"
+                           Source="avares://E33Randomizer/Assets/Images/ButtonBaseRight.png" Stretch="None" />
+
+                    <!-- Floating Button, overlapping all columns -->
+                    <ContentPresenter Grid.Column="0" Grid.ColumnSpan="3"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      ZIndex="1"
+                                      Name="PART_ContentPresenter"
+                                      Margin="20 0"
+                                      Content="{TemplateBinding Content}" />
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+    
+    <Style Selector="Button.e33DeleteButton">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="MaxHeight" Value="64" />
+        <Setter Property="MaxWidth" Value="64" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <!-- Right background image -->
+                <Image Source="avares://E33Randomizer/Assets/Images/DeleteButton.png" Stretch="Fill" />
+            </ControlTemplate>
+        </Setter>
+    </Style>
+    
+
+    <!-- NumericUpDown -->
+    <Style Selector="NumericUpDown /template/ TextBox#PART_TextBox">
+        <Setter Property="LineHeight" Value="24" />
+        <Setter Property="Padding" Value="5 0" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="fonts:E33Fonts#Bebas Neue" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="FontSize" Value="{TemplateBinding FontSize}" />
+
+    </Style>
+
+    <!-- Checkboxes -->
+    <Style Selector="CheckBox">
+        <Setter Property="FontSize" Value="18" />
+    </Style>
+    <Style Selector="CheckBox:checked /template/ Border#NormalRectangle">
+        <Setter Property="Background" Value="black" />
+    </Style>
+    
+    <Style Selector="uiControls|CheckboxToolTip">
+        <Setter Property="FontSize" Value="18" />
+    </Style>
+    <Style Selector="uiControls|CheckboxToolTip:checked /template/ Border#NormalRectangle">
+        <Setter Property="Background" Value="black" />
+    </Style>
+
+    <!-- TextBlocks -->
+    <Style Selector="TextBlock.note">
+        <Setter Property="Foreground" Value="#DAAF7D" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="Margin" Value="40,5,0,5" />
+    </Style>
+    
+    <Style Selector="TextBlock.e33PageHeader">
+        <Setter Property="Foreground" Value="#DAAF7D" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="FontSize" Value="30" />
+        <Setter Property="FontFamily" Value="fonts:E33Fonts#Cinzel" />
+    </Style>
+
+    <!-- Path Icons -->
+    <Style Selector="PathIcon.tooltip">
+        <Setter Property="Margin" Value="10 0 0 0" />
+        <Setter Property="Width" Value="13" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="Foreground" Value="#a6c7fe" />
+        <Setter Property="Data" Value="M24 4C35.0457 4 44 12.9543 44 24C44 35.0457 35.0457 44 24 44C12.9543 44 4 35.0457 4 24C4 12.9543 12.9543 4 24 4ZM24 6.5C14.335 6.5 6.5 14.335 6.5 24C6.5 33.665 14.335 41.5 24 41.5C33.665 41.5 41.5 33.665 41.5 24C41.5 14.335 33.665 6.5 24 6.5ZM24.25 32C25.0784 32 25.75 32.6716 25.75 33.5C25.75 34.3284 25.0784 35 24.25 35C23.4216 35 22.75 34.3284 22.75 33.5C22.75 32.6716 23.4216 32 24.25 32ZM24.25 13C27.6147 13 30.5 15.8821 30.5 19.2488C30.502 21.3691 29.7314 22.7192 27.8216 24.7772L26.8066 25.8638C25.7842 27.0028 25.3794 27.7252 25.3409 28.5793L25.3379 28.7411L25.3323 28.8689L25.3143 28.9932C25.2018 29.5636 24.7009 29.9957 24.0968 30.0001C23.4065 30.0049 22.8428 29.4493 22.8379 28.7589C22.8251 26.9703 23.5147 25.7467 25.1461 23.9739L26.1734 22.8762C27.5312 21.3837 28.0012 20.503 28 19.25C28 17.2634 26.2346 15.5 24.25 15.5C22.3307 15.5 20.6142 17.1536 20.5055 19.0587L20.4935 19.3778C20.4295 20.0081 19.8972 20.5 19.25 20.5C18.5596 20.5 18 19.9404 18 19.25C18 15.8846 20.8864 13 24.25 13Z"></Setter>
+    </Style>
+    
+    <!-- Labels --> 
+    <Style Selector="Label">
+        <Setter Property="FontSize" Value="15" />
+    </Style>
+    
+    <!-- Add Styles Here -->
+    
+</Styles>

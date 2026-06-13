@@ -4,22 +4,22 @@
   "Excluded": [],
   "CustomPlacement": {
     "Act I Locations": {
-      "Act I Locations": 1.0
+      "Act I Locations": 100
     },
     "Act II Locations": {
-      "Act II Locations": 1.0
+      "Act II Locations": 100
     },
     "Act III Locations": {
-      "Act III Locations": 1.0
+      "Act III Locations": 100
     },
     "Act I World Map Locations": {
-      "Act I World Map Locations": 1.0
+      "Act I World Map Locations": 100
     },
     "Act II World Map Locations": {
-      "Act II World Map Locations": 1.0
+      "Act II World Map Locations": 100
     },
     "Act III World Map Locations": {
-      "Act III World Map Locations": 1.0
+      "Act III World Map Locations": 100
     }
   },
   "FrequencyAdjustments": {}

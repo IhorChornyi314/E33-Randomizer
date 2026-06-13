@@ -1,0 +1,307 @@
+﻿<UserControl x:Class="E33Randomizer.RandomizeItemsTab"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:e33Randomizer="clr-namespace:E33Randomizer"
+             xmlns:lang="clr-namespace:E33Randomizer.Assets"
+             xmlns:uiControls="clr-namespace:E33Randomizer.UIControls"
+             mc:Ignorable="d"
+             d:DataContext="{x:Static e33Randomizer:DesignItemsSettingsViewModel.SettingsViewModel}"
+             d:DesignHeight="{x:Static e33Randomizer:MainWindow.TabContainerHeight}"
+             d:DesignWidth="{x:Static e33Randomizer:MainWindow.TabContainerWidth}">
+    <Grid x:DataType="e33Randomizer:SettingsViewModel">
+        <Grid.Styles>
+            <Style Selector="CheckBox.hasNumeric[IsChecked=True]">
+                <Setter Property="MinHeight" Value="40" />
+            </Style>
+            <Style Selector="NumericUpDown">
+                <Setter Property="MaxHeight" Value="20" />
+            </Style>
+            <Style Selector="TextBlock">
+                <Setter Property="VerticalAlignment" Value="Center" />
+            </Style>
+        </Grid.Styles>
+        <Grid Margin="20" RowDefinitions="Auto,*,Auto">
+            <StackPanel Margin="0">
+                <uiControls:CheckboxToolTip
+                    Content="{x:Static lang:Resources.Randomize_Items_RandomizeItems}"
+                    ToolTipContent="{x:Static lang:Resources.Randomize_Items_Tooltip_RandomizeItems}"
+                    IsChecked="{Binding RandomizeItems}" />
+                <uiControls:CheckboxToolTip
+                    Content="{x:Static lang:Resources.Randomize_Items_MakeEveryItemShowAPickUpNotification}"
+                    ToolTipContent="{x:Static lang:Resources.Randomize_Items_Tooltip_MakeEveryItemShowAPickUpNotification}"
+                    IsChecked="{Binding MakeEveryItemVisible}" />
+                <uiControls:CheckboxToolTip
+                    Content="{x:Static lang:Resources.Randomize_Items_IncludeCutContentItems}"
+                    ToolTipContent="{x:Static lang:Resources.Randomize_Items_Tooltip_IncludeCutContentItems}"
+                    IsChecked="{Binding IncludeCutContentItems}" />
+                <uiControls:CheckboxToolTip
+                    Content="{x:Static lang:Resources.Randomize_Items_ReceivePaintedPowerAtTheStartOfActIII}"
+                    ToolTipContent="{x:Static lang:Resources.Randomize_Items_Tooltip_ReceivePaintedPowerAtTheStartOfActIII}"
+                    IsChecked="{Binding EnsurePaintedPowerFromPaintress}" />
+                <uiControls:CheckboxToolTip
+                    x:Name="RandomizeStartingWeaponsCheckBox"
+                    Content="{x:Static lang:Resources.Randomize_Items_RandomizeStartingWeapons}"
+                    ToolTipContent="{x:Static lang:Resources.Randomize_Items_Tooltip_RandomizeStartingWeapons}"
+                    IsChecked="{Binding RandomizeStartingWeapons}" />
+                <uiControls:CheckboxToolTip
+                    Content="{x:Static lang:Resources.Randomize_Items_RandomizeStartingCosmetics}"
+                    ToolTipContent="{x:Static lang:Resources.Randomize_Items_Tooltip_RandomizeStartingCosmetics}"
+                    IsChecked="{Binding RandomizeStartingCosmetics}" />
+
+                <uiControls:CheckboxToolTip
+                    x:Name="RandomizeEsquieRocksWeaponsCheckBox"
+                    Content="{x:Static lang:Resources.Randomize_Items_RandomizeEsquiesRocksIntoMapPickups}"
+                    ToolTipContent="{x:Static lang:Resources.Randomize_Items_Tooltip_RandomizeEsquiesRocksIntoMapPickups}"
+                    IsChecked="{Binding RandomizeEsquieRocks}" />
+                <uiControls:CheckboxToolTip
+                    x:Name="LimitEsquieRocksWeaponsCheckBox"
+                    Content="{x:Static lang:Resources.Randomize_Items_LimitEsquiesRocksToOnlyTheirOriginalAreas}"
+                    ToolTipContent="{x:Static lang:Resources.Randomize_Items_Tooltip_LimitEsquiesRocksToOnlyTheirOriginalArea}"
+                    IsChecked="{Binding LimitEsquieRandomization}"
+                    IsVisible="{Binding IsChecked, ElementName=RandomizeEsquieRocksWeaponsCheckBox}" />
+                <uiControls:CheckboxToolTip x:Name="RandomizeMonocoFeetCheckBox"
+                                            Content="{x:Static lang:Resources.Randomize_Items_RandomizeEnemyFeetDrops}"
+                                            ToolTipContent="{x:Static lang:Resources.Randomize_Items_Tooltip_RandomizeEnemyFeetDrops}"
+                                            IsChecked="{Binding RandomizeMonocoFeet}" />
+                <uiControls:CheckboxToolTip
+                    Content="{x:Static lang:Resources.Randomize_Items_EnableGearRollsInPrologue}"
+                    ToolTipContent="{x:Static lang:Resources.Randomize_Items_Tooltip_EnableGearRollsInPrologue}"
+                    IsChecked="{Binding IncludeGearInPrologue}" />
+                <uiControls:CheckboxToolTip
+                    Content="{x:Static lang:Resources.Randomize_Items_RandomizeGestralBeachRewards}"
+                    ToolTipContent="{x:Static lang:Resources.Randomize_Items_Tooltip_RandomizeGestralBeachRewards}"
+                    IsChecked="{Binding RandomizeGestralBeachRewards}" />
+                <uiControls:CheckboxToolTip
+                    Content="{x:Static lang:Resources.Randomize_Items_ChangeNumberOfItemsInNonRandomizedChecks}"
+                    ToolTipContent="{x:Static lang:Resources.Randomize_Items_Tooltip_ChangeNumberOfItemsInNonRandomizedChecks}"
+                    IsChecked="{Binding ChangeSizesOfNonRandomizedChecks}" />
+                <uiControls:CheckboxToolTip
+                    Content="{x:Static lang:Resources.Randomize_Items_ReduceKeyItemRepetition}"
+                    ToolTipContent="{x:Static lang:Resources.Randomize_Items_Tooltip_ReduceKeyItemRepetition}"
+                    IsChecked="{Binding ReduceKeyItemRepetition}" />
+                <CheckBox Content="{x:Static lang:Resources.Randomize_Items_ReduceGearRepetition}"
+                          IsChecked="{Binding ReduceGearRepetition}" />
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox
+                            x:Name="ChangeMerchantInventoryLockedCheckBox"
+                            Classes="hasNumeric"
+                            Content="{x:Static lang:Resources.Randomize_Items_MakeAnyOfTheMerchantWaresLockedWithProbability}"
+                            IsChecked="{Binding ChangeMerchantInventoryLocked}" />
+                        <NumericUpDown
+                            x:Name="MerchantInventoryLockedChancePercentTextBox"
+                            Text="{Binding MerchantInventoryLockedChancePercent, Mode=OneWay}"
+                            Value="{Binding MerchantInventoryLockedChancePercent}"
+                            FormatString="0 \%"
+                            Margin="5,0,0,0"
+                            Maximum="100"
+                            Minimum="0">
+                        </NumericUpDown>
+                        <PathIcon Classes="tooltip">
+                            <ToolTip.Tip>
+                                <uiControls:HeaderToolTip
+                                    Content="{x:Static lang:Resources.Randomize_Items_Tooltip_RandomizeVariousCheckSizes}" />
+                            </ToolTip.Tip>
+                        </PathIcon>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox
+                            x:Name="ChangeMerchantInventorySizeCheckBox"
+                            Classes="hasNumeric"
+                            Content="{x:Static lang:Resources.Randomize_Items_RandomizeMerchantInventorySizesBetween}"
+                            IsChecked="{Binding ChangeMerchantInventorySize}" />
+                        <StackPanel Orientation="Horizontal"
+                                    IsVisible="{Binding IsChecked, ElementName=ChangeMerchantInventorySizeCheckBox}">
+                            <NumericUpDown
+                                x:Name="MerchantInventorySizeMinTextBox"
+                                Text="{Binding MerchantInventorySizeMin, Mode=OneWay}"
+                                Value="{Binding MerchantInventorySizeMin}"
+                                FormatString="0"
+                                Maximum="99"
+                                Minimum="1" />
+                            <TextBlock Text="{x:Static lang:Resources.And}" />
+                            <NumericUpDown
+                                x:Name="MerchantInventorySizeMaxTextBox"
+                                Text="{Binding MerchantInventorySizeMax, Mode=OneWay}"
+                                Value="{Binding MerchantInventorySizeMax}"
+                                FormatString="0"
+                                Maximum="99"
+                                Minimum="1" />
+                        </StackPanel>
+                        <PathIcon Classes="tooltip">
+                            <ToolTip.Tip>
+                                <uiControls:HeaderToolTip
+                                    Content="{x:Static lang:Resources.Randomize_Items_Tooltip_RandomizeVariousCheckSizes}" />
+                            </ToolTip.Tip>
+                        </PathIcon>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox
+                            x:Name="NumberOfLootDropsSizeCheckBox"
+                            Classes="hasNumeric"
+                            Content="{x:Static lang:Resources.Randomize_Items_RandomizeNumberOfCutsceneRewardsBetween}"
+                            IsChecked="{Binding ChangeNumberOfLootDrops}" />
+                        <StackPanel Orientation="Horizontal"
+                                    IsVisible="{Binding IsChecked, ElementName=NumberOfLootDropsSizeCheckBox}">
+                            <NumericUpDown
+                                x:Name="LootDropsNumberMinTextBox"
+                                Text="{Binding LootDropsNumberMin, Mode=OneWay}"
+                                Value="{Binding LootDropsNumberMin}"
+                                FormatString="0"
+                                Maximum="99"
+                                Minimum="0" />
+                            <TextBlock Text="{x:Static lang:Resources.And}" />
+                            <NumericUpDown
+                                x:Name="LootDropsNumberMaxTextBox"
+                                Text="{Binding LootDropsNumberMax, Mode=OneWay}"
+                                Value="{Binding LootDropsNumberMax}"
+                                FormatString="0"
+                                Maximum="99"
+                                Minimum="0" />
+
+                        </StackPanel>
+                        <PathIcon Classes="tooltip">
+                            <ToolTip.Tip>
+                                <uiControls:HeaderToolTip
+                                    Content="{x:Static lang:Resources.Randomize_Items_Tooltip_RandomizeVariousCheckSizes}" />
+                            </ToolTip.Tip>
+                        </PathIcon>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox
+                            x:Name="ChangeNumberOfTowerRewardsCheckBox"
+                            Classes="hasNumeric"
+                            Content="{x:Static lang:Resources.Randomize_Items_RandomizeNumberOfTheEndlessTowerRewardsBetween}"
+                            IsChecked="{Binding ChangeNumberOfTowerRewards}" />
+                        <StackPanel Orientation="Horizontal"
+                                    IsVisible="{Binding IsChecked, ElementName=ChangeNumberOfTowerRewardsCheckBox}">
+                            <NumericUpDown
+                                Text="{Binding TowerRewardsNumberMin, Mode=OneWay}"
+                                Value="{Binding TowerRewardsNumberMin}"
+                                FormatString="0"
+                                Maximum="99"
+                                Minimum="1" />
+                            <TextBlock Text="{x:Static lang:Resources.And}" />
+                            <NumericUpDown
+                                Text="{Binding TowerRewardsNumberMax, Mode=OneWay}"
+                                Value="{Binding TowerRewardsNumberMax}"
+                                FormatString="0"
+                                Maximum="99"
+                                Minimum="1" />
+                        </StackPanel>
+                        <PathIcon Classes="tooltip">
+                            <ToolTip.Tip>
+                                <uiControls:HeaderToolTip
+                                    Content="{x:Static lang:Resources.Randomize_Items_Tooltip_RandomizeVariousCheckSizes}" />
+                            </ToolTip.Tip>
+                        </PathIcon>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox
+                            x:Name="ChangeNumberOfChestContentsCheckBox"
+                            Classes="hasNumeric"
+                            Content="{x:Static lang:Resources.Randomize_Items_RandomizeNumberOfItemsPerMapPickupBetween}"
+                            IsChecked="{Binding ChangeNumberOfChestContents}" />
+                        <StackPanel Orientation="Horizontal"
+                                    IsVisible="{Binding IsChecked, ElementName=ChangeNumberOfChestContentsCheckBox}">
+                            <NumericUpDown
+                                Text="{Binding ChestContentsNumberMin, Mode=OneWay}"
+                                Value="{Binding ChestContentsNumberMin}"
+                                FormatString="0"
+                                Maximum="99"
+                                Minimum="1" />
+                            <TextBlock Text="{x:Static lang:Resources.And}" />
+                            <NumericUpDown
+                                Text="{Binding ChestContentsNumberMax, Mode=OneWay}"
+                                Value="{Binding ChestContentsNumberMin}"
+                                FormatString="0"
+                                Maximum="99"
+                                Minimum="1" />
+                        </StackPanel>
+                        <PathIcon Classes="tooltip">
+                            <ToolTip.Tip>
+                                <uiControls:HeaderToolTip
+                                    Content="{x:Static lang:Resources.Randomize_Items_Tooltip_RandomizeVariousCheckSizes}" />
+                            </ToolTip.Tip>
+                        </PathIcon>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox
+                            x:Name="ChangeNumberOfActionRewardsCheckBox"
+                            Classes="hasNumeric"
+                            Content="{x:Static lang:Resources.Randomize_Items_RandomizeNumberOfCutsceneRewardsBetween}"
+                            IsChecked="{Binding ChangeNumberOfActionRewards}" />
+                        <StackPanel Orientation="Horizontal"
+                                    IsVisible="{Binding IsChecked, ElementName=ChangeNumberOfActionRewardsCheckBox}">
+                            <NumericUpDown
+                                Text="{Binding ActionRewardsNumberMin, Mode=OneWay}"
+                                Value="{Binding ActionRewardsNumberMin}"
+                                FormatString="0"
+                                Maximum="99"
+                                Minimum="1" />
+                            <TextBlock Text="{x:Static lang:Resources.And}" />
+                            <NumericUpDown
+                                Text="{Binding ActionRewardsNumberMax, Mode=OneWay}"
+                                Value="{Binding ActionRewardsNumberMax}"
+                                FormatString="0"
+                                Maximum="99"
+                                Minimum="1" />
+                        </StackPanel>
+                        <PathIcon Classes="tooltip">
+                            <ToolTip.Tip>
+                                <uiControls:HeaderToolTip
+                                    Content="{x:Static lang:Resources.Randomize_Items_Tooltip_RandomizeVariousCheckSizes}" />
+                            </ToolTip.Tip>
+                        </PathIcon>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox
+                            x:Name="ChangeQuantityOfItemsCheckBox"
+                            Classes="hasNumeric"
+                            Content="{x:Static lang:Resources.Randomize_Items_RandomizeQuantitiesOfUpgradeMaterialsBetween}"
+                            IsChecked="{Binding ChangeItemQuantity}" />
+                        <StackPanel Orientation="Horizontal"
+                                    IsVisible="{Binding IsChecked, ElementName=ChangeQuantityOfItemsCheckBox}">
+                            <NumericUpDown
+                                Text="{Binding ItemQuantityMin, Mode=OneWay}"
+                                Value="{Binding ItemQuantityMin}"
+                                FormatString="0"
+                                Maximum="99"
+                                Minimum="1" />
+                            <TextBlock Text="{x:Static lang:Resources.And}" />
+                            <NumericUpDown
+                                Text="{Binding ItemQuantityMax, Mode=OneWay}"
+                                Value="{Binding ItemQuantityMax}"
+                                FormatString="0"
+                                Maximum="99"
+                                Minimum="1" />
+                        </StackPanel>
+                        <PathIcon Classes="tooltip">
+                            <ToolTip.Tip>
+                                <uiControls:HeaderToolTip
+                                    Content="{x:Static lang:Resources.Randomize_Items_Tooltip_RandomizeVariousCheckSizes}" />
+                            </ToolTip.Tip>
+                        </PathIcon>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Grid.Row="2">
+                <Grid ColumnDefinitions="Auto,Auto" HorizontalAlignment="Center" ColumnSpacing="10">
+                    <Button Grid.Column="0"
+                            Classes="e33Button"
+                            Content="{x:Static lang:Resources.Randomize_Items_Button_CustomizeItemPlacements}"
+                            Click="CustomPlacementButton_Click"
+                            Tag="Item" />
+                    <Button Grid.Column="1"
+                            Classes="e33Button"
+                            Content="{x:Static lang:Resources.Randomize_Items_Button_EditIndividualChecks}"
+                            Click="EditButton_Click"
+                            Tag="Item" />
+                </Grid>
+
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

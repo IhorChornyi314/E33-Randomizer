@@ -1,0 +1,68 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:e33Randomizer="clr-namespace:E33Randomizer"
+             xmlns:uiControls="clr-namespace:E33Randomizer.UIControls"
+             xmlns:lang="clr-namespace:E33Randomizer.Assets"
+             mc:Ignorable="d"
+             d:DesignHeight="{x:Static e33Randomizer:MainWindow.TabContainerHeight}"
+             d:DesignWidth="{x:Static e33Randomizer:MainWindow.TabContainerWidth}"
+             x:Class="E33Randomizer.MiscTab" x:DataType="e33Randomizer:MiscTabViewModel">
+    <StackPanel>
+        <uiControls:SubSection
+            Header="{x:Static lang:Resources.Misc_SaveFile_Header}"
+            Height="460"
+            Width="700">
+            <StackPanel>
+                <uiControls:FormatableStylableTextBlock
+                        Margin="10,10,0,0"
+                        VerticalAlignment="Top"
+                        TextWrapping="Wrap"
+                        TextAlignment="Left"
+                        FontSize="16"
+                        PreFormattedText="{x:Static lang:Resources.Misc_SaveFile_AddCounters_Description }"
+                        MaxWidth="700">
+                    <uiControls:FormatableStylableTextBlock.Styles>
+                        <Style Selector="Run#R0">
+                            <Setter Property="Foreground" Value="{StaticResource SystemAccentColor}"></Setter>
+                        </Style>
+                        <Style Selector="Run#R1">
+                            <Setter Property="Foreground" Value="{StaticResource SystemAccentColor}"></Setter>
+                        </Style>
+                    </uiControls:FormatableStylableTextBlock.Styles>
+                    <uiControls:FormatableStylableTextBlock.StringFormatBindingValues>
+                         <MultiBinding Converter="{x:Static e33Randomizer:Converters.MultiBindingToEnumerableConverter}">
+                            <Binding Path="DefaultSaveFilePath"/>
+                            <Binding Path="SaveFileName" />
+                        </MultiBinding>
+                    </uiControls:FormatableStylableTextBlock.StringFormatBindingValues>
+                </uiControls:FormatableStylableTextBlock>
+                <Button
+                        Tag="AddCounters"
+                        Content="{x:Static lang:Resources.Misc_SaveFile_Button_AddCounters}"
+                        HorizontalAlignment="Center"
+                        Classes="e33Button"
+                        Margin="0 0 0 10"
+                        Click="EnableCountersInSaveButton_OnClick" />
+                <Separator></Separator>
+                <TextBlock
+                        Margin="10 10 0 0"
+                        VerticalAlignment="Top"
+                        TextWrapping="Wrap"
+                        TextAlignment="Left"
+                        MaxWidth="800"
+                        FontSize="16"
+                        Text="{x:Static lang:Resources.Misc_SaveFile_FixCurtain_Description}">
+                </TextBlock>
+                <Button
+                        Classes="e33Button"
+                        Tag="FixCurtain"
+                        Content="{x:Static lang:Resources.Misc_SaveFile_Button_FixCurtains}"
+                        HorizontalAlignment="Center"
+                        Margin="0 10 0 0"
+                        Click="EnableCountersInSaveButton_OnClick" />
+            </StackPanel>
+        </uiControls:SubSection>
+    </StackPanel>
+</UserControl>

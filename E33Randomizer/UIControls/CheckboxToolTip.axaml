@@ -1,0 +1,69 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:uiControls="clr-namespace:E33Randomizer.UIControls"
+                    xmlns:lang="clr-namespace:E33Randomizer.Assets">
+    <!-- Add Resources Here -->
+    <Design.PreviewWith>
+
+        <StackPanel Width="400" Height="500">
+            <uiControls:CheckboxToolTip Content="This is a checkbox. super duper long will it wrap or will "
+                                        ToolTipHeader="This is the header for the tooltip"
+                                        ToolTipContent=" This is a tooltip about stuff&#x0a;&#x0a;And it has many lines, so many lines in fact that it just keeps going." />
+        </StackPanel>
+
+    </Design.PreviewWith>
+    <ControlTheme x:Key="{x:Type uiControls:CheckboxToolTip}" TargetType="uiControls:CheckboxToolTip"
+                  BasedOn="{StaticResource { x:Type CheckBox}}">
+        <Setter Property="ToolTipHeader" Value="{x:Static lang:Resources.ToolTip_Header_HowItWorks}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid x:Name="RootGrid" ColumnDefinitions="20,*">
+                    <Border x:Name="PART_Border"
+                            Grid.ColumnSpan="2"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}" />
+
+                    <Grid VerticalAlignment="Top" Height="{DynamicResource CheckBoxMinHeight}">
+                        <Border x:Name="NormalRectangle"
+                                BorderBrush="{DynamicResource CheckBoxCheckBackgroundStrokeUnchecked}"
+                                Background="{DynamicResource CheckBoxCheckBackgroundFillUnchecked}"
+                                BorderThickness="{DynamicResource CheckBoxBorderThemeThickness}"
+                                CornerRadius="{TemplateBinding CornerRadius}"
+                                UseLayoutRounding="False"
+                                Height="20"
+                                Width="20" />
+
+                        <Viewbox UseLayoutRounding="False">
+                            <Panel>
+                                <Panel Height="16" Width="16" />
+                                <Path x:Name="CheckGlyph"
+                                      Opacity="0"
+                                      Fill="{DynamicResource CheckBoxCheckGlyphForegroundUnchecked}"
+                                      Stretch="Uniform"
+                                      VerticalAlignment="Center"
+                                      FlowDirection="LeftToRight" />
+                            </Panel>
+                        </Viewbox>
+                    </Grid>
+
+
+                    <Grid ColumnDefinitions="*,Auto" Grid.Column="1"
+                          Margin="{TemplateBinding Padding}"
+                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                        <TextBlock Grid.Column="0" Text="{TemplateBinding Content}" TextWrapping="Wrap"
+                                   Width="{Binding $parent.Width}" />
+                        <PathIcon Grid.Column="1" Classes="tooltip">
+                            <ToolTip.Tip>
+                                <uiControls:HeaderToolTip Content="{TemplateBinding ToolTipContent}"
+                                                          Header="{TemplateBinding ToolTipHeader}" />
+                            </ToolTip.Tip>
+                        </PathIcon>
+                    </Grid>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>

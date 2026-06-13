@@ -1,6 +1,4 @@
-﻿using E33Randomizer;
-
-namespace Tests.Rules;
+﻿namespace Tests.Rules;
 
 public class ReduceSkillRepetition: OutputRuleBase
 {
