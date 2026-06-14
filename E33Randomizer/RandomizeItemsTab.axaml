@@ -141,7 +141,7 @@
                         <CheckBox
                             x:Name="NumberOfLootDropsSizeCheckBox"
                             Classes="hasNumeric"
-                            Content="{x:Static lang:Resources.Randomize_Items_RandomizeNumberOfCutsceneRewardsBetween}"
+                            Content="{x:Static lang:Resources.Randomize_Items_RandomizeNumberOfLootDropsBetween}"
                             IsChecked="{Binding ChangeNumberOfLootDrops}" />
                         <StackPanel Orientation="Horizontal"
                                     IsVisible="{Binding IsChecked, ElementName=NumberOfLootDropsSizeCheckBox}">

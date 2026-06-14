@@ -434,7 +434,7 @@
         <value>Randomize manor doors</value>
     </data>
     <data name="Randomize_Locations_RandomizePaintingWorkshopEntrances" xml:space="preserve">
-        <value>SRandomize painting workshop entrances</value>
+        <value>Randomize painting workshop entrances</value>
     </data>
     <data name="Randomize_Locations_RandomizeCutsceneTeleports" xml:space="preserve">
         <value>Randomize cutscene teleports</value>
