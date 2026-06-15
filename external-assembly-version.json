@@ -1,0 +1,36 @@
+[
+    {
+        "name": "retoc",
+        "repo": "https://github.com/trumank/retoc",
+        "version": "0.1.5",
+        "paths": [
+            {
+                "url": "https://github.com/trumank/retoc/releases/download/v0.1.5/retoc_cli-x86_64-pc-windows-msvc.zip",
+                "sha256": "cc036b06ad3bdcf7003690b00d82719980c374e48a95bf0654f9959148d263aa",
+                "fileToExtract": "retoc.exe"
+            },
+            {
+                "url":"https://github.com/trumank/retoc/releases/download/v0.1.5/retoc_cli-x86_64-unknown-linux-gnu.tar.xz",
+                "sha256":"3c309a4aea0c6d0a5c6ee31b1d1b32768eb86ac67e3a1890d677eabe6ce26b36",
+                "fileToExtract": "retoc"
+            }
+        ]
+    },
+    {
+        "name": "uesave",
+        "repo": "https://github.com/trumank/uesave",
+        "version": "0.7.1",
+        "paths": [
+            {
+                "url": "https://github.com/trumank/uesave/releases/download/v0.7.1/uesave_cli-x86_64-pc-windows-msvc.zip",
+                "sha256": "6fadde0a91496b5d17ca4d33b4729e87d6fe8de3f913de07099d2785bcc8a3dc",
+                "fileToExtract": "uesave.exe"
+            },
+            {
+                "url": "https://github.com/trumank/uesave/releases/download/v0.7.1/uesave_cli-x86_64-unknown-linux-gnu.tar.xz",
+                "sha256": "d97c5f74d3f12a21e861979ebe4ec6015a1ec593efdbd18cbfb131692b01af0f",
+                "fileToExtract": "uesave"
+            }
+        ]
+    }
+]

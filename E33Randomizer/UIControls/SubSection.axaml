@@ -1,0 +1,93 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:uiControls="clr-namespace:E33Randomizer.UIControls"
+                    xmlns:lang="clr-namespace:E33Randomizer.Assets">
+  <Design.PreviewWith>
+    <uiControls:SubSection Header="Header!" Padding="10" Margin="10" Width="500" ToolTipContent="This is help!" ToolTipHeader="What Is This?">
+      <TextBlock Text="Hello World" Height="500" />
+    </uiControls:SubSection>
+  </Design.PreviewWith>
+  <ControlTheme x:Key="{x:Type uiControls:SubSection}" TargetType="uiControls:SubSection">
+    <Setter Property="ToolTipHeader" Value="{x:Static lang:Resources.ToolTip_Header_HowItWorks}" />
+    
+    <Setter Property="Template">
+      <ControlTemplate>
+          <Grid HorizontalAlignment="Center"
+                VerticalAlignment="Top" ColumnDefinitions="Auto,*,Auto" RowDefinitions="*,*" Width="{TemplateBinding Width}"  Background="#161516">
+
+            <!-- Left background image -->
+            <Image Grid.Row="0" Grid.Column="0" Name="Left"
+                   Source="avares://E33Randomizer/Assets/Images/ComponentBorderUpperLeft.png" Stretch="None" VerticalAlignment="Top" />
+
+            <!-- Middle transparent space (grows horizontally) -->
+            <Panel Grid.Row="0"  Grid.Column="1" />
+
+            <!-- Right background image -->
+            <Image Grid.Row="0"  Grid.Column="2" Name="Right"
+                   Source="avares://E33Randomizer/Assets/Images/ComponentBorderUpperRight.png" Stretch="None" VerticalAlignment="Top"/>
+
+            <!-- Left Bottom background image -->
+            <Image Grid.Row="1"  Grid.Column="0" Name="LeftBottom"
+                   Source="avares://E33Randomizer/Assets/Images/ComponentBorderUpperRight.png" Stretch="None" VerticalAlignment="Bottom"
+                   IsVisible="{TemplateBinding IsBottomImageVisible}"  RenderTransform="rotate(180deg)"/>
+            
+            <!-- Right Bottom background image -->
+            <Image Grid.Row="1" Grid.Column="2" Name="RightBottom"
+                   Source="avares://E33Randomizer/Assets/Images/ComponentBorderUpperLeft.png" Stretch="None" VerticalAlignment="Bottom" 
+                   IsVisible="{TemplateBinding IsBottomImageVisible}" RenderTransform="rotate(180deg)">
+            </Image>
+          
+            <StackPanel Orientation="Horizontal" 
+                        Grid.Row="0" 
+                        Grid.Column="0" 
+                        Grid.ColumnSpan="3"
+                        Margin="20 5" 
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top">
+              <ContentPresenter Name="PART_HeaderPresenter"
+                                Content="{TemplateBinding Header}"
+                                FontSize="30"
+                                Foreground="#DAAF7D"
+                                ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+              <PathIcon 
+                Classes="tooltip"
+                IsVisible="{TemplateBinding ToolTipContent, Converter={x:Static ObjectConverters.IsNotNull}}">
+                <ToolTip.Tip>
+                  <uiControls:HeaderToolTip Header="{TemplateBinding ToolTipHeader}" Content="{TemplateBinding ToolTipContent}" />
+                </ToolTip.Tip>
+              </PathIcon>
+            </StackPanel>
+            
+           
+          <!-- Primary content for SubSection -->
+          <ContentPresenter Grid.Row="0"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="3"
+                            Grid.RowSpan="2"
+                            Name="PART_ContentPresenter"
+                            Padding="10 45 10 0"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            Content="{TemplateBinding Content}"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            UseLayoutRounding="{TemplateBinding UseLayoutRounding}"
+                            Margin="{TemplateBinding Padding}" />
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+
+    <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+      <Setter Property="RecognizesAccessKey" Value="True" />
+    </Style>
+
+    <Style Selector="^ /template/ ContentPresenter#PART_HeaderPresenter">
+      <Setter Property="RecognizesAccessKey" Value="True" />
+      <Setter Property="FontFamily" Value="fonts:E33Fonts#Cinzel" />
+      <Setter Property="Foreground" Value="{DynamicResource ThemeAccentColor}" />
+      
+    </Style>
+
+  </ControlTheme>
+</ResourceDictionary>

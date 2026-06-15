@@ -1,0 +1,111 @@
+﻿<Window x:Class="E33Randomizer.MainWindow"
+        xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:e33Randomizer="clr-namespace:E33Randomizer"
+        Title="{x:Static lang:Resources.Main_Title}"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:lang="clr-namespace:E33Randomizer.Assets"
+        CanResize="False"
+        CanMaximize="False"
+        mc:Ignorable="d"
+        d:DataContext="{x:Static e33Randomizer:DesignSkillsSettingsViewModel.SettingsViewModel}"
+        x:DataType="e33Randomizer:SettingsViewModel">
+    <DockPanel>
+        <Border DockPanel.Dock="Left" Margin="5"
+                BorderThickness="0 0 5 0"
+                Width="{x:Static e33Randomizer:MainWindow.TabStripWidth}"
+                Height="{x:Static e33Randomizer:MainWindow.TabStripHeight}">
+            <Border.Background>
+                <ImageBrush Source="avares://E33Randomizer/Assets/Images/MainBackgroundLeft.png" Stretch="Fill"
+                            Opacity="0.7" />
+            </Border.Background>
+            <Border.BorderBrush>
+                <ImageBrush Source="avares://E33Randomizer/Assets/Images/TallBar.png" Stretch="Fill">
+                    <ImageBrush.Transform>
+                        <ScaleTransform ScaleX="1.4" ScaleY="1" />
+                    </ImageBrush.Transform>
+                </ImageBrush>
+            </Border.BorderBrush>
+            <Panel>
+                <TabStrip SelectedIndex="{Binding SelectedIndex}" VerticalAlignment="Top" Cursor="Hand">
+                    <TabStrip.Styles>
+                        <Style Selector="ItemsPresenter#PART_ItemsPresenter > WrapPanel">
+                            <Setter Property="Orientation" Value="Vertical" />
+                        </Style>
+                        <Style Selector="TabStripItem:selected /template/ Border#PART_SelectedPipe">
+                            <Setter Property="Width" Value="3" />
+                            <Setter Property="Height" Value="NaN" /> <!-- Auto height to stretch -->
+                            <Setter Property="HorizontalAlignment" Value="Left" />
+                            <Setter Property="VerticalAlignment" Value="Stretch" />
+                            <Setter Property="Margin" Value="-5,4,0,4" />
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush Source="avares://E33Randomizer/Assets/Images/Bar.png" Stretch="Fill">
+                                        <ImageBrush.Transform>
+                                            <ScaleTransform ScaleX="1.4" ScaleY="1" />
+                                        </ImageBrush.Transform>
+                                    </ImageBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                        <Style Selector="TabStripItem">
+                            <Setter Property="FontFamily" Value="fonts:E33Fonts#Cinzel"></Setter>
+                        </Style>
+                    </TabStrip.Styles>
+                    <TabStripItem Content="{x:Static lang:Resources.Main_Tab_EnemyRandomizer}" />
+                    <TabStripItem Content="{x:Static lang:Resources.Main_Tab_ItemRandomizer}" />
+                    <TabStripItem Content="{x:Static lang:Resources.Main_Tab_SkillRandomizer}" />
+                    <TabStripItem Content="{x:Static lang:Resources.Main_Tab_LocationRandomizer}" />
+                    <TabStripItem Content="{x:Static lang:Resources.Main_Tab_Misc}" />
+                </TabStrip>
+
+                <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center" Spacing="10">
+                    <Button x:Name="SavePresetButton"
+                            Classes="e33Button"
+                            Content="{x:Static lang:Resources.Main_Button_Save}"
+                            Width="230"
+                            Click="SavePresetButton_Click" />
+
+                    <Button x:Name="LoadPresetButton"
+                            Content="{x:Static lang:Resources.Main_Button_Load}"
+                            Classes="e33Button"
+                            Width="230"
+                            Click="LoadPresetButton_Click" />
+
+                    <!-- Generate Button -->
+                    <Button x:Name="GenerateButton"
+                            Classes="e33Button"
+                            Content="{x:Static lang:Resources.Main_Button_GenerateAndPack}"
+                            Width="230"
+                            Click="GenerateButton_Click" />
+
+                    <!-- Seed Input -->
+                    <StackPanel Orientation="Horizontal" Margin="0 0 0 0">
+                        <Label Content="{x:Static lang:Resources.Main_Seed}" VerticalAlignment="Center" FontWeight="Bold" />
+                        <NumericUpDown x:DataType="e33Randomizer:SettingsViewModel" x:Name="SeedTextBox"
+                                       Text="{Binding Seed}"
+                                       ShowButtonSpinner="False"
+                                       Margin="10,0,20,0"
+                                       VerticalAlignment="Center"
+                                       Maximum="2000000000"
+                                       Minimum="-1"
+                                       HorizontalAlignment="Right"
+                                       Height="35"
+                                       FontSize="25"
+                                       Width="150">
+                        </NumericUpDown>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{x:Static lang:Resources.MainWindow_Version}"  Margin="-30 0 0 0"/>
+                        <TextBlock Text="{x:Static e33Randomizer:MainWindow.Version}" FontSize="14"/>
+                    </StackPanel>
+                </StackPanel>
+            </Panel>
+        </Border>
+        <ContentControl
+            Content="{Binding CurrentPage}"
+            Width="{x:Static e33Randomizer:MainWindow.TabContainerWidth}"
+            Height="{x:Static e33Randomizer:MainWindow.TabContainerHeight}" />
+    </DockPanel>
+</Window>

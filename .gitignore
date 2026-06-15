@@ -5,3 +5,7 @@ E33Randomizer/obj/
 Tests/bin/
 Tests/obj/
 *.user
+external/retoc*
+external/uesave*
+/e33.randomizer.*.tar.gz
+/e33.randomizer.*.zip

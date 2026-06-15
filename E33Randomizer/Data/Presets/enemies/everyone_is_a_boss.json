@@ -6,10 +6,10 @@
     ],
     "CustomPlacement": {
         "Anyone": {
-            "All Bosses": 1.0
+            "All Bosses": 100
         }
     },
     "FrequencyAdjustments": {
-        "Cut Content Enemies": 0.2
+        "Cut Content Enemies": 20
     }
 }

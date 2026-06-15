@@ -1,6 +1,4 @@
-﻿using E33Randomizer;
-
-namespace Tests.RuleTests;
+﻿namespace Tests.RuleTests;
 
 public class ReduceBossRepetition: OutputRuleBase
 {

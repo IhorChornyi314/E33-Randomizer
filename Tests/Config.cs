@@ -1,4 +1,5 @@
 ﻿using E33Randomizer;
+using E33Randomizer.CustomPlacements;
 
 namespace Tests;
 

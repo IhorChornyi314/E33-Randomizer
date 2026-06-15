@@ -1,6 +1,4 @@
-﻿using NUnit.Framework.Internal;
-
-namespace Tests.Rules;
+﻿namespace Tests.Rules;
 
 public class UnlockGustaveSkills: OutputRuleBase
 {

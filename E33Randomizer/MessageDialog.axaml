@@ -1,0 +1,88 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="E33Randomizer.MessageDialog"
+        xmlns:e33Randomizer="clr-namespace:E33Randomizer"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:lang="clr-namespace:E33Randomizer.Assets"
+        d:DataContext="{x:Static e33Randomizer:MessageDialogViewModelDesignData.DesignData}"
+        x:DataType="{x:Type e33Randomizer:MessageDialogViewModel}"
+        Title="{Binding Title}"
+        Width="700" Height="300"
+        WindowStartupLocation="CenterOwner"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaTitleBarHeightHint="-1"
+        WindowDecorations="None"
+        CanResize="False"
+        Background="Transparent"
+        ShowInTaskbar="False"
+        d:DesignWidth="700"
+        d:DesignHeight="400"
+        PointerPressed="WindowDragHandle_OnPointerPressed"
+        PointerMoved="WindowDragHandle_OnPointerMoved"
+        PointerReleased="WindowDragHandle_OnPointerReleased"
+        >
+    
+    <StackPanel>
+        <Grid ColumnDefinitions="Auto,*,Auto" 
+              RowDefinitions="Auto,*,Auto" 
+              x:DataType="e33Randomizer:MessageDialogViewModel" 
+              Name="WindowDragHandle"
+              Height="300"
+              VerticalAlignment="Top">
+            <Grid.Background >
+                <ImageBrush Source="avares://E33Randomizer/Assets/Images/ModalBackground.png" Stretch="Fill" Opacity="1" />
+            </Grid.Background>
+            <TextBlock Grid.Row="0" Grid.Column="0" Classes="e33PageHeader"
+                       Grid.ColumnSpan="3"
+                       Margin="0 20 0 0"
+                       HorizontalAlignment="Center" Text="{Binding Title}"
+                       Name="Header" />
+            <ScrollViewer Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Left" Width="500"
+                          Height="150" Margin="10 10 0 0">
+                <TextBlock  Text="{Binding Message}"
+                            HorizontalAlignment="Left"
+                            TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" Margin="0 0 15 0" />
+            </ScrollViewer>
+            <Button Name="CopyToClipboardButton"
+                    Grid.Row="1" Grid.Column="2" Margin="0 0 80 0" VerticalAlignment="Bottom"
+                    Background="Transparent" ToolTip.Tip="{x:Static lang:Resources.Button_Tooltip_CopyToClipboard}"
+                    Click="CopyToClipboardButton_OnClick">
+                <PathIcon Data="M13.75,2 C14.940864,2 15.9156449,2.92516159 15.9948092,4.09595119 L16,4.25 L16,4.25 C16,4.16530567 15.9953205,4.0817043 15.9862059,3.99944035 L17.75,4 C18.9926407,4 20,5.00735931 20,6.25 L20,19.75 C20,20.9926407 18.9926407,22 17.75,22 L6.25,22 C5.00735931,22 4,20.9926407 4,19.75 L4,6.25 C4,5.00735931 5.00735931,4 6.25,4 L8.01379413,3.99944035 C8.00733496,4.05773764 8.00310309,4.11670658 8.00118552,4.17626017 L8,4.25 C8,3.00735931 9.00735931,2 10.25,2 L13.75,2 Z M13.75,6.5 L10.25,6.5 C9.45594921,6.5 8.75796956,6.08867052 8.357512,5.4674625 L8.37902077,5.50019943 L8.37902077,5.50019943 L6.25,5.5 C5.83578644,5.5 5.5,5.83578644 5.5,6.25 L5.5,19.75 C5.5,20.1642136 5.83578644,20.5 6.25,20.5 L17.75,20.5 C18.1642136,20.5 18.5,20.1642136 18.5,19.75 L18.5,6.25 C18.5,5.83578644 18.1642136,5.5 17.75,5.5 L15.6209792,5.50019943 L15.642488,5.4674625 C15.2420304,6.08867052 14.5440508,6.5 13.75,6.5 Z M13.75,3.5 L10.25,3.5 C9.83578644,3.5 9.5,3.83578644 9.5,4.25 C9.5,4.66421356 9.83578644,5 10.25,5 L13.75,5 C14.1642136,5 14.5,4.66421356 14.5,4.25 C14.5,3.83578644 14.1642136,3.5 13.75,3.5 Z" />
+            </Button>
+
+        
+            <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" VerticalAlignment="Top" 
+                   Source="{Binding Icon}" Width="70" Margin="50 20 0 0"  />
+
+            <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal"
+                        HorizontalAlignment="Center" Spacing="8" VerticalAlignment="Center" Margin="0 0 0 20">
+                <Button Classes="e33Button" Content="{Binding ButtonConfirmText}" Command="{Binding ConfirmCommand}" />
+                <Button Classes="e33Button" Content="{Binding ButtonCancelText}"
+                        Command="{Binding CancelCommand}"
+                        IsVisible="{Binding ButtonCancelText, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"
+                />
+            </StackPanel>
+        </Grid>
+        <StackPanel IsVisible="{Binding IsDesignMode}" VerticalAlignment="Bottom" Margin="0 0 0 -60">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Button Counts:" />
+                <ToggleSwitch OffContent="1 Button" OnContent="2 Buttons" IsCheckedChanged="ToggleButton_OnIsCheckedChanged" IsChecked="{Binding ButtonCancelText, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"></ToggleSwitch>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Icon" />
+                <ComboBox ItemsSource="{x:Static e33Randomizer:MessageBoxIcons.AllIcons}" SelectionChanged="SelectingItemsControl_OnSelectionChanged" 
+                          SelectedValueBinding="{Binding Value}"
+                          DisplayMemberBinding="{Binding Key}"></ComboBox>    
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Message size:" />
+                <ComboBox Name="DesignTimeMessageSelection" 
+                          SelectionChanged="DesignTimeMessageSelection_OnSelectionChanged"
+                          ItemsSource="{x:Static e33Randomizer:MessageDialogViewModelDesignData.DesignMessages}"
+                          DisplayMemberBinding="{Binding Key}"
+                          />    
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
+    
+</Window>

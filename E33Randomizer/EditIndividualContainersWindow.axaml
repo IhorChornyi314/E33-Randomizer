@@ -1,0 +1,254 @@
+﻿<Window x:Class="E33Randomizer.EditIndividualContainersWindow"
+        xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:e33Randomizer="clr-namespace:E33Randomizer"
+        xmlns:lang="clr-namespace:E33Randomizer.Assets"
+        xmlns:uiControls="clr-namespace:E33Randomizer.UIControls"
+        Height="900" Width="1200"
+        CanResize="False"
+        WindowStartupLocation="CenterScreen"
+        x:DataType="e33Randomizer:EditIndividualObjectsWindowViewModel">
+    <Window.Resources>
+        <e33Randomizer:IndividualContainersResourceLookupConverter x:Key="ResourceLookupConverter" />
+    </Window.Resources>
+    <Window.Title>
+        <MultiBinding Converter="{StaticResource ResourceLookupConverter}">
+            <Binding Path="ObjectName" />
+            <Binding Source="{x:Static e33Randomizer:EditIndividualObjectsWindowViewModel.TitleResxName }" />
+        </MultiBinding>
+    </Window.Title>
+
+    <Window.Styles>
+        <Style Selector="ComboBox /template/ Popup#PART_Popup">
+            <Setter Property="Placement" Value="BottomEdgeAlignedLeft" />
+            <Setter Property="Width" Value="500" />
+        </Style>
+    </Window.Styles>
+
+    <Grid ColumnDefinitions="*,5,Auto" RowDefinitions="Auto,Auto,Auto,*">
+        <Grid.Background>
+            <ImageBrush Source="avares://E33Randomizer/Assets/Images/BackgroundOne.png" Stretch="Fill" Opacity="0.7" />
+        </Grid.Background>
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Classes="e33PageHeader"
+                   Margin="0 10"
+                   HorizontalAlignment="Center">
+            <TextBlock.Text>
+                <MultiBinding Converter="{StaticResource ResourceLookupConverter}">
+                    <Binding Path="ObjectName" />
+                    <Binding Source="{x:Static e33Randomizer:EditIndividualObjectsWindowViewModel.TitleResxName }" />
+                </MultiBinding>
+            </TextBlock.Text>
+        </TextBlock>
+        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" Grid.ColumnSpan="3" Margin="0 0 0 20">
+            <Label VerticalAlignment="Center" Margin="10">
+                <Label.Content>
+                    <MultiBinding Converter="{StaticResource ResourceLookupConverter}">
+                        <Binding Path="ObjectName" />
+                        <Binding Source="{x:Static e33Randomizer:EditIndividualObjectsWindowViewModel.SearchResxName }" />
+                    </MultiBinding>
+                </Label.Content>
+            </Label>
+            <TextBox x:Name="SearchTextBox"
+                     Margin="0 5 0 0"
+                     VerticalAlignment="Center"
+                     Height="25"
+                     Width="600"
+                     Text="{Binding SearchTerm}"
+                     PlaceholderText="{x:Static lang:Resources.SearchPlaceholder}" />
+        </StackPanel>
+        <uiControls:SubSection Grid.Row="2" Grid.Column="0"
+                               Width="450"
+                               Height="600"
+                               xml:space="preserve">
+            <uiControls:SubSection.Header>
+                 <MultiBinding Converter="{StaticResource ResourceLookupConverter}">
+                    <Binding Path="ObjectName" />
+                    <Binding Source="{x:Static e33Randomizer:EditIndividualObjectsWindowViewModel.ContainersResxName }" />
+                </MultiBinding>
+            </uiControls:SubSection.Header>
+
+            <uiControls:SubSection.ToolTipContent>
+                <MultiBinding Converter="{StaticResource ResourceLookupConverter}">
+                    <Binding Path="ObjectName" />
+                    <Binding Source="{x:Static e33Randomizer:ResourceLookupConverter.ToolTip }" />
+                    <Binding Source="{x:Static e33Randomizer:EditIndividualObjectsWindowViewModel.ContainersResxName }" />
+                </MultiBinding>
+            </uiControls:SubSection.ToolTipContent>
+           
+            <TreeView SelectionChanged="CategoryTreeView_SelectedItemChanged"
+                      SelectionMode="Single"
+                      Height="550"
+                      ItemsSource="{Binding FilteredCategories}">
+                <TreeView.DataTemplates>
+
+                    <TreeDataTemplate DataType="{x:Type e33Randomizer:CategoryViewModel}"
+                                      ItemsSource="{Binding Containers}">
+                        <TextBlock Text="{Binding CategoryName}" FontSize="14"
+                                   Margin="2" />
+                    </TreeDataTemplate>
+
+                    <DataTemplate DataType="{x:Type e33Randomizer:ContainerViewModel}">
+                        <TextBlock Text="{Binding Name}" Margin="5,2"
+                                   FontSize="13" />
+                    </DataTemplate>
+                </TreeView.DataTemplates>
+            </TreeView>
+        </uiControls:SubSection>
+
+
+        <uiControls:SubSection Grid.Row="2" Grid.Column="2"
+                               Width="700"
+                               Margin="0 0 15 0"
+                               xml:space="preserve"
+                               Height="600">
+            <uiControls:SubSection.Header>
+                 <MultiBinding Converter="{StaticResource ResourceLookupConverter}">
+                    <Binding Path="ObjectName" />
+                    <Binding Source="{x:Static e33Randomizer:EditIndividualObjectsWindowViewModel.ObjectsResxName }" />
+                </MultiBinding>
+            </uiControls:SubSection.Header>
+
+            <uiControls:SubSection.ToolTipContent>
+                <MultiBinding Converter="{StaticResource ResourceLookupConverter}">
+                    <Binding Path="ObjectName" />
+                    <Binding Source="{x:Static e33Randomizer:ResourceLookupConverter.ToolTip }" />
+                    <Binding Source="{x:Static e33Randomizer:EditIndividualObjectsWindowViewModel.ObjectsResxName }" />
+                </MultiBinding>
+            </uiControls:SubSection.ToolTipContent>
+        <DockPanel Width="680" Height="560">
+            <ListBox DockPanel.Dock="Top" Height="460" x:Name="SelectedEnemiesListBox"
+                     x:DataType="e33Randomizer:EditIndividualObjectsWindowViewModel"
+                     ItemsSource="{Binding DisplayedObjects}"
+                     Background="Transparent"
+                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                     Margin="0 0 0 10">
+                <ListBox.Styles>
+                    <Style Selector="ListBoxItem:selected:pressed /template/ ContentPresenter#PART_ContentPresenter">
+                        <Setter Property="Background" Value="Transparent" />
+                    </Style>
+                    <Style
+                            Selector="ListBoxItem:selected:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+                        <Setter Property="Background" Value="Transparent" />
+                    </Style>
+                    <Style Selector="ListBoxItem:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+                        <Setter Property="Background" Value="Transparent" />
+                    </Style>
+                    <Style Selector="ListBoxItem:selected /template/ ContentPresenter#PART_ContentPresenter">
+                        <Setter Property="Background" Value="Transparent" />
+                    </Style>
+
+                </ListBox.Styles>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="2" ColumnDefinitions="*,*,Auto,Auto">
+
+                            <ComboBox Grid.Column="0"
+                                      ItemsSource="{Binding AllObjects}"
+                                      SelectedItem="{Binding SelectedComboBoxValue, Mode=TwoWay}"
+                                      VerticalAlignment="Center"
+                                      Margin="5,2"
+                                      Width="300">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Name}" />
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+
+                            <NumericUpDown Grid.Column="1" x:Name="NumberOfAdditionalEnemiesTextBox"
+                                           Value="{Binding IntProperty}"
+                                           FormatString="0"
+                                           Margin="5 0 0 0"
+                                           VerticalAlignment="Center"
+                                           Height="25"
+                                           Width="100"
+                                           Minimum="0"
+                                           Maximum="99"
+                                           IsVisible="{Binding HasIntPropertyControl}" />
+                            <LayoutTransformControl Grid.Column="2" LayoutTransform="scale(1.2,1.2)">
+                                <CheckBox
+                                        VerticalAlignment="Center"
+                                        VerticalContentAlignment="Center"
+                                        Margin="10 0 0 0"
+                                        Height="25"
+                                        Width="25"
+                                        IsChecked="{Binding BoolProperty}"
+                                        IsVisible="{Binding HasBoolPropertyControl}">
+                                </CheckBox>
+                            </LayoutTransformControl>
+
+                            <Button Grid.Column="3" Classes="e33DeleteButton" Height="22" Width="22"
+                                    Click="RemoveObject_Click"
+                                    Tag="{Binding}"
+                                    ToolTip.Tip="{x:Static lang:Resources.Remove}"
+                                    IsVisible="{Binding CanDelete}" />
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+
+            <Border DockPanel.Dock="Bottom" IsVisible="{Binding CanAddObjects}" BorderThickness="0 5 0 0">
+                <Border.BorderBrush>
+                    <ImageBrush Source="avares://E33Randomizer/Assets/Images/Line.png" TransformOrigin="50%,50%"
+                                Transform="rotate(180deg)" />
+                </Border.BorderBrush>
+                <StackPanel>
+                    <TextBlock Margin="0 10 0 5" FontSize="16">
+                        <TextBlock.Text>
+                            <MultiBinding Converter="{StaticResource ResourceLookupConverter}">
+                                <Binding Path="ObjectName" />
+                                <Binding
+                                        Source="{x:Static e33Randomizer:EditIndividualObjectsWindowViewModel.AddObjectResxName }" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                        <AutoCompleteBox x:Name="AddObjectComboBox"
+                                         x:DataType="e33Randomizer:EditIndividualObjectsWindowViewModel"
+                                         ItemsSource="{Binding AllObjects}"
+                                         ItemFilter="{Binding FilterAddObjects }"
+                                         FilterMode="Contains"
+                                         MinimumPrefixLength="0"
+                                         MinWidth="200"
+                                         Margin="0 0 10 0"
+                                         PlaceholderText="{x:Static lang:Resources.SearchPlaceholder}"
+                                         SelectionChanged="AddObjectComboBox_OnSelectionChanged" />
+                </StackPanel>
+        </Border>
+        </DockPanel>
+        </uiControls:SubSection>
+        <Grid Row="3" Column="0" ColumnSpan="3"
+              RowDefinitions="Auto,Auto"
+              ColumnDefinitions="Auto,Auto"
+              HorizontalAlignment="Center"
+              RowSpacing="15"
+              Margin="0 20 0 0">
+            <Button Grid.Row="0" Grid.Column="0" Classes="e33Button" Click="ReadDataFromTxt">
+                <Button.Content>
+                    <MultiBinding Converter="{StaticResource ResourceLookupConverter}">
+                        <Binding Path="ObjectName" />
+                        <Binding
+                            Source="{x:Static e33Randomizer:EditIndividualObjectsWindowViewModel.LoadTxtResxName }" />
+                    </MultiBinding>
+                </Button.Content>
+            </Button>
+            <Button Grid.Row="0" Grid.Column="1" Classes="e33Button" Click="SaveDataAsTxt">
+                <Button.Content>
+                    <MultiBinding Converter="{StaticResource ResourceLookupConverter}">
+                        <Binding Path="ObjectName" />
+                        <Binding
+                            Source="{x:Static e33Randomizer:EditIndividualObjectsWindowViewModel.SaveTxtResxName }" />
+                    </MultiBinding>
+                </Button.Content>
+            </Button>
+            <Button Grid.Row="1" Grid.Column="0"
+                    Content="{x:Static lang:Resources.IndividualContainers_Button_Reroll}"
+                    Classes="e33Button"
+                    Click="RegenerateData" />
+            <Button Grid.Row="1" Grid.Column="1"
+                    Content="{x:Static lang:Resources.IndividualContainers_Button_GenerateModFiles}"
+                    Classes="e33Button"
+                    Click="PackCurrentData" />
+        </Grid>
+    </Grid>
+</Window>

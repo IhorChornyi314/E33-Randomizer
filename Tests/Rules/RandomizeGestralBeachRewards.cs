@@ -1,6 +1,4 @@
-﻿using ZstdSharp.Unsafe;
-
-namespace Tests.Rules;
+﻿namespace Tests.Rules;
 
 public class RandomizeGestralBeachRewards: OutputRuleBase
 {
