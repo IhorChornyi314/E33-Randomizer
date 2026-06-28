@@ -81,7 +81,7 @@
         </ItemGroup>
     </Target>
     
-    <Target Name="EnsureRetocAndUesave" BeforeTargets="Build">
-        <Exec Condition="!Exists('..\external\retoc') Or !Exists('..\external\retoc.exe') Or !Exists('..\external\uesave') Or !Exists('..\external\uesave.exe')" WorkingDirectory="$(SolutionDir)ScriptsAndHelpers" Command="dotnet FetchExternalApplications.cs" />
+    <Target Name="EnsureRetocAndUesave" BeforeTargets="BeforeBuild">
+        <Exec Condition="!Exists('$(SolutionDir)\external\retoc') Or !Exists('$(SolutionDir)\external\retoc.exe') Or !Exists('$(SolutionDir)\external\uesave') Or !Exists('$(SolutionDir)\external\uesave.exe')" WorkingDirectory="$(SolutionDir)ScriptsAndHelpers" Command="dotnet FetchExternalApplications.cs" />
     </Target>
 </Project>
