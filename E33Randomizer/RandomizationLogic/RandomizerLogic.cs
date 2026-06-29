@@ -192,6 +192,34 @@ public static class RandomizerLogic
         };
     }
 
+    public static Settings GetSettings()
+    {
+        return new Settings
+        {
+            GeneralSettings = Settings,
+            CustomEnemyPlacementSettings = CustomEnemyPlacement.GetPreset(),
+            CustomItemPlacementSettings = CustomItemPlacement.GetPreset(),
+            CustomSkillPlacementSettings = CustomSkillPlacement.GetPreset(),
+            CustomLocationPlacementSettings = CustomLocationPlacement.GetPreset()
+        };
+    }
+
+    public static void LoadFromSettings(Settings settings)
+    {
+        Settings = settings.GeneralSettings;
+        if (settings.CustomEnemyPlacementSettings is not null)
+            CustomEnemyPlacement.LoadFromPreset(settings.CustomEnemyPlacementSettings);
+        
+        if (settings.CustomItemPlacementSettings is not null)
+            CustomItemPlacement.LoadFromPreset(settings.CustomItemPlacementSettings);
+        
+        if (settings.CustomSkillPlacementSettings is not null)
+            CustomSkillPlacement.LoadFromPreset(settings.CustomSkillPlacementSettings);
+        
+        if (settings.CustomLocationPlacementSettings is not null)
+            CustomLocationPlacement.LoadFromPreset(settings.CustomLocationPlacementSettings);
+    }
+
 
     public static void ConstructEnemyFrequenciesWithinArchetype()
     {

@@ -679,6 +679,14 @@ Use this button to fix that.</value>
     <data name="CustomPlacement_Error" xml:space="preserve">
         <value>Error</value>
     </data>
+
+    <data name="CustomPlacement_DepreciatedLoadButtonNotice" xml:space="preserve">
+        <value>Note! Loading of per-type preset files is going away! But don't worry, they are now saved in the main settings file with all the other settings.  So now there is only 1 settings file instead of 5!  This button still exists, however, as a transition to allow you to load your old separate files.  This button will be removed in the future.</value>
+    </data>
+
+    <data name="CustomPlacement_DepreciatedLoadButtonNotice_Title" xml:space="preserve">
+        <value>Depreciation Notice</value>
+    </data>
     
     <data name="CustomPlacement_Enemy_NotRandomized" xml:space="preserve">
         <value>This allows you to change which enemies aren’t randomized, meaning that they will stay in their respective encounters.</value>

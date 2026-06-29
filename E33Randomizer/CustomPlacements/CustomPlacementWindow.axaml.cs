@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using System.Text;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Interactivity;
@@ -110,6 +109,8 @@ namespace E33Randomizer.CustomPlacements;
         {
             try
             {
+                await MessageDialog.ShowAsync(this, ResourceHelper.GetString(nameof(Assets.Resources.CustomPlacement_DepreciatedLoadButtonNotice)), ResourceHelper.GetString(nameof(Assets.Resources.CustomPlacement_DepreciatedLoadButtonNotice_Title)), MessageBoxButtons.Ok, MessageBoxIcons.Information);
+                
                 var topLevel = GetTopLevel(this);
                 if (topLevel is null) return;
 
@@ -142,49 +143,6 @@ namespace E33Randomizer.CustomPlacements;
             catch (Exception ex)
             {
                 await MessageDialog.ShowAsync(this, ResourceHelper.GetStringFormatted(nameof(Assets.Resources.CustomPlacement_ErrorLoadingPreset),ex.Message), ResourceHelper.GetString(nameof(Assets.Resources.CustomPlacement_LoadError)), MessageBoxButtons.Ok,  MessageBoxIcons.Error);
-            }
-        }
-
-        private async void SavePresetButton_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                var topLevel = GetTopLevel(this);
-                if (topLevel is null) return;
-
-                var storage = topLevel.StorageProvider;
-
-                var file = await storage.SaveFilePickerAsync(new FilePickerSaveOptions()
-                {
-                    Title = ResourceHelper.GetString(nameof(Assets.Resources.CustomPlacement_SaveCustomPreset)),
-                    DefaultExtension =  ".json",
-                    FileTypeChoices = 
-                    [
-                        new FilePickerFileType(ResourceHelper.GetString(nameof(Assets.Resources.CustomPlacement_JSONFilesJson))) { Patterns = ["*.json"] },
-                        new FilePickerFileType(ResourceHelper.GetString(nameof(Assets.Resources.CustomPlacement_AllFiles))) { Patterns = ["*"] }
-                    ]
-                });
-
-                if (file is not null)
-                {
-                    try
-                    {
-                        CustomPlacement.SaveToJson(file.Path.LocalPath);
-                        await MessageDialog.ShowAsync(this, ResourceHelper.GetString(nameof(Assets.Resources.CustomPlacement_PresetSavedSuccessfully)), 
-                            ResourceHelper.GetString(nameof(Assets.Resources.CustomPlacement_SaveComplete)), MessageBoxButtons.Ok, MessageBoxIcons.Information);
-                    }
-                    catch (Exception ex)
-                    {
-                        await MessageDialog.ShowAsync
-                        (this, ResourceHelper.GetStringFormatted(nameof(Assets.Resources.CustomPlacement_ErrorSavingPreset),ex.Message), 
-                            ResourceHelper.GetString(nameof(Assets.Resources.CustomPlacement_SaveError)), MessageBoxButtons.Ok, MessageBoxIcons.Error);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                await MessageDialog.ShowAsync(this, ResourceHelper.GetStringFormatted(nameof(Assets.Resources.CustomPlacement_ErrorSavingJSON),ex.Message), ResourceHelper.GetString(nameof(Assets.Resources.CustomPlacement_Error)), MessageBoxButtons.Ok,  MessageBoxIcons.Error);
-                await File.WriteAllTextAsync(Program.CrashLogFileName, ex.ToString(), Encoding.UTF8);
             }
         }
 

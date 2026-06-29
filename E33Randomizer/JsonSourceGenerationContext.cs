@@ -29,6 +29,7 @@ namespace E33Randomizer;
 [JsonSerializable(typeof(Dictionary<string, List<string>>))]
 [JsonSerializable(typeof(Dictionary<string, Dictionary<string, List<int>>>))]
 [JsonSerializable(typeof(Dictionary<string, string>))]
+[JsonSerializable(typeof(Settings))]
 public partial class JsonSourceGenerationContext : JsonSerializerContext;
 
 // Only needed until we decide that the backwards compatability converters aren't needed anymore. (probably in v6 whenever that is).  
