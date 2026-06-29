@@ -1,6 +1,5 @@
 ﻿using System.Text;
 using System.Text.Json;
-using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
@@ -38,20 +37,21 @@ public partial class MainWindow : Window
         {
             RandomizerLogic.Init();
             DataContext = RandomizerLogic.Settings;
+            
+            if (File.Exists("default_settings.json"))
+            {
+                await LoadSettingsAsync("default_settings.json");
+            }
+            else
+            {
+                await SaveSettingsAsync("default_settings.json");
+            }
         }
         catch (Exception ex)
         {
             await MessageDialog.ShowAsync(this, ResourceHelper.GetStringFormatted(nameof(Assets.Resources.MainWindow_ErrorStarting),ex.Message),
                 ResourceHelper.GetStringFormatted(nameof(Assets.Resources.MainWindow_ErrorLoading),null,null), MessageBoxButtons.Ok, MessageBoxIcons.Error);
             await File.WriteAllTextAsync(Program.CrashLogFileName, ex.ToString(), Encoding.UTF8);
-        }
-        if (File.Exists("default_settings.json"))
-        {
-            await LoadSettingsAsync("default_settings.json");
-        }
-        else
-        {
-            await SaveSettingsAsync("default_settings.json");
         }
     }
 
@@ -209,37 +209,43 @@ public partial class MainWindow : Window
         }
     }
 
-    private bool AllSettingsInJson(string json)
-    {
-        JsonNode? obj = JsonNode.Parse(json);
-        if (obj is null) return false;
-        
-        var jsonProps = obj.AsObject().Select(p => p.Key).ToHashSet();
-        var classProps = typeof(SettingsViewModel).GetProperties().Select(p => p.Name).ToHashSet();
-
-        return classProps.All(jsonProps.Contains);
-    }
-
     private async Task LoadSettingsAsync(string pathToJson)
     {
         try
         {
-            string json;
-            using (StreamReader r = new StreamReader(pathToJson))
-            {
-                json = await r.ReadToEndAsync();
-                var newSettingsData = JsonSerializer.DeserializeThrowOnNull(json, JsonSourceGenerationContext.Default.SettingsViewModel);
-                RandomizerLogic.Settings = newSettingsData;
-                DataContext = RandomizerLogic.Settings;
-            }
-            
-            if (!AllSettingsInJson(json))
-            {
-                await SaveSettingsAsync(pathToJson);
-            }
+            using StreamReader r = new StreamReader(pathToJson);
+            var json = await r.ReadToEndAsync();
+            var newSettingsData = JsonSerializer.DeserializeThrowOnNull(json, JsonSourceGenerationContext.Default.Settings);
+            RandomizerLogic.LoadFromSettings(newSettingsData);
+
+            DataContext = RandomizerLogic.Settings;
         }
         catch (Exception ex)
         {
+            // Old format:
+            if (ex is JsonException jsonException && jsonException.Message.Contains("missing required properties including: 'GeneralSettings'"))
+            {
+                try
+                {
+                    using StreamReader r = new StreamReader(pathToJson);
+                    var json = await r.ReadToEndAsync();
+                    var newSettingsData = JsonSerializer.DeserializeThrowOnNull(json, JsonSourceGenerationContext.Default.SettingsViewModel);
+                    RandomizerLogic.LoadFromSettings(new Settings() { GeneralSettings = newSettingsData });
+
+                    DataContext = RandomizerLogic.Settings;
+
+                    await SaveSettingsAsync(pathToJson);
+                    return;
+                }
+                catch (Exception ex2)
+                {
+                    await MessageDialog.ShowAsync(this, ResourceHelper.GetStringFormatted(nameof(Assets.Resources.MainWindow_ErrorLoading),null,ex2.Message),
+                        ResourceHelper.GetStringFormatted(nameof(Assets.Resources.MainWindow_ErrorLoading),null,null), MessageBoxButtons.Ok, MessageBoxIcons.Error);
+                    await File.WriteAllTextAsync(Program.CrashLogFileName, ex2.ToString(), Encoding.UTF8);
+                    return;
+                }
+            }
+            
             await MessageDialog.ShowAsync(this, ResourceHelper.GetStringFormatted(nameof(Assets.Resources.MainWindow_ErrorLoading),null,ex.Message),
                 ResourceHelper.GetStringFormatted(nameof(Assets.Resources.MainWindow_ErrorLoading),null,null), MessageBoxButtons.Ok, MessageBoxIcons.Error);
             await File.WriteAllTextAsync(Program.CrashLogFileName, ex.ToString(), Encoding.UTF8);
@@ -251,7 +257,7 @@ public partial class MainWindow : Window
         try
         {
             await using StreamWriter r = new StreamWriter(pathToJson);
-            string json = JsonSerializer.Serialize(RandomizerLogic.Settings, JsonSourceGenerationContextSerializationFactory.LazyJsonSourceGenerationContext.Value.SettingsViewModel);
+            string json = JsonSerializer.Serialize(RandomizerLogic.GetSettings(), JsonSourceGenerationContextSerializationFactory.LazyJsonSourceGenerationContext.Value.Settings);
             await r.WriteAsync(json);
         }
         catch (Exception ex)

@@ -1257,6 +1257,18 @@ namespace E33Randomizer.Assets {
             }
         }
         
+        public static string CustomPlacement_DepreciatedLoadButtonNotice {
+            get {
+                return ResourceManager.GetString("CustomPlacement_DepreciatedLoadButtonNotice", resourceCulture);
+            }
+        }
+        
+        public static string CustomPlacement_DepreciatedLoadButtonNotice_Title {
+            get {
+                return ResourceManager.GetString("CustomPlacement_DepreciatedLoadButtonNotice_Title", resourceCulture);
+            }
+        }
+        
         public static string CustomPlacement_Enemy_NotRandomized {
             get {
                 return ResourceManager.GetString("CustomPlacement_Enemy_NotRandomized", resourceCulture);

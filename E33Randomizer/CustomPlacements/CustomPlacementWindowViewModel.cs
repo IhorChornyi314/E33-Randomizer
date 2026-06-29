@@ -284,6 +284,11 @@ public abstract partial class CustomPlacementWindowViewModel : ObservableObject
         r.Write(json);
     }
 
+    public CustomPlacementPreset GetPreset()
+    {
+        return new CustomPlacementPreset(NotRandomized, Excluded, CustomPlacementRules, FrequencyAdjustments);
+    }
+
     [RelayCommand]
     public void RemoveExcluded(string plainName)
     {

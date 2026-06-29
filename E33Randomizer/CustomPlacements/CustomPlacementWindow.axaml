@@ -396,10 +396,6 @@
                             Click="LoadPresetButton_Click" />
 
                     <Button Classes="e33Button"
-                            x:Name="SavePresetButton"
-                            Content="{x:Static lang:Resources.CustomPlacement_Button_SavePresetJson}"
-                            Click="SavePresetButton_Click" />
-                    <Button Classes="e33Button"
                             x:Name="CloseButton"
                             Content="{x:Static lang:Resources.Button_Close}"
                             Click="CloseButton_Click" />
