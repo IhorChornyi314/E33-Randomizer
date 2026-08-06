@@ -12,7 +12,7 @@ public class Output
     public List<Encounter> RandomizedEncounters;
     public List<Check> RandomizedChecks;
     public List<SkillNode> RandomizedSkillNodes;
-    public List<LocationNode> RandomizedLocationNodes;
+    public Dictionary<string, string> DestinationChanges;
 
     public Encounter GetEncounter(string encounterName)
     {

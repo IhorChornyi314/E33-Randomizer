@@ -442,6 +442,9 @@
     <data name="Randomize_Locations_RandomizeGestralBeaches" xml:space="preserve">
         <value>Randomize gestral beaches</value>
     </data>
+    <data name="Randomize_Locations_EnableTwoWayTeleport" xml:space="preserve">
+        <value>Enable two-way teleport</value>
+    </data>
 
     <data name="Randomize_Locations_Tooltip_RandomizeLocations" xml:space="preserve">
         <value>TRANSLATION_MISSING</value>
@@ -471,6 +474,9 @@
          <value>TRANSLATION_MISSING</value>
     </data>
     <data name="Randomize_Locations_Tooltip_RandomizeGestralBeaches" xml:space="preserve">
+         <value>TRANSLATION_MISSING</value>
+    </data>
+    <data name="Randomize_Locations_Tooltip_EnableTwoWayTeleport" xml:space="preserve">
          <value>TRANSLATION_MISSING</value>
     </data>
     
@@ -1023,6 +1029,9 @@ Use this button to fix that.</value>
     <!-- Location Controller -->
     <data name="LocationController_CriticalPath_Exception" xml:space="preserve">
         <value>Location randomizer could not construct critical path, please try a different seed. Please change generation settings if this problem persists.</value>
+    </data>
+    <data name="LocationController_TooManyKeys_Exception" xml:space="preserve">
+        <value>Too many unique keys stored in location_data. Please reduce the count to below 128.</value>
     </data>
     <data name="LocationController_OnlyOne_Exception" xml:space="preserve">
         <value>A location can only have one corresponding replacement.</value>

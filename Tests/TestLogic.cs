@@ -79,9 +79,8 @@ public static class TestLogic
                 sT => sT.SkillNodes, (_, data) => data).
             Where(sN => config.CustomSkillPlacement.IsRandomized(sN.OriginalSkillCodeName)
             ).ToList();
-        
-        result.RandomizedLocationNodes = result.LocationNodes.Where(
-            n => !config.CustomLocationPlacement.NotRandomized.Contains(n.CodeName)).ToList();
+
+        result.DestinationChanges = new Dictionary<string, string>(Controllers.LocationController.DestinationChanges);
         
         return result;
     }

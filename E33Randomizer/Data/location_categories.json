@@ -82,7 +82,6 @@
   "Non-portal Locations": [
     "Level.SpawnPoint.AbbestCave.Arena",
     "Level.SpawnPoint.AncientSanctuary.Arena",
-    "Level.SpawnPoint.AncientSanctuary.GestralTotem",
     "Level.SpawnPoint.AncientSanctuary.RedForest",
     "Level.SpawnPoint.AncientSanctuary.TanksArena",
     "Level.SpawnPoint.AxonPath.Exit",
@@ -302,7 +301,6 @@
     "Level.SpawnPoint.AncientSanctuary.Arena",
     "Level.SpawnPoint.AncientSanctuary.Entry",
     "Level.SpawnPoint.AncientSanctuary.Exit",
-    "Level.SpawnPoint.AncientSanctuary.GestralTotem",
     "Level.SpawnPoint.AncientSanctuary.RedForest",
     "Level.SpawnPoint.AncientSanctuary.TanksArena",
     "Level.SpawnPoint.BoatGraveyardPurple",

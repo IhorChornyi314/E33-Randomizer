@@ -354,10 +354,12 @@ public class SettingsViewModel : ObservableObject
     public bool RescaleCharacters { get; set; } = true;
     
     public bool RandomizeStartingLocation { get; set; }
+    public bool EnableTwoWayTeleport { get; set; } = true;
     public bool RandomizeManorDoors { get; set; } = true;
     public bool RandomizeWorkshopEntries { get; set; } = true;
     public bool RandomizeCutsceneTeleports { get; set; } = true;
     public bool RandomizeGestralBeachPortals { get; set; } = true;
+    
 
     
     public bool RandomizeCharacters { get; set; } 

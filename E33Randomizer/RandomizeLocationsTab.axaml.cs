@@ -22,7 +22,8 @@ public static class DesignLocationSettingsViewModel
         RandomizeManorDoors = true,
         RandomizeWorkshopEntries = true,
         RandomizeCutsceneTeleports = true,
-        RandomizeGestralBeachPortals = true
+        RandomizeGestralBeachPortals = true,
+        EnableTwoWayTeleport = true
     };
 
 }

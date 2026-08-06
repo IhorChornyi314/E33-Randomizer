@@ -42,6 +42,10 @@
                     IsChecked="{Binding ScaleOptionalAreas}"
                     IsVisible="{Binding IsChecked, ElementName=RescaleLocationsCheckBox}" />
                 <uiControls:CheckboxToolTip
+                    Content="{x:Static lang:Resources.Randomize_Locations_EnableTwoWayTeleport}"
+                    ToolTipContent="{x:Static lang:Resources.Randomize_Locations_Tooltip_EnableTwoWayTeleport}"
+                    IsChecked="{Binding EnableTwoWayTeleport}" />
+                <uiControls:CheckboxToolTip
                     Content="{x:Static lang:Resources.Randomize_Locations_RescaleCharacters}"
                     ToolTipContent="{x:Static lang:Resources.Randomize_Locations_Tooltip_RescaleCharacters}"
                     IsChecked="{Binding RescaleCharacters}" />

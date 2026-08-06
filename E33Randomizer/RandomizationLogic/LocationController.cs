@@ -36,6 +36,7 @@ public class LocationController: Controller<LocationData>
     
     public Dictionary<string, string> DestinationChanges = new();
     public Dictionary<string, (int, int)> LevelScaling = new();
+    public List<(string from, string to)> OriginalPortals = new();
     
     private List<string> _currentConstraints = new();
     private List<LocationData> criticalPath = new();
@@ -44,13 +45,24 @@ public class LocationController: Controller<LocationData>
     public override void Initialize()
     {
         ReadObjectsData($"{RandomizerLogic.DataDirectory}/location_data.json");
-        
         _locationGraph.Init();
         ViewModel.ContainerName = "Original Destination";
         ViewModel.ObjectName = "Location"; // New Destination
         ReadConstraintFile();
         _levelScalingTableAsset = new UAsset($"{RandomizerLogic.DataDirectory}/LocationData/DT_LevelData.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
         _cleanSnapshot = ConvertToTxt();
+
+        var portalDict = new Dictionary<string, string>();
+        foreach (var locationData in ObjectsData)
+        {
+            if (locationData.PortalConnection == "" || portalDict.ContainsKey(locationData.PortalConnection)) continue;
+            var targetPortal = locationData.PortalConnection;
+            if (GetObject(targetPortal).PortalConnection != locationData.CodeName) continue;
+            portalDict[locationData.CodeName] = targetPortal;
+        }
+        
+        OriginalPortals = portalDict.Select(kvp => (kvp.Key, kvp.Value)).ToList();
+        
         UpdateViewModel();
         ResetRandomObjectPool();
     }
@@ -68,7 +80,14 @@ public class LocationController: Controller<LocationData>
 
         if (RandomizerLogic.Settings.RandomizeStartingLocation)
         {
+            DestinationChanges[_startingLocation] = DestinationChanges[_startingLocation].Contains(".Manor.")
+                ? "Level.SpawnPoint.Goblu.LimonsolHome":  DestinationChanges[_startingLocation];
             _currentConstraints[0] = DestinationChanges[_startingLocation];
+        }
+
+        if (RandomizerLogic.Settings.EnableTwoWayTeleport)
+        {
+            SpecialRules.EnsureTwoWayPortals(DestinationChanges);
         }
         
         _locationGraph.ApplyDestinationChanges(DestinationChanges);
@@ -87,6 +106,14 @@ public class LocationController: Controller<LocationData>
             }
         }
         UpdateViewModel();
+    }
+    
+    public static void ApplyPairSwap(Dictionary<string, string> assignments, (string A, string B) x, (string A, string B) y)
+    {
+        assignments[x.B] = y.A;
+        assignments[y.A] = x.B;
+        assignments[x.A] = y.B;
+        assignments[y.B] = x.A;
     }
 
     public void ReadConstraintFile()
