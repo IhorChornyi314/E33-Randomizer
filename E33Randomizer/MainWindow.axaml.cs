@@ -355,6 +355,7 @@ public class SettingsViewModel : ObservableObject
     
     public bool RandomizeStartingLocation { get; set; }
     public bool EnableTwoWayTeleport { get; set; } = true;
+    public bool EnsureFullConnectivity { get; set; } = true;
     public bool RandomizeManorDoors { get; set; } = true;
     public bool RandomizeWorkshopEntries { get; set; } = true;
     public bool RandomizeCutsceneTeleports { get; set; } = true;

@@ -35,7 +35,7 @@ public class EnableTwoWayTeleport: OutputRuleBase
 
         if (brokenPairs.Any())
         {
-            FailureMessage += string.Join(", ", brokenPairs);
+            FailureMessage += string.Join(",\n", brokenPairs);
             return false;
         }
 

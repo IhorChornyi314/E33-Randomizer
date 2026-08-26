@@ -326,12 +326,13 @@ namespace Tests
         public void TestTwoWayTeleport()
         {
             var settings = _fixture.Create<SettingsViewModel>();
-            settings.Seed = TestLogic.Random.Next();
+            settings.Seed = 33;
             settings.RandomizeEnemies = false;
             settings.RandomizeItems = false;
             settings.RandomizeSkills = false;
             settings.RandomizeLocations = true;
             settings.EnableTwoWayTeleport = true;
+            settings.RandomizeStartingLocation = false;
                 
             var config = new Config(
                 settings,

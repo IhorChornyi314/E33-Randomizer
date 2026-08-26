@@ -176,6 +176,12 @@ public static class RandomizerLogic
         CustomItemPlacement = new();
         CustomSkillPlacement = new();
         CustomLocationPlacement = new();
+        
+        CustomEnemyPlacement.Init();
+        CustomItemPlacement.Init();
+        CustomSkillPlacement.Init();
+        CustomLocationPlacement.Init();
+        
         CharacterStartingStateManager.Init();
         SpecialRules.Reset();
     }

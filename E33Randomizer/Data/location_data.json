@@ -133,7 +133,7 @@
       "Level.SpawnPoint.AxonPath.VistaEntrance"
     ],
     "ConditionalConnections": {},
-    "PortalConnection": "",
+    "PortalConnection": "Level.SpawnPoint.SimonArea.Entry",
     "Keys": []
   },
   {
@@ -288,7 +288,7 @@
       "Level.SpawnPoint.ChromaZoneEntrance.Entry"
     ],
     "ConditionalConnections": {},
-    "PortalConnection": "Level.SpawnPoint.WorldMap.ChromaZoneEntrance",
+    "PortalConnection": "",
     "Keys": []
   },
   {
@@ -2574,7 +2574,7 @@
       "Level.SpawnPoint.SimonArea.Abyss"
     ],
     "ConditionalConnections": {},
-    "PortalConnection": "Level.SpawnPoint.WorldMap.SimonArea",
+    "PortalConnection": "Level.SpawnPoint.AxonPath.Exit",
     "Keys": []
   },
   {
@@ -3483,6 +3483,9 @@
     "ConditionalConnections": {
       "Story.Act3Reached": [
         "Special.WM.Fly"
+      ],
+      "EsquieAbility.Car": [
+        "Special.WM.WithCar"
       ]
     },
     "PortalConnection": "Level.SpawnPoint.BoatGraveyardBlue.Entry",

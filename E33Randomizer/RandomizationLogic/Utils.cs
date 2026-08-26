@@ -62,7 +62,7 @@ public static class Utils
         return val >= Math.Min(a, b) && val <= Math.Max(a, b);
     }
 
-    public static List<T> ShuffleList<T>(List<T> list)
+    public static List<T> ShuffleList<T>(IEnumerable<T> list)
     {
         var arr = list.ToArray();
         RandomizerLogic.rand.Shuffle(arr);

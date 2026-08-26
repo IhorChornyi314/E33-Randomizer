@@ -85,26 +85,25 @@ public class LocationController: Controller<LocationData>
             _currentConstraints[0] = DestinationChanges[_startingLocation];
         }
 
-        if (RandomizerLogic.Settings.EnableTwoWayTeleport)
-        {
-            SpecialRules.EnsureTwoWayPortals(DestinationChanges);
-        }
-        
         _locationGraph.ApplyDestinationChanges(DestinationChanges);
 
-        if (!_locationGraph.ConstructGoldenPath(_currentConstraints, out criticalPath, out var criticalPathChanges))
+        if (RandomizerLogic.Settings.EnsureFullConnectivity)
         {
-            throw new Exception(ResourceHelper.GetString(nameof(Assets.Resources.LocationController_CriticalPath_Exception)));
-        }
-        
-        ConstructLevelScaling();
-        foreach (var (originalDestination, newDestination) in DestinationChanges)
-        {
-            if (criticalPathChanges.TryGetValue(newDestination, out var criticalPathChange))
+            if (!_locationGraph.RemakeWholeGraph(_currentConstraints, out criticalPath, out DestinationChanges))
             {
-                DestinationChanges[originalDestination] = criticalPathChange;
+                throw new Exception(ResourceHelper.GetString(nameof(Assets.Resources.LocationController_CriticalPath_Exception)));
             }
         }
+        else
+        {
+            if (!_locationGraph.ConstructGoldenPathMinimal(_currentConstraints, out criticalPath, out DestinationChanges))
+            {
+                throw new Exception(ResourceHelper.GetString(nameof(Assets.Resources.LocationController_CriticalPath_Exception)));
+            }
+        }
+        
+        
+        ConstructLevelScaling();
         UpdateViewModel();
     }
     

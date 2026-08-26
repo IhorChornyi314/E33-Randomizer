@@ -1,4 +1,5 @@
-﻿using E33Randomizer.ItemSources;
+﻿using Avalonia.Markup.Xaml.XamlIl.Runtime;
+using E33Randomizer.ItemSources;
 using E33Randomizer.ObjectDatum;
 
 namespace E33Randomizer.RandomizationLogic;
@@ -389,27 +390,6 @@ public static class SpecialRules
             node.IsStarting = true;
             node.UnlockCost = 0;
             node.RequiredItem = node.IsUnlockedByDefault ? "null" : SkillsController.GetSkillUnlockItemName(node.SkillData);
-        }
-    }
-
-    public static void EnsureTwoWayPortals(Dictionary<string, string> destinationChanges)
-    {
-        var notRandomized = RandomizerLogic.CustomLocationPlacement.NotRandomizedCodeNames;
-
-        List<(string F, string T)> randomizedPortals = Utils.ShuffleList(Controllers.LocationController.OriginalPortals.Where(
-            p => !notRandomized.Contains(p.from) && !notRandomized.Contains(p.to)
-                ).ToList());
-        if (randomizedPortals.Count < 2) return;
-        var allPortals = new List<(string, string)>(randomizedPortals);
-        
-        var portalCategories = allPortals.Select(x => (x.Item1, RandomizerLogic.CustomLocationPlacement.GetCategory(x.Item1))).ToDictionary();
-        foreach (var (from, to) in Utils.ShuffleList(randomizedPortals))
-        {
-            if (!allPortals.Contains((from, to)) || allPortals.Count <= 1) continue;
-            allPortals.Remove((from, to));
-            var newPair = allPortals.FirstOrDefault(portal => portalCategories[portal.Item1] == portalCategories[from], allPortals[0]);
-            allPortals.Remove(newPair);
-            LocationController.ApplyPairSwap(destinationChanges, (from, to), newPair);
         }
     }
 
