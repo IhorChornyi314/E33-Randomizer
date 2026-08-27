@@ -76,7 +76,7 @@ namespace Tests
         public void TestRandomCases()
         {
             var failureDetails = new List<string>();
-            const int iterations = 10;
+            const int iterations = 5;
 
             for (int i = 0; i < iterations; i++)
             {
@@ -85,7 +85,7 @@ namespace Tests
                 settings.RandomizeEnemies = true;
                 settings.RandomizeItems = true;
                 settings.RandomizeSkills = true;
-                settings.RandomizeLocations = false;
+                settings.RandomizeLocations = true;
                 
                 var config = new Config(
                     settings,
@@ -326,12 +326,13 @@ namespace Tests
         public void TestTwoWayTeleport()
         {
             var settings = _fixture.Create<SettingsViewModel>();
-            settings.Seed = 33;
+            settings.Seed = 123;
             settings.RandomizeEnemies = false;
             settings.RandomizeItems = false;
             settings.RandomizeSkills = false;
             settings.RandomizeLocations = true;
             settings.EnableTwoWayTeleport = true;
+            settings.EnsureFullConnectivity = true;
             settings.RandomizeStartingLocation = false;
                 
             var config = new Config(
@@ -341,12 +342,16 @@ namespace Tests
                 new CustomSkillPlacement(),
                 new CustomLocationPlacement()
             );
-
-            var output = TestLogic.RunRandomizer(config);
-            var twoWayRule = new EnableTwoWayTeleport();
-            var twoWay = twoWayRule.IsSatisfied(output, config);
-            Console.WriteLine(twoWayRule.FailureMessage);
-            twoWay.Should().BeTrue();
+            
+            for (int i = 0; i < 10;  i++)
+            {
+                settings.Seed = i;
+                var output = TestLogic.RunRandomizer(config);
+                var twoWayRule = new EnableTwoWayTeleport();
+                var twoWay = twoWayRule.IsSatisfied(output, config);
+                Console.WriteLine(twoWayRule.FailureMessage);
+                twoWay.Should().BeTrue();
+            }
         }
 
         [Test]

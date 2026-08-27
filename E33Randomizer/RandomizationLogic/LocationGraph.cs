@@ -89,6 +89,8 @@ public class LocationGraph
 {
     private UInt128 MASTER_KEY = UInt128.MaxValue;
     public List<LocationNodeInternal> Nodes = [];
+    public int TotalReachableNodes = 0;
+    public List<LocationNodeInternal> Portals = [];
     public Dictionary<int, List<int>> ConstraintPortals = new();
     public Dictionary<string, int> nodeIndexes = new();
     public Dictionary<string, int> keyIndexes = new();
@@ -138,6 +140,7 @@ public class LocationGraph
                 PortalGroups.Add(newGroup);
             }
         }
+        Portals = Nodes.Where(IsPortal).ToList();
     }
 
     public LocationNodeInternal GetNode(string codeName)
@@ -418,6 +421,61 @@ public class LocationGraph
             Console.WriteLine($"Parity broken by {nonPairedPortals.Count} portals");
         }
     }
+
+    public bool HasFullReachability(int startNode)
+    {
+        return GetReachableStates((startNode, 0)).Select(s => s.Node).Distinct().Count() == TotalReachableNodes;
+    }
+    
+    public bool FixUnclaimedLeaves(int startNode)
+    {
+        if (!RandomizerLogic.Settings.EnableTwoWayTeleport) return false;
+        
+        var numberOfReachableNodes = GetReachableStates((startNode, 0), UnclaimedPortals).Select(s => s.Node).Distinct().Count();
+        
+        foreach (var portalNode in Portals)
+        {
+            if (ConnectedPortals[portalNode.ID].Count < 2) continue;
+            var firstUnclaimed = UnclaimedPortals.First();
+            var secondUnclaimed = UnclaimedPortals.Last();
+            for (int i = 0; i < ConnectedPortals[portalNode.ID].Count; i++)
+            {
+                var claimed = ConnectedPortals[portalNode.ID][i];
+                if (UnclaimedPortals.Contains(claimed)) continue;
+            
+                var originalClaimedDestination = Nodes[claimed].PortalConnection;
+            
+                Nodes[Nodes[claimed].PortalConnection].PortalConnection = firstUnclaimed;
+                Nodes[firstUnclaimed].PortalConnection = Nodes[claimed].PortalConnection;
+            
+                Nodes[claimed].PortalConnection = secondUnclaimed;
+                Nodes[secondUnclaimed].PortalConnection = claimed;
+                var newNumberOfReachableNodes = GetReachableStates((startNode, 0), UnclaimedPortals).Select(s => s.Node).Distinct().Count();
+                if (newNumberOfReachableNodes < numberOfReachableNodes + 2 || (UnclaimedPortals.Count == 2 && newNumberOfReachableNodes < TotalReachableNodes))
+                {
+                    Nodes[originalClaimedDestination].PortalConnection = claimed;
+                    Nodes[claimed].PortalConnection = originalClaimedDestination;
+                    Nodes[firstUnclaimed].PortalConnection = Nodes[firstUnclaimed].OriginalPortalConnection;
+                    Nodes[secondUnclaimed].PortalConnection = Nodes[secondUnclaimed].OriginalPortalConnection;
+                    continue;
+                }
+                numberOfReachableNodes = newNumberOfReachableNodes;
+                UnclaimedPortals.Remove(firstUnclaimed);
+                UnclaimedPortals.Remove(secondUnclaimed);
+                if (UnclaimedPortals.Count == 0) break;
+                
+                firstUnclaimed = UnclaimedPortals.First();
+                secondUnclaimed = UnclaimedPortals.Last();
+            }
+            if (UnclaimedPortals.Count == 0) break;
+        }
+
+        var reachableNodes = GetReachableStates((startNode, 0), UnclaimedPortals).Select(s => s.Node).Distinct();
+        
+        var unreachableNodes = Nodes.Where(n => !reachableNodes.Contains(n.ID)).ToList();
+        
+        return HasFullReachability(startNode) && UnclaimedPortals.Count == 0;
+    }
     
     public bool RemakeWholeGraph(List<string> constraintStrings, out List<LocationData> criticalPath,
         out Dictionary<string, string> destinationChanges)
@@ -432,11 +490,14 @@ public class LocationGraph
             PortalDestinationPools[node.ID] = Nodes.Where(n =>
                 IsPortal(n) && clp(n.CodeName) == nodeDestinationCategory && n != node).Select(n => n.ID).ToList();
         }
+        
         criticalPath = [];
         destinationChanges = new();
-        UnclaimedPortals = Nodes.Where(n => n.OriginalPortalConnection != -1 && Nodes[n.OriginalPortalConnection].OriginalPortalConnection == n.ID).Select(n => n.ID).ToHashSet();
+        UnclaimedPortals = Portals.Select(n => n.ID).ToHashSet();
         var constraintNodes = constraintStrings.Select(c => nodeIndexes[c]).ToList();
         int startNode = constraintNodes[0];
+        
+        TotalReachableNodes = GetReachableStates((startNode, 0)).Select(s => s.Node).Distinct().Count();
 
         UInt128 initialKeys = 0;
 
@@ -456,22 +517,27 @@ public class LocationGraph
             var foundValidPortal = false;
             foreach (var candidatePortalState in reachableUnclaimedPortals)
             {
-                Console.WriteLine($"Candidate: {Nodes[candidatePortalState.Node].CodeName}");
-                UnclaimedPortals.Remove(candidatePortalState.Node);
-                var preferredPortals = SortPortalsByPreference(candidatePortalState.Node);
+                var candidatePortal = candidatePortalState.Node;
+                Console.WriteLine($"Candidate: {Nodes[candidatePortal].CodeName}");
+                var portalsConnectedToCandidate = ConnectedPortals[candidatePortal].Where(p => !UnclaimedPortals.Contains(p)).ToList();
+                UnclaimedPortals.Remove(candidatePortal);
+                var preferredPortals = SortPortalsByPreference(candidatePortal);
                 foreach (var portal in preferredPortals)
                 {
-                    if (RandomizerLogic.Settings.EnableTwoWayTeleport && ConnectedPortals[portal].Any(p => !UnclaimedPortals.Contains(p)))
-                    {
-                        Console.WriteLine($"Skipping {Nodes[portal].CodeName} due to reverse binding");
-                        continue;
-                    }
-                    
-                    Nodes[candidatePortalState.Node].PortalConnection = portal;
                     if (RandomizerLogic.Settings.EnableTwoWayTeleport)
                     {
-                        Nodes[Nodes[candidatePortalState.Node].PortalConnection].PortalConnection = candidatePortalState.Node;
-                        UnclaimedPortals.Remove(Nodes[candidatePortalState.Node].PortalConnection);
+                        if (portalsConnectedToCandidate.Any(p => ConnectedPortals[portal].Contains(Nodes[p].PortalConnection)))
+                        {
+                            Console.WriteLine($"Skipping {Nodes[portal].CodeName} due to reverse binding");
+                            continue;
+                        }
+                    }
+                    
+                    Nodes[candidatePortal].PortalConnection = portal;
+                    if (RandomizerLogic.Settings.EnableTwoWayTeleport)
+                    {
+                        Nodes[Nodes[candidatePortal].PortalConnection].PortalConnection = candidatePortal;
+                        UnclaimedPortals.Remove(Nodes[candidatePortal].PortalConnection);
                     }
                     
                     Console.WriteLine($"Trying to connect to: {Nodes[portal].CodeName}...");
@@ -488,17 +554,17 @@ public class LocationGraph
                     Console.WriteLine("Failure!");
                     if (RandomizerLogic.Settings.EnableTwoWayTeleport)
                     {
-                        Nodes[Nodes[candidatePortalState.Node].PortalConnection].PortalConnection = Nodes[Nodes[candidatePortalState.Node].PortalConnection].OriginalPortalConnection;
-                        UnclaimedPortals.Add(Nodes[candidatePortalState.Node].PortalConnection);
+                        Nodes[Nodes[candidatePortal].PortalConnection].PortalConnection = Nodes[Nodes[candidatePortal].PortalConnection].OriginalPortalConnection;
+                        UnclaimedPortals.Add(Nodes[candidatePortal].PortalConnection);
                     }
-                    Nodes[candidatePortalState.Node].PortalConnection = Nodes[candidatePortalState.Node].OriginalPortalConnection;
+                    Nodes[candidatePortal].PortalConnection = Nodes[candidatePortal].OriginalPortalConnection;
                 }
 
                 if (foundValidPortal || UnclaimedPortals.Count == 0)
                 {
                     break;
                 }
-                UnclaimedPortals.Add(candidatePortalState.Node);
+                UnclaimedPortals.Add(candidatePortal);
             }
 
             if (!foundValidPortal) break;
@@ -506,7 +572,10 @@ public class LocationGraph
         CheckForParity();
 
         
-        if (UnclaimedPortals.Any()) return false;
+        if (UnclaimedPortals.Any())
+        {
+            if (!FixUnclaimedLeaves(startNode)) return false;
+        }
 
         foreach (var node in Nodes.Where(IsPortal))
         {

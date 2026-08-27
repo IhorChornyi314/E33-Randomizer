@@ -6,7 +6,7 @@ public class EnableTwoWayTeleport: OutputRuleBase
 {
     public override bool IsSatisfied(Output output, Config config)
     {
-        if (!config.Settings.EnableTwoWayTeleport) return true;
+        if (!config.Settings.EnableTwoWayTeleport || !config.Settings.RandomizeLocations) return true;
         var brokenPairs = new List<string>();
         
         var paths = new List<string>();
