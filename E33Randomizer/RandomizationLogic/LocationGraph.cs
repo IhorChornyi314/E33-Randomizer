@@ -88,6 +88,8 @@ public class LocationNodeInternal
 public class LocationGraph
 {
     private UInt128 MASTER_KEY = UInt128.MaxValue;
+    private Stack<(int From, int To, int PrevFrom, int PrevTo)> ModificationHistory = new();
+
     public List<LocationNodeInternal> Nodes = [];
     public int TotalReachableNodes = 0;
     public List<LocationNodeInternal> Portals = [];
@@ -99,6 +101,8 @@ public class LocationGraph
     public Dictionary<int, List<int>> PortalDestinationPools = new();
     private HashSet<int> NotRandomizedDestinations = new();
     public List<List<int>> PortalGroups = [];
+
+    public int TotalIterations = 0;
 
     public UInt128 EsquieCarBit;
 
@@ -141,6 +145,7 @@ public class LocationGraph
             }
         }
         Portals = Nodes.Where(IsPortal).ToList();
+        TotalIterations = 0;
     }
 
     public LocationNodeInternal GetNode(string codeName)
@@ -155,6 +160,8 @@ public class LocationGraph
             node.PortalConnection = node.OriginalPortalConnection;
             node.Depth = Int16.MaxValue;
         }
+
+        TotalIterations = 0;
     }
 
     public void ApplyDestinationChanges(Dictionary<string, string> destinationChanges)
@@ -477,6 +484,189 @@ public class LocationGraph
         return HasFullReachability(startNode) && UnclaimedPortals.Count == 0;
     }
     
+    private void ApplyPortalLink(int fromPortal, int toPortal)
+    {
+        var prevFrom = Nodes[fromPortal].PortalConnection;
+        var prevTo = Nodes[toPortal].PortalConnection;
+
+        Nodes[fromPortal].PortalConnection = toPortal;
+        if (RandomizerLogic.Settings.EnableTwoWayTeleport)
+            Nodes[toPortal].PortalConnection = fromPortal;
+
+        ModificationHistory.Push((fromPortal, toPortal, prevFrom, prevTo));
+        UnclaimedPortals.Remove(fromPortal);
+        if (RandomizerLogic.Settings.EnableTwoWayTeleport)
+            UnclaimedPortals.Remove(toPortal);
+    }
+
+    private void UndoPortalLink()
+    {
+        var (from, to, prevFrom, prevTo) = ModificationHistory.Pop();
+        Nodes[from].PortalConnection = prevFrom;
+        if (RandomizerLogic.Settings.EnableTwoWayTeleport)
+            Nodes[to].PortalConnection = prevTo;
+        UnclaimedPortals.Add(from);
+        if (RandomizerLogic.Settings.EnableTwoWayTeleport)
+            UnclaimedPortals.Add(to);
+    }
+    
+    private static Dictionary<int, List<UInt128>> CloneVisited(Dictionary<int, List<UInt128>> visited)
+    {
+        var clone = new Dictionary<int, List<UInt128>>(visited.Count);
+        foreach (var (nodeId, keysList) in visited)
+        {
+            clone[nodeId] = new List<UInt128>(keysList);
+        }
+        return clone;
+    }
+
+    private void TryEnqueue(
+        Dictionary<int, List<UInt128>> visited,
+        Queue<(int Node, UInt128 Keys)> queue,
+        int targetNode,
+        UInt128 incomingKeys)
+    {
+        if (!visited.TryGetValue(targetNode, out var keysList))
+        {
+            visited[targetNode] = [incomingKeys];
+            queue.Enqueue((targetNode, incomingKeys));
+            return;
+        }
+
+        foreach (var keyset in keysList)
+        {
+            if ((keyset | incomingKeys) == keyset)
+                return;
+        }
+
+        keysList.RemoveAll(k => (k | incomingKeys) == incomingKeys);
+        keysList.Add(incomingKeys);
+        queue.Enqueue((targetNode, incomingKeys));
+    }
+
+    private void RunBfs(Dictionary<int, List<UInt128>> visited, Queue<(int Node, UInt128 Keys)> queue)
+    {
+        while (queue.Count > 0)
+        {
+            var (currentNode, currentKeysMask) = queue.Dequeue();
+            var node = Nodes[currentNode];
+
+            var nextKeysMask = currentKeysMask | node.KeysMask;
+            var connections = node.GetConnections(nextKeysMask, EsquieCarBit, !UnclaimedPortals.Contains(node.ID));
+
+            foreach (int nextNode in connections)
+            {
+                TryEnqueue(visited, queue, nextNode, nextKeysMask);
+            }
+        }
+    }
+
+    private HashSet<(int Node, UInt128 Keys)> GetReachableUnclaimedPortalsFromVisited(
+        Dictionary<int, List<UInt128>> visited)
+    {
+        var result = new HashSet<(int Node, UInt128 Keys)>();
+        foreach (var (nodeId, keysList) in visited)
+        {
+            if (UnclaimedPortals.Contains(nodeId) && IsPortal(nodeId))
+            {
+                foreach (var k in keysList)
+                {
+                    result.Add((nodeId, k));
+                }
+            }
+        }
+        return result;
+    }
+
+    private HashSet<(int Node, UInt128 Keys)> ExtendReachability(
+        Dictionary<int, List<UInt128>> visited,
+        int candidate,
+        int dest)
+    {
+        var queue = new Queue<(int Node, UInt128 Keys)>();
+
+        if (visited.TryGetValue(candidate, out var candidateKeys))
+        {
+            var candidateNode = Nodes[candidate];
+            foreach (var k in candidateKeys.ToList())
+            {
+                TryEnqueue(visited, queue, dest, k | candidateNode.KeysMask);
+            }
+        }
+
+        if (RandomizerLogic.Settings.EnableTwoWayTeleport && visited.TryGetValue(dest, out var destKeys))
+        {
+            var destNode = Nodes[dest];
+            foreach (var k in destKeys.ToList())
+            {
+                TryEnqueue(visited, queue, candidate, k | destNode.KeysMask);
+            }
+        }
+
+        RunBfs(visited, queue);
+
+        return GetReachableUnclaimedPortalsFromVisited(visited);
+    }
+
+    private bool CompleteGraphPlacement(int startNode, (int Node, UInt128 Keys) startingState, int depth)
+    {
+        var visited = new Dictionary<int, List<UInt128>>();
+        var queue = new Queue<(int Node, UInt128 Keys)>();
+
+        visited[startingState.Node] = [startingState.Keys];
+        queue.Enqueue(startingState);
+
+        RunBfs(visited, queue);
+        var frontier = GetReachableUnclaimedPortalsFromVisited(visited);
+
+        return CompleteGraphPlacement(startNode, visited, frontier, depth);
+    }
+
+    private bool CompleteGraphPlacement(
+        int startNode,
+        Dictionary<int, List<UInt128>> visited,
+        HashSet<(int Node, UInt128 Keys)> frontier,
+        int depth)
+    {
+        TotalIterations++;
+        
+        if (UnclaimedPortals.Count == 0)
+            return HasFullReachability(startNode);
+        
+        if (depth > 500 || TotalIterations > 500 || frontier.Count == 0) return false;
+
+        var candidate = Utils.ShuffleList(frontier.Select(s => s.Node).Distinct().ToList())
+            .Where(n => UnclaimedPortals.Contains(n))
+            .OrderBy(n => PortalDestinationPools[n].Count(d => UnclaimedPortals.Contains(d)))
+            .FirstOrDefault(-1);
+
+        if (candidate == -1) return false;
+
+        foreach (var dest in SortPortalsByPreference(candidate))
+        {
+            if (dest == candidate) continue;
+            if (!UnclaimedPortals.Contains(dest)) continue;
+
+            ApplyPortalLink(candidate, dest);
+
+            var childVisited = CloneVisited(visited);
+            var childFrontier = ExtendReachability(childVisited, candidate, dest);
+
+            if (UnclaimedPortals.Count > 0 && childFrontier.Count == 0)
+            {
+                UndoPortalLink();
+                continue;
+            }
+
+            if (CompleteGraphPlacement(startNode, childVisited, childFrontier, depth + 1))
+                return true;
+
+            UndoPortalLink();
+        }
+
+        return false;
+    }
+    
     public bool RemakeWholeGraph(List<string> constraintStrings, out List<LocationData> criticalPath,
         out Dictionary<string, string> destinationChanges)
     {
@@ -503,81 +693,31 @@ public class LocationGraph
 
         (int, UInt128) startingState = (startNode, initialKeys);
 
-        List<(int Node, UInt128 Keys)> reachableUnclaimedPortals = [];
 
-        var iterationsLeft = UnclaimedPortals.Count;
+        var iterationsLeft = 10;
         CheckForParity();
         
         while (UnclaimedPortals.Count > 0 && iterationsLeft > 0)
         {
             iterationsLeft--;
-            reachableUnclaimedPortals = GetReachableStates(startingState, UnclaimedPortals).
-                Where(s => IsPortal(s.Node)).Where(s => UnclaimedPortals.Contains(s.Node)).ToList();
-            Console.WriteLine($"Reachable portals: {reachableUnclaimedPortals.Count}");
-            var foundValidPortal = false;
-            foreach (var candidatePortalState in reachableUnclaimedPortals)
-            {
-                var candidatePortal = candidatePortalState.Node;
-                Console.WriteLine($"Candidate: {Nodes[candidatePortal].CodeName}");
-                var portalsConnectedToCandidate = ConnectedPortals[candidatePortal].Where(p => !UnclaimedPortals.Contains(p)).ToList();
-                UnclaimedPortals.Remove(candidatePortal);
-                var preferredPortals = SortPortalsByPreference(candidatePortal);
-                foreach (var portal in preferredPortals)
-                {
-                    if (RandomizerLogic.Settings.EnableTwoWayTeleport)
-                    {
-                        if (portalsConnectedToCandidate.Any(p => ConnectedPortals[portal].Contains(Nodes[p].PortalConnection)))
-                        {
-                            Console.WriteLine($"Skipping {Nodes[portal].CodeName} due to reverse binding");
-                            continue;
-                        }
-                    }
-                    
-                    Nodes[candidatePortal].PortalConnection = portal;
-                    if (RandomizerLogic.Settings.EnableTwoWayTeleport)
-                    {
-                        Nodes[Nodes[candidatePortal].PortalConnection].PortalConnection = candidatePortal;
-                        UnclaimedPortals.Remove(Nodes[candidatePortal].PortalConnection);
-                    }
-                    
-                    Console.WriteLine($"Trying to connect to: {Nodes[portal].CodeName}...");
+            TotalIterations = 0;
+            ModificationHistory.Clear();
 
-                    if (UnclaimedPortals.Count == 0) break;
-                    
-                    var newReachablePortals = GetReachableUnclaimedPortals(startingState);
-                    if (newReachablePortals.Count > 0)
-                    {
-                        Console.WriteLine($"Success! Reachable portals: {newReachablePortals.Count}");
-                        foundValidPortal = true;
-                        break;
-                    }
-                    Console.WriteLine("Failure!");
-                    if (RandomizerLogic.Settings.EnableTwoWayTeleport)
-                    {
-                        Nodes[Nodes[candidatePortal].PortalConnection].PortalConnection = Nodes[Nodes[candidatePortal].PortalConnection].OriginalPortalConnection;
-                        UnclaimedPortals.Add(Nodes[candidatePortal].PortalConnection);
-                    }
-                    Nodes[candidatePortal].PortalConnection = Nodes[candidatePortal].OriginalPortalConnection;
-                }
+            if (CompleteGraphPlacement(startNode, startingState, 0))
+                break;
 
-                if (foundValidPortal || UnclaimedPortals.Count == 0)
-                {
-                    break;
-                }
-                UnclaimedPortals.Add(candidatePortal);
-            }
-
-            if (!foundValidPortal) break;
+            while (ModificationHistory.Count > 0)
+                UndoPortalLink();
         }
+        
         CheckForParity();
 
-        
         if (UnclaimedPortals.Any())
         {
             if (!FixUnclaimedLeaves(startNode)) return false;
         }
 
-        foreach (var node in Nodes.Where(IsPortal))
+        foreach (var node in Portals)
         {
             destinationChanges[Nodes[node.OriginalPortalConnection].CodeName] = Nodes[node.PortalConnection].CodeName;
         }

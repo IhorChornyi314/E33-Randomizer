@@ -342,14 +342,13 @@ namespace Tests
                 new CustomSkillPlacement(),
                 new CustomLocationPlacement()
             );
-            
-            for (int i = 0; i < 10;  i++)
+            for (int i = 0; i < 10; i++)
             {
                 settings.Seed = i;
                 var output = TestLogic.RunRandomizer(config);
                 var twoWayRule = new EnableTwoWayTeleport();
                 var twoWay = twoWayRule.IsSatisfied(output, config);
-                Console.WriteLine(twoWayRule.FailureMessage);
+                if (!twoWay) Console.WriteLine(twoWayRule.FailureMessage);
                 twoWay.Should().BeTrue();
             }
         }
