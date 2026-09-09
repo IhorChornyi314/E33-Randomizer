@@ -19,7 +19,7 @@ public class LocationController: Controller<LocationData>
         {"Cutscenes", ["Level.SpawnPoint.SpringMeadows.Entry", "Level.SpawnPoint.WorldMap.PostSeaCliffForcedCamp", "Level.SpawnPoint.MonolithInterior.Climb.Entry", "Level.SpawnPoint.WorldMap.TheGreatestExpedition", "Level.SpawnPoint.LumiereAct03.Act02RedAndWhite", "Level.SpawnPoint.Manor.AliciaRoomAct3"]}
     };
 
-    static private string _startingLocation = "Level.SpawnPoint.LumiereAct01.Entry";
+    static private string _startingLocation = "Level.SpawnPoint.SpringMeadows.Entry";
 
     static public Dictionary<string, string> CharacterJoinLocations = new()
     {
@@ -47,7 +47,8 @@ public class LocationController: Controller<LocationData>
         ReadObjectsData($"{RandomizerLogic.DataDirectory}/location_data.json");
         _locationGraph.Init();
         ViewModel.ContainerName = "Original Destination";
-        ViewModel.ObjectName = "Location"; // New Destination
+        ViewModel.ObjectName = "New Destination"; // New Destination
+        DestinationChanges = ObjectsData.Where(lD => !lD.CodeName.Contains("Special") && !RandomizerLogic.BrokenLocations.Contains(lD.CodeName)).Select(lD => (lD.CodeName, lD.CodeName)).ToDictionary();
         ReadConstraintFile();
         _levelScalingTableAsset = new UAsset($"{RandomizerLogic.DataDirectory}/LocationData/DT_LevelData.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
         _cleanSnapshot = ConvertToTxt();
@@ -72,47 +73,47 @@ public class LocationController: Controller<LocationData>
         _locationGraph.Reset();
         Reset();
         RandomizerLogic.CustomLocationPlacement.Update();
-        foreach (var originalLocation in DestinationChanges.Keys)
-        { 
-            var newDestination = RandomizerLogic.CustomLocationPlacement.Replace(originalLocation);
-            DestinationChanges[originalLocation] = newDestination;
+        foreach (var originalPortal in OriginalPortals)
+        {
+            var newOrigin = RandomizerLogic.CustomLocationPlacement.Replace(originalPortal.from);
+            DestinationChanges[originalPortal.from] = newOrigin;
+            var newDestination = RandomizerLogic.CustomLocationPlacement.Replace(originalPortal.to);
+            DestinationChanges[originalPortal.to] = newDestination;
         }
 
         if (RandomizerLogic.Settings.RandomizeStartingLocation)
         {
+            DestinationChanges[_startingLocation] = RandomizerLogic.CustomLocationPlacement.Replace(_startingLocation);
             DestinationChanges[_startingLocation] = DestinationChanges[_startingLocation].Contains(".Manor.")
                 ? "Level.SpawnPoint.Goblu.LimonsolHome":  DestinationChanges[_startingLocation];
-            _currentConstraints[0] = DestinationChanges[_startingLocation];
         }
 
         _locationGraph.ApplyDestinationChanges(DestinationChanges);
-
+        
+        var corrections = new Dictionary<string, string>();
+        
         if (RandomizerLogic.Settings.EnsureFullConnectivity)
         {
-            if (!_locationGraph.RemakeWholeGraph(_currentConstraints, out criticalPath, out DestinationChanges))
+            if (!_locationGraph.RemakeWholeGraph(_currentConstraints, out criticalPath, out corrections))
             {
                 throw new Exception(ResourceHelper.GetString(nameof(Assets.Resources.LocationController_CriticalPath_Exception)));
             }
         }
         else
         {
-            if (!_locationGraph.ConstructGoldenPathMinimal(_currentConstraints, out criticalPath, out DestinationChanges))
+            if (!_locationGraph.ConstructGoldenPathMinimal(_currentConstraints, out criticalPath, out corrections))
             {
                 throw new Exception(ResourceHelper.GetString(nameof(Assets.Resources.LocationController_CriticalPath_Exception)));
             }
         }
-        
+
+        foreach (var (original, corrected) in corrections)
+        {
+            DestinationChanges[original] = corrected;
+        }
         
         ConstructLevelScaling();
         UpdateViewModel();
-    }
-    
-    public static void ApplyPairSwap(Dictionary<string, string> assignments, (string A, string B) x, (string A, string B) y)
-    {
-        assignments[x.B] = y.A;
-        assignments[y.A] = x.B;
-        assignments[x.A] = y.B;
-        assignments[y.B] = x.A;
     }
 
     public void ReadConstraintFile()
@@ -352,9 +353,7 @@ public class LocationController: Controller<LocationData>
     public override void Reset()
     {
         InitFromTxt(_cleanSnapshot);
-        var portalDestinations = ObjectsData.Where(o => o.PortalConnection != "").Select(o => o.PortalConnection);
-        DestinationChanges = portalDestinations.Distinct().ToDictionary(pD => pD);
-
+        
         if (RandomizerLogic.Settings.RandomizeManorDoors)
         {
             _specialDestinations["ManorDoors"].ForEach(d => DestinationChanges[d] = d);
@@ -389,15 +388,6 @@ public class LocationController: Controller<LocationData>
         else
         {
             _specialDestinations["Cutscenes"].ForEach(d => DestinationChanges.Remove(d));
-        }
-        
-        if (RandomizerLogic.Settings.RandomizeStartingLocation)
-        {
-            DestinationChanges[_startingLocation] = _startingLocation;
-        }
-        else
-        {
-            DestinationChanges.Remove(_startingLocation);
         }
     }
 

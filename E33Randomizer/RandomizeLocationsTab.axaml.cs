@@ -23,6 +23,7 @@ public static class DesignLocationSettingsViewModel
         RandomizeWorkshopEntries = true,
         RandomizeCutsceneTeleports = true,
         RandomizeGestralBeachPortals = true,
+        EnsureFullConnectivity = true,
         EnableTwoWayTeleport = true
     };
 

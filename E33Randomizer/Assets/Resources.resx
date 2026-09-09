@@ -415,6 +415,9 @@
     <data name="Randomize_Locations_RandomizeLocations" xml:space="preserve">
         <value>Randomize Locations</value>
     </data>
+    <data name="Randomize_Locations_EnsureFullConnectivity" xml:space="preserve">
+        <value>Ensure the full map is reachable</value>
+    </data>
     <data name="Randomize_Locations_RescaleLocations" xml:space="preserve">
         <value>Re-scale locations</value>
     </data>
@@ -447,6 +450,9 @@
     </data>
 
     <data name="Randomize_Locations_Tooltip_RandomizeLocations" xml:space="preserve">
+        <value>TRANSLATION_MISSING</value>
+    </data>
+    <data name="Randomize_Locations_Tooltip_EnsureFullConnectivity" xml:space="preserve">
         <value>TRANSLATION_MISSING</value>
     </data>
     <data name="Randomize_Locations_Tooltip_RescaleLocations" xml:space="preserve">

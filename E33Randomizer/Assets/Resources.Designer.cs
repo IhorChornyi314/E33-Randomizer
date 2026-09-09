@@ -2337,6 +2337,15 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ensure the full map is reachable.
+        /// </summary>
+        public static string Randomize_Locations_EnsureFullConnectivity {
+            get {
+                return ResourceManager.GetString("Randomize_Locations_EnsureFullConnectivity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Randomize cutscene teleports.
         /// </summary>
         public static string Randomize_Locations_RandomizeCutsceneTeleports {
@@ -2432,6 +2441,15 @@ namespace E33Randomizer.Assets {
         public static string Randomize_Locations_Tooltip_EnableTwoWayTeleport {
             get {
                 return ResourceManager.GetString("Randomize_Locations_Tooltip_EnableTwoWayTeleport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TRANSLATION_MISSING.
+        /// </summary>
+        public static string Randomize_Locations_Tooltip_EnsureFullConnectivity {
+            get {
+                return ResourceManager.GetString("Randomize_Locations_Tooltip_EnsureFullConnectivity", resourceCulture);
             }
         }
         

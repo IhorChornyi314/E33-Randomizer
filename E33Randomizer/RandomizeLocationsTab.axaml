@@ -18,6 +18,10 @@
                     ToolTipContent="{x:Static lang:Resources.Randomize_Locations_Tooltip_RandomizeLocations}"
                     IsChecked="{Binding RandomizeLocations}" />
                 <uiControls:CheckboxToolTip
+                    Content="{x:Static lang:Resources.Randomize_Locations_EnsureFullConnectivity}"
+                    ToolTipContent="{x:Static lang:Resources.Randomize_Locations_Tooltip_EnsureFullConnectivity}"
+                    IsChecked="{Binding EnsureFullConnectivity}" />
+                <uiControls:CheckboxToolTip
                     Name="RescaleLocationsCheckBox"
                     ToolTipContent="{x:Static lang:Resources.Randomize_Locations_Tooltip_RescaleLocations}"
                     Content="{x:Static lang:Resources.Randomize_Locations_RescaleLocations}"
