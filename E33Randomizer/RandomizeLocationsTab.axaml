@@ -66,10 +66,6 @@
                     ToolTipContent="{x:Static lang:Resources.Randomize_Locations_Tooltip_RandomizePaintingWorkshopEntrances}"
                     IsChecked="{Binding RandomizeWorkshopEntries}" />
                 <uiControls:CheckboxToolTip
-                    Content="{x:Static lang:Resources.Randomize_Locations_RandomizeCutsceneTeleports}"
-                    ToolTipContent="{x:Static lang:Resources.Randomize_Locations_Tooltip_RandomizeCutsceneTeleports}"
-                    IsChecked="{Binding RandomizeCutsceneTeleports}" />
-                <uiControls:CheckboxToolTip
                     Content="{x:Static lang:Resources.Randomize_Locations_RandomizeGestralBeaches}"
                     ToolTipContent="{x:Static lang:Resources.Randomize_Locations_Tooltip_RandomizeGestralBeaches}"
                     IsChecked="{Binding RandomizeGestralBeachPortals}" />

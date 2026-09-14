@@ -87,17 +87,16 @@ public class LocationNodeInternal
 
 public class LocationGraph
 {
-    private UInt128 MASTER_KEY = UInt128.MaxValue;
     private Stack<(int From, int To, int PrevFrom, int PrevTo)> ModificationHistory = new();
 
     public List<LocationNodeInternal> Nodes = [];
     public int TotalReachableNodes = 0;
     public List<LocationNodeInternal> Portals = [];
-    public Dictionary<int, List<int>> ConstraintPortals = new();
     public Dictionary<string, int> nodeIndexes = new();
     public Dictionary<string, int> keyIndexes = new();
     public Dictionary<int, List<int>> ConnectedPortals = new();
-    public HashSet<int> UnclaimedPortals = new();
+    public HashSet<int> AvailablePortals = new();
+    public HashSet<int> AvailableDestinations = new();
     public Dictionary<int, List<int>> PortalDestinationPools = new();
     private HashSet<int> NotRandomizedDestinations = new();
     public List<List<int>> PortalGroups = [];
@@ -231,44 +230,7 @@ public class LocationGraph
         }
         return result;
     }
-
-    public IEnumerable<int> GetNodesFromStates(IEnumerable<(int Node, UInt128)> states)
-    {
-        return states.Select(s => s.Node).Distinct();
-    }
     
-    public List<int> GetPortalsFromStates(IEnumerable<(int Node, UInt128)> states)
-    {
-        return states.Select(s => s.Node).Distinct().Where(n => Nodes[n].OriginalPortalConnection != -1 && Nodes[Nodes[n].OriginalPortalConnection].OriginalPortalConnection == Nodes[n].ID).ToList();
-    }
-    
-    public bool CheckPortalMutation(int portalIndex, int lastReachableConstraint, List<int> constraintNodes)
-    {
-        var oldVal = Nodes[portalIndex].PortalConnection;
-        Nodes[portalIndex].PortalConnection = constraintNodes[lastReachableConstraint + 1];
-        
-        var success = true;
-        (int, UInt128) currentConstraintState = (constraintNodes[0], 0);
-
-        for (int i = 0; i < lastReachableConstraint + 1; i++)
-        {
-            var reachableStates = GetReachableStates(currentConstraintState);
-            if (GetNodesFromStates(reachableStates).Contains(constraintNodes[i + 1]))
-            {
-                currentConstraintState = reachableStates.First(s => s.Node == constraintNodes[i + 1]);
-                continue;
-            }
-            success = false;
-            break;
-        }
-
-        if (success) return true;
-
-        Nodes[portalIndex].PortalConnection = oldVal;
-
-        return false;
-    }
-
     public List<LocationData> GetPathAndDepths(int startNode, int endNode)
     {
         var currentPath = new List<int>();
@@ -313,89 +275,6 @@ public class LocationGraph
         var criticalPath = currentPath.Select(i => Controllers.LocationController.GetObject(Nodes[i].CodeName)).ToList();
         return criticalPath;
     }
-    
-    public bool ConstructGoldenPathMinimal(List<string> constraintStrings, out List<LocationData> criticalPath,
-        out Dictionary<string, string> destinationChanges)
-    {
-        criticalPath = new();
-        var constraintNodes = constraintStrings.Select(c => nodeIndexes[c]).ToList();
-        var constraints = constraintNodes.Select(c => Nodes[c]).ToList();
-        
-        ConstraintPortals.Clear();
-        foreach (var c in constraints)
-        {
-            ConstraintPortals[c.ID] = c.GetConnections(MASTER_KEY, EsquieCarBit, false).Where(IsPortal).ToList();
-        }
-        
-        destinationChanges = new Dictionary<string, string>();
-        int startNode = constraintNodes[0];
-
-        UInt128 initialKeys = 0;
-
-
-        int currentConstraint = 0;
-        int nextConstraint = 1;
-        (int, UInt128) currentConstraintState = (startNode, initialKeys);
-        Stack<(int Node, UInt128 Keys)> constraintStates = [];
-        constraintStates.Push(currentConstraintState);
-        List<(List<int> Portals, int lastChecked)> portalsReachableFromState = [];
-        var iterations = 0;
-        while (nextConstraint < constraints.Count && iterations < 500)
-        {
-            iterations++;
-            var reachableStates = GetReachableStates(currentConstraintState);
-            portalsReachableFromState.Add((Utils.ShuffleList(GetPortalsFromStates(reachableStates)), 0));
-            if (reachableStates.Any(s => s.Node == constraintNodes[nextConstraint]))
-            {
-                currentConstraintState = reachableStates.First(s => s.Node == constraintNodes[nextConstraint]);
-                constraintStates.Push(currentConstraintState);
-                currentConstraint++;
-                nextConstraint++;
-                continue;
-            }
-
-            if (nextConstraint == constraints.Count) break;
-
-            var portalsReachableFromConstraint = portalsReachableFromState[currentConstraint];
-            var lastChecked = portalsReachableFromConstraint.lastChecked;
-            var portals = portalsReachableFromConstraint.Portals[lastChecked..];
-            var foundPortal = false;
-            foreach (var portal in portals)
-            {
-                lastChecked++;
-                if (CheckPortalMutation(portal, currentConstraint, constraintNodes))
-                {
-                    foundPortal = true;
-                    break;
-                }
-            }
-            
-            portalsReachableFromState[currentConstraint] = (portalsReachableFromConstraint.Portals, lastChecked);
-            
-            if (foundPortal)
-            {
-                continue;
-            }
-
-            if (currentConstraint == -1) return false;
-            
-            currentConstraintState = constraintStates.Pop();
-            portalsReachableFromState = portalsReachableFromState[..currentConstraint];
-            currentConstraint--;
-            nextConstraint--;
-        }
-
-        if (nextConstraint < constraints.Count) return false;
-        
-        foreach (var node in Nodes)
-        {
-            if (node.PortalConnection == -1) continue;
-            destinationChanges[Nodes[node.OriginalPortalConnection].CodeName] = Nodes[node.PortalConnection].CodeName;
-        }
-
-        criticalPath = GetPathAndDepths(constraintNodes[0], constraintNodes[^1]);
-        return true;
-    }
 
     public bool IsPortal(int node)
     {
@@ -409,79 +288,13 @@ public class LocationGraph
 
     public List<int> SortPortalsByPreference(int startingPortal)
     {
-        return Utils.ShuffleList(UnclaimedPortals).OrderBy(p => NotRandomizedDestinations.Contains(p) && p == Nodes[startingPortal].OriginalPortalConnection ? -1 :
+        return Utils.ShuffleList(AvailableDestinations).OrderBy(p => NotRandomizedDestinations.Contains(p) && p == Nodes[startingPortal].OriginalPortalConnection ? -1 :
             PortalDestinationPools[startingPortal].Contains(p) ? 0 : 1).ToList();
-    }
-
-    public List<(int Node, UInt128 Keys)> GetReachableUnclaimedPortals((int Node, UInt128 Keys) startingState)
-    {
-        return GetReachableStates(startingState, UnclaimedPortals).
-            Where(s => IsPortal(s.Node)).Where(s => UnclaimedPortals.Contains(s.Node)).ToList();
-    }
-
-    public void CheckForParity()
-    {
-        var portals = Nodes.Where(IsPortal).ToList();
-        var nonPairedPortals = portals.Where(p => Nodes[p.PortalConnection].PortalConnection != p.ID).ToList();
-        if (nonPairedPortals.Any())
-        {
-            Console.WriteLine($"Parity broken by {nonPairedPortals.Count} portals");
-        }
     }
 
     public bool HasFullReachability(int startNode)
     {
         return GetReachableStates((startNode, 0)).Select(s => s.Node).Distinct().Count() == TotalReachableNodes;
-    }
-    
-    public bool FixUnclaimedLeaves(int startNode)
-    {
-        if (!RandomizerLogic.Settings.EnableTwoWayTeleport) return false;
-        
-        var numberOfReachableNodes = GetReachableStates((startNode, 0), UnclaimedPortals).Select(s => s.Node).Distinct().Count();
-        
-        foreach (var portalNode in Portals)
-        {
-            if (ConnectedPortals[portalNode.ID].Count < 2) continue;
-            var firstUnclaimed = UnclaimedPortals.First();
-            var secondUnclaimed = UnclaimedPortals.Last();
-            for (int i = 0; i < ConnectedPortals[portalNode.ID].Count; i++)
-            {
-                var claimed = ConnectedPortals[portalNode.ID][i];
-                if (UnclaimedPortals.Contains(claimed)) continue;
-            
-                var originalClaimedDestination = Nodes[claimed].PortalConnection;
-            
-                Nodes[Nodes[claimed].PortalConnection].PortalConnection = firstUnclaimed;
-                Nodes[firstUnclaimed].PortalConnection = Nodes[claimed].PortalConnection;
-            
-                Nodes[claimed].PortalConnection = secondUnclaimed;
-                Nodes[secondUnclaimed].PortalConnection = claimed;
-                var newNumberOfReachableNodes = GetReachableStates((startNode, 0), UnclaimedPortals).Select(s => s.Node).Distinct().Count();
-                if (newNumberOfReachableNodes < numberOfReachableNodes + 2 || (UnclaimedPortals.Count == 2 && newNumberOfReachableNodes < TotalReachableNodes))
-                {
-                    Nodes[originalClaimedDestination].PortalConnection = claimed;
-                    Nodes[claimed].PortalConnection = originalClaimedDestination;
-                    Nodes[firstUnclaimed].PortalConnection = Nodes[firstUnclaimed].OriginalPortalConnection;
-                    Nodes[secondUnclaimed].PortalConnection = Nodes[secondUnclaimed].OriginalPortalConnection;
-                    continue;
-                }
-                numberOfReachableNodes = newNumberOfReachableNodes;
-                UnclaimedPortals.Remove(firstUnclaimed);
-                UnclaimedPortals.Remove(secondUnclaimed);
-                if (UnclaimedPortals.Count == 0) break;
-                
-                firstUnclaimed = UnclaimedPortals.First();
-                secondUnclaimed = UnclaimedPortals.Last();
-            }
-            if (UnclaimedPortals.Count == 0) break;
-        }
-
-        var reachableNodes = GetReachableStates((startNode, 0), UnclaimedPortals).Select(s => s.Node).Distinct();
-        
-        var unreachableNodes = Nodes.Where(n => !reachableNodes.Contains(n.ID)).ToList();
-        
-        return HasFullReachability(startNode) && UnclaimedPortals.Count == 0;
     }
     
     private void ApplyPortalLink(int fromPortal, int toPortal)
@@ -494,9 +307,13 @@ public class LocationGraph
             Nodes[toPortal].PortalConnection = fromPortal;
 
         ModificationHistory.Push((fromPortal, toPortal, prevFrom, prevTo));
-        UnclaimedPortals.Remove(fromPortal);
+        AvailablePortals.Remove(fromPortal);
+        AvailableDestinations.Remove(toPortal);
         if (RandomizerLogic.Settings.EnableTwoWayTeleport)
-            UnclaimedPortals.Remove(toPortal);
+        {
+            AvailableDestinations.Remove(fromPortal);
+            AvailablePortals.Remove(toPortal);
+        }
     }
 
     private void UndoPortalLink()
@@ -505,9 +322,13 @@ public class LocationGraph
         Nodes[from].PortalConnection = prevFrom;
         if (RandomizerLogic.Settings.EnableTwoWayTeleport)
             Nodes[to].PortalConnection = prevTo;
-        UnclaimedPortals.Add(from);
+        AvailablePortals.Add(from);
+        AvailableDestinations.Add(to);
         if (RandomizerLogic.Settings.EnableTwoWayTeleport)
-            UnclaimedPortals.Add(to);
+        {
+            AvailableDestinations.Add(from);
+            AvailablePortals.Add(to);
+        }
     }
     
     private static Dictionary<int, List<UInt128>> CloneVisited(Dictionary<int, List<UInt128>> visited)
@@ -552,7 +373,7 @@ public class LocationGraph
             var node = Nodes[currentNode];
 
             var nextKeysMask = currentKeysMask | node.KeysMask;
-            var connections = node.GetConnections(nextKeysMask, EsquieCarBit, !UnclaimedPortals.Contains(node.ID));
+            var connections = node.GetConnections(nextKeysMask, EsquieCarBit, !AvailablePortals.Contains(node.ID));
 
             foreach (int nextNode in connections)
             {
@@ -567,7 +388,7 @@ public class LocationGraph
         var result = new HashSet<(int Node, UInt128 Keys)>();
         foreach (var (nodeId, keysList) in visited)
         {
-            if (UnclaimedPortals.Contains(nodeId) && IsPortal(nodeId))
+            if (AvailablePortals.Contains(nodeId) && IsPortal(nodeId))
             {
                 foreach (var k in keysList)
                 {
@@ -630,14 +451,14 @@ public class LocationGraph
     {
         TotalIterations++;
         
-        if (UnclaimedPortals.Count == 0)
+        if (AvailablePortals.Count == 0)
             return HasFullReachability(startNode);
         
-        if (depth > 500 || TotalIterations > 500 || frontier.Count == 0) return false;
+        if (depth > 1000 || TotalIterations > 1000 || frontier.Count == 0) return false;
 
         var candidate = Utils.ShuffleList(frontier.Select(s => s.Node).Distinct().ToList())
-            .Where(n => UnclaimedPortals.Contains(n))
-            .OrderBy(n => PortalDestinationPools[n].Count(d => UnclaimedPortals.Contains(d)))
+            .Where(n => AvailablePortals.Contains(n))
+            .OrderBy(n => PortalDestinationPools[n].Count(d => AvailablePortals.Contains(d)))
             .FirstOrDefault(-1);
 
         if (candidate == -1) return false;
@@ -645,14 +466,14 @@ public class LocationGraph
         foreach (var dest in SortPortalsByPreference(candidate))
         {
             if (dest == candidate) continue;
-            if (!UnclaimedPortals.Contains(dest)) continue;
+            if (RandomizerLogic.Settings.EnableTwoWayTeleport && !AvailablePortals.Contains(dest)) continue;
 
             ApplyPortalLink(candidate, dest);
 
             var childVisited = CloneVisited(visited);
             var childFrontier = ExtendReachability(childVisited, candidate, dest);
 
-            if (UnclaimedPortals.Count > 0 && childFrontier.Count == 0)
+            if (AvailablePortals.Count > 0 && childFrontier.Count == 0)
             {
                 UndoPortalLink();
                 continue;
@@ -683,7 +504,8 @@ public class LocationGraph
         
         criticalPath = [];
         destinationChanges = new();
-        UnclaimedPortals = Portals.Select(n => n.ID).ToHashSet();
+        AvailablePortals = Portals.Select(n => n.ID).ToHashSet();
+        AvailableDestinations = Portals.Select(n => n.ID).ToHashSet();
         var constraintNodes = constraintStrings.Select(c => nodeIndexes[c]).ToList();
         int startNode = constraintNodes[0];
         
@@ -692,12 +514,10 @@ public class LocationGraph
         UInt128 initialKeys = 0;
 
         (int, UInt128) startingState = (startNode, initialKeys);
-
-
-        var iterationsLeft = 10;
-        CheckForParity();
         
-        while (UnclaimedPortals.Count > 0 && iterationsLeft > 0)
+        var iterationsLeft = 10;
+        
+        while (AvailablePortals.Count > 0 && iterationsLeft > 0)
         {
             iterationsLeft--;
             TotalIterations = 0;
@@ -709,12 +529,10 @@ public class LocationGraph
             while (ModificationHistory.Count > 0)
                 UndoPortalLink();
         }
-        
-        CheckForParity();
 
-        if (UnclaimedPortals.Any())
-        {
-            if (!FixUnclaimedLeaves(startNode)) return false;
+        if (AvailablePortals.Any())
+        { 
+            return false;
         }
 
         foreach (var node in Portals)

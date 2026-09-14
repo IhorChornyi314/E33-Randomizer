@@ -87,28 +87,44 @@ public class LocationController: Controller<LocationData>
             DestinationChanges[_startingLocation] = DestinationChanges[_startingLocation].Contains(".Manor.")
                 ? "Level.SpawnPoint.Goblu.LimonsolHome":  DestinationChanges[_startingLocation];
         }
+        
+        if (RandomizerLogic.Settings.RandomizeManorDoors)
+        {
+            var shuffled = Utils.ShuffleList(_specialDestinations["ManorDoors"]);
+            for (int i = 0; i < shuffled.Count; i++)
+            {
+                DestinationChanges[_specialDestinations["ManorDoors"][i]] = shuffled[i];
+            }
+        }
+        
+        if (RandomizerLogic.Settings.RandomizeWorkshopEntries)
+        {
+            var shuffled = Utils.ShuffleList(_specialDestinations["PaintingWorkshops"]);
+            for (int i = 0; i < shuffled.Count; i++)
+            {
+                DestinationChanges[_specialDestinations["PaintingWorkshops"][i]] = shuffled[i];
+            }
+        }
+        
+        if (RandomizerLogic.Settings.RandomizeGestralBeachPortals)
+        {
+            var shuffled = Utils.ShuffleList(_specialDestinations["GestralBeaches"]);
+            for (int i = 0; i < shuffled.Count; i++)
+            {
+                DestinationChanges[_specialDestinations["GestralBeaches"][i]] = shuffled[i];
+            }
+        }
 
         _locationGraph.ApplyDestinationChanges(DestinationChanges);
         
-        var corrections = new Dictionary<string, string>();
+        if (!_locationGraph.RemakeWholeGraph(_currentConstraints, out criticalPath, out var corrections))
+        {
+            throw new Exception(ResourceHelper.GetString(nameof(Assets.Resources.LocationController_CriticalPath_Exception)));
+        }
         
-        if (RandomizerLogic.Settings.EnsureFullConnectivity)
-        {
-            if (!_locationGraph.RemakeWholeGraph(_currentConstraints, out criticalPath, out corrections))
-            {
-                throw new Exception(ResourceHelper.GetString(nameof(Assets.Resources.LocationController_CriticalPath_Exception)));
-            }
-        }
-        else
-        {
-            if (!_locationGraph.ConstructGoldenPathMinimal(_currentConstraints, out criticalPath, out corrections))
-            {
-                throw new Exception(ResourceHelper.GetString(nameof(Assets.Resources.LocationController_CriticalPath_Exception)));
-            }
-        }
-
         foreach (var (original, corrected) in corrections)
         {
+            if (!RandomizerLogic.Settings.EnsureFullConnectivity && criticalPath.All(l => l.CodeName != corrected)) continue;
             DestinationChanges[original] = corrected;
         }
         
@@ -353,42 +369,6 @@ public class LocationController: Controller<LocationData>
     public override void Reset()
     {
         InitFromTxt(_cleanSnapshot);
-        
-        if (RandomizerLogic.Settings.RandomizeManorDoors)
-        {
-            _specialDestinations["ManorDoors"].ForEach(d => DestinationChanges[d] = d);
-        }
-        else
-        {
-            _specialDestinations["ManorDoors"].ForEach(d => DestinationChanges.Remove(d));
-        }
-        
-        if (RandomizerLogic.Settings.RandomizeWorkshopEntries)
-        {
-            _specialDestinations["PaintingWorkshops"].ForEach(d => DestinationChanges[d] = d);
-        }
-        else
-        {
-            _specialDestinations["PaintingWorkshops"].ForEach(d => DestinationChanges.Remove(d));
-        }
-        
-        if (RandomizerLogic.Settings.RandomizeGestralBeachPortals)
-        {
-            _specialDestinations["GestralBeaches"].ForEach(d => DestinationChanges[d] = d);
-        }
-        else
-        {
-            _specialDestinations["GestralBeaches"].ForEach(d => DestinationChanges.Remove(d));
-        }
-        
-        if (RandomizerLogic.Settings.RandomizeCutsceneTeleports)
-        {
-            _specialDestinations["Cutscenes"].ForEach(d => DestinationChanges[d] = d);
-        }
-        else
-        {
-            _specialDestinations["Cutscenes"].ForEach(d => DestinationChanges.Remove(d));
-        }
     }
 
     public override void WriteAssets()

@@ -21,7 +21,6 @@ public static class DesignLocationSettingsViewModel
         RandomizeStartingLocation = true,
         RandomizeManorDoors = true,
         RandomizeWorkshopEntries = true,
-        RandomizeCutsceneTeleports = true,
         RandomizeGestralBeachPortals = true,
         EnsureFullConnectivity = true,
         EnableTwoWayTeleport = true

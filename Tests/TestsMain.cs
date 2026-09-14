@@ -42,6 +42,7 @@ namespace Tests
                 new ChangeSizeOfNonRandomizedEncounters(),
                 new EnableTwoWayTeleport(),
                 new EnsureBossesInBossEncounters(),
+                new EnsureFullConnectivity(),
                 new EnsurePaintedPowerFromPaintress(),
                 new ExcludeBossDuollisteP2(),
                 new GuaranteeGustaveOvercharge(),
@@ -55,8 +56,11 @@ namespace Tests
                 new RandomizeAddedEnemies(),
                 new RandomizeEsquieRocks(),
                 new RandomizeGestralBeachRewards(),
+                new RandomizeLocations(),
                 new RandomizeMerchantFights(),
                 new RandomizeSkillUnlockCosts(),
+                new RandomizeSpecialLocations(),
+                new RandomizeStartingLocation(),
                 new RandomizeTreeEdges(),
                 new ReduceBossRepetition(),
                 new ReduceGearRepetition(),
@@ -296,37 +300,12 @@ namespace Tests
             
             CustomPlacementTestLogic.TestDefaultCustomPlacement(output, config).Should().BeTrue();
         }
-
-        [Test]
-        public void TestVanillaPath()
-        {
-            var settings = _fixture.Create<SettingsViewModel>();
-            settings.Seed = TestLogic.Random.Next();
-            settings.RandomizeEnemies = false;
-            settings.RandomizeItems = false;
-            settings.RandomizeSkills = false;
-            settings.RandomizeLocations = true;
-            settings.EnableTwoWayTeleport = false;
-            settings.RandomizeStartingLocation = false;
-                
-            var config = new Config(
-                settings,
-                new CustomEnemyPlacement(),
-                new CustomItemPlacement(),
-                new CustomSkillPlacement(),
-                new CustomLocationPlacement()
-            );
-            
-            config.CustomLocationPlacement.AddNotRandomized("Anything");
-
-            var output = TestLogic.RunRandomizer(config);
-        }
         
         [Test]
         public void TestTwoWayTeleport()
         {
             var settings = _fixture.Create<SettingsViewModel>();
-            settings.Seed = 123;
+            settings.Seed = TestLogic.Random.Next();
             settings.RandomizeEnemies = false;
             settings.RandomizeItems = false;
             settings.RandomizeSkills = false;
@@ -344,13 +323,40 @@ namespace Tests
             );
             for (int i = 0; i < 10; i++)
             {
-                settings.Seed = i;
+                settings.Seed += i;
                 var output = TestLogic.RunRandomizer(config);
                 var twoWayRule = new EnableTwoWayTeleport();
                 var twoWay = twoWayRule.IsSatisfied(output, config);
                 if (!twoWay) Console.WriteLine(twoWayRule.FailureMessage);
                 twoWay.Should().BeTrue();
             }
+        }
+        
+        [Test]
+        public void TestLocationRandomizerOnly()
+        {
+            var settings = _fixture.Create<SettingsViewModel>();
+            settings.Seed = 33;
+            settings.RandomizeEnemies = false;
+            settings.RandomizeItems = false;
+            settings.RandomizeSkills = false;
+            settings.RandomizeLocations = true;
+            settings.EnableTwoWayTeleport = false;
+            settings.EnsureFullConnectivity = false;
+            settings.RandomizeStartingLocation = false;
+                
+            var config = new Config(
+                settings,
+                new CustomEnemyPlacement(),
+                new CustomItemPlacement(),
+                new CustomSkillPlacement(),
+                new CustomLocationPlacement()
+            );
+            var output = TestLogic.RunRandomizer(config);
+            var rule = new RandomizeLocations();
+            var satisfied = rule.IsSatisfied(output, config);
+            if (!satisfied) Console.WriteLine(rule.FailureMessage);
+            satisfied.Should().BeTrue();
         }
 
         [Test]

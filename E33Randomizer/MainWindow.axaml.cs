@@ -349,7 +349,6 @@ public class SettingsViewModel : ObservableObject
     public bool MakeSkillsIntoItems { get; set; } 
     
     public bool RandomizeLocations { get; set; } = true;
-    public bool ReduceLocationRepetition { get; set; } 
     public bool RescaleLocations { get; set; } = true;
     public bool RescaleCharacters { get; set; } = true;
     public bool RandomizeStartingLocation { get; set; }
@@ -357,7 +356,6 @@ public class SettingsViewModel : ObservableObject
     public bool EnsureFullConnectivity { get; set; } = true;
     public bool RandomizeManorDoors { get; set; } = true;
     public bool RandomizeWorkshopEntries { get; set; } = true;
-    public bool RandomizeCutsceneTeleports { get; set; } = true;
     public bool RandomizeGestralBeachPortals { get; set; } = true;
     public bool ScaleOptionalAreas { get; set; } = true;
     public int ScaleModifierPercentage { get; set; } = 100;
