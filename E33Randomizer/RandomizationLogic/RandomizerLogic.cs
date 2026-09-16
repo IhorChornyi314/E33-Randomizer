@@ -104,7 +104,6 @@ public static class RandomizerLogic
 
     public static List<string> BrokenLocations =
     [
-        "Level.SpawnPoint.BoatGraveyardBlue",
         "Level.SpawnPoint.BoatGraveyardPurple",
         "Level.SpawnPoint.GestralBeach.Climb",
         "Level.SpawnPoint.GestralBeach.OnlyUp",

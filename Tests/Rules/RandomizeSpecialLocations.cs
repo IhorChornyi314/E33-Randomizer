@@ -86,13 +86,15 @@ public class RandomizeSpecialLocations : OutputRuleBase
         var problems = new List<string>();
         var targets = new List<string>();
 
+        var numberNotRandomized = 0;
+        
         foreach (var location in locations)
         {
             var target = output.DestinationChanges.GetValueOrDefault(location, location);
 
             if (target == location)
             {
-                problems.Add($"{location} was not randomized (no override in DestinationChanges)");
+                numberNotRandomized++;
                 continue;
             }
 
@@ -103,6 +105,11 @@ public class RandomizeSpecialLocations : OutputRuleBase
             }
 
             targets.Add(target);
+        }
+
+        if (numberNotRandomized == locations.Count)
+        {
+            problems.Add($"{groupName} is not randomized!");
         }
 
         var duplicates = targets

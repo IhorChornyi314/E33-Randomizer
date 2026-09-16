@@ -26,7 +26,7 @@ public class SkillsController: Controller<SkillData>
         ReadAssets($"{RandomizerLogic.DataDirectory}/SkillsData");
         ViewModel.ContainerName = "Skill Tree";
         ViewModel.ObjectName = "Skill";
-        _cleanSnapshot = ConvertToTxt();
+        _cleanSnapshot ??= ConvertToTxt();
         AddSkillItems();
         UpdateViewModel();
         ResetRandomObjectPool();

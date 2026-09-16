@@ -240,7 +240,7 @@ public class SkillGraph
                 var firstNodeIndex = RandomizerLogic.rand.Next(0, Nodes.Count);
                 var secondNodeIndex = (firstNodeIndex + 1) % Nodes.Count;
 
-                if (Nodes[firstNodeIndex].IsStarting || Nodes[secondNodeIndex].IsStarting)
+                if (Nodes[firstNodeIndex].IsStarting || Nodes[secondNodeIndex].IsStarting || Nodes[firstNodeIndex].RequiredItem != "null" || Nodes[secondNodeIndex].RequiredItem != "null")
                 {
                     continue;
                 }

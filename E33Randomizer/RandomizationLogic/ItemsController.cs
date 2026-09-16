@@ -607,7 +607,7 @@ public class ItemsController: Controller<ItemData>
         _rockItems = AddRockItems();
         ResetRandomObjectPool();
         ResetStartingEquipment();
-        _cleanSnapshot = ConvertToTxt();
+        _cleanSnapshot ??= ConvertToTxt();
         ShapeshiftCaptureLootItemsPool = new ObjectPool<string>(ShapeshiftCaptureLootItems.Values.ToList(), []);
     }
 

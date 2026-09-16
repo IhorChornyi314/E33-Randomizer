@@ -80,7 +80,7 @@ namespace Tests
         public void TestRandomCases()
         {
             var failureDetails = new List<string>();
-            const int iterations = 5;
+            const int iterations = 50;
 
             for (int i = 0; i < iterations; i++)
             {
@@ -100,7 +100,7 @@ namespace Tests
                     );
 
                 var sw = Stopwatch.StartNew();
-                TestContext.Out.WriteLine($"Starting Run {i}");
+                TestContext.Out.WriteLine($"Starting Run {i} with seed {settings.Seed}");
                 var output = TestLogic.RunRandomizer(config);
                 TestContext.Out.WriteLine($"Run took {sw.ElapsedMilliseconds} ms");
                 
@@ -336,14 +336,14 @@ namespace Tests
         public void TestLocationRandomizerOnly()
         {
             var settings = _fixture.Create<SettingsViewModel>();
-            settings.Seed = 33;
+            settings.Seed = 471402971;
             settings.RandomizeEnemies = false;
             settings.RandomizeItems = false;
             settings.RandomizeSkills = false;
             settings.RandomizeLocations = true;
             settings.EnableTwoWayTeleport = false;
             settings.EnsureFullConnectivity = false;
-            settings.RandomizeStartingLocation = false;
+            settings.RandomizeStartingLocation = true;
                 
             var config = new Config(
                 settings,

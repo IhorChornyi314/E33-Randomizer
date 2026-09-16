@@ -13,7 +13,7 @@ public class LocationController: Controller<LocationData>
 {
     static private Dictionary<string, List<string>> _specialDestinations = new()
     {
-        {"ManorDoors", ["Level.SpawnPoint.Manor.AlineWorkshop", "Level.SpawnPoint.Manor.Bathroom", "Level.SpawnPoint.Manor.CleaBedroom", "Level.SpawnPoint.Manor.Entrance", "Level.SpawnPoint.Manor.CleaBedroom", "Level.SpawnPoint.Manor.Kitchen", "Level.SpawnPoint.Manor.Library", "Level.SpawnPoint.Manor.ParentsBedroom", "Level.SpawnPoint.Manor.Room01", "Level.SpawnPoint.Manor.Room02", "Level.SpawnPoint.Manor.Room03", "Level.SpawnPoint.Manor.VersoBedroom"]},
+        {"ManorDoors", ["Level.SpawnPoint.Manor.AlineWorkshop", "Level.SpawnPoint.Manor.Bathroom", "Level.SpawnPoint.Manor.CleaBedroom", "Level.SpawnPoint.Manor.Entrance", "Level.SpawnPoint.Manor.Kitchen", "Level.SpawnPoint.Manor.Library", "Level.SpawnPoint.Manor.ParentsBedroom", "Level.SpawnPoint.Manor.Room01", "Level.SpawnPoint.Manor.Room02", "Level.SpawnPoint.Manor.Room03", "Level.SpawnPoint.Manor.VersoBedroom"]},
         {"GestralBeaches", ["Level.SpawnPoint.GestralBeach.WipeOut", "Level.SpawnPoint.GestralBeach.VolleyBall", "Level.SpawnPoint.GestralBeach.Race", "Level.SpawnPoint.GestralBeach.OnlyUp", "Level.SpawnPoint.GestralBeach.Climb"]},
         {"PaintingWorkshops", ["Level.SpawnPoint.CleaWorkshop.Path1", "Level.SpawnPoint.CleaWorkshop.Path2", "Level.SpawnPoint.CleaWorkshop.Path3"]},
         {"Cutscenes", ["Level.SpawnPoint.SpringMeadows.Entry", "Level.SpawnPoint.WorldMap.PostSeaCliffForcedCamp", "Level.SpawnPoint.MonolithInterior.Climb.Entry", "Level.SpawnPoint.WorldMap.TheGreatestExpedition", "Level.SpawnPoint.LumiereAct03.Act02RedAndWhite", "Level.SpawnPoint.Manor.AliciaRoomAct3"]}
@@ -51,7 +51,7 @@ public class LocationController: Controller<LocationData>
         DestinationChanges = ObjectsData.Where(lD => !lD.CodeName.Contains("Special") && !RandomizerLogic.BrokenLocations.Contains(lD.CodeName)).Select(lD => (lD.CodeName, lD.CodeName)).ToDictionary();
         ReadConstraintFile();
         _levelScalingTableAsset = new UAsset($"{RandomizerLogic.DataDirectory}/LocationData/DT_LevelData.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
-        _cleanSnapshot = ConvertToTxt();
+        _cleanSnapshot ??= ConvertToTxt();
 
         var portalDict = new Dictionary<string, string>();
         foreach (var locationData in ObjectsData)
@@ -86,11 +86,18 @@ public class LocationController: Controller<LocationData>
             DestinationChanges[_startingLocation] = RandomizerLogic.CustomLocationPlacement.Replace(_startingLocation);
             DestinationChanges[_startingLocation] = DestinationChanges[_startingLocation].Contains(".Manor.")
                 ? "Level.SpawnPoint.Goblu.LimonsolHome":  DestinationChanges[_startingLocation];
+            DestinationChanges[_startingLocation] = DestinationChanges[_startingLocation].Contains(".GestralBeach.")
+                ? "Level.SpawnPoint.Goblu.LimonsolHome":  DestinationChanges[_startingLocation];
         }
         
         if (RandomizerLogic.Settings.RandomizeManorDoors)
         {
             var shuffled = Utils.ShuffleList(_specialDestinations["ManorDoors"]);
+            if (shuffled.SequenceEqual(_specialDestinations["ManorDoors"]))
+            {
+                shuffled[0] = _specialDestinations["ManorDoors"][1];
+                shuffled[1] = _specialDestinations["ManorDoors"][0];
+            }
             for (int i = 0; i < shuffled.Count; i++)
             {
                 DestinationChanges[_specialDestinations["ManorDoors"][i]] = shuffled[i];
@@ -100,6 +107,11 @@ public class LocationController: Controller<LocationData>
         if (RandomizerLogic.Settings.RandomizeWorkshopEntries)
         {
             var shuffled = Utils.ShuffleList(_specialDestinations["PaintingWorkshops"]);
+            if (shuffled.SequenceEqual(_specialDestinations["PaintingWorkshops"]))
+            {
+                shuffled[0] = _specialDestinations["PaintingWorkshops"][1];
+                shuffled[1] = _specialDestinations["PaintingWorkshops"][0];
+            }
             for (int i = 0; i < shuffled.Count; i++)
             {
                 DestinationChanges[_specialDestinations["PaintingWorkshops"][i]] = shuffled[i];
@@ -109,6 +121,11 @@ public class LocationController: Controller<LocationData>
         if (RandomizerLogic.Settings.RandomizeGestralBeachPortals)
         {
             var shuffled = Utils.ShuffleList(_specialDestinations["GestralBeaches"]);
+            if (shuffled.SequenceEqual(_specialDestinations["GestralBeaches"]))
+            {
+                shuffled[0] = _specialDestinations["GestralBeaches"][1];
+                shuffled[1] = _specialDestinations["GestralBeaches"][0];
+            }
             for (int i = 0; i < shuffled.Count; i++)
             {
                 DestinationChanges[_specialDestinations["GestralBeaches"][i]] = shuffled[i];

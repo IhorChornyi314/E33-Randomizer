@@ -12,8 +12,6 @@ public class EnemiesController: Controller<EnemyData>
 {
     public List<Encounter> Encounters = new();
     public Dictionary<string, List<int>> EncounterIndexesByLocation = new();
-
-    private string _cleanSnapshot = "";
     
     public override void Initialize()
     {
@@ -23,7 +21,7 @@ public class EnemiesController: Controller<EnemyData>
         ReadEncounterAssets();
         ConstructEncountersByLocation();
         ResetRandomObjectPool();
-        _cleanSnapshot = ConvertToTxt();
+        _cleanSnapshot ??= ConvertToTxt();
     }
     
     public void ReadEncounterAssets()
