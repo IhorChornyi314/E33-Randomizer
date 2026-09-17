@@ -23,19 +23,18 @@ public class EnsureFullConnectivity : OutputRuleBase
 
         if (missing.Any())
         {
-            problems.Add("Locations reachable in vanilla but NOT in randomized output:\n" +
-                         string.Join(",\n", missing));
+            problems.Add($"{missing.Count} locations reachable in vanilla but NOT in randomized output\n");
         }
 
         if (gained.Any())
         {
-            problems.Add("Locations NOT reachable in vanilla but reachable in randomized output:\n" +
-                         string.Join(",\n", gained));
+            problems.Add($"{gained.Count} locations NOT reachable in vanilla but reachable in randomized output\n");
         }
 
         if (problems.Any())
         {
             FailureMessage += string.Join("\n\n", problems);
+            FailureMessage += "\n" + output.DestinationChanges["Level.SpawnPoint.SpringMeadows.Entry"] + "\n";
             return false;
         }
 

@@ -229,6 +229,9 @@
     <data name="Randomize_Items_RandomizeStartingCosmetics" xml:space="preserve">
         <value>Randomize starting cosmetics</value>
     </data>
+    <data name="Randomize_Items_RandomizeWeaponPassives" xml:space="preserve">
+        <value>Randomize weapon passives</value>
+    </data>
     <data name="Randomize_Items_RandomizeEsquiesRocksIntoMapPickups" xml:space="preserve">
         <value>Randomize Esquie's rocks into map pickups</value>
     </data>
@@ -298,6 +301,9 @@
     </data>
     <data name="Randomize_Items_Tooltip_RandomizeStartingCosmetics" xml:space="preserve">
         <value>Whether the starting equipment of your characters should be random too. This ignores custom item placement.</value>
+    </data>
+    <data name="Randomize_Items_Tooltip_RandomizeWeaponPassives" xml:space="preserve">
+        <value>Whether the passives equipped on weapons are shuffled between them.</value>
     </data>
     <data name="Randomize_Items_Tooltip_RandomizeEsquiesRocksIntoMapPickups" xml:space="preserve">
         <value>This option makes it so that you now need to find the rock items scattered on the map before Esquie can use his abilities. The rocks can only be found as a pickup wherever a unique item (weapon, pictos, etc) was originally present. You need to go to camp with the rock in your inventory to unlock them.</value>

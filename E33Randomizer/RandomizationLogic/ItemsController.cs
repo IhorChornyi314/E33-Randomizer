@@ -56,6 +56,8 @@ public class ItemsController: Controller<ItemData>
         {"Monoco", null},
     };
 
+    public Dictionary<string, string> RandomizedWeaponPassives = new();
+    
     public ObjectPool<string> ShapeshiftCaptureLootItemsPool;
     public Dictionary<string, string> ShapeshiftCaptureLootItems = new();
     
@@ -224,6 +226,27 @@ public class ItemsController: Controller<ItemData>
             (itemData.Value[19] as BoolPropertyData).Value = false;
         }
     }
+
+    public void ReadWeaponsTableAsset(string assetPath)
+    {
+        if (!_assetCache.TryGetValue(assetPath, out UAsset? tableAsset))
+        {
+            tableAsset = new UAsset(assetPath, EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+            _assetCache.Add(assetPath, tableAsset);
+        }
+
+        _itemsDataTables[tableAsset.FolderName.ToString().Split('/').Last()] = tableAsset;
+        
+        foreach (StructPropertyData weaponData in (tableAsset.Exports[0] as DataTableExport).Table.Data)
+        {
+            RandomizedWeaponPassives[weaponData.Value[4].ToString()] = weaponData.Value[4].ToString();
+            RandomizedWeaponPassives[weaponData.Value[5].ToString()] = weaponData.Value[5].ToString();
+            RandomizedWeaponPassives[weaponData.Value[6].ToString()] = weaponData.Value[6].ToString();
+            RandomizedWeaponPassives[weaponData.Value[7].ToString()] = weaponData.Value[7].ToString();
+        }
+
+        RandomizedWeaponPassives.Remove("null");
+    }
     
     public void ReadTableAssets(string tablesDirectory)
     {
@@ -240,12 +263,32 @@ public class ItemsController: Controller<ItemData>
                 ReadCompositeTableAsset(fileEntry);
                 continue;
             }
+            if (fileEntry.Contains("DT_WeaponDefinitions"))
+            {
+                ReadWeaponsTableAsset(fileEntry);
+                continue;
+            }
             ReadOtherTableAsset(fileEntry);
+        }
+    }
+
+    public void UpdateWeaponsTableAsset()
+    {
+        var weaponsTableAsset = _itemsDataTables["DT_WeaponDefinitions"];
+        foreach (StructPropertyData weaponData in (weaponsTableAsset.Exports[0] as DataTableExport).Table.Data)
+        {
+            for (int i = 4; i < 8; i++)
+            {
+                if (weaponData.Value[i].ToString() == "null") continue;
+                (weaponData.Value[i] as NamePropertyData).Value = FName.FromString(weaponsTableAsset,
+                    RandomizedWeaponPassives[weaponData.Value[i].ToString()]);
+            }
         }
     }
 
     public void WriteTableAssets()
     {
+        UpdateWeaponsTableAsset();
         foreach (var tableAsset in _itemsDataTables.Values)
         {
             Utils.WriteAsset(tableAsset);
@@ -477,10 +520,22 @@ public class ItemsController: Controller<ItemData>
             AddRocksToChecks(ItemsSources.SelectMany(iS => iS.Checks).ToList());
         }
         
+        if (RandomizerLogic.Settings.RandomizeWeaponPassives)
+        {
+            var shuffledPassives = Utils.ShuffleList(RandomizedWeaponPassives.Keys.ToList());
+            int i = 0;
+            foreach (var passive in RandomizedWeaponPassives.Keys.ToList())
+            {
+                RandomizedWeaponPassives[passive] = shuffledPassives[i];
+                i++;
+            }
+        }
+        
         if (!RandomizerLogic.Settings.IncludeCutContentItems && !cutContentAlreadyExcluded)
         {
             RandomizerLogic.CustomItemPlacement.RemoveExcluded("Cut Content Items");
         }
+        
         UpdateViewModel();
     }
 
@@ -498,6 +553,15 @@ public class ItemsController: Controller<ItemData>
                 foreach (var weapon in weapons.Split(','))
                 {
                     RandomizedStartingWeapons[weapon.Split(':')[0]] = GetObject(weapon.Split(':')[1]);
+                }
+                continue;
+            }
+            if (line.StartsWith("passives"))
+            {
+                var weapons = line.Split('|')[1];
+                foreach (var weapon in weapons.Split(','))
+                {
+                    RandomizedWeaponPassives[weapon.Split(':')[0]] = weapon.Split(':')[1];
                 }
                 continue;
             }
@@ -541,6 +605,9 @@ public class ItemsController: Controller<ItemData>
         result.Append("equipment|" + string.Join(',', 
             RandomizedStartingOutfits.Select(kvp => $"{kvp.Key}:{kvp.Value.Item1.CodeName}:{kvp.Value.Item2.CodeName}")
             ) + '\n');
+        result.Append("passives|" + string.Join(',', 
+            RandomizedWeaponPassives.Select(kvp => $"{kvp.Key}:{kvp.Value}")
+        ) + '\n');
         foreach (var itemsSource in ItemsSources)
         {
             foreach (var section in itemsSource.SourceSections)

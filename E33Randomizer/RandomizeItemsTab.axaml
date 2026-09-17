@@ -49,6 +49,10 @@
                     Content="{x:Static lang:Resources.Randomize_Items_RandomizeStartingCosmetics}"
                     ToolTipContent="{x:Static lang:Resources.Randomize_Items_Tooltip_RandomizeStartingCosmetics}"
                     IsChecked="{Binding RandomizeStartingCosmetics}" />
+                <!-- <uiControls:CheckboxToolTip -->
+                <!--     Content="{x:Static lang:Resources.Randomize_Items_RandomizeWeaponPassives}" -->
+                <!--     ToolTipContent="{x:Static lang:Resources.Randomize_Items_Tooltip_RandomizeWeaponPassives}" -->
+                <!--     IsChecked="{Binding RandomizeWeaponPassives}" /> -->
 
                 <uiControls:CheckboxToolTip
                     x:Name="RandomizeEsquieRocksWeaponsCheckBox"

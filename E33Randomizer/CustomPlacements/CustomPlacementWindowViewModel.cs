@@ -289,19 +289,27 @@ public abstract partial class CustomPlacementWindowViewModel : ObservableObject
     {
         Excluded.Remove(plainName);
         ExcludedOptions.Add(plainName);
-        ExcludedCodeNames = ExcludedCodeNames.Except(PlainNameToCodeNames[plainName]).ToList();
+        ExcludedCodeNames = Excluded
+            .SelectMany(name => PlainNameToCodeNames[name])
+            .Distinct()
+            .ToList();
     }
 
     public void AddExcluded(string plainName)
     {
         Excluded.Add(plainName);
-        ExcludedCodeNames = [..ExcludedCodeNames, ..PlainNameToCodeNames[plainName]];
+        ExcludedCodeNames = Excluded
+            .SelectMany(name => PlainNameToCodeNames[name])
+            .Distinct()
+            .ToList();
     }
     
     public void AddNotRandomized(string plainName)
     {
         NotRandomized.Add(plainName);
-        NotRandomizedCodeNames.AddRange(PlainNameToCodeNames[plainName]);
+        NotRandomizedCodeNames = NotRandomized.SelectMany(name => PlainNameToCodeNames[name])
+            .Distinct()
+            .ToList();
     }
 
     [RelayCommand]
@@ -309,7 +317,9 @@ public abstract partial class CustomPlacementWindowViewModel : ObservableObject
     {
         NotRandomized.Remove(plainName);
         NotRandomizedOptions.Add(plainName);
-        NotRandomizedCodeNames = NotRandomizedCodeNames.Except(PlainNameToCodeNames[plainName]).ToList();
+        NotRandomizedCodeNames = NotRandomized.SelectMany(name => PlainNameToCodeNames[name])
+            .Distinct()
+            .ToList();
     }
 
     public bool IsRandomized(string codeName)

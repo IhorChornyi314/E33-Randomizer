@@ -83,11 +83,23 @@ public class LocationController: Controller<LocationData>
 
         if (RandomizerLogic.Settings.RandomizeStartingLocation)
         {
+            var brokenPlainNames = RandomizerLogic.BrokenLocations.Select(cn => GetObject(cn).CustomName).ToList();
+            brokenPlainNames.AddRange([
+                "Painting Workshop - Broken Conception", 
+                "Painting Workshop - Path From South Sea Island", 
+                "Painting Workshop - Path From Post Forgotten Battlefield", 
+                "Painting Workshop - Path From Flying Island",
+                "Esquie's Nest - Francois' Cave",
+                "Lumiere - Entry"
+                ]
+                );
+            brokenPlainNames.ForEach(RandomizerLogic.CustomLocationPlacement.AddExcluded);
             DestinationChanges[_startingLocation] = RandomizerLogic.CustomLocationPlacement.Replace(_startingLocation);
             DestinationChanges[_startingLocation] = DestinationChanges[_startingLocation].Contains(".Manor.")
                 ? "Level.SpawnPoint.Goblu.LimonsolHome":  DestinationChanges[_startingLocation];
-            DestinationChanges[_startingLocation] = DestinationChanges[_startingLocation].Contains(".GestralBeach.")
-                ? "Level.SpawnPoint.Goblu.LimonsolHome":  DestinationChanges[_startingLocation];
+            DestinationChanges[_startingLocation] = DestinationChanges[_startingLocation] == "Level.SpawnPoint.LumiereAct01.Entry"
+                ? "Level.SpawnPoint.SpringMeadows.Entry":  DestinationChanges[_startingLocation];
+            brokenPlainNames.ForEach(RandomizerLogic.CustomLocationPlacement.RemoveExcluded);
         }
         
         if (RandomizerLogic.Settings.RandomizeManorDoors)

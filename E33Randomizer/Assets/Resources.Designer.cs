@@ -2139,6 +2139,15 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Randomize weapon passives.
+        /// </summary>
+        public static string Randomize_Items_RandomizeWeaponPassives {
+            get {
+                return ResourceManager.GetString("Randomize_Items_RandomizeWeaponPassives", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Receive Painted Power at the start of Act III.
         /// </summary>
         public static string Randomize_Items_ReceivePaintedPowerAtTheStartOfActIII {
@@ -2288,6 +2297,15 @@ namespace E33Randomizer.Assets {
         public static string Randomize_Items_Tooltip_RandomizeVariousCheckSizes {
             get {
                 return ResourceManager.GetString("Randomize_Items_Tooltip_RandomizeVariousCheckSizes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Whether the passives equipped on weapons are shuffled between them..
+        /// </summary>
+        public static string Randomize_Items_Tooltip_RandomizeWeaponPassives {
+            get {
+                return ResourceManager.GetString("Randomize_Items_Tooltip_RandomizeWeaponPassives", resourceCulture);
             }
         }
         
