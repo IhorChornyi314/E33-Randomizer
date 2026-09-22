@@ -987,7 +987,7 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Search by Original Destination or Location names:.
+        ///   Looks up a localized string similar to Search by location names:.
         /// </summary>
         public static string IndividualContainers_Location_Search {
             get {
@@ -1005,7 +1005,7 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This is the list of Original Destinations using the names the game uses internally and are usually self-descriptive.  Find the Original Destination you want to change on this side.  Then edit the Original Destination on the other..
+        ///   Looks up a localized string similar to This is the list of original portal destinations using the names the game uses internally and are usually self-descriptive.  Find the original destination you want to change on this side.  Then choose the new destination on the other..
         /// </summary>
         public static string IndividualContainers_Location_Tooltip_Containers {
             get {
@@ -1014,7 +1014,7 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to These are the Locations that are in the selected Original Destination.  You can change, add, or remove Locations from this list. .
+        ///   Looks up a localized string similar to This is the location that replaces the original teleport destination. .
         /// </summary>
         public static string IndividualContainers_Location_Tooltip_Objects {
             get {
@@ -1597,6 +1597,15 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remove forced camps in save file.
+        /// </summary>
+        public static string Misc_SaveFile_Button_FixForcedCamps {
+            get {
+                return ResourceManager.GetString("Misc_SaveFile_Button_FixForcedCamps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to If you have triggered the second phase of Act III Renoir, then the curtain in Lumiere&apos;s Opera House will be closed, preventing you from finishing the game.
         ///
         ///Use this button to fix that..
@@ -1604,6 +1613,17 @@ namespace E33Randomizer.Assets {
         public static string Misc_SaveFile_FixCurtain_Description {
             get {
                 return ResourceManager.GetString("Misc_SaveFile_FixCurtain_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sometimes the location randomizer can lead to being locked out of accessing the camp, preventing you from being able to enter Flying Waters or Stone Wave Cliffs.
+        ///
+        ///Use this button to fix that..
+        /// </summary>
+        public static string Misc_SaveFile_FixForcedCamps_Description {
+            get {
+                return ResourceManager.GetString("Misc_SaveFile_FixForcedCamps_Description", resourceCulture);
             }
         }
         
@@ -2454,7 +2474,7 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TRANSLATION_MISSING.
+        ///   Looks up a localized string similar to Whether going through a portal and back again puts you in the same place as you started..
         /// </summary>
         public static string Randomize_Locations_Tooltip_EnableTwoWayTeleport {
             get {
@@ -2463,7 +2483,7 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TRANSLATION_MISSING.
+        ///   Looks up a localized string similar to Enabling this setting guarantees that every location can be reached via some path. This setting takes loose guidance from the custom placement rules but prioritizes player experience. If you aren&apos;t sure, keep this on..
         /// </summary>
         public static string Randomize_Locations_Tooltip_EnsureFullConnectivity {
             get {
@@ -2472,7 +2492,7 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TRANSLATION_MISSING.
+        ///   Looks up a localized string similar to DEPRECATED.
         /// </summary>
         public static string Randomize_Locations_Tooltip_RandomizeCutsceneTeleports {
             get {
@@ -2481,7 +2501,7 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TRANSLATION_MISSING.
+        ///   Looks up a localized string similar to Whether the destinations of gestral beach world map entrances are shuffled between each other. Does not affect return trips..
         /// </summary>
         public static string Randomize_Locations_Tooltip_RandomizeGestralBeaches {
             get {
@@ -2490,7 +2510,7 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TRANSLATION_MISSING.
+        ///   Looks up a localized string similar to Whether or not the teleport destinations are randomized. Regardless of the settings, there exists a path from the start to the end of the game, as indicated in the generated locations.txt file..
         /// </summary>
         public static string Randomize_Locations_Tooltip_RandomizeLocations {
             get {
@@ -2499,7 +2519,7 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TRANSLATION_MISSING.
+        ///   Looks up a localized string similar to Whether the destinations of manor doors are shuffled between each other. Does not affect return trips..
         /// </summary>
         public static string Randomize_Locations_Tooltip_RandomizeManorDoors {
             get {
@@ -2508,7 +2528,7 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TRANSLATION_MISSING.
+        ///   Looks up a localized string similar to Whether the destinations of Painting Workshop frames are shuffled between each other. Does not affect return trips..
         /// </summary>
         public static string Randomize_Locations_Tooltip_RandomizePaintingWorkshopEntrances {
             get {
@@ -2517,7 +2537,7 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TRANSLATION_MISSING.
+        ///   Looks up a localized string similar to Whether the location after Lumiere Act 1 is randomized..
         /// </summary>
         public static string Randomize_Locations_Tooltip_RandomizeStartingLocation {
             get {
@@ -2526,7 +2546,7 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TRANSLATION_MISSING.
+        ///   Looks up a localized string similar to Whether the characters&apos; starting level should take into account the new area scaling..
         /// </summary>
         public static string Randomize_Locations_Tooltip_RescaleCharacters {
             get {
@@ -2535,7 +2555,7 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TRANSLATION_MISSING.
+        ///   Looks up a localized string similar to Whether or not the locations should be scaled according to how early they can be reached with randomized locations..
         /// </summary>
         public static string Randomize_Locations_Tooltip_RescaleLocations {
             get {
@@ -2544,7 +2564,7 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TRANSLATION_MISSING.
+        ///   Looks up a localized string similar to Whether the areas not in the critical path should also be rescaled..
         /// </summary>
         public static string Randomize_Locations_Tooltip_RescaleOptionalAreas {
             get {
@@ -2553,7 +2573,7 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TRANSLATION_MISSING.
+        ///   Looks up a localized string similar to This is the global scaling modifier. 100 corresponds to vanilla scaling. Change this if you find that the location randomizer makes the locations too easy/hard. Requires re-generating the mod..
         /// </summary>
         public static string Randomize_Locations_Tooltip_SetScaleModifier {
             get {

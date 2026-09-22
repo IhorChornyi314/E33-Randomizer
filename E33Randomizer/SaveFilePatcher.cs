@@ -130,4 +130,53 @@ public static class SaveFilePatcher
         };
         Patch(saveFilePath, flags);
     }
+    
+    public static void FixForcedCamps(string saveFilePath)
+    {
+        var toJsonArgs = $"to-json -i \"{saveFilePath}\" -o save.json";
+        var fromJsonArgs = $"from-json -i save.json -o \"{saveFilePath}\"";
+
+        string ueSaveCommand = Environment.OSVersion.Platform switch
+        {
+            PlatformID.Win32NT => "uesave.exe",
+            PlatformID.Unix or PlatformID.MacOSX => "uesave",
+            _ => throw new NotSupportedException()
+        };
+
+        Process.Start(ueSaveCommand, toJsonArgs).WaitForExit();
+
+        JsonNode saveObj = JsonNode.Parse(File.ReadAllText("save.json"))
+                           ?? throw new InvalidOperationException("Json could not be parsed");
+
+        // Flying Waters forced camp
+        var element =
+            saveObj["root"]?["properties"]?
+                ["QuestStatuses_0"]?[1]?["value"]?
+                ["ObjectivesStatus_8_EA1232C14DA1F6DDA84EBA9185000F56_0"]?[0];
+
+        if (element?["value"] is null)
+        {
+            throw new InvalidOperationException("Json does not contain expected quest status data.");
+        }
+
+        element["value"] = JsonValue.Create("E_QuestStatus::NewEnumerator2");
+        
+        // Stone Wave Cliffs forced camp
+        element =
+            saveObj["root"]?["properties"]?
+                ["QuestStatuses_0"]?[1]?["value"]?
+                ["ObjectivesStatus_8_EA1232C14DA1F6DDA84EBA9185000F56_0"]?[3];
+
+        if (element?["value"] is null)
+        {
+            throw new InvalidOperationException("Json does not contain expected quest status data.");
+        }
+
+        element["value"] = JsonValue.Create("E_QuestStatus::NewEnumerator2");
+
+        string output = saveObj.ToJsonString(new JsonSerializerOptions { WriteIndented = true });
+        File.WriteAllText("save.json", output);
+
+        Process.Start(ueSaveCommand, fromJsonArgs);
+    }
 }

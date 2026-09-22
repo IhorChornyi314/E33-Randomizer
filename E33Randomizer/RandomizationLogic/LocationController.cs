@@ -47,7 +47,7 @@ public class LocationController: Controller<LocationData>
         ReadObjectsData($"{RandomizerLogic.DataDirectory}/location_data.json");
         _locationGraph.Init();
         ViewModel.ContainerName = "Original Destination";
-        ViewModel.ObjectName = "New Destination"; // New Destination
+        ViewModel.ObjectName = "Location";
         DestinationChanges = ObjectsData.Where(lD => !lD.CodeName.Contains("Special") && !RandomizerLogic.BrokenLocations.Contains(lD.CodeName)).Select(lD => (lD.CodeName, lD.CodeName)).ToDictionary();
         ReadConstraintFile();
         _levelScalingTableAsset = new UAsset($"{RandomizerLogic.DataDirectory}/LocationData/DT_LevelData.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
@@ -380,6 +380,7 @@ public class LocationController: Controller<LocationData>
             var criticalPathString = "CRITICAL PATH:\t";
             for (int i = 0; i < criticalPath.Count - 1; i++)
             {
+                if (criticalPath[i].CustomName.Contains("Special ")) continue;
                 var transition = criticalPath[i].UnconditionalConnections.Contains(criticalPath[i + 1].CodeName) ? " > " : " ~> ";
                 transition = criticalPath[i].AllConditionalConnections.Contains(criticalPath[i + 1].CodeName) ? " > " : transition;
                 criticalPathString += criticalPath[i].CustomName + transition;

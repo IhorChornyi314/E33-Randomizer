@@ -74,6 +74,9 @@ public partial class MiscTab : UserControl
                         case "FixCurtain":
                             SaveFilePatcher.FixCurtain(files[0].Path.LocalPath);
                             break;
+                        case "FixForcedCamps":
+                            SaveFilePatcher.FixForcedCamps(files[0].Path.LocalPath);
+                            break;
                     }
                 
                     await MessageDialog.ShowAsync(topLevel, ResourceHelper.GetString(nameof(Assets.Resources.Misc_SaveFilePatched)),

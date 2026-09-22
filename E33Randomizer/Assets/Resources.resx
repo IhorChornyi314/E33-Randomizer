@@ -456,40 +456,40 @@
     </data>
 
     <data name="Randomize_Locations_Tooltip_RandomizeLocations" xml:space="preserve">
-        <value>TRANSLATION_MISSING</value>
+        <value>Whether or not the teleport destinations are randomized. Regardless of the settings, there exists a path from the start to the end of the game, as indicated in the generated locations.txt file.</value>
     </data>
     <data name="Randomize_Locations_Tooltip_EnsureFullConnectivity" xml:space="preserve">
-        <value>TRANSLATION_MISSING</value>
+        <value>Enabling this setting guarantees that every location can be reached via some path. This setting takes loose guidance from the custom placement rules but prioritizes player experience. If you aren't sure, keep this on.</value>
     </data>
     <data name="Randomize_Locations_Tooltip_RescaleLocations" xml:space="preserve">
-         <value>TRANSLATION_MISSING</value>
+         <value>Whether or not the locations should be scaled according to how early they can be reached with randomized locations.</value>
     </data>
     <data name="Randomize_Locations_Tooltip_SetScaleModifier" xml:space="preserve">
-         <value>TRANSLATION_MISSING</value>
+         <value>This is the global scaling modifier. 100 corresponds to vanilla scaling. Change this if you find that the location randomizer makes the locations too easy/hard. Requires re-generating the mod.</value>
     </data>
     <data name="Randomize_Locations_Tooltip_RescaleOptionalAreas" xml:space="preserve">
-         <value>TRANSLATION_MISSING</value>
+         <value>Whether the areas not in the critical path should also be rescaled.</value>
     </data>
     <data name="Randomize_Locations_Tooltip_RescaleCharacters" xml:space="preserve">
-         <value>TRANSLATION_MISSING</value>
+         <value>Whether the characters' starting level should take into account the new area scaling.</value>
     </data>
     <data name="Randomize_Locations_Tooltip_RandomizeStartingLocation" xml:space="preserve">
-         <value>TRANSLATION_MISSING</value>
+         <value>Whether the location after Lumiere Act 1 is randomized.</value>
     </data>
     <data name="Randomize_Locations_Tooltip_RandomizeManorDoors" xml:space="preserve">
-         <value>TRANSLATION_MISSING</value>
+         <value>Whether the destinations of manor doors are shuffled between each other. Does not affect return trips.</value>
     </data>
     <data name="Randomize_Locations_Tooltip_RandomizePaintingWorkshopEntrances" xml:space="preserve">
-         <value>TRANSLATION_MISSING</value>
+         <value>Whether the destinations of Painting Workshop frames are shuffled between each other. Does not affect return trips.</value>
     </data>
     <data name="Randomize_Locations_Tooltip_RandomizeCutsceneTeleports" xml:space="preserve">
-         <value>TRANSLATION_MISSING</value>
+         <value>DEPRECATED</value>
     </data>
     <data name="Randomize_Locations_Tooltip_RandomizeGestralBeaches" xml:space="preserve">
-         <value>TRANSLATION_MISSING</value>
+         <value>Whether the destinations of gestral beach world map entrances are shuffled between each other. Does not affect return trips.</value>
     </data>
     <data name="Randomize_Locations_Tooltip_EnableTwoWayTeleport" xml:space="preserve">
-         <value>TRANSLATION_MISSING</value>
+         <value>Whether going through a portal and back again puts you in the same place as you started.</value>
     </data>
     
     <!-- Misc Tab -->
@@ -516,8 +516,16 @@ Simply press the button and choose the save file that you want to patch.</value>
 
 Use this button to fix that.</value>
     </data>
+    <data name="Misc_SaveFile_FixForcedCamps_Description" xml:space="preserve">
+        <value>Sometimes the location randomizer can lead to being locked out of accessing the camp, preventing you from being able to enter Flying Waters or Stone Wave Cliffs.
+
+Use this button to fix that.</value>
+    </data>
     <data name="Misc_SaveFile_Button_FixCurtains">
         <value>Fix curtains in save file</value>
+    </data>
+    <data name="Misc_SaveFile_Button_FixForcedCamps">
+        <value>Remove forced camps in save file</value>
     </data>
     <data name="Misc_ErrorPatching">
         <value>Error patching: {0}</value>
@@ -929,7 +937,7 @@ Use this button to fix that.</value>
         <value>Original Destinations</value>
     </data>
     <data name="IndividualContainers_Location_Tooltip_Containers" xml:space="preserve">
-        <value>This is the list of Original Destinations using the names the game uses internally and are usually self-descriptive.  Find the Original Destination you want to change on this side.  Then edit the Original Destination on the other.</value>
+        <value>This is the list of original portal destinations using the names the game uses internally and are usually self-descriptive.  Find the original destination you want to change on this side.  Then choose the new destination on the other.</value>
     </data>
     <data name="IndividualContainers_Location_AddObject" xml:space="preserve">
         <value>Add Location</value>
@@ -938,7 +946,7 @@ Use this button to fix that.</value>
         <value>New Destination</value>
     </data>
     <data name="IndividualContainers_Location_Tooltip_Objects" xml:space="preserve">
-        <value>These are the Locations that are in the selected Original Destination.  You can change, add, or remove Locations from this list. </value>
+        <value>This is the location that replaces the original teleport destination. </value>
     </data>
     <data name="IndividualContainers_Location_LoadTxt" xml:space="preserve">
         <value>Load Locations from .txt file</value>
@@ -947,7 +955,7 @@ Use this button to fix that.</value>
         <value>Save Locations to .txt file</value>
     </data>
     <data name="IndividualContainers_Location_Search" xml:space="preserve">
-        <value>Search by Original Destination or Location names:</value>
+        <value>Search by location names:</value>
     </data>
 
     <data name="IndividualContainers_ErrorGenerating" xml:space="preserve">
