@@ -57,7 +57,10 @@ public class ItemsController: Controller<ItemData>
     };
 
     public Dictionary<string, string> RandomizedWeaponPassives = new();
-    
+    public Dictionary<string, ObjectPool<string>> WeaponPassivesPools = new();
+    public Dictionary<string, List<string>> WeaponPassivesLists = new();
+    public Dictionary<string, string> WeaponPassiveCharacters = new();
+     
     public ObjectPool<string> ShapeshiftCaptureLootItemsPool;
     public Dictionary<string, string> ShapeshiftCaptureLootItems = new();
     
@@ -239,13 +242,27 @@ public class ItemsController: Controller<ItemData>
         
         foreach (StructPropertyData weaponData in (tableAsset.Exports[0] as DataTableExport).Table.Data)
         {
-            RandomizedWeaponPassives[weaponData.Value[4].ToString()] = weaponData.Value[4].ToString();
-            RandomizedWeaponPassives[weaponData.Value[5].ToString()] = weaponData.Value[5].ToString();
-            RandomizedWeaponPassives[weaponData.Value[6].ToString()] = weaponData.Value[6].ToString();
-            RandomizedWeaponPassives[weaponData.Value[7].ToString()] = weaponData.Value[7].ToString();
+            var weaponCodeName = weaponData.Name.ToString();
+            var weaponCharacter = GetObject(weaponCodeName).CustomName.Split('(')[1].Split(' ')[0];
+            WeaponPassivesLists.TryAdd(weaponCharacter, []);
+            List<string> passives =
+            [
+                weaponData.Value[4].ToString(), weaponData.Value[5].ToString(), weaponData.Value[6].ToString(),
+                weaponData.Value[7].ToString()
+            ];
+            foreach (var passive in passives)
+            {
+                if (passive == "null") continue;
+                WeaponPassivesLists[weaponCharacter].Add(passive);
+                WeaponPassiveCharacters[passive] = weaponCharacter;
+                RandomizedWeaponPassives[passive] = passive;
+            }
         }
 
-        RandomizedWeaponPassives.Remove("null");
+        foreach (var (character, passives) in WeaponPassivesLists)
+        {
+            WeaponPassivesPools[character] = new ObjectPool<string>(passives, []);
+        }
     }
     
     public void ReadTableAssets(string tablesDirectory)
@@ -522,12 +539,10 @@ public class ItemsController: Controller<ItemData>
         
         if (RandomizerLogic.Settings.RandomizeWeaponPassives)
         {
-            var shuffledPassives = Utils.ShuffleList(RandomizedWeaponPassives.Keys.ToList());
-            int i = 0;
             foreach (var passive in RandomizedWeaponPassives.Keys.ToList())
             {
-                RandomizedWeaponPassives[passive] = shuffledPassives[i];
-                i++;
+                var character = WeaponPassiveCharacters[passive];
+                RandomizedWeaponPassives[passive] = RandomizerLogic.Settings.AllowDuplicateWeaponPassives ? Utils.Pick(WeaponPassivesLists[character]) : WeaponPassivesPools[character].GetObject();
             }
         }
         

@@ -333,6 +333,7 @@ public class SettingsViewModel : ObservableObject
     public bool RandomizeMonocoFeet { get; set; } = true;
     public bool IncludeCutContentItems { get; set; } = true;
     public bool RandomizeWeaponPassives { get; set; } 
+    public bool AllowDuplicateWeaponPassives { get; set; } 
     
     public bool RandomizeSkills { get; set; } = true;
     public bool ReduceSkillRepetition { get; set; } = true;

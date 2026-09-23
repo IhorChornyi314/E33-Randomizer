@@ -49,11 +49,16 @@
                     Content="{x:Static lang:Resources.Randomize_Items_RandomizeStartingCosmetics}"
                     ToolTipContent="{x:Static lang:Resources.Randomize_Items_Tooltip_RandomizeStartingCosmetics}"
                     IsChecked="{Binding RandomizeStartingCosmetics}" />
-                <!-- <uiControls:CheckboxToolTip -->
-                <!--     Content="{x:Static lang:Resources.Randomize_Items_RandomizeWeaponPassives}" -->
-                <!--     ToolTipContent="{x:Static lang:Resources.Randomize_Items_Tooltip_RandomizeWeaponPassives}" -->
-                <!--     IsChecked="{Binding RandomizeWeaponPassives}" /> -->
-
+                <uiControls:CheckboxToolTip
+                    x:Name="RandomizeWeaponPassivesCheckBox"
+                    Content="{x:Static lang:Resources.Randomize_Items_RandomizeWeaponPassives}"
+                    ToolTipContent="{x:Static lang:Resources.Randomize_Items_Tooltip_RandomizeWeaponPassives}"
+                    IsChecked="{Binding RandomizeWeaponPassives}" />
+                <uiControls:CheckboxToolTip
+                    Content="{x:Static lang:Resources.Randomize_Items_AllowDuplicateWeaponPassives}"
+                    ToolTipContent="{x:Static lang:Resources.Randomize_Items_Tooltip_AllowDuplicateWeaponPassives}"
+                    IsChecked="{Binding AllowDuplicateWeaponPassives}"
+                    IsVisible="{Binding IsChecked, ElementName=RandomizeWeaponPassivesCheckBox}" />
                 <uiControls:CheckboxToolTip
                     x:Name="RandomizeEsquieRocksWeaponsCheckBox"
                     Content="{x:Static lang:Resources.Randomize_Items_RandomizeEsquiesRocksIntoMapPickups}"

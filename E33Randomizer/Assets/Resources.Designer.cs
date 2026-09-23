@@ -1979,6 +1979,15 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Allow duplicate weapon passives.
+        /// </summary>
+        public static string Randomize_Items_AllowDuplicateWeaponPassives {
+            get {
+                return ResourceManager.GetString("Randomize_Items_AllowDuplicateWeaponPassives", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Customize Item Placements.
         /// </summary>
         public static string Randomize_Items_Button_CustomizeItemPlacements {
@@ -2195,6 +2204,15 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Whether the same passive intrinsic to a weapon can appear multiple times. Note that there are some passives that are already non-unique in the base game..
+        /// </summary>
+        public static string Randomize_Items_Tooltip_AllowDuplicateWeaponPassives {
+            get {
+                return ResourceManager.GetString("Randomize_Items_Tooltip_AllowDuplicateWeaponPassives", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Similar to the option in the enemy randomizer, this option makes it so that the checks that were configured not to be changed don’t award multiple of the same item..
         /// </summary>
         public static string Randomize_Items_Tooltip_ChangeNumberOfItemsInNonRandomizedChecks {
@@ -2321,7 +2339,7 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Whether the passives equipped on weapons are shuffled between them..
+        ///   Looks up a localized string similar to Whether the passives intrinsic to weapons are randomized. The passives are grouped by character..
         /// </summary>
         public static string Randomize_Items_Tooltip_RandomizeWeaponPassives {
             get {
