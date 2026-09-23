@@ -9,18 +9,17 @@
         Title="{Binding Title}"
         Width="700" Height="300"
         WindowStartupLocation="CenterOwner"
-        ExtendClientAreaToDecorationsHint="True"
-        ExtendClientAreaTitleBarHeightHint="-1"
-        WindowDecorations="None"
         CanResize="False"
-        Background="Transparent"
         ShowInTaskbar="False"
+        WindowDecorations="None"
+        Background="Transparent"
+        TransparencyLevelHint="Transparent"
+        TransparencyBackgroundFallback="Transparent"
         d:DesignWidth="700"
         d:DesignHeight="400"
         PointerPressed="WindowDragHandle_OnPointerPressed"
         PointerMoved="WindowDragHandle_OnPointerMoved"
-        PointerReleased="WindowDragHandle_OnPointerReleased"
-        >
+        PointerReleased="WindowDragHandle_OnPointerReleased">
     
     <StackPanel>
         <Grid ColumnDefinitions="Auto,*,Auto" 
