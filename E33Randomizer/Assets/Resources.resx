@@ -312,7 +312,7 @@
         <value>Whether the same passive intrinsic to a weapon can appear multiple times. Note that there are some passives that are already non-unique in the base game.</value>
     </data>
     <data name="Randomize_Items_Tooltip_RandomizeEsquiesRocksIntoMapPickups" xml:space="preserve">
-        <value>This option makes it so that you now need to find the rock items scattered on the map before Esquie can use his abilities. The rocks can only be found as a pickup wherever a unique item (weapon, pictos, etc) was originally present. You need to go to camp with the rock in your inventory to unlock them.</value>
+        <value>This option makes it so that you now need to find the rock items scattered on the map before Esquie can use his abilities. The rocks can only be found as a pickup wherever a unique item (weapon, pictos, etc) was originally present. You need to go to camp with the rock in your inventory to unlock them. Note that the location randomizer assumes that the rocks are still in their original locations.</value>
     </data>
     <data name="Randomize_Items_Tooltip_LimitEsquiesRocksToOnlyTheirOriginalArea" xml:space="preserve">
         <value>Florrie - Spring Meadows, Flying Waters, Ancient Sanctuary, Esquie’s Nest, Stone Wave Cliffs. Dorrie - Forgotten Battlefield, Old Lumiere. Soarrie - Visages, Sirene, Monolith. Otherwise, the rocks can only be found in the areas they were found in the original game - Stone Wave Cliffs, Old Lumiere, and Monolith, respectively.</value>
@@ -462,25 +462,25 @@
     </data>
 
     <data name="Randomize_Locations_Tooltip_RandomizeLocations" xml:space="preserve">
-        <value>Whether or not the teleport destinations are randomized. Regardless of the settings, there exists a path from the start to the end of the game, as indicated in the generated locations.txt file.</value>
+        <value>Whether or not the teleport destinations are randomized. Regardless of the settings, there exists a path from the start to the end of the game, as indicated in the generated locations.txt file. Does not take into account if Esquie's rocks have been randomized in the item randomizer.</value>
     </data>
     <data name="Randomize_Locations_Tooltip_EnsureFullConnectivity" xml:space="preserve">
         <value>Enabling this setting guarantees that every location can be reached via some path. This setting takes loose guidance from the custom placement rules but prioritizes player experience. If you aren't sure, keep this on.</value>
     </data>
     <data name="Randomize_Locations_Tooltip_RescaleLocations" xml:space="preserve">
-         <value>Whether or not the locations should be scaled according to how early they can be reached with randomized locations.</value>
+        <value>Whether or not the locations' difficulty should be scaled according to how early they can be reached via randomized paths. The faster you can access a location, the lower the difficulty will be, regardless of the original game scaling.</value>
     </data>
     <data name="Randomize_Locations_Tooltip_SetScaleModifier" xml:space="preserve">
          <value>This is the global scaling modifier. 100 corresponds to vanilla scaling. Change this if you find that the location randomizer makes the locations too easy/hard. Requires re-generating the mod.</value>
     </data>
     <data name="Randomize_Locations_Tooltip_RescaleOptionalAreas" xml:space="preserve">
-         <value>Whether the areas not in the critical path should also be rescaled.</value>
+        <value>Whether the areas not in the critical path should also be rescaled. The critical path can be found in the locations.txt file. If left off, all the locations not in it will retain their original scaling.</value>
     </data>
     <data name="Randomize_Locations_Tooltip_RescaleCharacters" xml:space="preserve">
-         <value>Whether the characters' starting level should take into account the new area scaling.</value>
+        <value>Whether the characters' starting level should be equal to the re-scaled area levels. This means that if you meet Monoco at the very start of your run, he will be level 3 instead of 35, making things more balanced.</value>
     </data>
     <data name="Randomize_Locations_Tooltip_RandomizeStartingLocation" xml:space="preserve">
-         <value>Whether the location after Lumiere Act 1 is randomized.</value>
+        <value>Whether the location after Act 1 Lumiere is randomized. If on, after the Expedition festival is finished, the player will be teleported to a location that replaces Spring Meadows' Entry according to the custom placement rules. Note that enabling this setting will make the randomizer fail significantly more often.</value>
     </data>
     <data name="Randomize_Locations_Tooltip_RandomizeManorDoors" xml:space="preserve">
          <value>Whether the destinations of manor doors are shuffled between each other. Does not affect return trips.</value>
@@ -767,19 +767,19 @@ Use this button to fix that.</value>
         <value>Custom Skill Placement</value>
     </data>
     <data name="CustomPlacement_Location_NotRandomized" xml:space="preserve">
-        <value>This allows you to change which locations aren’t randomized, meaning that they will stay in their vanilla locations.</value>
+        <value>This allows you to change which locations aren’t randomized, meaning that they will stay in their vanilla locations. Note that in some cases, custom location placement rules are ignored to make sure that the game is complete-able.</value>
     </data>
     <data name="CustomPlacement_Location_Excluded" xml:space="preserve">
-        <value>This allows you to change which locations are excluded from the pool, meaning that they will not occur anywhere in the randomized game.</value>
+        <value>This allows you to change which locations are excluded from the pool, meaning that they will not occur anywhere in the randomized game. Note that in some cases, custom location placement rules are ignored to make sure that the game is complete-able.</value>
     </data>
     <data name="CustomPlacement_Location_QuickPresets" xml:space="preserve">
         <value>This allows you to select the Custom Location Placement rules from a list of quick presets. All presets are declared and can be configured in the Data/Presets/[preset name].json file.</value>
     </data>
     <data name="CustomPlacement_Location_CustomPlacement" xml:space="preserve">
-        <value>In order to use this, you need to first select the Location that is going to be replaced on the left, then select what the chances are of what it will be replaced with on the right.</value>
+        <value>In order to use this, you need to first select the Location that is going to be replaced on the left, then select what the chances are of what it will be replaced with on the right. Note that in some cases, custom location placement rules are ignored to make sure that the game is complete-able.</value>
     </data>
     <data name="CustomPlacement_Location_FrequencyAdjustment" xml:space="preserve">
-        <value>????</value>
+        <value>This allows you to tweak how often a specific Location is encountered in the randomizer. Note that in some cases, custom location placement rules are ignored to make sure that the game is complete-able.</value>
     </data>
     <data name="CustomPlacement_Location_Title" xml:space="preserve">
         <value>Custom Location Placement</value>
@@ -895,7 +895,7 @@ Use this button to fix that.</value>
         <value>Items in the Check</value>
     </data>
     <data name="IndividualContainers_Item_Tooltip_Objects" xml:space="preserve">
-        <value>These are the Items that are in the selected Check.  You can change, add, or remove Items from this list.</value>
+        <value>These are the Items that are in the selected Check.  You can change, add, or remove Items from this list, as well as configure their quantity and whether they are locked in a merchant's inventory.</value>
     </data>
     <data name="IndividualContainers_Item_LoadTxt" xml:space="preserve">
         <value>Load Items from .txt file</value>
@@ -923,7 +923,7 @@ Use this button to fix that.</value>
         <value>Skills in the Skill Tree</value>
     </data>
     <data name="IndividualContainers_Skill_Tooltip_Objects" xml:space="preserve">
-        <value>These are the Skills that are in the selected Skill Tree.  You can change, add, or remove Skills from this list. 
+        <value>These are the Skills that are in the selected Skill Tree.  You can change, add, or remove Skills from this list, as well as modify their unlock cost and whether the skill is unlocked by default. 
 </value>
     </data>
     <data name="IndividualContainers_Skill_LoadTxt" xml:space="preserve">
@@ -952,7 +952,7 @@ Use this button to fix that.</value>
         <value>New Destination</value>
     </data>
     <data name="IndividualContainers_Location_Tooltip_Objects" xml:space="preserve">
-        <value>This is the location that replaces the original teleport destination. </value>
+        <value>This is the location that replaces the original teleport destination. You can also configure the level scaling (1-99), as well as enable/disable the location replacement entirely.</value>
     </data>
     <data name="IndividualContainers_Location_LoadTxt" xml:space="preserve">
         <value>Load Locations from .txt file</value>

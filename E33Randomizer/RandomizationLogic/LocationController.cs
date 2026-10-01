@@ -93,10 +93,9 @@ public class LocationController: Controller<LocationData>
                 "Lumiere - Entry"
                 ]
                 );
+            brokenPlainNames.AddRange(ObjectsData.Where(l => l.CodeName.Contains(".Manor.")).Select(l => l.CustomName));
             brokenPlainNames.ForEach(RandomizerLogic.CustomLocationPlacement.AddExcluded);
             DestinationChanges[_startingLocation] = RandomizerLogic.CustomLocationPlacement.Replace(_startingLocation);
-            DestinationChanges[_startingLocation] = DestinationChanges[_startingLocation].Contains(".Manor.")
-                ? "Level.SpawnPoint.Goblu.LimonsolHome":  DestinationChanges[_startingLocation];
             DestinationChanges[_startingLocation] = DestinationChanges[_startingLocation] == "Level.SpawnPoint.LumiereAct01.Entry"
                 ? "Level.SpawnPoint.SpringMeadows.Entry":  DestinationChanges[_startingLocation];
             brokenPlainNames.ForEach(RandomizerLogic.CustomLocationPlacement.RemoveExcluded);
@@ -279,7 +278,7 @@ public class LocationController: Controller<LocationData>
         var scalingLines = text.Split("SCALING:\n")[1].Split('\n').Where(l => l.Length != 0);
         
         DestinationChanges = destinationLines
-            .Select(l => (l.Split('|')[0], l.Split('|')[1])).ToDictionary();
+            .Select(l => ("Level.SpawnPoint." + l.Split('|')[0], "Level.SpawnPoint." + l.Split('|')[1])).ToDictionary();
         LevelScaling = scalingLines.Select(l => (
             l.Split('|')[0], 
             (
@@ -389,8 +388,8 @@ public class LocationController: Controller<LocationData>
             result += criticalPathString + '\n';
         }
         
-        result += string.Join('\n', DestinationChanges.Select(kvp => $"{kvp.Key}|{kvp.Value}"));
-        result += "SCALING:\n";
+        result += string.Join('\n', DestinationChanges.Select(kvp => $"{kvp.Key}|{kvp.Value}".Replace("Level.SpawnPoint.", "")));
+        result += "\nSCALING:\n";
         result += string.Join('\n', LevelScaling.Select(kvp => $"{kvp.Key}|{kvp.Value.Item1}-{kvp.Value.Item2}"));
 
         return result;

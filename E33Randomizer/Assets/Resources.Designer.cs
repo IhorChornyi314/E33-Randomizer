@@ -429,7 +429,7 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In order to use this, you need to first select the Location that is going to be replaced on the left, then select what the chances are of what it will be replaced with on the right..
+        ///   Looks up a localized string similar to In order to use this, you need to first select the Location that is going to be replaced on the left, then select what the chances are of what it will be replaced with on the right. Note that in some cases, custom location placement rules are ignored to make sure that the game is complete-able..
         /// </summary>
         public static string CustomPlacement_Location_CustomPlacement {
             get {
@@ -438,7 +438,7 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This allows you to change which locations are excluded from the pool, meaning that they will not occur anywhere in the randomized game..
+        ///   Looks up a localized string similar to This allows you to change which locations are excluded from the pool, meaning that they will not occur anywhere in the randomized game. Note that in some cases, custom location placement rules are ignored to make sure that the game is complete-able..
         /// </summary>
         public static string CustomPlacement_Location_Excluded {
             get {
@@ -447,7 +447,7 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ????.
+        ///   Looks up a localized string similar to This allows you to tweak how often a specific Location is encountered in the randomizer. Note that in some cases, custom location placement rules are ignored to make sure that the game is complete-able..
         /// </summary>
         public static string CustomPlacement_Location_FrequencyAdjustment {
             get {
@@ -456,7 +456,7 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This allows you to change which locations aren’t randomized, meaning that they will stay in their vanilla locations..
+        ///   Looks up a localized string similar to This allows you to change which locations aren’t randomized, meaning that they will stay in their vanilla locations. Note that in some cases, custom location placement rules are ignored to make sure that the game is complete-able..
         /// </summary>
         public static string CustomPlacement_Location_NotRandomized {
             get {
@@ -915,7 +915,7 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to These are the Items that are in the selected Check.  You can change, add, or remove Items from this list..
+        ///   Looks up a localized string similar to These are the Items that are in the selected Check.  You can change, add, or remove Items from this list, as well as configure their quantity and whether they are locked in a merchant&apos;s inventory..
         /// </summary>
         public static string IndividualContainers_Item_Tooltip_Objects {
             get {
@@ -1014,7 +1014,7 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This is the location that replaces the original teleport destination. .
+        ///   Looks up a localized string similar to This is the location that replaces the original teleport destination. You can also configure the level scaling (1-99), as well as enable/disable the location replacement entirely..
         /// </summary>
         public static string IndividualContainers_Location_Tooltip_Objects {
             get {
@@ -1140,7 +1140,7 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to These are the Skills that are in the selected Skill Tree.  You can change, add, or remove Skills from this list. 
+        ///   Looks up a localized string similar to These are the Skills that are in the selected Skill Tree.  You can change, add, or remove Skills from this list, as well as modify their unlock cost and whether the skill is unlocked by default. 
         ///.
         /// </summary>
         public static string IndividualContainers_Skill_Tooltip_Objects {
@@ -2276,7 +2276,7 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This option makes it so that you now need to find the rock items scattered on the map before Esquie can use his abilities. The rocks can only be found as a pickup wherever a unique item (weapon, pictos, etc) was originally present. You need to go to camp with the rock in your inventory to unlock them..
+        ///   Looks up a localized string similar to This option makes it so that you now need to find the rock items scattered on the map before Esquie can use his abilities. The rocks can only be found as a pickup wherever a unique item (weapon, pictos, etc) was originally present. You need to go to camp with the rock in your inventory to unlock them. Note that the location randomizer assumes that the rocks are still in their original locations..
         /// </summary>
         public static string Randomize_Items_Tooltip_RandomizeEsquiesRocksIntoMapPickups {
             get {
@@ -2528,7 +2528,7 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Whether or not the teleport destinations are randomized. Regardless of the settings, there exists a path from the start to the end of the game, as indicated in the generated locations.txt file..
+        ///   Looks up a localized string similar to Whether or not the teleport destinations are randomized. Regardless of the settings, there exists a path from the start to the end of the game, as indicated in the generated locations.txt file. Does not take into account if Esquie&apos;s rocks have been randomized in the item randomizer..
         /// </summary>
         public static string Randomize_Locations_Tooltip_RandomizeLocations {
             get {
@@ -2555,7 +2555,7 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Whether the location after Lumiere Act 1 is randomized..
+        ///   Looks up a localized string similar to Whether the location after Act 1 Lumiere is randomized. If on, after the Expedition festival is finished, the player will be teleported to a location that replaces Spring Meadows&apos; Entry according to the custom placement rules. Note that enabling this setting will make the randomizer fail significantly more often..
         /// </summary>
         public static string Randomize_Locations_Tooltip_RandomizeStartingLocation {
             get {
@@ -2564,7 +2564,7 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Whether the characters&apos; starting level should take into account the new area scaling..
+        ///   Looks up a localized string similar to Whether the characters&apos; starting level should be equal to the re-scaled area levels. This means that if you meet Monoco at the very start of your run, he will be level 3 instead of 35, making things more balanced..
         /// </summary>
         public static string Randomize_Locations_Tooltip_RescaleCharacters {
             get {
@@ -2573,7 +2573,7 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Whether or not the locations should be scaled according to how early they can be reached with randomized locations..
+        ///   Looks up a localized string similar to Whether or not the locations&apos; difficulty should be scaled according to how early they can be reached via randomized paths. The faster you can access a location, the lower the difficulty will be, regardless of the original game scaling..
         /// </summary>
         public static string Randomize_Locations_Tooltip_RescaleLocations {
             get {
@@ -2582,7 +2582,7 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Whether the areas not in the critical path should also be rescaled..
+        ///   Looks up a localized string similar to Whether the areas not in the critical path should also be rescaled. The critical path can be found in the locations.txt file. If left off, all the locations not in it will retain their original scaling..
         /// </summary>
         public static string Randomize_Locations_Tooltip_RescaleOptionalAreas {
             get {

@@ -101,6 +101,10 @@ public class LocationGraph
     private HashSet<int> NotRandomizedDestinations = new();
     public List<List<int>> PortalGroups = [];
 
+    public int MaxDfsDepth = 700;
+    public int MaxTotalIterations = 500;
+    public int MaxAttempts = 20;
+
     public int TotalIterations = 0;
 
     public UInt128 EsquieCarBit;
@@ -454,7 +458,7 @@ public class LocationGraph
         if (AvailablePortals.Count == 0)
             return HasFullReachability(startNode);
         
-        if (depth > 1000 || TotalIterations > 1000 || frontier.Count == 0) return false;
+        if (depth > MaxDfsDepth || TotalIterations > MaxTotalIterations || frontier.Count == 0) return false;
 
         var candidate = Utils.ShuffleList(frontier.Select(s => s.Node).Distinct().ToList())
             .Where(n => AvailablePortals.Contains(n))
@@ -495,8 +499,8 @@ public class LocationGraph
         NotRandomizedDestinations = Nodes.Where(n => RandomizerLogic.CustomLocationPlacement.NotRandomizedCodeNames.Contains(n.CodeName)).Select(n => n.ID).ToHashSet();
         foreach (var node in Nodes)
         {
-            node.PortalConnection = node.OriginalPortalConnection;
             if (!IsPortal(node)) continue;
+            node.PortalConnection = node.OriginalPortalConnection;
             var nodeDestinationCategory = clp(Nodes[node.OriginalPortalConnection].CodeName);
             PortalDestinationPools[node.ID] = Nodes.Where(n =>
                 IsPortal(n) && clp(n.CodeName) == nodeDestinationCategory && n != node).Select(n => n.ID).ToList();
@@ -515,7 +519,7 @@ public class LocationGraph
 
         (int, UInt128) startingState = (startNode, initialKeys);
         
-        var iterationsLeft = 10;
+        var iterationsLeft = MaxAttempts;
         
         while (AvailablePortals.Count > 0 && iterationsLeft > 0)
         {

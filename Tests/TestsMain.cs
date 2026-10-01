@@ -336,13 +336,13 @@ namespace Tests
         public void TestLocationRandomizerOnly()
         {
             var settings = _fixture.Create<SettingsViewModel>();
-            settings.Seed = 471402971;
+            settings.Seed = 1;
             settings.RandomizeEnemies = false;
             settings.RandomizeItems = false;
             settings.RandomizeSkills = false;
             settings.RandomizeLocations = true;
-            settings.EnableTwoWayTeleport = false;
-            settings.EnsureFullConnectivity = false;
+            settings.EnableTwoWayTeleport = true;
+            settings.EnsureFullConnectivity = true;
             settings.RandomizeStartingLocation = true;
                 
             var config = new Config(
