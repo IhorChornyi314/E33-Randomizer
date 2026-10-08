@@ -227,7 +227,12 @@ public class EnemiesController: Controller<EnemyData>
     
     public List<EnemyData> GetAllByArchetype(string archetype)
     {
-        return ObjectsData.Where(enemy => enemy.Archetype == archetype).ToList();
+        var result = ObjectsData.Where(enemy => enemy.Archetype == archetype).ToList();
+        if (archetype == "Petank")
+        {
+            result.AddRange(GetObjects(["WM_PetankAlphaSummon_Yellow", "WM_PetankAlphaSummon_Violet", "WM_PetankAlphaSummon_Blue", "WM_PetankAlphaSummon_Red", "WM_PetankAlphaSummon_Green"]));
+        }
+        return result;
     }
 
     public override void AddObjectToContainer(string enemyCodeName, string encounterCodeName)

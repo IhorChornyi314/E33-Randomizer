@@ -43,7 +43,8 @@ public class CustomItemPlacement: CustomPlacementWindowViewModel
             { "Key Item", [new KeyValuePair<string, byte>("Key Item", 100)] },
             { "Cosmetic", [new KeyValuePair<string, byte>("Cosmetic", 100)] },
             { "Upgrade Material", [new KeyValuePair<string, byte>("Upgrade Material", 100)] },
-            { "Music Record", [new KeyValuePair<string, byte>("Music Record", 100)] }
+            { "Music Record", [new KeyValuePair<string, byte>("Music Record", 100)] },
+            { "Merchant Unlock", [new KeyValuePair<string, byte>("Merchant Unlock", 100)] }
         });
         FrequencyAdjustments.AddRange( new Dictionary<string, byte>{
             { "Cut Content Items", 50 },

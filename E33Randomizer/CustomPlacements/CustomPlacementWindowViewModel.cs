@@ -400,6 +400,13 @@ public abstract partial class CustomPlacementWindowViewModel : ObservableObject
 
     public void Update()
     {
+        NotRandomizedCodeNames = NotRandomized.SelectMany(name => PlainNameToCodeNames[name])
+            .Distinct()
+            .ToList();
+        ExcludedCodeNames = Excluded
+            .SelectMany(name => PlainNameToCodeNames[name])
+            .Distinct()
+            .ToList();
         FinalReplacementFrequencies.Clear();
         var orderedCustomPlacementKeys = CustomPlacementRules.Select(x => x.Key).OrderBy(k => CategoryOrder.IndexOf(k));
         var translatedFrequencyAdjustments = CustomCategoryDictionaryToCodeNames(FrequencyAdjustments);

@@ -308,6 +308,13 @@ public static class SpecialRules
         {
             check.ItemSource.AddItem("BP_GameAction_AddItemToInventory_C_0", Controllers.ItemsController.GetObject("OverPowered"));
         }
+
+        // Merchant key items have the same code name as the enemy
+        if (!RandomizerLogic.Settings.RandomizeMerchantFights && check.Key.Contains("Merchant_") && Controllers.ItemsController.IsObject(check.Key) && 
+            check.ItemSource.FileName == "DT_jRPG_Enemies")
+        {
+            check.ItemSource.SetItem(check.Key, 0, Controllers.ItemsController.GetObject(check.Key));
+        }
     }
 
     private static SkillData GetReplacedSkillPool(SkillData replacedSkill, string skillCategory)
