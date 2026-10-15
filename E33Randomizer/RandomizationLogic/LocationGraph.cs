@@ -256,7 +256,7 @@ public class LocationGraph
 
             node.Depth = Math.Min(node.Depth, distance);
 
-            if (currentNode == endNode)
+            if (currentNode == endNode && currentPath.Count == 0)
             {
                 currentPath = trace.ToList();
             }
@@ -492,9 +492,10 @@ public class LocationGraph
         return false;
     }
     
-    public bool RemakeWholeGraph(List<string> constraintStrings, out List<LocationData> criticalPath,
+    public bool RemakeWholeGraph(string startNodeCodeName, string endingNodeCodeName, List<string> possibleLandingLocationCodeNames, out List<LocationData> criticalPath,
         out Dictionary<string, string> destinationChanges)
     {
+        MaxAttempts = Math.Max(MaxAttempts - possibleLandingLocationCodeNames.Count + 1, 5);
         var clp = RandomizerLogic.CustomLocationPlacement.GetCategory;
         NotRandomizedDestinations = Nodes.Where(n => RandomizerLogic.CustomLocationPlacement.NotRandomizedCodeNames.Contains(n.CodeName)).Select(n => n.ID).ToHashSet();
         foreach (var node in Nodes)
@@ -510,29 +511,41 @@ public class LocationGraph
         destinationChanges = new();
         AvailablePortals = Portals.Select(n => n.ID).ToHashSet();
         AvailableDestinations = Portals.Select(n => n.ID).ToHashSet();
-        var constraintNodes = constraintStrings.Select(c => nodeIndexes[c]).ToList();
-        int startNode = constraintNodes[0];
         
+        int startNode = nodeIndexes[startNodeCodeName];
+        int endNode = nodeIndexes[endingNodeCodeName];
+        List<int> possibleLandingLocations = possibleLandingLocationCodeNames.Select(cN => nodeIndexes[cN]).ToList();
         TotalReachableNodes = GetReachableStates((startNode, 0)).Select(s => s.Node).Distinct().Count();
 
         UInt128 initialKeys = 0;
 
         (int, UInt128) startingState = (startNode, initialKeys);
         
-        var iterationsLeft = MaxAttempts;
-        
-        while (AvailablePortals.Count > 0 && iterationsLeft > 0)
+        foreach (var possibleLandingLocation in possibleLandingLocations)
         {
-            iterationsLeft--;
-            TotalIterations = 0;
-            ModificationHistory.Clear();
+            var iterationsLeft = MaxAttempts;
+            var foundValid = false;
+            Nodes[95].PortalConnection = possibleLandingLocation;
+            while (AvailablePortals.Count > 0 && iterationsLeft > 0)
+            {
+                iterationsLeft--;
+                TotalIterations = 0;
+                ModificationHistory.Clear();
 
-            if (CompleteGraphPlacement(startNode, startingState, 0))
+                if (CompleteGraphPlacement(startNode, startingState, 0))
+                {
+                    foundValid = true;
+                    break;
+                }
+
+                while (ModificationHistory.Count > 0)
+                    UndoPortalLink();
+            }
+
+            if (foundValid)
                 break;
-
-            while (ModificationHistory.Count > 0)
-                UndoPortalLink();
         }
+        
 
         if (AvailablePortals.Any())
         { 
@@ -544,7 +557,9 @@ public class LocationGraph
             destinationChanges[Nodes[node.OriginalPortalConnection].CodeName] = Nodes[node.PortalConnection].CodeName;
         }
         
-        criticalPath = GetPathAndDepths(constraintNodes[0], constraintNodes[^1]);
+        destinationChanges["Level.SpawnPoint.SpringMeadows.Entry"] = Nodes[Nodes[95].PortalConnection].CodeName;
+        
+        criticalPath = GetPathAndDepths(startNode, endNode);
         return true;
     }
 }

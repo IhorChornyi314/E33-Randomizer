@@ -2447,7 +2447,7 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Randomize starting location.
+        ///   Looks up a localized string similar to Randomize continent landing location.
         /// </summary>
         public static string Randomize_Locations_RandomizeStartingLocation {
             get {
@@ -2492,7 +2492,7 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Whether going through a portal and back again puts you in the same place as you started..
+        ///   Looks up a localized string similar to Whether going through a portal and back again puts you in the same place as you started. Note that drastically affects how the new map is generated, but only when the locations are re-rolled in the app. At playtime, going through the same portal will always put you in its corresponding modified destination..
         /// </summary>
         public static string Randomize_Locations_Tooltip_EnableTwoWayTeleport {
             get {
@@ -2555,7 +2555,7 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Whether the location after Act 1 Lumiere is randomized. If on, after the Expedition festival is finished, the player will be teleported to a location that replaces Spring Meadows&apos; Entry according to the custom placement rules. Note that enabling this setting will make the randomizer fail significantly more often..
+        ///   Looks up a localized string similar to Whether the location after the prologue is randomized. If on, after the Expedition festival is finished, the player will be teleported to a location that replaces Spring Meadows&apos; Entry according to the custom placement rules. Note that enabling this setting might affect the generation speed..
         /// </summary>
         public static string Randomize_Locations_Tooltip_RandomizeStartingLocation {
             get {

@@ -443,7 +443,7 @@
         <value>Re-scale characters</value>
     </data>
     <data name="Randomize_Locations_RandomizeStartingLocation" xml:space="preserve">
-        <value>Randomize starting location</value>
+        <value>Randomize continent landing location</value>
     </data>
     <data name="Randomize_Locations_RandomizeManorDoors" xml:space="preserve">
         <value>Randomize manor doors</value>
@@ -480,7 +480,7 @@
         <value>Whether the characters' starting level should be equal to the re-scaled area levels. This means that if you meet Monoco at the very start of your run, he will be level 3 instead of 35, making things more balanced.</value>
     </data>
     <data name="Randomize_Locations_Tooltip_RandomizeStartingLocation" xml:space="preserve">
-        <value>Whether the location after Act 1 Lumiere is randomized. If on, after the Expedition festival is finished, the player will be teleported to a location that replaces Spring Meadows' Entry according to the custom placement rules. Note that enabling this setting will make the randomizer fail significantly more often.</value>
+        <value>Whether the location after the prologue is randomized. If on, after the Expedition festival is finished, the player will be teleported to a location that replaces Spring Meadows' Entry according to the custom placement rules. Note that enabling this setting might affect the generation speed.</value>
     </data>
     <data name="Randomize_Locations_Tooltip_RandomizeManorDoors" xml:space="preserve">
          <value>Whether the destinations of manor doors are shuffled between each other. Does not affect return trips.</value>
@@ -495,7 +495,7 @@
          <value>Whether the destinations of gestral beach world map entrances are shuffled between each other. Does not affect return trips.</value>
     </data>
     <data name="Randomize_Locations_Tooltip_EnableTwoWayTeleport" xml:space="preserve">
-         <value>Whether going through a portal and back again puts you in the same place as you started.</value>
+         <value>Whether going through a portal and back again puts you in the same place as you started. Note that drastically affects how the new map is generated, but only when the locations are re-rolled in the app. At playtime, going through the same portal will always put you in its corresponding modified destination.</value>
     </data>
     
     <!-- Misc Tab -->

@@ -81,24 +81,27 @@ public class LocationController: Controller<LocationData>
             DestinationChanges[originalPortal.to] = newDestination;
         }
 
+        var possibleLandingLocations = new List<string>(["Level.SpawnPoint.SpringMeadows.Entry"]);
+        
         if (RandomizerLogic.Settings.RandomizeStartingLocation)
         {
-            var brokenPlainNames = RandomizerLogic.BrokenLocations.Select(cn => GetObject(cn).CustomName).ToList();
-            brokenPlainNames.AddRange([
-                "Painting Workshop - Broken Conception", 
-                "Painting Workshop - Path From South Sea Island", 
-                "Painting Workshop - Path From Post Forgotten Battlefield", 
-                "Painting Workshop - Path From Flying Island",
-                "Esquie's Nest - Francois' Cave",
-                "Lumiere - Entry"
+            var brokenNames = new List<string>(RandomizerLogic.BrokenLocations);
+            brokenNames.AddRange([
+                "Level.SpawnPoint.CleaWorkshop.BrokenLampmaster", 
+                "Level.SpawnPoint.CleaWorkshop.Path1", 
+                "Level.SpawnPoint.CleaWorkshop.Path2", 
+                "Level.SpawnPoint.CleaWorkshop.Path3",
+                "Level.SpawnPoint.EsquieNest.Francois",
+                "Level.SpawnPoint.LumiereAct01.Entry"
                 ]
                 );
-            brokenPlainNames.AddRange(ObjectsData.Where(l => l.CodeName.Contains(".Manor.")).Select(l => l.CustomName));
-            brokenPlainNames.ForEach(RandomizerLogic.CustomLocationPlacement.AddExcluded);
-            DestinationChanges[_startingLocation] = RandomizerLogic.CustomLocationPlacement.Replace(_startingLocation);
-            DestinationChanges[_startingLocation] = DestinationChanges[_startingLocation] == "Level.SpawnPoint.LumiereAct01.Entry"
-                ? "Level.SpawnPoint.SpringMeadows.Entry":  DestinationChanges[_startingLocation];
-            brokenPlainNames.ForEach(RandomizerLogic.CustomLocationPlacement.RemoveExcluded);
+            brokenNames.AddRange(ObjectsData.Where(l => l.CodeName.Contains(".Manor.")).Select(l => l.CodeName));
+
+            possibleLandingLocations =
+                RandomizerLogic.CustomLocationPlacement.GetPossibleReplacements("Level.SpawnPoint.SpringMeadows.Entry",
+                    false);
+            possibleLandingLocations = possibleLandingLocations.Where(cN => !brokenNames.Contains(cN)).ToList();
+            possibleLandingLocations = Utils.ShuffleList(possibleLandingLocations);
         }
         
         if (RandomizerLogic.Settings.RandomizeManorDoors)
@@ -145,7 +148,7 @@ public class LocationController: Controller<LocationData>
 
         _locationGraph.ApplyDestinationChanges(DestinationChanges);
         
-        if (!_locationGraph.RemakeWholeGraph(_currentConstraints, out criticalPath, out var corrections))
+        if (!_locationGraph.RemakeWholeGraph(_currentConstraints[0], _currentConstraints[^1], possibleLandingLocations, out criticalPath, out var corrections))
         {
             throw new Exception(ResourceHelper.GetString(nameof(Assets.Resources.LocationController_CriticalPath_Exception)));
         }

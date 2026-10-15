@@ -79,6 +79,7 @@ public class CustomEnemyPlacement : CustomPlacementWindowViewModel
     public override void LoadDefaultPreset()
     {
         ResetRules();
+        AddNotRandomized("White-haired Man (Stone Wave Cliffs)");
         AddExcluded("Gimmick/Tutorial Enemies");
         AddExcluded("Map Part Enemies");
         CustomPlacementRules.AddRange(new Dictionary<string, IEnumerable<KeyValuePair<string, byte>>>

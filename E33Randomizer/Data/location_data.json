@@ -1109,7 +1109,8 @@
         "Level.SpawnPoint.Goblu.Entry",
         "Level.SpawnPoint.Goblu.LimonsolHome",
         "Level.SpawnPoint.Goblu.ManorDoor"
-      ]},
+      ]
+    },
     "PortalConnection": "",
     "Keys": []
   },
@@ -1148,7 +1149,8 @@
         "Level.SpawnPoint.Goblu.Entry",
         "Level.SpawnPoint.Goblu.LimonsolHome",
         "Level.SpawnPoint.Goblu.ManorDoor"
-      ]},
+      ]
+    },
     "PortalConnection": "Level.SpawnPoint.WorldMap.GobluExit",
     "Keys": []
   },
@@ -1167,7 +1169,8 @@
         "Level.SpawnPoint.Goblu.Entry",
         "Level.SpawnPoint.Goblu.LimonsolHome",
         "Level.SpawnPoint.Goblu.ManorDoor"
-      ]},
+      ]
+    },
     "PortalConnection": "",
     "Keys": []
   },
@@ -1206,7 +1209,8 @@
         "Level.SpawnPoint.Goblu.Entry",
         "Level.SpawnPoint.Goblu.LimonsolHome",
         "Level.SpawnPoint.Goblu.ManorDoor"
-      ]},
+      ]
+    },
     "PortalConnection": "",
     "Keys": []
   },
@@ -1264,7 +1268,7 @@
   },
   {
     "CodeName": "Level.SpawnPoint.LumiereAct01.Entry",
-    "CustomName": "Lumiere - Entry",
+    "CustomName": "Lumiere Act I - Entry",
     "LevelAsset": "Level_Lumiere_Main_V2",
     "LevelScaling": 48,
     "UnconditionalConnections": [],
@@ -1388,7 +1392,7 @@
   },
   {
     "CodeName": "Level.SpawnPoint.LumiereAct03.Entry",
-    "CustomName": "Lumiere - Entry",
+    "CustomName": "Lumiere Act III - Entry",
     "LevelAsset": "Level_Lumiere_Main_V2",
     "LevelScaling": 48,
     "UnconditionalConnections": [
@@ -1548,7 +1552,9 @@
     "UnconditionalConnections": [],
     "ConditionalConnections": {},
     "PortalConnection": "",
-    "Keys": ["Story.MaelleJoined"]
+    "Keys": [
+      "Story.MaelleJoined"
+    ]
   },
   {
     "CodeName": "Level.SpawnPoint.Manor.Kitchen",
@@ -1758,7 +1764,6 @@
     "LevelAsset": "Level_Monolith_Exterior_Peak_Main",
     "LevelScaling": 43,
     "UnconditionalConnections": [
-      
     ],
     "ConditionalConnections": {},
     "PortalConnection": "Level.SpawnPoint.Manor.AliciaRoomAct3",
@@ -2130,11 +2135,13 @@
       "Level.SpawnPoint.OldLumiere.MaellePath",
       "Level.SpawnPoint.OldLumiere.ManorDoor"
     ],
-    "ConditionalConnections": {},
+    "ConditionalConnections": {
+      "EsquieAbility.Swim": [
+        "Special.EsquieAbility.SwimPlus"
+      ]
+    },
     "PortalConnection": "",
-    "Keys": [
-      "EsquieAbility.SwimPlus"
-    ]
+    "Keys": []
   },
   {
     "CodeName": "Level.SpawnPoint.OldLumiere.ManorDoor",
@@ -2380,7 +2387,8 @@
     "ConditionalConnections": {
       "EsquieAbility.Swim": [
         "Level.SpawnPoint.SeaCliff.Exit"
-      ]},
+      ]
+    },
     "PortalConnection": "",
     "Keys": []
   },
@@ -2401,7 +2409,8 @@
     "ConditionalConnections": {
       "EsquieAbility.Swim": [
         "Level.SpawnPoint.SeaCliff.Exit"
-      ]},
+      ]
+    },
     "PortalConnection": "Level.SpawnPoint.WorldMap.SeaCliffEntry",
     "Keys": []
   },
@@ -2421,7 +2430,8 @@
         "Level.SpawnPoint.SeaCliff.PaintressShrine",
         "Level.SpawnPoint.SeaCliff.Village",
         "Level.SpawnPoint.SeaCliff.ZeppelinEntry"
-      ]},
+      ]
+    },
     "PortalConnection": "Level.SpawnPoint.WorldMap.SeaCliffExit",
     "Keys": []
   },
@@ -2442,7 +2452,8 @@
     "ConditionalConnections": {
       "EsquieAbility.Swim": [
         "Level.SpawnPoint.SeaCliff.Exit"
-      ]},
+      ]
+    },
     "PortalConnection": "",
     "Keys": []
   },
@@ -2463,7 +2474,8 @@
     "ConditionalConnections": {
       "EsquieAbility.Swim": [
         "Level.SpawnPoint.SeaCliff.Exit"
-      ]},
+      ]
+    },
     "PortalConnection": "Level.SpawnPoint.Manor.Entrance",
     "Keys": []
   },
@@ -2484,7 +2496,8 @@
     "ConditionalConnections": {
       "EsquieAbility.Swim": [
         "Level.SpawnPoint.SeaCliff.Exit"
-      ]},
+      ]
+    },
     "PortalConnection": "",
     "Keys": []
   },
@@ -2505,7 +2518,8 @@
     "ConditionalConnections": {
       "EsquieAbility.Swim": [
         "Level.SpawnPoint.SeaCliff.Exit"
-      ]},
+      ]
+    },
     "PortalConnection": "",
     "Keys": []
   },
@@ -2526,7 +2540,8 @@
     "ConditionalConnections": {
       "EsquieAbility.Swim": [
         "Level.SpawnPoint.SeaCliff.Exit"
-      ]},
+      ]
+    },
     "PortalConnection": "",
     "Keys": []
   },
@@ -2746,7 +2761,7 @@
     "ConditionalConnections": {},
     "PortalConnection": "",
     "Keys": [
-      "Story.LuneJoined"      
+      "Story.LuneJoined"
     ]
   },
   {
@@ -4896,7 +4911,6 @@
     "UnconditionalConnections": [
       "Level.SpawnPoint.WorldMap.CleaOrangeForestEntry",
       "Level.SpawnPoint.WorldMap.BoatGraveyardPurpleEntry",
-      "Special.WM.PostFB",
       "Level.SpawnPoint.WorldMap.VisagesEntry",
       "Level.SpawnPoint.WorldMap.SireneEntry",
       "Level.SpawnPoint.WorldMap.SinisterCaveEntry",
@@ -4905,7 +4919,8 @@
     "ConditionalConnections": {
       "EsquieAbility.SwimPlus": [
         "Special.Dummy.WM.PostMSSwim",
-        "Special.Dummy.WM.PostOLSwim"
+        "Special.Dummy.WM.PostOLSwim",
+        "Special.WM.PostFB"
       ],
       "EsquieAbility.Fly": [
         "Level.SpawnPoint.WorldMap.AxonPathEntry"
@@ -4938,8 +4953,9 @@
       "Shortcut.PostMS": [
         "Special.Dummy.WM.PostMSShortcut"
       ],
-      "EsquieAbility.Swim": [
-        "Special.WM.SeaNorth"
+      "EsquieAbility.SwimPlus": [
+        "Special.WM.SeaNorth",
+        "Special.WM.SeaSouth"
       ]
     },
     "PortalConnection": "",
@@ -5119,5 +5135,19 @@
     "ConditionalConnections": {},
     "PortalConnection": "",
     "Keys": []
+  },
+  {
+    "CodeName": "Special.EsquieAbility.SwimPlus",
+    "CustomName": "Special - Esquie Dorrie Dummy",
+    "LevelAsset": "",
+    "LevelScaling": -1,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.OldLumiere.ManorArena"
+    ],
+    "ConditionalConnections": {},
+    "PortalConnection": "",
+    "Keys": [
+      "EsquieAbility.SwimPlus"
+    ]
   }
 ]
