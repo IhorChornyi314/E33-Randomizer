@@ -1606,6 +1606,15 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unlock the Greatest Expedition camp option.
+        /// </summary>
+        public static string Misc_SaveFile_Button_UnlockGreatestExpedition {
+            get {
+                return ResourceManager.GetString("Misc_SaveFile_Button_UnlockGreatestExpedition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to If you have triggered the second phase of Act III Renoir, then the curtain in Lumiere&apos;s Opera House will be closed, preventing you from finishing the game.
         ///
         ///Use this button to fix that..
@@ -1633,6 +1642,17 @@ namespace E33Randomizer.Assets {
         public static string Misc_SaveFile_Header {
             get {
                 return ResourceManager.GetString("Misc_SaveFile_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sometimes the location randomizer can lead to getting stuck on the &quot;I should talk to everyone&quot; campfire dialogue at the start of Act 3 if not all members of the expedition are present.
+        ///
+        ///Use this button to fix that..
+        /// </summary>
+        public static string Misc_SaveFile_UnlockGreatestExpedition_Description {
+            get {
+                return ResourceManager.GetString("Misc_SaveFile_UnlockGreatestExpedition_Description", resourceCulture);
             }
         }
         
@@ -2420,7 +2440,7 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Randomize Locations.
+        ///   Looks up a localized string similar to Randomize locations.
         /// </summary>
         public static string Randomize_Locations_RandomizeLocations {
             get {

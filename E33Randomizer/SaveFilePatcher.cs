@@ -9,6 +9,7 @@ public static class SaveFilePatcher
     private const string JumpCounterNid = "8e3263a7-493b-f6fd-f260-549af74ea0db";
     private const string GradientCounterNid = "30e2946e-432c-b0e8-363e-d29811577e30";
     private const string LumiereCurtainNid = "aa6633b1-4fed-a61d-092e-ed80cd949751";
+    private const string GreatestExpeditionDialogueLockNid = "1c5f62cb-44df-660f-9a3f-22a819516533";
     
     private const string NamedIDsStatesPropName = "NamedIDsStates_0";
     private const string NamedIDsStatesSchemaName = "NamedIDsStates";
@@ -127,6 +128,15 @@ public static class SaveFilePatcher
         var flags = new Dictionary<string, bool>()
         {
             {LumiereCurtainNid, false}
+        };
+        Patch(saveFilePath, flags);
+    }
+    
+    public static void UnlockGreatestExpedition(string saveFilePath)
+    {
+        var flags = new Dictionary<string, bool>()
+        {
+            {GreatestExpeditionDialogueLockNid, true}
         };
         Patch(saveFilePath, flags);
     }

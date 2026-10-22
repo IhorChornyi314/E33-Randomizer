@@ -12,7 +12,7 @@
     <StackPanel>
         <uiControls:SubSection
             Header="{x:Static lang:Resources.Misc_SaveFile_Header}"
-            Height="660"
+            Height="800"
             Width="700">
             <StackPanel>
                 <uiControls:FormatableStylableTextBlock
@@ -78,6 +78,23 @@
                     Content="{x:Static lang:Resources.Misc_SaveFile_Button_FixForcedCamps}"
                     HorizontalAlignment="Center"
                     Margin="0 10 0 0"
+                    Click="EnableCountersInSaveButton_OnClick" />
+                <Separator></Separator>
+                <TextBlock
+                    Margin="10 10 0 0"
+                    VerticalAlignment="Top"
+                    TextWrapping="Wrap"
+                    TextAlignment="Left"
+                    MaxWidth="800"
+                    FontSize="16"
+                    Text="{x:Static lang:Resources.Misc_SaveFile_UnlockGreatestExpedition_Description}">
+                </TextBlock>
+                <Button
+                    Tag="UnlockGreatestExpedition"
+                    Content="{x:Static lang:Resources.Misc_SaveFile_Button_UnlockGreatestExpedition}"
+                    HorizontalAlignment="Center"
+                    Classes="e33Button"
+                    Margin="0 0 0 10"
                     Click="EnableCountersInSaveButton_OnClick" />
             </StackPanel>
         </uiControls:SubSection>

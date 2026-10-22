@@ -442,28 +442,28 @@
     "LevelScaling": 55,
     "UnconditionalConnections": [],
     "ConditionalConnections": {},
-    "PortalConnection": "Level.SpawnPoint.CleasTower.GroundEntrance",
+    "PortalConnection": "Level.SpawnPoint.CleasTower.GroundEntranceTower",
     "Keys": []
   },
   {
-    "CodeName": "Level.SpawnPoint.CleasTower.GroundEntrance",
-    "CustomName": "Endless Tower - Ground Entrance",
+    "CodeName": "Level.SpawnPoint.CleasTower.GroundEntranceTower",
+    "CustomName": "Endless Tower Transition - To the Tower",
     "LevelAsset": "CleasTower_GroundFloorEntrance",
     "LevelScaling": 55,
     "UnconditionalConnections": [
-      "Level.SpawnPoint.CleasTower.GroundEntranceTower"
+      "Level.SpawnPoint.CleasTower.GroundEntrance"
     ],
     "ConditionalConnections": {},
     "PortalConnection": "Level.SpawnPoint.CleasTower.Entrance",
     "Keys": []
   },
   {
-    "CodeName": "Level.SpawnPoint.CleasTower.GroundEntranceTower",
-    "CustomName": "Endless Tower - Ground Entrance Tower",
-    "LevelAsset": "Level_Side_CleasTower",
+    "CodeName": "Level.SpawnPoint.CleasTower.GroundEntrance",
+    "CustomName": "Endless Tower Transition - To the World",
+    "LevelAsset": "CleasTower_GroundFloorEntrance",
     "LevelScaling": 55,
     "UnconditionalConnections": [
-      "Level.SpawnPoint.CleasTower.GroundEntrance"
+      "Level.SpawnPoint.CleasTower.GroundEntranceTower"
     ],
     "ConditionalConnections": {},
     "PortalConnection": "Level.SpawnPoint.WorldMap.CleasTowerEntrance",
@@ -1091,7 +1091,8 @@
     "ConditionalConnections": {},
     "PortalConnection": "",
     "Keys": [
-      "Story.EsquiePassword"
+      "Story.EsquiePassword",
+      "Story.ScielJoined"
     ]
   },
   {
@@ -1278,7 +1279,7 @@
   },
   {
     "CodeName": "Level.SpawnPoint.LumiereAct03.Act02",
-    "CustomName": "Lumiere - Act02",
+    "CustomName": "Lumiere - Act I Ending",
     "LevelAsset": "Level_Lumiere_Main_V2",
     "LevelScaling": 48,
     "UnconditionalConnections": [
@@ -1298,12 +1299,84 @@
   },
   {
     "CodeName": "Level.SpawnPoint.LumiereAct03.Act02RedAndWhite",
-    "CustomName": "Lumiere - Act02 Red And White",
+    "CustomName": "Lumiere Act III - Red and White Tree",
     "LevelAsset": "Level_Lumiere_Main_V2",
     "LevelScaling": 48,
     "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.LuneJoined": [
+        "Special.Dummy.Camp.Act3Lune"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Special.Dummy.Camp.Act3Lune",
+    "CustomName": "Special - Dummy for Lune at Act III Camp",
+    "LevelAsset": "",
+    "LevelScaling": -1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.MaelleJoined": [
+        "Special.Dummy.Camp.Act3Maelle"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Special.Dummy.Camp.Act3Maelle",
+    "CustomName": "Special - Dummy for Maelle at Act III Camp",
+    "LevelAsset": "",
+    "LevelScaling": -1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.ScielJoined": [
+        "Special.Dummy.Camp.Act3Sciel"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Special.Dummy.Camp.Act3Sciel",
+    "CustomName": "Special - Dummy for Sciel at Act III Camp",
+    "LevelAsset": "",
+    "LevelScaling": -1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "EsquieAbility.Car": [
+        "Special.Dummy.Camp.Act3Esquie"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Special.Dummy.Camp.Act3Esquie",
+    "CustomName": "Special - Dummy for Esquie at Act III Camp",
+    "LevelAsset": "",
+    "LevelScaling": -1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.MonocoJoined": [
+        "Special.Dummy.Camp.Act3Monoco"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Special.Dummy.Camp.Act3Monoco",
+    "CustomName": "Special - Dummy for Monoco at Act III Camp",
+    "LevelAsset": "",
+    "LevelScaling": -1,
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.WorldMap.TheGreatestExpedition"
+    ],
     "ConditionalConnections": {},
-    "PortalConnection": "Level.SpawnPoint.WorldMap.TheGreatestExpedition",
+    "PortalConnection": "",
     "Keys": []
   },
   {
@@ -1509,9 +1582,11 @@
     "CustomName": "The Manor - Alicia Room Act3",
     "LevelAsset": "Manor_Main_WP",
     "LevelScaling": 1,
-    "UnconditionalConnections": [],
+    "UnconditionalConnections": [
+      "Level.SpawnPoint.LumiereAct03.Act02RedAndWhite"
+    ],
     "ConditionalConnections": {},
-    "PortalConnection": "Level.SpawnPoint.LumiereAct03.Act02RedAndWhite",
+    "PortalConnection": "",
     "Keys": []
   },
   {
@@ -1673,7 +1748,7 @@
     "ConditionalConnections": {},
     "PortalConnection": "Level.SpawnPoint.WorldMap.MonocoStationEntryForgotten",
     "Keys": [
-      "Story.MonocoAcquired"
+      "Story.MonocoJoined"
     ]
   },
   {
@@ -1699,7 +1774,7 @@
     "LevelScaling": 25,
     "UnconditionalConnections": [],
     "ConditionalConnections": {
-      "Story.MonocoAcquired": [
+      "Story.MonocoJoined": [
         "Level.SpawnPoint.MonocoStation.EntryForgotten",
         "Level.SpawnPoint.MonocoStation.EntryFrozenHearts",
         "Level.SpawnPoint.MonocoStation.FrozenHearts",
@@ -1764,9 +1839,10 @@
     "LevelAsset": "Level_Monolith_Exterior_Peak_Main",
     "LevelScaling": 43,
     "UnconditionalConnections": [
+      "Level.SpawnPoint.Manor.AliciaRoomAct3"
     ],
     "ConditionalConnections": {},
-    "PortalConnection": "Level.SpawnPoint.Manor.AliciaRoomAct3",
+    "PortalConnection": "Level.SpawnPoint.MonolithInterior.Climb.Exit",
     "Keys": [
       "EsquieAbility.Fly"
     ]
@@ -1810,7 +1886,7 @@
       "Level.SpawnPoint.MonolithInterior.Climb.SpringMeadows"
     ],
     "ConditionalConnections": {},
-    "PortalConnection": "Level.SpawnPoint.WorldMap.MonolithInteriorEntry",
+    "PortalConnection": "Level.SpawnPoint.MonolithInterior.PaintressIntro.Exit",
     "Keys": []
   },
   {
@@ -1831,7 +1907,7 @@
       "Level.SpawnPoint.MonolithInterior.Climb.SpringMeadows"
     ],
     "ConditionalConnections": {},
-    "PortalConnection": "",
+    "PortalConnection": "Level.SpawnPoint.MonolithExterior.Peak.Entry",
     "Keys": []
   },
   {
@@ -1894,7 +1970,7 @@
       "Level.SpawnPoint.MonolithInterior.Climb.SpringMeadows"
     ],
     "ConditionalConnections": {},
-    "PortalConnection": "Level.SpawnPoint.MonolithExterior.Peak.Entry",
+    "PortalConnection": "",
     "Keys": []
   },
   {
@@ -2011,7 +2087,7 @@
       "Level.SpawnPoint.MonolithInterior.PaintressIntro.Exit"
     ],
     "ConditionalConnections": {},
-    "PortalConnection": "",
+    "PortalConnection": "Level.SpawnPoint.WorldMap.MonolithInteriorEntry",
     "Keys": []
   },
   {
@@ -2023,7 +2099,7 @@
       "Level.SpawnPoint.MonolithInterior.PaintressIntro.Entry"
     ],
     "ConditionalConnections": {},
-    "PortalConnection": "",
+    "PortalConnection": "Level.SpawnPoint.MonolithInterior.Climb.Entry",
     "Keys": []
   },
   {
@@ -2051,7 +2127,7 @@
       "Level.SpawnPoint.OldLumiere.Entry"
     ],
     "ConditionalConnections": {
-      "Story.MonocoAcquired": [
+      "Story.MonocoJoined": [
         "Level.SpawnPoint.OldLumiere.LunePath"
       ]
     },
@@ -2100,7 +2176,7 @@
       "Level.SpawnPoint.OldLumiere.ManorDoor"
     ],
     "ConditionalConnections": {
-      "Story.MonocoAcquired": [
+      "Story.MonocoJoined": [
         "Level.SpawnPoint.OldLumiere.Entry"
       ]
     },
@@ -3507,7 +3583,8 @@
     "LevelScaling": 1,
     "UnconditionalConnections": [
       "Level.SpawnPoint.WorldMap.MonocoStationEntryFrozenHearts",
-      "Level.SpawnPoint.WorldMap.FrozenHeartsEntry"
+      "Level.SpawnPoint.WorldMap.FrozenHeartsEntry",
+      "Level.SpawnPoint.WorldMap.MonocoStationEntryForgotten"
     ],
     "ConditionalConnections": {
       "EsquieAbility.Fly": [
@@ -3647,7 +3724,7 @@
         "Special.WM.Fly"
       ]
     },
-    "PortalConnection": "Level.SpawnPoint.CleasTower.GroundEntranceTower",
+    "PortalConnection": "Level.SpawnPoint.CleasTower.GroundEntrance",
     "Keys": []
   },
   {
@@ -3804,7 +3881,8 @@
     "LevelScaling": 1,
     "UnconditionalConnections": [
       "Level.SpawnPoint.WorldMap.MonocoStationEntryFrozenHearts",
-      "Level.SpawnPoint.WorldMap.CarrouselEntrance"
+      "Level.SpawnPoint.WorldMap.CarrouselEntrance",
+      "Level.SpawnPoint.WorldMap.MonocoStationEntryForgotten"
     ],
     "ConditionalConnections": {
       "EsquieAbility.Fly": [
@@ -4098,7 +4176,8 @@
     "LevelScaling": 1,
     "UnconditionalConnections": [
       "Level.SpawnPoint.WorldMap.CarrouselEntrance",
-      "Level.SpawnPoint.WorldMap.FrozenHeartsEntry"
+      "Level.SpawnPoint.WorldMap.FrozenHeartsEntry",
+      "Level.SpawnPoint.WorldMap.MonocoStationEntryForgotten"
     ],
     "ConditionalConnections": {
       "EsquieAbility.Fly": [
@@ -4132,6 +4211,23 @@
     "LevelScaling": 1,
     "UnconditionalConnections": [],
     "ConditionalConnections": {
+      "Story.BarrierBreakerAcquired": [
+        "Special.WM.BeforeMonolith"
+      ]
+    },
+    "PortalConnection": "Level.SpawnPoint.MonolithInterior.PaintressIntro.Entry",
+    "Keys": []
+  },
+  {
+    "CodeName": "Special.WM.BeforeMonolith",
+    "CustomName": "Special - World Map Dummy for Across the Monolith Barrier",
+    "LevelAsset": "",
+    "LevelScaling": -1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.BarrierBreakerAcquired": [
+        "Level.SpawnPoint.WorldMap.MonolithInteriorEntry"
+      ],
       "EsquieAbility.Swim": [
         "Special.WM.SeaNorth"
       ],
@@ -4139,7 +4235,7 @@
         "Special.WM.Fly"
       ]
     },
-    "PortalConnection": "Level.SpawnPoint.MonolithInterior.Climb.Entry",
+    "PortalConnection": "",
     "Keys": []
   },
   {
@@ -5035,7 +5131,6 @@
       "Level.SpawnPoint.WorldMap.MonocoStationEntryForgotten",
       "Level.SpawnPoint.WorldMap.MonocoStationEntryFrozenHearts",
       "Level.SpawnPoint.WorldMap.MonocoStationEntryOldLumiere",
-      "Level.SpawnPoint.WorldMap.MonolithInteriorEntry",
       "Level.SpawnPoint.WorldMap.OldLumiereEntry",
       "Level.SpawnPoint.WorldMap.OldLumiereExit",
       "Level.SpawnPoint.WorldMap.PostEsquieNestForcedCamp",
@@ -5069,6 +5164,9 @@
       "EsquieAbility.Fly": [
         "Level.SpawnPoint.WorldMap.VersosDraftEntry",
         "Level.SpawnPoint.WorldMap.AxonPathEntry"
+      ],
+      "Story.BarrierBreakerAcquired": [
+        "Level.SpawnPoint.WorldMap.MonolithInteriorEntry"
       ]
     },
     "PortalConnection": "",

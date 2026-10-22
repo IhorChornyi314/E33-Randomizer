@@ -425,7 +425,7 @@
         <value>Edit Individual Locations</value>
     </data>
     <data name="Randomize_Locations_RandomizeLocations" xml:space="preserve">
-        <value>Randomize Locations</value>
+        <value>Randomize locations</value>
     </data>
     <data name="Randomize_Locations_EnsureFullConnectivity" xml:space="preserve">
         <value>Ensure the full map is reachable</value>
@@ -527,11 +527,19 @@ Use this button to fix that.</value>
 
 Use this button to fix that.</value>
     </data>
+    <data name="Misc_SaveFile_UnlockGreatestExpedition_Description" xml:space="preserve">
+        <value>Sometimes the location randomizer can lead to getting stuck on the "I should talk to everyone" campfire dialogue at the start of Act 3 if not all members of the expedition are present.
+
+Use this button to fix that.</value>
+    </data>
     <data name="Misc_SaveFile_Button_FixCurtains">
         <value>Fix curtains in save file</value>
     </data>
     <data name="Misc_SaveFile_Button_FixForcedCamps">
         <value>Remove forced camps in save file</value>
+    </data>
+    <data name="Misc_SaveFile_Button_UnlockGreatestExpedition">
+        <value>Unlock the Greatest Expedition camp option</value>
     </data>
     <data name="Misc_ErrorPatching">
         <value>Error patching: {0}</value>

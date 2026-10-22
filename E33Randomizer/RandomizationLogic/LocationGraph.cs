@@ -102,8 +102,8 @@ public class LocationGraph
     public List<List<int>> PortalGroups = [];
 
     public int MaxDfsDepth = 700;
-    public int MaxTotalIterations = 500;
-    public int MaxAttempts = 20;
+    public int MaxTotalIterations = 1000;
+    public int MaxAttempts = 80;
 
     public int TotalIterations = 0;
 
