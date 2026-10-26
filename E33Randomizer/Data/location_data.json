@@ -858,7 +858,9 @@
     ],
     "ConditionalConnections": {},
     "PortalConnection": "Level.SpawnPoint.Manor.Entrance",
-    "Keys": []
+    "Keys": [
+      "Story.MaelleJoined"
+    ]
   },
   {
     "CodeName": "Level.SpawnPoint.FrozenHearts.TrainStation",
@@ -1075,7 +1077,9 @@
     ],
     "ConditionalConnections": {},
     "PortalConnection": "Level.SpawnPoint.Manor.Entrance",
-    "Keys": []
+    "Keys": [
+      "Story.MaelleJoined"
+    ]
   },
   {
     "CodeName": "Level.SpawnPoint.GestralVillage.VillageEntry",
@@ -1230,7 +1234,9 @@
     ],
     "ConditionalConnections": {},
     "PortalConnection": "Level.SpawnPoint.Manor.Entrance",
-    "Keys": []
+    "Keys": [
+      "Story.MaelleJoined"
+    ]
   },
   {
     "CodeName": "Level.SpawnPoint.GobluLairs_X_AncientSanctuary.CasinoEntrance",
@@ -1587,7 +1593,9 @@
     ],
     "ConditionalConnections": {},
     "PortalConnection": "",
-    "Keys": []
+    "Keys": [
+      "EsquieAbility.Fly"
+    ]
   },
   {
     "CodeName": "Level.SpawnPoint.Manor.AlineWorkshop",
@@ -1843,9 +1851,7 @@
     ],
     "ConditionalConnections": {},
     "PortalConnection": "Level.SpawnPoint.MonolithInterior.Climb.Exit",
-    "Keys": [
-      "EsquieAbility.Fly"
-    ]
+    "Keys": []
   },
   {
     "CodeName": "Level.SpawnPoint.MonolithInterior.Climb.AncientSanctuary",
@@ -1992,7 +1998,9 @@
     ],
     "ConditionalConnections": {},
     "PortalConnection": "Level.SpawnPoint.Manor.Entrance",
-    "Keys": []
+    "Keys": [
+      "Story.MaelleJoined"
+    ]
   },
   {
     "CodeName": "Level.SpawnPoint.MonolithInterior.Climb.MonocoMountain",
@@ -2233,7 +2241,9 @@
     ],
     "ConditionalConnections": {},
     "PortalConnection": "Level.SpawnPoint.Manor.Entrance",
-    "Keys": []
+    "Keys": [
+      "Story.MaelleJoined"
+    ]
   },
   {
     "CodeName": "Level.SpawnPoint.Reacher.Alicia",
@@ -2319,7 +2329,9 @@
     ],
     "ConditionalConnections": {},
     "PortalConnection": "Level.SpawnPoint.Manor.Entrance",
-    "Keys": []
+    "Keys": [
+      "Story.MaelleJoined"
+    ]
   },
   {
     "CodeName": "Level.SpawnPoint.Reacher.Mountain",
@@ -2553,7 +2565,9 @@
       ]
     },
     "PortalConnection": "Level.SpawnPoint.Manor.Entrance",
-    "Keys": []
+    "Keys": [
+      "Story.MaelleJoined"
+    ]
   },
   {
     "CodeName": "Level.SpawnPoint.SeaCliff.PaintressShrine",
@@ -2735,7 +2749,9 @@
     ],
     "ConditionalConnections": {},
     "PortalConnection": "Level.SpawnPoint.Manor.Entrance",
-    "Keys": []
+    "Keys": [
+      "Story.MaelleJoined"
+    ]
   },
   {
     "CodeName": "Level.SpawnPoint.Sirene.SirenArena",
@@ -3362,7 +3378,9 @@
     ],
     "ConditionalConnections": {},
     "PortalConnection": "Level.SpawnPoint.Manor.Entrance",
-    "Keys": []
+    "Keys": [
+      "Story.MaelleJoined"
+    ]
   },
   {
     "CodeName": "Level.SpawnPoint.Visages.Plazza",
@@ -4088,7 +4106,9 @@
       ]
     },
     "PortalConnection": "Level.SpawnPoint.Manor.Entrance",
-    "Keys": []
+    "Keys": [
+      "Story.MaelleJoined"
+    ]
   },
   {
     "CodeName": "Level.SpawnPoint.WorldMap.ManorDoor2",
@@ -4102,7 +4122,9 @@
       ]
     },
     "PortalConnection": "Level.SpawnPoint.Manor.Entrance",
-    "Keys": []
+    "Keys": [
+      "Story.MaelleJoined"
+    ]
   },
   {
     "CodeName": "Level.SpawnPoint.WorldMap.MiniSpringMeadowEntry",

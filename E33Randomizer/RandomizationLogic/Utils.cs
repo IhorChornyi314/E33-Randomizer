@@ -61,6 +61,16 @@ public static class Utils
     {
         return val >= Math.Min(a, b) && val <= Math.Max(a, b);
     }
+    
+    public static IEnumerable<T> LazyShuffle<T>(List<T> list)
+    {
+        for (var i = 0; i < list.Count; i++)
+        {
+            var j = RandomizerLogic.rand.Next(i, list.Count);
+            (list[i], list[j]) = (list[j], list[i]);
+            yield return list[i];
+        }
+    }
 
     public static List<T> ShuffleList<T>(IEnumerable<T> list)
     {

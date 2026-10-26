@@ -28,6 +28,7 @@ public class ConditionalConnection
     public UInt128 RequiredKeyBit;
     public bool IsEsquieAbility;
     public List<int> Connections;
+    public int[] ConnectionsArray;
 }
 
 public class LocationNodeInternal
@@ -36,6 +37,8 @@ public class LocationNodeInternal
     public string CodeName;
     public List<int> UnconditionalConnections;
     public List<ConditionalConnection> ConditionalConnections;
+    public int[] UnconditionalArray;
+    public ConditionalConnection[] ConditionalArray;
     public int OriginalPortalConnection = -1;
     public int PortalConnection = -1;
 
@@ -44,7 +47,7 @@ public class LocationNodeInternal
 
     public UInt128 KeysMask;
 
-    public List<int> GetConnections(UInt128 unlockedKeys, UInt128 esquieCarBit, bool includeTeleport=true)
+    public List<int> GetConnections(UInt128 unlockedKeys, UInt128 esquieCarBit, bool includeTeleport = true)
     {
         var result = new List<int>(UnconditionalConnections);
         if (includeTeleport && PortalConnection != -1)
@@ -59,7 +62,8 @@ public class LocationNodeInternal
         return result;
     }
 
-    public LocationNodeInternal(LocationData locationData, Dictionary<string, int> nodeIndexes, Dictionary<string, int> keyIndexes)
+    public LocationNodeInternal(LocationData locationData, Dictionary<string, int> nodeIndexes,
+        Dictionary<string, int> keyIndexes)
     {
         CodeName = locationData.CodeName;
         ID = nodeIndexes[CodeName];
@@ -77,6 +81,10 @@ public class LocationNodeInternal
         KeysMask = locationData.Keys.Aggregate((UInt128)0, (mask, key) => mask | ((UInt128)1 << keyIndexes[key]));
         DepthIncrement = CodeName.Contains("Special") || CodeName.Contains("World") ? 0 : 1;
         DepthIncrement = locationData.LevelScaling == 1 ? 0 : DepthIncrement;
+        UnconditionalArray = UnconditionalConnections.ToArray();
+        ConditionalArray = ConditionalConnections.ToArray();
+        foreach (var cc in ConditionalArray)
+            cc.ConnectionsArray = cc.Connections.ToArray();
     }
 
     public override string ToString()
@@ -88,6 +96,8 @@ public class LocationNodeInternal
 public class LocationGraph
 {
     private Stack<(int From, int To, int PrevFrom, int PrevTo)> ModificationHistory = new();
+    private UInt128[][] _visited;
+    private readonly List<(int Node, UInt128[] Old)> _trail = new();
 
     public List<LocationNodeInternal> Nodes = [];
     public int TotalReachableNodes = 0;
@@ -98,12 +108,21 @@ public class LocationGraph
     public HashSet<int> AvailablePortals = new();
     public HashSet<int> AvailableDestinations = new();
     public Dictionary<int, List<int>> PortalDestinationPools = new();
-    private HashSet<int> NotRandomizedDestinations = new();
+    public Dictionary<int, HashSet<int>> PortalDestinationPoolSets = new();
+    public Dictionary<int, int> PinnedDestination = new();
+    public HashSet<int> NotRandomizedDestinations = new();
     public List<List<int>> PortalGroups = [];
 
-    public int MaxDfsDepth = 700;
-    public int MaxTotalIterations = 1000;
-    public int MaxAttempts = 80;
+    public int MaxDfsDepth = 500; 
+    public int MaxTotalIterations = 500;
+    public int MaxAttempts = 5000;
+
+    public int[] RegionId;
+    private int _regionCount;
+    private int[] _availableRegions;
+    private bool[] _reachedRegions;
+    public int FrontierGuard = 1;
+    public int FrontierCount;
 
     public int TotalIterations = 0;
 
@@ -120,22 +139,25 @@ public class LocationGraph
         foreach (var n in nodeData)
         {
             foreach (var key in n.Keys)
-                if (!keyIndexes.ContainsKey(key)) keyIndexes[key] = keyIndexes.Count;
+                if (!keyIndexes.ContainsKey(key))
+                    keyIndexes[key] = keyIndexes.Count;
             foreach (var key in n.ConditionalConnections.Keys)
-                if (!keyIndexes.ContainsKey(key)) keyIndexes[key] = keyIndexes.Count;
+                if (!keyIndexes.ContainsKey(key))
+                    keyIndexes[key] = keyIndexes.Count;
         }
 
         if (keyIndexes.Count > 128)
-            throw new InvalidOperationException(ResourceHelper.GetString(nameof(Assets.Resources.LocationController_TooManyKeys_Exception)));
+            throw new InvalidOperationException(
+                ResourceHelper.GetString(nameof(Assets.Resources.LocationController_TooManyKeys_Exception)));
 
         Nodes = nodeData.Select(n => new LocationNodeInternal(n, nodeIndexes, keyIndexes)).ToList();
-        
+
         EsquieCarBit = keyIndexes.TryGetValue("EsquieAbility.Car", out var carIdx)
             ? (UInt128)1 << carIdx
             : (UInt128)0;
 
         var allNodes = Nodes.Select(n => n.ID).ToHashSet();
-        
+
         foreach (var node in Nodes)
         {
             var reachableStates = GetReachableStates((node.ID, 0), allNodes);
@@ -147,6 +169,27 @@ public class LocationGraph
                 PortalGroups.Add(newGroup);
             }
         }
+
+        var parent = Enumerable.Range(0, Nodes.Count).ToArray();
+
+        int Find(int x)
+        {
+            while (parent[x] != x) x = parent[x] = parent[parent[x]];
+            return x;
+        }
+
+        foreach (var (n, list) in ConnectedPortals)
+        foreach (var p in list)
+            parent[Find(p)] = Find(n);
+
+        RegionId = new int[Nodes.Count];
+        var ids = new Dictionary<int, int>();
+        for (var i = 0; i < Nodes.Count; i++)
+            RegionId[i] = ids.TryGetValue(Find(i), out var id) ? id : (ids[Find(i)] = ids.Count);
+        _regionCount = ids.Count;
+        _availableRegions = new int[_regionCount];
+        _reachedRegions = new bool[_regionCount];
+
         Portals = Nodes.Where(IsPortal).ToList();
         TotalIterations = 0;
     }
@@ -180,15 +223,16 @@ public class LocationGraph
         }
     }
 
-    public HashSet<(int Node, UInt128 Keys)> GetReachableStates((int Node, UInt128 Keys) startingState, HashSet<int> bannedPortals=null)
+    public HashSet<(int Node, UInt128 Keys)> GetReachableStates((int Node, UInt128 Keys) startingState,
+        HashSet<int> bannedPortals = null)
     {
         bannedPortals ??= new HashSet<int>();
         var queue = new Queue<(int Node, UInt128 Keys)>();
         var visited = new Dictionary<int, List<UInt128>>();
-        
+
         queue.Enqueue(startingState);
         visited[startingState.Node] = [startingState.Keys];
-        
+
         while (queue.Count > 0)
         {
             var (currentNode, currentKeysMask) = queue.Dequeue();
@@ -209,7 +253,7 @@ public class LocationGraph
                 }
 
                 var alreadyVisited = false;
-                
+
                 foreach (var keyset in visited[nextNode])
                 {
                     if ((keyset | nextKeysMask) == keyset)
@@ -227,14 +271,16 @@ public class LocationGraph
                 }
             }
         }
+
         var result = new HashSet<(int, UInt128)>();
         foreach (var (node, keys) in visited)
         {
             result.AddRange(keys.Select(k => (node, k)));
         }
+
         return result;
     }
-    
+
     public List<LocationData> GetPathAndDepths(int startNode, int endNode)
     {
         var currentPath = new List<int>();
@@ -276,31 +322,64 @@ public class LocationGraph
             }
         }
 
-        var criticalPath = currentPath.Select(i => Controllers.LocationController.GetObject(Nodes[i].CodeName)).ToList();
+        var criticalPath = currentPath.Select(i => Controllers.LocationController.GetObject(Nodes[i].CodeName))
+            .ToList();
         return criticalPath;
     }
 
     public bool IsPortal(int node)
     {
-        return Nodes[node].OriginalPortalConnection != -1 && Nodes[Nodes[node].OriginalPortalConnection].OriginalPortalConnection == node;
+        return Nodes[node].OriginalPortalConnection != -1 &&
+               Nodes[Nodes[node].OriginalPortalConnection].OriginalPortalConnection == node;
     }
 
     public bool IsPortal(LocationNodeInternal node)
     {
-        return node.OriginalPortalConnection != -1 && Nodes[node.OriginalPortalConnection].OriginalPortalConnection == node.ID;
+        return node.OriginalPortalConnection != -1 &&
+               Nodes[node.OriginalPortalConnection].OriginalPortalConnection == node.ID;
     }
 
-    public List<int> SortPortalsByPreference(int startingPortal)
+
+    public IEnumerable<int> SortPortalsByPreference(int startingPortal, int frontierCount, bool[] reachedRegions)
     {
-        return Utils.ShuffleList(AvailableDestinations).OrderBy(p => NotRandomizedDestinations.Contains(p) && p == Nodes[startingPortal].OriginalPortalConnection ? -1 :
-            PortalDestinationPools[startingPortal].Contains(p) ? 0 : 1).ToList();
+        var pool = PortalDestinationPoolSets[startingPortal];
+        var pinned = PinnedDestination[startingPortal];
+        var guard = frontierCount <= FrontierGuard;
+
+        var hasPinned = false;
+        var unreachedPool = new List<int>();
+        var unreachedRest = new List<int>();
+        var reachablePool = new List<int>();
+        var reachableRest = new List<int>();
+
+        foreach (var p in AvailableDestinations)
+        {
+            if (p == startingPortal) continue;
+            if (reachedRegions != null && reachedRegions[RegionId[p]]) continue;
+
+            if (p == pinned)
+            {
+                hasPinned = true;
+                continue;
+            }
+
+            var inPool = pool.Contains(p);
+            if (guard && _visited[p] == null) (inPool ? unreachedPool : unreachedRest).Add(p);
+            else (inPool ? reachablePool : reachableRest).Add(p);
+        }
+
+        if (hasPinned) yield return pinned;
+
+        foreach (var tier in new[] { unreachedPool, unreachedRest, reachablePool, reachableRest })
+        foreach (var p in Utils.LazyShuffle(tier))
+            yield return p;
     }
 
     public bool HasFullReachability(int startNode)
     {
         return GetReachableStates((startNode, 0)).Select(s => s.Node).Distinct().Count() == TotalReachableNodes;
     }
-    
+
     private void ApplyPortalLink(int fromPortal, int toPortal)
     {
         var prevFrom = Nodes[fromPortal].PortalConnection;
@@ -334,184 +413,238 @@ public class LocationGraph
             AvailablePortals.Add(to);
         }
     }
-    
-    private static Dictionary<int, List<UInt128>> CloneVisited(Dictionary<int, List<UInt128>> visited)
+
+    private void SetVisited(int node, UInt128[] value)
     {
-        var clone = new Dictionary<int, List<UInt128>>(visited.Count);
-        foreach (var (nodeId, keysList) in visited)
-        {
-            clone[nodeId] = new List<UInt128>(keysList);
-        }
-        return clone;
+        _trail.Add((node, _visited[node]));
+        _visited[node] = value;
     }
 
-    private void TryEnqueue(
-        Dictionary<int, List<UInt128>> visited,
-        Queue<(int Node, UInt128 Keys)> queue,
-        int targetNode,
-        UInt128 incomingKeys)
+    private void RollbackTo(int mark)
     {
-        if (!visited.TryGetValue(targetNode, out var keysList))
+        for (var i = _trail.Count - 1; i >= mark; i--)
+            _visited[_trail[i].Node] = _trail[i].Old;
+        _trail.RemoveRange(mark, _trail.Count - mark);
+    }
+
+    private void TryEnqueue(Queue<(int Node, UInt128 Keys)> queue, int targetNode, UInt128 incoming)
+    {
+        var existing = _visited[targetNode];
+        if (existing == null)
         {
-            visited[targetNode] = [incomingKeys];
-            queue.Enqueue((targetNode, incomingKeys));
+            SetVisited(targetNode, [incoming]);
+            queue.Enqueue((targetNode, incoming));
             return;
         }
 
-        foreach (var keyset in keysList)
+        var keep = 0;
+        foreach (var k in existing)
         {
-            if ((keyset | incomingKeys) == keyset)
-                return;
+            if ((k | incoming) == k) return;
+            if ((k | incoming) != incoming) keep++;
         }
 
-        keysList.RemoveAll(k => (k | incomingKeys) == incomingKeys);
-        keysList.Add(incomingKeys);
-        queue.Enqueue((targetNode, incomingKeys));
+        var updated = new UInt128[keep + 1];
+        var idx = 0;
+        foreach (var k in existing)
+            if ((k | incoming) != incoming)
+                updated[idx++] = k;
+        updated[idx] = incoming;
+
+        SetVisited(targetNode, updated);
+        queue.Enqueue((targetNode, incoming));
     }
 
-    private void RunBfs(Dictionary<int, List<UInt128>> visited, Queue<(int Node, UInt128 Keys)> queue)
+    private void RunBfs(Queue<(int Node, UInt128 Keys)> queue)
     {
         while (queue.Count > 0)
         {
             var (currentNode, currentKeysMask) = queue.Dequeue();
             var node = Nodes[currentNode];
+            var nextKeys = currentKeysMask | node.KeysMask;
 
-            var nextKeysMask = currentKeysMask | node.KeysMask;
-            var connections = node.GetConnections(nextKeysMask, EsquieCarBit, !AvailablePortals.Contains(node.ID));
+            var unc = node.UnconditionalArray;
+            for (var i = 0; i < unc.Length; i++)
+                TryEnqueue(queue, unc[i], nextKeys);
 
-            foreach (int nextNode in connections)
+            if (node.PortalConnection != -1 && !AvailablePortals.Contains(node.ID))
+                TryEnqueue(queue, node.PortalConnection, nextKeys);
+
+            var conds = node.ConditionalArray;
+            for (var i = 0; i < conds.Length; i++)
             {
-                TryEnqueue(visited, queue, nextNode, nextKeysMask);
+                var cond = conds[i];
+                if ((nextKeys & cond.RequiredKeyBit) == 0) continue;
+                if (cond.IsEsquieAbility && (nextKeys & EsquieCarBit) == 0) continue;
+
+                var targets = cond.ConnectionsArray;
+                for (var j = 0; j < targets.Length; j++)
+                    TryEnqueue(queue, targets[j], nextKeys);
             }
         }
     }
 
-    private HashSet<(int Node, UInt128 Keys)> GetReachableUnclaimedPortalsFromVisited(
-        Dictionary<int, List<UInt128>> visited)
-    {
-        var result = new HashSet<(int Node, UInt128 Keys)>();
-        foreach (var (nodeId, keysList) in visited)
-        {
-            if (AvailablePortals.Contains(nodeId) && IsPortal(nodeId))
-            {
-                foreach (var k in keysList)
-                {
-                    result.Add((nodeId, k));
-                }
-            }
-        }
-        return result;
-    }
-
-    private HashSet<(int Node, UInt128 Keys)> ExtendReachability(
-        Dictionary<int, List<UInt128>> visited,
-        int candidate,
-        int dest)
+    private void ExtendReachability(int candidate, int dest)
     {
         var queue = new Queue<(int Node, UInt128 Keys)>();
 
-        if (visited.TryGetValue(candidate, out var candidateKeys))
+        var candidateKeys = _visited[candidate];
+        if (candidateKeys != null)
         {
-            var candidateNode = Nodes[candidate];
-            foreach (var k in candidateKeys.ToList())
+            var mask = Nodes[candidate].KeysMask;
+            foreach (var k in candidateKeys)
+                TryEnqueue(queue, dest, k | mask);
+        }
+
+        if (RandomizerLogic.Settings.EnableTwoWayTeleport)
+        {
+            var destKeys = _visited[dest];
+            if (destKeys != null)
             {
-                TryEnqueue(visited, queue, dest, k | candidateNode.KeysMask);
+                var mask = Nodes[dest].KeysMask;
+                foreach (var k in destKeys)
+                    TryEnqueue(queue, candidate, k | mask);
             }
         }
 
-        if (RandomizerLogic.Settings.EnableTwoWayTeleport && visited.TryGetValue(dest, out var destKeys))
-        {
-            var destNode = Nodes[dest];
-            foreach (var k in destKeys.ToList())
-            {
-                TryEnqueue(visited, queue, candidate, k | destNode.KeysMask);
-            }
-        }
-
-        RunBfs(visited, queue);
-
-        return GetReachableUnclaimedPortalsFromVisited(visited);
+        RunBfs(queue);
     }
 
     private bool CompleteGraphPlacement(int startNode, (int Node, UInt128 Keys) startingState, int depth)
     {
-        var visited = new Dictionary<int, List<UInt128>>();
-        var queue = new Queue<(int Node, UInt128 Keys)>();
+        _visited = new UInt128[Nodes.Count][];
+        _trail.Clear();
 
-        visited[startingState.Node] = [startingState.Keys];
+        var queue = new Queue<(int Node, UInt128 Keys)>();
+        SetVisited(startingState.Node, [startingState.Keys]);
         queue.Enqueue(startingState);
 
-        RunBfs(visited, queue);
-        var frontier = GetReachableUnclaimedPortalsFromVisited(visited);
-
-        return CompleteGraphPlacement(startNode, visited, frontier, depth);
+        RunBfs(queue);
+        return CompleteGraphPlacement(startNode, depth);
     }
 
-    private bool CompleteGraphPlacement(
-        int startNode,
-        Dictionary<int, List<UInt128>> visited,
-        HashSet<(int Node, UInt128 Keys)> frontier,
-        int depth)
+    private int ComputeSlack()
+    {
+        Array.Clear(_availableRegions);
+        Array.Clear(_reachedRegions);
+
+        foreach (var p in AvailablePortals)
+        {
+            var r = RegionId[p];
+            _availableRegions[r]++;
+            if (_visited[p] != null) _reachedRegions[r] = true;
+        }
+
+        var slack = 0;
+        for (var r = 0; r < _regionCount; r++)
+        {
+            if (_availableRegions[r] == 0) continue;
+            slack += _reachedRegions[r]
+                ? _availableRegions[r]
+                : _availableRegions[r] - 2;
+        }
+
+        return slack;
+    }
+
+    private int PickCandidate()
+    {
+        var best = -1;
+        var bestScore = int.MaxValue;
+        var ties = 0;
+        FrontierCount = 0;
+        foreach (var n in AvailablePortals)
+        {
+            if (_visited[n] == null) continue;
+            FrontierCount++;
+            var score = 0;
+            foreach (var d in PortalDestinationPools[n])
+                if (AvailablePortals.Contains(d))
+                    score++;
+
+            if (score < bestScore)
+            {
+                best = n;
+                bestScore = score;
+                ties = 1;
+            }
+            else if (score == bestScore && RandomizerLogic.rand.Next(++ties) == 0)
+            {
+                best = n;
+            }
+        }
+
+        return best;
+    }
+
+    private bool CompleteGraphPlacement(int startNode, int depth)
     {
         TotalIterations++;
-        
-        if (AvailablePortals.Count == 0)
-            return HasFullReachability(startNode);
-        
-        if (depth > MaxDfsDepth || TotalIterations > MaxTotalIterations || frontier.Count == 0) return false;
 
-        var candidate = Utils.ShuffleList(frontier.Select(s => s.Node).Distinct().ToList())
-            .Where(n => AvailablePortals.Contains(n))
-            .OrderBy(n => PortalDestinationPools[n].Count(d => AvailablePortals.Contains(d)))
-            .FirstOrDefault(-1);
+        if (AvailablePortals.Count == 0) return HasFullReachability(startNode);
 
+        if (depth > MaxDfsDepth || TotalIterations > MaxTotalIterations) return false;
+
+        var slack = ComputeSlack();
+        var twoWay = RandomizerLogic.Settings.EnableTwoWayTeleport;
+        if (twoWay && slack < 0) return false;
+
+        var reachedRegions = twoWay && slack < 2 ? (bool[])_reachedRegions.Clone() : null;
+
+        var candidate = PickCandidate();
         if (candidate == -1) return false;
 
-        foreach (var dest in SortPortalsByPreference(candidate))
+        foreach (var dest in SortPortalsByPreference(candidate, FrontierCount, reachedRegions))
         {
-            if (dest == candidate) continue;
-            if (RandomizerLogic.Settings.EnableTwoWayTeleport && !AvailablePortals.Contains(dest)) continue;
-
             ApplyPortalLink(candidate, dest);
 
-            var childVisited = CloneVisited(visited);
-            var childFrontier = ExtendReachability(childVisited, candidate, dest);
+            var mark = _trail.Count;
+            ExtendReachability(candidate, dest);
 
-            if (AvailablePortals.Count > 0 && childFrontier.Count == 0)
-            {
-                UndoPortalLink();
-                continue;
-            }
-
-            if (CompleteGraphPlacement(startNode, childVisited, childFrontier, depth + 1))
+            if (CompleteGraphPlacement(startNode, depth + 1))
                 return true;
 
+            RollbackTo(mark);
             UndoPortalLink();
+
+            if (TotalIterations > MaxTotalIterations) return false;
         }
 
         return false;
     }
-    
-    public bool RemakeWholeGraph(string startNodeCodeName, string endingNodeCodeName, List<string> possibleLandingLocationCodeNames, out List<LocationData> criticalPath,
+
+    public bool RemakeWholeGraph(string startNodeCodeName, string endingNodeCodeName,
+        List<string> possibleLandingLocationCodeNames, out List<LocationData> criticalPath,
         out Dictionary<string, string> destinationChanges)
     {
-        MaxAttempts = Math.Max(MaxAttempts - possibleLandingLocationCodeNames.Count + 1, 5);
         var clp = RandomizerLogic.CustomLocationPlacement.GetCategory;
-        NotRandomizedDestinations = Nodes.Where(n => RandomizerLogic.CustomLocationPlacement.NotRandomizedCodeNames.Contains(n.CodeName)).Select(n => n.ID).ToHashSet();
+        NotRandomizedDestinations =
+            Nodes.Where(n => RandomizerLogic.CustomLocationPlacement.NotRandomizedCodeNames.Contains(n.CodeName))
+                .Select(n => n.ID).ToHashSet();
+        var categories = Nodes.ToDictionary(n => n.ID, n => clp(n.CodeName));
+
         foreach (var node in Nodes)
         {
             if (!IsPortal(node)) continue;
             node.PortalConnection = node.OriginalPortalConnection;
-            var nodeDestinationCategory = clp(Nodes[node.OriginalPortalConnection].CodeName);
-            PortalDestinationPools[node.ID] = Nodes.Where(n =>
-                IsPortal(n) && clp(n.CodeName) == nodeDestinationCategory && n != node).Select(n => n.ID).ToList();
+
+            var destCategory = categories[node.OriginalPortalConnection];
+            var pool = Nodes.Where(n => IsPortal(n) && n != node && categories[n.ID] == destCategory)
+                .Select(n => n.ID).ToList();
+
+            PortalDestinationPools[node.ID] = pool;
+            PortalDestinationPoolSets[node.ID] = pool.ToHashSet();
+            PinnedDestination[node.ID] =
+                NotRandomizedDestinations.Contains(node.OriginalPortalConnection)
+                    ? node.OriginalPortalConnection
+                    : -1;
         }
-        
+
         criticalPath = [];
         destinationChanges = new();
         AvailablePortals = Portals.Select(n => n.ID).ToHashSet();
         AvailableDestinations = Portals.Select(n => n.ID).ToHashSet();
-        
+
         int startNode = nodeIndexes[startNodeCodeName];
         int endNode = nodeIndexes[endingNodeCodeName];
         List<int> possibleLandingLocations = possibleLandingLocationCodeNames.Select(cN => nodeIndexes[cN]).ToList();
@@ -520,7 +653,7 @@ public class LocationGraph
         UInt128 initialKeys = 0;
 
         (int, UInt128) startingState = (startNode, initialKeys);
-        
+
         foreach (var possibleLandingLocation in possibleLandingLocations)
         {
             var iterationsLeft = MaxAttempts;
@@ -545,10 +678,9 @@ public class LocationGraph
             if (foundValid)
                 break;
         }
-        
 
         if (AvailablePortals.Any())
-        { 
+        {
             return false;
         }
 
@@ -556,9 +688,9 @@ public class LocationGraph
         {
             destinationChanges[Nodes[node.OriginalPortalConnection].CodeName] = Nodes[node.PortalConnection].CodeName;
         }
-        
+
         destinationChanges["Level.SpawnPoint.SpringMeadows.Entry"] = Nodes[Nodes[95].PortalConnection].CodeName;
-        
+
         criticalPath = GetPathAndDepths(startNode, endNode);
         return true;
     }
