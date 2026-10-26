@@ -31,6 +31,13 @@ public class LocationController: Controller<LocationData>
         {"Level.SpawnPoint.MonocoStation.InsideStation", "Monoco"}
     };
     
+    static public Dictionary<string, string> RockKeys = new()
+    {
+        {"Florrie", "EsquieAbility.Swim"},
+        {"Dorrie", "EsquieAbility.SwimPlus"},
+        {"Soarrie", "EsquieAbility.Fly"},
+    };
+    
     private LocationGraph _locationGraph = new LocationGraph();
     private UAsset _levelScalingTableAsset;
     
@@ -147,6 +154,12 @@ public class LocationController: Controller<LocationData>
         }
 
         _locationGraph.ApplyDestinationChanges(DestinationChanges);
+
+        foreach (var (rock, location) in Controllers.ItemsController.EsquieRockLocations)
+        {
+            var keyName = RockKeys[rock];
+            _locationGraph.MoveKey(keyName, location);
+        }
         
         if (!_locationGraph.RemakeWholeGraph(_currentConstraints[0], _currentConstraints[^1], possibleLandingLocations, out criticalPath, out var corrections))
         {

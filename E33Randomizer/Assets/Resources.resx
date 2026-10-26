@@ -312,7 +312,7 @@
         <value>Whether the same passive intrinsic to a weapon can appear multiple times. Note that there are some passives that are already non-unique in the base game.</value>
     </data>
     <data name="Randomize_Items_Tooltip_RandomizeEsquiesRocksIntoMapPickups" xml:space="preserve">
-        <value>This option makes it so that you now need to find the rock items scattered on the map before Esquie can use his abilities. The rocks can only be found as a pickup wherever a unique item (weapon, pictos, etc) was originally present. You need to go to camp with the rock in your inventory to unlock them. Note that the location randomizer assumes that the rocks are still in their original locations.</value>
+        <value>This option makes it so that you now need to find the rock items scattered on the map before Esquie can use his abilities. The rocks can only be found as a pickup wherever a unique item (weapon, pictos, etc) was originally present. You need to go to camp with the rock in your inventory to unlock them.</value>
     </data>
     <data name="Randomize_Items_Tooltip_LimitEsquiesRocksToOnlyTheirOriginalArea" xml:space="preserve">
         <value>Florrie - Spring Meadows, Flying Waters, Ancient Sanctuary, Esquie’s Nest, Stone Wave Cliffs. Dorrie - Forgotten Battlefield, Old Lumiere. Soarrie - Visages, Sirene, Monolith. Otherwise, the rocks can only be found in the areas they were found in the original game - Stone Wave Cliffs, Old Lumiere, and Monolith, respectively.</value>
@@ -462,7 +462,7 @@
     </data>
 
     <data name="Randomize_Locations_Tooltip_RandomizeLocations" xml:space="preserve">
-        <value>Whether or not the teleport destinations are randomized. Regardless of the settings, there exists a path from the start to the end of the game, as indicated in the generated locations.txt file. Does not take into account if Esquie's rocks have been randomized in the item randomizer.</value>
+        <value>Whether or not the teleport destinations are randomized. Regardless of the settings, there exists a path from the start to the end of the game, as indicated in the generated locations.txt file.</value>
     </data>
     <data name="Randomize_Locations_Tooltip_EnsureFullConnectivity" xml:space="preserve">
         <value>Enabling this setting guarantees that every location can be reached via some path. This setting takes loose guidance from the custom placement rules but prioritizes player experience. If you aren't sure, keep this on.</value>

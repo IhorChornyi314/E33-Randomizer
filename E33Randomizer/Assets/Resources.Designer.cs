@@ -2296,7 +2296,7 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This option makes it so that you now need to find the rock items scattered on the map before Esquie can use his abilities. The rocks can only be found as a pickup wherever a unique item (weapon, pictos, etc) was originally present. You need to go to camp with the rock in your inventory to unlock them. Note that the location randomizer assumes that the rocks are still in their original locations..
+        ///   Looks up a localized string similar to This option makes it so that you now need to find the rock items scattered on the map before Esquie can use his abilities. The rocks can only be found as a pickup wherever a unique item (weapon, pictos, etc) was originally present. You need to go to camp with the rock in your inventory to unlock them..
         /// </summary>
         public static string Randomize_Items_Tooltip_RandomizeEsquiesRocksIntoMapPickups {
             get {
@@ -2548,7 +2548,7 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Whether or not the teleport destinations are randomized. Regardless of the settings, there exists a path from the start to the end of the game, as indicated in the generated locations.txt file. Does not take into account if Esquie&apos;s rocks have been randomized in the item randomizer..
+        ///   Looks up a localized string similar to Whether or not the teleport destinations are randomized. Regardless of the settings, there exists a path from the start to the end of the game, as indicated in the generated locations.txt file..
         /// </summary>
         public static string Randomize_Locations_Tooltip_RandomizeLocations {
             get {

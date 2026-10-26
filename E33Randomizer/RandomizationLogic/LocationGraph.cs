@@ -209,6 +209,20 @@ public class LocationGraph
 
         TotalIterations = 0;
     }
+    
+    public void MoveKey(string keyId, string targetNodeCodeName)
+    {
+        if (!keyIndexes.TryGetValue(keyId, out var idx))
+            throw new ArgumentException($"Unknown key '{keyId}'", nameof(keyId));
+        if (!nodeIndexes.TryGetValue(targetNodeCodeName, out var target))
+            throw new ArgumentException($"Unknown node '{targetNodeCodeName}'", nameof(targetNodeCodeName));
+
+        var bit = (UInt128)1 << idx;
+        foreach (var node in Nodes)
+            node.KeysMask &= ~bit;
+
+        Nodes[target].KeysMask |= bit;
+    }
 
     public void ApplyDestinationChanges(Dictionary<string, string> destinationChanges)
     {

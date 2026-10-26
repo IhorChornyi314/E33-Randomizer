@@ -18,6 +18,7 @@ public class ItemsController: Controller<ItemData>
     private static List<string> _ignoredFiles = [];
     private static List<string> _defaultWeapons = ["Noahram", "Lunerim", "Maellum", "Scieleson", "Monocaro"];
     private static Dictionary<string, List<string>> _rockChests = new();
+    private static Dictionary<string, string> _chestLocations = new();
     
     public List<ItemSource> ItemsSources = new();
 
@@ -54,6 +55,13 @@ public class ItemsController: Controller<ItemData>
         {"Sciel", null},
         {"Verso", null},
         {"Monoco", null},
+    };
+
+    public Dictionary<string, string> EsquieRockLocations = new()
+    {
+        {"Florrie", "Level.SpawnPoint.WorldMap.PostSeaCliffForcedCamp"},
+        {"Dorrie", "Special.EsquieAbility.SwimPlus"},
+        {"Soarrie", "Level.SpawnPoint.Manor.AliciaRoomAct3"}
     };
 
     public Dictionary<string, string> RandomizedWeaponPassives = new();
@@ -388,6 +396,7 @@ public class ItemsController: Controller<ItemData>
             }
 
             var checkName = Utils.Pick(rockChests);
+            EsquieRockLocations[rockName] = _chestLocations[checkName];
             var rockCheck = randomizableChecks.Find(c => c.Key == checkName);
             rockCheck.ItemSource.AddItem(rockCheck.Key, GetObject($"QUEST_EsquieRock{rockName}"));
         }
@@ -661,12 +670,17 @@ public class ItemsController: Controller<ItemData>
         };
     }
 
-    public void ReadRockChests()
+    public void ReadChestLocations()
     {
         using (StreamReader r = new StreamReader($"{RandomizerLogic.DataDirectory}/rock_chests.json"))
         {
             string json = r.ReadToEnd();
             _rockChests = JsonSerializer.Deserialize<Dictionary<string, List<string>>>(json, JsonSourceGenerationContext.Default.DictionaryStringListString) ?? [];
+        }
+        using (StreamReader r = new StreamReader($"{RandomizerLogic.DataDirectory}/chest_locations.json"))
+        {
+            string json = r.ReadToEnd();
+            _chestLocations = JsonSerializer.Deserialize<Dictionary<string, string>>(json, JsonSourceGenerationContext.Default.DictionaryStringString) ?? [];
         }
     }
 
@@ -679,7 +693,7 @@ public class ItemsController: Controller<ItemData>
             _ignoredFiles = text.Split('\n').ToList();
         }
         
-        ReadRockChests();
+        ReadChestLocations();
         
         ReadObjectsData($"{RandomizerLogic.DataDirectory}/item_data.json");
         ReadTableAssets($"{RandomizerLogic.DataDirectory}/Originals/ItemTables");
@@ -697,6 +711,12 @@ public class ItemsController: Controller<ItemData>
     {
         InitFromTxt(_cleanSnapshot);
         ShapeshiftCaptureLootItemsPool = new ObjectPool<string>(ShapeshiftCaptureLootItems.Values.ToList(), []);
+        EsquieRockLocations = new()
+        {
+            {"Florrie", "Level.SpawnPoint.WorldMap.PostSeaCliffForcedCamp"},
+            {"Dorrie", "Special.EsquieAbility.SwimPlus"},
+            {"Soarrie", "Level.SpawnPoint.Manor.AliciaRoomAct3"}
+        };
     }
 
     public void RandomizeStartingEquipment()

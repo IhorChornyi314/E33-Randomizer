@@ -5071,6 +5071,23 @@
       "Shortcut.PostMS": [
         "Special.Dummy.WM.PostMSShortcut"
       ],
+      "EsquieAbility.Swim": [
+        "Special.Dummy.WM.PostFBSwim"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
+    "CodeName": "Special.Dummy.WM.PostFBSwim",
+    "CustomName": "Special - World Map Area Post Forgotten Battlefield Beaches",
+    "LevelAsset": "",
+    "LevelScaling": -1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "EsquieAbility.Swim": [
+        "Special.WM.PostFB"
+      ],
       "EsquieAbility.SwimPlus": [
         "Special.WM.SeaNorth",
         "Special.WM.SeaSouth"
