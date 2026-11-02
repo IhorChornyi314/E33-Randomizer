@@ -390,17 +390,18 @@ public class LocationController: Controller<LocationData>
     public override string ConvertToTxt()
     {
         var result = "";
-        if (criticalPath.Count > 0)
+        var nonSpecialPath = criticalPath.Where(cN => !cN.CustomName.Contains("Special ")).ToList();
+        if (nonSpecialPath.Count > 0)
         {
             var criticalPathString = "CRITICAL PATH:\t";
-            for (int i = 0; i < criticalPath.Count - 1; i++)
+            for (int i = 0; i < nonSpecialPath.Count - 1; i++)
             {
-                if (criticalPath[i].CustomName.Contains("Special ")) continue;
-                var transition = criticalPath[i].UnconditionalConnections.Contains(criticalPath[i + 1].CodeName) ? " > " : " ~> ";
-                transition = criticalPath[i].AllConditionalConnections.Contains(criticalPath[i + 1].CodeName) ? " > " : transition;
-                criticalPathString += criticalPath[i].CustomName + transition;
+                if (nonSpecialPath[i].CustomName.Contains("Special ")) continue;
+                var transition = nonSpecialPath[i].UnconditionalConnections.Contains(nonSpecialPath[i + 1].CodeName) ? " > " : " ~> ";
+                transition = nonSpecialPath[i].AllConditionalConnections.Contains(nonSpecialPath[i + 1].CodeName) ? " > " : transition;
+                criticalPathString += nonSpecialPath[i].CustomName + transition;
             }
-            criticalPathString += criticalPath[^1].CustomName;
+            criticalPathString += nonSpecialPath[^1].CustomName;
             result += criticalPathString + '\n';
         }
         

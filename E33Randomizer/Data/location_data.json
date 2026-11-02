@@ -1293,7 +1293,6 @@
       "Level.SpawnPoint.LumiereAct03.CrumblingBuildings",
       "Level.SpawnPoint.LumiereAct03.Curator",
       "Level.SpawnPoint.LumiereAct03.Dock",
-      "Level.SpawnPoint.LumiereAct03.Entry",
       "Level.SpawnPoint.LumiereAct03.FloatingBuildings",
       "Level.SpawnPoint.LumiereAct03.Gardens",
       "Level.SpawnPoint.LumiereAct03.Opera",
@@ -1386,6 +1385,20 @@
     "Keys": []
   },
   {
+    "CodeName": "Special.Dummy.Ending",
+    "CustomName": "Special - Dummy for the Ending",
+    "LevelAsset": "",
+    "LevelScaling": -1,
+    "UnconditionalConnections": [],
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Level.SpawnPoint.LumiereAct03.PostEnding"
+      ]
+    },
+    "PortalConnection": "",
+    "Keys": []
+  },
+  {
     "CodeName": "Level.SpawnPoint.LumiereAct03.BigPlazza",
     "CustomName": "Lumiere - Central Plaza",
     "LevelAsset": "Level_Lumiere_Main_V2",
@@ -1395,7 +1408,6 @@
       "Level.SpawnPoint.LumiereAct03.CrumblingBuildings",
       "Level.SpawnPoint.LumiereAct03.Curator",
       "Level.SpawnPoint.LumiereAct03.Dock",
-      "Level.SpawnPoint.LumiereAct03.Entry",
       "Level.SpawnPoint.LumiereAct03.FloatingBuildings",
       "Level.SpawnPoint.LumiereAct03.Gardens",
       "Level.SpawnPoint.LumiereAct03.Opera",
@@ -1415,7 +1427,6 @@
       "Level.SpawnPoint.LumiereAct03.BigPlazza",
       "Level.SpawnPoint.LumiereAct03.Curator",
       "Level.SpawnPoint.LumiereAct03.Dock",
-      "Level.SpawnPoint.LumiereAct03.Entry",
       "Level.SpawnPoint.LumiereAct03.FloatingBuildings",
       "Level.SpawnPoint.LumiereAct03.Gardens",
       "Level.SpawnPoint.LumiereAct03.Opera",
@@ -1435,7 +1446,6 @@
       "Level.SpawnPoint.LumiereAct03.BigPlazza",
       "Level.SpawnPoint.LumiereAct03.CrumblingBuildings",
       "Level.SpawnPoint.LumiereAct03.Dock",
-      "Level.SpawnPoint.LumiereAct03.Entry",
       "Level.SpawnPoint.LumiereAct03.FloatingBuildings",
       "Level.SpawnPoint.LumiereAct03.Gardens",
       "Level.SpawnPoint.LumiereAct03.Opera",
@@ -1455,14 +1465,13 @@
       "Level.SpawnPoint.LumiereAct03.BigPlazza",
       "Level.SpawnPoint.LumiereAct03.CrumblingBuildings",
       "Level.SpawnPoint.LumiereAct03.Curator",
-      "Level.SpawnPoint.LumiereAct03.Entry",
       "Level.SpawnPoint.LumiereAct03.FloatingBuildings",
       "Level.SpawnPoint.LumiereAct03.Gardens",
       "Level.SpawnPoint.LumiereAct03.Opera",
       "Level.SpawnPoint.LumiereAct03.PostEnding"
     ],
     "ConditionalConnections": {
-      "EsquieAbility.Fly": [
+      "Story.Act3Reached": [
         "Level.SpawnPoint.LumiereAct03.Entry"
       ]
     },
@@ -1474,19 +1483,9 @@
     "CustomName": "Lumiere Act III - Entry",
     "LevelAsset": "Level_Lumiere_Main_V2",
     "LevelScaling": 48,
-    "UnconditionalConnections": [
-      "Level.SpawnPoint.LumiereAct03.Act02",
-      "Level.SpawnPoint.LumiereAct03.BigPlazza",
-      "Level.SpawnPoint.LumiereAct03.CrumblingBuildings",
-      "Level.SpawnPoint.LumiereAct03.Curator",
-      "Level.SpawnPoint.LumiereAct03.Dock",
-      "Level.SpawnPoint.LumiereAct03.FloatingBuildings",
-      "Level.SpawnPoint.LumiereAct03.Gardens",
-      "Level.SpawnPoint.LumiereAct03.Opera",
-      "Level.SpawnPoint.LumiereAct03.PostEnding"
-    ],
+    "UnconditionalConnections": [],
     "ConditionalConnections": {
-      "EsquieAbility.Fly": [
+      "Story.Act3Reached": [
         "Level.SpawnPoint.LumiereAct03.Dock"
       ]
     },
@@ -1504,7 +1503,6 @@
       "Level.SpawnPoint.LumiereAct03.CrumblingBuildings",
       "Level.SpawnPoint.LumiereAct03.Curator",
       "Level.SpawnPoint.LumiereAct03.Dock",
-      "Level.SpawnPoint.LumiereAct03.Entry",
       "Level.SpawnPoint.LumiereAct03.Gardens",
       "Level.SpawnPoint.LumiereAct03.Opera",
       "Level.SpawnPoint.LumiereAct03.PostEnding"
@@ -1524,7 +1522,6 @@
       "Level.SpawnPoint.LumiereAct03.CrumblingBuildings",
       "Level.SpawnPoint.LumiereAct03.Curator",
       "Level.SpawnPoint.LumiereAct03.Dock",
-      "Level.SpawnPoint.LumiereAct03.Entry",
       "Level.SpawnPoint.LumiereAct03.FloatingBuildings",
       "Level.SpawnPoint.LumiereAct03.Opera",
       "Level.SpawnPoint.LumiereAct03.PostEnding"
@@ -1544,7 +1541,6 @@
       "Level.SpawnPoint.LumiereAct03.CrumblingBuildings",
       "Level.SpawnPoint.LumiereAct03.Curator",
       "Level.SpawnPoint.LumiereAct03.Dock",
-      "Level.SpawnPoint.LumiereAct03.Entry",
       "Level.SpawnPoint.LumiereAct03.FloatingBuildings",
       "Level.SpawnPoint.LumiereAct03.Gardens",
       "Level.SpawnPoint.LumiereAct03.PostEnding"
@@ -1564,12 +1560,15 @@
       "Level.SpawnPoint.LumiereAct03.CrumblingBuildings",
       "Level.SpawnPoint.LumiereAct03.Curator",
       "Level.SpawnPoint.LumiereAct03.Dock",
-      "Level.SpawnPoint.LumiereAct03.Entry",
       "Level.SpawnPoint.LumiereAct03.FloatingBuildings",
       "Level.SpawnPoint.LumiereAct03.Gardens",
       "Level.SpawnPoint.LumiereAct03.Opera"
     ],
-    "ConditionalConnections": {},
+    "ConditionalConnections": {
+      "Story.Act3Reached": [
+        "Special.Dummy.Ending"
+      ]
+    },
     "PortalConnection": "",
     "Keys": []
   },
@@ -4622,7 +4621,9 @@
       ]
     },
     "PortalConnection": "",
-    "Keys": []
+    "Keys": [
+      "Story.Act3Reached"
+    ]
   },
   {
     "CodeName": "Level.SpawnPoint.WorldMap.TwilightSanctuaryEntry",

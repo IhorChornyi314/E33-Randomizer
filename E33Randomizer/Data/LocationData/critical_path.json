@@ -9,5 +9,6 @@
   "Level.SpawnPoint.OldLumiere.BrokenBuildings",
   "Level.SpawnPoint.WorldMap.MonolithInteriorEntry",
   "Level.SpawnPoint.MonolithExterior.Peak.Entry",
-  "Level.SpawnPoint.LumiereAct03.Entry"
+  "Level.SpawnPoint.LumiereAct03.PostEnding",
+  "Special.Dummy.Ending"
 ]
