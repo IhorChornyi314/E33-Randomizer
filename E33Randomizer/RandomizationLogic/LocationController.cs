@@ -257,6 +257,16 @@ public class LocationController: Controller<LocationData>
         Utils.WriteAsset(_levelScalingTableAsset);
     }
 
+    public void WriteDisablePartyModificationAssets()
+    {
+        List<string> files =
+        [
+            "DA_GA_SQT_MirrorRenoirRound2",
+            "DA_GA_SQT_ArrivingInTheBattlefield"
+        ];
+        RandomizerLogic.WriteReplacementAssets(files);
+    }
+
     public void ConstructReplacementStringTableAsset()
     {
         //In reality this is ST_UI_ModalPopup
@@ -328,7 +338,9 @@ public class LocationController: Controller<LocationData>
         ViewModel.Categories.Clear();
         if (ViewModel.AllObjects.Count == 0)
         {
-            ViewModel.AllObjects = new ObservableCollection<ObjectViewModel>(ObjectsData.Select(i => new ObjectViewModel(i)).OrderBy(ovm => ovm.Name));
+            ViewModel.AllObjects = new ObservableCollection<ObjectViewModel>(
+                ObjectsData.Where(lD => !lD.CodeName.StartsWith("Special")).Select(i => new ObjectViewModel(i)).OrderBy(ovm => ovm.Name)
+                );
             foreach (var objectViewModel in ViewModel.AllObjects)
             {
                 objectViewModel.BoolProperty = true;
@@ -389,6 +401,7 @@ public class LocationController: Controller<LocationData>
 
     public override string ConvertToTxt()
     {
+        ApplyViewModel();
         var result = "";
         var nonSpecialPath = criticalPath.Where(cN => !cN.CustomName.Contains("Special ")).ToList();
         if (nonSpecialPath.Count > 0)
@@ -419,11 +432,16 @@ public class LocationController: Controller<LocationData>
 
     public override void WriteAssets()
     {
+        ApplyViewModel();
         ConstructReplacementStringTableAsset();
         if (RandomizerLogic.Settings.RescaleLocations)
         {
             WriteScalingTable();
         }
         Utils.WriteAsset(_stringTableAsset);
+        if (RandomizerLogic.Settings.DisablePartyAutoSet)
+        {
+            WriteDisablePartyModificationAssets();
+        }
     }
 }

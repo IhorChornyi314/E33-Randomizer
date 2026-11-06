@@ -1382,7 +1382,9 @@
     ],
     "ConditionalConnections": {},
     "PortalConnection": "",
-    "Keys": []
+    "Keys": [
+      "Story.Act3Reached"
+    ]
   },
   {
     "CodeName": "Special.Dummy.Ending",
@@ -4621,9 +4623,7 @@
       ]
     },
     "PortalConnection": "",
-    "Keys": [
-      "Story.Act3Reached"
-    ]
+    "Keys": []
   },
   {
     "CodeName": "Level.SpawnPoint.WorldMap.TwilightSanctuaryEntry",
@@ -5192,7 +5192,6 @@
       "Level.SpawnPoint.WorldMap.StonewaveCliffsCaveEntry",
       "Level.SpawnPoint.WorldMap.TheCanvasEntry",
       "Level.SpawnPoint.WorldMap.TheFountain",
-      "Level.SpawnPoint.WorldMap.TheGreatestExpedition",
       "Level.SpawnPoint.WorldMap.TwilightSanctuaryEntry",
       "Level.SpawnPoint.WorldMap.VisagesEntry",
       "Level.SpawnPoint.WorldMap.VisagesSmallLevelEntry",

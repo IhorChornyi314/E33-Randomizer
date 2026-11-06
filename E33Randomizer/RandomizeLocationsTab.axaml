@@ -69,6 +69,10 @@
                     Content="{x:Static lang:Resources.Randomize_Locations_RandomizeGestralBeaches}"
                     ToolTipContent="{x:Static lang:Resources.Randomize_Locations_Tooltip_RandomizeGestralBeaches}"
                     IsChecked="{Binding RandomizeGestralBeachPortals}" />
+                <uiControls:CheckboxToolTip
+                    Content="{x:Static lang:Resources.Randomize_Locations_DisablePartyAutoSet}"
+                    ToolTipContent="{x:Static lang:Resources.Randomize_Locations_Tooltip_DisablePartyAutoSet}"
+                    IsChecked="{Binding DisablePartyAutoSet}" />
             </StackPanel>
             <Grid Grid.Row="2" ColumnDefinitions="*,*">
                 <Button Grid.Column="0"

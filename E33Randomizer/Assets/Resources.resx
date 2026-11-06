@@ -460,6 +460,9 @@
     <data name="Randomize_Locations_EnableTwoWayTeleport" xml:space="preserve">
         <value>Enable two-way teleport</value>
     </data>
+    <data name="Randomize_Locations_DisablePartyAutoSet" xml:space="preserve">
+        <value>Prevent the game from automatically setting the party</value>
+    </data>
 
     <data name="Randomize_Locations_Tooltip_RandomizeLocations" xml:space="preserve">
         <value>Whether or not the teleport destinations are randomized. Regardless of the settings, there exists a path from the start to the end of the game, as indicated in the generated locations.txt file.</value>
@@ -496,6 +499,9 @@
     </data>
     <data name="Randomize_Locations_Tooltip_EnableTwoWayTeleport" xml:space="preserve">
          <value>Whether going through a portal and back again puts you in the same place as you started. Note that drastically affects how the new map is generated, but only when the locations are re-rolled in the app. At playtime, going through the same portal will always put you in its corresponding modified destination.</value>
+    </data>
+    <data name="Randomize_Locations_Tooltip_DisablePartyAutoSet" xml:space="preserve">
+         <value>Whether the game will automatically set the battle parties in the Old Lumiere Renoir fight and the Forgotten Battlefield intro fight. Disabling this and not having the correct party in the game will lead to save corruption, so it is highly advised to leave this on.</value>
     </data>
     
     <!-- Misc Tab -->

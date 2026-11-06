@@ -360,6 +360,7 @@ public class SettingsViewModel : ObservableObject
     public bool RandomizeWorkshopEntries { get; set; } = true;
     public bool RandomizeGestralBeachPortals { get; set; } = true;
     public bool ScaleOptionalAreas { get; set; } = true;
+    public bool DisablePartyAutoSet { get; set; } = true;
     public int ScaleModifierPercentage { get; set; } = 100;
     
     public bool RandomizeCharacters { get; set; } 

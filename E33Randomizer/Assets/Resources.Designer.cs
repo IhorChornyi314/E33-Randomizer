@@ -2404,6 +2404,15 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Prevent the game from automatically setting the party.
+        /// </summary>
+        public static string Randomize_Locations_DisablePartyAutoSet {
+            get {
+                return ResourceManager.GetString("Randomize_Locations_DisablePartyAutoSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enable two-way teleport.
         /// </summary>
         public static string Randomize_Locations_EnableTwoWayTeleport {
@@ -2508,6 +2517,15 @@ namespace E33Randomizer.Assets {
         public static string Randomize_Locations_SetScaleModifier {
             get {
                 return ResourceManager.GetString("Randomize_Locations_SetScaleModifier", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Whether the game will automatically set the battle parties in the Old Lumiere Renoir fight and the Forgotten Battlefield intro fight. Disabling this and not having the correct party in the game will lead to save corruption, so it is highly advised to leave this on..
+        /// </summary>
+        public static string Randomize_Locations_Tooltip_DisablePartyAutoSet {
+            get {
+                return ResourceManager.GetString("Randomize_Locations_Tooltip_DisablePartyAutoSet", resourceCulture);
             }
         }
         

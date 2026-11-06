@@ -284,15 +284,40 @@ public static class StaticFileChanger
         Utils.WriteAsset(startingST);
     }
     
+    public static void RemovePartyChanges()
+    {
+        var mirrorRenoir = new UAsset($"D:\\Mods\\Unreal Engine Mods\\retoc\\out\\Sandfall\\Content\\Levels\\OldLumiere\\GameActions\\DA_GA_SQT_MirrorRenoirRound2.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+        var actionSequence = ((mirrorRenoir.Exports[4] as NormalExport).Data[0] as ArrayPropertyData);
+        // 2 is setting the party
+        actionSequence.Value =
+        [
+            actionSequence.Value[0], actionSequence.Value[1], actionSequence.Value[3], actionSequence.Value[4],
+            actionSequence.Value[5], actionSequence.Value[6]
+        ];
+        
+        Utils.WriteAsset(mirrorRenoir);
+        
+        var forgottenBFStart = new UAsset($"D:\\Mods\\Unreal Engine Mods\\retoc\\out\\Sandfall\\Content\\Levels\\ForgottenBattlefield\\GameActions\\DA_GA_SQT_ArrivingInTheBattlefield.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+        actionSequence = ((forgottenBFStart.Exports[1] as NormalExport).Data[0] as ArrayPropertyData);
+        // 1 is setting the party
+        actionSequence.Value =
+        [
+            actionSequence.Value[0], actionSequence.Value[2], actionSequence.Value[3], actionSequence.Value[4], actionSequence.Value[5]
+        ];
+        
+        Utils.WriteAsset(forgottenBFStart);
+    }
+    
     public static void Run()
     {
-        return;
         if (Directory.Exists("randomizer"))
         {
             Directory.Delete("randomizer", true);
         }
 
-        ConstructDummyReplacementStringTableAsset();
+        // RemovePartyChanges();
+        
+        // ConstructDummyReplacementStringTableAsset();
         // CreateEsquieNotif("Swim");
         // CreateEsquieNotif("SwimBoost");
         // CreateEsquieNotif("Fly");
