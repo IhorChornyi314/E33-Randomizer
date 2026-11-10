@@ -1597,7 +1597,7 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remove forced camps in save file.
+        ///   Looks up a localized string similar to Unlock camping and remove forced camps in save file.
         /// </summary>
         public static string Misc_SaveFile_Button_FixForcedCamps {
             get {
@@ -1628,7 +1628,7 @@ namespace E33Randomizer.Assets {
         /// <summary>
         ///   Looks up a localized string similar to Sometimes the location randomizer can lead to being locked out of accessing the camp, preventing you from being able to enter Flying Waters or Stone Wave Cliffs.
         ///
-        ///Use this button to fix that..
+        ///Use this button to unlock the option to go to camp and remove the requirements for Flying Waters and Stone Wave Cliffs entrance portals..
         /// </summary>
         public static string Misc_SaveFile_FixForcedCamps_Description {
             get {
@@ -2521,7 +2521,7 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Whether the game will automatically set the battle parties in the Old Lumiere Renoir fight and the Forgotten Battlefield intro fight. Disabling this and not having the correct party in the game will lead to save corruption, so it is highly advised to leave this on..
+        ///   Looks up a localized string similar to Whether the game will automatically modify the party in Old Lumiere and the Forgotten Battlefield. Disabling this and not having the correct party in the game will lead to a corrupted save, so it is highly advised to leave this on..
         /// </summary>
         public static string Randomize_Locations_Tooltip_DisablePartyAutoSet {
             get {

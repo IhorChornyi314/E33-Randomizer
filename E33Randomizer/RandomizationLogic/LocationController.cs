@@ -262,7 +262,11 @@ public class LocationController: Controller<LocationData>
         List<string> files =
         [
             "DA_GA_SQT_MirrorRenoirRound2",
-            "DA_GA_SQT_ArrivingInTheBattlefield"
+            "DA_GA_SQT_ArrivingInTheBattlefield",
+            "DA_GA_SQT_ArrivingInOldLumiere",
+            "DA_GA_SQT_DiscoveringTheTruth",
+            "DA_GA_SQT_VersoDisapears",
+            "DA_GA_CIN_VersoDisappears"
         ];
         RandomizerLogic.WriteReplacementAssets(files);
     }

@@ -283,29 +283,42 @@ public static class StaticFileChanger
         (startingST.Exports[0] as StringTableExport).Table.Add(FString.FromString("OriginalAsset:OriginalTag"), FString.FromString("NewAsset:NewTag"));
         Utils.WriteAsset(startingST);
     }
+
+    public static void RemoveActionsFromSequence(string assetPath, int sequenceExportIndex, List<int> actionsToRemove)
+    {
+        var asset = new UAsset(assetPath, EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+
+        var actionSequence = ((asset.Exports[sequenceExportIndex] as NormalExport).Data[0] as ArrayPropertyData);
+        actionSequence.Value = actionSequence.Value.Where((v, i) => !actionsToRemove.Contains(i)).ToArray();
+        Utils.WriteAsset(asset);
+    }
     
     public static void RemovePartyChanges()
     {
-        var mirrorRenoir = new UAsset($"D:\\Mods\\Unreal Engine Mods\\retoc\\out\\Sandfall\\Content\\Levels\\OldLumiere\\GameActions\\DA_GA_SQT_MirrorRenoirRound2.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
-        var actionSequence = ((mirrorRenoir.Exports[4] as NormalExport).Data[0] as ArrayPropertyData);
+        var contentFolder = "D:\\Mods\\Unreal Engine Mods\\retoc\\out\\Sandfall\\Content\\";
         // 2 is setting the party
-        actionSequence.Value =
-        [
-            actionSequence.Value[0], actionSequence.Value[1], actionSequence.Value[3], actionSequence.Value[4],
-            actionSequence.Value[5], actionSequence.Value[6]
-        ];
+        RemoveActionsFromSequence(
+            $"{contentFolder}Levels\\OldLumiere\\GameActions\\DA_GA_SQT_MirrorRenoirRound2.uasset", 4, [2]);
         
-        Utils.WriteAsset(mirrorRenoir);
-        
-        var forgottenBFStart = new UAsset($"D:\\Mods\\Unreal Engine Mods\\retoc\\out\\Sandfall\\Content\\Levels\\ForgottenBattlefield\\GameActions\\DA_GA_SQT_ArrivingInTheBattlefield.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
-        actionSequence = ((forgottenBFStart.Exports[1] as NormalExport).Data[0] as ArrayPropertyData);
         // 1 is setting the party
-        actionSequence.Value =
-        [
-            actionSequence.Value[0], actionSequence.Value[2], actionSequence.Value[3], actionSequence.Value[4], actionSequence.Value[5]
-        ];
+        RemoveActionsFromSequence(
+            $"{contentFolder}Levels\\ForgottenBattlefield\\GameActions\\DA_GA_SQT_ArrivingInTheBattlefield.uasset", 1, [1]);
+
+        // 1 is removing Verso and Maelle
+        RemoveActionsFromSequence(
+            $"{contentFolder}Levels\\OldLumiere\\GameActions\\DA_GA_SQT_ArrivingInOldLumiere.uasset", 2, [1]);
         
-        Utils.WriteAsset(forgottenBFStart);
+        // 1 is setting to Verso and Maelle
+        RemoveActionsFromSequence(
+            $"{contentFolder}Levels\\OldLumiere\\GameActions\\DA_GA_SQT_DiscoveringTheTruth.uasset", 2, [1]);
+
+        // 3 is removing Verso
+        RemoveActionsFromSequence(
+            $"{contentFolder}Levels\\OldLumiere\\GameActions\\DA_GA_SQT_VersoDisapears.uasset", 2, [3]);
+        
+        var versoDisappearsAsset = new UAsset($"{contentFolder}Cinematics\\OldLumiere\\VersoDisappears\\DA_GA_CIN_VersoDisappears.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+        Utils.ReplaceNameReference(versoDisappearsAsset, "Maelle", "None");
+        Utils.WriteAsset(versoDisappearsAsset);
     }
     
     public static void Run()

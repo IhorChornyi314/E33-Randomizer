@@ -14,5 +14,9 @@
   "DA_GA_SQT_Tuto_EsquieBoatPlus": "randomizer/Sandfall/Content/Levels/WorldMap/GameActions",
   "DA_GA_SQT_Tuto_EsquiePlaneAndBoatPlus": "randomizer/Sandfall/Content/Levels/WorldMap/GameActions",
   "DA_GA_SQT_MirrorRenoirRound2": "randomizer/Sandfall/Content/Levels/OldLumiere/GameActions",
-  "DA_GA_SQT_ArrivingInTheBattlefield": "randomizer/Sandfall/Content/Levels/ForgottenBattlefield/GameActions"
+  "DA_GA_SQT_ArrivingInTheBattlefield": "randomizer/Sandfall/Content/Levels/ForgottenBattlefield/GameActions",
+  "DA_GA_SQT_ArrivingInOldLumiere": "randomizer/Sandfall/Content/Levels/OldLumiere/GameActions",
+  "DA_GA_SQT_DiscoveringTheTruth": "randomizer/Sandfall/Content/Levels/OldLumiere/GameActions",
+  "DA_GA_SQT_VersoDisapears": "randomizer/Sandfall/Content/Levels/OldLumiere/GameActions",
+  "DA_GA_CIN_VersoDisappears": "randomizer/Sandfall/Content/Cinematics/OldLumiere/VersoDisappears"
 }

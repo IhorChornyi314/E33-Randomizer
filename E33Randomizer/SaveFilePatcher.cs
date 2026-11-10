@@ -10,6 +10,7 @@ public static class SaveFilePatcher
     private const string GradientCounterNid = "30e2946e-432c-b0e8-363e-d29811577e30";
     private const string LumiereCurtainNid = "aa6633b1-4fed-a61d-092e-ed80cd949751";
     private const string GreatestExpeditionDialogueLockNid = "1c5f62cb-44df-660f-9a3f-22a819516533";
+    private const string ExplorationCapacityEnum = "E_ExplorationCapacity::NewEnumerator7";
     
     private const string NamedIDsStatesPropName = "NamedIDsStates_0";
     private const string NamedIDsStatesSchemaName = "NamedIDsStates";
@@ -184,6 +185,26 @@ public static class SaveFilePatcher
 
         element["value"] = JsonValue.Create("E_QuestStatus::NewEnumerator2");
 
+        // Unlock camps
+        var labelNode =
+            saveObj["root"]?["properties"]?
+                ["ExplorationProgression_0"]?
+                ["ExplorationCapacities_22_D278AAE341C821F118686B81FD83BBB0_0"]?
+                ["Label"];
+
+        if (labelNode is not JsonArray labelArray)
+        {
+            throw new InvalidOperationException("Json does not contain expected exploration capacity data.");
+        }
+
+        bool alreadyPresent = labelArray.Any(n =>
+            n is JsonValue v && v.TryGetValue<string>(out var s) && s == ExplorationCapacityEnum);
+
+        if (!alreadyPresent)
+        {
+            labelArray.Add(JsonValue.Create(ExplorationCapacityEnum));
+        }
+        
         string output = saveObj.ToJsonString(new JsonSerializerOptions { WriteIndented = true });
         File.WriteAllText("save.json", output);
 
