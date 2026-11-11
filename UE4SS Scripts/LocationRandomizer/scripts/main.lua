@@ -13,11 +13,34 @@ local function hookCallback(Context, LevelDestination, SpawnPointTag)
         end
     end
 
+    
+    local CustomGI = FindFirstOf("BP_jRPG_GI_Custom_C")
+    if not CustomGI or not CustomGI:IsValid() then
+        print("[LocationRandomizer] ERROR: Could not find GI\n")
+        return
+    end
+
+    local WorldController = FindFirstOf("BP_jRPG_Controller_World_C")
+    if not WorldController or not WorldController:IsValid() then
+        print("[LocationRandomizer] Warning: Could not find WorldController\n")
+        return
+    end
+
     local levelDest = LevelDestination:get().LevelAssetName_85_BF09694C41CC0444295731A40341A5F9:ToString()
     local currentTag = SpawnPointTag:get().TagName:ToString()
     local lookupKey = levelDest .. ":" .. currentTag
 
     print("[LocationRandomizer] Loading Map: " .. lookupKey .. "\n")
+
+    if not CustomGI.SaveLoaded then
+        print("[LocationRandomizer] Map loading from save, skipping override\n")
+        return
+    end
+
+    if WorldController.IsSavePointMenuVisible then
+        print("[LocationRandomizer] Map loading from fast travel, skipping override\n")
+        return
+    end
 
     local newDest = mappingData[lookupKey]
     if not newDest or newDest == lookupKey then return end
@@ -27,11 +50,6 @@ local function hookCallback(Context, LevelDestination, SpawnPointTag)
     local newMap, newTagStr = newDest:match("([^:]+):(.+)")
     if not newMap or not newTagStr then return end
 
-    local CustomGI = FindFirstOf("BP_jRPG_GI_Custom_C")
-    if not CustomGI or not CustomGI:IsValid() then
-        print("[LocationRandomizer] ERROR: Could not find GI\n")
-        return
-    end
 
     CustomGI.LevelDestinationAssetName = FName(newMap)
     CustomGI.SpawnPointTag.TagName = FName(newTagStr)
@@ -53,3 +71,8 @@ local function tryRegisterHook()
 end
 
 tryRegisterHook()
+
+
+-- Fix for the crash if the BP_jRPG_GI_Custom_C.CurrentCharacterWorld is not in the party 
+local worldCharacterFix = require("world_character_fix")
+worldCharacterFix.start()
