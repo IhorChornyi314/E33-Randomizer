@@ -21,6 +21,24 @@ public class LocationController: Controller<LocationData>
 
     static private string _startingLocation = "Level.SpawnPoint.SpringMeadows.Entry";
 
+    static private Dictionary<string, string> _keyDescriptions = new()
+    {
+        {"EsquieAbility.Car", "get Esquie"},
+        {"EsquieAbility.Swim", "get Florrie"},
+        {"EsquieAbility.SwimPlus", "get Dorrie"},
+        {"EsquieAbility.Fly", "get Soarrie"},
+        {"Story.LuneJoined", "get Lune"},
+        {"Story.MaelleJoined", "get Maelle"},
+        {"Story.ScielJoined", "get Sciel"},
+        {"Story.VersoJoined", "get Verso"},
+        {"Story.MonocoJoined", "get Monoco"},
+        {"Story.EsquiePassword", "get Esquie password"},
+        {"Story.Act3Reached", "reach Act 3"},
+        {"Story.SireneHeartAcquired", "get Sirene's heart"},
+        {"Story.VisageHeartAcquired", "get Visage's heart"},
+        {"Story.BarrierBreakerAcquired", "get Barrier Breaker"},
+    };
+    
     static public Dictionary<string, string> CharacterJoinLocations = new()
     {
         {"Level.SpawnPoint.LumiereAct01.Entry", "Gustave"},
@@ -317,7 +335,7 @@ public class LocationController: Controller<LocationData>
         ).ToDictionary();
 
         if (criticalPathLine != "")
-            criticalPath = criticalPathLine.Replace("~", "").Split(" > ").Select(cN => ObjectsData.Find(lD => lD.CustomName == cN)).ToList();
+            criticalPath = criticalPathLine.Split(">").Select(GetObject).ToList();
         UpdateViewModel();
     }
 
@@ -403,25 +421,50 @@ public class LocationController: Controller<LocationData>
         ViewModel.UpdateFilteredCategories();
     }
 
-    public override string ConvertToTxt()
+    public string GetCriticalPathVerboseString()
     {
-        ApplyViewModel();
-        var result = "";
+        if (criticalPath.Count == 0)
+        {
+            criticalPath = _locationGraph.GetCriticalPath(_currentConstraints[0], _currentConstraints[^1]);
+        }
+
+        var criticalPathString = "";
+        
+        List<string> accountedKeys = [];
+        
         var nonSpecialPath = criticalPath.Where(cN => !cN.CustomName.Contains("Special ")).ToList();
         if (nonSpecialPath.Count > 0)
         {
-            var criticalPathString = "CRITICAL PATH:\t";
             for (int i = 0; i < nonSpecialPath.Count - 1; i++)
             {
                 if (nonSpecialPath[i].CustomName.Contains("Special ")) continue;
                 var transition = nonSpecialPath[i].UnconditionalConnections.Contains(nonSpecialPath[i + 1].CodeName) ? " > " : " ~> ";
                 transition = nonSpecialPath[i].AllConditionalConnections.Contains(nonSpecialPath[i + 1].CodeName) ? " > " : transition;
-                criticalPathString += nonSpecialPath[i].CustomName + transition;
+
+                var keysString = "";
+                
+                if (nonSpecialPath[i].Keys.Any(k => !accountedKeys.Contains(k)))
+                {
+                    var keys = nonSpecialPath[i].Keys.Where(k => !accountedKeys.Contains(k));
+                    keysString = " (" + string.Join(", ", keys.Select(k => _keyDescriptions.GetValueOrDefault(k, k))) + ")";
+                }
+                
+                accountedKeys.AddRange(nonSpecialPath[i].Keys);
+                
+                criticalPathString += nonSpecialPath[i].CustomName + keysString + transition;
             }
             criticalPathString += nonSpecialPath[^1].CustomName;
-            result += criticalPathString + '\n';
         }
+
+        return criticalPathString;
+    }
+
+    public override string ConvertToTxt()
+    {
+        ApplyViewModel();
+        var result = "";
         
+        result += "CRITICAL PATH:\t" + string.Join(">", criticalPath.Select(l => l.CodeName)) + "\n";
         result += string.Join('\n', DestinationChanges.Select(kvp => $"{kvp.Key}|{kvp.Value}".Replace("Level.SpawnPoint.", "")));
         result += "\nSCALING:\n";
         result += string.Join('\n', LevelScaling.Select(kvp => $"{kvp.Key}|{kvp.Value.Item1}-{kvp.Value.Item2}"));

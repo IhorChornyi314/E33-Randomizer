@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Text;
 using System.Text.Json;
 using E33Randomizer.CustomPlacements;
 using E33Randomizer.ObjectDatum;
@@ -245,6 +246,7 @@ public static class RandomizerLogic
             using StreamWriter r = new StreamWriter(exportPath + "config/settings.json");
             var json = JsonSerializer.Serialize(Settings, JsonSourceGenerationContextSerializationFactory.LazyJsonSourceGenerationContext.Value.SettingsViewModel);
             r.Write(json);
+            WriteSpoilerText(exportPath + "config/spoilers.txt");
         }
 
         Controllers.WriteAssets();
@@ -260,6 +262,21 @@ public static class RandomizerLogic
         };
 
         Process.Start(retocCommand, retocArgs);
+    }
+
+    public static void WriteSpoilerText(string filename)
+    {
+        var result = "";
+
+        if (Settings.RandomizeLocations)
+        {
+            var criticalPathString = Controllers.LocationController.GetCriticalPathVerboseString();
+            result += $"Critical Path: {criticalPathString}";
+        }
+        
+        if (result.Length == 0) return;
+        
+        File.WriteAllText(filename, result, Encoding.UTF8);
     }
 
     public static EnemyData GetRandomByArchetype(string archetype)

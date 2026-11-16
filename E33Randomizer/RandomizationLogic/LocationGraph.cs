@@ -295,7 +295,12 @@ public class LocationGraph
         return result;
     }
 
-    public List<LocationData> GetPathAndDepths(int startNode, int endNode)
+    public List<LocationData> GetCriticalPath(string startNodeCodeName, string endNodeCodeName)
+    {
+        return GetPathAndDepths(nodeIndexes[startNodeCodeName], nodeIndexes[endNodeCodeName], false);
+    }
+
+    public List<LocationData> GetPathAndDepths(int startNode, int endNode, bool modifyDepths=true)
     {
         var currentPath = new List<int>();
 
@@ -313,8 +318,9 @@ public class LocationGraph
         {
             var (currentNode, currentKeysMask, distance, trace) = queue.Dequeue();
             var node = Nodes[currentNode];
-
-            node.Depth = Math.Min(node.Depth, distance);
+            
+            if (modifyDepths)
+                node.Depth = Math.Min(node.Depth, distance);
 
             if (currentNode == endNode && currentPath.Count == 0)
             {
