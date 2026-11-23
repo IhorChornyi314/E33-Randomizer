@@ -123,7 +123,7 @@ public partial class EditIndividualContainersWindow : Window
             RandomizerLogic.usedSeed = RandomizerLogic.Settings.Seed != -1 ? RandomizerLogic.Settings.Seed : Environment.TickCount; 
             RandomizerLogic.PackAndConvertData();
             await MessageDialog.ShowAsync(this, ResourceHelper.GetStringFormatted(nameof(Assets.Resources.IndividualContainers_GenerationDone),RandomizerLogic.usedSeed),
-                ResourceHelper.GetString(nameof(Assets.Resources.IndividualContainers_GenerationSummary)), MessageBoxButtons.Ok, MessageBoxIcons.Information);
+                ResourceHelper.GetString(nameof(Assets.Resources.IndividualContainers_GenerationSummary)), MessageBoxButtons.Ok, MessageBoxButtons.OpenFolder, MessageBoxIcons.Information);
         }
         catch (Exception ex)
         {

@@ -53,6 +53,9 @@
     <data name="Button_Ok" xml:space="preserve">
         <value>Ok</value>
     </data>
+    <data name="Button_OpenFolder" xml:space="preserve">
+        <value>Open Folder</value>
+    </data>
     <data name="Button_Cancel" xml:space="preserve">
         <value>Cancel</value>
     </data>

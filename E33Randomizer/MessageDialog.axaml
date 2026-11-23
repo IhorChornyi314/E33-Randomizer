@@ -59,7 +59,10 @@
                 <Button Classes="e33Button" Content="{Binding ButtonCancelText}"
                         Command="{Binding CancelCommand}"
                         IsVisible="{Binding ButtonCancelText, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"
-                />
+                /><Button Classes="e33Button" Content="{Binding ButtonOpenFolderText}"
+                          Command="{Binding OpenFolderCommand}"
+                          IsVisible="{Binding ButtonOpenFolderText, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"
+                  />
             </StackPanel>
         </Grid>
         <StackPanel IsVisible="{Binding IsDesignMode}" VerticalAlignment="Bottom" Margin="0 0 0 -60">

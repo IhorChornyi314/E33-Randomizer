@@ -96,6 +96,15 @@ namespace E33Randomizer.Assets {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Open Folder.
+        /// </summary>
+        public static string Button_OpenFolder {
+            get {
+                return ResourceManager.GetString("Button_OpenFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copy to Clipboard.
         /// </summary>
         public static string Button_Tooltip_CopyToClipboard {

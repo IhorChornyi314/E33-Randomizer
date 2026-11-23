@@ -117,7 +117,7 @@ public partial class MainWindow : Window
         {
             RandomizerLogic.Randomize();
             await MessageDialog.ShowAsync(this, ResourceHelper.GetStringFormatted(nameof(Assets.Resources.MainWindow_GenerationDone),RandomizerLogic.usedSeed),
-                ResourceHelper.GetString(nameof(Assets.Resources.MainWindow_GenerationSummary)), MessageBoxButtons.Ok, MessageBoxIcons.Information);
+                ResourceHelper.GetString(nameof(Assets.Resources.MainWindow_GenerationSummary)), MessageBoxButtons.Ok, MessageBoxButtons.OpenFolder, MessageBoxIcons.Information);
         }
         catch (Exception ex)
         {

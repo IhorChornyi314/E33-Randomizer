@@ -1,9 +1,12 @@
+using System.Diagnostics;
 using System.Resources;
+using System.Runtime.InteropServices;
 using Avalonia.Controls;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using E33Randomizer.RandomizationLogic;
 
 namespace E33Randomizer;
 
@@ -23,6 +26,9 @@ public partial class MessageDialogViewModel : ObservableObject
     
     [ObservableProperty]
     public partial string? ButtonCancelText { get; internal set; } = null;
+    
+    [ObservableProperty]
+    public partial string? ButtonOpenFolderText { get; internal set; } = null;
 
     public bool IsDesignMode { get; set; }
 
@@ -49,6 +55,21 @@ public partial class MessageDialogViewModel : ObservableObject
     /// <param name="buttonCancelText">The text to use for the cancel button.  This should not be pre-translated.  Just pass the string to be translated (default values can be used from <see cref="MessageBoxButtons" />)</param>
     /// <param name="icon">The icon to show in the box. (use <see cref="MessageBoxIcons"/> for known values, or pass your own) </param>
     public MessageDialogViewModel(Window dialog, string message, string title, string buttonConfirmText, string? buttonCancelText, string icon)
+        : this(dialog, message, title, buttonConfirmText, null, null, icon)
+    {
+    }
+    
+    /// <summary>
+    /// Constructs a new DialogViewModel with a cancel button (if <paramref name="buttonCancelText"/> is not null)
+    /// </summary>
+    /// <param name="dialog">The window that the dialog is attached to.</param>
+    /// <param name="message">The message to show, this should be pre-translated from the Resources.</param>
+    /// <param name="title">The title of the dialog box, this should be pre-translated from the Resources.</param>
+    /// <param name="buttonConfirmText">The text to use for the confirm button.  This should not be pre-translated.  Just pass the string to be translated (default values can be used from <see cref="MessageBoxButtons" />)</param>
+    /// <param name="buttonCancelText">The text to use for the cancel button.  This should not be pre-translated.  Just pass the string to be translated (default values can be used from <see cref="MessageBoxButtons" />)</param>
+    /// <param name="buttonOpenFolderText">The text to use for the open folder button.  This should not be pre-translated.  Just pass the string to be translated (default values can be used from <see cref="MessageBoxButtons" />)</param>
+    /// <param name="icon">The icon to show in the box. (use <see cref="MessageBoxIcons"/> for known values, or pass your own) </param>
+    public MessageDialogViewModel(Window dialog, string message, string title, string buttonConfirmText, string? buttonCancelText, string? buttonOpenFolderText, string icon)
     {
         _dialog = dialog;
         Title = title;
@@ -59,6 +80,10 @@ public partial class MessageDialogViewModel : ObservableObject
         {
             ButtonCancelText = ResourceManager.GetString(buttonCancelText) ?? "TRANSLATION_MISSING";
         }
+        if (buttonOpenFolderText is not null)
+        {
+            ButtonOpenFolderText = ResourceManager.GetString(buttonOpenFolderText) ?? "TRANSLATION_MISSING";
+        }
     }
 
     [RelayCommand]
@@ -66,6 +91,23 @@ public partial class MessageDialogViewModel : ObservableObject
 
     [RelayCommand]
     private void Cancel() => _dialog.Close(false);
+
+    [RelayCommand]
+    private void OpenFolder()
+    {
+        string fullPath = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, RandomizerLogic.OutputFolder));
+
+        if (!Directory.Exists(fullPath))
+            return;
+
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            Process.Start(new ProcessStartInfo("explorer.exe", $"\"{fullPath}\"") { UseShellExecute = true });
+        else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            Process.Start("open", $"\"{fullPath}\"");
+        else
+            Process.Start("xdg-open", $"\"{fullPath}\"");
+        _dialog.Close(true);
+    }
     
     private static Bitmap LoadFromResource(string resourceUri)
     {
@@ -109,6 +151,7 @@ public partial class MessageDialogViewModel : ObservableObject
 public static class MessageBoxButtons
 {
     public const string Ok = "Button_Ok";
+    public const string OpenFolder = "Button_OpenFolder";
     public const string Cancel = "Button_Cancel";
     public const string Close = "Button_Close";
 }

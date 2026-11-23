@@ -61,6 +61,30 @@ public partial class MessageDialog : Window
     }
     
     /// <summary>
+    /// Constructs a new DialogViewModel without a cancel button but with an open folder button.
+    /// </summary>
+    /// <param name="owner">The window that the dialog is to be attached to.</param>
+    /// <param name="message">The message to show, this should be pre-translated from the Resources.</param>
+    /// <param name="title">The title of the dialog box, this should be pre-translated from the Resources.</param>
+    /// <param name="buttonConfirmText">The text to use for the confirm button.  This should not be pre-translated.  Just pass the string to be translated (default values can be used from <see cref="MessageBoxButtons" />)</param>
+    /// <param name="buttonOpenFolderText">The text to use for the open folder button.  This should not be pre-translated.  Just pass the string to be translated (default values can be used from <see cref="MessageBoxButtons" />)</param>
+    /// <param name="icon">The icon to show in the box. (use <see cref="MessageBoxIcons"/> for known values, or pass your own) </param>
+    public static async Task ShowAsync(Window owner, string message, string title, string buttonConfirmText, string buttonOpenFolderText, string icon)
+    {
+        var dialog = new MessageDialog();
+        var vm = new MessageDialogViewModel(dialog,message,title,buttonConfirmText,null,buttonOpenFolderText,icon);
+        dialog.DataContext = vm;
+        if (!owner.IsVisible)
+        {
+            dialog.Show();
+        }
+        else
+        {
+            await dialog.ShowDialog(owner);
+        }
+    }
+    
+    /// <summary>
     /// Constructs a new DialogViewModel without a cancel button that returns a result based on the pressing of the buttons.
     /// </summary>
     /// <param name="owner">The window that the dialog is to be attached to.</param>

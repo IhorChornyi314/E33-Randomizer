@@ -154,6 +154,7 @@ public static class RandomizerLogic
     
     public static Random rand;
     public static int usedSeed;
+    public static string OutputFolder;
     public static Dictionary<string, Dictionary<string, float>> EnemyFrequenciesWithinArchetype = new();
     public static Dictionary<string, float> TotalEnemyFrequencies;
     public static string PresetName = "";
@@ -234,6 +235,7 @@ public static class RandomizerLogic
             Directory.Delete("randomizer", true);
         }
         Directory.CreateDirectory(exportPath);
+        OutputFolder = exportPath;
         
         if (writeTxt)
         {
