@@ -45,6 +45,7 @@ public class GenericItemSource: ItemSource
             Key = FileName
         };
         Checks.Add(check);
+        CustomName = FileName;
     }
 
     public override UAsset SaveToAsset()

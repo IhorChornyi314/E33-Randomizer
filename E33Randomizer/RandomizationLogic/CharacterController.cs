@@ -168,6 +168,11 @@ public class CharacterController: Controller<CharacterData>
         return string.Join("\n", charactersJoinOrder.Select(c => c.CodeName));
     }
 
+    public override string GetSpoilers()
+    {
+        return "NOT IMPLEMENTED YET";
+    }
+
     public override void Reset()
     {
         charactersJoinOrder = [GetObject("Frey"), GetObject("Lune"), GetObject("Maelle"), GetObject("Sciel"), GetObject("Verso"), GetObject("Monoco")];

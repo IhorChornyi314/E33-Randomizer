@@ -21,6 +21,7 @@ public class ItemsController: Controller<ItemData>
     private static Dictionary<string, string> _chestLocations = new();
     
     public List<ItemSource> ItemsSources = new();
+    public List<ChestData> ChestData = new();
 
     public Dictionary<string, List<CheckData>> CheckTypes = new();
 
@@ -625,7 +626,7 @@ public class ItemsController: Controller<ItemData>
     {
         ApplyViewModel();
         var result = new StringBuilder();
-        result.Append("weapons|" + string.Join(',', RandomizedStartingWeapons.Select(kvp => $"{kvp.Key}:{kvp.Value.CodeName}")) + '\n');
+        result.Append("weapons|" + string.Join(',', RandomizedStartingWeapons.Select(kvp => $"{kvp.Key}:{kvp.Value.CodeName}")) + Environment.NewLine);
         result.Append("equipment|" + string.Join(',', 
             RandomizedStartingOutfits.Select(kvp => $"{kvp.Key}:{kvp.Value.Item1.CodeName}:{kvp.Value.Item2.CodeName}")
             ) + '\n');
@@ -643,6 +644,25 @@ public class ItemsController: Controller<ItemData>
                     result.Append($"?{leg}");
                 }
                 result.Append(Environment.NewLine);
+            }
+        }
+        return result.ToString();
+    }
+
+    public override string GetSpoilers()
+    {
+        var result = new StringBuilder();
+        var chestNames = ChestData.Select(cD => (cD.CodeName, cD.CustomName)).ToDictionary();
+        foreach (var itemsSource in ItemsSources)
+        {
+            result.Append(itemsSource.CustomName + Environment.NewLine);
+            foreach (var check in itemsSource.Checks)
+            {
+                var checkName = chestNames.GetValueOrDefault(check.Key, check.CustomName);
+                var itemParticles = itemsSource.SourceSections[check.Key];
+                if (itemParticles.Count == 0) continue;
+                result.Append("\t" + checkName + ":\t");
+                result.Append(string.Join(", ", itemParticles.Select(iP => iP.ToStringVerbose())) + Environment.NewLine);
             }
         }
         return result.ToString();
@@ -677,11 +697,13 @@ public class ItemsController: Controller<ItemData>
             string json = r.ReadToEnd();
             _rockChests = JsonSerializer.Deserialize<Dictionary<string, List<string>>>(json, JsonSourceGenerationContext.Default.DictionaryStringListString) ?? [];
         }
-        using (StreamReader r = new StreamReader($"{RandomizerLogic.DataDirectory}/chest_locations.json"))
+        using (StreamReader r = new StreamReader($"{RandomizerLogic.DataDirectory}/chest_data.json"))
         {
             string json = r.ReadToEnd();
-            _chestLocations = JsonSerializer.Deserialize<Dictionary<string, string>>(json, JsonSourceGenerationContext.Default.DictionaryStringString) ?? [];
+            ChestData = JsonSerializer.Deserialize<List<ChestData>>(json, JsonSourceGenerationContext.Default.ListChestData) ?? [];
         }
+
+        _chestLocations = ChestData.Select(cD => (cD.CodeName, cD.LocationTag)).ToDictionary();
     }
 
     public override void Initialize()

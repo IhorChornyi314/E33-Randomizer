@@ -1,0 +1,3590 @@
+﻿[
+  {
+    "CodeName": "Chest_AncientSanctuary_1",
+    "CustomName": "Ancient Sanctuary: Entrance - Past climbing handholds",
+    "OriginalContent": "BurningMark",
+    "LocationTag": "Level.SpawnPoint.AncientSanctuary.Entry"
+  },
+  {
+    "CodeName": "Chest_AncientSanctuary_2",
+    "CustomName": "Ancient Sanctuary: Sanctuary Maze - In dark cave before shortcut to flag 1",
+    "OriginalContent": "AttackLifesteal",
+    "LocationTag": "Level.SpawnPoint.AncientSanctuary.Entry"
+  },
+  {
+    "CodeName": "Chest_AncientSanctuary_3",
+    "CustomName": "Ancient Sanctuary: Giant Bell Alley - Up ramp after boss",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.AncientSanctuary.Entry"
+  },
+  {
+    "CodeName": "Chest_AncientSanctuary_4",
+    "CustomName": "Ancient Sanctuary: Giant Bell Alley - Before Expedition Flag near dismantled Gestral",
+    "OriginalContent": "HealingTint_Shard",
+    "LocationTag": "Level.SpawnPoint.AncientSanctuary.Entry"
+  },
+  {
+    "CodeName": "Chest_AncientSanctuary_5",
+    "CustomName": "Ancient Sanctuary: Gestral Totem - Base of the totem",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.AncientSanctuary.GestralTotem"
+  },
+  {
+    "CodeName": "Chest_AncientSanctuary_6",
+    "CustomName": "Ancient Sanctuary or Forgotten Battlefield: Entrance - Across bridge or Fort Ruins - In left ruins near dead end",
+    "OriginalContent": "JumpRecovery",
+    "LocationTag": "Level.SpawnPoint.AncientSanctuary.Entry"
+  },
+  {
+    "CodeName": "Chest_AncientSanctuary_7",
+    "CustomName": "Ancient Sanctuary: Sanctuary Maze - On path to flag 1 shortcut",
+    "OriginalContent": "InitialAp+1B",
+    "LocationTag": "Level.SpawnPoint.AncientSanctuary.Entry"
+  },
+  {
+    "CodeName": "Chest_AncientSanctuary_8",
+    "CustomName": "Ancient Sanctuary: Sanctuary Maze - On cliff after Mime",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.AncientSanctuary.Entry"
+  },
+  {
+    "CodeName": "Chest_AncientSanctuary_9",
+    "CustomName": "Ancient Sanctuary: Sanctuary Maze - In hut near Mime",
+    "OriginalContent": "ReviveTint_Shard",
+    "LocationTag": "Level.SpawnPoint.AncientSanctuary.Entry"
+  },
+  {
+    "CodeName": "Chest_AncientSanctuary_10",
+    "CustomName": "Ancient Sanctuary: Sanctuary Maze - In boxes",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.AncientSanctuary.Entry"
+  },
+  {
+    "CodeName": "Chest_AncientSanctuary_11",
+    "CustomName": "Ancient Sanctuary: Gestral Totem - Ink bottles on the cliff",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.AncientSanctuary.GestralTotem"
+  },
+  {
+    "CodeName": "Chest_AncientSanctuary_12",
+    "CustomName": "Ancient Sanctuary: Giant Bell Alley - After boss",
+    "OriginalContent": "EnergyTint_Shard",
+    "LocationTag": "Level.SpawnPoint.AncientSanctuary.Entry"
+  },
+  {
+    "CodeName": "Chest_AncientSanctuary_13",
+    "CustomName": "Ancient Sanctuary: Gestral Totem - In shallow river",
+    "OriginalContent": "PiercingShot",
+    "LocationTag": "Level.SpawnPoint.AncientSanctuary.GestralTotem"
+  },
+  {
+    "CodeName": "Chest_AncientSanctuary_14",
+    "CustomName": "Ancient Sanctuary: Gestral Totem - Jump the gaps",
+    "OriginalContent": "ChromaPack_ExtraLarge",
+    "LocationTag": "Level.SpawnPoint.AncientSanctuary.GestralTotem"
+  },
+  {
+    "CodeName": "Chest_AncientSanctuary_15",
+    "CustomName": "Ancient Sanctuary: Sanctuary Maze - On Expeditioner corpse on path to flag 1 shortcut",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.AncientSanctuary.Entry"
+  },
+  {
+    "CodeName": "Chest_AncientSanctuary_16",
+    "CustomName": "Ancient Sanctuary: Giant Bell Alley - In crawlspace after boss",
+    "OriginalContent": "StunBoost",
+    "LocationTag": "Level.SpawnPoint.AncientSanctuary.Entry"
+  },
+  {
+    "CodeName": "Chest_AncientSanctuary_17",
+    "CustomName": "Ancient Sanctuary: Giant Bell Alley - Paint Cage before Expedition Flag",
+    "OriginalContent": "PartyHealShard",
+    "LocationTag": "Level.SpawnPoint.AncientSanctuary.Entry"
+  },
+  {
+    "CodeName": "Chest_AncientSanctuary_19",
+    "CustomName": "Ancient Sanctuary: Sanctuary Maze - At shortcut to flag 1",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.AncientSanctuary.Entry"
+  },
+  {
+    "CodeName": "Chest_CrimsonForest_1",
+    "CustomName": "Crimson Forest: Crimson Perch - Bottom floor near cave",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.RedForest.Entry"
+  },
+  {
+    "CodeName": "Chest_CrimsonForest_2",
+    "CustomName": "Crimson Forest: Crimson Perch - Under Expedition Flag",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.RedForest.Entry"
+  },
+  {
+    "CodeName": "Chest_CrimsonForest_3",
+    "CustomName": "Crimson Forest: Crimson Perch - Near Expeditioner corpse before Expedition Flag",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.RedForest.Entry"
+  },
+  {
+    "CodeName": "Chest_CrimsonForest_4",
+    "CustomName": "Crimson Forest: The Three Blades - After left path Sword Statue",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.RedForest.Entry"
+  },
+  {
+    "CodeName": "Chest_CrimsonForest_5",
+    "CustomName": "Crimson Forest: The Three Blades - Upper path after floating rock platforms",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.RedForest.Entry"
+  },
+  {
+    "CodeName": "Chest_CrimsonForest_6",
+    "CustomName": "Crimson Forest: The Three Blades - In boxes after floating rock platforms",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.RedForest.Entry"
+  },
+  {
+    "CodeName": "Chest_CrimsonForest_7",
+    "CustomName": "Crimson Forest: The Three Blades - In soup (complete dungeon)",
+    "OriginalContent": "Chevalam",
+    "LocationTag": "Level.SpawnPoint.RedForest.Entry"
+  },
+  {
+    "CodeName": "Chest_CrimsonForest_8",
+    "CustomName": "Crimson Forest: The Three Blades - Right path Sword Statue 2",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.RedForest.Entry"
+  },
+  {
+    "CodeName": "Chest_CrimsonForest_9",
+    "CustomName": "Crimson Forest: Crimson Perch - Above Expedition Flag",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.RedForest.Entry"
+  },
+  {
+    "CodeName": "Chest_DarkShores_1",
+    "CustomName": "Dark Shores: In barrel behind two Nevrons",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.DarkShores.Entry"
+  },
+  {
+    "CodeName": "Chest_DarkShores_2",
+    "CustomName": "Dark Shores: Right side item 1",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.DarkShores.Entry"
+  },
+  {
+    "CodeName": "Chest_DarkShores_3",
+    "CustomName": "Dark Shores: In boxes 2",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.DarkShores.Entry"
+  },
+  {
+    "CodeName": "Chest_DarkShores_4",
+    "CustomName": "Dark Shores: Right side item 2",
+    "OriginalContent": "ChromaPack_ExtraLarge",
+    "LocationTag": "Level.SpawnPoint.DarkShores.Entry"
+  },
+  {
+    "CodeName": "Chest_DarkShores_5",
+    "CustomName": "Dark Shores: Behind two Nevrons",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.DarkShores.Entry"
+  },
+  {
+    "CodeName": "Chest_DarkShores_6",
+    "CustomName": "Dark Shores: Near boat",
+    "OriginalContent": "InMediasRes",
+    "LocationTag": "Level.SpawnPoint.DarkShores.Entry"
+  },
+  {
+    "CodeName": "Chest_DarkShores_7",
+    "CustomName": "Dark Shores: Near lantern",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.DarkShores.Entry"
+  },
+  {
+    "CodeName": "Chest_DarkShores_8",
+    "CustomName": "Dark Shores: Between two Nevrons",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.DarkShores.Entry"
+  },
+  {
+    "CodeName": "Chest_DarkShores_9",
+    "CustomName": "Dark Shores: In boxes 1",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.DarkShores.Entry"
+  },
+  {
+    "CodeName": "Chest_EsquiesNest_1",
+    "CustomName": "Esquies Nest: Take shortcut out from Esquie's room. Wheeeeee",
+    "OriginalContent": "InitialAp+1C",
+    "LocationTag": "Level.SpawnPoint.EsquieNest.Francois"
+  },
+  {
+    "CodeName": "Chest_EsquiesNest_2",
+    "CustomName": "Esquies Nest: Francois - I hid this item - find it before Fran Fran",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.EsquieNest.Francois"
+  },
+  {
+    "CodeName": "Chest_EsquiesNest_3",
+    "CustomName": "Esquies Nest: Esquie's Room - Did you get my rock from Fran Fran?",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.EsquieNest.Francois"
+  },
+  {
+    "CodeName": "Chest_EsquiesNest_4",
+    "CustomName": "Esquies Nest: Esquie's Room - New friends!",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.EsquieNest.Francois"
+  },
+  {
+    "CodeName": "Chest_EsquiesNest_5",
+    "CustomName": "Esquies Nest: Get Outta My Way! - Don't be mean to Sunniso",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.EsquieNest.Francois"
+  },
+  {
+    "CodeName": "Chest_EsquiesNest_6",
+    "CustomName": "Esquies Nest: Francois - Bye bye Fran Fran!",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.EsquieNest.Francois"
+  },
+  {
+    "CodeName": "Chest_EsquiesNest_7",
+    "CustomName": "Esquies Nest: Francois - Make another new friend after Fran Fran!",
+    "OriginalContent": "Quest_Mushroom",
+    "LocationTag": "Level.SpawnPoint.EsquieNest.Francois"
+  },
+  {
+    "CodeName": "Chest_FallingLeaves_1",
+    "CustomName": "Falling Leaves: Left path past Persik near fossilized expeditioners",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.CleaOrangeForest.Entry"
+  },
+  {
+    "CodeName": "Chest_FallingLeaves_2",
+    "CustomName": "Falling Leaves: Near Glaise on path to Chromatic Ballet",
+    "OriginalContent": "SosRush",
+    "LocationTag": "Level.SpawnPoint.CleaOrangeForest.Entry"
+  },
+  {
+    "CodeName": "Chest_FallingLeaves_3",
+    "CustomName": "Falling Leaves: Between Expedition Flag and Young Boy",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.CleaOrangeForest.Entry"
+  },
+  {
+    "CodeName": "Chest_FlyingManor_1",
+    "CustomName": "Flying Manor: Central Platform - Near easels",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.CleasFlyingHouse.Entry"
+  },
+  {
+    "CodeName": "Chest_FlyingManor_2",
+    "CustomName": "Flying Manor: Dualliste Wing - Near Stalact",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.CleasFlyingHouse.Entry"
+  },
+  {
+    "CodeName": "Chest_FlyingManor_3",
+    "CustomName": "Flying Manor: Central Platform - Left of path to area boss",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.CleasFlyingHouse.Entry"
+  },
+  {
+    "CodeName": "Chest_FlyingManor_4",
+    "CustomName": "Flying Manor: Dualliste Wing - Behind double Gold Chevaliere",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.CleasFlyingHouse.Entry"
+  },
+  {
+    "CodeName": "Chest_FlyingManor_5",
+    "CustomName": "Flying Manor: Dualliste Wing - Behind Grosse Tete",
+    "OriginalContent": "ChromaPack_ExtraLarge",
+    "LocationTag": "Level.SpawnPoint.CleasFlyingHouse.Entry"
+  },
+  {
+    "CodeName": "Chest_FlyingManor_6",
+    "CustomName": "Flying Manor: Dualliste Wing - Paint Cage",
+    "OriginalContent": "ReviveWithPower",
+    "LocationTag": "Level.SpawnPoint.CleasFlyingHouse.Entry"
+  },
+  {
+    "CodeName": "Chest_FlyingManor_9",
+    "CustomName": "Flying Manor: Dualliste Wing - Right of Dualliste room entrance",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.CleasFlyingHouse.Entry"
+  },
+  {
+    "CodeName": "Chest_FlyingManor_10",
+    "CustomName": "Flying Manor: Dualliste Wing - Behind Bourgeon",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.CleasFlyingHouse.Entry"
+  },
+  {
+    "CodeName": "Chest_FlyingManor_11",
+    "CustomName": "Flying Manor: Dualliste Wing - Behind Hexga near Hexga corpse",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.CleasFlyingHouse.Entry"
+  },
+  {
+    "CodeName": "Chest_FlyingManor_12",
+    "CustomName": "Flying Manor: Dualliste Wing - Left of Bourgeon",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.CleasFlyingHouse.Entry"
+  },
+  {
+    "CodeName": "Chest_FlyingManor_13",
+    "CustomName": "Flying Manor: Lampmaster Wing - Floating island with easels",
+    "OriginalContent": "GradientOnBuff",
+    "LocationTag": "Level.SpawnPoint.CleasFlyingHouse.Entry"
+  },
+  {
+    "CodeName": "Chest_FlyingManor_14",
+    "CustomName": "Flying Manor: Lampmaster Wing - Easels near patrolling Jar",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.CleasFlyingHouse.Entry"
+  },
+  {
+    "CodeName": "Chest_FlyingManor_15",
+    "CustomName": "Flying Manor: Lampmaster Wing - Near dead Stalact",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.CleasFlyingHouse.Entry"
+  },
+  {
+    "CodeName": "Chest_FlyingManor_16",
+    "CustomName": "Flying Manor: Lampmaster Wing - Behind Greatsword Cultist",
+    "OriginalContent": "ChromaPack_ExtraLarge",
+    "LocationTag": "Level.SpawnPoint.CleasFlyingHouse.Entry"
+  },
+  {
+    "CodeName": "Chest_FlyingManor_17",
+    "CustomName": "Flying Manor: Lampmaster Wing - Near Gargant",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.CleasFlyingHouse.Entry"
+  },
+  {
+    "CodeName": "Chest_FlyingManor_18",
+    "CustomName": "Flying Manor: Lampmaster Wing - Above Gargant",
+    "OriginalContent": "VersatileHealer",
+    "LocationTag": "Level.SpawnPoint.CleasFlyingHouse.Entry"
+  },
+  {
+    "CodeName": "Chest_FlyingManor_19",
+    "CustomName": "Flying Manor: Lampmaster Wing - Behind Lampmaster",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.CleasFlyingHouse.Entry"
+  },
+  {
+    "CodeName": "Chest_FlyingManor_21",
+    "CustomName": "Flying Manor: Eveque Wing - Inside library",
+    "OriginalContent": "Roulette",
+    "LocationTag": "Level.SpawnPoint.CleasFlyingHouse.Entry"
+  },
+  {
+    "CodeName": "Chest_FlyingManor_22",
+    "CustomName": "Flying Manor: Eveque Wing - Easels near Petank start",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.CleasFlyingHouse.Entry"
+  },
+  {
+    "CodeName": "Chest_FlyingManor_23",
+    "CustomName": "Flying Manor: Eveque Wing - Ground floor behind Cruler",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.CleasFlyingHouse.Entry"
+  },
+  {
+    "CodeName": "Chest_FlyingManor_24",
+    "CustomName": "Flying Manor: Eveque Wing - On bridge above Cruler",
+    "OriginalContent": "Painter",
+    "LocationTag": "Level.SpawnPoint.CleasFlyingHouse.Entry"
+  },
+  {
+    "CodeName": "Chest_FlyingManor_25",
+    "CustomName": "Flying Manor: Eveque Wing - Near Portier by exit",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.CleasFlyingHouse.Entry"
+  },
+  {
+    "CodeName": "Chest_FlyingManor_26",
+    "CustomName": "Flying Manor: Eveque Wing - Ground floor by window in Eveque room",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.CleasFlyingHouse.Entry"
+  },
+  {
+    "CodeName": "Chest_FlyingManor_27",
+    "CustomName": "Flying Manor: Goblu Wing - above handholds near patrolling Glaise",
+    "OriginalContent": "PowerfulMark",
+    "LocationTag": "Level.SpawnPoint.CleasFlyingHouse.Entry"
+  },
+  {
+    "CodeName": "Chest_FlyingManor_28",
+    "CustomName": "Flying Manor: Eveque Wing - On fallen bridge segment",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.CleasFlyingHouse.Entry"
+  },
+  {
+    "CodeName": "Chest_FlyingManor_29",
+    "CustomName": "Flying Manor: Lampmaster Wing (Honestly idk) - Near single Steel Chevaliere on broken platform",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.CleasFlyingHouse.Entry"
+  },
+  {
+    "CodeName": "Chest_FlyingManor_30",
+    "CustomName": "Flying Manor: Goblu Wing - Left of entrance",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.CleasFlyingHouse.Entry"
+  },
+  {
+    "CodeName": "Chest_FlyingManor_32",
+    "CustomName": "Flying Manor: Goblu Wing - Under main platform",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.CleasFlyingHouse.Entry"
+  },
+  {
+    "CodeName": "Chest_FlyingManor_33",
+    "CustomName": "Flying Manor: Central Platform - Right of entrance",
+    "OriginalContent": "FreeAimShell",
+    "LocationTag": "Level.SpawnPoint.CleasFlyingHouse.Entry"
+  },
+  {
+    "CodeName": "Chest_FlyingManor_34",
+    "CustomName": "Flying Manor: Central Platform - Path to Eveque Wing on giant frame",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.CleasFlyingHouse.Entry"
+  },
+  {
+    "CodeName": "Chest_FlyingManor_36",
+    "CustomName": "Flying Manor: Goblu Wing - Next to Goblu",
+    "OriginalContent": "FreeAimEnergy",
+    "LocationTag": "Level.SpawnPoint.CleasFlyingHouse.Entry"
+  },
+  {
+    "CodeName": "Chest_FlyingManor_37",
+    "CustomName": "Flying Manor: Goblu Wing - On path to Goblu",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.CleasFlyingHouse.Entry"
+  },
+  {
+    "CodeName": "Chest_FlyingManor_38",
+    "CustomName": "Flying Manor: Goblu Wing - Behind Fusoka",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.CleasFlyingHouse.Entry"
+  },
+  {
+    "CodeName": "Chest_FlyingManor_39",
+    "CustomName": "Flying Manor: Goblu Wing - Side path near Mime",
+    "OriginalContent": "BreakingStrong",
+    "LocationTag": "Level.SpawnPoint.CleasFlyingHouse.Entry"
+  },
+  {
+    "CodeName": "Chest_FlyingManor_40",
+    "CustomName": "Flying Manor: Goblu Wing - Center of Bourgeon and Glaise patrol",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.CleasFlyingHouse.Entry"
+  },
+  {
+    "CodeName": "Chest_FlyingManor_41",
+    "CustomName": "Flying Manor: Eveque Wing - Paint Cage",
+    "OriginalContent": "StunEnergy",
+    "LocationTag": "Level.SpawnPoint.CleasFlyingHouse.Entry"
+  },
+  {
+    "CodeName": "Chest_ForgottenBattlefield_1",
+    "CustomName": "Forgotten Battlefield: Main Gate - Left side wooden deck",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.ForgottenBattlefield.Entry"
+  },
+  {
+    "CodeName": "Chest_ForgottenBattlefield_2",
+    "CustomName": "Forgotten Battlefield: Main Gate - Right side near outer wall",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.ForgottenBattlefield.Entry"
+  },
+  {
+    "CodeName": "Chest_ForgottenBattlefield_3",
+    "CustomName": "Ancient Sanctuary or Forgotten Battlefield: Entrance - Across bridge or Fort Ruins - In left ruins near dead end",
+    "OriginalContent": "ChromaPack_ExtraLarge",
+    "LocationTag": "Level.SpawnPoint.ForgottenBattlefield.Entry"
+  },
+  {
+    "CodeName": "Chest_ForgottenBattlefield_4",
+    "CustomName": "Forgotten Battlefield: Battlefield - On wooden platform near Petank end",
+    "OriginalContent": "ChromaPack_ExtraLarge",
+    "LocationTag": "Level.SpawnPoint.ForgottenBattlefield.Entry"
+  },
+  {
+    "CodeName": "Chest_ForgottenBattlefield_5",
+    "CustomName": "Forgotten Battlefield: Main Gate - Near Chalier sword",
+    "OriginalContent": "HealingTint_Shard",
+    "LocationTag": "Level.SpawnPoint.ForgottenBattlefield.Entry"
+  },
+  {
+    "CodeName": "Chest_ForgottenBattlefield_6",
+    "CustomName": "Forgotten Battlefield: Main Gate - Left side dead end",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.ForgottenBattlefield.Entry"
+  },
+  {
+    "CodeName": "Chest_ForgottenBattlefield_7",
+    "CustomName": "Forgotten Battlefield: Main Gate - On platform after Expedition Flag",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.ForgottenBattlefield.Entry"
+  },
+  {
+    "CodeName": "Chest_ForgottenBattlefield_8",
+    "CustomName": "Forgotten Battlefield: Main Gate - Other side of left entrance corpse pile",
+    "OriginalContent": "SweetKill",
+    "LocationTag": "Level.SpawnPoint.ForgottenBattlefield.Entry"
+  },
+  {
+    "CodeName": "Chest_ForgottenBattlefield_9",
+    "CustomName": "Forgotten Battlefield: Battlefield - Near Expedition Flag",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.ForgottenBattlefield.Entry"
+  },
+  {
+    "CodeName": "Chest_ForgottenBattlefield_10",
+    "CustomName": "Forgotten Battlefield: Vanguard Point - In maze",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.ForgottenBattlefield.Entry"
+  },
+  {
+    "CodeName": "Chest_ForgottenBattlefield_11",
+    "CustomName": "Forgotten Battlefield: Vanguard Point - In front of Chromatic miniboss",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.ForgottenBattlefield.Entry"
+  },
+  {
+    "CodeName": "Chest_ForgottenBattlefield_12",
+    "CustomName": "Forgotten Battlefield: Fort Ruins - On ledge overlooking battlefield",
+    "OriginalContent": "EnergyDeath",
+    "LocationTag": "Level.SpawnPoint.ForgottenBattlefield.Entry"
+  },
+  {
+    "CodeName": "Chest_ForgottenBattlefield_13",
+    "CustomName": "Forgotten Battlefield: Vanguard Point - Below Expedition Flag",
+    "OriginalContent": "EnergyTint_Shard",
+    "LocationTag": "Level.SpawnPoint.ForgottenBattlefield.Entry"
+  },
+  {
+    "CodeName": "Chest_ForgottenBattlefield_14",
+    "CustomName": "Forgotten Battlefield: Vanguard Point - Above Chromatic miniboss",
+    "OriginalContent": "PowerfulTint",
+    "LocationTag": "Level.SpawnPoint.ForgottenBattlefield.Entry"
+  },
+  {
+    "CodeName": "Chest_ForgottenBattlefield_15",
+    "CustomName": "Forgotten Battlefield: Battlefield - In box",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.ForgottenBattlefield.Entry"
+  },
+  {
+    "CodeName": "Chest_ForgottenBattlefield_16",
+    "CustomName": "Forgotten Battlefield: Main Gate - Near Grandis corpses",
+    "OriginalContent": "ChromaPack_ExtraLarge",
+    "LocationTag": "Level.SpawnPoint.ForgottenBattlefield.Entry"
+  },
+  {
+    "CodeName": "Chest_ForgottenBattlefield_17",
+    "CustomName": "Forgotten Battlefield: Ancient Bridge - After bridge",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.ForgottenBattlefield.Entry"
+  },
+  {
+    "CodeName": "Chest_ForgottenBattlefield_18",
+    "CustomName": "Forgotten Battlefield: Ancient Bridge - Before grave",
+    "OriginalContent": "ReviveTintEnergy",
+    "LocationTag": "Level.SpawnPoint.ForgottenBattlefield.Entry"
+  },
+  {
+    "CodeName": "Chest_ForgottenBattlefield_19",
+    "CustomName": "Forgotten Battlefield: Fort Ruins - Chest",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.ForgottenBattlefield.Entry"
+  },
+  {
+    "CodeName": "Chest_ForgottenBattlefield_20",
+    "CustomName": "Forgotten Battlefield: Main Gate - Near burning tree",
+    "OriginalContent": "ReviveTint_Shard",
+    "LocationTag": "Level.SpawnPoint.ForgottenBattlefield.Entry"
+  },
+  {
+    "CodeName": "Chest_ForgottenBattlefield_21",
+    "CustomName": "Forgotten Battlefield: Main Gate - Left side in a box",
+    "OriginalContent": "Consumable_Respec",
+    "LocationTag": "Level.SpawnPoint.ForgottenBattlefield.Entry"
+  },
+  {
+    "CodeName": "Chest_ForgottenBattlefield_22",
+    "CustomName": "Forgotten Battlefield: Main Gate - Near Grandis and Chalier corpses",
+    "OriginalContent": "InitialAp+1D",
+    "LocationTag": "Level.SpawnPoint.ForgottenBattlefield.Entry"
+  },
+  {
+    "CodeName": "Chest_ForgottenBattlefield_23",
+    "CustomName": "Forgotten Battlefield: Fort Ruins - Dead end",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.ForgottenBattlefield.Entry"
+  },
+  {
+    "CodeName": "Chest_ForgottenBattlefield_24",
+    "CustomName": "Forgotten Battlefield: Fort Ruins - Behind Paint Spike",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.ForgottenBattlefield.Entry"
+  },
+  {
+    "CodeName": "Chest_ForgottenBattlefield_25",
+    "CustomName": "Forgotten Battlefield: Battlefield - Paint Cage",
+    "OriginalContent": "PartyHealShard",
+    "LocationTag": "Level.SpawnPoint.ForgottenBattlefield.Entry"
+  },
+  {
+    "CodeName": "Chest_ForgottenBattlefield_26",
+    "CustomName": "Forgotten Battlefield: Ancient Bridge - In crawlspace below bridge",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.ForgottenBattlefield.Entry"
+  },
+  {
+    "CodeName": "Chest_FrozenHearts_1",
+    "CustomName": "Frozen Hearts: Glacial Falls - Chromatic Veilleur Ice Cave item 1",
+    "OriginalContent": "BurnAffinity",
+    "LocationTag": "Level.SpawnPoint.FrozenHearts.Entrance"
+  },
+  {
+    "CodeName": "Chest_FrozenHearts_2",
+    "CustomName": "Frozen Hearts: Icebound Train Station - On broken train tracks",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.FrozenHearts.Entrance"
+  },
+  {
+    "CodeName": "Chest_FrozenHearts_3",
+    "CustomName": "Frozen Hearts: Icebound Train Station - Platform to left of entrance to first room",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.FrozenHearts.Entrance"
+  },
+  {
+    "CodeName": "Chest_FrozenHearts_4",
+    "CustomName": "Frozen Hearts: Icebound Train Station - Chromatic Veilleur Ice Cave item 2",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.FrozenHearts.Entrance"
+  },
+  {
+    "CodeName": "Chest_FrozenHearts_5",
+    "CustomName": "Frozen Hearts: Icebound Train Station - Past Paint Cage",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.FrozenHearts.Entrance"
+  },
+  {
+    "CodeName": "Chest_FrozenHearts_6",
+    "CustomName": "Frozen Hearts: Glacial Falls - Right of station entrance near Danseuse corpse",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.FrozenHearts.Entrance"
+  },
+  {
+    "CodeName": "Chest_FrozenHearts_7",
+    "CustomName": "Frozen Hearts: Glacial Falls - Paint Cage 1",
+    "OriginalContent": "AntiFrozen",
+    "LocationTag": "Level.SpawnPoint.FrozenHearts.Entrance"
+  },
+  {
+    "CodeName": "Chest_FrozenHearts_8",
+    "CustomName": "Frozen Hearts: Glacial Falls - Chromatic Veilleur Ice Cave item 4",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.FrozenHearts.Entrance"
+  },
+  {
+    "CodeName": "Chest_FrozenHearts_9",
+    "CustomName": "Frozen Hearts: Glacial Falls - Paint Cage 2",
+    "OriginalContent": "ReviveTint_Shard",
+    "LocationTag": "Level.SpawnPoint.FrozenHearts.Entrance"
+  },
+  {
+    "CodeName": "Chest_FrozenHearts_10",
+    "CustomName": "Frozen Hearts: Glacial Falls - Between Expedition Flag and tracks to Danseuse Teacher",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.FrozenHearts.Entrance"
+  },
+  {
+    "CodeName": "Chest_FrozenHearts_11",
+    "CustomName": "Frozen Hearts: Icebound Train Station - Behind train near entrance",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.FrozenHearts.Entrance"
+  },
+  {
+    "CodeName": "Chest_FrozenHearts_12",
+    "CustomName": "Frozen Hearts: Icebound Train Station - Red ice nook in first area",
+    "OriginalContent": "ChromaPack_ExtraLarge",
+    "LocationTag": "Level.SpawnPoint.FrozenHearts.Entrance"
+  },
+  {
+    "CodeName": "Chest_FrozenHearts_13",
+    "CustomName": "Frozen Hearts: Glacial Falls - Above Expedition Flag item 1",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.FrozenHearts.Entrance"
+  },
+  {
+    "CodeName": "Chest_FrozenHearts_14",
+    "CustomName": "Frozen Hearts: Icebound Train Station - Ledge overlooking entrance",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.FrozenHearts.Entrance"
+  },
+  {
+    "CodeName": "Chest_FrozenHearts_15",
+    "CustomName": "Frozen Hearts: Glacial Falls - Above giant pit item 1",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.FrozenHearts.Entrance"
+  },
+  {
+    "CodeName": "Chest_FrozenHearts_16",
+    "CustomName": "Frozen Hearts: Glacial Falls - Behind double Braseleur near giant pit",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.FrozenHearts.Entrance"
+  },
+  {
+    "CodeName": "Chest_FrozenHearts_17",
+    "CustomName": "Frozen Hearts: Glacial Falls - Near handholds leading to shortcut back to Expedition Flag",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.FrozenHearts.Entrance"
+  },
+  {
+    "CodeName": "Chest_FrozenHearts_18",
+    "CustomName": "Frozen Hearts: Glacial Falls - On train tracks above handholds",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.FrozenHearts.Entrance"
+  },
+  {
+    "CodeName": "Chest_FrozenHearts_19",
+    "CustomName": "Frozen Hearts: Icebound Train Station - First room right path on cliffside",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.FrozenHearts.Entrance"
+  },
+  {
+    "CodeName": "Chest_FrozenHearts_20",
+    "CustomName": "Frozen Hearts: Glacial Falls - above giant pit item 2",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.FrozenHearts.Entrance"
+  },
+  {
+    "CodeName": "Chest_FrozenHearts_21",
+    "CustomName": "Frozen Hearts: Glacial Falls - Above Expedition Flag item 2",
+    "OriginalContent": "BurningBreak",
+    "LocationTag": "Level.SpawnPoint.FrozenHearts.Entrance"
+  },
+  {
+    "CodeName": "Chest_FrozenHearts_22",
+    "CustomName": "Frozen Hearts: Glacial Falls - Chromatic Veilleur Ice Cave item 3",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.FrozenHearts.Entrance"
+  },
+  {
+    "CodeName": "Chest_FrozenHearts_23",
+    "CustomName": "Frozen Hearts: Icebound Terminal - Behind zone boss",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.FrozenHearts.Entrance"
+  },
+  {
+    "CodeName": "Chest_FrozenHearts_24",
+    "CustomName": "Frozen Hearts: Iced Heart - Near Expedition Flag",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.FrozenHearts.Entrance"
+  },
+  {
+    "CodeName": "Chest_FrozenHearts_25",
+    "CustomName": "Frozen Hearts: Iced Heart - Under dead Grandis",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.FrozenHearts.Entrance"
+  },
+  {
+    "CodeName": "Chest_FrozenHearts_26",
+    "CustomName": "Frozen Hearts: Iced Heart - Near Mime after floating trains item 1",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.FrozenHearts.Entrance"
+  },
+  {
+    "CodeName": "Chest_FrozenHearts_27",
+    "CustomName": "Frozen Hearts: Iced Heart - Near Mime after floating trains item 2",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.FrozenHearts.Entrance"
+  },
+  {
+    "CodeName": "Chest_FrozenHearts_29",
+    "CustomName": "Frozen Hearts: Glacial Falls - Above Danseuse Teacher",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.FrozenHearts.Entrance"
+  },
+  {
+    "CodeName": "Chest_FrozenHearts_30",
+    "CustomName": "Frozen Hearts: Iced Heart - Near Mime after floating trains item 3",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.FrozenHearts.Entrance"
+  },
+  {
+    "CodeName": "Chest_FrozenHearts_31",
+    "CustomName": "Frozen Hearts: Glacial Falls - Behind Stalact near station entrance",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.FrozenHearts.Entrance"
+  },
+  {
+    "CodeName": "Chest_GestralVillage_1",
+    "CustomName": "Gestral Village: Steal from Victorifo",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.GestralVillage.Entry"
+  },
+  {
+    "CodeName": "Chest_GestralVillage_2",
+    "CustomName": "Gestral Village: Behind the stage",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.GestralVillage.Entry"
+  },
+  {
+    "CodeName": "Chest_GestralVillage_3",
+    "CustomName": "Gestral Village: On scaffolding by the stage",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.GestralVillage.Entry"
+  },
+  {
+    "CodeName": "Chest_GestralVillage_4",
+    "CustomName": "Gestral Village: In the arena",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.GestralVillage.Entry"
+  },
+  {
+    "CodeName": "Chest_GestralVillage_5",
+    "CustomName": "Gestral Village: Above the Bazar",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.GestralVillage.Entry"
+  },
+  {
+    "CodeName": "Chest_GestralVillage_6",
+    "CustomName": "Gestral Village: Barrels near Chef's House",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.GestralVillage.Entry"
+  },
+  {
+    "CodeName": "Chest_GestralVillage_7",
+    "CustomName": "Gestral Village: In paint spike room 1",
+    "OriginalContent": "Betelim",
+    "LocationTag": "Level.SpawnPoint.GestralVillage.Entry"
+  },
+  {
+    "CodeName": "Chest_GestralVillage_8",
+    "CustomName": "Gestral Village: In paint spike room 2",
+    "OriginalContent": "FreeAimPowerful",
+    "LocationTag": "Level.SpawnPoint.GestralVillage.Entry"
+  },
+  {
+    "CodeName": "Chest_GestralVillage_9",
+    "CustomName": "Gestral Village: Near casino",
+    "OriginalContent": "Consumable_Respec",
+    "LocationTag": "Level.SpawnPoint.GestralVillage.Entry"
+  },
+  {
+    "CodeName": "Chest_GoblusLair_1",
+    "CustomName": "Flying Waters: Coral Cave - On raised platform",
+    "OriginalContent": "RewardingMark",
+    "LocationTag": "Level.SpawnPoint.Goblu.Exit"
+  },
+  {
+    "CodeName": "Chest_GoblusLair_2",
+    "CustomName": "Flying Waters: Entrance - Minefield item 2",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.Goblu.Entry"
+  },
+  {
+    "CodeName": "Chest_GoblusLair_3",
+    "CustomName": "Flying Waters: Noco's Hut - Behind Manor door",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.Goblu.Exit"
+  },
+  {
+    "CodeName": "Chest_GoblusLair_4",
+    "CustomName": "Flying Waters: Noco's Hut - On top of stone tower",
+    "OriginalContent": "AugmentedAim",
+    "LocationTag": "Level.SpawnPoint.Goblu.Exit"
+  },
+  {
+    "CodeName": "Chest_GoblusLair_5",
+    "CustomName": "Flying Waters: Noco's Hut - Next to Goblu anvil",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.Goblu.Exit"
+  },
+  {
+    "CodeName": "Chest_GoblusLair_6",
+    "CustomName": "Flying Waters: Entrance - Near anchored Expedition",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.Goblu.Entry"
+  },
+  {
+    "CodeName": "Chest_GoblusLair_7",
+    "CustomName": "Flying Waters: Coral Cave - Right of Expedition Flag",
+    "OriginalContent": "SimpleBreaker",
+    "LocationTag": "Level.SpawnPoint.Goblu.Exit"
+  },
+  {
+    "CodeName": "Chest_GoblusLair_8",
+    "CustomName": "Flying Waters: Coral Cave - Near dead expeditioner",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.Goblu.Exit"
+  },
+  {
+    "CodeName": "Chest_GoblusLair_9",
+    "CustomName": "Flying Waters: Lumerian Streets - Behind Chromatic miniboss",
+    "OriginalContent": "EnergyBreak",
+    "LocationTag": "Level.SpawnPoint.Goblu.Exit"
+  },
+  {
+    "CodeName": "Chest_GoblusLair_10",
+    "CustomName": "Flying Waters: Coral Cave - Near lantern coral",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.Goblu.Exit"
+  },
+  {
+    "CodeName": "Chest_GoblusLair_11",
+    "CustomName": "Flying Waters: Noco's Hut - After Expedition Flag",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.Goblu.Exit"
+  },
+  {
+    "CodeName": "Chest_GoblusLair_12",
+    "CustomName": "Flying Waters: Flower Fields - Near Expedition Flag",
+    "OriginalContent": "Versatile",
+    "LocationTag": "Level.SpawnPoint.Goblu.Exit"
+  },
+  {
+    "CodeName": "Chest_GoblusLair_13",
+    "CustomName": "Flying Waters: Lumerian Streets - In Paint Spike",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.Goblu.Exit"
+  },
+  {
+    "CodeName": "Chest_GoblusLair_14",
+    "CustomName": "Flying Waters: Entrance - In inlet in first room",
+    "OriginalContent": "SosShell",
+    "LocationTag": "Level.SpawnPoint.Goblu.Entry"
+  },
+  {
+    "CodeName": "Chest_GoblusLair_15",
+    "CustomName": "Flying Waters: Noco's Hut - On broken pillar",
+    "OriginalContent": "Consumable_Respec",
+    "LocationTag": "Level.SpawnPoint.Goblu.Exit"
+  },
+  {
+    "CodeName": "Chest_GoblusLair_16",
+    "CustomName": "Flying Waters: Coral Cave - Past long seaweed",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.Goblu.Exit"
+  },
+  {
+    "CodeName": "Chest_GoblusLair_17",
+    "CustomName": "Flying Waters: Lumerian Streets - Near shopping stand",
+    "OriginalContent": "EnergyTint_Shard",
+    "LocationTag": "Level.SpawnPoint.Goblu.Exit"
+  },
+  {
+    "CodeName": "Chest_GoblusLair_18",
+    "CustomName": "Flying Waters: Lumerian Streets - By floating house",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.Goblu.Exit"
+  },
+  {
+    "CodeName": "Chest_GoblusLair_19",
+    "CustomName": "Flying Waters: Entrance - In minefield",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.Goblu.Entry"
+  },
+  {
+    "CodeName": "Chest_GoblusLair_20",
+    "CustomName": "Flying Waters: Noco's Hut - After platforming near friendly Nevron",
+    "OriginalContent": "Quest_Mine",
+    "LocationTag": "Level.SpawnPoint.Goblu.Exit"
+  },
+  {
+    "CodeName": "Chest_GoblusLair_21",
+    "CustomName": "Flying Waters: Entrance - Second room up ramp",
+    "OriginalContent": "FreeAimMarkingShot",
+    "LocationTag": "Level.SpawnPoint.Goblu.Entry"
+  },
+  {
+    "CodeName": "Chest_GoblusLair_22",
+    "CustomName": "Flying Waters: Entrance - In inlet in second room",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.Goblu.Entry"
+  },
+  {
+    "CodeName": "Chest_GoblusLair_23",
+    "CustomName": "Flying Waters: Lumerian Streets - On a rock with boxes",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.Goblu.Exit"
+  },
+  {
+    "CodeName": "Chest_GoblusLair_24",
+    "CustomName": "Flying Waters: Entrance - On main path",
+    "OriginalContent": "PartyHealShard",
+    "LocationTag": "Level.SpawnPoint.Goblu.Entry"
+  },
+  {
+    "CodeName": "Chest_GoblusLair_25",
+    "CustomName": "Flying Waters: Coral Cave - Past platforming pillars",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.Goblu.Exit"
+  },
+  {
+    "CodeName": "Chest_GoblusLair_26",
+    "CustomName": "Flying Waters: Coral Cave - Paint Cage",
+    "OriginalContent": "ReviveTint_Shard",
+    "LocationTag": "Level.SpawnPoint.Goblu.Exit"
+  },
+  {
+    "CodeName": "Chest_GoblusLair_27",
+    "CustomName": "Flying Waters: Coral Cave - Behind Mime",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.Goblu.Exit"
+  },
+  {
+    "CodeName": "Chest_GrandisStation_1",
+    "CustomName": "Grandis Station: Monoco's Station - Back of station",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.MonocoStation.InsideStation"
+  },
+  {
+    "CodeName": "Chest_GrandisStation_2",
+    "CustomName": "Grandis Station: Monoco's Station - Near Grandis Merchant",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.MonocoStation.InsideStation"
+  },
+  {
+    "CodeName": "Chest_Lumiere_1",
+    "CustomName": "Lumiere (Act 3): Opera House - On building railing in Paint Spike",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.LumiereAct03.Entry"
+  },
+  {
+    "CodeName": "Chest_Lumiere_2",
+    "CustomName": "Lumiere (Act 3): Entrance - Left of stairs after docks",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.LumiereAct03.Entry"
+  },
+  {
+    "CodeName": "Chest_Lumiere_3",
+    "CustomName": "Lumiere (Act 3): Entrance - Start of the game",
+    "OriginalContent": "APOnPowerful",
+    "LocationTag": "Level.SpawnPoint.LumiereAct03.Entry"
+  },
+  {
+    "CodeName": "Chest_Lumiere_4",
+    "CustomName": "Lumiere (Act 3): Entrance - In boxes",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.LumiereAct03.Entry"
+  },
+  {
+    "CodeName": "Chest_Lumiere_5",
+    "CustomName": "Lumiere (Act 3): Entrance - In Paint Spike",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.LumiereAct03.Entry"
+  },
+  {
+    "CodeName": "Chest_Lumiere_6",
+    "CustomName": "Lumiere (Act 3): Entrance - Right side after docks",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.LumiereAct03.Entry"
+  },
+  {
+    "CodeName": "Chest_Lumiere_7",
+    "CustomName": "Lumiere (Act 3): Entrance - Right side up stairs",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.LumiereAct03.Entry"
+  },
+  {
+    "CodeName": "Chest_Lumiere_8",
+    "CustomName": "Lumiere (Act 3): Entrance - Left side near trash can",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.LumiereAct03.Entry"
+  },
+  {
+    "CodeName": "Chest_Lumiere_9",
+    "CustomName": "Lumiere (Act 3): Central Plaza - Near fountain",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.LumiereAct03.Entry"
+  },
+  {
+    "CodeName": "Chest_Lumiere_10",
+    "CustomName": "Lumiere (Act 3): Central Plaza - Next to fountain",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.LumiereAct03.Entry"
+  },
+  {
+    "CodeName": "Chest_Lumiere_11",
+    "CustomName": "Lumiere (Act 3): Central Plaza - Hallway after fountain",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.LumiereAct03.Entry"
+  },
+  {
+    "CodeName": "Chest_Lumiere_12",
+    "CustomName": "Lumiere (Act 3): Central Plaza - Near boxes",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.LumiereAct03.Entry"
+  },
+  {
+    "CodeName": "Chest_Lumiere_13",
+    "CustomName": "Lumiere (Act 3): Shattered Alley - Inside gramophone",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.LumiereAct03.Entry"
+  },
+  {
+    "CodeName": "Chest_Lumiere_14",
+    "CustomName": "Lumiere (Act 3): Shattered Alley - Under the tree",
+    "OriginalContent": "GradientOnStun",
+    "LocationTag": "Level.SpawnPoint.LumiereAct03.Entry"
+  },
+  {
+    "CodeName": "Chest_Lumiere_15",
+    "CustomName": "Lumiere (Act 3): Shattered Alley - Left path after Expedition Flag",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.LumiereAct03.Entry"
+  },
+  {
+    "CodeName": "Chest_Lumiere_16",
+    "CustomName": "Lumiere (Act 3): Shattered Alley - Under impaled building",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.LumiereAct03.Entry"
+  },
+  {
+    "CodeName": "Chest_Lumiere_18",
+    "CustomName": "Lumiere (Act 3): Shattered Alley - Behind Chromatic miniboss",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.LumiereAct03.Entry"
+  },
+  {
+    "CodeName": "Chest_Lumiere_19",
+    "CustomName": "Lumiere (Act 3): Shattered Alley - Next to Chromatic miniboss",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.LumiereAct03.Entry"
+  },
+  {
+    "CodeName": "Chest_Lumiere_20",
+    "CustomName": "Lumiere (Act 3): Shattered Alley - Near boat before Opera House",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.LumiereAct03.Entry"
+  },
+  {
+    "CodeName": "Chest_Lumiere_21",
+    "CustomName": "Lumiere (Act 3): Shattered Alley - Before Opera House",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.LumiereAct03.Entry"
+  },
+  {
+    "CodeName": "Chest_Lumiere_22",
+    "CustomName": "Lumiere (Act 3): Lumiere's Garden - First right up stairs",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.LumiereAct03.Entry"
+  },
+  {
+    "CodeName": "Chest_Lumiere_23",
+    "CustomName": "Lumiere (Act 3): Opera House - Top of stairs",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.LumiereAct03.Entry"
+  },
+  {
+    "CodeName": "Chest_Lumiere_24",
+    "CustomName": "Lumiere (Act 3): Opera House - Under festival decorations",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.LumiereAct03.Entry"
+  },
+  {
+    "CodeName": "Chest_Lumiere_25",
+    "CustomName": "Lumiere (Act 3): Opera House - In between buildings",
+    "OriginalContent": "HealingStun",
+    "LocationTag": "Level.SpawnPoint.LumiereAct03.Entry"
+  },
+  {
+    "CodeName": "Chest_Lumiere_27",
+    "CustomName": "Lumiere (Act 3): Opera House - Cliffside overlooking ruined Lumiere",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.LumiereAct03.Entry"
+  },
+  {
+    "CodeName": "Chest_Lumiere_28",
+    "CustomName": "Lumiere (Act 3): Opera House - Near Cribappa",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.LumiereAct03.Entry"
+  },
+  {
+    "CodeName": "Chest_Lumiere_29",
+    "CustomName": "Lumiere (Act 3): Opera House - Near Young Boy",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.LumiereAct03.Entry"
+  },
+  {
+    "CodeName": "Chest_Lumiere_30",
+    "CustomName": "Lumiere (Act 3): Opera House - Under broken buidling before Cribappa",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.LumiereAct03.Entry"
+  },
+  {
+    "CodeName": "Chest_Lumiere_31",
+    "CustomName": "Lumiere (Act 3): Lumiere's Garden - Inside ruined statue item 3",
+    "OriginalContent": "Consumable_Respec",
+    "LocationTag": "Level.SpawnPoint.LumiereAct03.Entry"
+  },
+  {
+    "CodeName": "Chest_Lumiere_32",
+    "CustomName": "Lumiere (Act 3): Lumiere's Garden - By dead giant Obscur",
+    "OriginalContent": "Consumable_Respec",
+    "LocationTag": "Level.SpawnPoint.LumiereAct03.Entry"
+  },
+  {
+    "CodeName": "Chest_Lumiere_33",
+    "CustomName": "Lumiere (Act 3): Lumiere's Garden - Near ruined statue",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.LumiereAct03.Entry"
+  },
+  {
+    "CodeName": "Chest_Lumiere_34",
+    "CustomName": "Lumiere (Act 3): Lumiere's Garden - Inside ruined statue item 2",
+    "OriginalContent": "Consumable_Respec",
+    "LocationTag": "Level.SpawnPoint.LumiereAct03.Entry"
+  },
+  {
+    "CodeName": "Chest_Lumiere_35",
+    "CustomName": "Lumiere (Act 3): Crooked Tower Walkway - Before final boss",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.LumiereAct03.Entry"
+  },
+  {
+    "CodeName": "Chest_Lumiere_36",
+    "CustomName": "Lumiere (Act 3): Lumiere's Garden - Behind hedge",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.LumiereAct03.Entry"
+  },
+  {
+    "CodeName": "Chest_Lumiere_37",
+    "CustomName": "Lumiere (Act 3): Lumiere's Garden - On bench",
+    "OriginalContent": "Consumable_Respec",
+    "LocationTag": "Level.SpawnPoint.LumiereAct03.Entry"
+  },
+  {
+    "CodeName": "Chest_Lumiere_38",
+    "CustomName": "Lumiere (Act 3): Lumiere's Garden - Left side up stairs",
+    "OriginalContent": "GradientFighter",
+    "LocationTag": "Level.SpawnPoint.LumiereAct03.Entry"
+  },
+  {
+    "CodeName": "Chest_Lumiere_39",
+    "CustomName": "Lumiere (Act 3): Entrance - On the docks",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.LumiereAct03.Entry"
+  },
+  {
+    "CodeName": "Chest_Lumiere_40",
+    "CustomName": "Lumiere (Act 3): Shattered Alley - Near Chromatic miniboss",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.LumiereAct03.Entry"
+  },
+  {
+    "CodeName": "Chest_Lumiere_41",
+    "CustomName": "Lumiere (Act 3): Entrance - Left side near building",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.LumiereAct03.Entry"
+  },
+  {
+    "CodeName": "Chest_Lumiere_42",
+    "CustomName": "Lumiere (Act 3): Lumiere's Garden - Left before Chromatic Miniboss",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.LumiereAct03.Entry"
+  },
+  {
+    "CodeName": "Chest_Lumiere_43",
+    "CustomName": "Lumiere (Act 3): Lumiere's Garden - Inside ruined statue item 1",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.LumiereAct03.Entry"
+  },
+  {
+    "CodeName": "Chest_Lumiere_44",
+    "CustomName": "Lumiere (Act 3): Opera House - Near piano",
+    "OriginalContent": "MusicRecord_2",
+    "LocationTag": "Level.SpawnPoint.LumiereAct03.Entry"
+  },
+  {
+    "CodeName": "Chest_Manor_1",
+    "CustomName": "Manor: From First Continent Sea - After library platforms",
+    "OriginalContent": "ConsumableUpgradeMaterial_AP",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_Manor_2",
+    "CustomName": "Manor: Dining Hall Puzzle",
+    "OriginalContent": "MusicRecord_19",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_Manor_3",
+    "CustomName": "Manor: Through fake painting",
+    "OriginalContent": "ConsumableUpgradeMaterial_Revive",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_Manor_4",
+    "CustomName": "Manor: From World Map Sky Near Giant Petank - In closet",
+    "OriginalContent": "MusicRecord_26",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_Manor_5",
+    "CustomName": "Manor: From Gestral Village - In crawlspace",
+    "OriginalContent": "FaceMaelle_Rebellious",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_Manor_6",
+    "CustomName": "Manor: From Gestral Village - In boxes",
+    "OriginalContent": "ConsumableUpgradeMaterial_AP",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_Manor_7",
+    "CustomName": "Manor: From Falling Leaves - On the desk",
+    "OriginalContent": "MusicRecord_1",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_Manor_8",
+    "CustomName": "Manor: From Inside the Monolith - Near the vase on a table",
+    "OriginalContent": "MusicRecord_31",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_Manor_9",
+    "CustomName": "Manor: From Old Lumiere - In the sink",
+    "OriginalContent": "MusicRecord_29",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_Manor_11",
+    "CustomName": "Manor: Renoir's Atelier",
+    "OriginalContent": "SkinMaelle_Alicia",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_Manor_12",
+    "CustomName": "Manor: From Visages - Next to piano",
+    "OriginalContent": "MusicRecord_8",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_Manor_13",
+    "CustomName": "Manor: From Stone Wave Cliffs - In the wardrobe",
+    "OriginalContent": "SkinMaelle_CivilianSkirt",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_Manor_14",
+    "CustomName": "Manor: From Sirene - Break the bathroom mirror",
+    "OriginalContent": "ConsumableUpgradeMaterial_Health",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_Manor_15",
+    "CustomName": "Manor: From Frozen Hearts - At the harp",
+    "OriginalContent": "MusicRecord_22",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_Manor_16",
+    "CustomName": "Manor: From First Continent Sea - Behind fake bookshelf",
+    "OriginalContent": "SkinVerso_Civil",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_Monolith_1",
+    "CustomName": "Monolith: Tainted Meadows - Detour near Eveque",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.MonolithInterior.Climb.Entry"
+  },
+  {
+    "CodeName": "Chest_Monolith_2",
+    "CustomName": "Monolith: Tainted Cliffs - In front of bastard Mime room zipline",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.MonolithInterior.Climb.Entry"
+  },
+  {
+    "CodeName": "Chest_Monolith_3",
+    "CustomName": "Monolith: Tainted Meadows - Paint Cage",
+    "OriginalContent": "ReviveTint_Shard",
+    "LocationTag": "Level.SpawnPoint.MonolithInterior.Climb.Entry"
+  },
+  {
+    "CodeName": "Chest_Monolith_4",
+    "CustomName": "Monolith: Tainted Meadows - After Aline memory",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.MonolithInterior.Climb.Entry"
+  },
+  {
+    "CodeName": "Chest_Monolith_5",
+    "CustomName": "Monolith: Tainted Meadows - Near Eveque",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.MonolithInterior.Climb.Entry"
+  },
+  {
+    "CodeName": "Chest_Monolith_6",
+    "CustomName": "Monolith: Tainted Waters - Behind Chromatic Bourgeon",
+    "OriginalContent": "StayMarked",
+    "LocationTag": "Level.SpawnPoint.MonolithInterior.Climb.Entry"
+  },
+  {
+    "CodeName": "Chest_Monolith_7",
+    "CustomName": "Monolith: Tainted Waters - Right path in coral reef",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.MonolithInterior.Climb.Entry"
+  },
+  {
+    "CodeName": "Chest_Monolith_8",
+    "CustomName": "Monolith: Tainted Waters - In broken ship frame under barrels",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.MonolithInterior.Climb.Entry"
+  },
+  {
+    "CodeName": "Chest_Monolith_9",
+    "CustomName": "Monolith: Tainted Waters - Near giant anchor",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.MonolithInterior.Climb.Entry"
+  },
+  {
+    "CodeName": "Chest_Monolith_10",
+    "CustomName": "Monolith: Tainted Lumiere - Zipline across fractured ground",
+    "OriginalContent": "Reacherim_2",
+    "LocationTag": "Level.SpawnPoint.MonolithInterior.Climb.Entry"
+  },
+  {
+    "CodeName": "Chest_Monolith_11",
+    "CustomName": "Monolith: Tainted Sanctuary - After Expedition Flag",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.MonolithInterior.Climb.Entry"
+  },
+  {
+    "CodeName": "Chest_Monolith_12",
+    "CustomName": "Monolith: Tainted Sanctuary - In roundabout near giant Sakapatate statue",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.MonolithInterior.Climb.Entry"
+  },
+  {
+    "CodeName": "Chest_Monolith_13",
+    "CustomName": "Monolith: Tainted Sanctuary - Paint Cage",
+    "OriginalContent": "RandomDefense",
+    "LocationTag": "Level.SpawnPoint.MonolithInterior.Climb.Entry"
+  },
+  {
+    "CodeName": "Chest_Monolith_14",
+    "CustomName": "Monolith: Tainted Sanctuary - Next to giant Sakapatate statue",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.MonolithInterior.Climb.Entry"
+  },
+  {
+    "CodeName": "Chest_Monolith_15",
+    "CustomName": "Monolith: Tainted Sanctuary - Before giant Sakapatate Statue",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.MonolithInterior.Climb.Entry"
+  },
+  {
+    "CodeName": "Chest_Monolith_16",
+    "CustomName": "Monolith: Tainted Cliffs - Top of spiral staircase",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.MonolithInterior.Climb.Entry"
+  },
+  {
+    "CodeName": "Chest_Monolith_17",
+    "CustomName": "Monolith: Tainted Cliffs - Path to lighthouse",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.MonolithInterior.Climb.Entry"
+  },
+  {
+    "CodeName": "Chest_Monolith_18",
+    "CustomName": "Monolith: Tainted Cliffs - Near Petank end platform",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.MonolithInterior.Climb.Entry"
+  },
+  {
+    "CodeName": "Chest_Monolith_19",
+    "CustomName": "Monolith: Tainted Cliffs - Behind Lighthouse near Petank",
+    "OriginalContent": "Consumable_Respec",
+    "LocationTag": "Level.SpawnPoint.MonolithInterior.Climb.Entry"
+  },
+  {
+    "CodeName": "Chest_Monolith_20",
+    "CustomName": "Monolith: Tainted Cliffs - Room before exit item 1",
+    "OriginalContent": "WeaknessGain",
+    "LocationTag": "Level.SpawnPoint.MonolithInterior.Climb.Entry"
+  },
+  {
+    "CodeName": "Chest_Monolith_21",
+    "CustomName": "Monolith: Tainted Cliffs - Room before exit item 2",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.MonolithInterior.Climb.Entry"
+  },
+  {
+    "CodeName": "Chest_Monolith_22",
+    "CustomName": "Monolith: Tainted Battlefield - Next to Expedition Flag",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.MonolithInterior.Climb.Entry"
+  },
+  {
+    "CodeName": "Chest_Monolith_23",
+    "CustomName": "Monolith: Tainted Battlefield - Past Sakapatate corpses",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.MonolithInterior.Climb.Entry"
+  },
+  {
+    "CodeName": "Chest_Monolith_24",
+    "CustomName": "Monolith: Tainted Battlefield - Left path after vertical zipline",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.MonolithInterior.Climb.Entry"
+  },
+  {
+    "CodeName": "Chest_Monolith_25",
+    "CustomName": "Monolith: Tainted Battlefield - Near broken -down cannon",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.MonolithInterior.Climb.Entry"
+  },
+  {
+    "CodeName": "Chest_Monolith_26",
+    "CustomName": "Monolith: Tainted Battlefield - Near exit",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.MonolithInterior.Climb.Entry"
+  },
+  {
+    "CodeName": "Chest_Monolith_27",
+    "CustomName": "Monolith: Tainted Hearts - Near Young Boy at station",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.MonolithInterior.Climb.Entry"
+  },
+  {
+    "CodeName": "Chest_Monolith_28",
+    "CustomName": "Monolith: Tainted Hearts - On train car hanging off cliff",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.MonolithInterior.Climb.Entry"
+  },
+  {
+    "CodeName": "Chest_Monolith_29",
+    "CustomName": "Monolith: Tainted Hearts - On cliffside near crane",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.MonolithInterior.Climb.Entry"
+  },
+  {
+    "CodeName": "Chest_Monolith_30",
+    "CustomName": "Monolith: Tainted Hearts - Near Melosh",
+    "OriginalContent": "PowerlessStrike",
+    "LocationTag": "Level.SpawnPoint.MonolithInterior.Climb.Entry"
+  },
+  {
+    "CodeName": "Chest_Monolith_31",
+    "CustomName": "Monolith: Tainted Hearts - Paint Cage",
+    "OriginalContent": "ReinforcementParade",
+    "LocationTag": "Level.SpawnPoint.MonolithInterior.Climb.Entry"
+  },
+  {
+    "CodeName": "Chest_Monolith_32",
+    "CustomName": "Monolith: Tainted Hearts - Left of station entrance",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.MonolithInterior.Climb.Entry"
+  },
+  {
+    "CodeName": "Chest_Monolith_33",
+    "CustomName": "Monolith: Tainted Lumiere - Before crossing fractured land",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.MonolithInterior.Climb.Entry"
+  },
+  {
+    "CodeName": "Chest_Monolith_34",
+    "CustomName": "Monolith: Tainted Lumiere - Next to large fountain",
+    "OriginalContent": "Consumable_Respec",
+    "LocationTag": "Level.SpawnPoint.MonolithInterior.Climb.Entry"
+  },
+  {
+    "CodeName": "Chest_Monolith_35",
+    "CustomName": "Monolith: Tainted Lumiere - Deadend near crooked archway",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.MonolithInterior.Climb.Entry"
+  },
+  {
+    "CodeName": "Chest_Monolith_36",
+    "CustomName": "Monolith: Tainted Lumiere - Side path near next Expedition Flag",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.MonolithInterior.Climb.Entry"
+  },
+  {
+    "CodeName": "Chest_Monolith_37",
+    "CustomName": "Monolith: Tainted Lumiere - Near harp",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.MonolithInterior.Climb.Entry"
+  },
+  {
+    "CodeName": "Chest_Monolith_38",
+    "CustomName": "Monolith: Tainted Lumiere - Near dead Grandis",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.MonolithInterior.Climb.Entry"
+  },
+  {
+    "CodeName": "Chest_Monolith_39",
+    "CustomName": "Monolith: Tainted Cliffs - Behind Petank starting position",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.MonolithInterior.Climb.Entry"
+  },
+  {
+    "CodeName": "Chest_Monolith_40",
+    "CustomName": "Monolith: Tainted Lumiere - Next to festival stands",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.MonolithInterior.Climb.Entry"
+  },
+  {
+    "CodeName": "Chest_Monolith_41",
+    "CustomName": "Monolith: Tainted Battlefield - After Expedition Flag",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.MonolithInterior.Climb.Entry"
+  },
+  {
+    "CodeName": "Chest_OldLumiere_1",
+    "CustomName": "Old Lumiere: Left Street - In barrels after grapple",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.OldLumiere.MaellePath"
+  },
+  {
+    "CodeName": "Chest_OldLumiere_2",
+    "CustomName": "Old Lumiere: Left Street - On top of broken pipe",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.OldLumiere.MaellePath"
+  },
+  {
+    "CodeName": "Chest_OldLumiere_3",
+    "CustomName": "Old Lumiere: Right Street - On ledge overlooking rubble",
+    "OriginalContent": "TimeTint",
+    "LocationTag": "Level.SpawnPoint.OldLumiere.LunePath"
+  },
+  {
+    "CodeName": "Chest_OldLumiere_4",
+    "CustomName": "Old Lumiere: Right Street - In crawl space",
+    "OriginalContent": "ChromaPack_ExtraLarge",
+    "LocationTag": "Level.SpawnPoint.OldLumiere.LunePath"
+  },
+  {
+    "CodeName": "Chest_OldLumiere_5",
+    "CustomName": "Old Lumiere: Left Street - Past ruined doorway",
+    "OriginalContent": "AutoRush",
+    "LocationTag": "Level.SpawnPoint.OldLumiere.MaellePath"
+  },
+  {
+    "CodeName": "Chest_OldLumiere_6",
+    "CustomName": "Old Lumiere: Left Street - Before Manor Gardens",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.OldLumiere.MaellePath"
+  },
+  {
+    "CodeName": "Chest_OldLumiere_7",
+    "CustomName": "Old Lumiere: Manor Gardens - Near Paint Cage",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.OldLumiere.ManorArena"
+  },
+  {
+    "CodeName": "Chest_OldLumiere_8",
+    "CustomName": "Old Lumiere: Manor Gardens - Near Sword of Lumiere",
+    "OriginalContent": "ChromaPack_ExtraLarge",
+    "LocationTag": "Level.SpawnPoint.OldLumiere.ManorArena"
+  },
+  {
+    "CodeName": "Chest_OldLumiere_9",
+    "CustomName": "Old Lumiere: Right Street - Boxes near apartment building",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.OldLumiere.LunePath"
+  },
+  {
+    "CodeName": "Chest_OldLumiere_10",
+    "CustomName": "Old Lumiere: Right Street - After Expedition Flag",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.OldLumiere.LunePath"
+  },
+  {
+    "CodeName": "Chest_OldLumiere_11",
+    "CustomName": "Old Lumiere: Right Street - After Expedition Flag on buried building",
+    "OriginalContent": "Reacharo_1",
+    "LocationTag": "Level.SpawnPoint.OldLumiere.LunePath"
+  },
+  {
+    "CodeName": "Chest_OldLumiere_12",
+    "CustomName": "Old Lumiere: Manor Gardens - In pit between building grapples",
+    "OriginalContent": "ChromaPack_ExtraLarge",
+    "LocationTag": "Level.SpawnPoint.OldLumiere.ManorArena"
+  },
+  {
+    "CodeName": "Chest_OldLumiere_13",
+    "CustomName": "Old Lumiere: Manor Gardens - Above Train Station Ruins Expedition Flag",
+    "OriginalContent": "HealingDeath",
+    "LocationTag": "Level.SpawnPoint.OldLumiere.ManorArena"
+  },
+  {
+    "CodeName": "Chest_OldLumiere_14",
+    "CustomName": "Old Lumiere: Manor Gardens - Behind gate near hedge maze",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.OldLumiere.ManorArena"
+  },
+  {
+    "CodeName": "Chest_OldLumiere_15",
+    "CustomName": "Old Lumiere: Left Street - Before Expedition Flag in ruins",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.OldLumiere.MaellePath"
+  },
+  {
+    "CodeName": "Chest_OldLumiere_16",
+    "CustomName": "Old Lumiere: Manor Gardens - Above Chromatic boss",
+    "OriginalContent": "ChromaPack_ExtraLarge",
+    "LocationTag": "Level.SpawnPoint.OldLumiere.ManorArena"
+  },
+  {
+    "CodeName": "Chest_OldLumiere_17",
+    "CustomName": "Old Lumiere: Left Street - On Chevaliere corpse",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.OldLumiere.MaellePath"
+  },
+  {
+    "CodeName": "Chest_OldLumiere_18",
+    "CustomName": "Old Lumiere: Train Station Ruins - Behind Chromatic boss",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.OldLumiere.AlphaArea"
+  },
+  {
+    "CodeName": "Chest_OldLumiere_19",
+    "CustomName": "Old Lumiere: Right Street - Overlooking carousel",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.OldLumiere.LunePath"
+  },
+  {
+    "CodeName": "Chest_OldLumiere_20",
+    "CustomName": "Old Lumiere: Manor Gardens - Paint Cage",
+    "OriginalContent": "Redalim",
+    "LocationTag": "Level.SpawnPoint.OldLumiere.ManorArena"
+  },
+  {
+    "CodeName": "Chest_Reacher_1",
+    "CustomName": "The Reacher: Entrance - early handholds",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.Reacher.Entry"
+  },
+  {
+    "CodeName": "Chest_Reacher_2",
+    "CustomName": "The Reacher: Mountain - boxes by cliffside",
+    "OriginalContent": "GradientStacker",
+    "LocationTag": "Level.SpawnPoint.Reacher.Entry"
+  },
+  {
+    "CodeName": "Chest_Reacher_3",
+    "CustomName": "The Reacher: Mountain - Above First Echassier 2",
+    "OriginalContent": "GradientCounterCharge",
+    "LocationTag": "Level.SpawnPoint.Reacher.Entry"
+  },
+  {
+    "CodeName": "Chest_Reacher_4",
+    "CustomName": "The Reacher: Foggy Area - Foggy Area flag",
+    "OriginalContent": "ShellTint",
+    "LocationTag": "Level.SpawnPoint.Reacher.Entry"
+  },
+  {
+    "CodeName": "Chest_Reacher_5",
+    "CustomName": "The Reacher: Mountain - on cliffside",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.Reacher.Entry"
+  },
+  {
+    "CodeName": "Chest_Reacher_6",
+    "CustomName": "The Reacher: Mountain - after wooden plank platforms",
+    "OriginalContent": "LongerShell",
+    "LocationTag": "Level.SpawnPoint.Reacher.Entry"
+  },
+  {
+    "CodeName": "Chest_Reacher_7",
+    "CustomName": "The Reacher: Entrance - in nook near double Orphelin",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.Reacher.Entry"
+  },
+  {
+    "CodeName": "Chest_Reacher_8",
+    "CustomName": "The Reacher: Foggy Area - Above Veilleur by cliffside",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.Reacher.Entry"
+  },
+  {
+    "CodeName": "Chest_Reacher_9",
+    "CustomName": "The Reacher: Foggy Area - Veilleur",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.Reacher.Entry"
+  },
+  {
+    "CodeName": "Chest_Reacher_10",
+    "CustomName": "The Reacher: Foggy Bank - Platform above Merchant",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.Reacher.Entry"
+  },
+  {
+    "CodeName": "Chest_Reacher_11",
+    "CustomName": "The Reacher: Ladder Area - Sandbag Fort",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.Reacher.Entry"
+  },
+  {
+    "CodeName": "Chest_Reacher_12",
+    "CustomName": "The Reacher: Entrance - after Orphelin builders",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.Reacher.Entry"
+  },
+  {
+    "CodeName": "Chest_Reacher_13",
+    "CustomName": "The Reacher: Entrance - on Orphelin builder platform",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.Reacher.Entry"
+  },
+  {
+    "CodeName": "Chest_Reacher_14",
+    "CustomName": "The Reacher: Ladder Area - Near Expedition Flag",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.Reacher.Entry"
+  },
+  {
+    "CodeName": "Chest_Reacher_15",
+    "CustomName": "The Reacher: Peak - Dead Orphelin",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.Reacher.Entry"
+  },
+  {
+    "CodeName": "Chest_Reacher_16",
+    "CustomName": "The Reacher: Entrance - After Paint Spike",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.Reacher.Entry"
+  },
+  {
+    "CodeName": "Chest_Reacher_17",
+    "CustomName": "The Reacher: Foggy Bank - After triple Orphelin platform",
+    "OriginalContent": "HealOnBuff",
+    "LocationTag": "Level.SpawnPoint.Reacher.Entry"
+  },
+  {
+    "CodeName": "Chest_Reacher_18",
+    "CustomName": "The Reacher: Foggy Area - above patrolling Veilleur",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.Reacher.Entry"
+  },
+  {
+    "CodeName": "Chest_Reacher_19",
+    "CustomName": "The Reacher: Ladder Area - Mime",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.Reacher.Entry"
+  },
+  {
+    "CodeName": "Chest_Reacher_20",
+    "CustomName": "The Reacher: Ladder Area - Nailed Orphelin near Petank platform",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.Reacher.Entry"
+  },
+  {
+    "CodeName": "Chest_Reacher_21",
+    "CustomName": "The Reacher: Mountain - before wooden plank platforming",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.Reacher.Entry"
+  },
+  {
+    "CodeName": "Chest_Reacher_22",
+    "CustomName": "The Reacher: Ladder Area - behind Manor door",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.Reacher.Entry"
+  },
+  {
+    "CodeName": "Chest_Reacher_23",
+    "CustomName": "The Reacher: Ladder Area - Past Green Orphelin",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.Reacher.Entry"
+  },
+  {
+    "CodeName": "Chest_Reacher_24",
+    "CustomName": "The Reacher: Entrance - under Orphelin builder platform",
+    "OriginalContent": "DispelOnAPConsume",
+    "LocationTag": "Level.SpawnPoint.Reacher.Entry"
+  },
+  {
+    "CodeName": "Chest_Reacher_25",
+    "CustomName": "The Reacher: Entrance - hot air balloon",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.Reacher.Entry"
+  },
+  {
+    "CodeName": "Chest_Reacher_26",
+    "CustomName": "The Reacher: Foggy Bank - Triple Orphelin platform",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.Reacher.Entry"
+  },
+  {
+    "CodeName": "Chest_RenoirSDraft_1",
+    "CustomName": "Renoir' Draft: Entrance - triple Contortionniste",
+    "OriginalContent": "BreakMomentum",
+    "LocationTag": "Level.SpawnPoint.AxonPath.Entry"
+  },
+  {
+    "CodeName": "Chest_RenoirSDraft_2",
+    "CustomName": "Renoir' Draft: Entrance - Moissonneuse",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.AxonPath.Entry"
+  },
+  {
+    "CodeName": "Chest_RenoirSDraft_3",
+    "CustomName": "Renoir' Draft: Golden Tree - above The Abyss entrance",
+    "OriginalContent": "RushOnPowerful",
+    "LocationTag": "Level.SpawnPoint.AxonPath.Entry"
+  },
+  {
+    "CodeName": "Chest_RenoirSDraft_4",
+    "CustomName": "Renoir' Draft: Entrance - giant bronze ball",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.AxonPath.Entry"
+  },
+  {
+    "CodeName": "Chest_RenoirSDraft_5",
+    "CustomName": "Renoir' Draft: Entrance - next to Merchant",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.AxonPath.Entry"
+  },
+  {
+    "CodeName": "Chest_RenoirSDraft_6",
+    "CustomName": "Renoir' Draft: Entrance - after platforms near Merchant",
+    "OriginalContent": "GradientOnCrit",
+    "LocationTag": "Level.SpawnPoint.AxonPath.Entry"
+  },
+  {
+    "CodeName": "Chest_RenoirSDraft_7",
+    "CustomName": "Renoir' Draft: Entrance - in tunnel under room with red lights",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.AxonPath.Entry"
+  },
+  {
+    "CodeName": "Chest_RenoirSDraft_8",
+    "CustomName": "Renoir' Draft: Entrance - buried building and double Creation",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.AxonPath.Entry"
+  },
+  {
+    "CodeName": "Chest_RenoirSDraft_9",
+    "CustomName": "Renoir' Draft: Entrance - under toppled fuzzy pillar",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.AxonPath.Entry"
+  },
+  {
+    "CodeName": "Chest_RenoirSDraft_10",
+    "CustomName": "Renoir' Draft: Entrance - Boucheclier",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.AxonPath.Entry"
+  },
+  {
+    "CodeName": "Chest_RenoirSDraft_11",
+    "CustomName": "Renoir' Draft: Entrance - on bridge behind Merchant",
+    "OriginalContent": "GradientOnBurn",
+    "LocationTag": "Level.SpawnPoint.AxonPath.Entry"
+  },
+  {
+    "CodeName": "Chest_RenoirSDraft_12",
+    "CustomName": "Renoir' Draft: Entrance - Music near Triple Contortionniste",
+    "OriginalContent": "MusicRecord_32",
+    "LocationTag": "Level.SpawnPoint.AxonPath.Entry"
+  },
+  {
+    "CodeName": "Chest_SeaCliff_2",
+    "CustomName": "Stone Wave Cliffs: Old Farm - Near Chromatic Gault 2",
+    "OriginalContent": "ReviveWithRegen",
+    "LocationTag": "Level.SpawnPoint.SeaCliff.Entry"
+  },
+  {
+    "CodeName": "Chest_SeaCliff_3",
+    "CustomName": "Stone Wave Cliffs: Entrance - Ledge next to the tunnel",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.SeaCliff.Entry"
+  },
+  {
+    "CodeName": "Chest_SeaCliff_4",
+    "CustomName": "Stone Wave Cliffs: Flooded Buildings - Indoor climbing wall",
+    "OriginalContent": "Coralim",
+    "LocationTag": "Level.SpawnPoint.SeaCliff.Entry"
+  },
+  {
+    "CodeName": "Chest_SeaCliff_5",
+    "CustomName": "Stone Wave Cliffs: Entrance - Paint cage",
+    "OriginalContent": "Delaram",
+    "LocationTag": "Level.SpawnPoint.SeaCliff.Entry"
+  },
+  {
+    "CodeName": "Chest_SeaCliff_6",
+    "CustomName": "Stone Wave Cliffs: Paintress Shrine - Ledge with climbing holds",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.SeaCliff.Entry"
+  },
+  {
+    "CodeName": "Chest_SeaCliff_7",
+    "CustomName": "Stone Wave Cliffs: Flooded Buildings - In barrels overlooking Monolith",
+    "OriginalContent": "Consumable_Respec",
+    "LocationTag": "Level.SpawnPoint.SeaCliff.Entry"
+  },
+  {
+    "CodeName": "Chest_SeaCliff_8",
+    "CustomName": "Stone Wave Cliffs: Paintress Shrine - Ruined building near flag",
+    "OriginalContent": "HealingTint_Shard",
+    "LocationTag": "Level.SpawnPoint.SeaCliff.Entry"
+  },
+  {
+    "CodeName": "Chest_SeaCliff_9",
+    "CustomName": "Stone Wave Cliffs: Entrance - Overturned tube thing",
+    "OriginalContent": "BreakingCounter",
+    "LocationTag": "Level.SpawnPoint.SeaCliff.Entry"
+  },
+  {
+    "CodeName": "Chest_SeaCliff_10",
+    "CustomName": "Stone Wave Cliffs: Flooded Buildings - Up a small ledge",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.SeaCliff.Entry"
+  },
+  {
+    "CodeName": "Chest_SeaCliff_11",
+    "CustomName": "Stone Wave Cliffs: Flooded Buildings - Near Expeditioner impaled with greatsword",
+    "OriginalContent": "HealingTintEnergy",
+    "LocationTag": "Level.SpawnPoint.SeaCliff.Entry"
+  },
+  {
+    "CodeName": "Chest_SeaCliff_12",
+    "CustomName": "Stone Wave Cliffs: Old Farm - Paint cage",
+    "OriginalContent": "Duenum",
+    "LocationTag": "Level.SpawnPoint.SeaCliff.Entry"
+  },
+  {
+    "CodeName": "Chest_SeaCliff_13",
+    "CustomName": "Stone Wave Cliffs: Tide Caverns - Next to the rope down to manor door",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.SeaCliff.Entry"
+  },
+  {
+    "CodeName": "Chest_SeaCliff_14",
+    "CustomName": "Stone Wave Cliffs: Back entrance",
+    "OriginalContent": "DefensiveMode",
+    "LocationTag": "Level.SpawnPoint.SeaCliff.Entry"
+  },
+  {
+    "CodeName": "Chest_SeaCliff_15",
+    "CustomName": "Stone Wave Cliffs: Old Farm - In front of the first hut",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.SeaCliff.Entry"
+  },
+  {
+    "CodeName": "Chest_SeaCliff_16",
+    "CustomName": "Stone Wave Cliffs: Entrance - In front of monument",
+    "OriginalContent": "FirstStrike",
+    "LocationTag": "Level.SpawnPoint.SeaCliff.Entry"
+  },
+  {
+    "CodeName": "Chest_SeaCliff_17",
+    "CustomName": "Stone Wave Cliffs: Tide Caverns - Across from the manor door",
+    "OriginalContent": "Consumable_Respec",
+    "LocationTag": "Level.SpawnPoint.SeaCliff.Entry"
+  },
+  {
+    "CodeName": "Chest_SeaCliff_18",
+    "CustomName": "Stone Wave Cliffs: Paintress Shrine - Ledge in the open cave 1",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.SeaCliff.Entry"
+  },
+  {
+    "CodeName": "Chest_SeaCliff_19",
+    "CustomName": "Stone Wave Cliffs: Paintress Shrine - Grapple platform",
+    "OriginalContent": "ChromaPack_ExtraLarge",
+    "LocationTag": "Level.SpawnPoint.SeaCliff.Entry"
+  },
+  {
+    "CodeName": "Chest_SeaCliff_20",
+    "CustomName": "Stone Wave Cliffs: Paintress Shrine - In front of the shrine",
+    "OriginalContent": "EnergyTint_Shard",
+    "LocationTag": "Level.SpawnPoint.SeaCliff.Entry"
+  },
+  {
+    "CodeName": "Chest_SeaCliff_21",
+    "CustomName": "Stone Wave Cliffs: Old Farm - Before the rope up to the flag",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.SeaCliff.Entry"
+  },
+  {
+    "CodeName": "Chest_SeaCliff_22",
+    "CustomName": "Stone Wave Cliffs: Old Farm - Ledge in the tunnel",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.SeaCliff.Entry"
+  },
+  {
+    "CodeName": "Chest_SeaCliff_23",
+    "CustomName": "Stone Wave Cliffs: Entrance - Near the flag",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.SeaCliff.Entry"
+  },
+  {
+    "CodeName": "Chest_SeaCliff_24",
+    "CustomName": "Stone Wave Cliffs: Paintress Shrine - Near Young Boy",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.SeaCliff.Entry"
+  },
+  {
+    "CodeName": "Chest_SeaCliff_25",
+    "CustomName": "Stone Wave Cliffs: Paintress Shrine - Upper maze near Expeditioner corpse",
+    "OriginalContent": "SosPower",
+    "LocationTag": "Level.SpawnPoint.SeaCliff.Entry"
+  },
+  {
+    "CodeName": "Chest_SeaCliff_26",
+    "CustomName": "Stone Wave Cliffs: Old Farm - By the ramp",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.SeaCliff.Entry"
+  },
+  {
+    "CodeName": "Chest_SeaCliff_27",
+    "CustomName": "Stone Wave Cliffs: Old Farm - Towards the merchant",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.SeaCliff.Entry"
+  },
+  {
+    "CodeName": "Chest_SeaCliff_28",
+    "CustomName": "Stone Wave Cliffs: Basalt Waves - Below vertical zipline before Expedition Flag",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.SeaCliff.Entry"
+  },
+  {
+    "CodeName": "Chest_SeaCliff_29",
+    "CustomName": "Stone Wave Cliffs: Flooded Buildings - Under the climbing holds",
+    "OriginalContent": "ReviveTint_Shard",
+    "LocationTag": "Level.SpawnPoint.SeaCliff.Entry"
+  },
+  {
+    "CodeName": "Chest_SeaCliff_30",
+    "CustomName": "Stone Wave Cliffs: Tide Caverns - Jump across the pillars",
+    "OriginalContent": "BreakShot",
+    "LocationTag": "Level.SpawnPoint.SeaCliff.Entry"
+  },
+  {
+    "CodeName": "Chest_SeaCliff_31",
+    "CustomName": "Stone Wave Cliffs: Tide Caverns - In the rock crystal room",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.SeaCliff.Entry"
+  },
+  {
+    "CodeName": "Chest_SeaCliff_32",
+    "CustomName": "Stone Wave Cliffs: Tide Caverns - Next to the manor door",
+    "OriginalContent": "ChromaPack_ExtraLarge",
+    "LocationTag": "Level.SpawnPoint.SeaCliff.Entry"
+  },
+  {
+    "CodeName": "Chest_SeaCliff_33",
+    "CustomName": "Stone Wave Cliffs: Flooded Buildings - Dead hexga",
+    "OriginalContent": "WeakeningMark",
+    "LocationTag": "Level.SpawnPoint.SeaCliff.Entry"
+  },
+  {
+    "CodeName": "Chest_SeaCliff_34",
+    "CustomName": "Stone Wave Cliffs: Tide Caverns - Ruined building",
+    "OriginalContent": "ChromaPack_ExtraLarge",
+    "LocationTag": "Level.SpawnPoint.SeaCliff.Entry"
+  },
+  {
+    "CodeName": "Chest_SeaCliff_35",
+    "CustomName": "Stone Wave Cliffs: Entrance - Tiny gazebo",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.SeaCliff.Entry"
+  },
+  {
+    "CodeName": "Chest_SeaCliff_36",
+    "CustomName": "Stone Wave Cliffs: Entrance - By the first grapple point",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.SeaCliff.Entry"
+  },
+  {
+    "CodeName": "Chest_SeaCliff_37",
+    "CustomName": "Stone Wave Cliffs: White Hexga reward",
+    "OriginalContent": "AutoShell",
+    "LocationTag": "Level.SpawnPoint.SeaCliff.Entry"
+  },
+  {
+    "CodeName": "Chest_SeaCliff_38",
+    "CustomName": "Stone Wave Cliffs: Rock Crystal",
+    "OriginalContent": "AutoShell",
+    "LocationTag": "Level.SpawnPoint.SeaCliff.Entry"
+  },
+  {
+    "CodeName": "Chest_SeaCliff_39",
+    "CustomName": "Stone Wave Cliffs: Basalt Waves - Return to the boss arena",
+    "OriginalContent": "MusicRecord_3",
+    "LocationTag": "Level.SpawnPoint.SeaCliff.Exit"
+  },
+  {
+    "CodeName": "Chest_Sirene_1",
+    "CustomName": "Sirene: Dancing Classes - Down verical zipline in first room",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.Sirene.Entry"
+  },
+  {
+    "CodeName": "Chest_Sirene_2",
+    "CustomName": "Sirene: Dancing Classes - Under Paint Spike",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.Sirene.Entry"
+  },
+  {
+    "CodeName": "Chest_Sirene_3",
+    "CustomName": "Sirene: Dancing Classes - Paint Cage",
+    "OriginalContent": "ShieldAffinity",
+    "LocationTag": "Level.SpawnPoint.Sirene.Entry"
+  },
+  {
+    "CodeName": "Chest_Sirene_4",
+    "CustomName": "Sirene: Crumbling Path - Near Petank",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.Sirene.Entry"
+  },
+  {
+    "CodeName": "Chest_Sirene_6",
+    "CustomName": "Sirene: Sewing Atelier - Near Young Boy and Manor Door",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.Sirene.Entry"
+  },
+  {
+    "CodeName": "Chest_Sirene_7",
+    "CustomName": "Sirene: Sewing Atelier - After Young Boy before Grapple",
+    "OriginalContent": "ProtectingDeath",
+    "LocationTag": "Level.SpawnPoint.Sirene.Entry"
+  },
+  {
+    "CodeName": "Chest_Sirene_8",
+    "CustomName": "Sirene: Dancing Classes - In bowl near Petank start",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.Sirene.Entry"
+  },
+  {
+    "CodeName": "Chest_Sirene_9",
+    "CustomName": "Sirene: Dancing Classes - Near large room before Petank",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.Sirene.Entry"
+  },
+  {
+    "CodeName": "Chest_Sirene_10",
+    "CustomName": "Sirene: Dancing Classes - On foggy platform",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.Sirene.Entry"
+  },
+  {
+    "CodeName": "Chest_Sirene_11",
+    "CustomName": "Sirene: Sewing Atelier - Near brazier and fabric -wrapped pillar",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.Sirene.Entry"
+  },
+  {
+    "CodeName": "Chest_Sirene_12",
+    "CustomName": "Sirene: Dancing Classes - Before next Expedition Flag on ledge",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.Sirene.Entry"
+  },
+  {
+    "CodeName": "Chest_Sirene_13",
+    "CustomName": "Sirene: Sewing Atelier - Near mini -boss",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.Sirene.Entry"
+  },
+  {
+    "CodeName": "Chest_Sirene_14",
+    "CustomName": "Sirene: Sewing Atelier - Upper path near mini -boss",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.Sirene.Entry"
+  },
+  {
+    "CodeName": "Chest_Sirene_15",
+    "CustomName": "Sirene: Dancing Classes - Railing overlooking giant Ballet",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.Sirene.Entry"
+  },
+  {
+    "CodeName": "Chest_Sirene_16",
+    "CustomName": "Sirene: Dancing Classes - Before elevator",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.Sirene.Entry"
+  },
+  {
+    "CodeName": "Chest_Sirene_17",
+    "CustomName": "Sirene: Dancing Classes - Behind Chromatic enemy",
+    "OriginalContent": "EffectiveHeal",
+    "LocationTag": "Level.SpawnPoint.Sirene.Entry"
+  },
+  {
+    "CodeName": "Chest_Sirene_18",
+    "CustomName": "Sirene: Dancing Classes - Below handholds",
+    "OriginalContent": "GreaterShell",
+    "LocationTag": "Level.SpawnPoint.Sirene.Entry"
+  },
+  {
+    "CodeName": "Chest_Sirene_19",
+    "CustomName": "Sirene: Sewing Atelier - Paint Cage",
+    "OriginalContent": "ReviveTint_Shard",
+    "LocationTag": "Level.SpawnPoint.Sirene.Entry"
+  },
+  {
+    "CodeName": "Chest_Sirene_20",
+    "CustomName": "Sirene: Dancing Classes - Bottom of winding fabric room",
+    "OriginalContent": "AutoRegen",
+    "LocationTag": "Level.SpawnPoint.Sirene.Entry"
+  },
+  {
+    "CodeName": "Chest_Sirene_21",
+    "CustomName": "Sirene: Dancing Classes - Middle of winding fabric room",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.Sirene.Entry"
+  },
+  {
+    "CodeName": "Chest_Sirene_22",
+    "CustomName": "Sirene: Dancing Classes - Near corpse overlooking Glissando corpse",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.Sirene.Entry"
+  },
+  {
+    "CodeName": "Chest_Sirene_23",
+    "CustomName": "Sirene: Dancing Classes - Top of winding fabric room",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.Sirene.Entry"
+  },
+  {
+    "CodeName": "Chest_Sirene_24",
+    "CustomName": "Sirene: Dancing Classes - Before end of detour leading back to Expedition Flag",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.Sirene.Entry"
+  },
+  {
+    "CodeName": "Chest_Sirene_25",
+    "CustomName": "Sirene: Sewing Atelier - Before Zipline to next Expedition Flag",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.Sirene.Entry"
+  },
+  {
+    "CodeName": "Chest_Sirene_26",
+    "CustomName": "Sirene: Dancing Classes - Before Expedition Flag",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.Sirene.Entry"
+  },
+  {
+    "CodeName": "Chest_Sirene_27",
+    "CustomName": "Sirene: Crumbling Path - Left of mini -boss",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.Sirene.Entry"
+  },
+  {
+    "CodeName": "Chest_Sirene_28",
+    "CustomName": "Sirene: Crumbling Path - Before mini -boss",
+    "OriginalContent": "EnergyTint_Shard",
+    "LocationTag": "Level.SpawnPoint.Sirene.Entry"
+  },
+  {
+    "CodeName": "Chest_Sirene_29",
+    "CustomName": "Sirene: Dancing Arena - Near Expedition Flag",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.Sirene.Entry"
+  },
+  {
+    "CodeName": "Chest_Sirene_30",
+    "CustomName": "Sirene: Crumbling Path - Detour left of mini -boss",
+    "OriginalContent": "HealingFire",
+    "LocationTag": "Level.SpawnPoint.Sirene.Entry"
+  },
+  {
+    "CodeName": "Chest_SmallLevel_GoblusLair_02_1",
+    "CustomName": "Small Bourgeon: Feed the White Nevron and loot his vomit",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.SmallBourgeon.Entry"
+  },
+  {
+    "CodeName": "Chest_SmallLevel_StonewaveCliffsCave_1",
+    "CustomName": "Stone Wave Cliffs Cave: Behind Chromatic Hexga",
+    "OriginalContent": "ExhaustAffinity",
+    "LocationTag": "Level.SpawnPoint.StonewaveCliffsCave.Entry"
+  },
+  {
+    "CodeName": "Chest_SmallLevel_StonewaveCliffsCave_2",
+    "CustomName": "Stone Wave Cliffs Cave: Through ruined archway",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.StonewaveCliffsCave.Entry"
+  },
+  {
+    "CodeName": "Chest_SmallLevel_StonewaveCliffsCave_3",
+    "CustomName": "Stone Wave Cliffs Cave: Near rocks before Chromatic Hexga",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.StonewaveCliffsCave.Entry"
+  },
+  {
+    "CodeName": "Chest_SmallLevel_StonewaveCliffsCave_4",
+    "CustomName": "Stone Wave Cliffs Cave: Paint Cage",
+    "OriginalContent": "PartyHealShard",
+    "LocationTag": "Level.SpawnPoint.StonewaveCliffsCave.Entry"
+  },
+  {
+    "CodeName": "Chest_SmallLevel_ChosenPath_1",
+    "CustomName": "Chosen Path: Complete all Canvases",
+    "OriginalContent": "BaseShield",
+    "LocationTag": "Level.SpawnPoint.TheChosenPath.Entry"
+  },
+  {
+    "CodeName": "Chest_SmallLevel_Visages_1",
+    "CustomName": "Isle of the Eyes: Item 1",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.SmallLevelVisages.Entry"
+  },
+  {
+    "CodeName": "Chest_SmallLevel_Visages_2",
+    "CustomName": "Isle of the Eyes - The Crows: Item 2 or Item",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.SmallLevelVisages.Entry"
+  },
+  {
+    "CodeName": "Chest_SmallLevel_Reacher_1",
+    "CustomName": "Isle of the Eyes - The Crows: Item 2 or Item",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.ReacherCliff.Entry"
+  },
+  {
+    "CodeName": "Chest_SmallLevel_Cemetery_1",
+    "CustomName": "Cemetery: Upper level overlooking entrance",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.Cemetery.Entry"
+  },
+  {
+    "CodeName": "Chest_SmallLevel_Cemetery_2",
+    "CustomName": "Cemetery: Near barrels",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.Cemetery.Entry"
+  },
+  {
+    "CodeName": "Chest_SmallLevel_Cemetery_3",
+    "CustomName": "Cemetery: Defeat the Nevron",
+    "OriginalContent": "ChromaPack_ExtraLarge",
+    "LocationTag": "Level.SpawnPoint.Cemetery.Entry"
+  },
+  {
+    "CodeName": "Chest_SmallLevel_Cemetery_4",
+    "CustomName": "Cemetery: Next to Gramophone",
+    "OriginalContent": "Consumable_Respec",
+    "LocationTag": "Level.SpawnPoint.Cemetery.Entry"
+  },
+  {
+    "CodeName": "Chest_SmallLevel_FloatingIsland_1",
+    "CustomName": "Floating Island: At end of area",
+    "OriginalContent": "GreaterSlow",
+    "LocationTag": "Level.SpawnPoint.SkyIsland.Entry"
+  },
+  {
+    "CodeName": "Chest_SmallLevel_CoastalCave_1",
+    "CustomName": "Coastal Cave: Left side",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.WorldMap.CoastalCaveEntry"
+  },
+  {
+    "CodeName": "Chest_SmallLevel_CavernCrusher_1",
+    "CustomName": "Crushing Cavern: After boss",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.CavernCrusher.Entry"
+  },
+  {
+    "CodeName": "Chest_SmallLevel_DoorMaze_1",
+    "CustomName": "Esoteric Ruins: Side path near statue",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.DoorMaze.Entry"
+  },
+  {
+    "CodeName": "Chest_SmallLevel_DoorMaze_2",
+    "CustomName": "Esoteric Ruins: Paint Cage",
+    "OriginalContent": "ChromaPack_ExtraLarge",
+    "LocationTag": "Level.SpawnPoint.DoorMaze.Entry"
+  },
+  {
+    "CodeName": "Chest_SmallLevel_DoorMaze_3",
+    "CustomName": "Esoteric Ruins: Item after maze 1",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.DoorMaze.Entry"
+  },
+  {
+    "CodeName": "Chest_SmallLevel_DoorMaze_4",
+    "CustomName": "Esoteric Ruins: Item after maze 2",
+    "OriginalContent": "Quest_WoodBoards",
+    "LocationTag": "Level.SpawnPoint.DoorMaze.Entry"
+  },
+  {
+    "CodeName": "Chest_SmallLevel_DoorMaze_5",
+    "CustomName": "Esoteric Ruins: Item after maze 3",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.DoorMaze.Entry"
+  },
+  {
+    "CodeName": "Chest_SmallLevel_SinisterCave_1",
+    "CustomName": "Sinister Cave: Near glowing nevron",
+    "OriginalContent": "Elerim",
+    "LocationTag": "Level.SpawnPoint.SinisterCave.Entrance"
+  },
+  {
+    "CodeName": "Chest_SmallLevel_SinisterCave_2",
+    "CustomName": "Sinister Cave: After long fall",
+    "OriginalContent": "MusicRecord_13",
+    "LocationTag": "Level.SpawnPoint.SinisterCave.Entrance"
+  },
+  {
+    "CodeName": "Chest_SmallLevel_SinisterCave_3",
+    "CustomName": "Sinister Cave: Beside dead Gestral Merchant",
+    "OriginalContent": "Corderon",
+    "LocationTag": "Level.SpawnPoint.SinisterCave.Entrance"
+  },
+  {
+    "CodeName": "Chest_SmallLevel_SpringMeadows_1",
+    "CustomName": "The Fountain: In front of Blanche",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.TheFountain.Entry"
+  },
+  {
+    "CodeName": "Chest_SmallLevel_TheCarrousel_1",
+    "CustomName": "Carousel: Left of Expedition Flag",
+    "OriginalContent": "MusicRecord_12",
+    "LocationTag": "Level.SpawnPoint.TheCarrousel.Entrance"
+  },
+  {
+    "CodeName": "Chest_SmallLevel_TheCarrousel_2",
+    "CustomName": "Carousel: In boxes",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.TheCarrousel.Entrance"
+  },
+  {
+    "CodeName": "Chest_SmallLevel_WhiteSands_1",
+    "CustomName": "White Sands: Next to Expedition Flag",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.WhiteSands.Entry"
+  },
+  {
+    "CodeName": "Chest_SmallLevel_WhiteSands_2",
+    "CustomName": "White Sands: In front of boat overlooking Manor",
+    "OriginalContent": "MusicRecord_28",
+    "LocationTag": "Level.SpawnPoint.WhiteSands.Entry"
+  },
+  {
+    "CodeName": "Chest_SmallLevel_SacredRiver_1",
+    "CustomName": "Sacred River: Item",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.SacredRiver.Entry"
+  },
+  {
+    "CodeName": "Chest_SpringMeadows_1",
+    "CustomName": "Spring Meadows: Meadows Corridor - On the path",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.SpringMeadows.Entry"
+  },
+  {
+    "CodeName": "Chest_SpringMeadows_2",
+    "CustomName": "Spring Meadows: Meadows Corridor - Small cave",
+    "OriginalContent": "CritChanceBurn",
+    "LocationTag": "Level.SpawnPoint.SpringMeadows.Entry"
+  },
+  {
+    "CodeName": "Chest_SpringMeadows_3",
+    "CustomName": "Spring Meadows: Meadows Corridor - Near boxes",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.SpringMeadows.Entry"
+  },
+  {
+    "CodeName": "Chest_SpringMeadows_4",
+    "CustomName": "Spring Meadows: Meadows Corridor - In the house 1",
+    "OriginalContent": "EnergyTint_Shard",
+    "LocationTag": "Level.SpawnPoint.SpringMeadows.Entry"
+  },
+  {
+    "CodeName": "Chest_SpringMeadows_5",
+    "CustomName": "Spring Meadows: Meadows Corridor - On ledge beside house",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.SpringMeadows.Entry"
+  },
+  {
+    "CodeName": "Chest_SpringMeadows_6",
+    "CustomName": "Spring Meadows: Meadows Corridor - In the house 2",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.SpringMeadows.Entry"
+  },
+  {
+    "CodeName": "Chest_SpringMeadows_7",
+    "CustomName": "Spring Meadows: Grand Meadow - Behind Chromatic Lancelier",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.SpringMeadows.Entry"
+  },
+  {
+    "CodeName": "Chest_SpringMeadows_8",
+    "CustomName": "Spring Meadows: Grand Meadow - Right path after grapple",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.SpringMeadows.Entry"
+  },
+  {
+    "CodeName": "Chest_SpringMeadows_9",
+    "CustomName": "Spring Meadows: Abandoned Expeditioner Camp - On cliff behind paint spike 2",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.SpringMeadows.Entry"
+  },
+  {
+    "CodeName": "Chest_SpringMeadows_10",
+    "CustomName": "Spring Meadows: Abandoned Expeditioner Camp - On cliff behind paint spike 1",
+    "OriginalContent": "AegisRevival",
+    "LocationTag": "Level.SpawnPoint.SpringMeadows.Entry"
+  },
+  {
+    "CodeName": "Chest_SpringMeadows_11",
+    "CustomName": "Spring Meadows: The Indigo Tree - On the roots",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.SpringMeadows.Entry"
+  },
+  {
+    "CodeName": "Chest_SpringMeadows_12",
+    "CustomName": "Spring Meadows: Abandoned Expeditioner Camp - Small alcove",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.SpringMeadows.Entry"
+  },
+  {
+    "CodeName": "Chest_SpringMeadows_13",
+    "CustomName": "Spring Meadows: Abandoned Expeditioner Camp - Ledge above bridge",
+    "OriginalContent": "BootyHunter",
+    "LocationTag": "Level.SpawnPoint.SpringMeadows.Entry"
+  },
+  {
+    "CodeName": "Chest_SpringMeadows_14",
+    "CustomName": "Spring Meadows: Abandoned Expeditioner Camp - Boxes near bridge",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.SpringMeadows.Entry"
+  },
+  {
+    "CodeName": "Chest_SpringMeadows_15",
+    "CustomName": "Spring Meadows: Abandoned Expeditioner Camp - Between paint spikes",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.SpringMeadows.Entry"
+  },
+  {
+    "CodeName": "Chest_SpringMeadows_16",
+    "CustomName": "Spring Meadows: Abandoned Expeditioner Camp - Barrels by wall",
+    "OriginalContent": "Quest_Resin",
+    "LocationTag": "Level.SpawnPoint.SpringMeadows.Entry"
+  },
+  {
+    "CodeName": "Chest_SpringMeadows_17",
+    "CustomName": "Spring Meadows: Abandoned Expeditioner Camp - Under the bridge",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.SpringMeadows.Entry"
+  },
+  {
+    "CodeName": "Chest_SpringMeadows_18",
+    "CustomName": "Spring Meadows: Abandoned Expeditioner Camp - On cliff near upper paint spike",
+    "OriginalContent": "FreeAimBurnShot",
+    "LocationTag": "Level.SpawnPoint.SpringMeadows.Entry"
+  },
+  {
+    "CodeName": "Chest_SpringMeadows_19",
+    "CustomName": "Spring Meadows: The Indigo Tree - On a branch",
+    "OriginalContent": "PowerfulStrike",
+    "LocationTag": "Level.SpawnPoint.SpringMeadows.Entry"
+  },
+  {
+    "CodeName": "Chest_SpringMeadows_20",
+    "CustomName": "Spring Meadows: Grand Meadow - Left path near flag 2",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.SpringMeadows.Entry"
+  },
+  {
+    "CodeName": "Chest_SpringMeadows_21",
+    "CustomName": "Spring Meadows: Grand Meadow - Right path near flag 1",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.SpringMeadows.Entry"
+  },
+  {
+    "CodeName": "Chest_SpringMeadows_22",
+    "CustomName": "Spring Meadows: Grand Meadow - Before grapple spot to mime",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.SpringMeadows.Entry"
+  },
+  {
+    "CodeName": "Chest_SpringMeadows_23",
+    "CustomName": "Spring Meadows: Grand Meadow - Left path near flag 1",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.SpringMeadows.Entry"
+  },
+  {
+    "CodeName": "Chest_SpringMeadows_24",
+    "CustomName": "Spring Meadows: Grand Meadow - Right path near flag 2",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.SpringMeadows.Entry"
+  },
+  {
+    "CodeName": "Chest_SpringMeadows_25",
+    "CustomName": "Spring Meadows: Grand Meadow - Lower cliff before grapple",
+    "OriginalContent": "ChromaPack_ExtraLarge",
+    "LocationTag": "Level.SpawnPoint.SpringMeadows.Entry"
+  },
+  {
+    "CodeName": "Chest_SpringMeadows_26",
+    "CustomName": "Spring Meadows: Abandoned Expeditioner Camp - Near lower paint spike",
+    "OriginalContent": "ReviveTint_Shard",
+    "LocationTag": "Level.SpawnPoint.SpringMeadows.Entry"
+  },
+  {
+    "CodeName": "Chest_TwilightSanctuary_1",
+    "CustomName": "Endless Night Sanctuary: Warrior' Route - Near expeditioner corpse",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.TwilightSanctuary.Entry"
+  },
+  {
+    "CodeName": "Chest_TwilightSanctuary_2",
+    "CustomName": "Endless Night Sanctuary: Entrance - Near Contortionniste corpses",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.TwilightSanctuary.Entry"
+  },
+  {
+    "CodeName": "Chest_TwilightSanctuary_3",
+    "CustomName": "Endless Night Sanctuary: Entrance - Right path before Warrior' Route flag",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.TwilightSanctuary.Entry"
+  },
+  {
+    "CodeName": "Chest_TwilightSanctuary_4",
+    "CustomName": "Endless Night Sanctuary: Left path before second flag 2",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.TwilightSanctuary.Entry"
+  },
+  {
+    "CodeName": "Chest_TwilightSanctuary_5",
+    "CustomName": "Endless Night Sanctuary: Warrior' Route - After Petank 2",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.TwilightSanctuary.Entry"
+  },
+  {
+    "CodeName": "Chest_TwilightSanctuary_6",
+    "CustomName": "Endless Night Sanctuary: Night Totem - after Merchant",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.TwilightSanctuary.Entry"
+  },
+  {
+    "CodeName": "Chest_TwilightSanctuary_7",
+    "CustomName": "Endless Night Sanctuary: Night Totem - Near bags and fallen giant vases",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.TwilightSanctuary.Entry"
+  },
+  {
+    "CodeName": "Chest_TwilightSanctuary_8",
+    "CustomName": "Endless Night Sanctuary: Night Totem - Before shortcut back to flag",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.TwilightSanctuary.Entry"
+  },
+  {
+    "CodeName": "Chest_TwilightSanctuary_9",
+    "CustomName": "Endless Night Sanctuary: Entrance - Left path before second flag 1",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.TwilightSanctuary.Entry"
+  },
+  {
+    "CodeName": "Chest_TwilightSanctuary_10",
+    "CustomName": "Endless Night Sanctuary: Entrance - Before Warrior' Route flag",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.TwilightSanctuary.Entry"
+  },
+  {
+    "CodeName": "Chest_TwilightSanctuary_11",
+    "CustomName": "Endless Night Sanctuary: Warrior' Route - After Petank 3",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.TwilightSanctuary.Entry"
+  },
+  {
+    "CodeName": "Chest_TwilightSanctuary_12",
+    "CustomName": "Endless Night Sanctuary: Warrior' Route - After Petank 1",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.TwilightSanctuary.Entry"
+  },
+  {
+    "CodeName": "Chest_TwilightSanctuary_13",
+    "CustomName": "Endless Night Sanctuary: Night Totem - Near Merchant",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.TwilightSanctuary.Entry"
+  },
+  {
+    "CodeName": "Chest_TwilightSanctuary_14",
+    "CustomName": "Endless Night Sanctuary: Entrance - Near Robust Sakapatate",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.TwilightSanctuary.Entry"
+  },
+  {
+    "CodeName": "Chest_TwilightSanctuary_15",
+    "CustomName": "Endless Night Sanctuary: Night Totem - Paint Cage above flag",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.TwilightSanctuary.Entry"
+  },
+  {
+    "CodeName": "Chest_TwilightSanctuary_16",
+    "CustomName": "Endless Night Sanctuary: Entrance - Right path inside small rock tunnel",
+    "OriginalContent": "GradientBreak",
+    "LocationTag": "Level.SpawnPoint.TwilightSanctuary.Entry"
+  },
+  {
+    "CodeName": "Chest_Visages_1",
+    "CustomName": "Visages: Plazza - On cliffside overlooking ocean",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.Visages.Entry"
+  },
+  {
+    "CodeName": "Chest_Visages_2",
+    "CustomName": "Visages: Plazza - Near entrance to Anger Vale under boxes",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.Visages.Entry"
+  },
+  {
+    "CodeName": "Chest_Visages_3",
+    "CustomName": "Visages: Anger Vale - Near chroma-less Expeditioner",
+    "OriginalContent": "DoubleBurn",
+    "LocationTag": "Level.SpawnPoint.Visages.Entry"
+  },
+  {
+    "CodeName": "Chest_Visages_4",
+    "CustomName": "Visages: Anger Vale - Left of boss",
+    "OriginalContent": "FullEnergyAttack",
+    "LocationTag": "Level.SpawnPoint.Visages.Entry"
+  },
+  {
+    "CodeName": "Chest_Visages_5",
+    "CustomName": "Visages: Anger Vale - Overlooking tower of masks",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.Visages.Entry"
+  },
+  {
+    "CodeName": "Chest_Visages_6",
+    "CustomName": "Visages: Anger Vale - On ledge surrounded by enemies",
+    "OriginalContent": "ReviveTint_Shard",
+    "LocationTag": "Level.SpawnPoint.Visages.Entry"
+  },
+  {
+    "CodeName": "Chest_Visages_7",
+    "CustomName": "Visages: Anger Vale - Under Contortionniste corpse",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.Visages.Entry"
+  },
+  {
+    "CodeName": "Chest_Visages_8",
+    "CustomName": "Visages: Joy Vale - Near floral mannequin",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.Visages.Entry"
+  },
+  {
+    "CodeName": "Chest_Visages_10",
+    "CustomName": "Visages: Joy Vale - To the right after Expedition Flag",
+    "OriginalContent": "HealingTint_Shard",
+    "LocationTag": "Level.SpawnPoint.Visages.Entry"
+  },
+  {
+    "CodeName": "Chest_Visages_11",
+    "CustomName": "Visages: Joy Vale - Left of Expedition Flag near big tree",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.Visages.Entry"
+  },
+  {
+    "CodeName": "Chest_Visages_12",
+    "CustomName": "Visages: Joy Vale - Right of boss near tree",
+    "OriginalContent": "ConfidentFighter",
+    "LocationTag": "Level.SpawnPoint.Visages.Entry"
+  },
+  {
+    "CodeName": "Chest_Visages_13",
+    "CustomName": "Visages: Joy Vale - Left of boss",
+    "OriginalContent": "Confuso",
+    "LocationTag": "Level.SpawnPoint.Visages.Entry"
+  },
+  {
+    "CodeName": "Chest_Visages_14",
+    "CustomName": "Visages: Sadness Vale - On ledge to the right of massive Contortionnistes",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.Visages.Entry"
+  },
+  {
+    "CodeName": "Chest_Visages_15",
+    "CustomName": "Visages: Sadness Vale - Behind Chromatic Miniboss",
+    "OriginalContent": "GlassCanon",
+    "LocationTag": "Level.SpawnPoint.Visages.Entry"
+  },
+  {
+    "CodeName": "Chest_Visages_16",
+    "CustomName": "Visages: Sadness Vale - Right of boss right path",
+    "OriginalContent": "EnergyTint_Shard",
+    "LocationTag": "Level.SpawnPoint.Visages.Entry"
+  },
+  {
+    "CodeName": "Chest_Visages_17",
+    "CustomName": "Visages: Sadness Vale - Right of boss on cliffside",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.Visages.Entry"
+  },
+  {
+    "CodeName": "Chest_Visages_18",
+    "CustomName": "Visages: Sadness Vale - Left of massive Contortionnistes",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.Visages.Entry"
+  },
+  {
+    "CodeName": "Chest_Visages_19",
+    "CustomName": "Visages: Sadness Vale - Before Chromatic miniboss",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.Visages.Entry"
+  },
+  {
+    "CodeName": "Chest_Visages_20",
+    "CustomName": "Visages: Anger Vale - Right of boss near boxes",
+    "OriginalContent": "UpgradeMaterial",
+    "LocationTag": "Level.SpawnPoint.Visages.Entry"
+  },
+  {
+    "CodeName": "Chest_WorldMap_1",
+    "CustomName": "World Map: First Continent - Outside Ancient Gestral City",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_2",
+    "CustomName": "World Map: First Continent - Outside Abbest Cave",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_3",
+    "CustomName": "World Map: First Continent - Northeast of Dark Shores beach",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_4",
+    "CustomName": "World Map: First Continent - Beach outside The Meadows",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_5",
+    "CustomName": "World Map: First Continent - Just outside Spring Meadows",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_6",
+    "CustomName": "World Map: First Continent - In crates before Flying Waters",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_7",
+    "CustomName": "World Map: First Continent - Outside Twilight Quarry 1",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_8",
+    "CustomName": "World Map: First Continent - Outside Twilight Quarry 2",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_10",
+    "CustomName": "World Map: First Continent - Paint spike west of Flying Waters exit",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_11",
+    "CustomName": "World Map: First Continent - Ruins between Gestral Village and Stone Wave Cliffs",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_12",
+    "CustomName": "World Map: First Continent - Past bourgeon outside Stone Wave Cliffs",
+    "OriginalContent": "HealingParry",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_13",
+    "CustomName": "World Map: First Continent - Past blue spikes leading to Stone Wave Cliffs",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_14",
+    "CustomName": "World Map: First Continent - Arc de Triomphe on the north beach",
+    "OriginalContent": "InitialAp+1A",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_15",
+    "CustomName": "World Map: First Continent - Near Chromatic Bruler",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_16",
+    "CustomName": "World Map: First Continent - Paint spike outside Gestral Village rock wall",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_17",
+    "CustomName": "World Map: First Continent - Outside first Gestral Beach",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_18",
+    "CustomName": "World Map: First Continent - Just outside The Small Bourgeon",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_19",
+    "CustomName": "World Map: First Continent - Paint spike outside Yellow Harvest",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_20",
+    "CustomName": "World Map: First Continent - Outside Gestral Village",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_21",
+    "CustomName": "World Map: On the island with White Tree",
+    "OriginalContent": "SharedCare",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_22",
+    "CustomName": "World Map: Island southwest of White Tree island",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_23",
+    "CustomName": "World Map: Beach at the base of Endless Tower",
+    "OriginalContent": "EnergizingHeal",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_24",
+    "CustomName": "World Map: Bottom of the cliff next to Endless Tower",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_25",
+    "CustomName": "World Map: First Continent Sea - Next to merchant on island near Sprong",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_26",
+    "CustomName": "World Map: First Continent Sea - On the beach near Sprong",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_27",
+    "CustomName": "World Map: First Continent Sea - Paint spike outside Stone Wave Cliffs Cave",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_28",
+    "CustomName": "World Map: First Continent - Near Dark Shores",
+    "OriginalContent": "DeadEnergy",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_29",
+    "CustomName": "World Map: Sky - Cliff near Endless Tower",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_30",
+    "CustomName": "World Map: Second Continent - Outside Boat Graveyard",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_31",
+    "CustomName": "World Map: Second Continent - Ruined wall near Coastal Cave",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_32",
+    "CustomName": "World Map: Bourgeon plateau southeast of Forgotten Battlefield",
+    "OriginalContent": "ShieldingTint",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_33",
+    "CustomName": "World Map: Second Continent - On the hill north of Stone Quarry",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_34",
+    "CustomName": "World Map: West of Forgotten Battlefield exit",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_35",
+    "CustomName": "World Map: Second Continent - Paint spike far north of Forgotten Battlefield exit",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_36",
+    "CustomName": "World Map: Second Continent - North of the ruined bridge",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_37",
+    "CustomName": "World Map: Second Continent - Old camp northwest of Forgotten Battlefield exit",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_38",
+    "CustomName": "World Map: Second Continent - Plateau west of Forgotten Battlefield exit",
+    "OriginalContent": "ChromaPack_ExtraLarge",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_39",
+    "CustomName": "World Map: Second Continent - Outside The Carousel",
+    "OriginalContent": "GreatFireBreak",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_40",
+    "CustomName": "World Map: Second Continent - Southwest of The Carousel",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_41",
+    "CustomName": "World Map: Second Continent - Paint spike on western plateau",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_42",
+    "CustomName": "World Map: Second Continent - Crashed ships next to Forgotten Battlefield",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_43",
+    "CustomName": "World Map: Second Continent - Ruins far south of Old Lumiere entrance",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_44",
+    "CustomName": "World Map: Second Continent - Outside Old Lumiere",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_45",
+    "CustomName": "World Map: Second Continent - Ruins near bent lighthouse",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_46",
+    "CustomName": "World Map: Second Continent - Behind western bourgeon",
+    "OriginalContent": "BreakDamageOnBurn",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_47",
+    "CustomName": "World Map: Second Continent - Southeast of the very tall Gestral Beach",
+    "OriginalContent": "GradientTint",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_48",
+    "CustomName": "World Map: Second Continent - East each along western river",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_49",
+    "CustomName": "World Map: West beach along western river",
+    "OriginalContent": "CritChanceOnDefenseless",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_50",
+    "CustomName": "World Map: First Continent Sea - Island southeast of Forgotten Battlefield",
+    "OriginalContent": "AcceleratorHeal",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_51",
+    "CustomName": "World Map: North Sea - Paint spike on beach east of Sirene island",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_52",
+    "CustomName": "World Map: North Sea - Northeast plateau",
+    "OriginalContent": "EffectivSupport",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_53",
+    "CustomName": "World Map: East underwater plateau with Chromatic Goblu",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_54",
+    "CustomName": "World Map: North Sea - Small island south of Sirene",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_55",
+    "CustomName": "World Map: Second Continent Sea - Beach along east river",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_56",
+    "CustomName": "World Map: Second Continent - Beach east of Old Lumiere north exit",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_57",
+    "CustomName": "World Map: North Sea - West beach of southernmost red island",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_58",
+    "CustomName": "World Map: North Sea - Paint spike on yellow beach",
+    "OriginalContent": "BreakDamageOnCrit",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_59",
+    "CustomName": "World Map: Yellow plateau northeast of Frozen Hearts",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_60",
+    "CustomName": "World Map: Eastern red forest near Endless Night Sanctuary",
+    "OriginalContent": "PowerDodgeCombo",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_61",
+    "CustomName": "World Map: Second Continent - Snow plateau",
+    "OriginalContent": "LongerRush",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_62",
+    "CustomName": "World Map: First Continent - Plateau with paint spikes",
+    "OriginalContent": "BreakDamageOnSlow",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_63",
+    "CustomName": "World Map: North Sea - Beach on island northeast of Sirene",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_64",
+    "CustomName": "World Map: Southeast valley - In the northern field",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_65",
+    "CustomName": "World Map: Southeast valley - Near the ferris wheel",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_66",
+    "CustomName": "World Map: Southeast valley - Paint spike",
+    "OriginalContent": "APOnShell",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_WorldMap_67",
+    "CustomName": "World Map: Second Continent - Outside Sacred River",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_Generic_Chroma",
+    "CustomName": "World Map: Second Continent - On broken bridge near Chromatic Demineur",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": ""
+  },
+  {
+    "CodeName": "Chest_YellowForest_1",
+    "CustomName": "Yellow Harvest: Entrance - Near broken fountain",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.YellowForest.Entry"
+  },
+  {
+    "CodeName": "Chest_YellowForest_2",
+    "CustomName": "Yellow Harvest: Entrance - Path to sunken building",
+    "OriginalContent": "ChromaPack_Regular",
+    "LocationTag": "Level.SpawnPoint.YellowForest.Entry"
+  },
+  {
+    "CodeName": "Chest_YellowForest_3",
+    "CustomName": "Yellow Harvest: Harvester's Hollow - Exit of crimson cave",
+    "OriginalContent": "ChromaPack_ExtraLarge",
+    "LocationTag": "Level.SpawnPoint.YellowForest.Entry"
+  },
+  {
+    "CodeName": "Chest_YellowForest_4",
+    "CustomName": "Yellow Harvest: Harvester's Hollow - Peninsula facing sunken building",
+    "OriginalContent": "ChromaPack_Large",
+    "LocationTag": "Level.SpawnPoint.YellowForest.Entry"
+  },
+  {
+    "CodeName": "Chest_YellowForest_5",
+    "CustomName": "Yellow Harvest: Harvester's Hollow - On balcony of sunken building",
+    "OriginalContent": "Consumable_LuminaPoint",
+    "LocationTag": "Level.SpawnPoint.YellowForest.Entry"
+  },
+  {
+    "CodeName": "Chest_YellowForest_6",
+    "CustomName": "Yellow Harvest: Harvester's Hollow - Near tent by sunken building",
+    "OriginalContent": "DeathBombPhysical",
+    "LocationTag": "Level.SpawnPoint.YellowForest.Entry"
+  },
+  {
+    "CodeName": "Chest_SideLevel_VersosDraft_1",
+    "CustomName": "Verso's Drafts: Reverie Path - Behind the waterfall",
+    "OriginalContent": "Quest_ToyBoat",
+    "LocationTag": "Level.SpawnPoint.VersosDraft.Entry"
+  },
+  {
+    "CodeName": "Chest_SideLevel_VersosDraft_2",
+    "CustomName": "Verso's Drafts: Gestral Baths - Esquie statue in the forest",
+    "OriginalContent": "",
+    "LocationTag": "Level.SpawnPoint.VersosDraft.Entry"
+  },
+  {
+    "CodeName": "Chest_SideLevel_VersosDraft_3",
+    "CustomName": "Verso's Drafts: Gestral Baths - In hut near the flag",
+    "OriginalContent": "",
+    "LocationTag": "Level.SpawnPoint.VersosDraft.Entry"
+  },
+  {
+    "CodeName": "Chest_SideLevel_VersosDraft_4",
+    "CustomName": "Verso's Drafts: Gestral Baths - Waterfall near 2 Esquies",
+    "OriginalContent": "",
+    "LocationTag": "Level.SpawnPoint.VersosDraft.Entry"
+  },
+  {
+    "CodeName": "Chest_SideLevel_VersosDraft_5",
+    "CustomName": "Verso's Drafts: Reverie Path - On the edge of the cliff near the merchant",
+    "OriginalContent": "",
+    "LocationTag": "Level.SpawnPoint.VersosDraft.Entry"
+  },
+  {
+    "CodeName": "Chest_SideLevel_VersosDraft_6",
+    "CustomName": "Verso's Drafts: Gestral Baths - Next to the treehouse piano",
+    "OriginalContent": "",
+    "LocationTag": "Level.SpawnPoint.VersosDraft.Entry"
+  },
+  {
+    "CodeName": "Chest_SideLevel_VersosDraft_7",
+    "CustomName": "Verso's Drafts: Gestral Baths - On the treehouse roof",
+    "OriginalContent": "",
+    "LocationTag": "Level.SpawnPoint.VersosDraft.Entry"
+  },
+  {
+    "CodeName": "Chest_SideLevel_VersosDraft_8",
+    "CustomName": "Verso's Drafts: Candy land - In candy jars at the carnival",
+    "OriginalContent": "",
+    "LocationTag": "Level.SpawnPoint.VersosDraft.Entry"
+  },
+  {
+    "CodeName": "Chest_SideLevel_VersosDraft_9",
+    "CustomName": "Verso's Drafts: Gestral Baths - Paint cage in the forest",
+    "OriginalContent": "",
+    "LocationTag": "Level.SpawnPoint.VersosDraft.Entry"
+  },
+  {
+    "CodeName": "Chest_SideLevel_VersosDraft_10",
+    "CustomName": "Verso's Drafts: Open Playground - By the blue Licornes in the bath",
+    "OriginalContent": "",
+    "LocationTag": "Level.SpawnPoint.VersosDraft.Entry"
+  },
+  {
+    "CodeName": "Chest_SideLevel_VersosDraft_11",
+    "CustomName": "Verso's Drafts: Gestral Baths - Across the Esquie platforms in the forest",
+    "OriginalContent": "",
+    "LocationTag": "Level.SpawnPoint.VersosDraft.Entry"
+  },
+  {
+    "CodeName": "Chest_SideLevel_VersosDraft_12",
+    "CustomName": "Verso's Drafts: In candy jar across from the cake door",
+    "OriginalContent": "",
+    "LocationTag": "Level.SpawnPoint.VersosDraft.Entry"
+  },
+  {
+    "CodeName": "Chest_SideLevel_VersosDraft_13",
+    "CustomName": "Verso's Drafts: Gestral Baths - On the diving board",
+    "OriginalContent": "",
+    "LocationTag": "Level.SpawnPoint.VersosDraft.Entry"
+  },
+  {
+    "CodeName": "Chest_SideLevel_VersosDraft_14",
+    "CustomName": "Verso's Drafts: Gestral Baths - Behind the crowded slide",
+    "OriginalContent": "",
+    "LocationTag": "Level.SpawnPoint.VersosDraft.Entry"
+  },
+  {
+    "CodeName": "15",
+    "CustomName": "Verso's Drafts: Open Playground - Paint cage",
+    "OriginalContent": "",
+    "LocationTag": "Level.SpawnPoint.VersosDraft.Entry"
+  },
+  {
+    "CodeName": "Chest_SideLevel_VersosDraft_16",
+    "CustomName": "Verso's Drafts: On the train tracks through the door",
+    "OriginalContent": "",
+    "LocationTag": "Level.SpawnPoint.VersosDraft.Entry"
+  },
+  {
+    "CodeName": "Chest_SideLevel_VersosDraft_17",
+    "CustomName": "Verso's Drafts: On a box through the door",
+    "OriginalContent": "",
+    "LocationTag": "Level.SpawnPoint.VersosDraft.Entry"
+  },
+  {
+    "CodeName": "Chest_SideLevel_VersosDraft_18",
+    "CustomName": "Verso's Drafts: Candy land - Through the blue tunnel by the Open Playground entrance",
+    "OriginalContent": "",
+    "LocationTag": "Level.SpawnPoint.VersosDraft.Entry"
+  },
+  {
+    "CodeName": "Chest_SideLevel_VersosDraft_19",
+    "CustomName": "Verso's Drafts: Candy land - Guarded by Barbasucettes near the flag",
+    "OriginalContent": "",
+    "LocationTag": "Level.SpawnPoint.VersosDraft.Entry"
+  },
+  {
+    "CodeName": "Chest_SideLevel_VersosDraft_20",
+    "CustomName": "Verso's Drafts: Candy land - In jar near carnival exit",
+    "OriginalContent": "",
+    "LocationTag": "Level.SpawnPoint.VersosDraft.Entry"
+  },
+  {
+    "CodeName": "Chest_SideLevel_VersosDraft_21",
+    "CustomName": "Verso's Drafts: Candy land - Behind Very Very Cool Gestral",
+    "OriginalContent": "",
+    "LocationTag": "Level.SpawnPoint.VersosDraft.Entry"
+  },
+  {
+    "CodeName": "Chest_SideLevel_VersosDraft_22",
+    "CustomName": "Verso's Drafts: Reverie Path - Behind Chromatic Franctale",
+    "OriginalContent": "",
+    "LocationTag": "Level.SpawnPoint.VersosDraft.Entry"
+  },
+  {
+    "CodeName": "Chest_SideLevel_VersosDraft_23",
+    "CustomName": "Verso's Drafts: Reverie Path - Edge of the water before the carnival",
+    "OriginalContent": "",
+    "LocationTag": "Level.SpawnPoint.VersosDraft.Entry"
+  },
+  {
+    "CodeName": "Chest_SideLevel_VersosDraft_24",
+    "CustomName": "Verso's Drafts: Reverie Path - Cross the beams",
+    "OriginalContent": "",
+    "LocationTag": "Level.SpawnPoint.VersosDraft.Entry"
+  },
+  {
+    "CodeName": "Chest_SideLevel_VersosDraft_25",
+    "CustomName": "Verso's Drafts: Gestral Baths - Beside balloon gestral",
+    "OriginalContent": "",
+    "LocationTag": "Level.SpawnPoint.VersosDraft.Entry"
+  },
+  {
+    "CodeName": "Chest_SideLevel_VersosDraft_26",
+    "CustomName": "Verso's Drafts: Reverie Path - In candy jar before carnival entrance",
+    "OriginalContent": "",
+    "LocationTag": "Level.SpawnPoint.VersosDraft.Entry"
+  },
+  {
+    "CodeName": "Chest_SideLevel_VersosDraft_27",
+    "CustomName": "Verso's Drafts: Candy land - Up the climbing holds",
+    "OriginalContent": "",
+    "LocationTag": "Level.SpawnPoint.VersosDraft.Entry"
+  },
+  {
+    "CodeName": "Chest_SideLevel_VersosDraft_28",
+    "CustomName": "Verso's Drafts: Reverie Path - Behind giant blocks near xylophone bridge",
+    "OriginalContent": "",
+    "LocationTag": "Level.SpawnPoint.VersosDraft.Entry"
+  },
+  {
+    "CodeName": "Chest_SideLevel_VersosDraft_29",
+    "CustomName": "Verso's Drafts: Candy land - In a jar by the Open Playground entrance",
+    "OriginalContent": "",
+    "LocationTag": "Level.SpawnPoint.VersosDraft.Entry"
+  },
+  {
+    "CodeName": "Chest_SideLevel_VersosDraft_30",
+    "CustomName": "Verso's Drafts: Candy land - In a jar by the blue tunnel",
+    "OriginalContent": "",
+    "LocationTag": "Level.SpawnPoint.VersosDraft.Entry"
+  },
+  {
+    "CodeName": "Chest_SideLevel_VersosDraft_31",
+    "CustomName": "Verso's Drafts: Gestral Baths - Hopscotch by the flag",
+    "OriginalContent": "",
+    "LocationTag": "Level.SpawnPoint.VersosDraft.Entry"
+  },
+  {
+    "CodeName": "Chest_SideLevel_VersosDraft_32",
+    "CustomName": "Verso's Drafts: Gestral Baths - Hopscotch in the seesaw bath",
+    "OriginalContent": "",
+    "LocationTag": "Level.SpawnPoint.VersosDraft.Entry"
+  },
+  {
+    "CodeName": "Chest_SideLevel_VersosDraft_33",
+    "CustomName": "Verso's Drafts: Candy land - Hopscotch in the cave",
+    "OriginalContent": "",
+    "LocationTag": "Level.SpawnPoint.VersosDraft.Entry"
+  },
+  {
+    "CodeName": "Chest_SideLevel_VersosDraft_34",
+    "CustomName": "Verso's Drafts: Gestral Baths - Hopscotch in the forest",
+    "OriginalContent": "",
+    "LocationTag": "Level.SpawnPoint.VersosDraft.Entry"
+  },
+  {
+    "CodeName": "Chest_SideLevel_VersosDraft_35",
+    "CustomName": "Verso's Drafts: Reverie Path - In train car with a Licorne",
+    "OriginalContent": "",
+    "LocationTag": "Level.SpawnPoint.VersosDraft.Entry"
+  }
+]

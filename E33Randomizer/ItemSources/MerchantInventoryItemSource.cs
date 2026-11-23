@@ -108,6 +108,7 @@ public class MerchantInventoryItemSource: ItemSource
             Key = ""
         };
         Checks.Add(check);
+        CustomName = MerchantNames.GetValueOrDefault(FileName, FileName);
     }
 
     public override UAsset SaveToAsset()

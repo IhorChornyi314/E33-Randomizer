@@ -39,6 +39,13 @@ public class ItemSourceParticle(ItemData item, int quantity = -1, double chance 
     {
         return $"{Item.CodeName}:{Quantity}:{(int)LootDropChance}:{IsLootTableChest}:{MerchantInventoryLocked}";
     }
+
+    public string ToStringVerbose()
+    {
+        var quantityString = Quantity > 1 ? $"{Quantity}x " : "";
+        var percentString = LootDropChance is > 0 and < 100 ? $" ({(int)LootDropChance}%)" : "";
+        return $"{quantityString}{Item.CustomName}{percentString}";
+    }
 }
 
 public abstract class ItemSource
@@ -46,6 +53,7 @@ public abstract class ItemSource
     public Dictionary<string, List<ItemSourceParticle>> SourceSections = new();
     public string FolderName;
     public string FileName;
+    public string CustomName;
     public List<CheckData> Checks = new();
     public bool HasItemQuantities;
     protected UAsset _asset;

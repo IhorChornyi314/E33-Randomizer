@@ -196,6 +196,7 @@ public class DialogueItemSource : ItemSource
             };
             Checks.Add(check);
         }
+        CustomName = _dialogueNames.GetValueOrDefault(FileName, FileName);
     }
 
     public override UAsset SaveToAsset()

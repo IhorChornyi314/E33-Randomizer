@@ -270,10 +270,32 @@ public static class RandomizerLogic
 
         if (Settings.RandomizeLocations)
         {
-            var criticalPathString = Controllers.LocationController.GetCriticalPathVerboseString();
-            result += $"Critical Path: {criticalPathString}";
+            result += "Location Spoilers:" + Environment.NewLine;
+            result += Controllers.LocationController.GetSpoilers();
+            result += Environment.NewLine + Environment.NewLine;
         }
         
+        if (Settings.RandomizeItems)
+        {
+            result += "Item Spoilers:" + Environment.NewLine;
+            result += Controllers.ItemsController.GetSpoilers();
+            result += Environment.NewLine + Environment.NewLine;
+        }
+
+        if (Settings.RandomizeEnemies)
+        {
+            result += "Enemy Spoilers:" + Environment.NewLine;
+            result += Controllers.EnemiesController.GetSpoilers();
+            result += Environment.NewLine + Environment.NewLine;
+        }
+        
+        if (Settings.RandomizeSkills)
+        {
+            result += "Skill Spoilers:" + Environment.NewLine;
+            result += Controllers.SkillsController.GetSpoilers();
+            result += Environment.NewLine + Environment.NewLine;
+        }
+        result = result.TrimEnd();
         if (result.Length == 0) return;
         
         File.WriteAllText(filename, result, Encoding.UTF8);

@@ -12,6 +12,7 @@ public class Encounter
     private UAsset _asset;
     public string Name;
     public List<EnemyData> Enemies;
+    public List<EnemyData> OriginalEnemies;
     public List<EnemyLootDrop> PossibleLootDrops = new();
     public bool IsBossEncounter = false;
     public bool IsBroken;
@@ -55,6 +56,8 @@ public class Encounter
             enemyArchetypes.Add(enemyData.Archetype);
         }
 
+        OriginalEnemies = new List<EnemyData>(Enemies);
+        
         fleeImpossible = (_encounterData.Value[1] as BoolPropertyData).Value;
         levelOverride = (_encounterData.Value[2] as IntPropertyData).Value;
         disableCameraEndMovement = (_encounterData.Value[3] as BoolPropertyData).Value;
@@ -106,5 +109,14 @@ public class Encounter
     public override string ToString()
     {
         return $"{Name}|" + String.Join(",", Enemies.Select(e => e.CodeName));
+    }
+
+    public string ToStringVerbose()
+    {
+        string originalFormatted = string.Join(", ", OriginalEnemies.Select(e => e.CustomName.Split(" (")[0])
+            .GroupBy(s => s).Select(g =>g.Count() > 1 ? $"{g.Count()}x{g.Key}": g.Key));
+        string newFormatted = string.Join(", ", Enemies.Select(e => e.CustomName.Split(" (")[0])
+            .GroupBy(s => s).Select(g =>g.Count() > 1 ? $"{g.Count()}x{g.Key}": g.Key));
+        return $"{originalFormatted} -> {newFormatted}";
     }
 }

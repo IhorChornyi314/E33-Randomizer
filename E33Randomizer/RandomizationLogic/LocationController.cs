@@ -421,6 +421,18 @@ public class LocationController: Controller<LocationData>
         ViewModel.UpdateFilteredCategories();
     }
 
+    public override string GetSpoilers()
+    {
+        var result = "Critical Path:" + Environment.NewLine;
+        result += "\t" + GetCriticalPathVerboseString() + Environment.NewLine;
+        result += "Location Substitutions:" + Environment.NewLine;
+        result += string.Join(Environment.NewLine, 
+            DestinationChanges.Where(c => c.Key != c.Value).
+                Select(c => $"\t{GetObject(c.Key).CustomName} -> {GetObject(c.Value).CustomName}")
+                );
+        return result + Environment.NewLine;
+    }
+
     public string GetCriticalPathVerboseString()
     {
         if (criticalPath.Count == 0)
@@ -437,21 +449,34 @@ public class LocationController: Controller<LocationData>
         {
             for (int i = 0; i < nonSpecialPath.Count - 1; i++)
             {
-                if (nonSpecialPath[i].CustomName.Contains("Special ")) continue;
-                var transition = nonSpecialPath[i].UnconditionalConnections.Contains(nonSpecialPath[i + 1].CodeName) ? " > " : " ~> ";
-                transition = nonSpecialPath[i].AllConditionalConnections.Contains(nonSpecialPath[i + 1].CodeName) ? " > " : transition;
+                var loc = nonSpecialPath[i];
+                if (loc.CustomName.Contains("Special ")) continue;
+                var transition = loc.UnconditionalConnections.Contains(nonSpecialPath[i + 1].CodeName) ? " > " : " ~> ";
+                transition = loc.AllConditionalConnections.Contains(nonSpecialPath[i + 1].CodeName) ? " > " : transition;
 
                 var keysString = "";
                 
-                if (nonSpecialPath[i].Keys.Any(k => !accountedKeys.Contains(k)))
+                if (loc.Keys.Any(k => !accountedKeys.Contains(k)) || Controllers.ItemsController.EsquieRockLocations.ContainsValue(loc.CodeName))
                 {
-                    var keys = nonSpecialPath[i].Keys.Where(k => !accountedKeys.Contains(k));
+                    var keys = loc.Keys.Where(k => !accountedKeys.Contains(k)).Where(k => !k.StartsWith("EsquieAbility") || k == "EsquieAbility.Car");
+                    
+                    if (Controllers.ItemsController.EsquieRockLocations.Values.Contains(loc.CodeName))
+                    {
+                        keys = keys.Append("get " + Controllers.ItemsController.EsquieRockLocations.First(l => l.Value == loc.CodeName).Key);
+                    }
+                    
                     keysString = " (" + string.Join(", ", keys.Select(k => _keyDescriptions.GetValueOrDefault(k, k))) + ")";
                 }
+                
+                keysString = keysString == " ()"? "" : keysString;
                 
                 accountedKeys.AddRange(nonSpecialPath[i].Keys);
                 
                 criticalPathString += nonSpecialPath[i].CustomName + keysString + transition;
+                if (i % 5 == 0 && i > 0)
+                {
+                    criticalPathString += Environment.NewLine + "\t";
+                }
             }
             criticalPathString += nonSpecialPath[^1].CustomName;
         }

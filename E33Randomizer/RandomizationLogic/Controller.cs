@@ -100,5 +100,6 @@ public abstract class Controller<T>: BaseController where T: ObjectData, new()
     }
     
     public abstract void WriteAssets();
-    
+
+    public abstract string GetSpoilers();
 }

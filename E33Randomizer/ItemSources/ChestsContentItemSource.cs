@@ -92,6 +92,8 @@ public class ChestsContentItemSource: ItemSource
             };
             Checks.Add(check);
         }
+
+        CustomName = "Map Pickups";
     }
 
     public override UAsset SaveToAsset()

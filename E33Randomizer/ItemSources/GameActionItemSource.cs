@@ -66,6 +66,8 @@ public class GameActionItemSource: ItemSource
             };
             Checks.Add(check);
         }
+
+        CustomName = _customNames.GetValueOrDefault(FileName, FileName);
     }
 
     public override UAsset SaveToAsset()

@@ -42,6 +42,7 @@ public class BattleTowerItemSource: ItemSource
             Checks.Add(check);
             SourceSections[stageName] = items;
         }
+        CustomName = "Endless Tower Rewards";
     }
 
     public override UAsset SaveToAsset()

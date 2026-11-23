@@ -65,6 +65,8 @@ public class EnemyLootDropsItemSource: ItemSource
             var leg = enemyData.Value[18].ToString();
             Controllers.ItemsController.ShapeshiftCaptureLootItems[enemyName] = leg == "null" ? "None" : leg;
         }
+
+        CustomName = "Enemy Drops";
     }
 
     public override UAsset SaveToAsset()

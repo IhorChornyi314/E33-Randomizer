@@ -4,6 +4,7 @@ namespace E33Randomizer.ObjectDatum;
 
 [JsonDerivedType(typeof(CharacterData))]
 [JsonDerivedType(typeof(CheckData))]
+[JsonDerivedType(typeof(ChestData))]
 [JsonDerivedType(typeof(EnemyData))]
 [JsonDerivedType(typeof(ItemData))]
 [JsonDerivedType(typeof(LocationData))]

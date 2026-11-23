@@ -124,6 +124,19 @@ public class EnemiesController: Controller<EnemyData>
         return result;
     }
 
+    public override string GetSpoilers()
+    {
+        var result = "";
+        foreach (var (location, encounterIndexes) in EncounterIndexesByLocation)
+        {
+            result += $"{location}:{Environment.NewLine}";
+            result += string.Join(Environment.NewLine, encounterIndexes.Select(eI => "\t" + Encounters[eI].ToStringVerbose()));
+            result += Environment.NewLine;
+        }
+
+        return result;
+    }
+
     public override void Randomize()
     {
         SpecialRules.Reset();

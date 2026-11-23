@@ -65,6 +65,7 @@ public class LootTableItemSource: ItemSource
             Checks.Add(check);
             SourceSections[entryName] = items;
         }
+        CustomName = _lootTableNames[FileName];
     }
 
     public override UAsset SaveToAsset()

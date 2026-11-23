@@ -55,6 +55,20 @@ public class SkillsController: Controller<SkillData>
         ApplyViewModel();
         return string.Join('\n', SkillGraphs.Select(sG => sG.EncodeTxt()));
     }
+
+
+    public override string GetSpoilers()
+    {
+        var result = "";
+        foreach (var skillGraph in SkillGraphs)
+        {
+            if (skillGraph.CharacterName == "Julie") continue;
+            result += skillGraph.CharacterName + ":" + Environment.NewLine;
+            result += string.Join(Environment.NewLine, skillGraph.Nodes.Select(n => "\t" + GetObject(n.OriginalSkillCodeName).CustomName.Split(" (")[0] + " -> " + n.SkillData.CustomName.Split(" (")[0]));
+            result += Environment.NewLine;
+        }
+        return result;
+    }
     
     public override void Reset()
     {
