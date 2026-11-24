@@ -37,6 +37,7 @@ public class LocationController: Controller<LocationData>
         {"Story.SireneHeartAcquired", "get Sirene's heart"},
         {"Story.VisageHeartAcquired", "get Visage's heart"},
         {"Story.BarrierBreakerAcquired", "get Barrier Breaker"},
+        {"Story.Act2Reached", "reach Act 2"}
     };
     
     static public Dictionary<string, string> CharacterJoinLocations = new()

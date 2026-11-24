@@ -1285,19 +1285,10 @@
   },
   {
     "CodeName": "Level.SpawnPoint.LumiereAct03.Act02",
-    "CustomName": "Lumiere - Act I Ending",
+    "CustomName": "Lumiere - Act II Ending",
     "LevelAsset": "Level_Lumiere_Main_V2",
     "LevelScaling": 48,
-    "UnconditionalConnections": [
-      "Level.SpawnPoint.LumiereAct03.BigPlazza",
-      "Level.SpawnPoint.LumiereAct03.CrumblingBuildings",
-      "Level.SpawnPoint.LumiereAct03.Curator",
-      "Level.SpawnPoint.LumiereAct03.Dock",
-      "Level.SpawnPoint.LumiereAct03.FloatingBuildings",
-      "Level.SpawnPoint.LumiereAct03.Gardens",
-      "Level.SpawnPoint.LumiereAct03.Opera",
-      "Level.SpawnPoint.LumiereAct03.PostEnding"
-    ],
+    "UnconditionalConnections": [],
     "ConditionalConnections": {},
     "PortalConnection": "",
     "Keys": []
@@ -1406,14 +1397,12 @@
     "LevelAsset": "Level_Lumiere_Main_V2",
     "LevelScaling": 48,
     "UnconditionalConnections": [
-      "Level.SpawnPoint.LumiereAct03.Act02",
       "Level.SpawnPoint.LumiereAct03.CrumblingBuildings",
       "Level.SpawnPoint.LumiereAct03.Curator",
       "Level.SpawnPoint.LumiereAct03.Dock",
       "Level.SpawnPoint.LumiereAct03.FloatingBuildings",
       "Level.SpawnPoint.LumiereAct03.Gardens",
-      "Level.SpawnPoint.LumiereAct03.Opera",
-      "Level.SpawnPoint.LumiereAct03.PostEnding"
+      "Level.SpawnPoint.LumiereAct03.Opera"
     ],
     "ConditionalConnections": {},
     "PortalConnection": "",
@@ -1425,14 +1414,12 @@
     "LevelAsset": "Level_Lumiere_Main_V2",
     "LevelScaling": 48,
     "UnconditionalConnections": [
-      "Level.SpawnPoint.LumiereAct03.Act02",
       "Level.SpawnPoint.LumiereAct03.BigPlazza",
       "Level.SpawnPoint.LumiereAct03.Curator",
       "Level.SpawnPoint.LumiereAct03.Dock",
       "Level.SpawnPoint.LumiereAct03.FloatingBuildings",
       "Level.SpawnPoint.LumiereAct03.Gardens",
-      "Level.SpawnPoint.LumiereAct03.Opera",
-      "Level.SpawnPoint.LumiereAct03.PostEnding"
+      "Level.SpawnPoint.LumiereAct03.Opera"
     ],
     "ConditionalConnections": {},
     "PortalConnection": "",
@@ -1444,14 +1431,12 @@
     "LevelAsset": "Level_Lumiere_Main_V2",
     "LevelScaling": 48,
     "UnconditionalConnections": [
-      "Level.SpawnPoint.LumiereAct03.Act02",
       "Level.SpawnPoint.LumiereAct03.BigPlazza",
       "Level.SpawnPoint.LumiereAct03.CrumblingBuildings",
       "Level.SpawnPoint.LumiereAct03.Dock",
       "Level.SpawnPoint.LumiereAct03.FloatingBuildings",
       "Level.SpawnPoint.LumiereAct03.Gardens",
-      "Level.SpawnPoint.LumiereAct03.Opera",
-      "Level.SpawnPoint.LumiereAct03.PostEnding"
+      "Level.SpawnPoint.LumiereAct03.Opera"
     ],
     "ConditionalConnections": {},
     "PortalConnection": "",
@@ -1463,14 +1448,12 @@
     "LevelAsset": "Level_Lumiere_Main_V2",
     "LevelScaling": 48,
     "UnconditionalConnections": [
-      "Level.SpawnPoint.LumiereAct03.Act02",
       "Level.SpawnPoint.LumiereAct03.BigPlazza",
       "Level.SpawnPoint.LumiereAct03.CrumblingBuildings",
       "Level.SpawnPoint.LumiereAct03.Curator",
       "Level.SpawnPoint.LumiereAct03.FloatingBuildings",
       "Level.SpawnPoint.LumiereAct03.Gardens",
-      "Level.SpawnPoint.LumiereAct03.Opera",
-      "Level.SpawnPoint.LumiereAct03.PostEnding"
+      "Level.SpawnPoint.LumiereAct03.Opera"
     ],
     "ConditionalConnections": {
       "Story.Act3Reached": [
@@ -1500,14 +1483,12 @@
     "LevelAsset": "Level_Lumiere_Main_V2",
     "LevelScaling": 48,
     "UnconditionalConnections": [
-      "Level.SpawnPoint.LumiereAct03.Act02",
       "Level.SpawnPoint.LumiereAct03.BigPlazza",
       "Level.SpawnPoint.LumiereAct03.CrumblingBuildings",
       "Level.SpawnPoint.LumiereAct03.Curator",
       "Level.SpawnPoint.LumiereAct03.Dock",
       "Level.SpawnPoint.LumiereAct03.Gardens",
-      "Level.SpawnPoint.LumiereAct03.Opera",
-      "Level.SpawnPoint.LumiereAct03.PostEnding"
+      "Level.SpawnPoint.LumiereAct03.Opera"
     ],
     "ConditionalConnections": {},
     "PortalConnection": "",
@@ -1519,16 +1500,18 @@
     "LevelAsset": "Level_Lumiere_Main_V2",
     "LevelScaling": 48,
     "UnconditionalConnections": [
-      "Level.SpawnPoint.LumiereAct03.Act02",
       "Level.SpawnPoint.LumiereAct03.BigPlazza",
       "Level.SpawnPoint.LumiereAct03.CrumblingBuildings",
       "Level.SpawnPoint.LumiereAct03.Curator",
       "Level.SpawnPoint.LumiereAct03.Dock",
       "Level.SpawnPoint.LumiereAct03.FloatingBuildings",
-      "Level.SpawnPoint.LumiereAct03.Opera",
-      "Level.SpawnPoint.LumiereAct03.PostEnding"
+      "Level.SpawnPoint.LumiereAct03.Opera"
     ],
-    "ConditionalConnections": {},
+    "ConditionalConnections": {
+      "Story.VersoJoined": [
+        "Level.SpawnPoint.LumiereAct03.PostEnding"
+      ]
+    },
     "PortalConnection": "",
     "Keys": []
   },
@@ -1538,14 +1521,12 @@
     "LevelAsset": "Level_Lumiere_Main_V2",
     "LevelScaling": 48,
     "UnconditionalConnections": [
-      "Level.SpawnPoint.LumiereAct03.Act02",
       "Level.SpawnPoint.LumiereAct03.BigPlazza",
       "Level.SpawnPoint.LumiereAct03.CrumblingBuildings",
       "Level.SpawnPoint.LumiereAct03.Curator",
       "Level.SpawnPoint.LumiereAct03.Dock",
       "Level.SpawnPoint.LumiereAct03.FloatingBuildings",
-      "Level.SpawnPoint.LumiereAct03.Gardens",
-      "Level.SpawnPoint.LumiereAct03.PostEnding"
+      "Level.SpawnPoint.LumiereAct03.Gardens"
     ],
     "ConditionalConnections": {},
     "PortalConnection": "",
@@ -1556,19 +1537,13 @@
     "CustomName": "Lumiere - The End",
     "LevelAsset": "Level_Lumiere_Main_V2",
     "LevelScaling": 48,
-    "UnconditionalConnections": [
-      "Level.SpawnPoint.LumiereAct03.Act02",
-      "Level.SpawnPoint.LumiereAct03.BigPlazza",
-      "Level.SpawnPoint.LumiereAct03.CrumblingBuildings",
-      "Level.SpawnPoint.LumiereAct03.Curator",
-      "Level.SpawnPoint.LumiereAct03.Dock",
-      "Level.SpawnPoint.LumiereAct03.FloatingBuildings",
-      "Level.SpawnPoint.LumiereAct03.Gardens",
-      "Level.SpawnPoint.LumiereAct03.Opera"
-    ],
+    "UnconditionalConnections": [],
     "ConditionalConnections": {
       "Story.Act3Reached": [
         "Special.Dummy.Ending"
+      ],
+      "Story.VersoJoined": [
+        "Level.SpawnPoint.LumiereAct03.Gardens"
       ]
     },
     "PortalConnection": "",
@@ -1586,7 +1561,7 @@
   },
   {
     "CodeName": "Level.SpawnPoint.Manor.AliciaRoomAct3",
-    "CustomName": "The Manor - Alicia Room Act3",
+    "CustomName": "The Manor - Alicia Room Act III",
     "LevelAsset": "Manor_Main_WP",
     "LevelScaling": 1,
     "UnconditionalConnections": [
@@ -1672,7 +1647,7 @@
   },
   {
     "CodeName": "Level.SpawnPoint.Manor.Room01",
-    "CustomName": "The Manor - Room01",
+    "CustomName": "The Manor - Room 1",
     "LevelAsset": "Manor_Main_WP",
     "LevelScaling": 1,
     "UnconditionalConnections": [],
@@ -1682,7 +1657,7 @@
   },
   {
     "CodeName": "Level.SpawnPoint.Manor.Room02",
-    "CustomName": "The Manor - Room02",
+    "CustomName": "The Manor - Room 2",
     "LevelAsset": "Manor_Main_WP",
     "LevelScaling": 1,
     "UnconditionalConnections": [],
@@ -1692,7 +1667,7 @@
   },
   {
     "CodeName": "Level.SpawnPoint.Manor.Room03",
-    "CustomName": "The Manor - Room03",
+    "CustomName": "The Manor - Room 3",
     "LevelAsset": "Manor_Main_WP",
     "LevelScaling": 1,
     "UnconditionalConnections": [],
@@ -2452,7 +2427,7 @@
       "Level.SpawnPoint.SeaCliff.ZeppelinEntry"
     ],
     "ConditionalConnections": {
-      "EsquieAbility.Swim": [
+      "Story.Act2Reached": [
         "Level.SpawnPoint.SeaCliff.Exit"
       ]
     },
@@ -2474,7 +2449,7 @@
       "Level.SpawnPoint.SeaCliff.ZeppelinEntry"
     ],
     "ConditionalConnections": {
-      "EsquieAbility.Swim": [
+      "Story.Act2Reached": [
         "Level.SpawnPoint.SeaCliff.Exit"
       ]
     },
@@ -2496,7 +2471,7 @@
       "Level.SpawnPoint.SeaCliff.ZeppelinEntry"
     ],
     "ConditionalConnections": {
-      "EsquieAbility.Swim": [
+      "Story.Act2Reached": [
         "Level.SpawnPoint.SeaCliff.Exit"
       ]
     },
@@ -2510,7 +2485,7 @@
     "LevelScaling": 19,
     "UnconditionalConnections": [],
     "ConditionalConnections": {
-      "EsquieAbility.Swim": [
+      "Story.Act2Reached": [
         "Level.SpawnPoint.SeaCliff.BasaltWaves",
         "Level.SpawnPoint.SeaCliff.Caves",
         "Level.SpawnPoint.SeaCliff.Entry",
@@ -2539,7 +2514,7 @@
       "Level.SpawnPoint.SeaCliff.ZeppelinEntry"
     ],
     "ConditionalConnections": {
-      "EsquieAbility.Swim": [
+      "Story.Act2Reached": [
         "Level.SpawnPoint.SeaCliff.Exit"
       ]
     },
@@ -2561,7 +2536,7 @@
       "Level.SpawnPoint.SeaCliff.ZeppelinEntry"
     ],
     "ConditionalConnections": {
-      "EsquieAbility.Swim": [
+      "Story.Act2Reached": [
         "Level.SpawnPoint.SeaCliff.Exit"
       ]
     },
@@ -2585,7 +2560,7 @@
       "Level.SpawnPoint.SeaCliff.ZeppelinEntry"
     ],
     "ConditionalConnections": {
-      "EsquieAbility.Swim": [
+      "Story.Act2Reached": [
         "Level.SpawnPoint.SeaCliff.Exit"
       ]
     },
@@ -2607,7 +2582,7 @@
       "Level.SpawnPoint.SeaCliff.ZeppelinEntry"
     ],
     "ConditionalConnections": {
-      "EsquieAbility.Swim": [
+      "Story.Act2Reached": [
         "Level.SpawnPoint.SeaCliff.Exit"
       ]
     },
@@ -2629,7 +2604,7 @@
       "Level.SpawnPoint.SeaCliff.Village"
     ],
     "ConditionalConnections": {
-      "EsquieAbility.Swim": [
+      "Story.Act2Reached": [
         "Level.SpawnPoint.SeaCliff.Exit"
       ]
     },
@@ -2853,9 +2828,7 @@
     ],
     "ConditionalConnections": {},
     "PortalConnection": "",
-    "Keys": [
-      "Story.LuneJoined"
-    ]
+    "Keys": []
   },
   {
     "CodeName": "Level.SpawnPoint.SpringMeadows.Entry",
@@ -2923,7 +2896,9 @@
     ],
     "ConditionalConnections": {},
     "PortalConnection": "",
-    "Keys": []
+    "Keys": [
+      "Story.LuneJoined"
+    ]
   },
   {
     "CodeName": "Level.SpawnPoint.SpringMeadows.OldExpeditionnerCamp",
@@ -3961,7 +3936,7 @@
   },
   {
     "CodeName": "Level.SpawnPoint.WorldMap.GestralTreeCityEntry",
-    "CustomName": "World Map - Gestral Tree City Entry",
+    "CustomName": "World Map - Ancient Gestral City Entry",
     "LevelAsset": "Level_WorldMap_Main_V2",
     "LevelScaling": 1,
     "UnconditionalConnections": [],
@@ -4325,7 +4300,9 @@
     },
     "PortalConnection": "",
     "Keys": [
-      "EsquieAbility.Swim"
+      "EsquieAbility.Swim",
+      "Story.VersoJoined",
+      "Story.Act2Reached"
     ]
   },
   {
