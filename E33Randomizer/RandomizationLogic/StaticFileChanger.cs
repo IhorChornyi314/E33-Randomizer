@@ -9,6 +9,21 @@ namespace E33Randomizer.RandomizationLogic;
 
 public static class StaticFileChanger
 {
+    public static string DataDirectory
+    {
+        get
+        {
+            var envPath = Environment.GetEnvironmentVariable("E33FullExtractedGamePath");
+            if (!string.IsNullOrEmpty(envPath))
+                return envPath;
+            return "D:\\Mods\\Unreal Engine Mods\\retoc\\out";
+        }
+    }
+#if DEBUG
+    private static bool _enabled = true;
+#else
+    private static bool _enabled = false;
+#endif
     
     public static void GenerateConditionCheckerFile(string questName)
     {
@@ -33,7 +48,7 @@ public static class StaticFileChanger
 
     public static void CreateEsquieRocks()
     {
-        var relationshipQuests = new UAsset($"D:\\Mods\\Unreal Engine Mods\\retoc\\out\\Sandfall\\Content\\Levels\\WorldMap\\Camps\\GameActions\\Quests\\DA_GA_SQT_COND_RelationshipQuests.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+        var relationshipQuests = new UAsset($"{DataDirectory}\\Sandfall\\Content\\Levels\\WorldMap\\Camps\\GameActions\\Quests\\DA_GA_SQT_COND_RelationshipQuests.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
         
         relationshipQuests.AddNameReference(FString.FromString("BP_ConditionChecker_ItemInInventory_C"));
         relationshipQuests.AddNameReference(FString.FromString("/Game/Gameplay/ConditionChecker/Inventory/BP_ConditionChecker_ItemInInventory"));
@@ -56,7 +71,7 @@ public static class StaticFileChanger
         
         for (int i = 0; i < 3; i++)
         {
-            var oldDoorInteract = new UAsset($"D:\\Mods\\Unreal Engine Mods\\retoc\\out\\Sandfall\\Content\\Levels\\OldLumiere\\GameActions\\Quest\\DA_GA_COND_OldDoorInteract.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+            var oldDoorInteract = new UAsset($"{DataDirectory}\\Sandfall\\Content\\Levels\\OldLumiere\\GameActions\\Quest\\DA_GA_COND_OldDoorInteract.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
 
             relationshipQuests.AddNameReference(FString.FromString($"QUEST_EsquieRock{rocks[i]}"));
             var e = (relationshipQuests.Exports[i + 2] as NormalExport);
@@ -107,7 +122,7 @@ public static class StaticFileChanger
 
     public static void CreateEsquieNotif(string capacity)
     {
-        var esquieNotif = new UAsset($"D:\\Mods\\Unreal Engine Mods\\retoc\\out\\Sandfall\\Content\\Levels\\WorldMap\\Camps\\GameActions\\Quests\\DA_GA_NOTIF_EsquieUnderwater.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+        var esquieNotif = new UAsset($"{DataDirectory}\\Sandfall\\Content\\Levels\\WorldMap\\Camps\\GameActions\\Quests\\DA_GA_NOTIF_EsquieUnderwater.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
         
         esquieNotif.SetNameReference(11, FString.FromString($"/Game/UI/Widgets/FullScreenNotificationSystem/Data/WorldMapCapacities/DA_FullscreenNotification_WMC_{capacity}"));
         esquieNotif.SetNameReference(12, FString.FromString($"DA_FullscreenNotification_WMC_{capacity}"));
@@ -123,7 +138,7 @@ public static class StaticFileChanger
 
     public static void CreateRockGA(string rockName, string capacityEnum, string capacityName)
     {
-        var gustaveDie = new UAsset($"D:\\Mods\\Unreal Engine Mods\\retoc\\out\\Sandfall\\Content\\Levels\\SeaCliff\\GameActions\\DA_GA_SQT_GustaveDieEndLevel.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+        var gustaveDie = new UAsset($"{DataDirectory}\\Sandfall\\Content\\Levels\\SeaCliff\\GameActions\\DA_GA_SQT_GustaveDieEndLevel.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
         
         var innerNotifGAImport = new ImportData("/Script/Engine", "BlueprintGeneratedClass",
             "BP_GameAction_ShowFullscreenNotification_C");
@@ -199,7 +214,7 @@ public static class StaticFileChanger
 
     public static void RemoveExplorationCapacity()
     {
-        var gustaveDie = new UAsset($"D:\\Mods\\Unreal Engine Mods\\retoc\\out\\Sandfall\\Content\\Levels\\SeaCliff\\GameActions\\DA_GA_SQT_GustaveDieEndLevel.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+        var gustaveDie = new UAsset($"{DataDirectory}\\Sandfall\\Content\\Levels\\SeaCliff\\GameActions\\DA_GA_SQT_GustaveDieEndLevel.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
         var actionSequence = ((gustaveDie.Exports[4] as NormalExport).Data[0] as ArrayPropertyData);
         // 11 is unlocking capacity
         actionSequence.Value =
@@ -213,7 +228,7 @@ public static class StaticFileChanger
         
         Utils.WriteAsset(gustaveDie);
         
-        var oldLumiereEnd = new UAsset($"D:\\Mods\\Unreal Engine Mods\\retoc\\out\\Sandfall\\Content\\Levels\\OldLumiere\\GameActions\\DA_GA_SQT_BeatingMirrorRenoirRound2.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+        var oldLumiereEnd = new UAsset($"{DataDirectory}\\Sandfall\\Content\\Levels\\OldLumiere\\GameActions\\DA_GA_SQT_BeatingMirrorRenoirRound2.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
         actionSequence = ((oldLumiereEnd.Exports[1] as NormalExport).Data[0] as ArrayPropertyData);
         // 3 is unlocking capacity
         actionSequence.Value =
@@ -223,7 +238,7 @@ public static class StaticFileChanger
         
         // Utils.WriteAsset(oldLumiereEnd);
         
-        var monolithEnd = new UAsset($"D:\\Mods\\Unreal Engine Mods\\retoc\\out\\Sandfall\\Content\\Levels\\Monolith\\Monolith_Exterior_Peak\\GameActions\\DA_GA_SQT_BossPaintress.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+        var monolithEnd = new UAsset($"{DataDirectory}\\Sandfall\\Content\\Levels\\Monolith\\Monolith_Exterior_Peak\\GameActions\\DA_GA_SQT_BossPaintress.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
         actionSequence = ((monolithEnd.Exports[1] as NormalExport).Data[0] as ArrayPropertyData);
         // 3 is unlocking capacity
         actionSequence.Value =
@@ -237,9 +252,9 @@ public static class StaticFileChanger
 
     public static void RemoveWorldMapNotifs()
     {
-        var swimNotif = new UAsset($"D:\\Mods\\Unreal Engine Mods\\retoc\\out\\Sandfall\\Content\\Levels\\WorldMap\\GameActions\\DA_GA_SQT_Tuto_EsquieBoat.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
-        var coralNotif = new UAsset($"D:\\Mods\\Unreal Engine Mods\\retoc\\out\\Sandfall\\Content\\Levels\\WorldMap\\GameActions\\DA_GA_SQT_Tuto_EsquieBoatPlus.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
-        var flyNotif = new UAsset($"D:\\Mods\\Unreal Engine Mods\\retoc\\out\\Sandfall\\Content\\Levels\\WorldMap\\GameActions\\DA_GA_SQT_Tuto_EsquiePlaneAndBoatPlus.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+        var swimNotif = new UAsset($"{DataDirectory}\\Sandfall\\Content\\Levels\\WorldMap\\GameActions\\DA_GA_SQT_Tuto_EsquieBoat.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+        var coralNotif = new UAsset($"{DataDirectory}\\Sandfall\\Content\\Levels\\WorldMap\\GameActions\\DA_GA_SQT_Tuto_EsquieBoatPlus.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+        var flyNotif = new UAsset($"{DataDirectory}\\Sandfall\\Content\\Levels\\WorldMap\\GameActions\\DA_GA_SQT_Tuto_EsquiePlaneAndBoatPlus.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
         
         var sqtSwim = ((swimNotif.Exports[0] as NormalExport).Data[0] as ArrayPropertyData);
         sqtSwim.Value = [];
@@ -257,7 +272,7 @@ public static class StaticFileChanger
     
     public static void ConstructDummyReplacementStringTableAsset()
     {
-        var startingST = new UAsset($"D:\\Mods\\Unreal Engine Mods\\retoc\\out\\Sandfall\\Content\\StringTables\\UI\\ST_UI_ModalPopup.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
+        var startingST = new UAsset($"{DataDirectory}\\Sandfall\\Content\\StringTables\\UI\\ST_UI_ModalPopup.uasset", EngineVersion.VER_UE5_4, RandomizerLogic.mappings);
         
         
         startingST.SetNameReference(0, FString.FromString($"ST_LocationRandomizerData"));
@@ -295,7 +310,7 @@ public static class StaticFileChanger
     
     public static void RemovePartyChanges()
     {
-        var contentFolder = "D:\\Mods\\Unreal Engine Mods\\retoc\\out\\Sandfall\\Content\\";
+        var contentFolder = $"{DataDirectory}\\Sandfall\\Content\\";
         // 2 is setting the party
         RemoveActionsFromSequence(
             $"{contentFolder}Levels\\OldLumiere\\GameActions\\DA_GA_SQT_MirrorRenoirRound2.uasset", 4, [2]);
@@ -323,6 +338,8 @@ public static class StaticFileChanger
     
     public static void Run()
     {
+        if (!_enabled) return;
+        
         if (Directory.Exists("randomizer"))
         {
             Directory.Delete("randomizer", true);
