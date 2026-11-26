@@ -21,7 +21,8 @@ A randomizer mod for Clair Obscur: Expedition 33 that gives users complete contr
 - Put the generated `.pak`, `.utoc`, and `.ucas` files into the `Expedition 33\Sandfall\Content\Paks\~mods` folder, creating the `~mods` directory if necessary.
   - For Linux, it is most likely under `~/.steam/steam/steamapps/common/Expedition 33/Sandfall/Content/Paks/~mods/`.  However, if your Steam install is somewhere else, then replace the `~/.steam/` with that path.
 - For the location randomizer:
-  - Install UE4SS, either from the copy on [NexusMods](https://www.nexusmods.com/clairobscurexpedition33/mods/630) (don't forget to clean up the unnecessary mods from there for performance), or use the version provided in the latest release of this repo. 
+  - Install UE4SS, either from the copy on [NexusMods](https://www.nexusmods.com/clairobscurexpedition33/mods/630) (don't forget to clean up the unnecessary mods from there for performance), or use the version provided in the latest release of this repo.
+    - For Linux, don't forget to add `WINEDLLOVERRIDES="dwmapi=n,b" %command%` to your game launch options in Steam/Epic/etc.
   - Put the LocationRandomizer folder into UE4SS's Mods folder and enable it in the mods.txt and mods.json files.
 - Start the game and enjoy the chaos.
 - If you get stuck or need to find a specific enemy/item/etc., check out the config/spoilers.txt file in the generated folder.
